@@ -22,10 +22,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="7" selection-start="218" selection-end="218" vertical-scroll-proportion="0.2538071">
+            <state line="10" column="7" selection-start="218" selection-end="218" vertical-scroll-proportion="-6.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="teacher_overview.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/demo/teacher_overview.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="107" column="67" selection-start="4201" selection-end="4201" vertical-scroll-proportion="0.8304498">
               <folding />
             </state>
           </provider>
@@ -51,7 +60,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/views/demo/course_plan.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/demo/teacher_overview.html.erb" />
         <option value="$PROJECT_DIR$/app/views/partials/_partial_teacher_header.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/demo_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
@@ -66,6 +74,7 @@
         <option value="$PROJECT_DIR$/app/views/demo/peer_feedback.html.erb" />
         <option value="$PROJECT_DIR$/app/views/demo/student_feedback.html.erb" />
         <option value="$PROJECT_DIR$/app/views/demo/professional_development.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/teacher_overview.html.erb" />
       </list>
     </option>
   </component>
@@ -477,11 +486,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/partials/_partial_teacher_header.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="12" selection-start="508" selection-end="508" vertical-scroll-proportion="0.4314721" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="35" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
@@ -580,7 +584,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="7" selection-start="218" selection-end="218" vertical-scroll-proportion="0.2538071">
+        <state line="10" column="7" selection-start="218" selection-end="218" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/demo/teacher_overview.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="67" selection-start="4201" selection-end="4201" vertical-scroll-proportion="0.8304498">
           <folding />
         </state>
       </provider>
