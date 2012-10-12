@@ -1,4 +1,16 @@
 Swibat::Application.routes.draw do
+
+  resources :static_pages
+
+  root to: "demo#admin_panel"
+
+  resources :demo do
+    collection do
+      get :teacher_overview
+    end
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

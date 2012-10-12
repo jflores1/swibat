@@ -1,0 +1,39 @@
+@import "bootstrap";
+body {padding-top: 60px;}
+@import "bootstrap-responsive";
+
+.navbar-inner{
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(top, #333333, #403b39);
+}
+
+.no-decor{
+  color:#000;
+}
+
+div.prettyprint{
+  background-color:#f7f7f9;
+  border: 1px solid #e1e1e8;
+  padding: 5px;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.bordered {
+  border: 1px #e7e7e7 solid;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom:10px;
+
+  .header-link{
+    color:#000;
+  }
+
+  p.top {
+    margin-top: 10px;
+    font-size: 1.1em;
+  }
+
+  strong.verb{
+    color:#ff0000;
+  }
+}
