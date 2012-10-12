@@ -25,7 +25,7 @@
       <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="7" selection-start="218" selection-end="218" vertical-scroll-proportion="-6.25">
+            <state line="10" column="7" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -34,10 +34,8 @@
       <file leaf-file-name="admin_panel.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/demo/admin_panel.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="28" selection-start="1860" selection-end="1860" vertical-scroll-proportion="-17.75">
-              <folding>
-                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="59" column="28" selection-start="1860" selection-end="1860" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -45,7 +43,7 @@
       <file leaf-file-name="classroom_observations.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/demo/classroom_observations.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="35" selection-start="0" selection-end="1524" vertical-scroll-proportion="-18.75">
+            <state line="30" column="35" selection-start="0" selection-end="1524" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -54,10 +52,8 @@
       <file leaf-file-name="peer_feedback.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/demo/peer_feedback.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="45" selection-start="0" selection-end="1053" vertical-scroll-proportion="-16.875">
-              <folding>
-                <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
+            <state line="27" column="45" selection-start="0" selection-end="1053" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,10 +61,8 @@
       <file leaf-file-name="parent_feedback.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/demo/parent_feedback.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="54" selection-start="0" selection-end="1020" vertical-scroll-proportion="-15.583333">
-              <folding>
-                <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
+            <state line="29" column="54" selection-start="0" selection-end="1020" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,29 +70,25 @@
       <file leaf-file-name="student_feedback.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/demo/student_feedback.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="112" selection-start="0" selection-end="1050" vertical-scroll-proportion="-11.833333">
-              <folding>
-                <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
+            <state line="23" column="112" selection-start="0" selection-end="1050" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="professional_development.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="professional_development.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/demo/professional_development.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="21" selection-start="531" selection-end="531" vertical-scroll-proportion="0.5782074">
-              <folding>
-                <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
+            <state line="24" column="21" selection-start="531" selection-end="531" vertical-scroll-proportion="-10.375">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="routes.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="35" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
+            <state line="2" column="2" selection-start="65" selection-end="65" vertical-scroll-proportion="0.05059022">
               <folding />
             </state>
           </provider>
@@ -124,12 +114,12 @@
         <option value="$PROJECT_DIR$/app/views/demo/classroom_observations.html.erb" />
         <option value="$PROJECT_DIR$/app/views/partials/_partial_teacher_header.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/demo_controller.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/partials/_partial_side_nav.html.erb" />
         <option value="$PROJECT_DIR$/app/views/demo/peer_feedback.html.erb" />
         <option value="$PROJECT_DIR$/app/views/demo/parent_feedback.html.erb" />
         <option value="$PROJECT_DIR$/app/views/demo/student_feedback.html.erb" />
         <option value="$PROJECT_DIR$/app/views/demo/professional_development.html.erb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
       </list>
     </option>
   </component>
@@ -180,20 +170,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="swibat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swibat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swibat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -409,7 +385,7 @@
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -449,19 +425,19 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17952415" sideWeight="0.6713396" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18240808" sideWeight="0.6713396" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -522,123 +498,97 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/views/demo/unit_plan.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="78" selection-start="2117" selection-end="2117" vertical-scroll-proportion="0.83756346">
-          <folding />
-        </state>
+        <state line="61" column="78" selection-start="2117" selection-end="2117" vertical-scroll-proportion="0.83756346" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/course_plan.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="77" selection-start="1711" selection-end="1711" vertical-scroll-proportion="0.4568528">
-          <folding />
-        </state>
+        <state line="62" column="77" selection-start="1711" selection-end="1711" vertical-scroll-proportion="0.4568528" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="7" selection-start="218" selection-end="218" vertical-scroll-proportion="-6.25">
+        <state line="10" column="7" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/admin_panel.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="28" selection-start="1860" selection-end="1860" vertical-scroll-proportion="-17.75">
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="59" column="28" selection-start="1860" selection-end="1860" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/teacher_overview.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="14" selection-start="0" selection-end="4238" vertical-scroll-proportion="0.7284173">
-          <folding />
-        </state>
+        <state line="27" column="14" selection-start="0" selection-end="4238" vertical-scroll-proportion="0.7284173" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/partials/_partial_teacher_header.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="12" selection-start="508" selection-end="508" vertical-scroll-proportion="0.4314721">
-          <folding />
-        </state>
+        <state line="17" column="12" selection-start="508" selection-end="508" vertical-scroll-proportion="0.4314721" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="31" selection-start="78" selection-end="78" vertical-scroll-proportion="0.048780486">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="35" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="2" column="31" selection-start="78" selection-end="78" vertical-scroll-proportion="0.048780486" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/demo_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="4" selection-start="336" selection-end="336" vertical-scroll-proportion="0.9268293">
-          <folding />
-        </state>
+        <state line="39" column="4" selection-start="336" selection-end="336" vertical-scroll-proportion="0.9268293" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/classroom_observations.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="35" selection-start="0" selection-end="1524" vertical-scroll-proportion="-18.75">
+        <state line="30" column="35" selection-start="0" selection-end="1524" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_navbar.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/partials/_partial_side_nav.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="77" selection-start="459" selection-end="459" vertical-scroll-proportion="0.15817223">
-          <folding />
-        </state>
+        <state line="6" column="77" selection-start="459" selection-end="459" vertical-scroll-proportion="0.15817223" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/peer_feedback.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="45" selection-start="0" selection-end="1053" vertical-scroll-proportion="-16.875">
-          <folding>
-            <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state line="27" column="45" selection-start="0" selection-end="1053" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/parent_feedback.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="54" selection-start="0" selection-end="1020" vertical-scroll-proportion="-15.583333">
-          <folding>
-            <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state line="29" column="54" selection-start="0" selection-end="1020" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/student_feedback.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="112" selection-start="0" selection-end="1050" vertical-scroll-proportion="-11.833333">
-          <folding>
-            <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state line="23" column="112" selection-start="0" selection-end="1050" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/professional_development.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="21" selection-start="531" selection-end="531" vertical-scroll-proportion="0.5782074">
-          <folding>
-            <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state line="24" column="21" selection-start="531" selection-end="531" vertical-scroll-proportion="-10.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="2" selection-start="65" selection-end="65" vertical-scroll-proportion="0.05059022">
+          <folding />
         </state>
       </provider>
     </entry>

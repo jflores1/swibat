@@ -1,8 +1,9 @@
 Swibat::Application.routes.draw do
+  root to: 'demo#admin_panel'
 
   resources :static_pages
 
-  root to: "demo#admin_panel"
+
 
   resources :demo do
     collection do
