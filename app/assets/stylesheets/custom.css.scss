@@ -5,7 +5,19 @@ body {padding-top: 60px;}
 
 .navbar-inner{
   background-color: #e7e7e7;
-  background-image: -webkit-linear-gradient(top, #333333, #403b39);
+  background-image: -webkit-linear-gradient(top, #a3db5b, #4c9304);
+}
+
+.navbar .brand {
+  color:#FFFFFF;
+}
+
+.navbar .nav > li > a {
+  color:#FFFFFF;
+}
+
+.navbar .nav > li > a:hover{
+  background-color: #DBDB70;
 }
 
 .no-decor{
@@ -26,7 +38,7 @@ div.prettyprint{
   margin-bottom:10px;
 
   .header-link{
-    color:#000;
+    color:#4c9304;
   }
 
   p.top {
