@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <%= render 'partials/partial_teacher_header' %>
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <%= render 'partials/partial_side_nav' %>
+
+    </div>
+
+    <div class="span9">
+      <ul class="breadcrumb">
+        <li><%= link_to "Course", "/demo/course_plan" %><span class="divider">/</span></li>
+        <li><%= link_to "Unit", "/demo/unit_plan" %><span class="divider">/</span></li>
+        <li class="active"><%= link_to "Lesson", "#" %></li>
+      </ul>
+
+      <div class="bordered">
+        <div class="prettyprint">
+          <dl class="dl-horizontal">
+            <dt>Lesson Objective:</dt>
+            <dd><i>students will be able to</i> Complete a fancy objective.</dd>
+            <dt>Assessment:</dt>
+            <dd>This is an assessment with a link to see it, if desired.</dd>
+            <dt>Prior Knowledge:</dt>
+            <dd>This is a statement about expected prior knowledge.</dd>
+            <dt>Expected Start:</dt>
+            <dd>10/11/12</dd>
+            <dt>Expected End:</dt>
+            <dd>10/13/12</dd>
+            <dt>Status:</dt>
+            <dd><i>Not yet started</i></dd>
+          </dl>
+        </div>
+
+
+
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Learning Tasks</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Prayer & Class Announcements</td>
+          </tr>
+          <tr>
+            <td>Review homework</td>
+          </tr>
+          <tr>
+            <td>Quiz</td>
+          </tr>
+          <tr>
+            <td>Lecture - how atoms work</td>
+          </tr>
+          <tr>
+            <td>...</td>
+          </tr>
+
+          </tbody>
+        </table>
+        <%= link_to "previous ", "#" %> <%= link_to " next", "#" %>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

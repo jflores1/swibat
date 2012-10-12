@@ -34,7 +34,7 @@
       <file leaf-file-name="admin_panel.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/demo/admin_panel.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="42" selection-start="1389" selection-end="1389" vertical-scroll-proportion="-19.375">
+            <state line="59" column="28" selection-start="1860" selection-end="1860" vertical-scroll-proportion="-17.75">
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -42,28 +42,63 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_partial_teacher_header.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/partials/_partial_teacher_header.html.erb">
+      <file leaf-file-name="classroom_observations.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/demo/classroom_observations.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="62" selection-start="109" selection-end="109" vertical-scroll-proportion="-1.25">
+            <state line="30" column="35" selection-start="0" selection-end="1524" vertical-scroll-proportion="-18.75">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_navbar.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/_navbar.html.erb">
+      <file leaf-file-name="peer_feedback.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/demo/peer_feedback.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="84" selection-start="329" selection-end="329" vertical-scroll-proportion="0.15228426">
-              <folding />
+            <state line="27" column="45" selection-start="0" selection-end="1053" vertical-scroll-proportion="-16.875">
+              <folding>
+                <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="custom.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss">
+      <file leaf-file-name="parent_feedback.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/demo/parent_feedback.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
+            <state line="29" column="54" selection-start="0" selection-end="1020" vertical-scroll-proportion="-15.583333">
+              <folding>
+                <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="student_feedback.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/demo/student_feedback.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="112" selection-start="0" selection-end="1050" vertical-scroll-proportion="-11.833333">
+              <folding>
+                <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="professional_development.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/demo/professional_development.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="21" selection-start="531" selection-end="531" vertical-scroll-proportion="0.5782074">
+              <folding>
+                <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="35" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -79,17 +114,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/partials/_partial_teacher_header.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/partials/_partial_side_nav.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/forms/_name_dropdown.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/course_plan.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/unit_plan.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/lesson_plan.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss" />
         <option value="$PROJECT_DIR$/app/views/demo/teacher_overview.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/admin_panel.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/classroom_observations.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/partials/_partial_teacher_header.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/demo_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/demo/admin_panel.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/partials/_partial_side_nav.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/peer_feedback.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/parent_feedback.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/student_feedback.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/demo/professional_development.html.erb" />
       </list>
     </option>
   </component>
@@ -246,6 +286,28 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swibat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swibat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -262,28 +324,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swibat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swibat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -479,28 +519,16 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/database.yml">
+    <entry file="file://$PROJECT_DIR$/app/views/demo/unit_plan.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="61" column="78" selection-start="2117" selection-end="2117" vertical-scroll-proportion="0.83756346">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/environment.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/demo/course_plan.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="5" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
+        <state line="62" column="77" selection-start="1711" selection-end="1711" vertical-scroll-proportion="0.4568528">
           <folding />
         </state>
       </provider>
@@ -512,75 +540,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/partials/_partial_side_nav.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="44" selection-start="127" selection-end="127" vertical-scroll-proportion="0.05272408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/forms/_name_dropdown.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../gabis_bag/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="27" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/admin_panel.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="42" selection-start="1389" selection-end="1389" vertical-scroll-proportion="-19.375">
+        <state line="59" column="28" selection-start="1860" selection-end="1860" vertical-scroll-proportion="-17.75">
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/demo/teacher_overview.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="6" selection-start="4188" selection-end="4188" vertical-scroll-proportion="3.0215828">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/demo_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="5" selection-start="101" selection-end="101" vertical-scroll-proportion="0.19512194">
+        <state line="27" column="14" selection-start="0" selection-end="4238" vertical-scroll-proportion="0.7284173">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/partials/_partial_teacher_header.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="62" selection-start="109" selection-end="109" vertical-scroll-proportion="-1.25">
+        <state line="17" column="12" selection-start="508" selection-end="508" vertical-scroll-proportion="0.4314721">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="31" selection-start="78" selection-end="78" vertical-scroll-proportion="0.048780486">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="35" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/demo_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="4" selection-start="336" selection-end="336" vertical-scroll-proportion="0.9268293">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/demo/classroom_observations.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="35" selection-start="0" selection-end="1524" vertical-scroll-proportion="-18.75">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_navbar.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="84" selection-start="329" selection-end="329" vertical-scroll-proportion="0.15228426">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/partials/_partial_side_nav.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="77" selection-start="459" selection-end="459" vertical-scroll-proportion="0.15817223">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/demo/peer_feedback.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="45" selection-start="0" selection-end="1053" vertical-scroll-proportion="-16.875">
+          <folding>
+            <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/demo/parent_feedback.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="54" selection-start="0" selection-end="1020" vertical-scroll-proportion="-15.583333">
+          <folding>
+            <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/demo/student_feedback.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="112" selection-start="0" selection-end="1050" vertical-scroll-proportion="-11.833333">
+          <folding>
+            <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/demo/professional_development.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="21" selection-start="531" selection-end="531" vertical-scroll-proportion="0.5782074">
+          <folding>
+            <element signature="n#style#0;n#h3#1;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

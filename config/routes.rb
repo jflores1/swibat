@@ -7,6 +7,14 @@ Swibat::Application.routes.draw do
   resources :demo do
     collection do
       get :teacher_overview
+      get :course_plan
+      get :unit_plan
+      get :lesson_plan
+      get :classroom_observations
+      get :peer_feedback
+      get :parent_feedback
+      get :student_feedback
+      get :professional_development
     end
   end
 

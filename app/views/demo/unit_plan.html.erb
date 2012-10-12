@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <%= render 'partials/partial_teacher_header' %>
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <%= render 'partials/partial_side_nav' %>
+
+    </div>
+
+    <div class="span9">
+      <ul class="breadcrumb">
+        <li><%= link_to "Course", '/demo/course_plan' %><span class="divider">/</span></li>
+        <li class="active"><%= link_to "Unit", "#" %></li>
+      </ul>
+
+      <div class="bordered">
+        <div class="prettyprint">
+          <h3>Unit Objective: Identify and investigate problems scientifically</h3>
+          <dl class="dl-horizontal">
+            <dt>Assessment:</dt>
+            <dd>A project where students will be required to ask a scientific question and solve it using the scientific method.</dd>
+            <dt>Expected Start:</dt>
+            <dd>8/30/12</dd>
+            <dt>Expected End:</dt>
+            <dd>9/30/12</dd>
+            <dt>Prior Knowledge:</dt>
+            <dd>Students have to be able to measure things using different methods of measurement.</dd>
+          </dl>
+        </div>
+
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Lessons</th>
+            <th>Assessment</th>
+            <th>Expected End</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><%= link_to "An awesomely written objective", "/demo/lesson_plan" %></td>
+            <td>Quiz</td>
+            <td>9/02/12</td>
+            <td>Complete</td>
+          </tr>
+          <tr>
+            <td><%= link_to "An even better one", "/demo/lesson_plan" %></td>
+            <td>Essay</td>
+            <td>10/4/12</td>
+            <td>In process <span class="label label-important">Past Due</span></td>
+          </tr>
+          <tr>
+            <td><%= link_to "Something about using tools", "/demo/lesson_plan" %></td>
+            <td>Worksheet</td>
+            <td>11/30/12</td>
+            <td>Not yet started</td>
+          </tr>
+          <tr>
+            <td><%= link_to "Something else about science", "/demo/lesson_plan" %></td>
+            <td>Project</td>
+            <td>12/30/12</td>
+            <td>Not yet started</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <%= link_to "previous ", "#" %> <%= link_to " next", "#" %>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

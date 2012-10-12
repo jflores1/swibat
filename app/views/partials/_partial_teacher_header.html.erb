@@ -1,26 +1,32 @@
 <div class="row-fluid">
-  <div class="span12">
-    <h1 style="margin-bottom: 20px;">Individual Teacher Summary</h1>
+  <div class="span9">
+    <h1 style="margin-bottom: 20px;">Jesse Flores</h1>
+  </div>
+  <div class="span3">
+    <%= render 'forms/name_dropdown' %>
   </div>
 </div>
 
 <div class="row-fluid">
   <div class="span12 bordered">
     <div class="span4">
+      <dl class="dl-horizontal">
+        <dt>Hire Date:</dt>
+        <dd>3/31/10</dd>
+        <dt>Current Courses:</dt>
+        <dd><%= link_to "Physics", '/demo/course_plan' %>, <%= link_to "Math", '/demo/course_plan' %></dd>
+        <dt>Involvement:</dt>
+        <dd>Coaches soccer, golf, campus ministry</dd>
+        <dt>Base Salary:</dt>
+        <dd>$50,000</dd>
+      </dl>
 
     </div>
     <div class="span4">
-      <p class="lead"><strong> Awesome Teacher</strong></p>
-      <ul class="unstyled">
-        <li>Hire Date: 3/31/10</li>
-        <li>Subjects: Math, Physics</li>
-        <li>Base Salary: $50,000</li>
-
-      </ul>
 
     </div>
     <div class="span4">
-      <%= render 'forms/name_dropdown' %>
+
     </div>
 
 

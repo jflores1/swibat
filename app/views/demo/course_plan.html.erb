@@ -1,0 +1,96 @@
+<div class="container-fluid">
+  <%= render 'partials/partial_teacher_header' %>
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <%= render 'partials/partial_side_nav' %>
+
+    </div>
+
+    <div class="span9">
+      <ul class="breadcrumb">
+        <li class="active"><%= link_to "Course", "#" %></li>
+      </ul>
+
+      <div class="bordered">
+        <div class="prettyprint">
+          <h3>Course: Physics 2</h3>
+          <dl class="dl-horizontal">
+            <dt>Prerequisites:</dt>
+            <dd>Physics 1</dd>
+            <dt>Semester:</dt>
+            <dd>Fall, 2012</dd>
+          </dl>
+          <h4>Course Summary:</h4>
+          <p>This is a blurb written by the teacher about the course. Maybe this is optional?</p>
+        </div>
+
+        <table class="table table-hover">
+          <thead>
+              <tr>
+                <th>Course Objectives</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Records investigations clearly and accurately</td>
+            </tr>
+            <tr>
+              <td>Interprets graphs, tables, and charts</td>
+            </tr>
+            <tr>
+              <td>Uses proper units</td>
+            </tr>
+            <tr>
+              <td>Doesn't blow up the school</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Units</th>
+            <th>Expected Start</th>
+            <th>Expected End</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><%= link_to "Identify and investigate problems scientifically", "/demo/unit_plan" %></td>
+            <td>8/31/12</td>
+            <td>9/30/12</td>
+            <td>Complete</td>
+          </tr>
+          <tr>
+            <td><%= link_to "Energy and its transformation", "/demo/unit_plan" %></td>
+            <td>10/01/12</td>
+            <td>10/31/12</td>
+            <td>In process</td>
+          </tr>
+          <tr>
+            <td><%= link_to "Electricity", "/demo/unit_plan" %></td>
+            <td>11/1/12</td>
+            <td>11/30/12</td>
+            <td>Not yet started</td>
+          </tr>
+          <tr>
+            <td><%= link_to "Wave Properties", "/demo/unit_plan" %></td>
+            <td>12/1/12</td>
+            <td>12/30/12</td>
+            <td>Not yet started</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <%= link_to "previous ", "#" %> <%= link_to " next", "#" %>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

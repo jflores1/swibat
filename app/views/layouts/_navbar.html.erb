@@ -3,8 +3,8 @@
     <div class="container">
         <%= link_to "Home", "#", class: "brand" %>
         <ul class="nav pull-right">
-          <li><%= link_to "School Overview", root_path %></li>
-          <li class="active"><%= link_to "Teacher Overviews", "demo/teacher_overview" %></li>
+          <li class="<%= yield(:class_school) %>"><%= link_to "School Overview", root_path %></li>
+          <li class="<%= yield(:class_teacher) %>"><%= link_to "Teacher Overviews", "demo/teacher_overview" %></li>
           <li><%= link_to "Account", "#" %></li>
         </ul>
     </div>
