@@ -1,5 +1,7 @@
 Swibat::Application.routes.draw do
-  root to: 'demo#admin_panel'
+  devise_for :users
+
+  root to: 'static_pages#home'
 
   resources :static_pages
 
@@ -17,8 +19,6 @@ Swibat::Application.routes.draw do
     resources :objectives
     resources :assessments
   end
-
-
 
   resources :demo do
     collection do
