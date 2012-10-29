@@ -4,10 +4,14 @@ gem 'rails', '3.2.8'
 gem 'bootstrap-sass', '2.0.4'
 gem 'bcrypt-ruby'
 gem 'thin'
+gem 'devise'
+gem 'cantango'
+gem 'date_validator'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'annotate'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do

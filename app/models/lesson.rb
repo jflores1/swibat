@@ -1,0 +1,34 @@
+# == Schema Information
+#
+# Table name: lessons
+#
+#  id                :integer          not null, primary key
+#  lesson_title      :string(255)
+#  lesson_start_date :date
+#  lesson_end_date   :date
+#  lesson_status     :string(255)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  unit_id           :integer
+#  prior_knowledge   :string(255)
+#
+
+class Lesson < ActiveRecord::Base
+  attr_accessible :lesson_end_date, :lesson_start_date, :lesson_status, :lesson_title, :prior_knowledge
+  has_many :objectives, as: :objectiveable
+  has_many :assessments, as: :assessable
+  belongs_to :unit
+
+  VALID_STATUS = %w[Pending Started Complete]
+
+  validate  :valid_lesson_status
+
+  validates :lesson_title, presence: true
+  validates :lesson_start_date, presence: true, date: {before: :lesson_end_date}
+  validates :lesson_end_date, presence: true, date: {after: :lesson_start_date}
+  validates :lesson_status, presence: true
+
+  def valid_lesson_status
+    errors.add(:lesson_status, message:"Sorry, that's not a valid status") unless VALID_STATUS.include? lesson_status
+  end
+end

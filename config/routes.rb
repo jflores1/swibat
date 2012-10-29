@@ -3,6 +3,21 @@ Swibat::Application.routes.draw do
 
   resources :static_pages
 
+  resources :courses do
+    resources :objectives
+    resources :assessments
+  end
+
+  resources :units do
+    resources :objectives
+    resources :assessments
+  end
+
+  resources :lessons do
+    resources :objectives
+    resources :assessments
+  end
+
 
 
   resources :demo do
