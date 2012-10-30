@@ -7,6 +7,10 @@ class Guest
 
   end
 
+  def email
+    'guest@test.com'
+  end
+
   def create options = {}
 
   end

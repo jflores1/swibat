@@ -5,7 +5,7 @@ Swibat::Application.routes.draw do
 
   resources :static_pages
 
-  resources :courses do
+  resources :course do
     resources :objectives
     resources :assessments
   end
