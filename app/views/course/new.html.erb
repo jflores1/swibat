@@ -1,3 +1,5 @@
 View script for course/new
 
-<%= link_to('New post', new_course_path) if user_can?(:create, Course) %>
+<% if can? :create, Course %>
+      <%= link_to "Create Course", "#" %>
+<% end %>

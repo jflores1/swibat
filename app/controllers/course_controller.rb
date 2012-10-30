@@ -1,5 +1,6 @@
 class CourseController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
 
   def index
 
@@ -10,7 +11,7 @@ class CourseController < ApplicationController
   end
 
   def new
-
+    @course = Course.new
   end
 
   def create

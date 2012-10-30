@@ -5,7 +5,7 @@ gem 'bootstrap-sass', '2.0.4'
 gem 'bcrypt-ruby'
 gem 'thin'
 gem 'devise'
-gem 'cantango'
+gem 'cancan'
 gem 'date_validator'
 
 group :development, :test do

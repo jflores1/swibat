@@ -27,14 +27,13 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  tango_user
 
   validates_uniqueness_of :email, case_sensitive: false
 
   ROLES = %w[admin school_admin teacher]
 
-  def has_role? role
-    ROLES.include? role.to_sym
+  def role?(role)
+    ROLES.include? role.to_s
   end
 
 end
