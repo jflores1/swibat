@@ -11,10 +11,17 @@ class CourseController < ApplicationController
   end
 
   def new
-    @course = Course.new
+    @course = current_user.courses.build(params[:course])
   end
 
   def create
+    @course = current_user.courses.new(params[:course])
+    if @course.save!
+      flash[:notice] = "Course created successfully!"
+      redirect_to user_path(current_user)
+    else
+      #write failing code
+    end
 
   end
 

@@ -9,6 +9,7 @@
 #  course_summary  :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :integer
 #
 
 class Course < ActiveRecord::Base
@@ -17,6 +18,7 @@ class Course < ActiveRecord::Base
   has_many :assessments, as: :assessable
   has_many :units
   has_and_belongs_to_many :subjects
+  belongs_to :user
 
   before_save do |course|
     course.course_name = course_name.titleize

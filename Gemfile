@@ -7,6 +7,8 @@ gem 'thin'
 gem 'devise'
 gem 'cancan'
 gem 'date_validator'
+gem 'simple_form'
+gem 'mocha'
 
 group :development, :test do
   gem 'rspec-rails'

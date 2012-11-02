@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030020728) do
+ActiveRecord::Schema.define(:version => 20121030203532) do
 
   create_table "assessments", :force => true do |t|
     t.string   "assessment_name"
@@ -30,7 +30,10 @@ ActiveRecord::Schema.define(:version => 20121030020728) do
     t.text     "course_summary"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
+
+  add_index "courses", ["user_id"], :name => "index_courses_on_user_id"
 
   create_table "institutions", :force => true do |t|
     t.string   "name"
@@ -68,8 +71,44 @@ ActiveRecord::Schema.define(:version => 20121030020728) do
 
   add_index "objectives", ["objectiveable_id", "objectiveable_type"], :name => "index_objectives_on_objectiveable_id_and_objectiveable_type"
 
+  create_table "professional_educations", :force => true do |t|
+    t.string   "school_name"
+    t.string   "degree"
+    t.string   "field_of_study"
+    t.string   "enroll_date"
+    t.string   "graduation_date"
+    t.text     "additional_notes"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "professional_experiences", :force => true do |t|
+    t.string   "title"
+    t.string   "location"
+    t.text     "description"
+    t.boolean  "still_work",       :default => false
+    t.string   "work_start_month"
+    t.integer  "work_start_year"
+    t.string   "work_end_month"
+    t.integer  "work_end_year"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.string   "prefix"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "subjects", :force => true do |t|
     t.string   "subject"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "summaries", :force => true do |t|
+    t.text     "summary"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -101,6 +140,9 @@ ActiveRecord::Schema.define(:version => 20121030020728) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "role"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "institution"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

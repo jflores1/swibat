@@ -16,6 +16,9 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :string(255)
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  institution            :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -26,14 +29,28 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :institution
+  has_many :courses
 
+  before_save do |user|
+    user.first_name = first_name.capitalize
+    user.last_name = last_name.capitalize
+    user.role = role.downcase
+    user.institution = institution.titleize
+  end
+
+  validate :valid_role
   validates_uniqueness_of :email, case_sensitive: false
+  validates :first_name, :last_name, :role, :institution, presence: true
 
   ROLES = %w[admin school_admin teacher]
 
   def role?(role)
     ROLES.include? role.to_s
+  end
+
+  def valid_role
+    errors.add(:role, message:"Sorry, that's not a valid role") unless ROLES.include? role
   end
 
 end

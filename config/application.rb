@@ -61,5 +61,8 @@ module Swibat
 
     #forces your application to not access the DB or load models when precompiling your assets.
     config.assets.initialize_on_precompile = false
+
+    #autoload lib directory
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end
