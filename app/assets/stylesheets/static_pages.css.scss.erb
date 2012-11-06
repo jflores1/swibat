@@ -11,6 +11,7 @@
 
 .navmenu-chalkboard{
     margin-top: 20px;
+
 }
 
 section.chalkboard{
@@ -22,7 +23,82 @@ section.chalkboard{
     top:0;
     z-index: -1;
 
-    h1, h2{
-        color:#FFFFFF;
+    header.hero-header{
+        display: block;
+        position: relative;
+        top: 150px;
+        left: 40%;
+
+        h1, h2{
+            color:#FFFFFF;
+        }
     }
+
+    div.primary-cta-btn{
+        background-color: rgba(255, 200, 120, 1);
+        background-image: -webkit-linear-gradient(top, #FFC878, #CCA060);
+        background-image: -moz-linear-gradient(top, #FFC878, #CCA060);
+        background-image: -ms-linear-gradient(top, #FFC878, #CCA060);
+        background-image: -o-linear-gradient(top, #FFC878, #CCA060);
+        background-image: linear-gradient(top, #FFC878,#CCA060);
+        width: 280px;
+        text-align: center;
+        padding: 20px 15px 20px 15px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #915c38;
+        position: relative;
+        left: 38%;
+        -webkit-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        -moz-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        -o-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        top: 280px;
+
+    }
+
+    .primary-cta-btn a{
+        color: rgba(255, 255, 255, 1);
+        font-size: 2em;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 0 rgba(96, 110, 103, 1);
+        font-family: 'Open Sans Condensed', sans-serif, 'Helvetica', 'Arial', sans-serif ;
+    }
+
 }
+
+section.leader-content{
+    display: block;
+    margin-top:400px;
+
+    hr.beige-banner{
+        background-color: #a9a9a9;
+        height:10px;
+        border-top: 0px;
+        border-bottom: 1px solid #FFFFFF;
+    }
+
+    header.intro-content{
+
+        text-align: center;
+        margin: 20px 0px 20px 0px;
+
+        h1 {
+            font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+            font-weight: 700;
+            font-size: 4em;
+            color: #3f4944;
+            text-shadow: 1px 1px 0 #FFFFFF;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+            font-weight: 300;
+            font-size: 2em;
+        }
+    }
+
+}
+

@@ -1,13 +1,28 @@
 @import "bootstrap";
 body {
   //padding-top: 60px;
-  background: rgba(234, 231, 216, 0.5);
+  background: url("<%= asset_path('bg-patterned.jpg') %>");
 }
 @import "bootstrap-responsive";
 @import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
 //call the font family: font-family: 'Permanent Marker', cursive;
 //gray - rgba(96, 110, 103, 1)
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
+
+.logo {
+    color: #FFFFFF;
+
+    p{
+        margin-top: 10px;
+        float:left;
+        font-size: 1.1em;
+        position: relative;
+        top: 60px;
+        left: -22%;
+    }
+}
 
 .navbar-inner{
   background-color: #e7e7e7;
@@ -26,7 +41,12 @@ body {
 }
 
 .navbar .nav > li > a:hover{
-  color: #000;
+  background-color: rgba(234, 231, 216, 1);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: rgba(96, 110, 103, 1);
+  text-shadow: 1px 1px #FFFFFF;
 }
 
 .no-decor{
