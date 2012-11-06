@@ -1,6 +1,12 @@
 @import "bootstrap";
-body {padding-top: 60px;}
+body {
+  //padding-top: 60px;
+  background: rgba(234, 231, 216, 0.5);
+}
 @import "bootstrap-responsive";
+@import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
+//call the font family: font-family: 'Permanent Marker', cursive;
+//gray - rgba(96, 110, 103, 1)
 
 
 .navbar-inner{
@@ -9,15 +15,18 @@ body {padding-top: 60px;}
 }
 
 .navbar .brand {
-  color:#FFFFFF;
+  color:rgba(255,255,255, 1);
+  font-family: 'Permanent Marker', cursive, "Helvetica Neue", sans-serif;
+  font-size: 60px;
 }
 
 .navbar .nav > li > a {
   color:#FFFFFF;
+  font-size:1.2em;
 }
 
 .navbar .nav > li > a:hover{
-  background-color: #DBDB70;
+  color: #000;
 }
 
 .no-decor{
