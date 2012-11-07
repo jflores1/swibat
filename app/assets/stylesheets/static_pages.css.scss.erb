@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.navbar-absolute-top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 0;
+    z-index: 10;
+    padding: 5px 0px 0px 25px;
+    width: 1170px;
+    display: block;
+}
+
 .navbar-chalkboard{
     background: transparent;
     margin-top:30px;
@@ -18,19 +30,28 @@ section.chalkboard{
     background: url(<%= asset_path("bg-chalkboard.png") %>) top center repeat-x;
     width:100%;
     height:100%;
-    position:fixed;
+    position:absolute;
     right:0;
     top:0;
-    z-index: -1;
 
     header.hero-header{
         display: block;
         position: relative;
-        top: 150px;
-        left: 40%;
+        top: 200px;
+        text-align: center;
+        color: #FFFFFF;
 
-        h1, h2{
-            color:#FFFFFF;
+        h1{
+            text-shadow: 1px 1px 0px #606E67;
+            font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+            font-weight: 700;
+            font-size: 3em;
+        }
+
+        h2{
+            font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+            font-weight: 300;
+            line-height: 2.1;
         }
     }
 
@@ -49,26 +70,31 @@ section.chalkboard{
         border-radius: 5px;
         border: 1px solid #915c38;
         position: relative;
-        left: 38%;
+        left: 39%;
         -webkit-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
         -moz-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
         -o-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
         transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
         top: 280px;
+        cursor: pointer;
 
+        a{
+            color: rgba(255, 255, 255, 1);
+            font-size: 2em;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 0 rgba(96, 110, 103, 1);
+            font-family: 'Open Sans Condensed', sans-serif, 'Helvetica', 'Arial', sans-serif;
+            text-decoration: none;
+        }
     }
 
-    .primary-cta-btn a{
-        color: rgba(255, 255, 255, 1);
-        font-size: 2em;
-        text-transform: uppercase;
-        text-shadow: 1px 1px 0 rgba(96, 110, 103, 1);
-        font-family: 'Open Sans Condensed', sans-serif, 'Helvetica', 'Arial', sans-serif ;
+    div.primary-cta-btn:hover{
+        background: #CCA060;
     }
 
 }
 
-section.leader-content{
+section.leader-content, .section-content{
     display: block;
     margin-top:400px;
 
@@ -96,9 +122,81 @@ section.leader-content{
         h3 {
             font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
             font-weight: 300;
-            font-size: 2em;
+            font-size: 1.8em;
+            color: #7c7c7f;
         }
+
     }
 
+    p.intro-paragraph {
+        font-family: 'Open Sans' sans-serif, 'Helvetica', 'Arial', sans-serif;
+        font-weight: 300;
+        font-size: 2em;
+        line-height: 1.5;
+        color: #3f4944;
+        padding-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    img.feature-image{
+        width:450px;
+        margin-left: 20px;
+        border: 1px solid #a9a9a9;
+    }
+
+    .try-it-btn{
+        display: block;
+        margin: 0 auto;
+        background-color: rgba(255, 200, 120, 1);
+        background-image: -webkit-linear-gradient(top, #FFC878, #CCA060);
+        background-image: -moz-linear-gradient(top, #FFC878, #CCA060);
+        background-image: -ms-linear-gradient(top, #FFC878, #CCA060);
+        background-image: -o-linear-gradient(top, #FFC878, #CCA060);
+        background-image: linear-gradient(top, #FFC878,#CCA060);
+        text-align: center;
+        padding: 15px 150px 15px 150px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #915c38;
+        -webkit-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        -moz-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        -o-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        color: rgba(255, 255, 255, 1);
+        font-size: 2em;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 0 rgba(96, 110, 103, 1);
+        font-family: 'Open Sans Condensed', sans-serif, 'Helvetica', 'Arial', sans-serif;
+        text-decoration: none;
+    }
+
+    .try-it-btn:hover{
+        background: #CCA060;
+    }
+
+}
+
+.section-content{
+    margin-top: 50px;
+
+    hr.beige-banner{
+        background-color: #a9a9a9;
+        height:2px;
+        border: 1px solid #FFFFFF;
+    }
+}
+
+footer.chalkboard{
+    background: #606E67;
+    min-height: 50px;
+    margin-top: 100px;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 20px;
+
+    p{
+        margin: 0 auto;
+    }
 }
 

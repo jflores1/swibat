@@ -1,66 +1,136 @@
 
-<div class="row-fluid">
-  <div class="span12">
-    <h1 style="margin-bottom: 20px;">Today's Lessons</h1>
+<div class="inner">
+  <div class="row-fluid">
+      <div class="span12">
+        <h1 style="margin-bottom: 20px;">In Classrooms Today...</h1>
+      </div>
+    </div>
+
+  <table class="table table-hover bordered">
+
+      <thead>
+          <tr class="highlight">
+            <th>Teacher</th>
+            <th>Class</th>
+            <th>Lesson Objective</th>
+            <th>Lesson Assessment</th>
+            <th>Expected Completion</th>
+            <th></th>
+            <th>Last Observation</th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <tr>
+            <td><%= link_to "Great Teacher", "demo/teacher_overview", class:"no-decor"%></td>
+            <td><%= link_to "Physics 1", "/demo/course_plan" %></td>
+            <td>Calculate Object Force</td>
+            <td><%= link_to "Quiz", "#" %></td>
+            <td>10/10/12 <span class="label label-important">Past Due</span></td>
+            <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
+            <td>8/31/12</td>
+          </tr>
+
+          <tr>
+            <td><%= link_to "Awesome Teacher", "demo/teacher_overview", class:"no-decor"%></td>
+            <td><%= link_to "Calculus 1", "/demo/course_plan" %></td>
+            <td>Calculate 2nd Derivative</td>
+            <td><%= link_to "Quiz", "#" %></td>
+            <td>10/12/12</td>
+            <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
+            <td>9/30/12</td>
+          </tr>
+
+          <tr>
+            <td><%= link_to "Master Teacher", "demo/teacher_overview", class:"no-decor"%></td>
+            <td><%= link_to "English 2", "/demo/course_plan" %></td>
+            <td>Distinguish the Appropriate Use of Gerunds</td>
+            <td><%= link_to "Project", "#" %></td>
+            <td>10/13/12</td>
+            <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
+            <td>9/30/12</td>
+          </tr>
+
+          <tr>
+            <td><%= link_to "Fantastic Teacher", "demo/teacher_overview", class:"no-decor"%></td>
+            <td><%= link_to "Latin 1", "/demo/course_plan" %></td>
+            <td>Conjugate First Declension Verbs</td>
+            <td><%= link_to "Quiz", "#" %></td>
+            <td>10/13/12</td>
+            <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
+            <td>Not observed yet</td>
+          </tr>
+
+      </tbody>
+
+
+    </table>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <h2 style="margin-bottom: 20px; margin-top: 20px;">School-wide Learning Objective: Improve Math Scores 20%</h2>
+      <h3>Related Lessons</h3>
+    </div>
   </div>
+
+  <table class="table table-hover bordered">
+
+    <thead>
+    <tr class="highlight">
+      <th>Teacher</th>
+      <th>Class</th>
+      <th>Lesson Objective</th>
+      <th>Lesson Assessment</th>
+      <th>Expected Completion</th>
+      <th></th>
+      <th>Last Observation</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td><%= link_to "Great Teacher", "demo/teacher_overview", class:"no-decor"%></td>
+      <td><%= link_to "Physics 1", "/demo/course_plan" %></td>
+      <td>Calculate Object Force</td>
+      <td><%= link_to "Quiz", "#" %></td>
+      <td>10/10/12 <span class="label label-important">Past Due</span></td>
+      <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
+      <td>8/31/12</td>
+    </tr>
+
+    <tr>
+      <td><%= link_to "Awesome Teacher", "demo/teacher_overview", class:"no-decor"%></td>
+      <td><%= link_to "Calculus 1", "/demo/course_plan" %></td>
+      <td>Calculate 2nd Derivative</td>
+      <td><%= link_to "Quiz", "#" %></td>
+      <td>10/12/12</td>
+      <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
+      <td>9/30/12</td>
+    </tr>
+
+    <tr>
+      <td><%= link_to "Master Teacher", "demo/teacher_overview", class:"no-decor"%></td>
+      <td><%= link_to "Trigonometry 1", "/demo/course_plan" %></td>
+      <td>Use SOHCAHTOA to Find a Missing Attribute on a Triangle</td>
+      <td><%= link_to "Project", "#" %></td>
+      <td>10/13/12</td>
+      <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
+      <td>9/30/12</td>
+    </tr>
+
+    <tr>
+      <td><%= link_to "Fantastic Teacher", "demo/teacher_overview", class:"no-decor"%></td>
+      <td><%= link_to "Algebra 2", "/demo/course_plan" %></td>
+      <td>Solve a System with 2 Equations</td>
+      <td><%= link_to "Quiz", "#" %></td>
+      <td>10/13/12</td>
+      <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
+      <td>Not observed yet</td>
+    </tr>
+
+    </tbody>
+
+
+  </table>
+
 </div>
-
-<table class="table table-hover bordered">
-
-  <thead>
-      <tr>
-        <th>Teacher</th>
-        <th>Class</th>
-        <th>Lesson Objective</th>
-        <th>Lesson Assessment</th>
-        <th>Expected Completion</th>
-        <th></th>
-        <th>Last Observation</th>
-      </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><%= link_to "Jesse Flores", "demo/teacher_overview", class:"no-decor"%></td>
-        <td><%= link_to "Physics 1", "/demo/course_plan" %></td>
-        <td>Calculate Object Force</td>
-        <td><%= link_to "Quiz", "#" %></td>
-        <td>10/10/12 <span class="label label-important">Past Due</span></td>
-        <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
-        <td>8/31/12</td>
-      </tr>
-
-      <tr>
-        <td><%= link_to "Shannon Flores", "demo/teacher_overview", class:"no-decor"%></td>
-        <td><%= link_to "Calculus 1", "/demo/course_plan" %></td>
-        <td>Calculate 2nd Derivative</td>
-        <td><%= link_to "Quiz", "#" %></td>
-        <td>10/12/12</td>
-        <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
-        <td>9/30/12</td>
-      </tr>
-
-      <tr>
-        <td><%= link_to "Brian Moscona", "demo/teacher_overview", class:"no-decor"%></td>
-        <td><%= link_to "Theology 3", "/demo/course_plan" %></td>
-        <td>Love Jesus More</td>
-        <td><%= link_to "Project", "#" %></td>
-        <td>10/13/12</td>
-        <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
-        <td>9/30/12</td>
-      </tr>
-
-      <tr>
-        <td><%= link_to "Kyle Pietrantonio", "demo/teacher_overview", class:"no-decor"%></td>
-        <td><%= link_to "Erudition 4", "/demo/course_plan" %></td>
-        <td>Something Esoteric</td>
-        <td><%= link_to "Equally erudite", "#" %></td>
-        <td>10/13/12</td>
-        <td><%= link_to "Lesson Details", "demo/lesson_plan" %></td>
-        <td>Not observed yet</td>
-      </tr>
-
-  </tbody>
-
-
-</table>

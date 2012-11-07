@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top">
+<header class="navbar navbar-absolute-top">
   <div class="navbar-inner navbar-chalkboard">
     <div class="container">
       <div class="row-fluid">
@@ -9,9 +9,10 @@
           </div>
           <nav class="navmenu-chalkboard">
             <ul class="pull-right nav">
-              <li><%= link_to "Administrators", "#" %></li>
-              <li><%= link_to "Teachers", "#" %></li>
-              <li><%= link_to "Pricing", "#" %></li>
+              <li><%= link_to "Administrators", administrators_path %></li>
+              <li><%= link_to "Teachers", teachers_path %></li>
+              <li><%= link_to "Pricing", pricing_path %></li>
+              <li><%= link_to "Resources", resources_path %></li>
               <li><%= link_to "Account", "#" %></li>
             </ul>
           </nav>

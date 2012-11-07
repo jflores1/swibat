@@ -3,6 +3,11 @@ Swibat::Application.routes.draw do
 
   root to: 'static_pages#home'
 
+  match 'teachers',       to: 'static_pages#teachers'
+  match 'administrators', to: 'static_pages#administrators'
+  match 'resources',      to: 'static_pages#resources'
+  match 'pricing',        to: 'static_pages#pricing'
+
   resources :static_pages
 
   resources :users do
@@ -27,6 +32,7 @@ Swibat::Application.routes.draw do
 
   resources :demo do
     collection do
+      get :admin_panel
       get :teacher_overview
       get :course_plan
       get :unit_plan

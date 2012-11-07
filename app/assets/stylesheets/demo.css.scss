@@ -1,3 +1,35 @@
 // Place all the styles related to the Demo controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.plain-bg{
+  background: #ffffff;
+  background-image: none;
+  padding-top: 60px;
+}
+
+.navbar .menu {
+  color:rgba(255,255,255, 1);
+  font-family: 'Permanent Marker', cursive, "Helvetica Neue", sans-serif;
+  font-size: 36px;
+  text-decoration: none;
+
+}
+
+table.development-table{
+
+  margin: 20px 0px 20px 0px;
+
+  th {
+    text-align:center;
+    width: 15%;
+  }
+
+  .light-right-padded {
+    padding-left: 20px;
+  }
+
+  i{
+    margin: 3px;
+  }
+}
