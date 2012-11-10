@@ -3,19 +3,23 @@
     <div class="container">
       <div class="row-fluid">
         <div class="span12">
-          <div class="logo">
-
-            <p><%= link_to "SWiBAT", root_path, class: "brand" %><br/>Professional Development. Tools for Educators.</p>
+          <div class="span6">
+              <div class="logo">
+                <%= link_to "SWiBAT", root_path, class: "brand" %>
+                <p>Professional Development. Tools for Educators.</p>
+              </div>
           </div>
-          <nav class="navmenu-chalkboard">
-            <ul class="pull-right nav">
-              <li><%= link_to "Administrators", administrators_path %></li>
-              <li><%= link_to "Teachers", teachers_path %></li>
-              <li><%= link_to "Pricing", pricing_path %></li>
-              <li><%= link_to "Resources", resources_path %></li>
-              <li><%= link_to "Account", "#" %></li>
-            </ul>
-          </nav>
+          <div class="span6">
+            <nav class="navmenu-chalkboard">
+              <ul class="pull-right nav">
+                <li><%= link_to "Administrators", administrators_path %></li>
+                <li><%= link_to "Teachers", teachers_path %></li>
+                <li><%= link_to "Pricing", pricing_path %></li>
+                <li><%= link_to "Resources", resources_path %></li>
+                <li><%= link_to "Account", "#" %></li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
