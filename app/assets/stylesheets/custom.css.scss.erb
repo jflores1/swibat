@@ -16,17 +16,6 @@ body {
     margin-bottom:55px;
 }
 
-.logo {
-    color: #FFFFFF;
-
-    p{
-        float:left;
-        font-size: 1.23076923em; /*16px /13 */
-        clear:left;
-    }
-
-}
-
 .navbar-inner{
   background-color: #e7e7e7;
   background-image: -webkit-linear-gradient(top, #a3db5b, #4c9304);
@@ -108,4 +97,96 @@ div.inner{
 
 .strong {
     font-weight: bold;
+}
+
+/*******************************************
+Media Queries
+*******************************************/
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+
+    section.chalkboard {
+        header.hero-header {
+            h2 {
+                line-height: 2.1;
+            }
+        }
+    }
+
+}
+
+/*Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+    .navbar-chalkboard{
+
+        .logo {
+            width: 30%;
+        }
+
+        .navdiv {
+            z-index: 10;
+        }
+
+        .navdiv .nav > li > a {
+            font-size: 1em; /*16px /13 */
+        }
+    }
+
+}
+
+/*Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+    section.chalkboard {
+        header.hero-header {
+            h1 {
+                font-size: 1.8em;
+
+            }
+            h2 {
+                font-size: 1.5em;
+                line-height: 1.2;
+                margin-bottom: 5px;
+                margin-top: 5px;
+            }
+
+            .primary-cta-btn {
+                padding: 0.5em;
+            }
+        }
+    }
+
+}
+
+/* Landscape phone and down */
+@media (max-width: 480px) {
+
+    section.chalkboard {
+        background: #616e68;
+        border-top: 2px solid #ffc878;
+        border-bottom: 2px solid #ffc878;
+        height: 100%;
+
+        header.hero-header {
+
+            position: relative;
+            top: 10.005em;
+
+            h1 {
+                font-size: 2em;
+                line-height: 1.2;
+
+            }
+
+            h2 {
+                font-size: 1em;
+                line-height: 1;
+                margin-bottom: 5px;
+                margin-top: 5px;
+            }
+        }
+    }
+
 }

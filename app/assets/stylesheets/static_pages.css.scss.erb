@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* Navbar */
 .navbar-absolute-top{
     position: absolute;
     top: 0;
@@ -19,12 +20,31 @@
     margin-top:30px;
     -moz-box-shadow: none;
     box-shadow: none;
+
+    .logo {
+        color: #FFFFFF;
+        float: left;
+        width: 43%;
+
+        p{
+            float:left;
+            font-size: 1em; /*13px /13 */
+            clear:left;
+        }
+
+    }
+
+    .navdiv {
+        float: right;
+    }
+
+    .navmenu-chalkboard{
+        margin-top: 20px;
+
+    }
 }
 
-.navmenu-chalkboard{
-    margin-top: 20px;
 
-}
 
 section.chalkboard{
     background: url(<%= asset_path("bg-chalkboard.png") %>) top center repeat-x;
@@ -51,23 +71,22 @@ section.chalkboard{
         h2{
             font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
             font-weight: 300;
-            line-height: 2.1;
+            margin-bottom: 10px;
+            padding: 0px 5px 0px 5px;
         }
     }
 
-    div.primary-cta-btn{
+    .primary-cta-btn{
+        display: inline-block;
         background-color: rgba(255, 200, 120, 1);
         background-image: -webkit-linear-gradient(top, #FFC878, #CCA060);
         background-image: -moz-linear-gradient(top, #FFC878, #CCA060);
         background-image: -ms-linear-gradient(top, #FFC878, #CCA060);
         background-image: -o-linear-gradient(top, #FFC878, #CCA060);
         background-image: linear-gradient(top, #FFC878,#CCA060);
-        width: 21.5384615em; /*280/13*/
+        width: 10.7692308em; /*140/13*/
         text-align: center;
-        position: relative;
-        top: 21em;
-        left: 35%;
-        padding: 1.15385em 4.5385em 1.15385em 4.5385em;
+        padding: 1em;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
         border-radius: 5px;
@@ -76,19 +95,15 @@ section.chalkboard{
         -moz-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
         -o-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
         transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
-        cursor: pointer;
-
-        a{
-            color: rgba(255, 255, 255, 1);
-            font-size: 2em; /*26px / 13px */
-            text-transform: uppercase;
-            text-shadow: 1px 1px 0 rgba(96, 110, 103, 1);
-            font-family: 'Open Sans Condensed', sans-serif, 'Helvetica', 'Arial', sans-serif;
-            text-decoration: none;
-        }
+        color: rgba(255, 255, 255, 1);
+        font-size: 2em; /*26px / 13px */
+        text-transform: uppercase;
+        text-shadow: 1px 1px 0 rgba(96, 110, 103, 1);
+        font-family: 'Open Sans Condensed', sans-serif, 'Helvetica', 'Arial', sans-serif;
+        text-decoration: none;
     }
 
-    div.primary-cta-btn:hover{
+    .primary-cta-btn:hover{
         background: #CCA060;
     }
 
