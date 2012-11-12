@@ -104,12 +104,22 @@ Media Queries
 *******************************************/
 
 /* Large Desktop */
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
 
     section.chalkboard {
         header.hero-header {
             h2 {
                 line-height: 2.1;
+                margin-bottom: 25px !important;
+            }
+        }
+    }
+
+    section.leader-content, .section-content {
+        .feature-paragraph {
+            p.intro-paragraph {
+                margin-top: 1em !important;
+                font-size: 2.3em !important;
             }
         }
     }
@@ -117,7 +127,7 @@ Media Queries
 }
 
 /*Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
+@media screen and (min-width: 769px) and (max-width: 979px) {
 
     .navbar-chalkboard{
 
@@ -137,18 +147,18 @@ Media Queries
 }
 
 /*Landscape phone to portrait tablet */
-@media (max-width: 767px) {
+@media screen and (max-width: 768px) {
 
     section.chalkboard {
         header.hero-header {
             h1 {
-                font-size: 1.8em;
+                font-size: 2.5em !important;
 
             }
             h2 {
-                font-size: 1.5em;
+                font-size: 1.3em !important;
                 line-height: 1.2;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
                 margin-top: 5px;
             }
 
@@ -159,36 +169,69 @@ Media Queries
     }
 
     .screenshot {
-        width: 100%;
-        float: none;
+        width: 100% !important;
+        float: none !important;
+
+        img.feature-image {
+            width: 100% !important;
+            margin-left: 0px !important;
+        }
 
     }
 
     .feature-paragraph {
-        width: 100%;
-        float: none;
+        width: 100% !important;
+        float: none !important;
         margin-top: 10px;
 
     }
 
 }
 
-/* Landscape phone and down */
-@media (max-width: 480px) {
+/* Landscape phone */
+@media screen and (max-width: 480px) {
+
+    .hero {
+        margin-bottom:0px !important;
+    }
+
+    .navbar .brand {
+        font-size: 2.5em !important;
+    }
+
+    .navbar-chalkboard{
+        margin-top:20px !important;
+
+        .logo {
+            width: 80%;
+
+            p{
+                float:left;
+                font-size: 1em; /*13px /13 */
+                clear:left;
+            }
+
+        }
+
+        .navdiv {
+            float: right;
+        }
+
+    }
 
     section.chalkboard {
-        background: #616e68;
-        border-top: 2px solid #ffc878;
-        border-bottom: 2px solid #ffc878;
-        height: 100%;
+        background: #616e68 !important;
+        border-top: 10px solid #ffc878 !important;
+        border-bottom: 10px solid #ffc878 !important;
+        max-height: 300px;
 
         header.hero-header {
 
             position: relative;
-            top: 10.005em;
+            top: 9.75em !important;
 
             h1 {
-                font-size: 2em;
+                font-size: 2em !important;
                 line-height: 1.2;
 
             }
@@ -200,6 +243,45 @@ Media Queries
                 margin-top: 5px;
             }
         }
+
     }
 
+    .leader-div {
+        margin-top: 295px !important;
+    }
+
+    section.leader-content, .section-content {
+        header.intro-content {
+            h1 {
+                font-size: 3em !important;
+            }
+        }
+    }
+
+
 }
+
+/* Portrait phone */
+@media screen and (max-width: 320px) {
+
+    section.chalkboard {
+        max-height: 460px;
+
+        header.hero-header {
+            h1 {
+                margin: 20px 0px 20px 0px !important;
+
+            }
+            h2 {
+                margin: 20px 0px 20px 0px !important;
+            }
+        }
+    }
+
+    .leader-div {
+        margin-top: 435px !important;
+    }
+
+
+}
+
