@@ -8,11 +8,11 @@ gem 'devise'
 gem 'cancan'
 gem 'date_validator'
 gem 'simple_form'
-gem 'mocha'
 gem 'coffee-rails', '~> 3.2.1'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.0'
+  gem 'capybara'
   gem 'annotate'
   gem "factory_girl_rails", "~> 4.0"
 end

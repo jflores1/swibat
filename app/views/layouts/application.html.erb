@@ -8,27 +8,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="main" role="main">
-    <div class="content">
-      <div class="row-fluid">
-        <div class="span12">
-          <%= render 'layouts/messages' %>
-        </div><!--end of .span12 -->
-      </div><!--end of .row-fluid -->
+    <div id="main" role="main">
+        <div class="content">
+          <div class="row-fluid">
+            <div class="span12">
+              <%= render 'layouts/messages' %>
+              <%= render 'partials/partial_new_lead_modal' %>
+            </div><!--end of .span12 -->
+          </div><!--end of .row-fluid -->
 
-      <%= yield %>
+          <%= yield %>
 
-      <div class="row-fluid">
-        <div class="span12">
-          <%= render 'layouts/footer' %>
-        </div>
-      </div>
-
-
-    </div><!--end of .content> -->
-</div><!--end of .main> -->
+          <div class="row-fluid">
+            <div class="span12">
+              <%= render 'layouts/footer' %>
+              <%= debug(params) if Rails.env.development? %>
+            </div>
+          </div>
 
 
-
+        </div><!--end of .content> -->
+    </div><!--end of .main> -->
 </body>
 </html>

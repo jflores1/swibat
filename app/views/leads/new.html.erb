@@ -1,0 +1,28 @@
+<%= form_for @lead, remote: true do |lead| %>
+
+    <div class="form-inline">
+      <%= lead.label "Name: " %>
+      <%= lead.text_field :name, placeholder: "Full Name", id:"name" %>
+    </div>
+
+    <div class="form-inline">
+      <%= lead.radio_button :role, "Teacher", id:"teacher"%>
+      <%= lead.label "Teacher", class:"radio inline" %>
+      <%= lead.radio_button :role, "Administrator", id:"administrator" %>
+      <%= lead.label "Administrator", class: "radio inline" %>
+    </div>
+
+    <div class="form-horizontal">
+      <%= lead.label "School: " %>
+      <%= lead.text_field :school, placeholder: "School", id:"school" %>
+
+      <%= lead.label "Email: " %>
+      <%= lead.text_field :email, placeholder: "Email Address", id:"email" %>
+
+      <%= lead.label "Phone Number: " %>
+      <%= lead.text_field :phone, placeholder: "555-555-5555", id:"phone" %>
+    </div>
+
+    <%= lead.submit "Try it Out!", class:"btn btn-danger" %>
+
+<% end %>

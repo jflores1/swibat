@@ -7,8 +7,9 @@ Swibat::Application.routes.draw do
   match 'administrators', to: 'static_pages#administrators'
   match 'resources',      to: 'static_pages#resources'
   match 'pricing',        to: 'static_pages#pricing'
+  match 'request-trial',  to: 'leads#new', as: "request_trial"
 
-  resources :static_pages
+  resources :static_pages, :leads
 
   resources :users do
     resources :course
