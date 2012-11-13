@@ -1,5 +1,5 @@
 class LeadMailer < ActionMailer::Base
-  default from: "jflores1@alumni.nd.edu"
+  default from: "jesse@swibat.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
