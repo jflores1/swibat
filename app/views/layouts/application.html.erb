@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Swibat</title>
+  <title><%= yield :title %> | Swibat </title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= yield :body_class %>">
     <div id="main" role="main">
         <div class="content">
           <div class="row-fluid">

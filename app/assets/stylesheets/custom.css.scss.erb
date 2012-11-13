@@ -11,6 +11,11 @@ body {
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
 //universal and refactored CSS - The CSS here is shared across controllers.
+
+body.padded {
+    padding-top: 60px;
+}
+
 .hero {
     clear:both;
     margin-bottom:55px;
@@ -18,7 +23,24 @@ body {
 
 .navbar-inner{
   background-color: #e7e7e7;
-  background-image: -webkit-linear-gradient(top, #a3db5b, #4c9304);
+  background-image: -webkit-linear-gradient(top, #5f6e68, #606E67);
+
+    .fixed-header-logo {
+        width: 45%;
+        padding-top: 10px;
+        padding-left: 15px;
+        float: left;
+    }
+
+    .fixed-header-nav {
+        width: 50%;
+        float: right;
+
+        .nav li a {
+            font-size: 1em;
+        }
+    }
+
 }
 
 .navbar .brand {

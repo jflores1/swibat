@@ -1,28 +1,14 @@
-<%= form_for @lead, remote: true do |lead| %>
+<% provide(:title, "Curriculum Map and Performance Development Free Trial") %>
+<% provide(:body_class, "padded")%>
+<%= render 'layouts/navbar' %>
 
-    <div class="form-inline">
-      <%= lead.label "Name: " %>
-      <%= lead.text_field :name, placeholder: "Full Name", id:"name" %>
-    </div>
+<div class="leadform">
+  <header class="lead-header">
+    <h1>Request a Free Trial!</h1>
+    <h3>We are currently in a closed beta and accepting members into our early access program. Give us some info and we'll be in touch!</h3>
+  </header>
 
-    <div class="form-inline">
-      <%= lead.radio_button :role, "Teacher", id:"teacher"%>
-      <%= lead.label "Teacher", class:"radio inline" %>
-      <%= lead.radio_button :role, "Administrator", id:"administrator" %>
-      <%= lead.label "Administrator", class: "radio inline" %>
-    </div>
+  <%= render 'forms/lead_form' %>
 
-    <div class="form-horizontal">
-      <%= lead.label "School: " %>
-      <%= lead.text_field :school, placeholder: "School", id:"school" %>
+</div>
 
-      <%= lead.label "Email: " %>
-      <%= lead.text_field :email, placeholder: "Email Address", id:"email" %>
-
-      <%= lead.label "Phone Number: " %>
-      <%= lead.text_field :phone, placeholder: "555-555-5555", id:"phone" %>
-    </div>
-
-    <%= lead.submit "Try it Out!", class:"btn btn-danger" %>
-
-<% end %>

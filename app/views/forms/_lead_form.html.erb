@@ -1,0 +1,22 @@
+<%= form_for @lead, remote: true do |lead| %>
+
+
+    <%= lead.label "Name: " %>
+    <%= lead.text_field :name, placeholder: "Full Name", id:"name" %>
+
+    <%= lead.label "Role: " %>
+    <%= lead.select(:role, options_for_select([['Teacher', 'teacher'],['Administrator', 'administrator']])) %>
+
+
+    <%= lead.label "School: " %>
+    <%= lead.text_field :school, placeholder: "School", id:"school" %>
+
+    <%= lead.label "Email: " %>
+    <%= lead.text_field :email, placeholder: "Email Address", id:"email" %>
+
+    <%= lead.label "Phone Number: " %>
+    <%= lead.text_field :phone, placeholder: "555-555-5555", id:"phone" %>
+
+    <%= lead.submit "Request Access!" %>
+
+<% end %>

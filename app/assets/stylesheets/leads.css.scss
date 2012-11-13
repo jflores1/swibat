@@ -1,3 +1,154 @@
 // Place all the styles related to the Leads controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.leadform {
+  width: 60%;
+  margin: 0 auto;
+  color: #ffffff;
+
+
+  header.lead-header {
+    text-align: center;
+
+    h1 {
+      font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+      font-weight: 700;
+      font-size: 2em; /* 26px / 13px */
+      color: #3f4944;
+      text-shadow: 1px 1px 0 #FFFFFF;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+      font-weight: 300;
+      font-size: 1.384615em; /*18px / 13px*/
+      color: #7c7c7f;
+    }
+
+  }
+
+  form {
+    background: rgba(97, 110, 104, 0.8);
+    border: 5px solid #f6f5ed;
+    margin-top: 15px;
+    padding: 15px;
+    -moz-box-shadow: 0 0 2px #3f4944;
+    -webkit-box-shadow: 0 0 2px #3f4944;
+    box-shadow: 0 0 2px #3f4944;
+
+    label {
+      font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+      font-weight: 700;
+      text-shadow: 1px 1px 0 #3f4944;
+      margin: 15px 0px 10px 20px;
+      font-size: 1.384615em; /*18px / 13px*/
+    }
+
+    input[type="text"], select {
+      display: block;
+      -moz-box-shadow: 1px 1px 0 #7c7c7f;
+      -webkit-box-shadow: 1px 1px 0 #7c7c7f;
+      box-shadow: 1px 1px 0 #7c7c7f;
+      min-height: 25px;
+      width: 90%;
+      margin: 0px auto;
+
+    }
+
+    select {
+      font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+      font-size: 1.384615em; /*18px / 13px*/
+      background: #ffffff;
+    }
+
+    input[type="submit"] {
+      display: block;
+      margin: 0 auto;
+      margin-top: 15px;
+      width: 60%;
+      padding: 1em; /*18px / 13px*/
+      font-size: 1.384615em; /*18px / 13px*/
+      font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+      font-weight: 700;
+      color: #3f4944;
+      text-shadow: 1px 1px 0 #ffffff;
+      border: 1px solid;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-background-image: #EAE7D8;
+      background: rgba(234, 231, 216, 1);
+      background-image: -webkit-linear-gradient(top, #EAE7D8, #f6f5ed);
+      background-image: -moz-linear-gradient(top, #EAE7D8, #f6f5ed);
+      background-image: -ms-linear-gradient(top, #EAE7D8, #f6f5ed);
+      background-image: -o-linear-gradient(top, #EAE7D8, #f6f5ed);
+      background-image: linear-gradient(top, #EAE7D8, #f6f5ed);
+    }
+
+    input[type="submit"]:hover {
+      background: rgba(234, 231, 216, 1);
+      color: #3f4944;
+      text-shadow: 1px 1px 0 #ffffff;
+    }
+
+  }
+}
+
+
+/*************************
+Media Queries
+*************************/
+
+/* Large Desktop */
+@media screen and (min-width: 1200px) {
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 979px) {
+
+  div.leadform {
+    width: 85%;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  body {
+    padding-top: 0px !important;
+  }
+
+  div.leadform {
+    width: 85%;
+
+    form {
+
+      label {
+        margin-left: 0px;
+      }
+
+    }
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (max-width: 320px) {
+
+  div.leadform {
+
+    form {
+
+      input[type="submit"] {
+        font-size: 1em;
+        width: 75%;
+      }
+    }
+  }
+
+}

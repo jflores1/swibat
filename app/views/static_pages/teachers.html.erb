@@ -1,9 +1,10 @@
+<% provide(:title, "Curriculum Mapping and Performance Development for Teachers ") %>
 <%= render 'layouts/navbar_chalkboard' %>
 
 <% content_for :chalkboard_promo_text do %>
     <h1>Those Who "Can," Teach.</h1>
     <h2>You Work Hard to Master Your Craft. We Can Help You Reach Your Next Milestone.</h2>
-    <%= link_to "Get Started Free", "#", class: "primary-cta-btn" %>
+    <%= link_to "Get Started Free", request_trial_path, class: "primary-cta-btn" %>
 <% end %>
 <%= render 'static_pages/hero_chalkboard' %>
 
@@ -21,7 +22,7 @@
         </div>
         <div class="feature-paragraph-left">
           <p class="intro-paragraph">Easily create standards-based courses, units, and lessons with student-centered objectives. Track progress and find opportunities for cross-curricular instruction.</p>
-          <%= link_to "Try for Free", "#", class: "try-it-btn" %>
+          <%= link_to "Try for Free", request_trial_path, class: "try-it-btn" %>
         </div>
       </div>
     </section>
@@ -42,7 +43,7 @@
         </div>
         <div class="feature-paragraph-left">
           <p class="intro-paragraph">Share your lessons with peers, parents, and administrators. Give and receive comments and feedback within your network of peers.</p>
-          <%= link_to "Try for Free", "#", class: "try-it-btn" %>
+          <%= link_to "Try for Free", request_trial_path, class: "try-it-btn" %>
         </div>
       </div>
     </section>
@@ -63,7 +64,7 @@
         </div>
         <div class="feature-paragraph-left">
           <p class="intro-paragraph">Students have different learning styles. Easily incorporate differentiated instruction into your course, unit, and lesson plans.</p>
-          <%= link_to "Try for Free", "#", class: "try-it-btn" %>
+          <%= link_to "Try for Free", request_trial_path, class: "try-it-btn" %>
         </div>
       </div>
     </section>
@@ -84,7 +85,7 @@
         </div>
         <div class="feature-paragraph-left">
           <p class="intro-paragraph">Work with your principal or mentor teacher to set professional milestones and work to accomplish them.</p>
-          <%= link_to "Try for Free", "#", class: "try-it-btn" %>
+          <%= link_to "Try for Free", request_trial_path, class: "try-it-btn" %>
         </div>
       </div>
     </section>
