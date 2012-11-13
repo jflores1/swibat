@@ -64,7 +64,5 @@ module Swibat
 
     #autoload lib directory
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
-
-    config.middleware.use("Rack::GoogleAnalytics", tracker: 'UA-36320508-1'  )
   end
 end

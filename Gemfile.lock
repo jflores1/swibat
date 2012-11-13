@@ -71,6 +71,7 @@ GEM
       factory_girl (~> 4.1.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
+    google-analytics-rails (0.0.3)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -93,8 +94,6 @@ GEM
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-google_analytics (1.0.2)
-      rack
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.2)
@@ -180,9 +179,9 @@ DEPENDENCIES
   date_validator
   devise
   factory_girl_rails (~> 4.0)
+  google-analytics-rails
   jquery-rails
   pg
-  rack-google_analytics
   rails (= 3.2.8)
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)

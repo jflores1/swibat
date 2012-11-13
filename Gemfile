@@ -23,7 +23,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'rack-google_analytics', require: "rack/google_analytics"
+  gem 'google-analytics-rails'
 end
 
 # Bundle edge Rails instead:
