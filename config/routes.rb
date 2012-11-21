@@ -9,14 +9,16 @@ Swibat::Application.routes.draw do
   match 'pricing',        to: 'static_pages#pricing'
   match 'request-trial',  to: 'leads#new', as: "request_trial"
 
-  resources :static_pages, :leads
+  match 'demo/:action', controller: "demo"
+
+  resources :leads
 
   resources :users do
-    resources :course
+    resources :courses
 
   end
 
-  resources :course do
+  resources :courses do
     resources :objectives
     resources :assessments
   end
@@ -29,21 +31,6 @@ Swibat::Application.routes.draw do
   resources :lessons do
     resources :objectives
     resources :assessments
-  end
-
-  resources :demo do
-    collection do
-      get :admin_panel
-      get :teacher_overview
-      get :course_plan
-      get :unit_plan
-      get :lesson_plan
-      get :classroom_observations
-      get :peer_feedback
-      get :parent_feedback
-      get :student_feedback
-      get :professional_development
-    end
   end
 
 
