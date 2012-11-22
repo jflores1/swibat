@@ -15,7 +15,6 @@ Swibat::Application.routes.draw do
 
   resources :users do
     resources :courses
-
   end
 
   resources :courses do

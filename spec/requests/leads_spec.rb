@@ -13,14 +13,13 @@ describe "Leads" do
   end
 
   context "Valid Form" do
+    before {visit request_trial_path}
 
     describe "it has a form on the page" do
-      before {visit request_trial_path}
       it {should have_selector("form")}
     end
 
     describe "a working form" do
-      before {visit request_trial_path}
       let(:submit){ "Request Access!"}
 
       describe "with valid information" do

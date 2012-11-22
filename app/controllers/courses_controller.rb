@@ -20,7 +20,7 @@ class CoursesController < ApplicationController
       flash[:notice] = "Course created successfully!"
       redirect_to user_path(current_user)
     else
-      #write failing code
+      redirect_to user_session_path
     end
 
   end
