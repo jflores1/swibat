@@ -1,0 +1,18 @@
+<%= form_for [current_user, @course] do |course| %>
+
+    <%= course.label "Course Name" %>
+    <%= course.text_field :course_name, id:"course_name" %>
+
+    <%= course.label "Semester" %>
+    <%= course.select(:course_semester,[['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer'], ['Winter','Winter']] ) %>
+
+    <%= course.label "Course Year" %>
+    <%= course.text_field :course_year, id:"course_year" %>
+
+    <%= course.label "Course Summary" %>
+    <%= course.text_area :course_summary, id:"course_summary" %>
+
+    <%= course.submit "Create Course" %>
+
+<% end %>
+
