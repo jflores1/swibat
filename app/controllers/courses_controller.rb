@@ -1,4 +1,4 @@
-class CourseController < ApplicationController
+class CoursesController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
 
@@ -20,7 +20,7 @@ class CourseController < ApplicationController
       flash[:notice] = "Course created successfully!"
       redirect_to user_path(current_user)
     else
-      #write failing code
+      redirect_to user_session_path
     end
 
   end

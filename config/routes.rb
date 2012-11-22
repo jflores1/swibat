@@ -12,10 +12,10 @@ Swibat::Application.routes.draw do
   resources :leads
 
   resources :users do
-    resources :course
+    resources :courses
   end
-  
-  resources :course do
+
+  resources :courses do
     resources :objectives
     resources :assessments
   end
