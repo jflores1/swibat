@@ -22,21 +22,24 @@ describe "CoursePages" do
   end
 
   context "A Working Form" do
-    before {sign_in_user_and_go_to_page}
+    #before {sign_in_user_and_go_to_page}
     let(:submit){"Create Course"}
 
-    describe "There is a form on the page" do
-      it {response.body.should have_selector("form")}
-    end
+    #describe "There is a form on the page" do
+    #  it {response.body.should have_selector("form")}
+    #end
 
     describe "With valid information" do
+      let(:user){FactoryGirl.create(:user)}
       before do
-        login_as(@user, scope = :user)
+        login_as(user, scope = :user)
+        visit new_user_course_path(@user)
         fill_out_course_form_with_valid_info
       end
       it "should add a new course for the user" do
         expect {click_button submit}.to change(@user.courses.count).by(1)
       end
+      Warden.test_reset!
     end
 
     describe "With invalid information" do
