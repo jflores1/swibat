@@ -12,14 +12,22 @@
 <div id="main" role="main">
   <div class="content">
     <%= render 'layouts/navbar' %>
-    <div class="row-fluid">
-      <div class="span12">
-        <%= render 'layouts/messages' %>
-      </div><!--end of .span12 -->
-    </div><!--end of .row-fluid -->
-
+    <div class="inner">
+      <div class="row-fluid">
+        <div class="span12">      
+          <%= render 'layouts/messages' %>
+        </div><!--end of .span12 -->
+      </div><!--end of .row-fluid -->
+    </div>
+    
     <%= yield %>
 
+    <div class="row-fluid">
+      <div class="span12">
+        <%= render 'layouts/footer' %>
+        <%= debug(params) if Rails.env.development? %>
+      </div>
+    </div>
   </div><!--end of .content> -->
 </div><!--end of .main> -->
 </body>

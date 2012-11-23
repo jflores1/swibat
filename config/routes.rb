@@ -29,6 +29,13 @@ Swibat::Application.routes.draw do
     resources :objectives
     resources :assessments
   end
+
+  resources :friendships, :only => [:index, :destroy] do
+    member do
+      post 'add'
+      post 'accept'      
+    end
+  end
   
   match 'demo/:action' => 'demo#:action'
   match 'static_pages/:action' => 'static_pages#:action'

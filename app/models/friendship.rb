@@ -35,8 +35,23 @@ class Friendship < ActiveRecord::Base
     end
   end
 
+  # User declines a friend requests or unfriends a friend
+  def remove(user)
+    if self.user == user || self.friend == user
+      transaction do
+        opposite = Friendship.find_by_user_id_and_friend_id(self.friend.id, self.user.id)
+        self.destroy
+        opposite.destroy
+      end
+    end
+  end
+
   def self.exists?(user, friend)
     Friendship.find_by_user_id_and_friend_id(user.id, friend.id) != nil
+  end
+
+  def requested_by?(user)
+    (self.user == user && status == 'pending') || (self.friend == user && status == 'requested')
   end
 
   private
