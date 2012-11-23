@@ -61,12 +61,18 @@ class User < ActiveRecord::Base
     ROLES.include? role.to_s
   end
 
-  def valid_role
-    errors.add(:role, message:"Sorry, that's not a valid role") unless ROLES.include? role
-  end
-
   def full_name
     self.first_name + " " + self.last_name
+  end
+
+  def friends_with?(user)
+    self.friends.include?(user)
+  end
+
+  private
+
+  def valid_role
+    errors.add(:role, message:"Sorry, that's not a valid role") unless ROLES.include? role
   end
 
 end

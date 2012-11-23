@@ -14,6 +14,15 @@ module ValidUserRequestHelper
     @user ||= FactoryGirl.create :user
     post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
   end
+
+  # signs in by actually visiting the sign in page
+  def sign_in_via_form
+    @user = FactoryGirl.create(:user)
+    visit new_user_session_path
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+    click_button 'Sign in'
+  end
 end
 
 RSpec.configure do |config|

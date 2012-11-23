@@ -10,41 +10,41 @@ describe Friendship do
 			@friendship = Friendship.new(:user => @user, :friend => @friend, :status => 'accepted')
 		end
 
-    describe "Without a sender and receiver" do
-    	before do 
-				@friendship = Friendship.new(:user => nil, :friend => nil, :status => 'accepted')
-			end
-      it "shouldn't be valid" do
-      	@friendship.should_not be_valid
-    	end
-      
-      it "should throw an error on save" do
-      	expect {@friendship.save!}.to raise_error(ActiveRecord::RecordInvalid)
-      end
-      
-      it "should have the proper error messages" do
-      	@friendship.should have(1).error_on(:user)
-      	@friendship.should have(1).error_on(:friend)
-      end
-    end
+	    describe "Without a sender and receiver" do
+	    	before do 
+					@friendship = Friendship.new(:user => nil, :friend => nil, :status => 'accepted')
+				end
+	      it "shouldn't be valid" do
+	      	@friendship.should_not be_valid
+	    	end
+	      
+	      it "should throw an error on save" do
+	      	expect {@friendship.save!}.to raise_error(ActiveRecord::RecordInvalid)
+	      end
+	      
+	      it "should have the proper error messages" do
+	      	@friendship.should have(1).error_on(:user)
+	      	@friendship.should have(1).error_on(:friend)
+	      end
+	    end
 
-    describe "With an invalid status" do
-    	before { @friendship.status = '' }
+	    describe "With an invalid status" do
+	    	before { @friendship.status = '' }
 
-    	it "shouldn't be valid" do
-    		@friendship.should_not be_valid
-    	end
+	    	it "shouldn't be valid" do
+	    		@friendship.should_not be_valid
+	    	end
 
-    	it "should throw an error on save" do
-      	expect {@friendship.save!}.to raise_error(ActiveRecord::RecordInvalid)
-      end
+	    	it "should throw an error on save" do
+	      	expect {@friendship.save!}.to raise_error(ActiveRecord::RecordInvalid)
+	      end
 
-      it "should have the proper error messages" do
-      	@friendship.should have(2).errors_on(:status)      	
-      end
-    end
+	      it "should have the proper error messages" do
+	      	@friendship.should have(2).errors_on(:status)      	
+	      end
+	    end
 
-  end
+  	end
 
 	describe "When sending a friend request" do
 		it "doesn't let users befriend themselves" do
@@ -67,6 +67,13 @@ describe Friendship do
 		 	@user.sent_friend_requests.first.status.should == 'pending'
 		 	@friend.incoming_friend_requests.first.status.should == 'requested'
 		end
+
+		it "can tell who sent the request" do
+			Friendship.request(@user, @friend)
+			friendship = @user.sent_friend_requests.first
+			friendship.should be_requested_by(@user)
+			friendship.should_not be_requested_by(@friend)
+		end
 	end
 
 	describe "When accepting a friend request" do
@@ -84,7 +91,12 @@ describe Friendship do
 			@user.friends.count.should == 1
 			@user.friends.first.should == @friend
 			@user.friendships.first.status.should == 'accepted'
+			@friend.friends.count.should == 1
+			@friend.friends.first.should == @user
+			@friend.friendships.first.status.should == 'accepted'
 		end		
 	end
+
+
 
 end
