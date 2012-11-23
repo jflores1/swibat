@@ -9,8 +9,6 @@ Swibat::Application.routes.draw do
   match 'pricing',        to: 'static_pages#pricing'
   match 'request-trial',  to: 'leads#new', as: "request_trial"
 
-  match 'demo/:action', controller: "demo"
-
   resources :leads
 
   resources :users do
@@ -31,6 +29,9 @@ Swibat::Application.routes.draw do
     resources :objectives
     resources :assessments
   end
+  
+  match 'demo/:action' => 'demo#:action'
+  match 'static_pages/:action' => 'static_pages#:action'
 
 
   # The priority is based upon order of creation:

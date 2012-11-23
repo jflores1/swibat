@@ -1,5 +1,9 @@
-user/show
-
-<%= current_user.email %>
-
-<%= link_to "Create New Course", "#", class: "btn" %>
+<div class="inner">
+  <div class="row-fluid">
+      <div class="span12">
+        <h1><%= @user.full_name %></h1>
+        <%= link_to "Create New Course", "#", class: "btn" %>
+      </div>
+    </div>
+  </div>
+</div>
