@@ -40,4 +40,7 @@ RSpec.configure do |config|
   #include mailer macros and reset emails after sending to clear array.
   config.include(MailerMacros)
   config.before(:each) { reset_email }
+
+  #config Factory Girl shorthand
+  config.include FactoryGirl::Syntax::Methods
 end

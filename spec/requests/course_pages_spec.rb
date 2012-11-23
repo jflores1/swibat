@@ -1,4 +1,6 @@
 require 'spec_helper'
+include Warden::Test::Helpers
+Warden.test_mode!
 
 describe "CoursePages" do
 
@@ -28,7 +30,10 @@ describe "CoursePages" do
     end
 
     describe "With valid information" do
-      before { fill_out_course_form_with_valid_info }
+      before do
+        login_as(@user, scope = :user)
+        fill_out_course_form_with_valid_info
+      end
       it "should add a new course for the user" do
         expect {click_button submit}.to change(@user.courses.count).by(1)
       end
@@ -44,14 +49,13 @@ describe "CoursePages" do
   def sign_in_user_and_go_to_page
     sign_in_as_a_valid_user
     get new_user_course_path(@user)
-    print page.html
   end
 
   def fill_out_course_form_with_valid_info
-    fill_in 'course_name',    with: "Physics 1"
-    select  "Fall"
-    select  "2012"
-    fill_in "course_summary", with: "This is a valid course summary."
+    fill_in 'Course Name',     with: "Physics 1"
+    select  'Fall'
+    select  '2012'
+    fill_in 'Course Summary',  with: "This is a valid course summary."
   end
 
   def fill_out_course_form_with_invalid_info
