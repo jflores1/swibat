@@ -23,4 +23,8 @@ FactoryGirl.define do
     lesson_status       "Started"
   end
 
+  factory :objective do
+    objective           "Measure average velocity of Sparrow's wing speed"
+  end
+
 end
