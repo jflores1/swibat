@@ -22,7 +22,7 @@ describe "CoursePages" do
   end
 
   context "A Working Form" do
-    #before {sign_in_user_and_go_to_page}
+    before {sign_in_via_form}
     let(:submit){"Create Course"}
 
     #describe "There is a form on the page" do
@@ -30,16 +30,20 @@ describe "CoursePages" do
     #end
 
     describe "With valid information" do
-      let(:user){FactoryGirl.create(:user)}
+      # let(:user){FactoryGirl.create(:user)}
+      
       before do
-        login_as(user, scope = :user)
+        #login_as(user, scope = :user)        
         visit new_user_course_path(@user)
-        fill_out_course_form_with_valid_info
+        fill_out_course_form_with_valid_info        
       end
+
       it "should add a new course for the user" do
-        expect {click_button submit}.to change(@user.courses.count).by(1)
+        @user.courses.count.should == 0
+        click_button submit
+        @user.courses.count.should == 1
       end
-      Warden.test_reset!
+      # Warden.test_reset!
     end
 
     describe "With invalid information" do
@@ -55,10 +59,10 @@ describe "CoursePages" do
   end
 
   def fill_out_course_form_with_valid_info
-    fill_in 'Course Name',     with: "Physics 1"
-    select  'Fall'
-    select  '2012'
-    fill_in 'Course Summary',  with: "This is a valid course summary."
+    fill_in 'course_name',      with: "Physics 1"
+    select  'Fall',             :from => 'course_course_semester'    
+    fill_in 'course_year',      with: "2012"
+    fill_in 'course_name',      with: "This is a valid course summary."
   end
 
   def fill_out_course_form_with_invalid_info

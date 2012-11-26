@@ -9,6 +9,7 @@ gem 'cancan'
 gem 'date_validator'
 gem 'simple_form'
 gem 'coffee-rails', '~> 3.2.1'
+gem 'acts_as_commentable_with_threading'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
