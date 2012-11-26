@@ -21,7 +21,7 @@ describe "CoursePages" do
     end
   end
 
-  context "A Working Form" do
+  describe "A Working Form" do
     before do
       sign_in_via_form
       visit new_user_course_path(@user)
@@ -34,7 +34,7 @@ describe "CoursePages" do
       it {page.should have_selector("form")}
     end
 
-    describe "With valid information" do
+    context "With valid information" do
       it "Allows a user to save a course and go back to their account page" do
         expect {
           fill_out_course_form_with_valid_info
@@ -51,7 +51,7 @@ describe "CoursePages" do
       end
     end
 
-    describe "With invalid information" do
+    context "With invalid information" do
       it "Does not add a save an invalid course for the user" do
         expect {
           fill_out_course_form_with_invalid_info

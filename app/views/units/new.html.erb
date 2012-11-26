@@ -1,1 +1,16 @@
-View script for units/new
+<%= form_for [@course, @unit] do |unit| %>
+
+    <%= unit.text_field :unit_title, id:"unit_title" %>
+
+    <%= unit.text_field :expected_start_date, id: "expected_start_date" %>
+
+    <%= unit.text_field :expected_end_date, id: "expected_end_date" %>
+
+    <%= unit.text_field :prior_knowledge, id:"prior_knowledge" %>
+
+    <%= unit.text_field :unit_status, id: "unit_status" %>
+
+    <%= unit.submit "Submit", name:"submit" %>
+    <%= unit.submit "Move On", name:"move_on" %>
+
+<% end %>

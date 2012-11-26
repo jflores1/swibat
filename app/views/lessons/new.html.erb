@@ -1,0 +1,10 @@
+<%= form_for [@unit, @lesson] do |lesson| %>
+
+    <%= lesson.text_field :lesson_title, id:"lesson_title" %>
+    <%= lesson.text_field :lesson_start_date, id:"lesson_start_date" %>
+    <%= lesson.text_field :lesson_end_date, id:"lesson_end_date" %>
+    <%= lesson.text_field :lesson_status, id:"lesson_status" %>
+    <%= lesson.text_field :prior_knowledge, id:"prior_knowledge" %>
+    <%= lesson.submit "Submit" %>
+
+<% end %>

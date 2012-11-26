@@ -24,6 +24,7 @@ Swibat::Application.routes.draw do
   resources :units do
     resources :objectives
     resources :assessments
+    resources :lessons
   end
 
   resources :lessons do

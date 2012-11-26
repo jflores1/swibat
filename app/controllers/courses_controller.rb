@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = current_user.courses.build(params[:course])
+    @course = current_user.courses.new(params[:course])
   end
 
   def create
