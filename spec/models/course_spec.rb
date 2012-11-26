@@ -22,6 +22,8 @@ describe Course do
   it {should respond_to(:course_semester)}
   it {should respond_to(:course_year)}
   it {should respond_to(:course_summary)}
+  it {should respond_to(:comment_threads)}
+
   describe "without a course name" do
     before {course.course_name = " "}
     it {should_not be_valid}

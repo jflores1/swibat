@@ -4,6 +4,16 @@ describe CoursesController do
   login_user
   render_views
 
+  it "should have proper routes" do
+    {:get => "users/1/courses/" }.should be_routable
+    {:get => "users/1/courses/new" }.should be_routable
+    {:get => "users/1/courses/1/edit" }.should be_routable
+    {:get => "users/1/courses/1/" }.should be_routable
+    {:post => "users/1/courses" }.should be_routable
+    {:put => "users/1/courses/1" }.should be_routable
+    {:delete => "users/1/courses/1" }.should be_routable
+  end
+
   describe "Creating a new course" do
 
     let(:user){subject.current_user}

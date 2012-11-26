@@ -13,7 +13,10 @@
 #
 
 class Course < ActiveRecord::Base
+  acts_as_commentable
+  
   attr_accessible :course_name, :course_semester, :course_summary, :course_year
+
   has_many :objectives, as: :objectiveable
   has_many :assessments, as: :assessable
   has_many :units

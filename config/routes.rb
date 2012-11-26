@@ -1,4 +1,8 @@
 Swibat::Application.routes.draw do
+  get "comments/create"
+
+  get "comments/destroy"
+
   devise_for :users
 
   root to: 'static_pages#home'
@@ -19,6 +23,7 @@ Swibat::Application.routes.draw do
     resources :objectives
     resources :assessments
     resources :units
+    resources :comments, :only => [:create, :destroy]
   end
 
   resources :units do
