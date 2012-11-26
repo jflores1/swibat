@@ -9,16 +9,18 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = @unit.lessons.new(params[:lesson])
-    if @lesson.save
-      #
+    if @lesson.save && params[:add_another_lesson]
+      redirect_to new_unit_lesson_path(@unit)
+    elsif @lesson.save && params[:return_to_profile]
+      redirect_to user_path(current_user)
     else
-      #
+      flash[:notice] = "Sorry, there was a mistake with the form"
+      render 'new'
     end
   end
 
   def find_current_unit
-    @course = current_user.courses.find(params[:course_id])
-    @unit = Course.units.find(params[:unit_id])
+    @unit = Unit.find(params[:unit_id])
   end
 
 end

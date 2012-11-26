@@ -5,6 +5,7 @@
     <%= lesson.text_field :lesson_end_date, id:"lesson_end_date" %>
     <%= lesson.text_field :lesson_status, id:"lesson_status" %>
     <%= lesson.text_field :prior_knowledge, id:"prior_knowledge" %>
-    <%= lesson.submit "Submit" %>
+    <%= lesson.submit "Submit", name:"return_to_profile" %>
+    <%= lesson.submit "Add Another Lesson", name: "add_another_lesson" %>
 
 <% end %>

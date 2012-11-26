@@ -36,7 +36,7 @@ class Ability
       # Can manage comments if they are the owners of the commentable of the comment (Course, Unit, etc.)
       can :manage, Comment, :commentable => {:user_id => user.id}      
       # Can create comments if they are friends with the user the commentable belongs to
-      can :create, Comment, do |comment|
+      can :create, Comment do |comment|
         comment.try(:commentable).try(:user).try(:friends).include? user 
       end
 
