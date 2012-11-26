@@ -18,11 +18,13 @@ Swibat::Application.routes.draw do
   resources :courses do
     resources :objectives
     resources :assessments
+    resources :units
   end
 
   resources :units do
     resources :objectives
     resources :assessments
+    resources :lessons
   end
 
   resources :lessons do

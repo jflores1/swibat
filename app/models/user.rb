@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :institution
   has_many :courses
   
-  # Define the friendship relations with some sematics.
+  # Define the friendship relations with some semantics.
   has_many :friendships, :conditions => "status = 'accepted'"
   has_many :friends, :through => :friendships
 
