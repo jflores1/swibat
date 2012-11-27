@@ -17,11 +17,13 @@ class Course < ActiveRecord::Base
   
   attr_accessible :course_name, :course_semester, :course_summary, :course_year
 
-  has_many :objectives, as: :objectiveable
+  has_many :objectives, as: :objectiveable, dependent: :destroy
   has_many :assessments, as: :assessable
   has_many :units
   has_and_belongs_to_many :subjects
   belongs_to :user
+
+  accepts_nested_attributes_for :objectives
 
   before_save do |course|
     course.course_name = course_name.titleize

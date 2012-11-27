@@ -37,13 +37,14 @@ describe "CoursePages" do
 
 
     context "With valid information" do
-      it "Allows a user to save a course and go back to their account page" do
-        expect {
-          fill_out_course_form_with_valid_info
-          click_button save_button
-        }.to change(course, :count).by(1)
-        current_path.should == user_path(@user)
-      end
+        it "adds a course" do
+          expect {
+            fill_out_course_form_with_valid_info
+            click_button save_button
+          }.to change(course, :count).by(1)
+          current_path.should == user_path(@user)
+        end
+
       it "Allows a user to save a course and go the Unit page" do
         expect {
           fill_out_course_form_with_valid_info
