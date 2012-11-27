@@ -37,13 +37,13 @@ describe "CoursePages" do
 
 
     context "With valid information" do
-        it "adds a course" do
-          expect {
-            fill_out_course_form_with_valid_info
-            click_button save_button
-          }.to change(course, :count).by(1)
-          current_path.should == user_path(@user)
-        end
+      it "adds a course" do
+        expect {
+          fill_out_course_form_with_valid_info
+          click_button save_button
+        }.to change(course, :count).by(1)
+        current_path.should == user_path(@user)
+      end
 
       it "Allows a user to save a course and go the Unit page" do
         expect {
@@ -51,6 +51,13 @@ describe "CoursePages" do
           click_button unit_button
         }.to change(course, :count).by(1)
         current_path.should == new_course_unit_path(1)
+      end
+
+      it "Adds at least one objective to the course" do
+        expect {
+          fill_out_course_form_with_valid_info
+          click_button save_button
+        }.to change(Objective, :count).by_at_least(1)
       end
     end
 
@@ -84,6 +91,7 @@ describe "CoursePages" do
     select  'Fall',            from: "course_course_semester"
     fill_in 'course_year',     with: "2012"
     fill_in 'course_summary',  with: "This is a valid course summary."
+    fill_in 'objective',       with: "An objective"
   end
 
   def fill_out_course_form_with_invalid_info
@@ -91,6 +99,7 @@ describe "CoursePages" do
     select  'Fall',            from: "course_course_semester"
     fill_in 'course_year',     with: "20122"
     fill_in 'course_summary',  with: "This is a valid course summary."
+    fill_in 'objective',       with: "An objective"
   end
 
   def invalid_form_expectations

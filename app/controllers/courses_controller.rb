@@ -12,6 +12,7 @@ class CoursesController < ApplicationController
 
   def new
     @course = current_user.courses.new(params[:course])
+    @objectives = @course.objectives.new
   end
 
   def create

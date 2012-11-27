@@ -12,6 +12,13 @@
     <%= course.label "Course Summary" %>
     <%= course.text_area :course_summary, id:"course_summary" %>
 
+    <p>Course Objectives</p>
+    <%= course.fields_for [@course, @objectives] do |objective| %>
+
+        <%= objective.text_field :objective, name: "objective" %>
+
+    <% end %>
+
     <%= course.submit "Save and Return", name: "save_and_return" %>
     <%= course.submit "Create a Unit", name: "course_to_unit" %>
 
