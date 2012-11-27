@@ -1,0 +1,34 @@
+<div class="row-fluid">
+  <div class="span12">
+  	<h1><%= @lesson.lesson_title %></h1>
+  	<dl class="dl-horizontal">
+  		<dt>Unit</dt>
+		  <dd><%= link_to @lesson.unit.unit_title, [@lesson.unit.course, @lesson.unit] %></dd>
+		  <dt>Start date</dt>
+		  <dd><%= @lesson.lesson_start_date %></dd>
+		  <dt>End date</dt>
+		  <dd><%= @lesson.lesson_end_date %></dd>
+		  <dt>Status</dt>
+		  <dd><%= @lesson.lesson_status %></dd>
+		  <dt>Prior knowledge</dt>
+		  <dd><%= @lesson.prior_knowledge %></dd>
+		</dl>
+
+		<h2>Resources</h2>
+		<% if @lesson.resources.any? %>
+			<table class="table">	
+				<tr><th>Name</th><th>Link</th></tr>
+				<% @lesson.resources.each do |resource| %>
+					<tr>
+						<td><%= resource.name %></td>
+						<td><%= link_to "Download", resource.upload.url, :target => '_blank', class: "btn" %></td>
+					</tr>
+				<% end %>	
+			</table>
+		<% else %>
+			This lesson doesn't have any resources associated to it.
+		<% end %>
+
+	</div>
+</div>
+

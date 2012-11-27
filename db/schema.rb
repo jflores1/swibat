@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126092944) do
+ActiveRecord::Schema.define(:version => 20121127160523) do
 
   create_table "assessments", :force => true do |t|
     t.string   "assessment_name"
@@ -137,6 +137,18 @@ ActiveRecord::Schema.define(:version => 20121126092944) do
     t.string   "prefix"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "resources", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "lesson_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
   end
 
   create_table "subjects", :force => true do |t|

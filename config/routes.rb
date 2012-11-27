@@ -30,11 +30,13 @@ Swibat::Application.routes.draw do
     resources :objectives
     resources :assessments
     resources :lessons
+    resources :comments, :only => [:create, :destroy]
   end
 
   resources :lessons do
     resources :objectives
     resources :assessments
+    resources :comments, :only => [:create, :destroy]    
   end
 
   resources :friendships, :only => [:index, :destroy] do
