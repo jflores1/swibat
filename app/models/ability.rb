@@ -40,6 +40,9 @@ class Ability
         comment.try(:commentable).try(:user).try(:friends).include? user 
       end
 
+      can :update, User, :id => user.id
+      can :read, User
+
     elsif user.role == "school_admin"
       can :read, :all
     end

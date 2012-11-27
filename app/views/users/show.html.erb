@@ -1,6 +1,15 @@
 <div class="row-fluid">
   <div class="span12">
     <h1><%= @user.full_name %></h1>        
-    <%= display_friendship_actions @user if @user != current_user %> 
+    <%= link_to "Edit Profile", edit_user_path, :class => "btn pull-right" if can? :update, @user %>
+    <dl class="dl-horizontal">
+    	<dt>First name:</dt>
+      <dd><%= @user.first_name %></dd>
+      <dt>Last name:</dt>
+      <dd><%= @user.last_name %></dd>
+      <dt>Institution:</dt>
+      <dd><%= @user.institution %></dd>
+    </dl>	
+    <%= display_friendship_actions @user if @user != current_user %>     
   </div>
 </div>
