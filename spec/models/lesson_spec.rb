@@ -24,6 +24,7 @@ describe Lesson do
   it {should respond_to(:lesson_end_date)}
   it {should respond_to(:lesson_status)}
   it {should respond_to(:prior_knowledge)}
+  it {should respond_to(:comment_threads)}
 
   context "With Invalid information" do
     describe "Without a lesson title" do

@@ -24,6 +24,7 @@ describe Unit do
   it {should respond_to(:expected_end_date)}
   it {should respond_to(:prior_knowledge)}
   it {should respond_to(:unit_status)}
+  it {should respond_to(:comment_threads)}
 
   context "With invalid information" do
     describe "without a unit title" do

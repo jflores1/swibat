@@ -14,6 +14,8 @@
 #
 
 class Unit < ActiveRecord::Base
+  acts_as_commentable
+  
   attr_accessible :expected_end_date, :expected_start_date, :prior_knowledge, :unit_status, :unit_title
   has_many :objectives, as: :objectiveable
   has_many :assessments, as: :assessable
