@@ -11,8 +11,8 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = current_user.courses.new(params[:course])
-    @objectives = @course.objectives.new
+    @course = current_user.courses.new
+    @course.objectives.build
   end
 
   def create

@@ -13,6 +13,4 @@
 class Assessment < ActiveRecord::Base
   attr_accessible :assessment_name
   belongs_to :assessable, polymorphic: true
-
-
 end

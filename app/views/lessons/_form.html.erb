@@ -47,6 +47,24 @@
 	    </div>
 	  </div>
 
+        <div class="control-group">
+            <%= lesson.fields_for :objectives do |objective| %>
+              <%= objective.label :objective, class: "control-label" %>
+              <div class="controls">
+                <%= objective.text_field :objective %>
+              </div>
+            <% end %>
+        </div>
+
+    <div class="control-group">
+      <%= lesson.fields_for :assessments do |assessment| %>
+          <%= assessment.label :assessment_name, class: "control-label" %>
+          <div class="controls">
+            <%= assessment.text_field :assessment_name %>
+          </div>
+      <% end %>
+    </div>
+
     <div class="control-group">
 	    <%= lesson.label :resources, "Attach files", :class => "control-label" %> 
 	    <div class="controls">    

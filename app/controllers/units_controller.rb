@@ -3,9 +3,14 @@ class UnitsController < ApplicationController
   before_filter :find_current_user_course
   load_and_authorize_resource
 
+  def show
+    @unit = Unit.find(params[:id])
+  end
+
   def new
     @unit = @course.units.new
-
+    @unit.objectives.build
+    @unit.assessments.build
   end
 
   def create

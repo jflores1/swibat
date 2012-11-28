@@ -38,6 +38,22 @@ describe "LessonPages" do
             }.to change(lesson, :count).by(1)
             current_path.should == user_path(@user)
           end
+
+          it "should have at least one objective" do
+            expect {
+              fill_in_form_with_valid_information
+              click_button submit
+            }.to change(lesson, :count).by(1)
+            Lesson.last.objectives.count.should == 1
+          end
+
+          it "should have at least one assessment" do
+            expect {
+              fill_in_form_with_valid_information
+              click_button submit
+            }.to change(lesson, :count).by(1)
+            Lesson.last.assessments.count.should == 1
+          end
         end
 
         context "With resources" do
@@ -97,6 +113,8 @@ describe "LessonPages" do
     fill_in "lesson_end_date",    with: "2013/01/10"
     fill_in "lesson_status",      with: "Pending"
     fill_in "prior_knowledge",    with: "None required"
+    fill_in 'lesson_objectives_attributes_0_objective',               with: "An objective"
+    fill_in 'lesson_assessments_attributes_0_assessment_name',        with: "An assessment"
   end
 
   def fill_in_form_with_invalid_information

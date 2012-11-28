@@ -67,4 +67,31 @@ describe Unit do
     end
   end
 
+  context "With valid associations" do
+    let(:unit){FactoryGirl.create(:unit)}
+
+    describe "can have at least one objective" do
+      before {@objective = unit.objectives.build(objective:"Test velocity of sparrow's wings.")}
+      it {expect {unit.save!}.to change{Objective.count}.by(1)}
+    end
+
+    describe "Can have multiple objectives" do
+      before {@objective = unit.objectives.create(objective:"Test velocity of sparrow's wings.")}
+      before {@objective = unit.objectives.create(objective:"Test velocity of sparrow's wings.")}
+      it {unit.objectives.count.should == 2}
+    end
+
+    describe "Can have at least one associated assessment" do
+      before {@assessment = unit.assessments.build(assessment_name:"Test their knowledge")}
+      it {expect {unit.save!}.to change{Assessment.count}.by(1)}
+    end
+
+    describe "Can have multiple assessments" do
+      before {@assessment = unit.assessments.create(assessment_name:"Test their knowledge.")}
+      before {@assessment = unit.assessments.create(assessment_name:"Using a project.")}
+      it {unit.assessments.count.should == 2}
+    end
+
+  end
+
 end

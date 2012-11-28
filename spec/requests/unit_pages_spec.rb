@@ -20,20 +20,36 @@ describe "UnitPages" do
 
       context "with valid information" do
         before {sign_in_and_go_to_form}
-          it "saves and returns to user profile page" do
-            expect {
-              fill_out_form_with_valid_information
-              click_button submit
-            }.to change(unit, :count).by(1)
-          end
+        it "saves and returns to user profile page" do
+          expect {
+            fill_out_form_with_valid_information
+            click_button submit
+          }.to change(unit, :count).by(1)
+        end
 
-          it "saves and goes to the lesson page" do
-            expect {
-              fill_out_form_with_valid_information
-              click_button move_on
-            }.to change(unit, :count).by(1)
-            current_path.should == new_unit_lesson_path(1)
-          end
+        it "saves and goes to the lesson page" do
+          expect {
+            fill_out_form_with_valid_information
+            click_button move_on
+          }.to change(unit, :count).by(1)
+          current_path.should == new_unit_lesson_path(1)
+        end
+
+        it "has at least one objective" do
+          expect {
+            fill_out_form_with_valid_information
+            click_button submit
+          }.to change(unit, :count).by(1)
+          Unit.last.objectives.count.should == 1
+        end
+
+        it "has at least one assessment" do
+          expect {
+            fill_out_form_with_valid_information
+            click_button submit
+          }.to change(unit, :count).by(1)
+          Unit.last.assessments.count.should == 1
+        end
       end
 
       context "With invalid information" do
@@ -69,6 +85,8 @@ describe "UnitPages" do
     fill_in "expected_end_date",    with: "2013/01/10"
     fill_in "prior_knowledge",      with: ""
     fill_in "unit_status",          with: "Pending"
+    fill_in 'unit_objectives_attributes_0_objective',               with: "An objective"
+    fill_in 'unit_assessments_attributes_0_assessment_name',        with: "An assessment"
   end
 
   def fill_out_form_with_invalid_information

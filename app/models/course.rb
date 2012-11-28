@@ -15,15 +15,14 @@
 class Course < ActiveRecord::Base
   acts_as_commentable
   
-  attr_accessible :course_name, :course_semester, :course_summary, :course_year
+  attr_accessible :course_name, :course_semester, :course_summary, :course_year, :objectives_attributes
 
-  has_many :objectives, as: :objectiveable, dependent: :destroy
-  has_many :assessments, as: :assessable
+  has_many :objectives, as: :objectiveable
   has_many :units
   has_and_belongs_to_many :subjects
   belongs_to :user
 
-  accepts_nested_attributes_for :objectives
+  accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
 
   before_save do |course|
     course.course_name = course_name.titleize

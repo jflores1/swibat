@@ -10,6 +10,8 @@ class LessonsController < ApplicationController
   def new
     @lesson = @unit.lessons.new
     @lesson.resources.build
+    @lesson.objectives.build
+    @lesson.assessments.build
   end
 
   def create

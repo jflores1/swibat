@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: friendships
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  friend_id  :integer
+#  status     :string(255)      default("pending"), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Friendship do

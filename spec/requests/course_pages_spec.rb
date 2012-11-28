@@ -57,7 +57,8 @@ describe "CoursePages" do
         expect {
           fill_out_course_form_with_valid_info
           click_button save_button
-        }.to change(Objective, :count).by_at_least(1)
+        }.to change(Course, :count).by_at_least(1)
+        Course.last.objectives.count.should == 1
       end
     end
 
@@ -91,7 +92,7 @@ describe "CoursePages" do
     select  'Fall',            from: "course_course_semester"
     fill_in 'course_year',     with: "2012"
     fill_in 'course_summary',  with: "This is a valid course summary."
-    fill_in 'objective',       with: "An objective"
+    fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end
 
   def fill_out_course_form_with_invalid_info
@@ -99,7 +100,7 @@ describe "CoursePages" do
     select  'Fall',            from: "course_course_semester"
     fill_in 'course_year',     with: "20122"
     fill_in 'course_summary',  with: "This is a valid course summary."
-    fill_in 'objective',       with: "An objective"
+    fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end
 
   def invalid_form_expectations

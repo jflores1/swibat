@@ -13,5 +13,4 @@
 class Objective < ActiveRecord::Base
   attr_accessible :objective
   belongs_to :objectiveable, polymorphic: true
-  has_many :assessments, as: :assessable
 end

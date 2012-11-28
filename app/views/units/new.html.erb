@@ -10,6 +10,20 @@
 
     <%= unit.text_field :unit_status, id: "unit_status" %>
 
+    <p>Add Objectives</p>
+    <%= unit.fields_for :objectives do |objective| %>
+
+        <%= objective.text_field :objective %>
+
+    <% end %>
+
+    <p>Add Assessments</p>
+    <%= unit.fields_for :assessments do |assessment| %>
+
+        <%= assessment.text_field :assessment_name %>
+
+    <% end %>
+
     <%= unit.submit "Submit", name:"submit" %>
     <%= unit.submit "Move On", name:"move_on" %>
 
