@@ -6,6 +6,17 @@ class ObjectivesController < ApplicationController
   end
 
   def new
+    @objective = @objectiveable.objectives.new
+  end
+
+  def create
+    @objective = @objectiveable.objectives.new(params[:objective])
+    if @objective.save
+      #
+    else
+      #
+    end
+
   end
 
 private

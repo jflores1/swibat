@@ -31,6 +31,18 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :institution
   has_many :courses
+  
+  # Define the friendship relations with some semantics.
+  has_many :friendships, :conditions => "status = 'accepted'"
+  has_many :friends, :through => :friendships
+
+  has_many :sent_friend_requests, 
+           :class_name => :Friendship,           
+           :conditions => "status = 'pending'"           
+
+  has_many :incoming_friend_requests,
+           :class_name => :Friendship,
+           :conditions => "status = 'requested'"           
 
   before_save do |user|
     user.first_name = first_name.capitalize
@@ -48,6 +60,16 @@ class User < ActiveRecord::Base
   def role?(role)
     ROLES.include? role.to_s
   end
+
+  def full_name
+    self.first_name + " " + self.last_name
+  end
+
+  def friends_with?(user)
+    self.friends.include?(user)
+  end
+
+  private
 
   def valid_role
     errors.add(:role, message:"Sorry, that's not a valid role") unless ROLES.include? role

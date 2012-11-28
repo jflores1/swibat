@@ -22,6 +22,7 @@
 #
 
 require 'spec_helper'
+require "cancan/matchers"
 
 describe User do
 
@@ -71,6 +72,22 @@ describe User do
       before{@course = user.courses.build(course_name:"Physics", course_semester:"Fall", course_year:2012, course_summary:"Summary")}
       it {expect{user.save!}.to change{Course.count}.by(1)}
     end
+  end
+
+  context "Authorization" do 
+    let(:user){FactoryGirl.create(:user)}
+    let(:other_user){FactoryGirl.create(:user, :email => "marjan@test.com", :first_name => "marjan", :last_name => "georgiev")}
+    
+    it "should allow me to update my own profile" do
+      ability = Ability.new(user)
+      ability.should be_able_to(:update, user)
+    end
+
+    it "should not allow me to update other people's profiles" do
+      ability = Ability.new(user)
+      ability.should_not be_able_to(:update, other_user)
+    end
+
   end
 
 end

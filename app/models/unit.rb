@@ -14,11 +14,16 @@
 #
 
 class Unit < ActiveRecord::Base
-  attr_accessible :expected_end_date, :expected_start_date, :prior_knowledge, :unit_status, :unit_title
+  acts_as_commentable
+  
+  attr_accessible :expected_end_date, :expected_start_date, :prior_knowledge, :unit_status, :unit_title, :objectives_attributes, :assessments_attributes
   has_many :objectives, as: :objectiveable
   has_many :assessments, as: :assessable
   has_many :lessons
   belongs_to :course
+
+  accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true
 
   before_save do |unit|
     unit.prior_knowledge = prior_knowledge.humanize

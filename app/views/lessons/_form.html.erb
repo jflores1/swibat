@@ -1,0 +1,88 @@
+<%= form_for [@unit, @lesson], :html => {:class => "form-horizontal", :multipart => :true} do |lesson| %>
+		
+		<% if @lesson.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+
+	      <ul>
+	      <% @lesson.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
+	  <div class="control-group">
+	    <%= lesson.label :lesson_title, :class => "control-label" %> 
+	    <div class="controls">
+	      <%= lesson.text_field :lesson_title, id: "lesson_title" %>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+	    <%= lesson.label :lesson_start_date, :class => "control-label" %> 
+	    <div class="controls">
+	      <%= lesson.text_field :lesson_start_date, id: "lesson_start_date" %>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+	    <%= lesson.label :lesson_end_date, :class => "control-label" %> 
+	    <div class="controls">
+	      <%= lesson.text_field :lesson_end_date, id: "lesson_end_date" %>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+	    <%= lesson.label :lesson_status, :class => "control-label" %> 
+	    <div class="controls">
+	      <%= lesson.text_field :lesson_status, id: "lesson_status" %>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+	    <%= lesson.label :prior_knowledge, :class => "control-label" %> 
+	    <div class="controls">
+	      <%= lesson.text_field :prior_knowledge, id: "prior_knowledge" %>
+	    </div>
+	  </div>
+
+        <div class="control-group">
+            <%= lesson.fields_for :objectives do |objective| %>
+              <%= objective.label :objective, class: "control-label" %>
+              <div class="controls">
+                <%= objective.text_field :objective %>
+              </div>
+            <% end %>
+        </div>
+
+    <div class="control-group">
+      <%= lesson.fields_for :assessments do |assessment| %>
+          <%= assessment.label :assessment_name, class: "control-label" %>
+          <div class="controls">
+            <%= assessment.text_field :assessment_name %>
+          </div>
+      <% end %>
+    </div>
+
+    <div class="control-group">
+	    <%= lesson.label :resources, "Attach files", :class => "control-label" %> 
+	    <div class="controls">    
+	      <table class="table">    
+	        <tr><th>Name</th><th colspan="2">Attachment</th></tr>
+	          <%= lesson.fields_for :resources do |resource| %>
+	            <%= render "resource_fields", :f => resource %>
+	          <% end %>      
+	        <tr><td colspan="3"><%= link_to_add_fields "Add new resource", lesson, :resources %></td></tr>
+	      </table>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+	    <div class="controls">     
+	      <%= lesson.submit "Submit", name:"return_to_profile" %>
+	      <%= lesson.submit "Add Another Lesson", name: "add_another_lesson" %>
+	    </div>
+	  </div>
+
+<% end %>

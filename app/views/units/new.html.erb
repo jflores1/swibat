@@ -1,0 +1,30 @@
+<%= form_for [@course, @unit] do |unit| %>
+
+    <%= unit.text_field :unit_title, id:"unit_title" %>
+
+    <%= unit.text_field :expected_start_date, id: "expected_start_date" %>
+
+    <%= unit.text_field :expected_end_date, id: "expected_end_date" %>
+
+    <%= unit.text_field :prior_knowledge, id:"prior_knowledge" %>
+
+    <%= unit.text_field :unit_status, id: "unit_status" %>
+
+    <p>Add Objectives</p>
+    <%= unit.fields_for :objectives do |objective| %>
+
+        <%= objective.text_field :objective %>
+
+    <% end %>
+
+    <p>Add Assessments</p>
+    <%= unit.fields_for :assessments do |assessment| %>
+
+        <%= assessment.text_field :assessment_name %>
+
+    <% end %>
+
+    <%= unit.submit "Submit", name:"submit" %>
+    <%= unit.submit "Move On", name:"move_on" %>
+
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112200346) do
+ActiveRecord::Schema.define(:version => 20121127160523) do
 
   create_table "assessments", :force => true do |t|
     t.string   "assessment_name"
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(:version => 20121112200346) do
   end
 
   add_index "assessments", ["assessable_id", "assessable_type"], :name => "index_assessments_on_assessable_id_and_assessable_type"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "commentable_id",   :default => 0
+    t.string   "commentable_type", :default => ""
+    t.string   "title",            :default => ""
+    t.text     "body",             :default => ""
+    t.string   "subject",          :default => ""
+    t.integer  "user_id",          :default => 0,  :null => false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "courses", :force => true do |t|
     t.string   "course_name"
@@ -34,6 +51,17 @@ ActiveRecord::Schema.define(:version => 20121112200346) do
   end
 
   add_index "courses", ["user_id"], :name => "index_courses_on_user_id"
+
+  create_table "friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.string   "status",     :default => "pending", :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
+  add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
 
   create_table "institutions", :force => true do |t|
     t.string   "name"
@@ -109,6 +137,18 @@ ActiveRecord::Schema.define(:version => 20121112200346) do
     t.string   "prefix"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "resources", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "lesson_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
   end
 
   create_table "subjects", :force => true do |t|

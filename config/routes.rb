@@ -1,4 +1,8 @@
 Swibat::Application.routes.draw do
+  get "comments/create"
+
+  get "comments/destroy"
+
   devise_for :users
 
   root to: 'static_pages#home'
@@ -9,42 +13,41 @@ Swibat::Application.routes.draw do
   match 'pricing',        to: 'static_pages#pricing'
   match 'request-trial',  to: 'leads#new', as: "request_trial"
 
-  resources :static_pages, :leads
+  resources :leads
 
   resources :users do
-    resources :course
-
+    resources :courses
   end
 
-  resources :course do
+  resources :courses do
     resources :objectives
     resources :assessments
+    resources :units
+    resources :comments, :only => [:create, :destroy]
   end
 
   resources :units do
     resources :objectives
     resources :assessments
+    resources :lessons
+    resources :comments, :only => [:create, :destroy]
   end
 
   resources :lessons do
     resources :objectives
     resources :assessments
+    resources :comments, :only => [:create, :destroy]    
   end
 
-  resources :demo do
-    collection do
-      get :admin_panel
-      get :teacher_overview
-      get :course_plan
-      get :unit_plan
-      get :lesson_plan
-      get :classroom_observations
-      get :peer_feedback
-      get :parent_feedback
-      get :student_feedback
-      get :professional_development
+  resources :friendships, :only => [:index, :destroy] do
+    member do
+      post 'add'
+      post 'accept'      
     end
   end
+  
+  match 'demo/:action' => 'demo#:action'
+  match 'static_pages/:action' => 'static_pages#:action'
 
 
   # The priority is based upon order of creation:

@@ -9,12 +9,17 @@ gem 'cancan'
 gem 'date_validator'
 gem 'simple_form'
 gem 'coffee-rails', '~> 3.2.1'
+gem 'acts_as_commentable_with_threading'
+gem 'aws-sdk', '~> 1.3.4'
+gem 'aws-s3', :require => 'aws/s3'
+gem "paperclip", "~> 3.0"
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
   gem 'annotate'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'database_cleaner'
 end
 
 group :development do

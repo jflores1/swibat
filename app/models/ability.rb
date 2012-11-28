@@ -30,6 +30,19 @@ class Ability
       can :manage, :all
     elsif user.role == "teacher"
       can :manage, [Course, Lesson, Unit]
+      
+      # Can delete comment only if they have created it
+      can :destroy, Comment, :user_id => user.id
+      # Can manage comments if they are the owners of the commentable of the comment (Course, Unit, etc.)
+      can :manage, Comment, :commentable => {:user_id => user.id}      
+      # Can create comments if they are friends with the user the commentable belongs to
+      can :create, Comment do |comment|
+        comment.try(:commentable).try(:user).try(:friends).include? user 
+      end
+
+      can :update, User, :id => user.id
+      can :read, User
+
     elsif user.role == "school_admin"
       can :read, :all
     end

@@ -1,10 +1,11 @@
 FactoryGirl.define do
 
   factory :course do
-    course_name "Physics"
-    course_semester "Fall"
-    course_year 2012
-    course_summary  "This is a course summary."
+    course_name         "Physics"
+    course_semester     "Fall"
+    course_year         2012
+    course_summary      "This is a course summary."
+    user_id             1
   end
 
   factory :unit do
@@ -13,7 +14,7 @@ FactoryGirl.define do
     expected_end_date    Date.new(2012, 12, 15)
     prior_knowledge     "None"
     unit_status         "Started"
-    course_id           1
+    course
   end
 
   factory :lesson do
@@ -21,6 +22,11 @@ FactoryGirl.define do
     lesson_start_date   Date.new(2012, 12, 12)
     lesson_end_date     Date.new(2012, 12, 15)
     lesson_status       "Started"
+    unit
+  end
+
+  factory :objective do
+    objective           "Measure average velocity of Sparrow's wing speed"
   end
 
 end

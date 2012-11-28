@@ -1,0 +1,14 @@
+development:
+  bucket: swibat_development
+  access_key_id: AKIAJORUN7KF6GWAMVTA
+  secret_access_key: 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
+  
+test:
+  bucket: swibat_development
+  access_key_id: AKIAJORUN7KF6GWAMVTA
+  secret_access_key: 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
+
+production:
+  bucket: swibat_production
+  access_key_id: AKIAJORUN7KF6GWAMVTA
+  secret_access_key: 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

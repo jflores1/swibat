@@ -24,6 +24,7 @@ describe Unit do
   it {should respond_to(:expected_end_date)}
   it {should respond_to(:prior_knowledge)}
   it {should respond_to(:unit_status)}
+  it {should respond_to(:comment_threads)}
 
   context "With invalid information" do
     describe "without a unit title" do
@@ -64,6 +65,33 @@ describe Unit do
       before {unit.unit_status = "Complete"}
       it {should be_valid}
     end
+  end
+
+  context "With valid associations" do
+    let(:unit){FactoryGirl.create(:unit)}
+
+    describe "can have at least one objective" do
+      before {@objective = unit.objectives.build(objective:"Test velocity of sparrow's wings.")}
+      it {expect {unit.save!}.to change{Objective.count}.by(1)}
+    end
+
+    describe "Can have multiple objectives" do
+      before {@objective = unit.objectives.create(objective:"Test velocity of sparrow's wings.")}
+      before {@objective = unit.objectives.create(objective:"Test velocity of sparrow's wings.")}
+      it {unit.objectives.count.should == 2}
+    end
+
+    describe "Can have at least one associated assessment" do
+      before {@assessment = unit.assessments.build(assessment_name:"Test their knowledge")}
+      it {expect {unit.save!}.to change{Assessment.count}.by(1)}
+    end
+
+    describe "Can have multiple assessments" do
+      before {@assessment = unit.assessments.create(assessment_name:"Test their knowledge.")}
+      before {@assessment = unit.assessments.create(assessment_name:"Using a project.")}
+      it {unit.assessments.count.should == 2}
+    end
+
   end
 
 end
