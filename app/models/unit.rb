@@ -41,7 +41,7 @@ class Unit < ActiveRecord::Base
   validates :unit_title, presence: true
 
   def valid_unit_status
-    errors.add(:unit_status, message:"Sorry, that's not a valid status") unless VALID_STATUS.include? unit_status
+    errors.add(:unit_status, "is not a valid status") unless VALID_STATUS.include? unit_status
   end
 
 end

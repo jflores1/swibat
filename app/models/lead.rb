@@ -38,7 +38,7 @@ class Lead < ActiveRecord::Base
 
 
   def valid_role
-    errors.add(:role, message: "Sorry, that's not a valid role") unless ROLES.include? role
+    errors.add(:role, "is not a valid role") unless ROLES.include? role
   end
 
   #private methods

@@ -69,7 +69,7 @@ class Friendship < ActiveRecord::Base
   private
 
   def valid_status
-    errors.add(:status, message:"Invalid friendship status: " + status) unless STATUSES.include? status
+    errors.add(:status, "is not a valid friendship status") unless STATUSES.include? status
   end
 
 end

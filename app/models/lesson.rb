@@ -26,7 +26,6 @@ class Lesson < ActiveRecord::Base
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
   accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true
 
-
   VALID_STATUS = %w[Pending Started Complete]
 
   validate  :valid_lesson_status
@@ -36,10 +35,7 @@ class Lesson < ActiveRecord::Base
   validates :lesson_end_date, presence: true, date: {after: :lesson_start_date}
   validates :lesson_status, presence: true
 
-
-
-
   def valid_lesson_status
-    errors.add(:lesson_status, message:"Sorry, that's not a valid status") unless VALID_STATUS.include? lesson_status
+    errors.add(:lesson_status, "is not a valid status") unless VALID_STATUS.include? lesson_status
   end
 end

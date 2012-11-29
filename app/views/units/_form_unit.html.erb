@@ -6,6 +6,17 @@
 
   <%= form_for [@course, @unit] do |unit| %>
 
+      <% if @unit.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
+          <ul>
+          <% @unit.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <%= unit.label "What is the title of this unit?" %>
       <%= unit.text_field :unit_title, id:"unit_title" %>
 
@@ -29,18 +40,22 @@
       <%= unit.text_field :unit_status, id: "unit_status" %>
 
       <p>What should students be able to do once the unit is over?</p>
-      <%= unit.fields_for :objectives do |objective| %>
-
-          <%= objective.text_field :objective %>
-
-      <% end %>
+      <table class="table">    
+        <tr><th>Objective</th></tr>
+          <%= unit.fields_for :objectives do |objective| %>
+            <%= render "objective_fields", :f => objective %>
+          <% end %>      
+        <tr><td><%= link_to_add_fields "Add new objective", unit, :objectives %></td></tr>
+      </table>
 
       <p>How will you be assessing them?</p>
-      <%= unit.fields_for :assessments do |assessment| %>
-
-          <%= assessment.text_field :assessment_name %>
-
-      <% end %>
+      <table class="table">    
+        <tr><th>Assessment</th></tr>
+          <%= unit.fields_for :assessments do |assessment| %>
+            <%= render "assessment_fields", :f => assessment %>
+          <% end %>      
+        <tr><td><%= link_to_add_fields "Add new assessment", unit, :assessments %></td></tr>
+      </table>
 
       <div class="two-column-form">
         <div class="pull-left">
