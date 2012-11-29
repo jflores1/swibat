@@ -3,7 +3,7 @@ module ApplicationHelper
 	# Adding and removing nested forms
   def link_to_remove_fields(name, f, confirm = false)
     if confirm
-      f.hidden_field(:_destroy) + link_to_function(name, "if (confirm(\"Are you sure? This will delete the resource.\")) { remove_fields(this) }", :class=>"btn")
+      f.hidden_field(:_destroy) + link_to_function(name, "if (confirm(\"Are you sure? This will delete the object.\")) { remove_fields(this) }", :class=>"btn")
     else
       f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)", :class=>"btn")
     end

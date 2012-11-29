@@ -13,6 +13,7 @@ Swibat::Application.routes.draw do
   match 'pricing',        to: 'static_pages#pricing'
   match 'request-trial',  to: 'leads#new', as: "request_trial"
 
+  get 'objectives/similar_objectiveables'
   resources :leads
 
   resources :users do
