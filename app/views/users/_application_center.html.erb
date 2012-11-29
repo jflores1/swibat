@@ -1,33 +1,15 @@
 <!-- this is nested under div.application-center -->
 
-<% if @user == current_user && current_user.courses.count == 0 %>
-
-    <%= link_to "Add Your First Course!", new_user_course_path(current_user), class:"profile-button medium-padding" %>
-
-<% end %>
-
-<% current_user.courses.each do |course| %>
 <div class="course-overview">
   <header>
-    <h2>Active Courses:</h2>
-    <h3>Course: <%= course.course_name %> </h3>
-  </header>
+    <h1>Active Courses</h1>
+    <% if current_user == @user %>
+        <%= link_to "Create a Course", new_user_course_path(current_user), class:"btn btn-warning" %>
+    <% end  %>
 
-  <div class="unit-overview">
-    <% course.units.each do |unit| %>
-        <header>
-          <h2>Current Unit: <%= unit.unit_title %> </h2>
-        </header>
+    <% current_user.courses.each do |course| %>
+        <h2><%= course.course_name %></h2>
 
     <% end %>
-  </div>
-
-
-
+  </header>
 </div>
-
-
-
-
-
-<% end  %>

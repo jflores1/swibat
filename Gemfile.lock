@@ -87,6 +87,8 @@ GEM
     factory_girl_rails (4.1.0)
       factory_girl (~> 4.1.0)
       railties (>= 3.0.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
     ffi (1.0.11)
     google-analytics-rails (0.0.3)
     hike (1.2.1)
@@ -212,6 +214,7 @@ DEPENDENCIES
   date_validator
   devise
   factory_girl_rails (~> 4.0)
+  faker
   google-analytics-rails
   jquery-rails
   paperclip (~> 3.0)

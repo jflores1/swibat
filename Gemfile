@@ -20,6 +20,7 @@ group :development, :test do
   gem 'annotate'
   gem "factory_girl_rails", "~> 4.0"
   gem 'database_cleaner'
+  gem 'faker'
 end
 
 group :development do
