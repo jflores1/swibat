@@ -28,8 +28,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
+  has_attached_file :image, 
+                    :styles => { :medium => "300x300#", :x100 => "100x100#", :x50 => "50x50#" },
+                    :storage => :s3, :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
+                    :path => "users/:id-:style.:extension",
+                    :default_url => "https://s3.amazonaws.com/trancepodium/images/unknown.jpg"
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :institution
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :institution, :image
   has_many :courses
   
   # Define the friendship relations with some semantics.
@@ -53,7 +59,9 @@ class User < ActiveRecord::Base
 
   validate :valid_role
   validates_uniqueness_of :email, case_sensitive: false
-  validates :first_name, :last_name, :role, :institution, :email, :password, :password_confirmation, presence: true
+  validates :first_name, :last_name, :role, :institution, :email, presence: true
+  validates_attachment_size :image, :less_than => 2.megabytes
+  validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   ROLES = %w[admin school_admin teacher]
 

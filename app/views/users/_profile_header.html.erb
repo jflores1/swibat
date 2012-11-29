@@ -1,5 +1,5 @@
 <div class="profile-header prettyprint">
-  <%= image_tag "image-profile-sample.jpg", class:"img-polaroid header-profile-picture" %>
+  <%= image_tag @user.image.url, class:"img-polaroid header-profile-picture" %>
 
   <div class="profile-summary">
     <h1><%= @user.full_name %></h1>

@@ -31,12 +31,14 @@ describe "Profile" do
 				fill_in 'user_first_name',     with: "Marjan"
 				fill_in 'user_last_name',    	 with: "Georgiev"
 				fill_in 'user_institution',    with: "Jane Sandanski"
+				page.attach_file('user_image', Rails.root + 'spec/fixtures/files/user_image.jpg')
 				click_button "Update"			
 				@user.reload
 				current_url.should == user_url(@user)	
 				@user.first_name.should == "Marjan"
 				@user.last_name.should == "Georgiev"
 				@user.institution.should == "Jane Sandanski"				
+				@user.image_file_name.should == "user_image.jpg"
 			end
 		end
 
