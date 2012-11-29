@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.leadform {
-  width: 60%;
+div.leadform, div.new-signup {
+  width: 50%;
   margin: 0 auto;
   color: #ffffff;
 
@@ -14,7 +14,7 @@ div.leadform {
     h1 {
       font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
       font-weight: 700;
-      font-size: 2em; /* 26px / 13px */
+      font-size: 2.5em; /* 26px / 13px */
       color: #3f4944;
       text-shadow: 1px 1px 0 #FFFFFF;
       line-height: 1.2;
@@ -46,7 +46,7 @@ div.leadform {
       font-size: 1.384615em; /*18px / 13px*/
     }
 
-    input[type="text"], select {
+    input[type="text"],input[type="email"], input[type="password"], select {
       display: block;
       -moz-box-shadow: 1px 1px 0 #7c7c7f;
       -webkit-box-shadow: 1px 1px 0 #7c7c7f;
@@ -54,7 +54,6 @@ div.leadform {
       min-height: 25px;
       width: 90%;
       margin: 0px auto;
-
     }
 
     select {

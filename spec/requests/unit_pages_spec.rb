@@ -13,8 +13,8 @@ describe "UnitPages" do
     end
 
     describe "Add a unit" do
-      let(:submit){"Submit"}
-      let(:move_on){"Move On"}
+      let(:submit){"Save and Come Back Later"}
+      let(:move_on){"Add Some Lessons"}
       let(:unit){course.units}
 
 

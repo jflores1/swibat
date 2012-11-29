@@ -1,0 +1,61 @@
+<div class="course-form">
+  <header class="course-form-header">
+    <h1>Test Header</h1>
+    <h3>Test Header 3</h3>
+  </header>
+
+  <%= form_for [@course, @unit] do |unit| %>
+
+      <%= unit.label "What is the title of this unit?" %>
+      <%= unit.text_field :unit_title, id:"unit_title" %>
+
+      <div class="two-column-form">
+        <p>How long do you expect it to last?</p>
+        <div class="pull-left">
+          <%= unit.label :expected_start_date, "I expect to start on..." %>
+          <%= unit.text_field :expected_start_date, id: "expected_start_date"%>
+
+        </div>
+        <div class="pull-right">
+          <%= unit.label :expected_end_date, "and end on..." %>
+          <%= unit.text_field :expected_end_date, id: "expected_end_date" %>
+
+        </div>
+      </div>
+
+      <%= unit.label :prior_knowledge, "What do students need to know before you start?" %>
+      <%= unit.text_field :prior_knowledge, id:"prior_knowledge" %>
+
+      <%= unit.text_field :unit_status, id: "unit_status" %>
+
+      <p>What should students be able to do once the unit is over?</p>
+      <%= unit.fields_for :objectives do |objective| %>
+
+          <%= objective.text_field :objective %>
+
+      <% end %>
+
+      <p>How will you be assessing them?</p>
+      <%= unit.fields_for :assessments do |assessment| %>
+
+          <%= assessment.text_field :assessment_name %>
+
+      <% end %>
+
+      <div class="two-column-form">
+        <div class="pull-left">
+          <%= unit.submit "Save and Come Back Later", name:"submit", class:"btn btn-warning" %>
+
+        </div>
+        <div class="pull-right">
+          <%= unit.submit "Add Some Lessons", name:"move_on", class:"btn btn-warning" %>
+
+        </div>
+      </div>
+
+
+
+
+  <% end %>
+
+</div>

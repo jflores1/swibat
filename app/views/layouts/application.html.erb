@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
 </head>
-<body class="padded <%= yield :body_class %>">
+<body class="padded plain-bg">
 <div id="main" role="main">
   <div class="content">
     <%= render 'layouts/navbar' %>
@@ -18,10 +18,12 @@
           <%= render 'layouts/messages' %>
         </div><!--end of .span12 -->
       </div><!--end of .row-fluid -->
-    </div>
-    <div class="inner">
-      <%= yield %>
-    </div>
+      <div class="container">
+
+        <%= yield %>
+
+      </div><!--end of .container-->
+    </div><!--end of .inner -->
     <div class="row-fluid">
       <div class="span12">
         <%= render 'layouts/footer' %>

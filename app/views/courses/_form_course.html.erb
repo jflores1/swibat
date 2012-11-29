@@ -1,0 +1,46 @@
+<div class="course-form">
+  <header class="course-form-header">
+    <h1>Test Header</h1>
+    <h3>Test Header 3</h3>
+  </header>
+
+  <%= form_for [current_user, @course] do |course| %>
+
+      <%= course.label "What's the name of the course?" %>
+      <%= course.text_field :course_name, id:"course_name" %>
+
+      <p>When are you teaching it?</p>
+      <div class="two-column-form">
+        <div class="pull-left">
+          <%= course.label "Semester" %>
+          <%= course.select(:course_semester,[['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer'], ['Winter','Winter']] ) %>
+        </div>
+        <div class="pull-left">
+          <%= course.label "Year" %>
+          <%= course.select :course_year, options_for_select((2012..2030).step(1).to_a.map{|y| ["#{y}", y]}) %>
+        </div>
+
+      </div>
+
+      <%= course.label "Now, briefly describe the course" %>
+      <%= course.text_area :course_summary, id:"course_summary" %>
+
+      <%= course.fields_for :objectives do |objective| %>
+          <%= objective.label :objective, "Now, add some objectives. What should students be able to do when it's over?" %>
+
+          <%= objective.text_field :objective %>
+
+      <% end %>
+
+      <div class="two-column-form">
+        <div class="pull-left">
+          <%= course.submit "< Save and Return", name: "save_and_return", class:"btn btn-warning" %>
+        </div>
+        <div class="pull-right">
+          <%= course.submit "Create a Unit >", name: "course_to_unit", class:"btn btn-warning" %>
+        </div>
+      </div>
+
+  <% end %>
+
+</div>

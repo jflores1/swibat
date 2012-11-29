@@ -2,3 +2,109 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div.profile-header{
+  width: 100%;
+  float:left;
+
+  img.header-profile-picture {
+    display: inline-block;
+    float: left;
+    clear:right;
+    margin: 2%;
+    vertical-align: top;
+    width: 12.82%; /*150px : 1170px*/
+    height: 150px;
+    border: 10px solid #FFF;
+    -moz-box-shadow: 2px 2px 10px rgb(1, 21, 38);
+    box-shadow: 2px 2px 10px rgb(1, 21, 38);
+  }
+
+  div.profile-summary{
+    float:left;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 80%;
+
+    dl.dl-horizontal{
+      width: 100%;
+
+      dt {
+        text-align: left;
+        width: 12%;
+      }
+      dd {
+        margin-left: 0px;
+      }
+    }
+  }
+
+}
+
+div.application-body{
+  width: 100%;
+  float: left;
+  margin-top: 2%;
+
+  .profile-button{
+    display: block;
+    margin: 0 auto;
+    background-color: rgba(255, 200, 120, 1);
+    background-image: -webkit-linear-gradient(top, #FFC878, #CCA060);
+    background-image: -moz-linear-gradient(top, #FFC878, #CCA060);
+    background-image: -ms-linear-gradient(top, #FFC878, #CCA060);
+    background-image: -o-linear-gradient(top, #FFC878, #CCA060);
+    background-image: linear-gradient(top, #FFC878,#CCA060);
+    text-align: center;
+    //padding: 1.125% 1.25% 1.125% 1.25%;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #915c38;
+    -webkit-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+    color: rgba(255, 255, 255, 1);
+    font-size: 1em; /*26px / 13px*/
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(96, 110, 103, 1);
+    font-family: 'Open Sans Condensed', sans-serif, 'Helvetica', 'Arial', sans-serif;
+    text-decoration: none;
+  }
+
+  .small-padding{
+    padding: 1%;
+  }
+
+  .medium-padding{
+    padding: 2% 2% 2% 2%;
+    width: 30%;
+    font-size: 1.23em;
+  }
+
+  .profile-button:hover{
+    background: #CCA060;
+  }
+
+  div.application-left-sidebar{
+    width: 20%;
+    float: left;
+
+  }
+
+  div.application-center{
+    width: 53%;
+    float: left;
+    margin-left: 2%;
+    margin-right: 1%;
+
+  }
+
+  div.application-right-sidebar{
+    width: 20%;
+    float: right;
+
+  }
+
+}
+

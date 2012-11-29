@@ -1,0 +1,33 @@
+<!-- this is nested under div.application-center -->
+
+<% if @user == current_user && current_user.courses.count == 0 %>
+
+    <%= link_to "Add Your First Course!", new_user_course_path(current_user), class:"profile-button medium-padding" %>
+
+<% end %>
+
+<% current_user.courses.each do |course| %>
+<div class="course-overview">
+  <header>
+    <h2>Active Courses:</h2>
+    <h3>Course: <%= course.course_name %> </h3>
+  </header>
+
+  <div class="unit-overview">
+    <% course.units.each do |unit| %>
+        <header>
+          <h2>Current Unit: <%= unit.unit_title %> </h2>
+        </header>
+
+    <% end %>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+<% end  %>

@@ -1,0 +1,30 @@
+<div class="profile-header prettyprint">
+  <%= image_tag "image-profile-sample.jpg", class:"img-polaroid header-profile-picture" %>
+
+  <div class="profile-summary">
+    <h1><%= @user.full_name %></h1>
+    <h3>Profile Summary <span style="font-size:11px;">(if @user = current_user && @user.profile_summary.blank?, then a prompt to create one. Else, it's blank for @user != to current_user)</span></h3>
+
+
+    <dl class="dl-horizontal">
+      <dt>School:</dt>
+      <dd><%= @user.institution %></dd>
+      <dt>Specialties:</dt>
+      <dd>This needs to be added to profile</dd>
+      <dt>Education:</dt>
+      <dd>This needs to be added to profile</dd>
+      <dt>Certifications:</dt>
+      <dd>This needs to be added to profile</dd>
+      <dt>Awards</dt>
+      <dd>This needs to be added to profile</dd>
+      <dt>Connect:</dt>
+      <dd>This needs to be added (Twitter, LinkedIn)</dd>
+    </dl>
+    <%= display_friendship_actions @user if @user != current_user %>
+    <%= link_to "Improve Your Profile", edit_user_path, :class => "btn btn-warning pull-left" if can? :update, @user %>
+
+  </div>
+
+
+
+</div>

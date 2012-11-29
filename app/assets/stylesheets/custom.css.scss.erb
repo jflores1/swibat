@@ -1,7 +1,7 @@
 @import "bootstrap";
 body {
   //padding-top: 60px;
-  background: url("<%= asset_path('bg-patterned.jpg') %>");
+
 }
 @import "bootstrap-responsive";
 @import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
@@ -14,6 +14,10 @@ body {
 
 body.padded {
     padding-top: 60px;
+}
+
+body.patterned {
+    background: url("<%= asset_path('bg-patterned.jpg') %>");
 }
 
 .hero {
@@ -70,9 +74,13 @@ body.padded {
 
 div.prettyprint{
   background-color:#f7f7f9;
+  //background-color:  rgba(231, 231, 231, 0.5);
+  //background-color: rgba(234, 231, 216, 0.1);
   border: 1px solid #e1e1e8;
   padding: 5px;
   border-radius: 3px 3px 0px 0px;
+  -moz-box-shadow: 2px 0px 5px rgba(96, 110, 103, 1);
+  box-shadow: 0px 1px 2px rgba(96, 110, 103, 0.75);
 }
 
 .bordered {

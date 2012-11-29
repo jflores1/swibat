@@ -10,11 +10,11 @@ describe "Profile" do
 	describe "When on my profile page" do		
 		before {visit user_path @user}
 		it "should display edit profile button" do			
-			page.should have_xpath('//a[text() = "Edit Profile"]')
+			page.should have_xpath('//a[text() = "Improve Your Profile"]')
 		end
 
 		it "clicking the button should take me to the edit user page" do			
-			page.find(:xpath, '//a[text() = "Edit Profile"]').click
+			page.find(:xpath, '//a[text() = "Improve Your Profile"]').click
 			current_url.should == edit_user_url(@user)
 		end
 	end

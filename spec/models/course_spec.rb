@@ -85,17 +85,6 @@ describe Course do
       it {course.objectives.count.should == 2}
     end
 
-    describe "Can have at least one associated assessment" do
-      before {@assessment = course.assessments.build(assessment_name:"Test their knowledge")}
-      it {expect {course.save!}.to change{Assessment.count}.by(1)}
-    end
-
-    describe "Can have multiple assessments" do
-      before {@assessment = course.assessments.create(assessment_name:"Test their knowledge.")}
-      before {@assessment = course.assessments.create(assessment_name:"Using a project.")}
-      it {course.assessments.count.should == 2}
-    end
-
   end
 
 end

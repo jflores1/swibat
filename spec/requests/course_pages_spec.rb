@@ -60,6 +60,10 @@ describe "CoursePages" do
         }.to change(Course, :count).by_at_least(1)
         Course.last.objectives.count.should == 1
       end
+
+      xit "More than one objective can be added to the course" do
+
+      end
     end
 
     context "With invalid information" do
@@ -78,6 +82,20 @@ describe "CoursePages" do
         }.to_not change(course, :count).by(1)
         invalid_form_expectations
       end
+
+      xit "Displays error messages to the user" do
+
+      end
+    end
+
+    context "With User Assistance" do
+      subject { page }
+      xit "displays pop up bubbles to help the user work" do
+
+      end
+      xit "displays a list of Bloom's verbs" do
+
+      end
     end
   end
 
@@ -90,15 +108,15 @@ describe "CoursePages" do
   def fill_out_course_form_with_valid_info
     fill_in 'course_name',     with: "Physics 1"
     select  'Fall',            from: "course_course_semester"
-    fill_in 'course_year',     with: "2012"
+    select  '2012',     from: "course_course_year"
     fill_in 'course_summary',  with: "This is a valid course summary."
     fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end
 
   def fill_out_course_form_with_invalid_info
-    fill_in 'course_name',     with: "Physics 1"
+    #fill_in 'course_name',     with: "Physics 1"
     select  'Fall',            from: "course_course_semester"
-    fill_in 'course_year',     with: "20122"
+    select  '2012',            from: "course_course_year"
     fill_in 'course_summary',  with: "This is a valid course summary."
     fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end

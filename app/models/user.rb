@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
 
   validate :valid_role
   validates_uniqueness_of :email, case_sensitive: false
-  validates :first_name, :last_name, :role, :institution, presence: true
+  validates :first_name, :last_name, :role, :institution, :email, :password, :password_confirmation, presence: true
 
   ROLES = %w[admin school_admin teacher]
 
