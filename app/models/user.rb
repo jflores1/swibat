@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
                     :default_url => "https://s3.amazonaws.com/trancepodium/images/unknown.jpg"
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :institution, :image, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :institution, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes
   has_many :courses
   has_many :professional_educations
   has_many :professional_accomplishments

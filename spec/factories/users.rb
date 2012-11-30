@@ -9,6 +9,7 @@ FactoryGirl.define do
     first_name            "Jesse"
     last_name             "Flores"
     institution           "Some School"
+    profile_summary				"My profile summary"    
   end
 end
 
