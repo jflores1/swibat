@@ -24,13 +24,11 @@
       <p>How long do you expect it to last?</p>
       <div class="pull-left">
         <%= unit.label :expected_start_date, "I expect to start on..." %>
-        <%= unit.text_field :expected_start_date, id: "expected_start_date"%>
-
+        <%= unit.datepicker :expected_start_date, :dateFormat => "yy-mm-dd" %>
       </div>
       <div class="pull-right">
         <%= unit.label :expected_end_date, "and end on..." %>
-        <%= unit.text_field :expected_end_date, id: "expected_end_date" %>
-
+        <%= unit.datepicker :expected_end_date, :dateFormat => "yy-mm-dd" %>
       </div>
     </div>
 

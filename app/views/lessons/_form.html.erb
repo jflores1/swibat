@@ -23,14 +23,14 @@
 		  <div class="control-group">
 		    <%= lesson.label :lesson_start_date, :class => "control-label" %> 
 		    <div class="controls">
-		      <%= lesson.text_field :lesson_start_date, id: "lesson_start_date" %>
+		      <%= lesson.datepicker :lesson_start_date, :dateFormat => "yy-mm-dd" %>
 		    </div>
 		  </div>
 
 		  <div class="control-group">
 		    <%= lesson.label :lesson_end_date, :class => "control-label" %> 
 		    <div class="controls">
-		      <%= lesson.text_field :lesson_end_date, id: "lesson_end_date" %>
+		      <%= lesson.datepicker :lesson_end_date, :dateFormat => "yy-mm-dd" %>
 		    </div>
 		  </div>
 
@@ -98,6 +98,6 @@
 
 	<div class="span4">
 		<h3>Similar lessons</h3>
-		<div id="similarLessons"></div>
+		<div id="similarObjectiveables"></div>
 	</div>
 </div>
