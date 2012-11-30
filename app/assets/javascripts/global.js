@@ -39,12 +39,12 @@ function displayObjectiveables(objectiveables){
 	for (i = 0; i < objectiveables.length; i++){
 		var objectiveable = objectiveables[i].objectiveable;
 		// generate the link
-		var link = '<a href="' + objectiveables[i].url + '">' + objectiveable.lesson_title + '</a><br />';
+		var link = '<a href="' + objectiveables[i].url + '">' + objectiveables[i].link_title + '</a><br />';
 		result_html += link;
 	}
 
 	// display the HTML
-	$('#similarLessons').html(result_html);
+	$('#similarObjectiveables').html(result_html);
 }
 
 

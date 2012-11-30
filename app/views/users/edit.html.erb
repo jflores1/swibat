@@ -40,6 +40,58 @@
       <%= f.text_field :institution %>
     </div>
   </div>
+
+  <div class="control-group">
+    <%= f.label :professional_educations, "Education", :class => "control-label" %> 
+    <div class="controls">    
+      <table class="table">    
+        <tr><th>School</th><th>Degree</th><th>Fields of study</th><th>Enrollment date</th><th colspan="2">Graduation date</th></tr>
+          <%= f.fields_for :professional_educations do |professional_education| %>
+            <%= render "professional_education_fields", :f => professional_education %>
+          <% end %>      
+        <tr><td colspan="6"><%= link_to_add_fields "Add new school", f, :professional_educations %></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :specialties, "Specialties", :class => "control-label" %> 
+    <div class="controls">    
+      <table class="table">    
+        <tr><th>Specialty</th></tr>
+          <%= f.fields_for :specialties do |specialty| %>
+            <%= render "specialty_fields", :f => specialty %>
+          <% end %>      
+        <tr><td><%= link_to_add_fields "Add new specialty", f, :specialties %></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :professional_accomplishments, "Accomplishments", :class => "control-label" %> 
+    <div class="controls">    
+      <table class="table">    
+        <tr><th>Type</th><th>Name</th><th colspan="2">Year</th></tr>
+          <%= f.fields_for :professional_accomplishments do |professional_accomplishment| %>
+            <%= render "professional_accomplishment_fields", :f => professional_accomplishment %>
+          <% end %>      
+        <tr><td colspan="4"><%= link_to_add_fields "Add new accomplishment", f, :professional_accomplishments %></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :links, "Links", :class => "control-label" %> 
+    <div class="controls">    
+      <table class="table">    
+        <tr><th>Type</th><th colspan="2">URL</th></tr>
+          <%= f.fields_for :links do |link| %>
+            <%= render "link_fields", :f => link %>
+          <% end %>      
+        <tr><td colspan="3"><%= link_to_add_fields "Add new link", f, :links %></td></tr>
+      </table>
+    </div>
+  </div>
   
   <div class="control-group">
     <div class="controls">     

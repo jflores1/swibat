@@ -15,4 +15,8 @@
 
 class ProfessionalEducation < ActiveRecord::Base
   attr_accessible :additional_notes, :degree, :enroll_date, :field_of_study, :graduation_date, :school_name
+
+  belongs_to :user
+
+  validates :school_name, :presence => true
 end

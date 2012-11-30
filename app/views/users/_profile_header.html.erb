@@ -10,15 +10,44 @@
       <dt>School:</dt>
       <dd><%= @user.institution %></dd>
       <dt>Specialties:</dt>
-      <dd>This needs to be added to profile</dd>
+      <dd>       
+        <%= @user.specialties.collect{|sp| sp.name }.to_sentence %>
+      </dd>
       <dt>Education:</dt>
-      <dd>This needs to be added to profile</dd>
+      <dd>
+        <% @user.professional_educations.each do |education| %>
+          <div class="well">
+            <dl class="dl-horizontal">
+              <dt>School:</dt>
+              <dd><%= education.school_name %></dd>
+              <dt>Degree:</dt>
+              <dd><%= education.degree %></dd>
+              <dt>Fields of Study:</dt>
+              <dd><%= education.field_of_study %></dd>
+              <dt>Period:</dt>
+              <dd><%= education.enroll_date %> - <%= education.graduation_date %> </dd>
+            </dl>
+          </div>
+        <% end %>
+      </dd>
       <dt>Certifications:</dt>
-      <dd>This needs to be added to profile</dd>
+      <dd>
+        <% @certifications.each do |cert| %>
+          <%= cert.name %> (<%= cert.year %>)
+        <% end %>
+      </dd>
       <dt>Awards</dt>
-      <dd>This needs to be added to profile</dd>
+      <dd>
+        <% @awards.each do |award| %>
+          <%= award.name %> (<%= award.year %>)
+        <% end %>
+      </dd>
       <dt>Connect:</dt>
-      <dd>This needs to be added (Twitter, LinkedIn)</dd>
+      <dd>
+        <% @user.links.each do |link| %>
+          <%= link.link_type %>: <%= link.url %><br />
+        <% end %>
+      </dd>
     </dl>
     <%= display_friendship_actions @user if @user != current_user %>
     <%= link_to "Improve Your Profile", edit_user_path, :class => "btn btn-warning pull-left" if can? :update, @user %>

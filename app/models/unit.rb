@@ -44,4 +44,8 @@ class Unit < ActiveRecord::Base
     errors.add(:unit_status, "is not a valid status") unless VALID_STATUS.include? unit_status
   end
 
+  def to_s
+    self.unit_title
+  end
+
 end

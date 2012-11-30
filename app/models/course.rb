@@ -40,4 +40,8 @@ class Course < ActiveRecord::Base
   def has_valid_semester
     errors.add(:course_semester, "is not a valid semester") unless VALID_SEMESTER.include? course_semester
   end
+
+  def to_s
+    self.course_name
+  end
 end
