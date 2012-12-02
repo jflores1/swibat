@@ -1,5 +1,5 @@
 <tr class="field">	
 	<td>
-		<%= f.text_field :objective, :class => "objectiveName" %> <%= link_to_remove_fields "remove", f, true %>
+		<%= f.text_field :objective, :onblur => "retrieveSimilarObjectiveables('Unit')", :class => "objectiveName" %> <%= link_to_remove_fields "remove", f, true %>
 	</td>
 </tr>

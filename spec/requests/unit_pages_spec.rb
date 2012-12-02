@@ -81,8 +81,8 @@ describe "UnitPages" do
 
   def fill_out_form_with_valid_information
     fill_in "unit_title",           with: "A New Unit"
-    fill_in "expected_start_date",  with: "2013/01/01"
-    fill_in "expected_end_date",    with: "2013/01/10"
+    fill_in "unit_expected_start_date",  with: "2013/01/01"
+    fill_in "unit_expected_end_date",    with: "2013/01/10"
     fill_in "prior_knowledge",      with: ""
     fill_in "unit_status",          with: "Pending"
     fill_in 'unit_objectives_attributes_0_objective',               with: "An objective"
@@ -91,8 +91,8 @@ describe "UnitPages" do
 
   def fill_out_form_with_invalid_information
     fill_in "unit_title",           with: "A New Unit"
-    fill_in "expected_start_date",  with: "2013/01/01"
-    fill_in "expected_end_date",    with: "2013/01/10"
+    fill_in "unit_expected_start_date",  with: "2013/01/01"
+    fill_in "unit_expected_end_date",    with: "2013/01/10"
     fill_in "prior_knowledge",      with: ""
     fill_in "unit_status",          with: "Invalid Status"
   end

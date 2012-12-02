@@ -59,8 +59,8 @@ describe "LessonPages" do
         context "With resources" do
           it "should add a lesson with resources" do
             fill_in 'lesson_title',     				with: "My lsson"
-            fill_in 'lesson_start_date',    	 	with: "2011-01-01"
-            fill_in 'lesson_end_date',	    	 	with: "2012-01-01"
+            fill_in 'lesson_lesson_start_date', with: "2011-01-01"
+            fill_in 'lesson_lesson_end_date',	 	with: "2012-01-01"
             fill_in 'lesson_status', 					  with: "Started"
             fill_in 'prior_knowledge', 					with: "None"
             fill_in 'lesson_resources_attributes_0_name', 	with: "Lesson notes"
@@ -108,21 +108,21 @@ describe "LessonPages" do
   end
 
   def fill_in_form_with_valid_information
-    fill_in "lesson_title",       with: "A new Lesson"
-    fill_in "lesson_start_date",  with: "2013/01/01"
-    fill_in "lesson_end_date",    with: "2013/01/10"
-    fill_in "lesson_status",      with: "Pending"
-    fill_in "prior_knowledge",    with: "None required"
+    fill_in "lesson_title",               with: "A new Lesson"
+    fill_in "lesson_lesson_start_date",   with: "2013/01/01"
+    fill_in "lesson_lesson_end_date",     with: "2013/01/10"
+    fill_in "lesson_status",              with: "Pending"
+    fill_in "prior_knowledge",            with: "None required"
     fill_in 'lesson_objectives_attributes_0_objective',               with: "An objective"
     fill_in 'lesson_assessments_attributes_0_assessment_name',        with: "An assessment"
   end
 
   def fill_in_form_with_invalid_information
-    fill_in "lesson_title",       with: "A new Lesson"
-    fill_in "lesson_start_date",  with: "2013/01/01"
-    fill_in "lesson_end_date",    with: "2013/01/10"
-    fill_in "lesson_status",      with: "Invalid Status"
-    fill_in "prior_knowledge",    with: "None required"
+    fill_in "lesson_title",               with: "A new Lesson"
+    fill_in "lesson_lesson_start_date",   with: "2013/01/01"
+    fill_in "lesson_lesson_end_date",     with: "2013/01/10"
+    fill_in "lesson_status",              with: "Invalid Status"
+    fill_in "prior_knowledge",            with: "None required"
   end
 
 end

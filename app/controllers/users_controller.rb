@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-
+    @certifications = @user.professional_accomplishments.where(:accomplishment_type => "Certificate")
+    @awards = @user.professional_accomplishments.where(:accomplishment_type => "Award")
   	respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }

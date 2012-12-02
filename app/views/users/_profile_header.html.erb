@@ -3,28 +3,75 @@
 
   <div class="profile-summary">
     <h1><%= @user.full_name %></h1>
-    <h3>Profile Summary <span style="font-size:11px;">(if @user = current_user && @user.profile_summary.blank?, then a prompt to create one. Else, it's blank for @user != to current_user)</span></h3>
-
-
+    <h3>Profile Summary</h3>
+    <p> 
+      <% if !@user.profile_summary.blank? %>
+        <%= @user.profile_summary %>
+      <% else %>      
+        <%= link_to "Add profile summary", edit_user_path if can? :update, @user %>      
+      <% end %>
+    </p>
     <dl class="dl-horizontal">
       <dt>School:</dt>
       <dd><%= @user.institution %></dd>
-      <dt>Specialties:</dt>
-      <dd>This needs to be added to profile</dd>
-      <dt>Education:</dt>
-      <dd>This needs to be added to profile</dd>
-      <dt>Certifications:</dt>
-      <dd>This needs to be added to profile</dd>
-      <dt>Awards</dt>
-      <dd>This needs to be added to profile</dd>
-      <dt>Connect:</dt>
-      <dd>This needs to be added (Twitter, LinkedIn)</dd>
+      <% if @user.specialties.any? %>
+        <dt>Specialties:</dt>
+        <dd>       
+          <%= @user.specialties.collect{|sp| sp.name }.to_sentence %>
+        </dd>
+      <% end %>
+      <% if @user.professional_educations.any? %>
+        <dt>Education:</dt>
+        <dd>
+          <% @user.professional_educations.each do |education| %>
+            <div class="well">
+              <dl class="dl-horizontal">
+                <dt>School:</dt>
+                <dd><%= education.school_name %></dd>
+                <% if education.degree %>
+                  <dt>Degree:</dt>
+                  <dd><%= education.degree %></dd>
+                <% end %>
+                <% if education.field_of_study %>
+                  <dt>Fields of Study:</dt>
+                  <dd><%= education.field_of_study %></dd>
+                <% end %>
+                <% if education.enroll_date || education.graduation_date %>
+                  <dt>Period:</dt>
+                  <dd><%= education.enroll_date if education.enroll_date %> - <%= education.graduation_date if education.graduation_date %> </dd>
+                <% end %>
+              </dl>
+            </div>
+          <% end %>
+        </dd>
+      <% end %>
+      <% if @certifications.any? %>
+        <dt>Certifications:</dt>
+        <dd>
+          <% @certifications.each do |cert| %>
+            <%= cert.name %> <%= "(" + cert.year.to_s + ")" if cert.year %>
+          <% end %>
+        </dd>
+      <% end %>
+      <% if @awards.any? %>
+        <dt>Awards:</dt>
+        <dd>
+          <% @awards.each do |award| %>
+            <%= award.name %> <%= "(" + award.year.to_s + ")" if award.year %>
+          <% end %>
+        </dd>
+      <% end %>
+      <% if @user.links.any? %>
+        <dt>Connect:</dt>
+        <dd>
+          <% @user.links.each do |link| %>
+            <%= link.link_type %>: <%= link.url %><br />
+          <% end %>
+        </dd>
+      <% end %>
     </dl>
     <%= display_friendship_actions @user if @user != current_user %>
     <%= link_to "Improve Your Profile", edit_user_path, :class => "btn btn-warning pull-left" if can? :update, @user %>
 
   </div>
-
-
-
 </div>

@@ -19,6 +19,11 @@
 #  first_name             :string(255)
 #  last_name              :string(255)
 #  institution            :string(255)
+#  image_file_name        :string(255)
+#  image_content_type     :string(255)
+#  image_file_size        :integer
+#  image_updated_at       :datetime
+#  profile_summary        :text
 #
 
 require 'spec_helper'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129114212) do
+ActiveRecord::Schema.define(:version => 20121130105029) do
 
   create_table "assessments", :force => true do |t|
     t.string   "assessment_name"
@@ -99,6 +99,14 @@ ActiveRecord::Schema.define(:version => 20121129114212) do
 
   add_index "lessons", ["unit_id"], :name => "index_lessons_on_unit_id"
 
+  create_table "links", :force => true do |t|
+    t.string   "link_type"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "objectives", :force => true do |t|
     t.string   "objective"
     t.integer  "objectiveable_id"
@@ -109,6 +117,15 @@ ActiveRecord::Schema.define(:version => 20121129114212) do
 
   add_index "objectives", ["objectiveable_id", "objectiveable_type"], :name => "index_objectives_on_objectiveable_id_and_objectiveable_type"
 
+  create_table "professional_accomplishments", :force => true do |t|
+    t.string   "accomplishment_type"
+    t.string   "name"
+    t.integer  "year"
+    t.integer  "user_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
   create_table "professional_educations", :force => true do |t|
     t.string   "school_name"
     t.string   "degree"
@@ -118,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20121129114212) do
     t.text     "additional_notes"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "user_id"
   end
 
   create_table "professional_experiences", :force => true do |t|
@@ -149,6 +167,13 @@ ActiveRecord::Schema.define(:version => 20121129114212) do
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
+  end
+
+  create_table "specialties", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "subjects", :force => true do |t|
@@ -197,6 +222,7 @@ ActiveRecord::Schema.define(:version => 20121129114212) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "profile_summary"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
