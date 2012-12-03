@@ -1,15 +1,26 @@
-<!-- this is nested under div.application-center -->
-
 <div class="course-overview">
-  <header>
-    <h1>Active Courses</h1>
-    <% if current_user == @user %>
-        <%= link_to "Create a Course", new_user_course_path(current_user), class:"btn btn-warning" %>
-    <% end  %>
-
-    <% current_user.courses.each do |course| %>
-        <h2><%= course.course_name %></h2>
-
-    <% end %>
+  <header class="course-header">
+    <h3>Currently Teaching:</h3>
+    <div class="icon-group">
+      <a href="<%= new_user_course_path(current_user) %>" class="btn btn-warning"><i class="icon-plus icon-white"></i></a>
+    </div>
   </header>
+
+  <div class="accordion">
+    <% @user.courses.each do |course| %>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= course.id  %>"><%= course.course_name %></a><a class="btn btn-warning"><i class="icon-pencil icon-white"></i></a><a class="btn btn-warning"><i class="icon-trash icon-white"></i></a>
+      </div>
+      <% course.units.each do |unit| %>
+      <div id="collapse_<%= course.id %>" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <%= unit.unit_title %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
 </div>

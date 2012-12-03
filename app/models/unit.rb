@@ -25,11 +25,11 @@ class Unit < ActiveRecord::Base
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
   accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true
 
-  before_save do |unit|
-    unit.prior_knowledge = prior_knowledge.humanize
-    unit.unit_status = unit_status.capitalize
-    unit.unit_title = unit_title.titleize
-  end
+  #before_save do |unit|
+  #  unit.prior_knowledge = prior_knowledge.humanize
+  #  unit.unit_status = unit_status.capitalize
+  #  unit.unit_title = unit_title.titleize
+  #end
 
   VALID_STATUS = %w[Pending Started Complete]
 

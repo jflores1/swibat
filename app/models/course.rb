@@ -24,11 +24,11 @@ class Course < ActiveRecord::Base
 
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
 
-  before_save do |course|
-    course.course_name = course_name.titleize
-    course.course_semester = course_semester.capitalize
-    course.course_summary = course_summary.humanize
-  end
+  #before_save do |course|
+  #  course.course_name = course_name.titleize
+  #  course.course_semester = course_semester.capitalize
+  #  course.course_summary = course_summary.humanize
+  #end
 
   VALID_SEMESTER = %w[Fall Spring Summer Winter]
 
