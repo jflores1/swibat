@@ -1,4 +1,4 @@
-<div class="profile-header prettyprint">
+<div class="profile-header">
   <%= image_tag @user.image.url, class:"img-polaroid header-profile-picture", alt: "#{@user.full_name}" %>
 
   <div class="profile-summary">
@@ -71,7 +71,7 @@
       <% end %>
     </dl>
     <%= display_friendship_actions @user if @user != current_user %>
-    <%= link_to "Improve Your Profile", edit_user_path, :class => "btn btn-warning pull-left" if can? :update, @user %>
+    <%= link_to "Add Some Personality!", edit_user_path, :class => "btn btn-warning pull-left" if can? :update, @user %>
 
   </div>
 </div>

@@ -1,9 +1,6 @@
-<div class="course-overview">
+<div class="course-overview" xmlns="http://www.w3.org/1999/html">
   <header class="course-header">
-    <h3>Currently Teaching:</h3>
-    <div class="icon-group">
-      <a href="<%= new_user_course_path(current_user) %>" class="btn btn-warning"><i class="icon-plus icon-white"></i></a>
-    </div>
+    <h3>Currently Teaching:<span class="fold"></span></h3>
   </header>
 
   <div class="accordion">
@@ -21,6 +18,7 @@
       <% end %>
     </div>
     <% end %>
+    <a class="btn btn-warning" href="<%= new_user_course_path(current_user) %>"><i class="icon-plus icon-white"></i></a>
   </div>
 
 </div>
