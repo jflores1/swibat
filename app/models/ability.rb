@@ -29,7 +29,9 @@ class Ability
     if user.role == "admin"
       can :manage, :all
     elsif user.role == "teacher"
-      can :manage, [Course, Lesson, Unit]
+      can :manage, Course, user_id: user.id
+      can :manage, Lesson, user_id: user.id
+      can :manage, Unit, user_id: user.id
       
       # Can delete comment only if they have created it
       can :destroy, Comment, :user_id => user.id

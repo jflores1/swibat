@@ -18,4 +18,8 @@ module ApplicationHelper
     link_to_function(name, raw("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"), :class=>"btn")
   end
 
+  def current_user?
+    @user == current_user
+  end
+
 end

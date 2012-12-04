@@ -1,4 +1,4 @@
-<div class="course-overview" xmlns="http://www.w3.org/1999/html">
+<div class="course-overview prettyprint" xmlns="http://www.w3.org/1999/html">
   <header class="course-header">
     <h3>Currently Teaching:<span class="fold"></span></h3>
   </header>
@@ -7,7 +7,11 @@
     <% @user.courses.each do |course| %>
     <div class="accordion-group">
       <div class="accordion-heading">
-        <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= course.id  %>"><%= course.course_name %></a><a class="btn btn-warning"><i class="icon-pencil icon-white"></i></a><a class="btn btn-warning"><i class="icon-trash icon-white"></i></a>
+        <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= course.id  %>"><%= course.course_name %></a>
+            <% if current_user? %>
+                <a class="btn btn-warning"><i class="icon-pencil icon-white"></i></a>
+                <a class="btn btn-warning"><i class="icon-trash icon-white"></i></a>
+            <% end %>
       </div>
       <% course.units.each do |unit| %>
       <div id="collapse_<%= course.id %>" class="accordion-body collapse">
@@ -18,7 +22,39 @@
       <% end %>
     </div>
     <% end %>
-    <a class="btn btn-warning" href="<%= new_user_course_path(current_user) %>"><i class="icon-plus icon-white"></i></a>
+    <% if current_user? %>
+        <a class="btn btn-warning" href="<%= new_user_course_path(current_user) %>"><i class="icon-plus icon-white"></i></a>
+    <% end %>
   </div>
-
 </div>
+
+<div class="course-overview prettyprint" xmlns="http://www.w3.org/1999/html">
+  <header class="course-header">
+    <h3>Coming Up:<span class="fold"></span></h3>
+  </header>
+
+  <div class="accordion">
+    <% @user.courses.each do |course| %>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= course.id  %>"><%= course.course_name %></a>
+                <% if current_user? %>
+                    <a class="btn btn-warning"><i class="icon-pencil icon-white"></i></a>
+                    <a class="btn btn-warning"><i class="icon-trash icon-white"></i></a>
+                <% end %>
+          </div>
+          <% course.units.each do |unit| %>
+              <div id="collapse_<%= course.id %>" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  <%= unit.unit_title %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+    <% end %>
+    <% if current_user? %>
+        <a class="btn btn-warning" href="<%= new_user_course_path(current_user) %>"><i class="icon-plus icon-white"></i></a>
+    <% end %>
+  </div>
+</div>
+
