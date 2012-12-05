@@ -12,12 +12,33 @@ describe "UserPages" do
       before {visit user_path(@user)}
       it {page.should have_content(@user.full_name)}
       it {page.should have_selector("img[alt='Jesse Flores']")}
-      it {page.should have_content("Create a Course")}
+      it {page.should have_css('i.icon-plus')}
     end
 
     describe "Can see All Users" do
       before {visit users_path}
       it {page.should have_content "All Users"}
+    end
+
+    context "Can navigate to course pages" do
+
+      describe "Can add a new course" do
+        before {first('i.icon-plus').click}
+        it {current_path.should == new_user_course_path(@user)}
+      end
+
+      describe "Can edit a current course" do
+        before {first('i.icon-pencil').click}
+        it {current_path.should == edit_user_course_path(@user)}
+      end
+
+      describe "Can delete a course" do
+        before {first('icon-trash').click}
+        it "should decrease course by one" do
+
+        end
+      end
+
     end
 
   end

@@ -19,7 +19,6 @@ div.application-body{
     img.header-profile-picture {
       display: inline-block;
       float: left;
-      clear:right;
       margin: 2%;
       vertical-align: top;
       width: 12.82%; /*150px : 1170px*/
@@ -33,7 +32,7 @@ div.application-body{
       float:left;
       margin-top: 2%;
       margin-bottom: 2%;
-      width: 80%;
+      width: 75%;
 
       dl.dl-horizontal{
         width: 100%;
@@ -106,7 +105,8 @@ div.course-overview{
       margin-bottom:0.5em;
       position:relative;
       float:left;
-      width:70%;
+      width:50%;
+      //width:105%;
 
       -moz-box-shadow: inset 1px 1px 3px #495450;
       box-shadow: inset -1px -1px 3px #495450;
@@ -116,17 +116,27 @@ div.course-overview{
       border-radius: 2px;
     }
 
-    span.fold{
+    span.left-fold{
       width: 0;
       height: 0;
       line-height: 0;
       border-left:20px solid transparent;
-      border-top: 10px solid #495450;
-      top: 102.0125%;
+      border-top: 5px solid #495450;
+      top: 100%;
       left: 0;
       position: absolute;
-
     }
+
+    //span.right-fold{
+    //  width: 0;
+    //  height: 0;
+    //  line-height: 0;
+    //  border-right:20px solid transparent;
+    //  border-top: 5px solid #495450;
+    //  top: 100%;
+    //  right: 0;
+    //  position: absolute;
+    //}
 
   }
 
