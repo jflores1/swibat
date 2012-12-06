@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121130105029) do
+ActiveRecord::Schema.define(:version => 20121206142138) do
 
   create_table "assessments", :force => true do |t|
     t.string   "assessment_name"
@@ -52,6 +52,30 @@ ActiveRecord::Schema.define(:version => 20121130105029) do
 
   add_index "courses", ["user_id"], :name => "index_courses_on_user_id"
 
+  create_table "domain_grades", :force => true do |t|
+    t.integer  "educational_domain_id"
+    t.integer  "grade_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "educational_domains", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "educational_standards", :force => true do |t|
+    t.string   "name",               :null => false
+    t.text     "description"
+    t.string   "url"
+    t.integer  "standard_strand_id"
+    t.integer  "parent_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -62,6 +86,12 @@ ActiveRecord::Schema.define(:version => 20121130105029) do
 
   add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
   add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
+
+  create_table "grades", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "institutions", :force => true do |t|
     t.string   "name"
@@ -174,6 +204,13 @@ ActiveRecord::Schema.define(:version => 20121130105029) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "standard_strands", :force => true do |t|
+    t.string   "name",                  :null => false
+    t.integer  "educational_domain_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "subjects", :force => true do |t|
