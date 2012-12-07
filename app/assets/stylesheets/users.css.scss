@@ -2,11 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div.application-body{
-  width: 80%;
+  //width: 80%;
   margin: 0px auto;
 
   div.application-row{
-    width:100%;
+    //width:100%;
     float:left;
     margin: 0 0 2% 0;
   }
@@ -80,68 +80,47 @@ div.application-body{
 
 }
 
+div.user-form{
+
+}
+
 div.course-overview{
   float:left;
   width:100%;
   //border: solid 1px #e7e7e7;
   //padding: 5px;
-  margin: 2% 0;
+  margin: 1.5385em 0 0 0;//20px:13px
 
   header.course-header{
     float:left;
     width: 100%;
     clear:both;
+    border-bottom: 1px solid rgba(152, 161, 186, 0.5);
 
     h3{
-      background: #BAB098;
-      //background: -webkit-linear-gradient(top, #BAB198, #A09883);
-      color:#ffffff;
       font-size:1.538462em;
-      font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
-      text-shadow: 1px 1px #000;
-      padding: 0.556em 0em 0.556em 1.111em;//10px : 18px
-      margin-left:-4.25%;//-25.5px : 600px
-      margin-top:0.5em;//9px : 18px
-      margin-bottom:0.5em;
-      position:relative;
       float:left;
       width:50%;
-      //width:105%;
-
-      -moz-box-shadow: inset 1px 1px 3px #495450;
-      box-shadow: inset -1px -1px 3px #495450;
-
-      -moz-border-radius: 2px;
-      -webkit-border-radius: 2px;
-      border-radius: 2px;
-    }
-
-    span.left-fold{
-      width: 0;
-      height: 0;
-      line-height: 0;
-      border-left:20px solid transparent;
-      border-top: 5px solid #495450;
-      top: 100%;
-      left: 0;
-      position: absolute;
-    }
-
-    //span.right-fold{
-    //  width: 0;
-    //  height: 0;
-    //  line-height: 0;
-    //  border-right:20px solid transparent;
-    //  border-top: 5px solid #495450;
-    //  top: 100%;
-    //  right: 0;
-    //  position: absolute;
-    //}
+      margin-bottom: 0.25em; //05px:20px
+      }
 
   }
 
   div.accordion{
     clear:both;
+
+    .accordion-group, .accordion-heading{
+      border:none;
+
+      a.btn{
+        margin-top:6px;
+      }
+
+    }
+
+    .accordion-group:hover, .accordion-heading:hover{
+      background: rgba(152, 161, 186, 0.10);
+    }
 
     a.accordion-toggle{
       width:80%;

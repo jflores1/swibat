@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find(params[:id])
-    if @course.update_attributes!(params[:save_and_return]=>:course)
+    if @course.update_attributes!(params[:course])
       redirect_to user_path(current_user)
     elsif @course.update_attributes(params[course_to_unit: params[:course]])
       redirect_to edit_course_unit_path(@course)

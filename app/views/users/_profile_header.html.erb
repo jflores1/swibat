@@ -3,7 +3,6 @@
 
   <div class="profile-summary">
     <h1><%= @user.full_name %></h1>
-    <h3>Profile Summary</h3>
     <p> 
       <% if !@user.profile_summary.blank? %>
         <%= @user.profile_summary %>

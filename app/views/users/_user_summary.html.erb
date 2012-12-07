@@ -1,0 +1,48 @@
+<div class="course-overview" xmlns="http://www.w3.org/1999/html">
+  <header class="course-header">
+    <h3><%= @user.courses.count %> Courses </h3>
+    <% if current_user? %>
+        <a class="btn btn-warning pull-right" href="<%= new_user_course_path(current_user) %>"><i class="icon-plus icon-white"></i></a>
+    <% end %>
+  </header>
+
+  <div class="accordion">
+    <% @user.courses.each do |course| %>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= course.id  %>"><%= course.course_name %> (<%= pluralize((course.units.count), 'unit') %>) </a>
+            <% if current_user? %>
+            <a class="btn btn-mini btn-warning pull-right"><i class="icon-trash icon-white"></i></a>
+            <a class="btn btn-mini btn-warning pull-right" href="<%= edit_user_course_path(current_user, course) %>"><i class="icon-pencil icon-white"></i></a>
+            <% end %>
+      </div>
+      <% course.units.each do |unit| %>
+      <div id="collapse_<%= course.id %>" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <%= unit.unit_title %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="course-overview">
+  <header class="course-header">
+    <h3>Questions</h3>
+  </header>
+</div>
+
+<div class="course-overview">
+  <header class="course-header">
+    <h3>Answers</h3>
+  </header>
+</div>
+
+<div class="course-overview">
+  <header class="course-header">
+    <h3>Profile</h3>
+  </header>
+</div>
+
