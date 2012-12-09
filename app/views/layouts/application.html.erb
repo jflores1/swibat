@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield :title %> | Swibat </title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/themes/ui-lightness/jquery-ui.css">
-  
-  <%= javascript_include_tag "application" %>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <%= csrf_meta_tags %>
-  <%= analytics_init if Rails.env.production? %>
+  <%= render 'layouts/head_content' %>
 </head>
+
 <body class="padded plain-bg">
 <div id="main" role="main">
   <div class="content">
@@ -21,9 +15,23 @@
         </div><!--end of .span12 -->
       </div><!--end of .row-fluid -->
       <div class="container">
-
-        <%= yield %>
-
+        <div class="application-body container-fluid">
+          <header class="application-header">
+            <div class="row=fluid">
+              <div class="span12">
+                <%= yield(:application_nav) %>
+              </div>
+            </div>
+          </header>
+          <div class="application-row row-fluid">
+            <div class="span8">
+              <%= yield %>
+            </div>
+            <div class="span3">
+              <%= yield(:sidebar) %>
+            </div>
+          </div>
+        </div>
       </div><!--end of .container-->
     </div><!--end of .inner -->
     <div class="row-fluid">

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div.application-body{
-  //width: 80%;
+  width: 80%;
   margin: 0px auto;
 
   div.application-row{
@@ -46,6 +46,16 @@ div.application-body{
         }
       }
     }
+
+  }
+
+  div.invite-block{
+    background: rgba(234, 231, 216, 1);
+    text-align: center;
+    padding: 5%;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 
   }
 

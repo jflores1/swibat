@@ -1,12 +1,11 @@
-<div class="application-body container-fluid">
-  <div class="application-row row-fluid">
-    <div class="span8">
-      <%= render 'profile_header' %>
-      <%= render 'user_summary' %>
-    </div>
-    <div class="span4 prettyprint">
+<%= render 'profile_header' %>
+<%= render 'user_summary' %>
 
+<% content_for :sidebar do %>
+    <div class="invite-block">
+      <h2>Invite Colleagues</h2>
+      <p>Invite some friends and so forth</p>
+      <a class="btn btn-warning" href="#">Invite</a>
     </div>
 
-  </div>
-</div>
+<% end %>
