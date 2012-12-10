@@ -8,38 +8,25 @@
 <div id="main" role="main">
   <div class="content">
     <%= render 'layouts/navbar' %>
-    <div class="inner">
-      <div class="row-fluid">
+    <div class="inner" id="application-container">
+      <div class="row-fluid" id="flash-messages">
         <div class="span12">      
           <%= render 'layouts/messages' %>
         </div><!--end of .span12 -->
       </div><!--end of .row-fluid -->
-      <div class="container">
-        <div class="application-body container-fluid">
-          <header class="application-header">
-            <div class="row=fluid">
-              <div class="span12">
-                <%= yield(:application_nav) %>
-              </div>
-            </div>
-          </header>
+      <div class="application-body container">
+        <%= render 'layouts/application_nav' %>
           <div class="application-row row-fluid">
-            <div class="span8">
+            <div class="span9">
               <%= yield %>
             </div>
             <div class="span3">
               <%= yield(:sidebar) %>
             </div>
           </div>
-        </div>
       </div><!--end of .container-->
     </div><!--end of .inner -->
-    <div class="row-fluid">
-      <div class="span12">
-        <%= render 'layouts/footer' %>
-        <%= debug(params) if Rails.env.development? %>
-      </div>
-    </div>
+    <%= render 'layouts/footer' %>
   </div><!--end of .content> -->
 </div><!--end of .main> -->
 </body>

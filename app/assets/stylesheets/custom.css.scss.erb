@@ -12,6 +12,9 @@ body {
 
 //universal and refactored CSS - The CSS here is shared across controllers.
 
+/********************************
+Body CSS
+********************************/
 body.padded {
     padding-top: 60px;
 }
@@ -25,6 +28,9 @@ body.patterned {
     margin-bottom:55px;
 }
 
+/*******************************
+Navbar Modifications
+********************************/
 .navbar-inner{
   background-color: #e7e7e7;
   background-image: -webkit-linear-gradient(top, #5f6e68, #606E67);
@@ -47,26 +53,55 @@ body.patterned {
 
 }
 
-.navbar .brand {
-  color:rgba(255,255,255, 1);
-  font-family: 'Permanent Marker', cursive, "Helvetica Neue", sans-serif;
-  font-size: 3.75em; /*60px / 16px - containing element is .logo p */
-  clear:right;
+.navbar {
+
+    .brand {
+        color:rgba(255,255,255, 1);
+        font-family: 'Permanent Marker', cursive, "Helvetica Neue", sans-serif;
+        font-size: 3.75em; /*60px / 16px - containing element is .logo p */
+        clear:right;
+    }
+
+    .application-header-brand {
+        color:#5f6e68;
+        font-family: 'Permanent Marker', cursive, "Helvetica Neue", sans-serif;
+        font-size: 3.75em; /*60px / 16px - containing element is .logo p */
+    }
+
+    .nav > li > a {
+        color:#FFFFFF;
+        font-size: 1.23076923em; /*16px /13 */
+    }
+
+    .nav > li > a:hover {
+        background-color: rgba(234, 231, 216, 1);
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        color: rgba(96, 110, 103, 1);
+        text-shadow: 1px 1px #FFFFFF;
+    }
+
 }
 
-.navbar .nav > li > a {
-  color:#FFFFFF;
-  font-size: 1.23076923em; /*16px /13 */
+/*****************************
+Application Header
+*****************************/
+header#application-header {
+    margin-bottom: 2%;
+    border-bottom: 1px solid rgba(152, 161, 186, 0.5);
+
+    div.logo{
+        width: 40%;
+        float:left;
+    }
+
+    div.navdiv{
+        float:left;
+        width:58%;
+    }
 }
 
-.navbar .nav > li > a:hover {
-  background-color: rgba(234, 231, 216, 1);
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  color: rgba(96, 110, 103, 1);
-  text-shadow: 1px 1px #FFFFFF;
-}
 
 .no-decor{
   color:#000;
@@ -109,6 +144,12 @@ div.inner{
     max-width: 127.659574%; /*1200/940*/
     margin: 0 auto;
     padding: 0 4.166667%;
+}
+
+header.application-header{
+    float:left;
+
+
 }
 
 

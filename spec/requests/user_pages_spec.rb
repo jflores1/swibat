@@ -41,6 +41,14 @@ describe "UserPages" do
 
     end
 
+    context "User Edit Page" do
+      before {visit edit_user_path(@user)}
+      it {page.should have_selector("img[alt='Jesse Flores']")}
+      it {page.should have_selector("form")}
+
+
+    end
+
   end
 
   context "When not signed in" do

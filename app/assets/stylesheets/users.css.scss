@@ -53,9 +53,11 @@ div.application-body{
     background: rgba(234, 231, 216, 1);
     text-align: center;
     padding: 5%;
+
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
+
 
   }
 
@@ -90,10 +92,6 @@ div.application-body{
 
 }
 
-div.user-form{
-
-}
-
 div.course-overview{
   float:left;
   width:100%;
@@ -113,6 +111,9 @@ div.course-overview{
       width:50%;
       margin-bottom: 0.25em; //05px:20px
       }
+    h3.wide{
+      width:100%;
+    }
 
   }
 
@@ -136,8 +137,16 @@ div.course-overview{
       width:80%;
       display:inline-block;
     }
+  }
+
+  div#profile-tabs{
+
+    input[type="text"]{
+      width: 100% !important;
+    }
 
   }
+
 
 }
 

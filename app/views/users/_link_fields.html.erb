@@ -1,11 +1,13 @@
-<tr class="field">	
-	<td>
-		<%= f.select :link_type, {"Twitter Profile" => "Twitter Profile", "LinkedIn Profile" => "LinkedIn Profile", "Website" => "Website", "Other" => "Other" } %>    
-	</td>
-	<td>
-		<%= f.text_field :url %>    
-	</td>		
-	<td>
-		<%= link_to_remove_fields "remove", f, true %>
-	</td>
-</tr>
+<%= f.label :link_type, "Twitter" %>
+<%= f.hidden_field :link_type, "Twitter Profile" %>
+<%= f.text_field :url %>
+
+<%= f.label :link_type, "LinkedIn Page" %>
+<%= f.hidden_field :link_type, "LinkedIn Profile" %>
+<%= f.text_field :url %>
+
+<%= f.label :link_type, "Personal Website" %>
+<%= f.hidden_field :link_type, "Website" %>
+<%= f.text_field :url %>
+
+
