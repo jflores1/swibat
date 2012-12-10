@@ -22,18 +22,22 @@
         <%= f.label :last_name, "Last Name" %>
         <%= f.text_field :last_name %>
 
+        <%= f.label :image, "Your Profile Pic" %>
+        <%= f.file_field :image %>
+
         <%= f.label :institution, "Where You Work" %>
         <%= f.text_field :institution, placeholder: "Your School" %>
 
         <%= f.label :profile_summary, "Your Professional Bio (in 160 characters or less)" %>
         <%= f.text_area :profile_summary, size: "24x4" %>
 
+        <%= f.label :links, "Links" %>
         <%= f.fields_for :links do |link| %>
-            <%= render 'link_fields', f: link %>
+            <%= render 'link_fields', f: link %>            
         <% end %>
+        <%= link_to_add_fields "Add a new link", f, :links %>
 
-        <%= f.label :image, "Your Profile Pic" %>
-        <%= f.file_field :image %>
+       
 
       </div>
 

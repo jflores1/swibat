@@ -16,13 +16,13 @@
             <a class="btn btn-mini btn-warning pull-right" href="<%= edit_user_course_path(current_user, course) %>"><i class="icon-pencil icon-white"></i></a>
             <% end %>
       </div>
-      <% course.units.each do |unit| %>
       <div id="collapse_<%= course.id %>" class="accordion-body collapse">
+      <% course.units.each do |unit| %>      
         <div class="accordion-inner">
           <%= unit.unit_title %>
-        </div>
-      </div>
+        </div>      
       <% end %>
+      </div>
     </div>
     <% end %>
   </div>

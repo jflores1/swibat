@@ -29,12 +29,15 @@ Swibat::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
+  # Do not serve compiled assets in development
+  config.serve_static_assets = false
+
   # Do not compress assets
   config.assets.compress = false
 
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  #Default URL options
+    #Default URL options
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

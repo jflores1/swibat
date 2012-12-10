@@ -10,11 +10,11 @@ describe "Profile" do
 	describe "When on my profile page" do		
 		before {visit user_path @user}
 		it "should display edit profile button" do			
-			page.should have_xpath('//a[text() = "Improve Your Profile"]')
+			page.should have_xpath('//a[@href = "/users/1/edit"]')
 		end
 
 		it "clicking the button should take me to the edit user page" do			
-			page.find(:xpath, '//a[text() = "Improve Your Profile"]').click
+			page.find(:xpath, '//a[@href = "/users/1/edit"]').click
 			current_url.should == edit_user_url(@user)
 		end
 	end
@@ -32,7 +32,7 @@ describe "Profile" do
 				fill_in 'user_last_name',    	 with: "Georgiev"
 				fill_in 'user_institution',    with: "Jane Sandanski"
 				page.attach_file('user_image', Rails.root + 'spec/fixtures/files/user_image.jpg')
-				click_button "Update"			
+				click_button "commit"			
 				@user.reload
 				current_url.should == user_url(@user)	
 				@user.first_name.should == "Marjan"
@@ -47,7 +47,7 @@ describe "Profile" do
 				fill_in 'user_first_name',     with: ""
 				fill_in 'user_last_name',    	 with: ""
 				fill_in 'user_institution',    with: ""
-				click_button "Update"				
+				click_button "commit"				
 				page.should have_selector('#error_explanation')
 				page.should have_content("First name can't be blank")
 				page.should have_content("Last name can't be blank")

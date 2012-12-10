@@ -1,19 +1,19 @@
-<%= f.label :school_name, "School Name" %>
-<%= f.text_field :school_name %>
+<div class="field">
+	<%= f.label :school_name, "School Name" %>
+	<%= f.text_field :school_name %>
 
-<%= f.label :degree, "Degree(s) Awarded" %>
-<%= f.text_field :degree %>
+	<%= f.label :degree, "Degree(s) Awarded" %>
+	<%= f.text_field :degree %>
 
-<%= f.label :field_of_study, "What did you study?" %>
-<%= f.text_field :field_of_study %>
+	<%= f.label :field_of_study, "What did you study?" %>
+	<%= f.text_field :field_of_study %>
 
-<p>When were you there?</p>
-<%= f.label :enroll_date, "From:" %>
-<%= f.text_field :enroll_date %>
+	<p>When were you there?</p>
+	<%= f.label :enroll_date, "From:" %>
+	<%= f.text_field :enroll_date %>
 
-<%= f.label :graduation_date, "To: " %>
-<%= f.text_field :graduation_date %>
+	<%= f.label :graduation_date, "To: " %>
+	<%= f.text_field :graduation_date %>
 
-<%= link_to_remove_fields "Remove School", f, true %>
-
-
+	<%= link_to_remove_fields "Remove School", f, true %>
+</div>
