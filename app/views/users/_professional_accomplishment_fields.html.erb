@@ -1,14 +1,12 @@
-<tr class="field">	
-	<td>
+<div class="field">	
+		<%= f.label :accomplishment_type %>
 		<%= f.select :accomplishment_type, {"Certificate" => "Certificate", "Award" => "Award" } %>    
-	</td>
-	<td>
+		
+		<%= f.label :name %>
 		<%= f.text_field :name %>    
-	</td>		
-	<td>
+		
+		<%= f.label :year %>
 		<%= f.text_field :year, :class => 'input-small' %>    
-	</td>	
-	<td>
-		<%= link_to_remove_fields "remove", f, true %>
-	</td>
-</tr>
+	
+		<%= link_to_remove_fields "remove", f, true %>	
+</div>

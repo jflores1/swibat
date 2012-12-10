@@ -32,7 +32,7 @@ describe "Profile" do
 				fill_in 'user_last_name',    	 with: "Georgiev"
 				fill_in 'user_institution',    with: "Jane Sandanski"
 				page.attach_file('user_image', Rails.root + 'spec/fixtures/files/user_image.jpg')
-				click_button "commit"			
+				click_button "Save Changes"			
 				@user.reload
 				current_url.should == user_url(@user)	
 				@user.first_name.should == "Marjan"
@@ -47,7 +47,7 @@ describe "Profile" do
 				fill_in 'user_first_name',     with: ""
 				fill_in 'user_last_name',    	 with: ""
 				fill_in 'user_institution',    with: ""
-				click_button "commit"				
+				click_button "Save Changes"				
 				page.should have_selector('#error_explanation')
 				page.should have_content("First name can't be blank")
 				page.should have_content("Last name can't be blank")

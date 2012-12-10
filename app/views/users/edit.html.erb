@@ -15,6 +15,17 @@
 
   <div class="span12">
     <div class="tab-content" id="profile-tabs">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being updated:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="tab-pane active" id="personal">
         <%= f.label :first_name, "First Name" %>
         <%= f.text_field :first_name %>
@@ -25,30 +36,27 @@
         <%= f.label :image, "Your Profile Pic" %>
         <%= f.file_field :image %>
 
+        <%= f.label :links, "Links" %>
+        <%= f.fields_for :links do |link| %>
+            <%= render 'link_fields', f: link %>            
+        <% end %>
+        <%= link_to_add_fields "Add a new link", f, :links %>
+      </div>
+
+      <div class="tab-pane" id="professional">
         <%= f.label :institution, "Where You Work" %>
         <%= f.text_field :institution, placeholder: "Your School" %>
 
         <%= f.label :profile_summary, "Your Professional Bio (in 160 characters or less)" %>
         <%= f.text_area :profile_summary, size: "24x4" %>
 
-        <%= f.label :links, "Links" %>
-        <%= f.fields_for :links do |link| %>
-            <%= render 'link_fields', f: link %>            
+        <%= f.fields_for :professional_accomplishments do |professional_accomplishment| %>
+              <%= render 'professional_accomplishment_fields', f: professional_accomplishment %>
         <% end %>
-        <%= link_to_add_fields "Add a new link", f, :links %>
-
-       
-
-      </div>
-
-      <div class="tab-pane" id="professional">
-
-
-
+        <%= link_to_add_fields "Add a new accomplishment", f, :professional_accomplishments %>
       </div>
 
       <div class="tab-pane" id="educational">
-
         <%= f.fields_for :professional_educations do |professional_education| %>
               <%= render 'professional_education_fields', f: professional_education %>
         <% end %>
