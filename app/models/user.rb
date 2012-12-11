@@ -67,6 +67,7 @@ class User < ActiveRecord::Base
   validate :valid_role
   validates_uniqueness_of :email, case_sensitive: false
   validates :first_name, :last_name, :role, :institution, :email, presence: true
+  validates :profile_summary, length:{maximum: 160}, allow_blank: true
   validates_attachment_size :image, :less_than => 2.megabytes
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 

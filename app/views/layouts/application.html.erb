@@ -9,18 +9,18 @@
   <div class="content">
     <%= render 'layouts/navbar' %>
     <div class="inner" id="application-container">
-      <div class="row-fluid" id="flash-messages">
-        <div class="span12">      
-          <%= render 'layouts/messages' %>
-        </div><!--end of .span12 -->
-      </div><!--end of .row-fluid -->
       <div class="application-body container">
+        <div class="row-fluid" id="flash-messages">
+          <div class="span12">
+            <%= render 'layouts/messages' %>
+          </div><!--end of .span12 -->
+        </div><!--end of .row-fluid -->
         <%= render 'layouts/application_nav' %>
           <div class="application-row row-fluid">
             <div class="span9">
               <%= yield %>
             </div>
-            <div class="span3">
+            <div class="span3" id="sidebar">
               <%= yield(:sidebar) %>
             </div>
           </div>

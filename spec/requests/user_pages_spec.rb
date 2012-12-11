@@ -46,7 +46,33 @@ describe "UserPages" do
       it {page.should have_selector("img[alt='Jesse Flores']")}
       it {page.should have_selector("form")}
 
+      describe "can update profile information" do
+        let(:save){"Save Changes"}
 
+        context "Users's personal information" do
+          it {can_update_form_field("first_name", "Dave")}
+          it {can_update_form_field("last_name", "Matthews")}
+          it {can_update_form_field("institution", "Music Academy")}
+          it {can_update_form_field("profile_summary", "Arbitrarily long text")}
+        end
+
+        context "User's educational information" do
+          before{click_link "Your Education"}
+          it {can_update_form_field("user_professional_educations_attributes_0_school_name", "Juliard Music Academy")}
+          xit {can_update_form_field("user_professional_educations_attributes_0_degree", "Masters of Music")}
+          xit {can_update_form_field("user_professional_educations_attributes_0_field_of_study", "Music")}
+          xit {can_update_form_field("user_professional_educations_attributes_0_enroll_date", "May 2011")}
+          xit {can_update_form_field("user_professional_educations_attributes_0_graduation_date", "June 2012")}
+        end
+
+        context "User's professional information" do
+          before {click_link "Your Work"}
+          it {can_update_form_field("name", "Specialty")}
+          it {can_update_select_field("Certification", "accomplishment_type" )}
+          it {can_update_form_field("year", "1996")}
+          it {can_update_form_field("name", "Grammy")}
+        end
+      end
     end
 
   end
@@ -142,6 +168,19 @@ describe "UserPages" do
 
     end
 
+  end
+
+  private
+  def can_update_form_field(form_field, form_text)
+    fill_in "#{form_field}", with: "#{form_text}"
+    click_button save
+    expect(page).to have_text("#{form_text}")
+  end
+
+  def can_update_select_field(form_option, from_field)
+    select "#{form_option}", from: "#{from_field}"
+    click_button save
+    expect(page).to have_text("#{form_option}")
   end
 
 

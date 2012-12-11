@@ -1,5 +1,8 @@
-<tr class="field">	
-	<td>
-		<%= f.text_field :name %> <%= link_to_remove_fields "remove", f, true %>
-	</td>
-</tr>
+<div class="input-append">
+  <%= f.text_field :name, placeholder: "Add a specialty", class:"span6" %>
+  <button class="btn" type="button"><i class="icon-plus"></i></button>
+  <button class="btn" type="button"><i class="icon-trash"></i></button>
+
+</div>
+
+<%= link_to_remove_fields "remove", f, true %>
