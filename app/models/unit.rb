@@ -40,6 +40,10 @@ class Unit < ActiveRecord::Base
   validates :unit_status, presence: true
   validates :unit_title, presence: true
 
+  def user
+    self.course.user
+  end
+
   def valid_unit_status
     errors.add(:unit_status, "is not a valid status") unless VALID_STATUS.include? unit_status
   end

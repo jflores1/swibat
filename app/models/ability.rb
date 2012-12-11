@@ -29,9 +29,15 @@ class Ability
     if user.role == "admin"
       can :manage, :all
     elsif user.role == "teacher"
-      can :manage, Course, user_id: user.id
-      can :manage, Lesson, user_id: user.id
-      can :manage, Unit, user_id: user.id
+      can :manage, Course do |course|
+        course.new_record? || course.try(:user).try(:id) == user.id
+      end
+      can :manage, Lesson do |lesson|
+        lesson.new_record? || lesson.try(:user).try(:id) == user.id
+      end 
+      can :manage, Unit do |unit|
+        unit.new_record? || unit.try(:user).try(:id) == user.id
+      end
       
       # Can delete comment only if they have created it
       can :destroy, Comment, :user_id => user.id
@@ -43,7 +49,12 @@ class Ability
       end
 
       can :update, User, :id => user.id
+
+      # TODO: Perhaps 
       can :read, User
+      can :read, Course
+      can :read, Lesson
+      can :read, Unit
 
     elsif user.role == "school_admin"
       can :read, :all

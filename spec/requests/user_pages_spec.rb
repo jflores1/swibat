@@ -24,7 +24,8 @@ describe "UserPages" do
 
       describe "Can add a new course" do
         before {first('i.icon-plus').click}
-        it {current_path.should == new_user_course_path(@user)}
+
+        it {page.current_path.should == new_user_course_path(@user)}
       end
 
       describe "Can edit a current course" do

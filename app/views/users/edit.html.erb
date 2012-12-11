@@ -15,6 +15,17 @@
 
   <div class="span12">
     <div class="tab-content" id="profile-tabs">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being updated:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="tab-pane active" id="personal">
         <%= f.label :first_name, "First Name" %>
         <%= f.text_field :first_name, id:"first_name", class:"span6" %>
@@ -22,6 +33,7 @@
         <%= f.label :last_name, "Last Name" %>
         <%= f.text_field :last_name, id:"last_name", class:"span6" %>
 
+<<<<<<< HEAD
         <%= f.label :institution, "Where You Work" %>
         <%= f.text_field :institution, placeholder: "Your School", id:"institution", class:"span6" %>
 
@@ -57,7 +69,6 @@
       </div>
 
       <div class="tab-pane" id="educational">
-
         <%= f.fields_for :professional_educations do |professional_education| %>
               <%= render 'professional_education_fields', f: professional_education %>
         <% end %>
