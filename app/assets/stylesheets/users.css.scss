@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div.application-body{
-  width: 80%;
+  width: 95%;
   margin: 0px auto;
 
   div.application-row{
@@ -14,7 +14,8 @@ div.application-body{
   div.profile-header{
     width: 100%;
     float:left;
-    background: rgba(152, 161, 186, 0.25);
+    background: rgba(152, 161, 186, 0.1);
+    //background: #ffffff;
 
     img.header-profile-picture {
       display: inline-block;
@@ -28,10 +29,16 @@ div.application-body{
       box-shadow: 2px 2px 10px rgb(1, 21, 38);
     }
 
+    h2{
+      font-family: 'Permanent Marker', cursive, "Helvetica Neue", sans-serif;
+      //color: rgb(164, 50, 32);
+    }
+
     div.profile-summary{
       float:left;
       margin-top: 2%;
       margin-bottom: 2%;
+      margin-left: 2%;
       width: 75%;
 
       dl.dl-horizontal{
@@ -39,7 +46,7 @@ div.application-body{
 
         dt {
           text-align: left;
-          width: 12%;
+          width: 20%;
         }
         dd {
           margin-left: 0px;
@@ -72,25 +79,48 @@ div.application-body{
     font-size: 1.23em;
   }
 
-  div.application-left-sidebar{
-    width: 31.303419%;
-    float: left;
+  form.profile-form{
+    //display:block;
+    //float:left;
 
-  }
 
-  div.application-center{
-    width: 66%;
-    float: left;
+    label{
+      margin-top: 1.1em;
+    }
 
-  }
+    ul.nav-pills{
 
-  div.application-right-sidebar{
-    width: 20%;
-    float: right;
+      a{
+        color: #50596D;
+      }
 
+      .active > a, .active > a:hover{
+        background-color: rgb(164, 50, 32);
+        color: #ffffff;
+      }
+
+    }
+
+    ul.nav, input[type="text"], textarea{
+      font-size:1.1em;
+    }
+
+    div.link-fields{
+      .span2 {
+        display:inline-block;
+        float:left;
+      }
+
+      .input-append{
+        float:left;
+        margin-left: 2%;
+      }
+    }
   }
 
 }
+
+
 
 div.course-overview{
   float:left;
@@ -104,6 +134,7 @@ div.course-overview{
     width: 100%;
     clear:both;
     border-bottom: 1px solid rgba(152, 161, 186, 0.5);
+    color: rgb(164, 50, 32);
 
     h3{
       font-size:1.538462em;
@@ -119,6 +150,16 @@ div.course-overview{
 
   div.accordion{
     clear:both;
+
+    .accordion-heading {
+
+      a{
+        font-size: 1.2308em; //16px:13px
+        color: #50596D;
+        text-decoration: none;
+      }
+
+    }
 
     .accordion-group, .accordion-heading{
       border:none;
@@ -139,14 +180,7 @@ div.course-overview{
     }
   }
 
-  div#profile-tabs{
-
-    input[type="text"]{
-      width: 100% !important;
-    }
-
-  }
-
-
 }
+
+
 

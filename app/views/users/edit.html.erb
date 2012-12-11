@@ -3,13 +3,13 @@
   <%= image_tag @user.image.url, class:"img-polaroid header-profile-picture", alt: "#{@user.full_name}" %>
 </div>
 <div class="span9 bordered">
-  <%= form_for(@user, :html => {:multipart => true}) do |f| %>
+  <%= form_for(@user, :html => {multipart: true, class:"profile-form"}) do |f| %>
   <div class="span12">
     <ul class="nav nav-pills">
       <li class="active"><a href="#personal" data-toggle="tab">You</a></li>
       <li><a href="#professional" data-toggle="tab">Your Work</a></li>
       <li><a href="#educational" data-toggle="tab">Your Education</a></li>
-      <li class="pull-right"><%= f.submit "Save Changes", :class => "btn btn-primary" %></li>
+      <li><%= f.submit "Save Changes", :class => "btn btn-monkey" %></li>
     </ul>
   </div>
 
@@ -28,39 +28,53 @@
       <% end %>
       <div class="tab-pane active" id="personal">
         <%= f.label :first_name, "First Name" %>
-        <%= f.text_field :first_name %>
+        <%= f.text_field :first_name, id:"first_name", class:"span6" %>
 
         <%= f.label :last_name, "Last Name" %>
-        <%= f.text_field :last_name %>
+        <%= f.text_field :last_name, id:"last_name", class:"span6" %>
+
+        <%= f.label :institution, "Where You Work" %>
+        <%= f.text_field :institution, placeholder: "Your School", id:"institution", class:"span6" %>
+
+        <%= f.label :profile_summary, "Your Professional Bio (in 160 characters or less)" %>
+        <%= f.text_area :profile_summary, size: "24x4", id:"profile_summary", class:"span6" %>
 
         <%= f.label :image, "Your Profile Pic" %>
         <%= f.file_field :image %>
 
-        <%= f.label :links, "Links" %>
+        <%= f.label :links, "How You Connect" %>
         <%= f.fields_for :links do |link| %>
             <%= render 'link_fields', f: link %>            
         <% end %>
-        <%= link_to_add_fields "Add a new link", f, :links %>
+        <div class="span12 no-left-margin">
+          <%= link_to_add_fields "Add Connections", f, :links %>
+        </div>
+
+
       </div>
 
       <div class="tab-pane" id="professional">
-        <%= f.label :institution, "Where You Work" %>
-        <%= f.text_field :institution, placeholder: "Your School" %>
+        <label>What are your core skills?</label>
+        <%= f.fields_for :specialties do |specialty| %>
+              <%= render 'specialty_fields', f: specialty %>
+        <% end %>
+        <%= link_to_add_fields "Add a skill", f, :specialties %>
 
-        <%= f.label :profile_summary, "Your Professional Bio (in 160 characters or less)" %>
-        <%= f.text_area :profile_summary, size: "24x4" %>
-
+        <label>Have you completed any certifications or won any awards?</label>
         <%= f.fields_for :professional_accomplishments do |professional_accomplishment| %>
               <%= render 'professional_accomplishment_fields', f: professional_accomplishment %>
         <% end %>
-        <%= link_to_add_fields "Add a new accomplishment", f, :professional_accomplishments %>
+        <%= link_to_add_fields "Add a certification or award", f, :professional_accomplishments %>
       </div>
 
       <div class="tab-pane" id="educational">
         <%= f.fields_for :professional_educations do |professional_education| %>
               <%= render 'professional_education_fields', f: professional_education %>
         <% end %>
-        <%= link_to_add_fields "Add a new school", f, :professional_educations %>
+        <div class="span12 no-left-margin">
+          <%= link_to_add_fields "Add a new school", f, :professional_educations %>
+        </div>
+
       </div>
     </div>
   </div>

@@ -13,6 +13,16 @@ body {
 //universal and refactored CSS - The CSS here is shared across controllers.
 
 /********************************
+Variables
+********************************/
+//Fonts
+$header-gradient-dark-color: #2B2F3A;
+$header-gradient-light-color: #50596D;
+
+//Padding and Such
+$page-width: 980px;
+
+/********************************
 Body CSS
 ********************************/
 body.padded {
@@ -28,12 +38,20 @@ body.patterned {
     margin-bottom:55px;
 }
 
+/********************************
+Layout
+********************************/
+div#sidebar{
+    //background: rgba(152, 161, 186, 0.1);
+}
+
 /*******************************
 Navbar Modifications
 ********************************/
 .navbar-inner{
   background-color: #e7e7e7;
-  background-image: -webkit-linear-gradient(top, #5f6e68, #606E67);
+  //background-image: -webkit-linear-gradient(top, #5f6e68, #606E67);
+  background-image: -webkit-linear-gradient(top, #50596D, #2B2F3A );
 
     .fixed-header-logo {
         width: 45%;
@@ -53,7 +71,7 @@ Navbar Modifications
 
 }
 
-.navbar {
+header.navbar {
 
     .brand {
         color:rgba(255,255,255, 1);
@@ -63,23 +81,58 @@ Navbar Modifications
     }
 
     .application-header-brand {
-        color:#5f6e68;
+        //color:$header-gradient-dark-color;
+        color: rgb(164, 50, 32);
         font-family: 'Permanent Marker', cursive, "Helvetica Neue", sans-serif;
-        font-size: 3.75em; /*60px / 16px - containing element is .logo p */
+        font-size: 2.5em; /*26px / 13px*/
+        text-decoration:none;
     }
 
-    .nav > li > a {
-        color:#FFFFFF;
-        font-size: 1.23076923em; /*16px /13 */
+    nav.application-nav {
+        .nav > li > a{
+            color:#ffffff;
+            font-size: 1em;
+            padding: 5px;
+            background: rgb(221, 98, 75);
+            margin: 0px 3px 5px 3px;
+
+            background-image: -webkit-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+            background-image: -moz-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+            background-image: -ms-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+            background-image: linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+
+            border-bottom: 1px solid rgb(164, 50, 32);
+            border-left: 1px solid rgb(164, 50, 32);
+            border-right: 1px solid rgb(164, 50, 32);
+            border-top: 1px solid rgb(164, 50, 32);
+        }
+
+        .nav >li > a:hover {
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+            background: #EF492F;
+            background: #B13623;
+        }
     }
 
-    .nav > li > a:hover {
-        background-color: rgba(234, 231, 216, 1);
-        -moz-border-radius: 4px;
-        -webkit-border-radius: 4px;
-        border-radius: 4px;
-        color: rgba(96, 110, 103, 1);
-        text-shadow: 1px 1px #FFFFFF;
+    nav.navmenu-chalkboard {
+        .nav > li > a {
+            color:#FFFFFF;
+            font-size: 1.23076923em; /*16px /13*/
+        }
+
+        .nav > li > a:hover {
+            background-color: rgba(234, 231, 216, 1);
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            color: $header-gradient-dark-color;
+            text-shadow: 1px 1px #FFFFFF;
+        }
+
     }
 
 }
@@ -141,9 +194,15 @@ div.prettyprint{
 }
 
 div.inner{
-    max-width: 127.659574%; /*1200/940*/
+    //max-width: 127.659574%; /*1200/940*/
+    //max-width:1010px;
+    max-width:$page-width;
+    background:#ffffff;
     margin: 0 auto;
-    padding: 0 4.166667%;
+
+    box-shadow:
+        5px 0 5px -5px $header-gradient-dark-color,
+        -5px 0 5px -5px $header-gradient-dark-color;
 }
 
 header.application-header{
@@ -153,8 +212,9 @@ header.application-header{
 }
 
 
-
-//Formatting and Fonts
+/**************************
+Position, Formatting, Fonts
+***************************/
 .highlight {
     background: #f7f7f9;
 }
@@ -183,6 +243,40 @@ header.application-header{
 .col8{
     width:65.566665%;
     margin-right:1%;
+}
+
+.no-left-margin{
+    margin-left:0 !important;
+}
+
+.btn-monkey {
+    background-color: rgb(221, 98, 75);
+    background-image: -moz-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+    background-image: -ms-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(221, 98, 75)), to(rgb(164, 50, 32)));
+    background-image: -webkit-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+    background-image: -o-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+    background-image: linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDD624B', endColorstr='#FFA43220', GradientType=0);
+    border-color: rgb(164, 50, 32) rgb(164, 50, 32) #B13623;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fadein(rgba(0, 0, 0, 0.1), 15%);
+    *background-color: rgb(164, 50, 32);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+.btn-monkey:hover, .btn-monkey:active, .btn-monkey.active, .btn-monkey.disabled, .btn-monkey[disabled]{
+    background: #EF492F;
+    background: #B13623;
+}
+
+.btn-monkey, .btn-monkey:hover{
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-monkey.active{
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /*******************************************

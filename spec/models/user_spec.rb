@@ -70,6 +70,21 @@ describe User do
       it {should be_valid}
     end
 
+    context "Profile Summary" do
+      describe "when profile summary is blank" do
+        before {user.profile_summary = ""}
+        it {should be_valid}
+        it {expect {user.save!}.to_not raise_error(ActiveRecord::RecordInvalid)}
+      end
+
+      describe "when profile summary is too long" do
+        before {user.profile_summary = "a"*200}
+        it {should_not be_valid}
+        it {expect {user.save!}.to raise_error(ActiveRecord::RecordInvalid)}
+      end
+
+    end
+
   end
 
   context "When creating a course" do

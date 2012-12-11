@@ -1,6 +1,7 @@
 ---
 bg-blueprint.jpg: bg-blueprint-f9e2ba1625186d4c7709760abf5a73f5.jpg
 bg-chalkboard.png: bg-chalkboard-ef7417ac667d2e64bd768d40976f5fdd.png
+bg-noisy-blue.png: bg-noisy-blue-d9afe3fc1073f2423d523e7df47fc091.png
 bg-patterned.jpg: bg-patterned-79a654edf3660c1dd305c4f3b20aa1ae.jpg
 image-profile-sample.jpg: image-profile-sample-5c2c5728ff4a24a0eceb2152a4bf1693.jpg
 img-coming-soon.png: img-coming-soon-d67f53a7886ca9bdc55f303bb1061698.png
@@ -8,7 +9,7 @@ img-curriculum-map.png: img-curriculum-map-008574b56de6abc671b62c31ebc7ff90.png
 img-set-sles.png: img-set-sles-f64653973fcb9e144cc9c35f12d2a86b.png
 img-teacher-development-plan.png: img-teacher-development-plan-d4ff37f30682c897e43c378b238bbbf6.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
-application.js: application-8b3b690ec02e10ad5f48df3e5a2898db.js
-application.css: application-66574f8b34fc38780a532f4712c8c881.css
+application.js: application-8797975f73ce5ca715c7d8e5442f0423.js
+application.css: application-1d481ac063365bedefe8d51ab454c539.css
 glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
 glyphicons-halflings.png: glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png

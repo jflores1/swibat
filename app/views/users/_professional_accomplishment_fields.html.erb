@@ -1,12 +1,10 @@
-<div class="field">	
-		<%= f.label :accomplishment_type %>
-		<%= f.select :accomplishment_type, {"Certificate" => "Certificate", "Award" => "Award" } %>    
-		
-		<%= f.label :name %>
-		<%= f.text_field :name %>    
-		
-		<%= f.label :year %>
-		<%= f.text_field :year, :class => 'input-small' %>    
-	
-		<%= link_to_remove_fields "remove", f, true %>	
+<div class="input-append">
+  <%= f.select :accomplishment_type, {"Certification" => "Certificate", "Award" => "Award"}, {}, class:"span3" %>
+  <%= f.text_field :year, placeholder: "when?", class:"span3"%>
+  <%= f.text_field :name, placeholder: "what was it?", class:"span4" %>
+  <button class="btn" type="button"><i class="icon-plus"></i></button>
+  <button class="btn" type="button"><i class="icon-trash"></i></button>
 </div>
+
+
+<%= link_to_remove_fields "remove", f, true %>
