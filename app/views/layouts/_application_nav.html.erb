@@ -14,7 +14,9 @@
             <div class="nav-collapse collapse">
               <nav class="application-nav">
                 <ul class="nav nav-pills">
-                  <li><%= link_to "Your Profile", user_path(current_user) %></li>
+                  <% if signed_in? %>
+                        <li><%= link_to "Your Profile", user_path(current_user) %></li>
+                  <% end %>
                   <li class="offset1"><%= link_to "Courses", "#"%></li>
                   <li><%= link_to "Ask a Question", "#" %></li>
                 </ul>
