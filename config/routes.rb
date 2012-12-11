@@ -1,4 +1,8 @@
 Swibat::Application.routes.draw do
+  get "answers/new"
+
+  get "answers/edit"
+
   get "comments/create"
 
   get "comments/destroy"
@@ -14,6 +18,11 @@ Swibat::Application.routes.draw do
   match 'request-trial',  to: 'leads#new', as: "request_trial"
 
   get 'objectives/similar_objectiveables'
+
+  resources :questions do
+    resources :answers, :except => [:show, :index]
+  end
+
   resources :leads
 
   resources :users do

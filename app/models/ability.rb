@@ -38,6 +38,13 @@ class Ability
       can :manage, Unit do |unit|
         unit.new_record? || unit.try(:user).try(:id) == user.id
       end
+      can :manage, Question do |question|
+        question.new_record? || question.try(:user).try(:id) == user.id
+      end
+      can :manage, Answer do |answer|
+        answer.new_record? || answer.try(:user).try(:id) == user.id
+      end
+
       
       # Can delete comment only if they have created it
       can :destroy, Comment, :user_id => user.id
@@ -50,11 +57,12 @@ class Ability
 
       can :update, User, :id => user.id
 
-      # TODO: Perhaps 
       can :read, User
       can :read, Course
       can :read, Lesson
       can :read, Unit
+      can :read, Question
+      can :read, Answer
 
     elsif user.role == "school_admin"
       can :read, :all

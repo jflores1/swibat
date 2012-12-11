@@ -1,0 +1,8 @@
+<h1>Questions</h1>
+
+<% @questions.each do |question| %>
+	<div>
+		<h2><%= link_to question.title, question %></h2>
+		<span>Asked by <%= link_to question.user.full_name, question.user %> <%= time_ago_in_words question.created_at %> ago</span>
+	</div>
+<% end %>

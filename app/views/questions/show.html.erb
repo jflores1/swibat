@@ -1,0 +1,55 @@
+<% if can? :manage, @question %>
+	<div class="actions pull-right">
+		<%= link_to("Edit", edit_question_path(@question), class:"btn") %>
+		<%= link_to("Delete", @question, :method => "delete", class:"btn") %>
+	</div>
+<% end %>
+
+<h1><%= @question.title %></h1>
+<span>Asked by <%= link_to @question.user.full_name, @question.user %> <%= time_ago_in_words @question.created_at %> ago</span>
+
+<div>
+	<%= raw parse_text @question.text %>
+</div>
+<hr />
+
+<h2>Answers</h2>
+<% if @question.answers.any? %>
+	<% @question.answers.each do |answer| %>
+		<div>
+			<span>Answered by <%= link_to answer.user.full_name, answer.user %> <%= time_ago_in_words answer.created_at %> ago</span>
+			<% if can? :manage, answer %>
+				<span class="actions">
+					<%= link_to "Edit", edit_question_answer_path(answer.question, answer) %> | 
+					<%= link_to "Delete", [@question, answer], :method => "delete" %>
+				</span>
+			<% end %>
+			<div>
+				<%= raw parse_text answer.text %>	
+			</div>
+		</div>
+	<% end %>
+<% else %>
+	<i>This question doesn't have any answers yet.</i>
+<% end %>
+<hr />
+
+<h2>Submit an answer</h2>
+<div>
+	<%= form_for [@question, @question.answers.build] do |answer| %>		
+
+	  <div class="control-group">
+	    <%= answer.label :text, :class => "control-label" %> 
+	    <div class="controls">
+	      <%= answer.text_area :text %>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+	    <div class="controls">     
+	      <%= answer.submit "Submit Answer" %>
+	    </div>
+	  </div>
+
+	<% end %>
+</div>

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207054629) do
+ActiveRecord::Schema.define(:version => 20121211131111) do
+
+  create_table "answers", :force => true do |t|
+    t.text     "text"
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "assessments", :force => true do |t|
     t.string   "assessment_name"
@@ -183,6 +191,14 @@ ActiveRecord::Schema.define(:version => 20121207054629) do
 
   create_table "profiles", :force => true do |t|
     t.string   "prefix"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "questions", :force => true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
