@@ -13,7 +13,7 @@ puts "Creating grades"
 grades = ["Kindergarten", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", 
 	"Grade 8", "Grade 9", "Grade 10", "Grade 11", "Grade 12", "High School"] 
 grades.each do |grade|
-	Grade.find_or_create_by_name(grade)
+	Grade.find_or_create_by_grade_level(grade)
 end
 
 # Importing the CoreStandards
@@ -52,16 +52,16 @@ end
 			range_start = range_values[0].to_i
 			range_end = range_values[1].to_i
 			(range_start..range_end).each do |grade_num|
-				g = Grade.find_by_name("Grade " + grade_num.to_s)
+				g = Grade.find_by_grade_level("Grade " + grade_num.to_s)
 				grades << g
 			end
 		elsif grade.include?(":") # High School: Number and Quantity
 			grade_parts = grade.split(": ")
-			g = Grade.find_by_name(grade_parts[0])
+			g = Grade.find_by_grade_level(grade_parts[0])
 			grades << g
 			parent_domain_name = grade_parts[1]
 		else			
-			g = Grade.find_by_name(grade)
+			g = Grade.find_by_grade_level(grade)
 			grades << g
 		end
 		puts "Found " + grades.count.to_s + " grades"
