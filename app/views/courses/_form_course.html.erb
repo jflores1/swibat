@@ -34,11 +34,8 @@
       </div>
     </div>
 
-    <%= course.fields_for :grade do |select_grade| %>
-        <% grades_array = Grade.all.map {|grade| [grade.grade_level, grade.grade_level]} %>
-        <%= select_grade.label :grade_level, "What age are the students?" %>
-        <%= select_grade.select(:grade_level, options_for_select(grades_array)) %>
-     <% end %>
+    <%= course.label :grade_id, "What age are the students?" %>
+    <%= course.collection_select(:grade_id, @grades, :id, :grade_level, options ={:prompt => "Select Grade"})  %>
 
     <%= course.label :objectives, "What should students be able to do when it's over?" %>
         <%= course.fields_for :objectives do |objective| %>
