@@ -4,12 +4,7 @@
 
 div.course-form{
 
-  width: 60%;
-  margin: 0px auto;
-
-
   header.course-form-header{
-    text-align: center;
     margin-bottom: 2%;
 
     h1{
@@ -21,17 +16,10 @@ div.course-form{
   }
 
   form {
-    //background: rgba(234, 231, 216, 1);
-    background: rgba(231, 231, 231, 0.8);
-    border: 1px solid #606E67;
-    -moz-box-shadow: 2px 2px 5px #606E67;
-    box-shadow: -1px 1px 3px #606E67;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    padding: 10px;
-    display: inline-block;
-    width:100%;
+    $minFormHeight: 2em;//32px:16px
+
+    padding: 2%;
+    float:left;
 
     div.two-column-form{
       width:100%;
@@ -47,7 +35,8 @@ div.course-form{
 
       input[type="select"]{
         display: inline-block;
-        width: 30%;
+        width: 40%;
+        height:$minFormHeight;
       }
     }
 
@@ -57,8 +46,8 @@ div.course-form{
     }
 
     input[type="text"], textarea{
-      width: 80%;
-      min-height: 25px;
+      width: 100%;
+      min-height: $minFormHeight;
       font-size: 1.23em;
     }
 

@@ -108,7 +108,8 @@ describe "CoursePages" do
   def fill_out_course_form_with_valid_info
     fill_in 'course_name',     with: "Physics 1"
     select  'Fall',            from: "course_course_semester"
-    select  '2012',     from: "course_course_year"
+    select  '2012',            from: "course_course_year"
+    select  'Grade 1',         from: "course_grade_attributes_grade_level"
     fill_in 'course_summary',  with: "This is a valid course summary."
     fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end

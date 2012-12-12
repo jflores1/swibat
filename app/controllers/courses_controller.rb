@@ -13,6 +13,7 @@ class CoursesController < ApplicationController
   def new
     @course = current_user.courses.new
     @course.objectives.build
+    @course.build_grade
   end
 
   def create

@@ -1,7 +1,6 @@
 <div class="course-form">
   <header class="course-form-header">
-    <h1>Test Header</h1>
-    <h3>Test Header 3</h3>
+    <h1>Add a Course</h1>
   </header>
 
   <%= form_for [current_user, @course] do |course| %>
@@ -16,37 +15,37 @@
       </div>
     <% end %>
 
-    <%= course.label "What's the name of the course?" %>
-    <%= course.text_field :course_name, id:"course_name" %>
+    <%= course.label "What do you want to call this course?" %>
+    <%= course.text_field :course_name, placeholder: "Course Title", id:"course_name"%>
+
+    <%= course.label "What's it about?" %>
+    <%= course.text_area :course_summary, placeholder:"Provide a summary like you might on a syllabus.", id:"course_summary"%>
 
     <p>When are you teaching it?</p>
-    <div class="two-column-form">
-      <div class="pull-left">
+    <div class="two-column-form span12 no-left-margin">
+      <div class="span6 pull-left">
         <%= course.label "Semester" %>
         <%= course.select(:course_semester,[['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer'], ['Winter','Winter']] ) %>
       </div>
-      <div class="pull-left">
+
+      <div class="span6 pull-right">
         <%= course.label "Year" %>
         <%= course.select :course_year, options_for_select((2012..2030).step(1).to_a.map{|y| ["#{y}", y]}) %>
       </div>
-
     </div>
 
-    <%= course.label "Now, briefly describe the course" %>
-    <%= course.text_area :course_summary, id:"course_summary" %>
+    <%= course.fields_for :grade do |select_grade| %>
+        <% grades_array = Grade.all.map {|grade| [grade.grade_level, grade.grade_level]} %>
+        <%= select_grade.label :grade_level, "What age are the students?" %>
+        <%= select_grade.select(:grade_level, options_for_select(grades_array)) %>
+     <% end %>
 
-    <%= course.label :objectives, "Now, add some objectives. What should students be able to do when it's over?" %>
-    <table class="table">    
-      <tr><th>Objective</th></tr>
+    <%= course.label :objectives, "What should students be able to do when it's over?" %>
         <%= course.fields_for :objectives do |objective| %>
-          <%= render "objective_fields", :f => objective %>
-        <% end %>      
-      <tr><td><%= link_to_add_fields "Add new objective", course, :objectives %></td></tr>
-    </table>
+        <%= render "objective_fields", f: objective %>
+     <% end %>
 
-    <h3>Similar Courses</h3>
-    <div id="similarObjectiveables"></div>
-    
+
 
     <div class="two-column-form">
       <div class="pull-left">
@@ -57,6 +56,11 @@
       </div>
     </div>
 
+  <% end %>
+
+  <%= content_for :sidebar do %>
+      <h3>Similar Courses</h3>
+      <div id="similarObjectiveables"></div>
   <% end %>
 
 </div>

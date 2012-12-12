@@ -1,5 +1,2 @@
-<tr class="field">	
-	<td>
-		<%= f.text_field :objective, :onblur => "retrieveSimilarObjectiveables('Course')", :class => "objectiveName" %> <%= link_to_remove_fields "remove", f, true %>
-	</td>
-</tr>
+<%= f.text_field :objective, :onblur => "retrieveSimilarObjectiveables('Course')", placeholder: "Add an objective", class: "objectiveName" %> <%= link_to_remove_fields "remove", f, true %>
+

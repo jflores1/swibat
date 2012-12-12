@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211131111) do
+ActiveRecord::Schema.define(:version => 20121211222434) do
 
   create_table "answers", :force => true do |t|
     t.text     "text"
@@ -96,9 +96,10 @@ ActiveRecord::Schema.define(:version => 20121211131111) do
   add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
 
   create_table "grades", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "grade_level"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "course_id"
   end
 
   create_table "institutions", :force => true do |t|

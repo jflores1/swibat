@@ -85,6 +85,11 @@ describe Course do
       it {course.objectives.count.should == 2}
     end
 
+    describe "Can have an associated grade level" do
+      before{@grade_level = course.create_grade(grade_level: "Grade 12")}
+      it {course.grade.should_not be_nil}
+    end
+
   end
 
 end
