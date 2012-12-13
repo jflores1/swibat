@@ -17,6 +17,7 @@ class CoursesController < ApplicationController
   end
 
   def create
+    @grades = Grade.all
     @course = current_user.courses.new(params[:course])
     if @course.save && params[:save_and_return]
       redirect_to user_path(current_user)
@@ -24,7 +25,7 @@ class CoursesController < ApplicationController
       redirect_to new_course_unit_path(@course)
     else
       flash[:notice] = "Sorry, there was a mistake with the form"
-      render 'new'
+      render :action => 'new'
     end
   end
 
@@ -34,6 +35,7 @@ class CoursesController < ApplicationController
   end
 
   def update
+
     @course = Course.find(params[:id])
     if @course.update_attributes(params[:course])
       redirect_to user_path(current_user)
