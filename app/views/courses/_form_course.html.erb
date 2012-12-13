@@ -32,7 +32,7 @@
         <%= course.fields_for :objectives do |objective| %>
         <%= render "objective_fields", f: objective %>
      <% end %>
-     <button class="btn btn-monkey"><%= link_to_add_fields "", course, :objectives,"" %><i class="icon-plus icon-white"></i></button>
+     <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', course, :objectives,"btn btn-monkey" %>
 
 
 
