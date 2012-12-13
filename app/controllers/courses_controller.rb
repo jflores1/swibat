@@ -43,6 +43,7 @@ class CoursesController < ApplicationController
       redirect_to edit_course_unit_path(@course)
     else
       flash[:error] = "Sorry, there was a mistake with teh form"
+      @grades = Grade.all
       render 'edit'
     end
 
