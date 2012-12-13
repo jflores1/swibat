@@ -99,15 +99,16 @@ describe "CoursePages" do
   end
 
   context "The Course/Show Page" do
-    let(:course){FactoryGirl.create(:course)}
-    let(:objective1){course.objectives.create!(objective: "This is objective one")}
-    let(:objective2){course.objectives.create!(objective: "This is objective two")}
     before do
       sign_in_via_form
       visit user_course_path(@user, course)
     end
 
     subject{page}
+    let(:course){FactoryGirl.create(:course)}
+    let(:objective1){"This is objective one"}
+    let(:objective2){"This is objective two"}
+
     describe "Has Course Header Information" do
       it {should have_content("Physics")}
       it {should have_content("Fall")}

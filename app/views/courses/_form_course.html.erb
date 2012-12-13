@@ -26,16 +26,13 @@
     </div>
 
     <%= course.label :grade_id, "What age are the students?" %>
-    <%= course.collection_select(:grade_id, @grades, :id, :grade_level, options ={:prompt => "Select Grade"})  %>
+    <%= course.collection_select(:grade_id, Grade.all, :id, :grade_level, options ={:prompt => "Select Grade"})  %>
 
     <%= course.label :objectives, "What should students be able to do when it's over?" %>
         <%= course.fields_for :objectives do |objective| %>
         <%= render "objective_fields", f: objective %>
      <% end %>
      <button class="btn btn-monkey"><%= link_to_add_fields "", course, :objectives,"" %><i class="icon-plus icon-white"></i></button>
-
-
-
 
 
     <div class="two-column-form">

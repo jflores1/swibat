@@ -34,7 +34,7 @@ class Course < ActiveRecord::Base
   VALID_SEMESTER = %w[Fall Spring Summer Winter]
 
   validates :course_name, presence: true
-  validates :course_semester, presence: true
+  validates :course_semester, :grade_id, presence: true
   validates :course_year, presence:true, length:{is:4}
   validate :has_valid_semester
 

@@ -6,6 +6,7 @@ FactoryGirl.define do
     course_year         2012
     course_summary      "This is a course summary."
     user_id             1
+    grade_id            1
   end
 
   factory :unit do
