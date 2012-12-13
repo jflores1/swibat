@@ -6,7 +6,7 @@ FactoryGirl.define do
     course_year         2012
     course_summary      "This is a course summary."
     user_id             1
-    grade_id            1
+    grade
   end
 
   factory :unit do
@@ -28,6 +28,11 @@ FactoryGirl.define do
 
   factory :objective do
     objective           "Measure average velocity of Sparrow's wing speed"
+  end
+
+  factory :course_objective_1 do
+    objective "objective one"
+    course
   end
 
 end
