@@ -4,16 +4,7 @@
   </header>
 
   <%= form_for [current_user, @course] do |course| %>
-    <% if @course.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
-        <ul>
-        <% @course.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render 'shared/form_error_messages', object: course.object %>
 
     <%= course.label "What do you want to call this course?" %>
     <%= course.text_field :course_name, placeholder: "Course Title", id:"course_name"%>

@@ -60,3 +60,100 @@ div.course-form{
 
 
 }
+
+div.vote{
+  margin: 0 auto;
+  width: 50%;
+  border: solid 1px #e7e7e7;
+
+  a.vote-up{
+    display:block;
+    margin: 0 auto;
+    border:solid;
+
+  }
+
+  a.vote-down{
+
+  }
+
+  span.vote-count{
+    display:block;
+    margin:0 auto;
+    width: 50%;
+    font-size: 3em;
+    font-weight: 300;
+
+  }
+}
+
+div.favoritecount{
+
+}
+
+div#course-summary{
+  float:left;
+
+  header.course-header{
+    font-weight: 300;
+    float:left;
+    width:100%;
+    border-bottom:1px solid rgba(152, 161, 186, 0.5);
+
+    h2{
+      font-size: 1.5385em;//20px:13px
+      float:left;
+      color: rgb(164, 50, 32);
+
+    }
+  }
+
+  section.course-info{
+    float:left;
+    width:100%;
+
+    p, li{
+      font-size: 1.0769em;//14px:13px
+    }
+
+    p.standard-font{
+      font-size: 1em;//10px:13px
+    }
+
+    header{
+      float:left;
+      width:100%;
+
+      h2{
+        font-size: 1.3077em;//17px:13px
+        float:left;
+        //color: rgb(164, 50, 32);
+
+      }
+
+    }
+
+    article{
+      float:left;
+      width:100%;
+      //background: rgba(152, 161, 186, 0.1);
+
+    }
+
+    div.comments{
+      padding-left: 3%;
+    }
+
+    div.comment-field{
+
+      textarea{
+        width:100%;
+        height: 4em;
+      }
+
+    }
+
+  }
+
+}
+

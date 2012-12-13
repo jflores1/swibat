@@ -1,17 +1,84 @@
-<div class="row-fluid">
-  <div class="span12">
-  	<h1><%= @course.course_name %></h1>
-  	<dl class="dl-horizontal">
-  		<dt>Teacher</dt>
-		  <dd><%= link_to @course.user.full_name, @course.user %></dd>
-		  <dt>Semester</dt>
-		  <dd><%= @course.course_semester %></dd>
-		  <dt>Year</dt>
-		  <dd><%= @course.course_year %></dd>
-		  <dt>Summary</dt>
-		  <dd><%= @course.course_summary %></dd>
-		</dl>
+<div class="span2">
+  <div class="vote">
+    <a class="vote-up"></a>
+    <span class="vote-count">0</span>
+    <a class="vote-down"></a>
+  </div>
+  <div class="favoritecount">
+    <b></b>
   </div>
 </div>
+<div class="span10" id="course-summary">
 
-<%= render :partial => 'comments/comments', :locals => {:commentable => @course} %>
+  <%= render 'users/profile_header' %>
+
+  <header class="course-header top-margin">
+    <div class="span8">
+      <h2><%= @course.course_name %></h2>
+    </div>
+    <div class="span4">
+      <h2 class="pull-right"><%= @course.grade.grade_level %>, <%= @course.course_semester %> <%= @course.course_year %></h2>
+    </div>
+  </header>
+
+  <section class="course-info">
+    <header>
+      <h2>Course Summary</h2>
+    </header>
+    <article>
+      <p><%= @course.course_summary %></p>
+    </article>
+  </section>
+
+  <section class="course-info">
+    <header>
+      <h2>Course Objectives</h2>
+    </header>
+    <article>
+      <ul>
+        <% @course.objectives.each do |objective| %>
+            <li><%= objective.objective %></li>
+        <% end %>
+      </ul>
+    </article>
+  </section>
+
+  <section class="course-info">
+    <header>
+      <h2>Standards Covered</h2>
+    </header>
+    <article>
+    </article>
+  </section>
+
+  <header class="course-header">
+    <h2>Units</h2>
+    <% if current_user? %>
+        <button class="btn btn-small btn-monkey pull-right"><a href="<%= new_course_unit_path(@course) %>"><i class="icon-plus icon-white"></i></a></button>
+    <% end %>
+  </header>
+  <section class="course-info">
+    <% if current_user? && @course.units.count == 0 %>
+          <p class="top-margin">It doesn't look like you have any units. <%= link_to "Create one now.", new_course_unit_path(@course) %></p>
+    <% elsif @course.units.count == 0%>
+          <p class="top-margin">Sad. It doesn't look like this user has created any courses yet.</p>
+    <% else %>
+        <%= render 'units_lessons_accordion' %>
+    <% end %>
+  </section>
+
+  <header class="course-header">
+    <h2>Comments</h2>
+  </header>
+  <section class="course-info">
+    <%= render :partial => 'comments/comments', :locals => {:commentable => @course} %>
+  </section>
+
+</div>
+
+<% content_for :sidebar do %>
+    <%= render 'users/user_sidebar' %>
+<% end %>
+
+
+

@@ -1,0 +1,19 @@
+<div class="accordion">
+  <% @course.units.each do |unit| %>
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= unit.id  %>"><%= unit.unit_title %> (<%= pluralize((unit.lessons.count), 'lesson') %>) </a>
+          <% if current_user? %>
+              <a class="btn btn-mini btn-monkey pull-right" href="<%= course_unit_path(@course, unit) %>"><i class="icon-pencil icon-white"></i></a>
+          <% end %>
+        </div>
+        <div id="collapse_<%= unit.id %>" class="accordion-body collapse">
+          <% unit.lessons.each do |lesson| %>
+              <div class="accordion-inner">
+                <%= lesson.lesson_title %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>

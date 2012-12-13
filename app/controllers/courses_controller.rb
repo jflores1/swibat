@@ -7,7 +7,8 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])    
+    @user = User.find(params[:user_id])
+    @course = Course.find(params[:id])
   end
 
   def new
@@ -29,7 +30,9 @@ class CoursesController < ApplicationController
   end
 
   def edit
-
+    @course = current_user.courses.find(params[:id])
+    @course.objectives.all
+    @grades = Grade.all
   end
 
   def update

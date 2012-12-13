@@ -160,7 +160,7 @@ header#application-header {
   color:#000;
 }
 
-div.prettyprint{
+.prettyprint{
   //background-color:#f7f7f9;
   background-color:#ffffff;
   //background-color:  rgba(231, 231, 231, 0.5);
@@ -211,6 +211,38 @@ header.application-header{
 
 }
 
+div.accordion{
+    clear:both;
+
+    .accordion-heading {
+
+        a{
+            font-size: 1.2308em; //16px:13px
+            color: #50596D;
+            text-decoration: none;
+        }
+
+    }
+
+    .accordion-group, .accordion-heading{
+        border:none;
+
+        a.btn{
+            margin-top:6px;
+        }
+
+    }
+
+    .accordion-group:hover, .accordion-heading:hover{
+        background: rgba(152, 161, 186, 0.10);
+    }
+
+    a.accordion-toggle{
+        width:80%;
+        display:inline-block;
+    }
+}
+
 
 /**************************
 Position, Formatting, Fonts
@@ -247,6 +279,10 @@ Position, Formatting, Fonts
 
 .no-left-margin{
     margin-left:0 !important;
+}
+
+.top-margin{
+    margin-top: 2% !important;
 }
 
 .btn-monkey {

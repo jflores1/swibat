@@ -4,6 +4,7 @@
 </div>
 <div class="span9 bordered">
   <%= form_for(@user, :html => {multipart: true, class:"profile-form"}) do |f| %>
+      <%= render 'shared/form_error_messages', object: f.object %>
   <div class="span12">
     <ul class="nav nav-pills">
       <li class="active"><a href="#personal" data-toggle="tab">You</a></li>
@@ -15,17 +16,6 @@
 
   <div class="span12">
     <div class="tab-content" id="profile-tabs">
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being updated:</h2>
-
-          <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
       <div class="tab-pane active" id="personal">
         <%= f.label :first_name, "First Name" %>
         <%= f.text_field :first_name, id:"first_name", class:"span6" %>

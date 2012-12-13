@@ -21,7 +21,8 @@ module ApplicationHelper
   end
 
   def current_user?
-    @user == current_user
+    current_user
   end
+
 
 end

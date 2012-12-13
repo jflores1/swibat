@@ -12,7 +12,7 @@
       <div class="accordion-heading">
         <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= course.id  %>"><%= course.course_name %> (<%= pluralize((course.units.count), 'unit') %>) </a>
             <% if current_user? %>
-            <a class="btn btn-mini btn-monkey pull-right" href="<%= edit_user_course_path(current_user, course) %>"><i class="icon-pencil icon-white"></i></a>
+            <a class="btn btn-mini btn-monkey pull-right" href="<%= user_course_path(current_user, course) %>"><i class="icon-pencil icon-white"></i></a>
             <% end %>
       </div>
       <div id="collapse_<%= course.id %>" class="accordion-body collapse">

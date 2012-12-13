@@ -1,35 +1,30 @@
-<div class="row-fluid">
-  <div class="span12">
-  	<h2>Comments</h2>
-    <div id="comments">
-    	<% commentable.comment_threads.each do |comment| %>    
-    		<div class="comment well">
-    			<div class="comment-header">
-    				Posted by <%= link_to comment.user.full_name, comment.user %>, <%= time_ago_in_words comment.created_at %> ago. <%= link_to "Delete", [commentable, comment], :method => :delete if can? :destroy, comment %>
-    			</div>
-    			<div class="comment-body">
-    				<%= comment.body %>
-    			</div>
-    		</div>
-    	<% end %>
-    </div>
-    
-    <h3>Leave a comment:</h3>    
-    <% comment = commentable.comment_threads.build %>
-  	<% if can? :create, comment %>
-	    <%= form_for([commentable, comment]) do |f| %>    	
-	    	<%= f.hidden_field :commentable_id, :value => commentable.id %>
-	    	<%= f.hidden_field :commentable_type, :value => commentable.class %>
-			  <div class="field">
-			    <%= f.label :body %><br />
-			    <%= f.text_area :body %>
-			  </div>
-			  <div class="actions">
-			    <%= f.submit "Post Comment" %>
-			  </div>
-			<% end %>
-		<% else %>
-			<em>You need to be friends with this teacher before you can leave comments on their <%= comment.commentable_type.pluralize(2).downcase %>.</em>
-		<% end %>
-  </div>
+<div id="comments">
+    <% commentable.comment_threads.each do |comment| %>
+        <div class="comment well">
+            <div class="comment-header">
+                Posted by <%= link_to comment.user.full_name, comment.user %>, <%= time_ago_in_words comment.created_at %> ago. <%= link_to "Delete", [commentable, comment], :method => :delete if can? :destroy, comment %>
+            </div>
+            <div class="comment-body">
+                <%= comment.body %>
+            </div>
+        </div>
+    <% end %>
 </div>
+
+<p class="top-margin standard-font">Have a question about this course? Is there something you like? Feedback helps us all improve. Feel free to leave some. The course author will be informed of all comments.</p>
+<% comment = commentable.comment_threads.build %>
+<% if can? :create, comment %>
+    <%= form_for([commentable, comment]) do |f| %>
+        <%= f.hidden_field :commentable_id, :value => commentable.id %>
+        <%= f.hidden_field :commentable_type, :value => commentable.class %>
+          <div class="comment-field">
+            <%= f.text_area :body %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Leave a Comment", class:"btn btn-monkey pull-right" %>
+          </div>
+        <% end %>
+    <% else %>
+        <em>You need to be friends with this teacher before you can leave comments on their <%= comment.commentable_type.pluralize(2).downcase %>.</em>
+    <% end %>
+

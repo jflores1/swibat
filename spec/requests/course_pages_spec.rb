@@ -3,7 +3,6 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "CoursePages" do
-
   context "Accessing the User Course Page" do
     describe "An authorized user tries to get access" do
       it "should allow access" do
@@ -99,6 +98,37 @@ describe "CoursePages" do
     end
   end
 
+  context "The Course/Show Page" do
+    let(:course){FactoryGirl.create(:course)}
+    let(:objective1){course.objectives.create!(objective: "This is objective one")}
+    let(:objective2){course.objectives.create!(objective: "This is objective two")}
+    before do
+      sign_in_via_form
+      visit user_course_path(@user, course)
+    end
+
+    subject{page}
+    describe "Has Course Header Information" do
+      it {should have_content("Physics")}
+      it {should have_content("Fall")}
+      it {should have_content("2012")}
+    end
+
+    describe "Presence of Course Summary Information" do
+      it {should have_content("Course Summary")}
+      it {should have_content("This is a course summary")}
+    end
+
+    describe "Presence of Course Objectives" do
+      it {should have_content("Course Objectives")}
+      it {should have_content("objective one")}
+      it {should have_content("objective two")}
+    end
+
+    it {should have_content("Standards Covered")}
+    it {should have_content("Units")}
+  end
+
   private
   def sign_in_user_and_go_to_page
     sign_in_as_a_valid_user
@@ -109,7 +139,7 @@ describe "CoursePages" do
     fill_in 'course_name',     with: "Physics 1"
     select  'Fall',            from: "course_course_semester"
     select  '2012',            from: "course_course_year"
-    select  'Grade 1',         from: "course_grade_attributes_grade_level"
+    select  'Grade 1',         from: "course_grade_id"
     fill_in 'course_summary',  with: "This is a valid course summary."
     fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end
