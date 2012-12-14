@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show, :index]
   load_and_authorize_resource
+  skip_authorize_resource
 
   def index
 
@@ -14,7 +15,6 @@ class CoursesController < ApplicationController
   def new
     @course = current_user.courses.new
     @course.objectives.build
-    @grades = Grade.all
   end
 
   def create
@@ -33,7 +33,6 @@ class CoursesController < ApplicationController
   def edit
     @course = current_user.courses.find(params[:id])
     @course.objectives.all
-    @grades = Grade.all
   end
 
   def update
@@ -45,7 +44,6 @@ class CoursesController < ApplicationController
       redirect_to edit_course_unit_path(@course)
     else
       flash[:error] = "Sorry, there was a mistake with teh form"
-      @grades = Grade.all
       render 'edit'
     end
 

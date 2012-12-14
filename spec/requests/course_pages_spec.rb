@@ -3,13 +3,13 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "CoursePages" do
-  context "Accessing the User Course Page" do
+
+  context "Accessing the new user course page" do
     describe "An authorized user tries to get access" do
       it "should allow access" do
         sign_in_user_and_go_to_page
         response.status.should be(200)
       end
-
     end
 
     describe "An unauthorized user tries to get access" do
@@ -20,11 +20,11 @@ describe "CoursePages" do
     end
   end
 
-
   describe "A Working Form" do
     before do
       sign_in_via_form
-      visit new_user_course_path(@user)
+      Grade.create(:grade_level => "Grade 5")
+      visit new_user_course_path(@user)      
     end
     let(:unit_button){"Create a Unit"}
     let(:save_button){"Save and Return"}
@@ -53,14 +53,11 @@ describe "CoursePages" do
 
       it "Adds at least one objective to the course" do
         expect {
+          grades = Grade.all
           fill_out_course_form_with_valid_info
           click_button save_button
         }.to change(Course, :count).by_at_least(1)
         Course.last.objectives.count.should == 1
-      end
-
-      xit "More than one objective can be added to the course" do
-
       end
     end
 
@@ -86,66 +83,104 @@ describe "CoursePages" do
       end
     end
 
-    context "With User Assistance" do
-      subject { page }
-      xit "displays pop up bubbles to help the user work" do
-
-      end
-      xit "displays a list of Bloom's verbs" do
-
-      end
-    end
   end
 
   context "The Course/Show Page" do
-    let(:course){FactoryGirl.create(:course)}
-    let(:objective1){course.objectives.create!(objective: "This is objective one")}
-    let(:objective2){course.objectives.create!(objective: "This is objective two")}
-    before do
-      sign_in_via_form
-      visit user_course_path(@user, course)
-    end
+    context "The owning user" do
+      let(:course){create(:course)}
+      let!(:objective){course.objectives.create(objective: "objective one")}
+      let!(:objective2){course.objectives.create(objective:"objective two")}
 
-    subject{page}
-    describe "Has Course Header Information" do
-      it {should have_content("Physics")}
-      it {should have_content("Fall")}
-      it {should have_content("2012")}
-    end
-
-    describe "Vote div" do
-      it "should display the voting buttons" do
-        page.should have_selector(".vote")
+      before(:each) do
+        sign_in_via_form
+        visit user_course_path(@user, course)
       end
 
-      it "should have working upvote button" do
-        course.reputation_for(:votes).to_i.should == 0
-        upvote = find(".upvote")        
-        upvote.find("a").click
-        course.reputation_for(:votes).to_i.should == 1
+      subject{page}
+
+      describe "Has Course Header Information" do
+        it {should have_content("Physics")}
+        it {should have_content("Fall")}
+        it {should have_content("2012")}
+        it {should have_content("Grade 1")}
       end
 
-      it "should have working downpvote button" do
-        course.reputation_for(:votes).to_i.should == 0
-        downvote = find(".downvote")        
-        downvote.find("a").click
-        course.reputation_for(:votes).to_i.should == -1
+      describe "Presence of Course Summary Information" do
+        it {should have_content("Course Summary")}
+        it {should have_content("This is a course summary")}
       end
+
+      describe "Presence of Course Objectives" do
+        it {should have_content("Course Objectives")}
+        it {should have_content("objective one")}
+        it {should have_content("objective two")}
+      end
+
+      it {should have_content("Standards Covered")}
+      it {should have_content("Units")}
+
+      xit "can navigate to the new course unit page" do
+
+      end
+
+      xit "can add an objective from this page" do
+
+      end
+
+      describe "Vote div" do
+        it "should display the voting buttons" do
+          page.should have_selector(".vote")
+        end
+
+        it "should have working upvote button" do
+          course.reputation_for(:votes).to_i.should == 0
+          upvote = find(".upvote")        
+          upvote.find("a").click
+          course.reputation_for(:votes).to_i.should == 1
+        end
+
+        it "should have working downvote button" do
+          course.reputation_for(:votes).to_i.should == 0
+          downvote = find(".downvote")        
+          downvote.find("a").click
+          course.reputation_for(:votes).to_i.should == -1
+        end
+      end
+
+      describe "Presence of Course Summary Information" do
+        it {should have_content("Course Summary")}
+        it {should have_content("This is a course summary")}
+      end
+
+    end
+    
+    
+
+    context "A signed in user" do
+      describe "cannot access owning user permissions" do
+        xit "does not see a button to add a new unit to the course" do
+
+        end
+
+        xit "does not see a button to add objectives" do
+
+        end
+      end
+
+
     end
 
-    describe "Presence of Course Summary Information" do
-      it {should have_content("Course Summary")}
-      it {should have_content("This is a course summary")}
+    context "An unregistered user" do
+      xit "can access the page" do
+
+      end
+
+      xit "sees an option to create an account" do
+
+      end
+
     end
 
-    describe "Presence of Course Objectives" do
-      it {should have_content("Course Objectives")}
-      it {should have_content("objective one")}
-      it {should have_content("objective two")}
-    end
-
-    it {should have_content("Standards Covered")}
-    it {should have_content("Units")}
   end
 
   private
@@ -158,7 +193,7 @@ describe "CoursePages" do
     fill_in 'course_name',     with: "Physics 1"
     select  'Fall',            from: "course_course_semester"
     select  '2012',            from: "course_course_year"
-    select  'Grade 1',         from: "course_grade_id"
+    select  'Grade 5',         from: "course_grade_id"
     fill_in 'course_summary',  with: "This is a valid course summary."
     fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end
@@ -174,6 +209,12 @@ describe "CoursePages" do
   def invalid_form_expectations
     page.should have_content("Sorry")
     page.should have_selector("form")
+  end
+
+  def select_second_option(id)
+    second_option_xpath = "//*['@id = #{id}']/option[3]"
+    second_option = find(:xpath, second_option_xpath).value
+    select(second_option, from: id)
   end
 
 end

@@ -15,7 +15,7 @@
 require 'spec_helper'
 
 describe Course do
-  let(:course){Course.new(course_name:"Physics", course_semester:"Spring", course_year:"2013", course_summary:"It is a summary.")}
+  let(:course){Course.new(course_name:"Physics", course_semester:"Spring", course_year:"2013", course_summary:"It is a summary.", grade_id: "1")}
   subject {course}
 
   describe "working attributes" do
@@ -24,6 +24,7 @@ describe Course do
     it {should respond_to(:course_year)}
     it {should respond_to(:course_summary)}
     it {should respond_to(:comment_threads)}
+    it {should respond_to(:grade_id)}
   end
 
   context "With proper validation" do
@@ -67,6 +68,12 @@ describe Course do
       before {course.course_year = 2012}
       it {should be_valid}
       it {expect {course.save!}.to change{Course.count}.by(1)}
+    end
+
+    describe "without a grade id" do
+      before {course.grade_id = ""}
+      it {should_not be_valid}
+      it {expect {course.save!}.to raise_error(ActiveRecord::RecordInvalid)}
     end
 
   end
