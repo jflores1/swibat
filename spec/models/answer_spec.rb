@@ -20,6 +20,7 @@ describe Answer do
     it {should respond_to(:text)}
     it {should respond_to(:user)}    
     it {should respond_to(:question)}    
+    it {should respond_to(:reputation_for)}
   end
 
   describe "Validations" do  	  	

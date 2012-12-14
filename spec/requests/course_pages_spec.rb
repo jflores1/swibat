@@ -34,7 +34,6 @@ describe "CoursePages" do
       it {page.should have_selector("form")}
     end
 
-
     context "With valid information" do
       it "adds a course" do
         expect {
@@ -112,6 +111,26 @@ describe "CoursePages" do
       it {should have_content("Physics")}
       it {should have_content("Fall")}
       it {should have_content("2012")}
+    end
+
+    describe "Vote div" do
+      it "should display the voting buttons" do
+        page.should have_selector(".vote")
+      end
+
+      it "should have working upvote button" do
+        course.reputation_for(:votes).to_i.should == 0
+        upvote = find(".upvote")        
+        upvote.find("a").click
+        course.reputation_for(:votes).to_i.should == 1
+      end
+
+      it "should have working downpvote button" do
+        course.reputation_for(:votes).to_i.should == 0
+        downvote = find(".downvote")        
+        downvote.find("a").click
+        course.reputation_for(:votes).to_i.should == -1
+      end
     end
 
     describe "Presence of Course Summary Information" do

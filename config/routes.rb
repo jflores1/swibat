@@ -20,13 +20,19 @@ Swibat::Application.routes.draw do
   get 'objectives/similar_objectiveables'
 
   resources :questions do
-    resources :answers, :except => [:show, :index]
+    resources :answers, :except => [:show, :index] do
+      member { post :vote }
+    end
+
+    member { post :vote }
   end
 
   resources :leads
 
   resources :users do
-    resources :courses
+    resources :courses do
+      member { post :vote }
+    end
   end
 
   resources :courses do
