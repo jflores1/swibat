@@ -23,7 +23,8 @@ describe "CoursePages" do
   describe "A Working Form" do
     before do
       sign_in_via_form
-      visit new_user_course_path(@user)
+      Grade.create(:grade_level => "Grade 5")
+      visit new_user_course_path(@user)      
     end
     let(:unit_button){"Create a Unit"}
     let(:save_button){"Save and Return"}
@@ -32,7 +33,6 @@ describe "CoursePages" do
     describe "There is a form on the page" do
       it {page.should have_selector("form")}
     end
-
 
     context "With valid information" do
       it "adds a course" do
@@ -127,7 +127,34 @@ describe "CoursePages" do
 
       end
 
+      describe "Vote div" do
+        it "should display the voting buttons" do
+          page.should have_selector(".vote")
+        end
+
+        it "should have working upvote button" do
+          course.reputation_for(:votes).to_i.should == 0
+          upvote = find(".upvote")        
+          upvote.find("a").click
+          course.reputation_for(:votes).to_i.should == 1
+        end
+
+        it "should have working downvote button" do
+          course.reputation_for(:votes).to_i.should == 0
+          downvote = find(".downvote")        
+          downvote.find("a").click
+          course.reputation_for(:votes).to_i.should == -1
+        end
+      end
+
+      describe "Presence of Course Summary Information" do
+        it {should have_content("Course Summary")}
+        it {should have_content("This is a course summary")}
+      end
+
     end
+    
+    
 
     context "A signed in user" do
       describe "cannot access owning user permissions" do
@@ -139,6 +166,7 @@ describe "CoursePages" do
 
         end
       end
+
 
     end
 

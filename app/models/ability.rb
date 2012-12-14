@@ -45,7 +45,6 @@ class Ability
         answer.new_record? || answer.try(:user).try(:id) == user.id
       end
 
-      
       # Can delete comment only if they have created it
       can :destroy, Comment, :user_id => user.id
       # Can manage comments if they are the owners of the commentable of the comment (Course, Unit, etc.)
@@ -64,6 +63,8 @@ class Ability
       can :read, Question
       can :read, Answer
 
+      can :vote, :all
+      
     elsif user.role == "school_admin"
       can :read, :all
     end

@@ -19,4 +19,6 @@ class Question < ActiveRecord::Base
   validates :title, :presence => true
   validates :text, :presence => true, :length => {:maximum => 4000} 
 
+  has_reputation :votes, source: :user, aggregated_by: :sum
+
 end

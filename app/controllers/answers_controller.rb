@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
 
 	before_filter :authenticate_user!
-  before_filter :find_current_question
+  before_filter :find_current_question, :except => [:vote]
   load_and_authorize_resource
 
   def new
@@ -37,9 +37,16 @@ class AnswersController < ApplicationController
     redirect_to @question, :notice => 'Answer was successfully deleted.'
   end
 
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @answer = Answer.find(params[:id])
+    @answer.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Thank you for voting"
+  end
+
   private
 
-  def find_current_question
-  	@question = Question.find(params[:question_id])
-  end
+    def find_current_question
+    	@question = Question.find(params[:question_id])
+    end
 end

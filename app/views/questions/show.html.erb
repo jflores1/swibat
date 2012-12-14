@@ -5,6 +5,8 @@
 	</div>
 <% end %>
 
+<%= render :partial => 'shared/vote', :locals => {:resource => @question, :path => vote_question_path(@question) } %>
+
 <h1><%= @question.title %></h1>
 <span>Asked by <%= link_to @question.user.full_name, @question.user %> <%= time_ago_in_words @question.created_at %> ago</span>
 
@@ -13,10 +15,12 @@
 </div>
 <hr />
 
+
 <h2>Answers</h2>
 <% if @question.answers.any? %>
 	<% @question.answers.each do |answer| %>
-		<div>
+		<div class="well answer">
+			<%= render :partial => 'shared/vote', :locals => {:resource => answer, :path => vote_question_answer_path(@question, answer) } %>
 			<span>Answered by <%= link_to answer.user.full_name, answer.user %> <%= time_ago_in_words answer.created_at %> ago</span>
 			<% if can? :manage, answer %>
 				<span class="actions">
@@ -27,6 +31,7 @@
 			<div>
 				<%= raw parse_text answer.text %>	
 			</div>
+			<div class="clear"></div>
 		</div>
 	<% end %>
 <% else %>

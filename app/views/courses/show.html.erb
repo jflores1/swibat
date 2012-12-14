@@ -1,9 +1,5 @@
 <div class="span2">
-  <div class="vote">
-    <a class="vote-up"></a>
-    <span class="vote-count">0</span>
-    <a class="vote-down"></a>
-  </div>
+  <%= render :partial => 'shared/vote', :locals => {:resource => @course, :path => vote_user_course_path(@course.user, @course) } %>
   <div class="favoritecount">
     <b></b>
   </div>

@@ -1,0 +1,11 @@
+<div class="vote">				
+	<div class="arrow upvote">
+		<%= link_to image_tag("upvote.png"), path + "?type=up",  method: "post" %>
+	</div>
+	<div class="vote-count">
+		<%= resource.reputation_for(:votes).to_i %>
+	</div>	
+	<div class="arrow downvote">
+		<%= link_to image_tag("downvote.png"), path + "?type=down", method: "post" %>
+	</div>
+</div>
