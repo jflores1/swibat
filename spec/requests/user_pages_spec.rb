@@ -21,23 +21,16 @@ describe "UserPages" do
     end
 
     context "Can navigate to course pages" do
+      let(:course){create(:course)}
 
       describe "Can add a new course" do
         before {first('i.icon-plus').click}
-
-        it {page.current_path.should == new_user_course_path(@user)}
+        it {page.current_path.should eq(new_user_course_path(@user))}
       end
 
       describe "Can edit a current course" do
         before {first('i.icon-pencil').click}
-        it {current_path.should == edit_user_course_path(@user)}
-      end
-
-      describe "Can delete a course" do
-        before {first('icon-trash').click}
-        it "should decrease course by one" do
-
-        end
+        it {current_path.should == edit_user_course_path(@user, course)}
       end
 
     end
@@ -58,7 +51,10 @@ describe "UserPages" do
         end
 
         context "User's educational information" do
-          before{click_link "Your Education"}
+          before do
+            click_link "Your Education"
+            click_link "Add a School"
+          end
           it {can_update_form_field("user_professional_educations_attributes_0_school_name", "Juliard Music Academy")}
           xit {can_update_form_field("user_professional_educations_attributes_0_degree", "Masters of Music")}
           xit {can_update_form_field("user_professional_educations_attributes_0_field_of_study", "Music")}
@@ -103,8 +99,7 @@ describe "UserPages" do
       @user.profile_summary = "this is my profile summary"
       @user.save
       visit user_path(@user) 
-      
-      page.should have_content("Specialties:")      
+
       page.should have_content("Education:")      
       page.should have_content("Certifications:")      
       page.should have_content("Awards:")      

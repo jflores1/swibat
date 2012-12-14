@@ -1,7 +1,8 @@
 <div class="link-fields">
   <%= f.select :link_type, {"Twitter" => "Twitter Profile", "LinkedIn" => "LinkedIn Profile", "Website" => "Website" }, {}, class:"span2" %>
-  <div class="input-append">
-    <%= f.text_field :url, class:"span5" %><button class="btn" type="button"><i class="icon-trash"></i></button>
+  <div class="field">
+    <%= f.text_field :url, class:"span5" %>
+    <%= link_to_remove_fields '<i class="icon-trash icon-white"></i>', f, false, "btn btn-monkey" %>
   </div>
-  <%= link_to_remove_fields "remove", f, true %>
+
 </div>

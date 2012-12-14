@@ -40,7 +40,7 @@ describe "CoursePages" do
           fill_out_course_form_with_valid_info
           click_button save_button
         }.to change(course, :count).by(1)
-        current_path.should == user_path(@user)
+        current_path.should == user_course_path(@user, course)
       end
 
       it "Allows a user to save a course and go the Unit page" do

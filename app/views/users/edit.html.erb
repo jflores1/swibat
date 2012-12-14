@@ -37,7 +37,7 @@
             <%= render 'link_fields', f: link %>            
         <% end %>
         <div class="span12 no-left-margin">
-          <%= link_to_add_fields "Add Connections", f, :links %>
+          <%= link_to_add_fields 'Add A Link', f, :links, "btn btn-monkey" %>
         </div>
 
 
@@ -48,13 +48,13 @@
         <%= f.fields_for :specialties do |specialty| %>
               <%= render 'specialty_fields', f: specialty %>
         <% end %>
-        <%= link_to_add_fields "Add a skill", f, :specialties %>
+        <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', f, :specialties, "btn btn-monkey" %>
 
         <label>Have you completed any certifications or won any awards?</label>
         <%= f.fields_for :professional_accomplishments do |professional_accomplishment| %>
               <%= render 'professional_accomplishment_fields', f: professional_accomplishment %>
         <% end %>
-        <%= link_to_add_fields "Add a certification or award", f, :professional_accomplishments %>
+        <%= link_to_add_fields "Add a certification or award", f, :professional_accomplishments, "btn btn-monkey" %>
       </div>
 
       <div class="tab-pane" id="educational">
@@ -62,7 +62,7 @@
               <%= render 'professional_education_fields', f: professional_education %>
         <% end %>
         <div class="span12 no-left-margin">
-          <%= link_to_add_fields "Add a new school", f, :professional_educations %>
+          <%= link_to_add_fields 'Add a School', f, :professional_educations, "btn btn-monkey" %>
         </div>
 
       </div>

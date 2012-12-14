@@ -1,10 +1,9 @@
-<div class="input-append">
+<div class="field">
   <%= f.select :accomplishment_type, {"Certification" => "Certificate", "Award" => "Award"}, {}, class:"span3" %>
   <%= f.text_field :year, placeholder: "when?", class:"span3"%>
   <%= f.text_field :name, placeholder: "what was it?", class:"span4" %>
-  <button class="btn" type="button"><i class="icon-plus"></i></button>
-  <button class="btn" type="button"><i class="icon-trash"></i></button>
+  <%= link_to_remove_fields '<i class="icon-trash icon-white"></i>', f, false, "btn btn-monkey" %>
 </div>
 
 
-<%= link_to_remove_fields "remove", f, true %>
+
