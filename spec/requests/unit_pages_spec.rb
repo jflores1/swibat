@@ -66,7 +66,7 @@ describe "UnitPages" do
     end
 
     describe "Can navigate to unit show path" do
-      let(:unit){create(:unit)}
+      let(:unit){create(:unit_with_lessons)}
       let(:user){course.user}
       let!(:objective){unit.objectives.create(objective: "Describe how Carnegie changed steel")}
       let!(:objective2){unit.objectives.create(objective:"Describe how Rockefeller changed oil")}
@@ -77,6 +77,7 @@ describe "UnitPages" do
         visit course_unit_path(course, unit)
       end
       subject {page}
+
       #header information
       it {should have_selector("h2", text: "Physics")}
       it {should have_selector("h2",text: "The Industrial Revolution")}
@@ -94,6 +95,9 @@ describe "UnitPages" do
 
       #displays lesson accordion
       it {should have_selector("h2", text: "Lessons")}
+      it "should have lesson titles" do
+        page.should have_content("Gilded Age")
+      end
     end
 
   end

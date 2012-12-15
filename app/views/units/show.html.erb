@@ -67,9 +67,9 @@
     <% if current_user? && @unit.lessons.count == 0 %>
         <p class="top-margin">It doesn't look like you have any lessons. <%= link_to "Create one now.", new_unit_lesson_path(@unit) %></p>
     <% elsif @unit.lessons.count == 0%>
-        <p class="top-margin">Sad. It doesn't look like this user has created any courses yet.</p>
+        <p class="top-margin">Sad. It doesn't look like this user has created any lessons yet.</p>
     <% else %>
-        <%= render 'units_lessons_accordion' %>
+        <%= render 'lessons_activities_accordion' %>
     <% end %>
   </section>
 

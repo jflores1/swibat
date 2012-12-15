@@ -8,11 +8,10 @@ describe "Commenting" do
 		@friend = FactoryGirl.create(:user, :email => "friend@test.com", :first_name => "Friend", :last_name => "Friendovski")
 		Friendship.create(:user => @user, :friend => @friend, :status => 'accepted')
 		Friendship.create(:user => @friend, :friend => @user, :status => 'accepted')
-		@friend_commentable = FactoryGirl.create(:course, :user => @friend)						
-		@not_friend_commentable = FactoryGirl.create(:course, :user => @not_friend)						
-		@my_commentable = FactoryGirl.create(:course, :user => @user)						
-	end
-
+		@friend_commentable = FactoryGirl.create(:course, :user => @friend)
+		@not_friend_commentable = FactoryGirl.create(:course, :user => @not_friend)
+		@my_commentable = FactoryGirl.create(:course, :user => @user)
+  end
 
 	context "when on a friend's commentable page" do
 		before { visit course_path @friend_commentable }
