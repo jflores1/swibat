@@ -1,9 +1,4 @@
-<div class="course-form">
-  <header class="course-form-header">
-    <h1>Add a Course</h1>
-  </header>
-
-  <%= form_for [current_user, @course] do |course| %>
+<%= form_for [current_user, @course] do |course| %>
     <%= render 'shared/form_error_messages', object: course.object %>
 
     <%= course.label "What do you want to call this course?" %>
@@ -30,7 +25,7 @@
 
     <%= course.label :objectives, "What should students be able to do when it's over?" %>
         <%= course.fields_for :objectives do |objective| %>
-        <%= render "objective_fields", f: objective %>
+        <%= render "shared/objective_fields", f: objective %>
      <% end %>
      <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', course, :objectives,"btn btn-monkey" %>
 
@@ -44,11 +39,10 @@
       </div>
     </div>
 
-  <% end %>
+    <% end %>
 
-  <%= content_for :sidebar do %>
+    <%= content_for :sidebar do %>
       <h3>Similar Courses</h3>
       <div id="similarObjectiveables"></div>
-  <% end %>
+<% end %>
 
-</div>

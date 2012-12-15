@@ -6,16 +6,29 @@ FactoryGirl.define do
     course_year         2012
     course_summary      "This is a course summary."
     user_id             1
-    grade
+    association :grade, factory: :grade, grade_level:"Grade 1"
   end
 
   factory :unit do
     unit_title  "The Industrial Revolution"
     expected_start_date  Date.new(2012, 12, 12)
     expected_end_date    Date.new(2012, 12, 15)
-    prior_knowledge     "None"
+    prior_knowledge     "The Great Barons"
     unit_status         "Started"
-    course
+    course_id           1
+
+    factory :unit_with_objectives do
+      after(:create) do |unit|
+        create(:objective, objective: "Describe how Carnegie changed steel", objectiveable_id: unit.id, objectiveable_type:"unit")
+      end
+    end
+  end
+
+  factory :new_unit do
+    unit_title  "The Industrial Revolution"
+    expected_start_date  Date.new(2012, 12, 12)
+    expected_end_date    Date.new(2012, 12, 15)
+    prior_knowledge     "None"
   end
 
   factory :lesson do
@@ -24,15 +37,12 @@ FactoryGirl.define do
     lesson_end_date     Date.new(2012, 12, 15)
     lesson_status       "Started"
     unit
+
   end
 
   factory :objective do
     objective           "Measure average velocity of Sparrow's wing speed"
   end
 
-  factory :course_objective_1 do
-    objective "objective one"
-    course
-  end
 
 end

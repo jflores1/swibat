@@ -40,7 +40,8 @@ namespace :db do
             course_name: course_name,
             course_semester: course_semester,
             course_year: course_year,
-            course_summary: course_summary
+            course_summary: course_summary,
+            grade_id: 10
         )
       end
     end

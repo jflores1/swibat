@@ -1,0 +1,90 @@
+<div class="span2">
+  <%= render :partial => 'shared/vote', :locals => {:resource => @course, :path => vote_user_course_path(@course.user, @course) } %>
+  <div class="favoritecount">
+    <b></b>
+  </div>
+</div>
+<div class="span10" id="course-summary">
+
+  <%= render 'users/profile_header' %>
+
+  <header class="course-header top-margin">
+    <div class="span12">
+      <h2><%= @course.course_name %>, <%= @unit.unit_title %></h2>
+    </div>
+  </header>
+
+  <section class="course-info">
+    <header>
+      <h2>Prior Knowledge</h2>
+    </header>
+    <article>
+      <p><%= @unit.prior_knowledge %></p>
+    </article>
+  </section>
+
+  <section class="course-info">
+    <header>
+      <h2>Unit <%= "Objective".pluralize(@unit.objectives.count) %></h2>
+    </header>
+    <article>
+      <ul>
+        <% @unit.objectives.each do |objective| %>
+            <li><%= objective.objective %></li>
+        <% end %>
+      </ul>
+    </article>
+  </section>
+
+  <section class="course-info">
+    <header>
+      <h2>Unit <%= "Assessment".pluralize(@unit.assessments.count) %></h2>
+    </header>
+    <article>
+      <ul>
+        <% @unit.assessments.each do |assessment| %>
+            <li><%= assessment.assessment_name %></li>
+        <% end %>
+      </ul>
+    </article>
+  </section>
+
+  <section class="course-info">
+    <header>
+      <h2>Standards Covered</h2>
+    </header>
+    <article>
+    </article>
+  </section>
+
+  <header class="course-header">
+    <h2>Lessons</h2>
+    <% if current_user? %>
+        <button class="btn btn-small btn-monkey pull-right"><a href="<%= new_course_unit_path(@course) %>"><i class="icon-plus icon-white"></i></a></button>
+    <% end %>
+  </header>
+  <section class="course-info">
+    <% if current_user? && @unit.lessons.count == 0 %>
+        <p class="top-margin">It doesn't look like you have any lessons. <%= link_to "Create one now.", new_unit_lesson_path(@unit) %></p>
+    <% elsif @unit.lessons.count == 0%>
+        <p class="top-margin">Sad. It doesn't look like this user has created any courses yet.</p>
+    <% else %>
+        <%= render 'units_lessons_accordion' %>
+    <% end %>
+  </section>
+
+  <header class="course-header">
+    <h2>Comments</h2>
+  </header>
+  <section class="course-info">
+    <%= render :partial => 'comments/comments', :locals => {:commentable => @course} %>
+  </section>
+
+</div>
+
+<% content_for :sidebar do %>
+    <%= render 'users/user_sidebar' %>
+<% end %>
+
+
+

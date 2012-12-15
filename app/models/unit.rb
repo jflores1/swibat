@@ -31,13 +31,13 @@ class Unit < ActiveRecord::Base
   #  unit.unit_title = unit_title.titleize
   #end
 
-  VALID_STATUS = %w[Pending Started Complete]
+  VALID_STATUS = ["Pending", "Started", "Complete"]
 
-  validate :valid_unit_status
+  #validate :valid_unit_status
 
   validates :expected_end_date, presence: true, date: {after: :expected_start_date}
   validates :expected_start_date, presence: true, date: {before: :expected_end_date}
-  validates :unit_status, presence: true
+  validates :unit_status, length:{maximum: 50}, allow_blank: true
   validates :unit_title, presence: true
 
   def user

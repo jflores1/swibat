@@ -1,63 +1,46 @@
-<div class="course-form">
-  <header class="course-form-header">
-    <h1>Add Unit to <%= @course.course_name %></h1>
-  </header>
+
 
   <%= form_for [@course, @unit] do |unit| %>
+      <%= render 'shared/form_error_messages', object: unit.object %>
 
-    <% if @unit.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
-        <ul>
-        <% @unit.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
+
+      <%= unit.label "What big question does this unit answer?" %>
+      <%= unit.text_field :unit_title, id:"unit_title", placeholder:"Unit Title" %>
+
+
+      <%= unit.label :prior_knowledge, "What will students need to know before you start?" %>
+      <%= unit.text_field :prior_knowledge, id:"prior_knowledge", placeholder:"Prior Knowledge" %>
+
+      <%= unit.label :objectives, "What should students be able to do when it's over?" %>
+      <%= unit.fields_for :objectives do |objective| %>
+          <%= render "shared/objective_fields", :f => objective %>
+      <% end %>
+      <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', unit, :objectives, "btn btn-monkey" %>
+
+      <%= unit.label :assessments, "How will you assess their learning?" %>
+      <%= unit.fields_for :assessments do |assessment| %>
+          <%= render "shared/assessment_fields", :f => assessment %>
+      <% end %>
+      <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', unit, :assessments, "btn btn-monkey" %>
+
+      <p>How long will the unit last?</p>
+      <div class="form-row">
+        <div class="span1">
+          <%= unit.label :expected_start_date, "From:" %>
+        </div>
+        <div class="span6">
+          <%= unit.datepicker :expected_start_date, :dateFormat => "yy-mm-dd"%>
+        </div>
       </div>
-    <% end %>
 
-    <%= unit.label "What is the title of this unit?" %>
-    <%= unit.text_field :unit_title, id:"unit_title" %>
-
-    <div class="two-column-form">
-      <p>How long do you expect it to last?</p>
-      <div class="pull-left">
-        <%= unit.label :expected_start_date, "I expect to start on..." %>
-        <%= unit.datepicker :expected_start_date, :dateFormat => "yy-mm-dd" %>
+      <div class="form-row">
+        <div class="span1">
+          <%= unit.label :expected_end_date, "To:" %>
+        </div>
+        <div class="span6">
+          <%= unit.datepicker :expected_end_date, :dateFormat => "yy-mm-dd" %>
+        </div>
       </div>
-      <div class="pull-right">
-        <%= unit.label :expected_end_date, "and end on..." %>
-        <%= unit.datepicker :expected_end_date, :dateFormat => "yy-mm-dd" %>
-      </div>
-    </div>
-
-    <%= unit.label :prior_knowledge, "What do students need to know before you start?" %>
-    <%= unit.text_field :prior_knowledge, id:"prior_knowledge" %>
-
-    <%= unit.text_field :unit_status, id: "unit_status" %>
-
-    <p>What should students be able to do once the unit is over?</p>
-    <table class="table">    
-      <tr><th>Objective</th></tr>
-        <%= unit.fields_for :objectives do |objective| %>
-          <%= render "objective_fields", :f => objective %>
-        <% end %>      
-      <tr><td><%= link_to_add_fields "Add new objective", unit, :objectives %></td></tr>
-    </table>
-
-    <p>How will you be assessing them?</p>
-    <table class="table">    
-      <tr><th>Assessment</th></tr>
-        <%= unit.fields_for :assessments do |assessment| %>
-          <%= render "assessment_fields", :f => assessment %>
-        <% end %>      
-      <tr><td><%= link_to_add_fields "Add new assessment", unit, :assessments %></td></tr>
-    </table>
-
-
-    <h3>Similar Units</h3>
-    <div id="similarObjectiveables"></div>
-    
 
     <div class="two-column-form">
       <div class="pull-left">
@@ -72,4 +55,3 @@
 
   <% end %>
 
-</div>

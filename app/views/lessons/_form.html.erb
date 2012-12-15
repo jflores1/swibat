@@ -50,14 +50,12 @@
 
 		  <div class="control-group">
 		    <%= lesson.label :objectives, "Objectives", :class => "control-label" %> 
-		    <div class="controls">    
-		      <table class="table">    
+		    <div class="controls">
 		        <tr><th>Objective</th></tr>
 		          <%= lesson.fields_for :objectives do |objective| %>
-		            <%= render "objective_fields", :f => objective %>
+		            <%= render "shared/objective_fields", :f => objective %>
 		          <% end %>      
-		        <tr><td><%= link_to_add_fields "Add new objective", lesson, :objectives %></td></tr>
-		      </table>
+		        <tr><td><%= link_to_add_fields "Add new objective", lesson, :objectives, "btn btn-monkey" %></td></tr>
 		    </div>
 		  </div>
 
@@ -67,9 +65,9 @@
 		      <table class="table">    
 		        <tr><th>Assessment</th></tr>
 		          <%= lesson.fields_for :assessments do |assessment| %>
-		            <%= render "assessment_fields", :f => assessment %>
+		            <%= render "shared/assessment_fields", :f => assessment %>
 		          <% end %>      
-		        <tr><td><%= link_to_add_fields "Add new assessment", lesson, :assessments %></td></tr>
+		        <tr><td><%= link_to_add_fields "Add new assessment", lesson, :assessments, "btn btn-monkey" %></td></tr>
 		      </table>
 		    </div>
 		  </div>
@@ -82,7 +80,7 @@
 		          <%= lesson.fields_for :resources do |resource| %>
 		            <%= render "resource_fields", :f => resource %>
 		          <% end %>      
-		        <tr><td colspan="3"><%= link_to_add_fields "Add new resource", lesson, :resources %></td></tr>
+		        <tr><td colspan="3"><%= link_to_add_fields "Add new resource", lesson, :resources, "btn btn-monkey" %></td></tr>
 		      </table>
 		    </div>
 		  </div>

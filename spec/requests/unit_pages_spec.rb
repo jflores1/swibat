@@ -12,7 +12,7 @@ describe "UnitPages" do
       it {response.status.should be(200)}
     end
 
-    describe "Add a unit" do
+    describe "Can add a unit" do
       let(:submit){"Save and Come Back Later"}
       let(:move_on){"Add Some Lessons"}
       let(:unit){course.units}
@@ -25,6 +25,7 @@ describe "UnitPages" do
             fill_out_form_with_valid_information
             click_button submit
           }.to change(unit, :count).by(1)
+          current_path.should eq(user_course_path(@user, course))
         end
 
         it "saves and goes to the lesson page" do
@@ -64,10 +65,41 @@ describe "UnitPages" do
       end
     end
 
+    describe "Can navigate to unit show path" do
+      let(:unit){create(:unit)}
+      let(:user){course.user}
+      let!(:objective){unit.objectives.create(objective: "Describe how Carnegie changed steel")}
+      let!(:objective2){unit.objectives.create(objective:"Describe how Rockefeller changed oil")}
+      let!(:assessment){unit.assessments.create(assessment_name:"A business plan for the 21st century")}
+
+      before do
+        sign_in_via_form
+        visit course_unit_path(course, unit)
+      end
+      subject {page}
+      #header information
+      it {should have_selector("h2", text: "Physics")}
+      it {should have_selector("h2",text: "The Industrial Revolution")}
+      it {should have_selector("h2", text: "Prior Knowledge")}
+      it {should have_selector("p", text: "The Great Barons")}
+
+      #lists objectives. Pluralize "Objective" and "Assessment" based on count
+      it {should have_selector("h2", text: "Unit Objectives")}
+      it {should have_selector("li", text:"Describe how Carnegie changed steel")}
+      it {should have_selector("li", text:"Describe how Rockefeller changed oil")}
+
+      #lists assessments, Pluralized based on count
+      it {should have_selector("h2", text: "Unit Assessment")}
+      it {should have_selector("li", text: "A business plan for the 21st century")}
+
+      #displays lesson accordion
+      it {should have_selector("h2", text: "Lessons")}
+    end
+
   end
 
   context "When a user is not signed in" do
-    describe "it does not allow access" do
+    describe "it cannot add a new unit" do
       before {get new_course_unit_path(course)}
       it {response.status.should be(302)}
     end
@@ -84,17 +116,17 @@ describe "UnitPages" do
     fill_in "unit_expected_start_date",  with: "2013/01/01"
     fill_in "unit_expected_end_date",    with: "2013/01/10"
     fill_in "prior_knowledge",      with: ""
-    fill_in "unit_status",          with: "Pending"
+    #fill_in "unit_status",          with: "Pending"
     fill_in 'unit_objectives_attributes_0_objective',               with: "An objective"
     fill_in 'unit_assessments_attributes_0_assessment_name',        with: "An assessment"
   end
 
   def fill_out_form_with_invalid_information
     fill_in "unit_title",           with: "A New Unit"
-    fill_in "unit_expected_start_date",  with: "2013/01/01"
-    fill_in "unit_expected_end_date",    with: "2013/01/10"
+    fill_in "unit_expected_start_date",  with: "2013/01/10"
+    fill_in "unit_expected_end_date",    with: "2013/01/01"
     fill_in "prior_knowledge",      with: ""
-    fill_in "unit_status",          with: "Invalid Status"
+    #fill_in "unit_status",          with: "Invalid Status"
   end
 
 end

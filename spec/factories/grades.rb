@@ -2,6 +2,8 @@
 
 FactoryGirl.define do
   factory :grade do
-    grade_level "Grade 1"
+    sequence(:grade_level) {|n| "Grade #{n}"}
   end
+
+
 end

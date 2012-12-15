@@ -4,6 +4,8 @@ class UnitsController < ApplicationController
   load_and_authorize_resource
 
   def show
+    @course = Course.find(params[:course_id])
+    @user = @course.user
     @unit = Unit.find(params[:id])
   end
 

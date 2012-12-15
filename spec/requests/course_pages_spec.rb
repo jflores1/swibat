@@ -23,8 +23,11 @@ describe "CoursePages" do
   describe "A Working Form" do
     before do
       sign_in_via_form
-      Grade.create(:grade_level => "Grade 5")
+      FactoryGirl.create_list(:grade, 14)
       visit new_user_course_path(@user)      
+    end
+    after(:each) do
+      FactoryGirl.reload
     end
     let(:unit_button){"Create a Unit"}
     let(:save_button){"Save and Return"}
@@ -39,21 +42,20 @@ describe "CoursePages" do
         expect {
           fill_out_course_form_with_valid_info
           click_button save_button
-        }.to change(course, :count).by(1)
-        current_path.should == user_course_path(@user, course)
+        }.to change(Course, :count).by(1)
+        current_path.should == user_course_path(@user, course.last)
       end
 
       it "Allows a user to save a course and go the Unit page" do
         expect {
           fill_out_course_form_with_valid_info
           click_button unit_button
-        }.to change(course, :count).by(1)
+        }.to change(Course, :count).by(1)
         current_path.should == new_course_unit_path(1)
       end
 
       it "Adds at least one objective to the course" do
         expect {
-          grades = Grade.all
           fill_out_course_form_with_valid_info
           click_button save_button
         }.to change(Course, :count).by_at_least(1)
@@ -99,6 +101,7 @@ describe "CoursePages" do
       subject{page}
 
       describe "Has Course Header Information" do
+
         it {should have_content("Physics")}
         it {should have_content("Fall")}
         it {should have_content("2012")}
@@ -190,10 +193,11 @@ describe "CoursePages" do
   end
 
   def fill_out_course_form_with_valid_info
+    grades = Grade.all
     fill_in 'course_name',     with: "Physics 1"
     select  'Fall',            from: "course_course_semester"
     select  '2012',            from: "course_course_year"
-    select  'Grade 5',         from: "course_grade_id"
+    select  'Grade 5'
     fill_in 'course_summary',  with: "This is a valid course summary."
     fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end
@@ -215,6 +219,10 @@ describe "CoursePages" do
     second_option_xpath = "//*['@id = #{id}']/option[3]"
     second_option = find(:xpath, second_option_xpath).value
     select(second_option, from: id)
+  end
+
+  def load_grades
+    grades = Grade.all
   end
 
 end
