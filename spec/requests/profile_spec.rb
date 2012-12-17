@@ -28,9 +28,9 @@ describe "Profile" do
 
 		describe "With valid attributes" do
 			it "should successfully update user" do
-				fill_in 'user_first_name',     with: "Marjan"
-				fill_in 'user_last_name',    	 with: "Georgiev"
-				fill_in 'user_institution',    with: "Jane Sandanski"
+				fill_in 'first_name',     with: "Marjan"
+				fill_in 'last_name',    	 with: "Georgiev"
+				fill_in 'institution',    with: "Jane Sandanski"
 				page.attach_file('user_image', Rails.root + 'spec/fixtures/files/user_image.jpg')
 				click_button "Save Changes"			
 				@user.reload
@@ -44,9 +44,9 @@ describe "Profile" do
 
 		describe "With invalid attributes" do
 			it "should display error" do
-				fill_in 'user_first_name',     with: ""
-				fill_in 'user_last_name',    	 with: ""
-				fill_in 'user_institution',    with: ""
+				fill_in 'first_name',     with: ""
+				fill_in 'last_name',    	 with: ""
+				fill_in 'institution',    with: ""
 				click_button "Save Changes"				
 				page.should have_selector('#error_explanation')
 				page.should have_content("First name can't be blank")

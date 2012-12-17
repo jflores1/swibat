@@ -24,7 +24,9 @@ describe "UserPages" do
       let(:course){create(:course)}
 
       describe "Can add a new course" do
-        before {first('i.icon-plus').click}
+        before do
+          {first('i.icon-plus').click}
+        end
         it {page.current_path.should eq(new_user_course_path(@user))}
       end
 
@@ -103,7 +105,7 @@ describe "UserPages" do
       page.should have_content("Education:")      
       page.should have_content("Certifications:")      
       page.should have_content("Awards:")      
-      page.should have_content("Connect:")
+      page.should have_content("Website:")
 
       page.should have_content("my old school")      
       page.should have_content("MSc.")      
