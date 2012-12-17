@@ -524,19 +524,28 @@ Media Queries
     .arrow {    
         margin: 0 auto;
         text-decoration: none;
-    }
-
-    .upvote{
         width:40px;
         height:25px;
-        background: url("<%= asset_path('sprite-arrows.png') %>") 0 0;
+        background: url("<%= asset_path('sprite-arrows.png') %>")
     }
 
-    .downvote{
-        width: 40px;
-        height:25px;
-        background: url("<%= asset_path('sprite-arrows.png') %>") 0 -42px;
+    .upvote, .upvote-active:hover {
+        background-position: 0px 0px;
     }
+
+    .upvote-active, .upvote:hover {
+        background-position: 40px 0px;
+    }
+
+    .downvote, .downvote-active:hover {
+        background-position: 0 -42px;
+    }
+
+    .downvote-active, .downvote:hover {
+        background-position: 40px -42px;
+    }
+
+    
 
     .vote-count {
         font-size: 2.2em;
