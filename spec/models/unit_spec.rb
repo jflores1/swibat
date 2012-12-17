@@ -44,7 +44,7 @@ describe Unit do
 
     describe "without a unit status" do
       before {unit.unit_status = ""}
-      it {should be_valid}
+      it {should_not be_valid}
     end
 
     describe "with an invalid unit status" do

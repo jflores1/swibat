@@ -5,13 +5,12 @@ describe CoursesController do
   render_views
 
   it "should have proper routes" do
-    {:get => "users/1/courses/" }.should be_routable
-    {:get => "users/1/courses/new" }.should be_routable
-    {:get => "users/1/courses/1/edit" }.should be_routable
-    {:get => "users/1/courses/1/" }.should be_routable
-    {:post => "users/1/courses" }.should be_routable
-    {:put => "users/1/courses/1" }.should be_routable
-    {:delete => "users/1/courses/1" }.should be_routable
+    {:get => "courses/new" }.should be_routable
+    {:get => "courses/1/edit" }.should be_routable
+    {:get => "courses/1/" }.should be_routable
+    {:post => "courses" }.should be_routable
+    {:put => "courses/1" }.should be_routable
+    {:delete => "courses/1" }.should be_routable
   end
 
   describe "Creating a new course" do
@@ -27,7 +26,6 @@ describe CoursesController do
       post 'create'
       assigns[:course].should_not be_new_record
       flash[:notice].should_not be_nil
-      response.should redirect_to(user_path(user))
     end
   end
 
