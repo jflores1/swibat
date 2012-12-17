@@ -8,14 +8,15 @@ describe "Commenting" do
 		@friend = FactoryGirl.create(:user, :email => "friend@test.com", :first_name => "Friend", :last_name => "Friendovski")
 		Friendship.create(:user => @user, :friend => @friend, :status => 'accepted')
 		Friendship.create(:user => @friend, :friend => @user, :status => 'accepted')
-		@friend_commentable = FactoryGirl.create(:course, :user => @friend)
-		@not_friend_commentable = FactoryGirl.create(:course, :user => @not_friend)
-		@my_commentable = FactoryGirl.create(:course, :user => @user)
+		@grade = FactoryGirl.create(:grade, :grade_level => 'Kindergarden')
+		@friend_commentable = FactoryGirl.create(:course, :user => @friend, :grade => @grade)
+		@not_friend_commentable = FactoryGirl.create(:course, :user => @not_friend, :grade => @grade)
+		@my_commentable = FactoryGirl.create(:course, :user => @user, :grade => @grade)
   end
 
 	context "when on a friend's commentable page" do
 		before { visit course_path @friend_commentable }
-		let(:comment_button){"Post Comment"}
+		let(:comment_button){"Leave a Comment"}
 
 		it "should display the comments form" do
 			page.should have_selector('#new_comment')						
@@ -48,7 +49,7 @@ describe "Commenting" do
 
 	context "when not on a friend's commentable page" do
 		before { visit course_path @not_friend_commentable }
-		let(:comment_button){"Post Comment"}
+		let(:comment_button){"Leave a Comment"}
 
 		it "should let me see other people's comments" do
 			page.should have_selector('#comments')						
@@ -69,7 +70,7 @@ describe "Commenting" do
 
 	context "when on a my own commentable page" do
 		before { visit course_path @my_commentable }
-		let(:comment_button){"Post Comment"}
+		let(:comment_button){"Leave a Comment"}
 
 		it "should display the comments form" do
 			page.should have_selector('#new_comment')						

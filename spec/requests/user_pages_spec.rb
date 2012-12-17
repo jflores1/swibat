@@ -96,11 +96,16 @@ describe "UserPages" do
         end
 
         context "User's professional information" do
-          before {click_link "Your Work"}
-          it {can_update_form_field("name", "Specialty")}
-          it {can_update_select_field("Certification", "accomplishment_type" )}
-          it {can_update_form_field("year", "1996")}
-          it {can_update_form_field("name", "Grammy")}
+          before do
+            @user.professional_accomplishments.build({accomplishment_type: "Award", name: "Emmy", year: "2000"})
+            visit edit_user_path(@user)
+            click_link "Your Work"            
+          end
+
+          it {can_update_form_field("user_specialties_attributes_0_name", "Specialty")}
+          it {can_update_select_field("Award", "user_professional_accomplishments_attributes_0_accomplishment_type")}
+          it {can_update_form_field("user_professional_accomplishments_attributes_0_year", "1996")}
+          it {can_update_form_field("user_professional_accomplishments_attributes_0_name", "Grammy")}
         end
       end
     end
@@ -136,7 +141,7 @@ describe "UserPages" do
       page.should have_content("Education:")      
       page.should have_content("Certifications:")      
       page.should have_content("Awards:")      
-      page.should have_content("Website:")
+      page.should have_content("Twitter:")
 
       page.should have_content("my old school")      
       page.should have_content("MSc.")      
@@ -201,15 +206,15 @@ describe "UserPages" do
 
   private
   def can_update_form_field(form_field, form_text)
-    fill_in "#{form_field}", with: "#{form_text}"
+    fill_in form_field, with: form_text
     click_button save
-    expect(page).to have_text("#{form_text}")
+    expect(page).to have_content(form_text)
   end
 
   def can_update_select_field(form_option, from_field)
-    select "#{form_option}", from: "#{from_field}"
+    select form_option, from: from_field
     click_button save
-    expect(page).to have_text("#{form_option}")
+    expect(page).to have_content(form_option)
   end
 
 

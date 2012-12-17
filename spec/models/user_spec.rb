@@ -91,7 +91,7 @@ describe User do
     let(:user){FactoryGirl.build(:user)}
 
     describe "User can create a course" do
-      before{@course = user.courses.build(course_name:"Physics", course_semester:"Fall", course_year:2012, course_summary:"Summary")}
+      before{@course = user.courses.build(course_name:"Physics", course_semester:"Fall", course_year:2012, course_summary:"Summary", :grade => FactoryGirl.create(:grade))}
       it {expect{user.save!}.to change{Course.count}.by(1)}
     end
   end
