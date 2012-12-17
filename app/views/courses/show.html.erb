@@ -1,6 +1,6 @@
 <div class="span2">
 
-  <%= generate_vote_form @course, vote_user_course_path(@course.user, @course) %>
+  <%= generate_vote_form @course, vote_course_path(@course) %>
 
   <div class="favoritecount">
     <b></b>
@@ -75,7 +75,16 @@
 </div>
 
 <% content_for :sidebar do %>
-    <%= render 'users/user_sidebar' %>
+
+    <%= content_for :sidebar_profile do %>
+          <%= render 'shared/sidebar_profile' %>
+    <% end %>
+
+    <%= content_for :sidebar_invite do %>
+          <%= render 'shared/sidebar_invite' %>
+    <% end %>
+
+    <%= render 'layouts/application_sidebar' %>
 <% end %>
 
 

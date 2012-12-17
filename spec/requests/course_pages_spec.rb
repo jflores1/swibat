@@ -80,6 +80,11 @@ describe "CoursePages" do
         invalid_form_expectations
       end
 
+      it "Displays an error modal" do
+        fill_out_course_form_with_invalid_info
+        page.should have_selector(".modal")
+      end
+
       xit "Displays error messages to the user" do
 
       end
