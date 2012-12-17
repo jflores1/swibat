@@ -47,7 +47,7 @@ private
     elsif objectiveable.class.to_s == "Unit"
       path = course_unit_path objectiveable.course, objectiveable
     elsif objectiveable.class.to_s == "Course"
-      path = user_course_path objectiveable.user, objectiveable
+      path = course_path objectiveable.user, objectiveable
     end
     path
   end

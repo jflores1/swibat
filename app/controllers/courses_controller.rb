@@ -4,12 +4,13 @@ class CoursesController < ApplicationController
   skip_authorize_resource
 
   def index
+    @courses = Course.all
 
   end
 
   def show
-    @user = User.find(params[:user_id])
     @course = Course.find(params[:id])
+    @user = @course.user
   end
 
   def new
@@ -21,7 +22,7 @@ class CoursesController < ApplicationController
     @grades = Grade.all
     @course = current_user.courses.new(params[:course])
     if @course.save && params[:save_and_return]
-      redirect_to user_course_path(current_user, @course)
+      redirect_to course_path(@course)
     elsif @course.save && params[:course_to_unit]
       redirect_to new_course_unit_path(@course)
     else

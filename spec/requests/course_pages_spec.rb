@@ -24,7 +24,7 @@ describe "CoursePages" do
     before do
       sign_in_via_form
       FactoryGirl.create_list(:grade, 14)
-      visit new_user_course_path(@user)      
+      visit new_course_path      
     end
     after(:each) do
       FactoryGirl.reload
@@ -43,7 +43,7 @@ describe "CoursePages" do
           fill_out_course_form_with_valid_info
           click_button save_button
         }.to change(Course, :count).by(1)
-        current_path.should == user_course_path(@user, course.last)
+        current_path.should == course_path(Course.last)
       end
 
       it "Allows a user to save a course and go the Unit page" do
@@ -95,7 +95,7 @@ describe "CoursePages" do
 
       before(:each) do
         sign_in_via_form
-        visit user_course_path(@user, course)
+        visit course_path(course)
       end
 
       subject{page}
@@ -189,7 +189,7 @@ describe "CoursePages" do
   private
   def sign_in_user_and_go_to_page
     sign_in_as_a_valid_user
-    get new_user_course_path(@user)
+    get new_course_path
   end
 
   def fill_out_course_form_with_valid_info

@@ -1,0 +1,14 @@
+<header class="course-header">
+  <h3><%= pluralize(@user.answers.count, "Answer") %></h3>
+</header>
+<section class="course-info">
+  <% if (current_user && current_user.answers.count == 0) %>
+      <p>Help your fellas out! <%= link_to "Answer some questions", "#" %></p>
+  <% else @user.answers.each do |answer| %>
+          <ul>
+            <li><%= answer.text %></li>
+          </ul>
+      <% end %>
+  <% end %>
+
+</section>
