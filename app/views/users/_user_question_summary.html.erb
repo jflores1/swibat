@@ -1,0 +1,14 @@
+<header class="course-header">
+  <h3><%= pluralize(@user.questions.count, "Question") %></h3>
+</header>
+<section class="course-info">
+  <% if (current_user && current_user.questions.count == 0) %>
+         <p>It doesn't look like you've asked any questions. <%= link_to "Have one?", new_question_path, class:"user-add-question" %></p>
+  <% else @user.questions.each do |question| %>
+            <ul>
+                <li><%= question.title %></li>
+            </ul>
+          <% end %>
+  <% end %>
+
+</section>

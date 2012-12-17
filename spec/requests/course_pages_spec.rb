@@ -24,7 +24,7 @@ describe "CoursePages" do
     before do
       sign_in_via_form
       FactoryGirl.create_list(:grade, 14)
-      visit new_user_course_path(@user)      
+      visit new_course_path      
     end
     after(:each) do
       FactoryGirl.reload
@@ -43,7 +43,7 @@ describe "CoursePages" do
           fill_out_course_form_with_valid_info
           click_button save_button
         }.to change(Course, :count).by(1)
-        current_path.should == user_course_path(@user, course.last)
+        current_path.should == course_path(Course.last)
       end
 
       it "Allows a user to save a course and go the Unit page" do
@@ -95,7 +95,7 @@ describe "CoursePages" do
 
       before(:each) do
         sign_in_via_form
-        visit user_course_path(@user, course)
+        visit course_path(course)
       end
 
       subject{page}
@@ -137,16 +137,48 @@ describe "CoursePages" do
 
         it "should have working upvote button" do
           course.reputation_for(:votes).to_i.should == 0
-          upvote = find(".upvote")        
-          upvote.find("a").click
+          upvote = find(".upvote").first(:xpath,".//..")        
+          upvote.click
           course.reputation_for(:votes).to_i.should == 1
+        end
+
+        it "clicking the upvote button should change its color and type param" do       
+          upvote = find(".upvote").first(:xpath,".//..")
+          upvote.click
+          page.should have_selector(".upvote-active")
+          have_xpath("//a[contains(@href,'type=clear')]")
+        end
+
+        it "clicking a red upvote button should reset the user's vote for that resource" do
+          upvote = find(".upvote").first(:xpath,".//..")
+          upvote.click
+          course.reputation_for(:votes).to_i.should == 1
+          upvote = find(".upvote-active").first(:xpath,".//..")
+          upvote.click
+          course.reputation_for(:votes).to_i.should == 0
         end
 
         it "should have working downvote button" do
           course.reputation_for(:votes).to_i.should == 0
-          downvote = find(".downvote")        
-          downvote.find("a").click
+          downvote = find(".downvote").first(:xpath,".//..")                
+          downvote.click
           course.reputation_for(:votes).to_i.should == -1
+        end
+
+        it "clicking the downvote button should change its color and type param" do       
+          downvote = find(".downvote").first(:xpath,".//..")
+          downvote.click
+          page.should have_selector(".downvote-active")
+          have_xpath("//a[contains(@href,'type=clear')]")
+        end
+
+        it "clicking a red downvote button should reset the user's vote for that resource" do
+          downvote = find(".downvote").first(:xpath,".//..")
+          downvote.click
+          course.reputation_for(:votes).to_i.should == -1
+          downvote = find(".downvote-active").first(:xpath,".//..")
+          downvote.click
+          course.reputation_for(:votes).to_i.should == 0
         end
       end
 
@@ -189,7 +221,7 @@ describe "CoursePages" do
   private
   def sign_in_user_and_go_to_page
     sign_in_as_a_valid_user
-    get new_user_course_path(@user)
+    get new_course_path
   end
 
   def fill_out_course_form_with_valid_info

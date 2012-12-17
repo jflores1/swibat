@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = Question.find(params[:id])    
   end
 
   def new
@@ -44,9 +44,13 @@ class QuestionsController < ApplicationController
   end
 
   def vote
-    value = params[:type] == "up" ? 1 : -1
     @question = Question.find(params[:id])
-    @question.add_or_update_evaluation(:votes, value, current_user)
+    if params[:type] == 'clear'
+      @question.delete_evaluation(:votes, current_user)
+    else
+      value = params[:type] == "up" ? 1 : -1      
+      @question.add_or_update_evaluation(:votes, value, current_user)
+    end
     redirect_to :back, notice: "Thank you for voting"
   end
 

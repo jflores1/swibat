@@ -20,18 +20,51 @@ describe "UserPages" do
       it {page.should have_content "All Users"}
     end
 
-    context "Can navigate to course pages" do
-      let(:course){create(:course)}
+    context "Current user profile page" do
+      let!(:course){create(:course)}
+      before {visit user_path(@user)}
 
       describe "Can add a new course" do
-        before {first('i.icon-plus').click}
-        it {page.current_path.should eq(new_user_course_path(@user))}
+        before {find('#user-add-course').click}
+        it {page.current_path.should eq(new_course_path)}
       end
 
-      describe "Can edit a current course" do
-        before {first('i.icon-pencil').click}
-        it {current_path.should == edit_user_course_path(@user, course)}
+      describe "Can navigate to course show page" do
+        it "should navigate to edit_user_course_page" do
+          find('.edit-user-course').click
+          current_path.should == course_path(course)
+        end
       end
+
+      describe "without any questions asked" do
+        it {page.should have_selector("p", text:"It doesn't look like you've asked any questions.")}
+        it {page.should have_selector("h3", text: "0 Questions")}
+        it "directs the user to add a question" do
+          find_link("Have one?").click
+          current_path.should == new_question_path
+        end
+      end
+
+      describe "with questions" do
+        let!(:question){create(:question)}
+        before {visit user_path(@user)}
+        it {page.should have_selector("li", text: "Question title")}
+        it {page.should have_selector("h3", text: "1 Question")}
+      end
+
+      describe "without any answers provided" do
+        it {page.should have_selector("p", text:"Help your fellas out!")}
+        it {page.should have_selector("h3", text:"0 Answers")}
+      end
+
+      describe "with answers provided" do
+        let!(:answer){create(:answer)}
+        before {visit user_path(@user)}
+        it {page.should have_selector("li", text: "MyText")}
+        it {page.should have_selector("h3", text: "1 Answer")}
+      end
+
+
 
     end
 

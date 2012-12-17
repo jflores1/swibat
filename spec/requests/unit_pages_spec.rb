@@ -25,7 +25,7 @@ describe "UnitPages" do
             fill_out_form_with_valid_information
             click_button submit
           }.to change(unit, :count).by(1)
-          current_path.should eq(user_course_path(@user, course))
+          current_path.should eq(course_path(course))
         end
 
         it "saves and goes to the lesson page" do

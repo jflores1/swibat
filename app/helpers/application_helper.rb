@@ -1,6 +1,7 @@
 module ApplicationHelper
   
-  include EncodeHelper 
+  include EncodeHelper
+  include ReputationsHelper
 
 	# Adding and removing nested forms
   def link_to_remove_fields(name, f, confirm = false, link_class)
