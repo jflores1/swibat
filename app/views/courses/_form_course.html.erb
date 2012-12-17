@@ -1,4 +1,4 @@
-<%= form_for [current_user, @course] do |course| %>
+<%= form_for @course do |course| %>
     <%= render 'shared/form_error_messages', object: course.object %>
 
     <%= course.label "What do you want to call this course?" %>

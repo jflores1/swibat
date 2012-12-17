@@ -18,7 +18,7 @@ class UnitsController < ApplicationController
   def create
     @unit = @course.units.new(params[:unit])
     if @unit.save && params[:submit]
-      redirect_to user_course_path(current_user, @course)
+      redirect_to course_path(@course)
     elsif @unit.save && params[:move_on]
       redirect_to new_unit_lesson_path(@unit)
     else

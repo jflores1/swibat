@@ -29,17 +29,14 @@ Swibat::Application.routes.draw do
 
   resources :leads
 
-  resources :users do
-    resources :courses do
-      member { post :vote }
-    end
-  end
+  resources :users
 
   resources :courses do
     resources :objectives
     resources :assessments
     resources :units
     resources :comments, :only => [:create, :destroy]
+    member { post :vote }
   end
 
   resources :units do
