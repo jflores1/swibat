@@ -38,9 +38,13 @@ class AnswersController < ApplicationController
   end
 
   def vote
-    value = params[:type] == "up" ? 1 : -1
     @answer = Answer.find(params[:id])
-    @answer.add_or_update_evaluation(:votes, value, current_user)
+    if params[:type] == 'clear'
+      @answer.delete_evaluation(:votes, current_user)
+    else
+      value = params[:type] == "up" ? 1 : -1      
+      @answer.add_or_update_evaluation(:votes, value, current_user)
+    end
     redirect_to :back, notice: "Thank you for voting"
   end
 

@@ -55,10 +55,14 @@ class CoursesController < ApplicationController
   end
 
   def vote
-    value = params[:type] == "up" ? 1 : -1
     @course = Course.find(params[:id])
-    @course.add_or_update_evaluation(:votes, value, current_user)
-    redirect_to :back, notice: "Thank you for voting"
+    if params[:type] == 'clear'
+      @course.delete_evaluation(:votes, current_user)
+    else
+      value = params[:type] == "up" ? 1 : -1      
+      @course.add_or_update_evaluation(:votes, value, current_user)
+    end
+    redirect_to :back, notice: "Thank you for voting"   
   end
 
 end

@@ -1,5 +1,7 @@
 <div class="span2">
-  <%= render :partial => 'shared/vote', :locals => {:resource => @course, :path => vote_course_path(@course) } %>
+
+  <%= generate_vote_form @course, vote_user_course_path(@course.user, @course) %>
+
   <div class="favoritecount">
     <b></b>
   </div>
