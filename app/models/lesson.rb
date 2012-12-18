@@ -21,11 +21,14 @@ class Lesson < ActiveRecord::Base
   has_many :assessments, as: :assessable
   has_many :resources
   belongs_to :unit
+  has_many :flags, :as => :flaggable, :dependent => :destroy
 
   accepts_nested_attributes_for :resources, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
   accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true
 
+  has_reputation :votes, source: :user, aggregated_by: :sum
+  
   VALID_STATUS = %w[Pending Started Complete]
 
   validate  :valid_lesson_status

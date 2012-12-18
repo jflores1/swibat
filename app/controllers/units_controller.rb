@@ -1,6 +1,6 @@
 class UnitsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_current_user_course
+  before_filter :find_current_course, :except => [:vote]
   load_and_authorize_resource
 
   def show
@@ -27,9 +27,22 @@ class UnitsController < ApplicationController
     end
   end
 
-  def find_current_user_course
-    @course = current_user.courses.find(params[:course_id])
+  def vote
+    @unit = Unit.find(params[:id])
+    if params[:type] == 'clear'
+      @unit.delete_evaluation(:votes, current_user)
+    else
+      value = params[:type] == "up" ? 1 : -1      
+      @unit.add_or_update_evaluation(:votes, value, current_user)
+    end
+    redirect_to :back, notice: "Thank you for voting"   
   end
 
+
+  private
+
+    def find_current_course
+      @course = Course.find(params[:course_id])
+    end
 
 end

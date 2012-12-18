@@ -21,10 +21,13 @@ class Unit < ActiveRecord::Base
   has_many :assessments, as: :assessable
   has_many :lessons
   belongs_to :course
+  has_many :flags, :as => :flaggable, :dependent => :destroy
 
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
   accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true
 
+  has_reputation :votes, source: :user, aggregated_by: :sum
+  
   #before_save do |unit|
   #  unit.prior_knowledge = prior_knowledge.humanize
   #  unit.unit_status = unit_status.capitalize

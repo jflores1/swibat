@@ -12,7 +12,7 @@ describe "UserPages" do
       before {visit user_path(@user)}
       it {page.should have_content(@user.full_name)}
       it {page.should have_selector("img[alt='Jesse Flores']")}
-      it {page.should have_css('i.icon-plus')}
+      it {page.should have_css('i.icon-plus')}      
     end
 
     describe "Can see All Users" do

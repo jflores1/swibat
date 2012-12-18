@@ -1,15 +1,11 @@
 Swibat::Application.routes.draw do
-  get "answers/new"
-
-  get "answers/edit"
-
-  get "comments/create"
-
-  get "comments/destroy"
+  root to: 'static_pages#home'
 
   devise_for :users
 
-  root to: 'static_pages#home'
+  get "answers/new"
+  get "answers/edit"
+  get "flags/flag"
 
   match 'teachers',       to: 'static_pages#teachers'
   match 'administrators', to: 'static_pages#administrators'
@@ -23,12 +19,10 @@ Swibat::Application.routes.draw do
     resources :answers, :except => [:show, :index] do
       member { post :vote }
     end
-
     member { post :vote }
   end
 
   resources :leads
-
   resources :users
 
   resources :courses do
@@ -44,12 +38,14 @@ Swibat::Application.routes.draw do
     resources :assessments
     resources :lessons
     resources :comments, :only => [:create, :destroy]
+    member { post :vote }
   end
 
   resources :lessons do
     resources :objectives
     resources :assessments
     resources :comments, :only => [:create, :destroy]    
+    member { post :vote }
   end
 
   resources :friendships, :only => [:index, :destroy] do

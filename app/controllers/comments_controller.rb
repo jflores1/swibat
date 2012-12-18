@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
 
   private
   
-  def get_commentable
-    @commentable = Comment.find_commentable(params[:comment][:commentable_type], (params[:comment][:commentable_id]))
-	end
+    def get_commentable
+      @commentable = Comment.find_commentable(params[:comment][:commentable_type], (params[:comment][:commentable_id]))
+  	end
 end

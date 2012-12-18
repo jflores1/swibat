@@ -14,6 +14,7 @@ class Answer < ActiveRecord::Base
   attr_accessible :question, :text, :user
   belongs_to :user
   belongs_to :question
+  has_many :flags, :as => :flaggable, :dependent => :destroy
 
   validates :text, :presence => true, :length => {:maximum => 4000} 
 

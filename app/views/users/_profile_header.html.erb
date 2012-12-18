@@ -26,8 +26,7 @@
         </dd>
       <% end %>
     </dl>
-    <%= display_friendship_actions @user if @user != current_user %>
+    <%= display_friendship_actions @user if @user != current_user %>    
     <%= link_to "Add Some Personality!", edit_user_path(current_user), :class => "btn btn-monkey pull-left" if can? :update, @user %>
-
   </div>
 </div>

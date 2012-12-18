@@ -92,6 +92,64 @@ describe "LessonPages" do
       end
     end
 
+    describe "Vote div" do
+      let(:lesson){FactoryGirl.create(:lesson, :unit => unit)}
+      before do  
+        sign_in_via_form       
+        visit unit_lesson_path unit, lesson
+      end
+
+      it "should display the voting buttons" do
+        page.should have_selector(".vote")
+      end
+
+      it "should have working upvote button" do
+        lesson.reputation_for(:votes).to_i.should == 0
+        upvote = find(".upvote").first(:xpath,".//..")        
+        upvote.click
+        lesson.reputation_for(:votes).to_i.should == 1
+      end
+
+      it "clicking the upvote button should change its color and type param" do       
+        upvote = find(".upvote").first(:xpath,".//..")
+        upvote.click
+        page.should have_selector(".upvote-active")
+        have_xpath("//a[contains(@href,'type=clear')]")
+      end
+
+      it "clicking a red upvote button should reset the user's vote for that resource" do
+        upvote = find(".upvote").first(:xpath,".//..")
+        upvote.click
+        lesson.reputation_for(:votes).to_i.should == 1
+        upvote = find(".upvote-active").first(:xpath,".//..")
+        upvote.click
+        lesson.reputation_for(:votes).to_i.should == 0
+      end
+
+      it "should have working downvote button" do
+        lesson.reputation_for(:votes).to_i.should == 0
+        downvote = find(".downvote").first(:xpath,".//..")                
+        downvote.click
+        lesson.reputation_for(:votes).to_i.should == -1
+      end
+
+      it "clicking the downvote button should change its color and type param" do       
+        downvote = find(".downvote").first(:xpath,".//..")
+        downvote.click
+        page.should have_selector(".downvote-active")
+        have_xpath("//a[contains(@href,'type=clear')]")
+      end
+
+      it "clicking a red downvote button should reset the user's vote for that resource" do
+        downvote = find(".downvote").first(:xpath,".//..")
+        downvote.click
+        lesson.reputation_for(:votes).to_i.should == -1
+        downvote = find(".downvote-active").first(:xpath,".//..")
+        downvote.click
+        lesson.reputation_for(:votes).to_i.should == 0
+      end
+    end
+
   end
 
   context "A user not signed in" do

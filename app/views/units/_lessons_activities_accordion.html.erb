@@ -2,7 +2,7 @@
   <% @unit.lessons.each do |lesson| %>
       <div class="accordion-group">
         <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= lesson.id  %>"><%= lesson.lesson_title %> %>) </a>
+          <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= lesson.id  %>"><%= lesson.lesson_title %></a>
           <% if current_user? %>
               <a class="btn btn-mini btn-monkey pull-right" href="<%= unit_lesson_path(@unit, lesson) %>"><i class="icon-pencil icon-white"></i></a>
           <% end %>

@@ -1,6 +1,9 @@
 <div class="row-fluid">
-  <div class="span12">
+  <div class="span12">  	
   	<h1><%= @lesson.lesson_title %></h1>
+
+  	<%= generate_vote_form @lesson, vote_lesson_path(@lesson) %>
+
   	<dl class="dl-horizontal">
   		<dt>Unit</dt>
 		  <dd><%= link_to @lesson.unit.unit_title, [@lesson.unit.course, @lesson.unit] %></dd>
@@ -29,6 +32,7 @@
 			This lesson doesn't have any resources associated to it.
 		<% end %>
 
+		<%= render :partial => 'flags/flag', :locals => {:resource => @lesson} if can? :flag, Flag %>
 	</div>
 </div>
 

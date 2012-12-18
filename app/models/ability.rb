@@ -64,7 +64,8 @@ class Ability
       can :read, Answer
 
       can :vote, :all
-      
+      can :flag, Flag
+
     elsif user.role == "school_admin"
       can :read, :all
     end

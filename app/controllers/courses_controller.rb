@@ -44,7 +44,7 @@ class CoursesController < ApplicationController
     elsif @course.update_attributes(params[course_to_unit: params[:course]])
       redirect_to edit_course_unit_path(@course)
     else
-      flash[:error] = "Sorry, there was a mistake with teh form"
+      flash[:error] = "Sorry, there was a mistake with the form"
       render 'edit'
     end
 

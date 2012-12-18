@@ -10,6 +10,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  user_id         :integer
+#  grade_id        :integer
 #
 
 class Course < ActiveRecord::Base
@@ -22,6 +23,7 @@ class Course < ActiveRecord::Base
   has_and_belongs_to_many :subjects
   belongs_to :user
   belongs_to :grade
+  has_many :flags, :as => :flaggable, :dependent => :destroy
 
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
 
