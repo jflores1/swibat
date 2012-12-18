@@ -1,6 +1,6 @@
 <%= render 'profile_header' %>
 <%= render 'user_summary' %>
-
+<%= render :partial => 'flags/flag', :locals => {:resource => @user} if can? :flag, Flag %>
 <% content_for :sidebar do %>
     <%= content_for :sidebar_invite do %>
           <%= render 'shared/sidebar_invite' %>

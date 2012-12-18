@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
   has_many :specialties
   has_many :questions
   has_many :answers
+  has_many :flags
   
   # Define the friendship relations with some semantics.
   has_many :friendships, :conditions => "status = 'accepted'"

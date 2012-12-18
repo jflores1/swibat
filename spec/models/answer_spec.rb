@@ -21,6 +21,7 @@ describe Answer do
     it {should respond_to(:user)}    
     it {should respond_to(:question)}    
     it {should respond_to(:reputation_for)}
+    it {should respond_to(:flags)}
   end
 
   describe "Validations" do  	  	

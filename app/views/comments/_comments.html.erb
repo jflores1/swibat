@@ -2,7 +2,8 @@
     <% commentable.comment_threads.each do |comment| %>
         <div class="comment well">
             <div class="comment-header">
-                Posted by <%= link_to comment.user.full_name, comment.user %>, <%= time_ago_in_words comment.created_at %> ago. <%= link_to "Delete", [commentable, comment], :method => :delete if can? :destroy, comment %>
+                Posted by <%= link_to comment.user.full_name, comment.user %>, <%= time_ago_in_words comment.created_at %> ago. <%= link_to "Delete", [commentable, comment], :method => :delete if can? :destroy, comment %> | 
+                <%= render :partial => 'flags/flag', :locals => {:resource => comment} if can? :flag, Flag %>
             </div>
             <div class="comment-body">
                 <%= comment.body %>

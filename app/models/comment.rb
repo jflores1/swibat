@@ -27,6 +27,7 @@ class Comment < ActiveRecord::Base
   #acts_as_voteable
 
   belongs_to :commentable, :polymorphic => true
+  has_many :flags, :as => :flaggable, :dependent => :destroy
 
   # NOTE: Comments belong to a user
   belongs_to :user

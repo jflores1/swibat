@@ -25,6 +25,8 @@ describe Unit do
   it {should respond_to(:prior_knowledge)}
   it {should respond_to(:unit_status)}
   it {should respond_to(:comment_threads)}
+  it {should respond_to(:flags)}
+  it {should respond_to(:reputation_for)}
 
   context "With invalid information" do
     describe "without a unit title" do

@@ -15,6 +15,7 @@ class Question < ActiveRecord::Base
 
   belongs_to :user
   has_many :answers
+  has_many :flags, :as => :flaggable, :dependent => :destroy
 
   validates :title, :presence => true
   validates :text, :presence => true, :length => {:maximum => 4000} 

@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_current_unit
+  before_filter :find_current_unit, :except => [:vote]
   load_and_authorize_resource
 
   def show
@@ -48,7 +48,16 @@ class LessonsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  
+  def vote
+    @lesson = Lesson.find(params[:id])
+    if params[:type] == 'clear'
+      @lesson.delete_evaluation(:votes, current_user)
+    else
+      value = params[:type] == "up" ? 1 : -1      
+      @lesson.add_or_update_evaluation(:votes, value, current_user)
+    end
+    redirect_to :back, notice: "Thank you for voting"   
+  end
 
   private
 

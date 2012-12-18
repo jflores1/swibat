@@ -39,6 +39,7 @@ describe User do
   it {should respond_to(:institution)}
   it {should respond_to(:questions)}
   it {should respond_to(:answers)}
+  it {should respond_to(:flags)}
 
   context "Has validation on non-devise columns" do
     describe "When missing first name" do

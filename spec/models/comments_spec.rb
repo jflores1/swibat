@@ -3,6 +3,11 @@ require "cancan/matchers"
 
 describe Comment do
 
+	describe "Attributes and relations" do
+    it {should respond_to(:flags)}
+    it {should respond_to(:user)}        
+  end
+
 	describe 'authorization' do		
 
 		before do 		
@@ -26,6 +31,13 @@ describe Comment do
 				comment = Comment.build_from(@commentable, @friend.id, "this is my comment")
 				comment.save
 				@ability.should_not be_able_to(:destroy, comment)
+			end
+
+			it "should allow flagging" do
+				comment = Comment.build_from(@commentable, @friend.id, "this is my comment")
+				comment.save
+				flag = Flag.build_from(comment, @user)
+				expect {flag.save}.to change(comment.flags, :count).by(1)
 			end
 		end
 
