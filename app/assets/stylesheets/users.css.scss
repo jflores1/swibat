@@ -55,6 +55,7 @@ div.application-body{
     background: rgba(234, 231, 216, 1);
     text-align: center;
     padding: 5%;
+    float:left;
 
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -65,6 +66,19 @@ div.application-body{
     background: rgba(152, 161, 186, 0.1);
     padding: 5%;
     margin-bottom: 5%;
+    float:left;
+
+    img{
+      width: 3em;
+      height: 3em;
+      display: inline-block;
+      float:left;
+      margin-right: 5%;
+      border: 2px solid #FFF;
+
+      -moz-box-shadow: 2px 2px 5px rgb(1, 21, 38);
+      box-shadow: 2px 2px 5px rgb(1, 21, 38);
+    }
 
   }
 
@@ -123,7 +137,7 @@ div.application-body{
 
 
 
-div.course-overview{
+div.course-overview, div.sidebar{
   float:left;
   width:100%;
   //border: solid 1px #e7e7e7;
@@ -147,6 +161,15 @@ div.course-overview{
       width:100%;
     }
 
+  }
+
+}
+
+.user-content-summary{
+
+  li, p{
+    font-size: 1.2308em; //16px:13px
+    color: #50596D;
   }
 
 }

@@ -1,5 +1,6 @@
-<div class="sidebar-profile">
-  <h3>Share the Knowledge!</h3>
-  <p>Invite other educators to share their professional expertise!</p>
-  <a class="btn btn-monkey" href="#">Invite</a>
+<div class="span12 sidebar-profile">
+  <%= image_tag @user.image.url, class:"img-polaroid header-profile-picture", alt: "#{@user.full_name}" %>
+  <h3><%= @user.full_name %></h3>
+  <%= display_friendship_actions @user if @user != current_user %>
+  <%= link_to "Edit Profile", edit_user_path(current_user), :class => "btn btn-monkey pull-left" if can? :update, @user %>
 </div>

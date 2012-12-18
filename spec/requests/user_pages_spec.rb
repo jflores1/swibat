@@ -64,6 +64,14 @@ describe "UserPages" do
         it {page.should have_selector("h3", text: "1 Answer")}
       end
 
+      describe "The Sidebar" do
+        it "shows related courses" do
+          page.should have_selector("h4", "Related Courses")
+          print page.html
+        end
+      end
+
+
 
 
     end

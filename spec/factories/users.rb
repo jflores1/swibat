@@ -11,5 +11,16 @@ FactoryGirl.define do
     institution           "Some School"
     profile_summary				"My profile summary"    
   end
+
+  factory :user2, parent: :user do
+    email                 "user@example.com"
+    password              "password"
+    password_confirmation "password"
+    role                  "teacher"
+    first_name            "User"
+    last_name             "Swibat"
+    institution           "Another School"
+    profile_summary       "A profile summary"
+  end
 end
 

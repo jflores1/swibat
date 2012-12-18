@@ -6,8 +6,6 @@
 </div>
 <div class="span10" id="course-summary">
 
-  <%= render 'users/profile_header' %>
-
   <header class="course-header top-margin">
     <div class="span12">
       <h2><%= @course.course_name %>, <%= @unit.unit_title %></h2>
@@ -83,7 +81,12 @@
 </div>
 
 <% content_for :sidebar do %>
-    <%= render 'users/user_sidebar' %>
+    <%= content_for :sidebar_profile do %>
+          <%= render 'shared/sidebar_profile' %>
+    <% end %>
+
+    <%= render 'layouts/application_sidebar' %>
+
 <% end %>
 
 
