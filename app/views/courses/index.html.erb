@@ -1,5 +1,41 @@
-<% @courses.each do |course| %>
+<div class="span12">
+  <header class="index-header">
+    <h2>All Courses</h2>
+  </header>
+  <% @courses.each do |course| %>
+  <div class="index-meta row-fluid">
+    <div class="span2">
+      <div class="vote-summary">
+        vote count
+      </div>
+    </div>
+    <div class="span10">
+      <header>
+        <h3><%= link_to "#{course.course_name}", course_path(course)%></h3>
+      </header>
+      <section>
+        <p><%= truncate("#{course.course_summary}", length: 140) %></p>
+        <div class="index-profile">
+          <%= image_tag course.user.image.url, alt: "#{course.user.full_name}" %>
+          <span>Created by <%= link_to course.user.full_name, course.user %> <%= time_ago_in_words course.created_at %> ago</span>
+        </div>
+      </section>
+    </div>
+  </div>
+  <% end %>
+</div>
 
-      <%= course.course_name %>, <%= course.user.full_name%><br/>
+<%= content_for :sidebar do %>
+    <%= content_for :sidebar_invite do %>
+        <%= render 'shared/sidebar_invite' %>
+    <% end %>
+
+    <%= render 'layouts/application_sidebar' %>
 
 <% end %>
+
+
+
+
+
+

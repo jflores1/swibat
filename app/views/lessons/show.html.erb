@@ -1,5 +1,3 @@
-
-
 <div class="span2">
   <%= generate_vote_form @lesson, vote_lesson_path(@lesson) %>
   <%= render :partial => 'flags/flag', :locals => {:resource => @lesson} if can? :flag, Flag %>

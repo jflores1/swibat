@@ -40,9 +40,9 @@ class CoursesController < ApplicationController
 
     @course = Course.find(params[:id])
     if @course.update_attributes(params[:course])
-      redirect_to user_path(current_user)
+      redirect_to course_path(@course)
     elsif @course.update_attributes(params[course_to_unit: params[:course]])
-      redirect_to edit_course_unit_path(@course)
+      redirect_to new_course_unit_path(@course)
     else
       flash[:error] = "Sorry, there was a mistake with the form"
       render 'edit'
