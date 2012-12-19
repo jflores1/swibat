@@ -1,8 +1,35 @@
-<h1>Questions</h1>
+<div class="span12">
+  <header class="index-header">
+    <h2>All Questions</h2>
+  </header>
+  <% @questions.each do |question| %>
+      <div class="index-meta row-fluid">
+        <div class="span2">
+          <div class="vote-summary">
+            vote count
+          </div>
+        </div>
+        <div class="span10">
+          <header>
+            <h3><%= link_to "#{question.title}", question_path(question)%></h3>
+          </header>
+          <section>
+            <p><%= truncate("#{question.text}", length: 140) %></p>
+            <div class="index-profile">
+              <%= image_tag question.user.image.url, alt: "#{question.user.full_name}" %>
+              <span>Asked by <%= link_to question.user.full_name, question.user %> <%= time_ago_in_words question.created_at %> ago</span>
+            </div>
+          </section>
+        </div>
+      </div>
+  <% end %>
+</div>
 
-<% @questions.each do |question| %>
-	<div>
-		<h2><%= link_to question.title, question %></h2>
-		<span>Asked by <%= link_to question.user.full_name, question.user %> <%= time_ago_in_words question.created_at %> ago</span>
-	</div>
+<%= content_for :sidebar do %>
+    <%= content_for :sidebar_invite do %>
+        <%= render 'shared/sidebar_invite' %>
+    <% end %>
+
+    <%= render 'layouts/application_sidebar' %>
+
 <% end %>

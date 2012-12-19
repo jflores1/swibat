@@ -223,6 +223,19 @@ describe "CoursePages" do
 
   end
 
+  context "The Course Index Page" do
+    let(:course){create(:course, user: @user)}
+    before(:each) do
+      visit courses_path
+    end
+    it {current_path.should eq(courses_path)}
+    it {print page.html}
+    it {page.should have_content("All Courses")}
+    it {page.should have_content("Physics")}
+    it {page.should have_content("This is a course summary.")}
+    it {page.should have_content(course.user.full_name)}
+  end
+
   private
   def sign_in_user_and_go_to_page
     sign_in_as_a_valid_user
