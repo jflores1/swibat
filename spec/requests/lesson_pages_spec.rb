@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe "LessonPages" do
-  let(:unit){FactoryGirl.create(:unit)}
+  let(:course){create(:course)}
+  let(:unit){FactoryGirl.create(:unit, course: course)}
 
   context "When a user is signed in" do
     describe "It allows access" do
@@ -21,6 +22,8 @@ describe "LessonPages" do
         before {
           sign_in_and_go_to_page
         }
+
+        it {page.should have_content(unit.unit_title)}
 
         context "Without a resource" do
           it "should add a lesson and then another" do
@@ -61,7 +64,7 @@ describe "LessonPages" do
             fill_in 'lesson_title',     				with: "My lsson"
             fill_in 'lesson_lesson_start_date', with: "2011-01-01"
             fill_in 'lesson_lesson_end_date',	 	with: "2012-01-01"
-            fill_in 'lesson_status', 					  with: "Started"
+            select  "Not Yet Started",          from: "lesson_lesson_status"
             fill_in 'prior_knowledge', 					with: "None"
             fill_in 'lesson_resources_attributes_0_name', 	with: "Lesson notes"
             page.attach_file('lesson_resources_attributes_0_upload', Rails.root + 'spec/fixtures/files/upload.txt')
@@ -89,6 +92,60 @@ describe "LessonPages" do
           click_button submit
           page.should have_selector('#error_explanation')
         end
+      end
+    end
+
+    context "The Lesson Show page" do
+      let(:lesson){create(:lesson, unit: unit)}
+      before do
+        sign_in_via_form
+        visit unit_lesson_path(unit, lesson)
+      end
+
+      describe "it shows lesson information" do
+        it {page.should have_content("The End of the Gilded Age")}
+        it {page.should have_content("The end of Antebellum era")}
+
+        context "lesson missing parts" do
+          describe "should prompt to add an objective" do
+            it {page.should have_selector("p", text: "No objectives? Boo.")}
+            it "should prompt to add an objective" do
+              find_link("Add some.").click
+              current_path.should eq(edit_unit_lesson_path(unit, lesson))
+            end
+          end
+
+          describe "should prompt to add an assessment" do
+            it {page.should have_selector("p", text:"No assessments? For shame.")}
+            it "should prompt to add an assessment" do
+              find_link("Add an assessment.").click
+              current_path.should eq(edit_unit_lesson_path(unit, lesson))
+            end
+          end
+
+          describe "should prompt to add resources" do
+            it {page.should have_selector("p", text: "The only resource needed here is awesome teaching.")}
+            it "should prompt to add a resource" do
+              find_link("Add a resource.").click
+              current_path.should eq(edit_unit_lesson_path(unit, lesson))
+            end
+          end
+        end
+
+        context "filled out lesson" do
+          let!(:objective){lesson.objectives.create(objective:"Describe the important people of the gilded age.")}
+          let!(:assessment){lesson.assessments.create(assessment_name:"Quiz")}
+          let!(:activity){lesson.activities.create(activity: "Lecture", duration:"15 mins", agent:"Teacher")}
+          before(:each) do
+            visit unit_lesson_path(unit, lesson)
+          end
+          it {page.should have_content("Describe the important people")}
+          it {page.should have_content("Quiz")}
+          it {page.should have_content("Lecture")}
+          it {page.should have_content("15 mins")}
+          it {page.should have_content("Teacher")}
+        end
+
       end
     end
 
@@ -169,7 +226,7 @@ describe "LessonPages" do
     fill_in "lesson_title",               with: "A new Lesson"
     fill_in "lesson_lesson_start_date",   with: "2013/01/01"
     fill_in "lesson_lesson_end_date",     with: "2013/01/10"
-    fill_in "lesson_status",              with: "Pending"
+    select  "Not Yet Started",            from: "lesson_lesson_status"
     fill_in "prior_knowledge",            with: "None required"
     fill_in 'lesson_objectives_attributes_0_objective',               with: "An objective"
     fill_in 'lesson_assessments_attributes_0_assessment_name',        with: "An assessment"
@@ -177,9 +234,9 @@ describe "LessonPages" do
 
   def fill_in_form_with_invalid_information
     fill_in "lesson_title",               with: "A new Lesson"
-    fill_in "lesson_lesson_start_date",   with: "2013/01/01"
-    fill_in "lesson_lesson_end_date",     with: "2013/01/10"
-    fill_in "lesson_status",              with: "Invalid Status"
+    fill_in "lesson_lesson_start_date",   with: "2013/01/10"
+    fill_in "lesson_lesson_end_date",     with: "2013/01/01"
+    select  "Not Yet Started",            from: "lesson_lesson_status"
     fill_in "prior_knowledge",            with: "None required"
   end
 

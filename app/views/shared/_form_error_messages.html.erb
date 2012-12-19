@@ -2,7 +2,7 @@
     <div id="errorModal" class="modal">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h2>Sorry, but this form contains the following <%= pluralize(object.errors.count, "error") %>. </h2>
+        <h3>Sorry, but this form contains the following <%= pluralize(object.errors.count, "error") %>. </h3>
       </div>
       <div class="modal-body">
         <div id="error_explanation">
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-monkey">Close</a>
+        <button class="btn btn-monkey" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
     </div>
 

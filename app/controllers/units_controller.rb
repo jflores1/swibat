@@ -27,6 +27,21 @@ class UnitsController < ApplicationController
     end
   end
 
+  def edit
+    @unit = @course.units.find(params[:id])
+  end
+
+  def update
+    @unit = @course.units.find(params[:id])
+    if @unit.update_attributes(params[:unit])
+      redirect_to course_unit_path(@course, @unit)
+    else
+      flash[:error] = "Sorry, there was a mistake with the form"
+      redirect_to edit_course_unit_path(@course, @unit)
+    end
+
+  end
+
   def vote
     @unit = Unit.find(params[:id])
     if params[:type] == 'clear'

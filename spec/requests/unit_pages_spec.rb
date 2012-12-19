@@ -65,7 +65,7 @@ describe "UnitPages" do
       end
     end
 
-    describe "Can navigate to unit show path" do
+    describe "The unit show path" do
       let(:unit){create(:unit_with_lessons)}
       let(:user){course.user}
       let!(:objective){unit.objectives.create(objective: "Describe how Carnegie changed steel")}
@@ -83,6 +83,14 @@ describe "UnitPages" do
       it {should have_selector("h2",text: "The Industrial Revolution")}
       it {should have_selector("h2", text: "Prior Knowledge")}
       it {should have_selector("p", text: "The Great Barons")}
+      it "should have a link to edit the unit" do
+        find_link("edit unit").click
+        current_path.should eq(edit_course_unit_path(course, unit))
+      end
+      it "should have a link back to the parent course" do
+        find_link("Physics").click
+        current_path.should eq(course_path(course))
+      end
 
       #lists objectives. Pluralize "Objective" and "Assessment" based on count
       it {should have_selector("h2", text: "Unit Objectives")}
@@ -95,11 +103,15 @@ describe "UnitPages" do
 
       #displays lesson accordion
       it {should have_selector("h2", text: "Lessons")}
+      it "should have a link to add lessons" do
+        find("#add-lesson").click
+        current_path.should eq(new_unit_lesson_path(unit))
+      end
       it "should have lesson titles" do
         page.should have_content("Gilded Age")
       end
 
-      describe "Vote div" do
+      describe "Working vote model" do
         it "should display the voting buttons" do
           page.should have_selector(".vote")
         end
@@ -149,6 +161,20 @@ describe "UnitPages" do
           downvote.click
           unit.reputation_for(:votes).to_i.should == 0
         end
+      end
+    end
+
+    describe "Can update a unit" do
+      let(:course){create(:course)}
+      let(:unit){create(:unit)}
+      before do
+        sign_in_via_form
+        visit edit_course_unit_path(course, unit)
+      end
+      it "updates the unit" do
+        fill_in "unit_title", with: "A different title"
+        click_button "Save and Come Back Later"
+        page.should have_content("A different title")
       end
     end
 

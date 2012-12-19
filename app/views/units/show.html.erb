@@ -9,13 +9,14 @@
 
   <header class="course-header top-margin">
     <div class="span12">
-      <h2><%= @course.course_name %>, <%= @unit.unit_title %></h2>
+      <h2><%= link_to "#{@course.course_name}:", course_path(@course), class:"disguised-header-link" %><br/>
+        <%= @unit.unit_title %></h2>
     </div>
   </header>
 
   <section class="course-info">
     <header>
-      <h2>Prior Knowledge</h2>
+      <h2>Prior Knowledge <%= link_to "(edit unit)", edit_course_unit_path(@course, @unit) if can? :update, @unit %></h2>
     </header>
     <article>
       <p><%= @unit.prior_knowledge %></p>
@@ -58,12 +59,12 @@
 
   <header class="course-header">
     <h2>Lessons</h2>
-    <% if current_user? %>
-        <button class="btn btn-small btn-monkey pull-right"><a href="<%= new_course_unit_path(@course) %>"><i class="icon-plus icon-white"></i></a></button>
+    <% if can? :update, @unit %>
+        <button class="btn btn-small btn-monkey pull-right"><a id="add-lesson" href="<%= new_unit_lesson_path(@unit) %>"><i class="icon-plus icon-white"></i></a></button>
     <% end %>
   </header>
   <section class="course-info">
-    <% if current_user? && @unit.lessons.count == 0 %>
+    <% if can? :update, @unit && @unit.lessons.count == 0 %>
         <p class="top-margin">It doesn't look like you have any lessons. <%= link_to "Create one now.", new_unit_lesson_path(@unit) %></p>
     <% elsif @unit.lessons.count == 0%>
         <p class="top-margin">Sad. It doesn't look like this user has created any lessons yet.</p>
@@ -84,6 +85,14 @@
 <% content_for :sidebar do %>
     <%= content_for :sidebar_profile do %>
           <%= render 'shared/sidebar_profile' %>
+    <% end %>
+
+    <%= content_for :sidebar_invite do %>
+        <%= render 'shared/sidebar_invite' %>
+    <% end %>
+
+    <%= content_for :sidebar_other_course_units do %>
+        <%= render 'shared/sidebar_other_course_units' %>
     <% end %>
 
     <%= render 'layouts/application_sidebar' %>

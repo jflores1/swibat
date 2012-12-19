@@ -103,6 +103,10 @@ div#course-summary, div.course-overview{
         float:left;
         //color: rgb(164, 50, 32);
 
+        a{
+          font-size:0.8em;
+        }
+
       }
 
     }
@@ -137,11 +141,14 @@ header.course-header{
   width:100%;
   border-bottom:1px solid rgba(152, 161, 186, 0.5);
 
-  h2{
-    font-size: 1.5385em;//20px:13px
+  h2, {
     float:left;
     color: rgb(164, 50, 32);
+    font-size: 1.5385em;//20px:13px
+  }
 
+  a.disguised-header-link{
+    color: #5f6e68;
   }
 }
 

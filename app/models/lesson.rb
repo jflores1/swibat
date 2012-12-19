@@ -20,16 +20,18 @@ class Lesson < ActiveRecord::Base
   has_many :objectives, as: :objectiveable
   has_many :assessments, as: :assessable
   has_many :resources
+  has_many :activities
   belongs_to :unit
   has_many :flags, :as => :flaggable, :dependent => :destroy
 
   accepts_nested_attributes_for :resources, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
   accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :activities, :reject_if => lambda { |a| a[:activity].blank? }, allow_destroy: true
 
   has_reputation :votes, source: :user, aggregated_by: :sum
   
-  VALID_STATUS = %w[Pending Started Complete]
+  VALID_STATUS = ["Not Yet Started", "Started", "Complete"]
 
   validate  :valid_lesson_status
 

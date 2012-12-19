@@ -1,0 +1,11 @@
+<div class="sidebar">
+  <header class="course-header">
+    <h4>Other Lessons in:<br/> <%= @unit.unit_title %></h4>
+  </header>
+  <section>
+    <% @unit.lessons.each do |lesson| %>
+        <%= link_to lesson.lesson_title, unit_lesson_path(@unit, lesson), class:"sidebar-link" %>
+    <% end %>
+
+  </section>
+</div>

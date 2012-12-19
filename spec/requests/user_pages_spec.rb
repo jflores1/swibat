@@ -8,6 +8,23 @@ describe "UserPages" do
       sign_in_via_form
     end
 
+    describe "Application Header" do
+      it "can access user profile" do
+        find_link("Your Profile").click
+        current_path.should eq(user_path(@user))
+      end
+
+      it "can access course index" do
+        find_link("Courses").click
+        current_path.should eq(courses_path)
+      end
+
+      it "can access question index" do
+        find_link("Questions").click
+        current_path.should eq(questions_path)
+      end
+    end
+
     describe "Accesses Profile Page" do
       before {visit user_path(@user)}
       it {page.should have_content(@user.full_name)}
@@ -48,32 +65,31 @@ describe "UserPages" do
       describe "with questions" do
         let!(:question){create(:question)}
         before {visit user_path(@user)}
-        it {page.should have_selector("li", text: "Question title")}
+        it {page.should have_selector("p", text: "Question title")}
         it {page.should have_selector("h3", text: "1 Question")}
       end
 
       describe "without any answers provided" do
-        it {page.should have_selector("p", text:"Help your fellas out!")}
+        it {page.should have_selector("p", text:"Help your fellow teachers out.")}
         it {page.should have_selector("h3", text:"0 Answers")}
+        it "should link to the questions page" do
+          find_link("Answer some questions!").click
+          current_path.should eq(questions_path)
+        end
       end
 
       describe "with answers provided" do
         let!(:answer){create(:answer)}
         before {visit user_path(@user)}
-        it {page.should have_selector("li", text: "MyText")}
+        it {page.should have_selector("p", text: "MyText")}
         it {page.should have_selector("h3", text: "1 Answer")}
       end
 
       describe "The Sidebar" do
-        it "shows related courses" do
-          page.should have_selector("h4", "Related Courses")
-          print page.html
+        it "shows similar courses" do
+          page.should have_selector("h3", "Similar Courses")
         end
       end
-
-
-
-
     end
 
     context "User Edit Page" do

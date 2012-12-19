@@ -111,6 +111,10 @@ describe "CoursePages" do
         it {should have_content("Fall")}
         it {should have_content("2012")}
         it {should have_content("Grade 1")}
+        it "has a link to edit the page" do
+          find_link("edit course").click
+          current_path.should eq(edit_course_path(course))
+        end
       end
 
       describe "Presence of Course Summary Information" do
@@ -127,12 +131,8 @@ describe "CoursePages" do
       it {should have_content("Standards Covered")}
       it {should have_content("Units")}
 
-      xit "can navigate to the new course unit page" do
-
-      end
-
-      xit "can add an objective from this page" do
-
+      describe "The sidebar" do
+        it {page.should have_content("Invite")}
       end
 
       describe "Vote div" do

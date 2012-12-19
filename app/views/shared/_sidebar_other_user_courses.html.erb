@@ -1,0 +1,11 @@
+<div class="sidebar">
+  <header class="course-header">
+    <h4 class="make-fit wide">Other Courses by <%= @course.user.full_name %></h4>
+  </header>
+  <section>
+    <% @user.courses.each do |course| %>
+        <%= link_to course.course_name, course_path(course), class:"sidebar-link" %>
+    <% end %>
+
+  </section>
+</div>

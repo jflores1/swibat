@@ -15,10 +15,11 @@
               <nav class="application-nav">
                 <ul class="nav nav-pills">
                   <% if signed_in? %>
-                        <li><%= link_to "Your Profile", user_path(current_user) %></li>
+                        <li class=""><%= link_to "Your Profile", user_path(current_user) %></li>
                   <% end %>
-                  <li class="offset1"><%= link_to "Courses", "#"%></li>
-                  <li><%= link_to "Ask a Question", new_question_path, class:"btn btn-warning" %></li>
+                  <li class=""><%= link_to "Courses", courses_path %></li>
+                  <li class=""><%= link_to "Questions", questions_path %></li>
+                  <li class="offset4"><%= link_to "Ask a Question", new_question_path, class:"btn btn-warning" %></li>
                 </ul>
               </nav>
             </div>

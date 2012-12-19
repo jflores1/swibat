@@ -1,101 +1,65 @@
-<div class="row-fluid">
-  <div class="span8">
-  	<%= form_for [@unit, @lesson], :html => {:class => "form-horizontal", :multipart => :true} do |lesson| %>
-		
-			<% if @lesson.errors.any? %>
-		    <div id="error_explanation">
-		      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
-		      <ul>
-		      <% @lesson.errors.full_messages.each do |msg| %>
-		        <li><%= msg %></li>
-		      <% end %>
-		      </ul>
-		    </div>
-		  <% end %>
+<%= form_for [@unit, @lesson], html: { :multipart => :true} do |lesson| %>
+    <%= render 'shared/form_error_messages', object: lesson.object %>
 
-		  <div class="control-group">
-		    <%= lesson.label :lesson_title, :class => "control-label" %> 
-		    <div class="controls">
-		      <%= lesson.text_field :lesson_title, id: "lesson_title" %>
-		    </div>
-		  </div>
 
-		  <div class="control-group">
-		    <%= lesson.label :lesson_start_date, :class => "control-label" %> 
-		    <div class="controls">
-		      <%= lesson.datepicker :lesson_start_date, :dateFormat => "yy-mm-dd" %>
-		    </div>
-		  </div>
+    <%= lesson.label :lesson_title, "What do you want to call this lesson?"%>
+    <%= lesson.text_field :lesson_title, id: "lesson_title", placeholder: "Lesson Title" %>
 
-		  <div class="control-group">
-		    <%= lesson.label :lesson_end_date, :class => "control-label" %> 
-		    <div class="controls">
-		      <%= lesson.datepicker :lesson_end_date, :dateFormat => "yy-mm-dd" %>
-		    </div>
-		  </div>
+    <%= lesson.label :prior_knowledge, "What do students need to know before you start?" %>
+    <%= lesson.text_field :prior_knowledge, id: "prior_knowledge", placeholder:"Prior Knowledge" %>
 
-		  <div class="control-group">
-		    <%= lesson.label :lesson_status, :class => "control-label" %> 
-		    <div class="controls">
-		      <%= lesson.text_field :lesson_status, id: "lesson_status" %>
-		    </div>
-		  </div>
+    <%= lesson.label :objectives, "What will students be able to do when the lesson is over?" %>
+    <%= lesson.fields_for :objectives do |objective| %>
+        <%= render "shared/objective_fields", f: objective %>
+    <% end %>
+    <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', lesson, :objectives, "btn btn-monkey" %>
 
-		  <div class="control-group">
-		    <%= lesson.label :prior_knowledge, :class => "control-label" %> 
-		    <div class="controls">
-		      <%= lesson.text_field :prior_knowledge, id: "prior_knowledge" %>
-		    </div>
-		  </div>
+    <%= lesson.label :assessments, "How will you assess their learning?" %>
+    <%= lesson.fields_for :assessments do |assessment| %>
+        <%= render "shared/assessment_fields", f: assessment %>
+    <% end %>
+    <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', lesson, :assessments, "btn btn-monkey" %>
 
-		  <div class="control-group">
-		    <%= lesson.label :objectives, "Objectives", :class => "control-label" %> 
-		    <div class="controls">
-		        <tr><th>Objective</th></tr>
-		          <%= lesson.fields_for :objectives do |objective| %>
-		            <%= render "shared/objective_fields", :f => objective %>
-		          <% end %>      
-		        <tr><td><%= link_to_add_fields "Add new objective", lesson, :objectives, "btn btn-monkey" %></td></tr>
-		    </div>
-		  </div>
+    <%= lesson.label :resources, "What resources will you need?" %>
+    <%= lesson.fields_for :resources do |resources| %>
+        <%= render 'resource_fields', f: resources %>
+    <% end %>
+    <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', lesson, :resources, "btn btn-monkey" %>
+    
+    <p>How long will the lesson last?</p>
+    <div class="form-row">
+      <div class="span1">
+        <%= lesson.label :lesson_start_date, "From:" %>
+      </div>
+      <div class="span6">
+        <%= lesson.datepicker :lesson_start_date, :dateFormat => "yy-mm-dd"%>
+      </div>
+    </div>
 
-		  <div class="control-group">
-		    <%= lesson.label :assessments, "Assessments", :class => "control-label" %> 
-		    <div class="controls">    
-		      <table class="table">    
-		        <tr><th>Assessment</th></tr>
-		          <%= lesson.fields_for :assessments do |assessment| %>
-		            <%= render "shared/assessment_fields", :f => assessment %>
-		          <% end %>      
-		        <tr><td><%= link_to_add_fields "Add new assessment", lesson, :assessments, "btn btn-monkey" %></td></tr>
-		      </table>
-		    </div>
-		  </div>
+    <div class="form-row">
+      <div class="span1">
+        <%= lesson.label :lesson_end_date, "To:" %>
+      </div>
+      <div class="span6">
+        <%= lesson.datepicker :lesson_end_date, :dateFormat => "yy-mm-dd" %>
+      </div>
+    </div>
 
-	    <div class="control-group">
-		    <%= lesson.label :resources, "Attach files", :class => "control-label" %> 
-		    <div class="controls">    
-		      <table class="table">    
-		        <tr><th>Name</th><th colspan="2">Attachment</th></tr>
-		          <%= lesson.fields_for :resources do |resource| %>
-		            <%= render "resource_fields", :f => resource %>
-		          <% end %>      
-		        <tr><td colspan="3"><%= link_to_add_fields "Add new resource", lesson, :resources, "btn btn-monkey" %></td></tr>
-		      </table>
-		    </div>
-		  </div>
+    <%= lesson.label :lesson_status %>
+    <%= lesson.select(:lesson_status,[['Not Yet Started', 'Not Yet Started'], ['Started', 'Started'], ['Complete', 'Complete']] ) %>
 
-		  <div class="control-group">
-		    <div class="controls">     
-		      <%= lesson.submit "Submit", name:"return_to_profile" %>
-		      <%= lesson.submit "Add Another Lesson", name: "add_another_lesson" %>
-		    </div>
-		  </div>
-		<% end %>
-	</div>
 
-	<div class="span4">
-		<h3>Similar lessons</h3>
-		<div id="similarObjectiveables"></div>
-	</div>
-</div>
+    <div class="two-column-form">
+      <div class="pull-left">
+        <%= lesson.submit "Submit", name:"return_to_profile", class:"btn btn-monkey" %>
+
+      </div>
+      <div class="pull-right">
+        <%= lesson.submit "Add Another Lesson", name: "add_another_lesson", class:"btn btn-monkey" %>
+
+      </div>
+    </div>
+
+
+<% end %>
+

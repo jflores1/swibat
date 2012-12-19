@@ -31,7 +31,7 @@ FactoryGirl.define do
     lesson_start_date   Date.new(2012, 12, 12)
     lesson_end_date     Date.new(2012, 12, 15)
     lesson_status       "Started"
-  end
+    end
 
   factory :objective do
     objective           "Measure average velocity of Sparrow's wing speed"

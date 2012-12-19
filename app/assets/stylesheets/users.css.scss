@@ -56,10 +56,6 @@ div.application-body{
     text-align: center;
     padding: 5%;
     float:left;
-
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
   }
 
   div.sidebar-profile{
@@ -157,6 +153,7 @@ div.course-overview, div.sidebar{
       width:50%;
       margin-bottom: 0.25em; //05px:20px
       }
+
     h3.wide{
       width:100%;
     }
@@ -168,8 +165,10 @@ div.course-overview, div.sidebar{
 .user-content-summary{
 
   li, p{
+    float:left;
     font-size: 1.2308em; //16px:13px
     color: #50596D;
+    margin-top:0.5em;
   }
 
 }

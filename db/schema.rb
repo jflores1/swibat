@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218120606) do
+ActiveRecord::Schema.define(:version => 20121219042916) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "activity"
+    t.string   "duration"
+    t.string   "agent"
+    t.integer  "lesson_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "activities", ["lesson_id"], :name => "index_activities_on_lesson_id"
 
   create_table "answers", :force => true do |t|
     t.text     "text"

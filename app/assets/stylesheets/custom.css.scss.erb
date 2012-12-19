@@ -40,10 +40,23 @@ body.patterned {
 }
 
 /********************************
-Layout
+Sidebar
 ********************************/
-div#sidebar{
-    //background: rgba(152, 161, 186, 0.1);
+div.sidebar{
+
+    a{
+        display: block;
+        width:100%;
+        float:left;
+        margin-top: 3px;
+        text-decoration: none;
+        color: #50596D;
+    }
+
+    a:hover{
+        color: rgb(164, 50, 32);
+
+    }
 }
 
 /*******************************
@@ -91,31 +104,34 @@ header.navbar {
 
     nav.application-nav {
         .nav > li > a{
-            color:#ffffff;
-            font-size: 1em;
+            $text-and-border: #ffffff;
+            background: rgba(80, 89, 109, 0.9); //rgba(152, 161, 186, 0.1);
+            font-size: 1.23076923em;//16px:13px
             padding: 5px;
-            background: rgb(221, 98, 75);
+            //background: rgb(221, 98, 75);
+            color: $text-and-border;
             margin: 0px 3px 5px 3px;
+            border:solid 1px $text-and-border;
+            text-shadow: none;
 
-            background-image: -webkit-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
-            background-image: -moz-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
-            background-image: -ms-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
-            background-image: linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+            //background-image: -webkit-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));
+            /*background-image: -moz-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));*/
+            /*background-image: -ms-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));*/
+            /*background-image: linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));*/
 
-            -moz-border-radius: 4px;
-            -webkit-border-radius: 4px;
-            border-radius: 4px;
+            -moz-border-radius: 0px;//4px;
+            -webkit-border-radius: 0px;  //4px;
+            border-radius: 0px; //4px;
 
-            border-bottom: 1px solid rgb(164, 50, 32);
-            border-left: 1px solid rgb(164, 50, 32);
-            border-right: 1px solid rgb(164, 50, 32);
-            border-top: 1px solid rgb(164, 50, 32);
+            /*border-bottom: 1px solid rgb(164, 50, 32);*/
+            /*border-left: 1px solid rgb(164, 50, 32);*/
+            /*border-right: 1px solid rgb(164, 50, 32);*/
+            /*border-top: 1px solid rgb(164, 50, 32);*/
         }
 
         .nav >li > a:hover {
-            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-            background: #EF492F;
-            background: #B13623;
+            color: $header-gradient-dark-color;
+            background: rgba(234, 231, 216, 1);
         }
     }
 
@@ -152,7 +168,6 @@ header#application-header {
 
     div.navdiv{
         float:left;
-        width:58%;
     }
 }
 
@@ -200,6 +215,7 @@ div.inner{
     max-width:$page-width;
     background:#ffffff;
     margin: 0 auto;
+    min-height: 800px;
 
     box-shadow:
         5px 0 5px -5px $header-gradient-dark-color,
@@ -519,7 +535,7 @@ Media Queries
 .vote {
     width: 50%;
     text-align: center;
-    margin: 0 auto;
+    margin: 4em auto;
 
     .arrow {    
         margin: 0 auto;
