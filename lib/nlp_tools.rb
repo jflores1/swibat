@@ -34,12 +34,12 @@ class NLPTools
   	sum**(1.0/pow)
   end
 
-  # Returns the maximum similarity value between the string and
+  # Returns the maximum similarity value between the word and
   # all of the strings in the candidate array
-  def self.best_similarity objective, candidates
+  def self.best_similarity word, candidates
   	max = 0
   	candidates.each do |candidate|
-  		dist = find_similarity(objective.objective, candidate)
+  		dist = find_similarity(word, candidate)
   		max = dist if dist > max
   	end
   	max

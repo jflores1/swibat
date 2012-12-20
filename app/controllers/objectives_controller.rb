@@ -20,16 +20,20 @@ class ObjectivesController < ApplicationController
   end
 
   def similar_objectiveables
-    objectives = JSON.parse(params[:objectives])
+    based_on = params[:based_on]
+    objectives = JSON.parse(params[:objectives])    
     type = params[:type]
-    @related_objectiveables = Objective.find_similar_objectiveables(objectives, type)    
+
+    related_objectiveables = Objective.find_similar_objectiveables(objectives, type, based_on)    
+
     # inject polymorphic urls
-    @related_objectiveables.map do |obj|
+    related_objectiveables.map do |obj|
       obj[:url] = generate_path(obj[:objectiveable])
       obj[:link_title] = obj[:objectiveable].to_s
     end
+    @result = {:objectiveables => related_objectiveables, :based_on => based_on}
     
-    render json: @related_objectiveables      
+    render json: @result      
   end
 
 private
@@ -47,7 +51,7 @@ private
     elsif objectiveable.class.to_s == "Unit"
       path = course_unit_path objectiveable.course, objectiveable
     elsif objectiveable.class.to_s == "Course"
-      path = course_path objectiveable.user, objectiveable
+      path = course_path objectiveable
     end
     path
   end

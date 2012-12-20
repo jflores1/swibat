@@ -3,14 +3,14 @@
 
 
     <%= lesson.label :lesson_title, "What do you want to call this lesson?"%>
-    <%= lesson.text_field :lesson_title, id: "lesson_title", placeholder: "Lesson Title" %>
+    <%= lesson.text_field :lesson_title, id: "lesson_title", placeholder: "Lesson Title", class: 'objectiveable-name', onblur: "retrieveSimilarObjectiveables('Lesson', 'name')" %>
 
     <%= lesson.label :prior_knowledge, "What do students need to know before you start?" %>
     <%= lesson.text_field :prior_knowledge, id: "prior_knowledge", placeholder:"Prior Knowledge" %>
 
     <%= lesson.label :objectives, "What will students be able to do when the lesson is over?" %>
     <%= lesson.fields_for :objectives do |objective| %>
-        <%= render "shared/objective_fields", f: objective %>
+        <%= render "shared/objective_fields", f: objective, objectiveable_type: 'Lesson' %>
     <% end %>
     <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', lesson, :objectives, "btn btn-monkey" %>
 
@@ -59,7 +59,12 @@
 
       </div>
     </div>
-
-
 <% end %>
 
+<%= content_for :sidebar do %>
+    <%= content_for :sidebar_invite do %>
+        <%= render 'shared/sidebar_invite' %>
+    <% end %>
+    <%= render 'layouts/application_sidebar' %>
+    <%= render 'shared/sidebar_related_lessons' %>
+<% end %>

@@ -34,7 +34,7 @@ describe Objective do
   	end
 
   	it "returns the proper objectiveable" do
-  		results = Objective.find_similar_objectiveables(@candidate_objectives, "Lesson")
+  		results = Objective.find_similar_objectiveables(@candidate_objectives, "Lesson", "objectives")
   		results.count.should == 1
   		results.first[:objectiveable].should == @lesson1
   	end

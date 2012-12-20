@@ -62,6 +62,12 @@ class User < ActiveRecord::Base
            :class_name => :Friendship,
            :conditions => "status = 'requested'"           
 
+  has_reputation :reputation, :source => [
+          { :reputation => :votes, :of => :questions},
+          { :reputation => :votes, :of => :answers},
+          { :reputation => :votes, :of => :courses},
+        ]
+
   accepts_nested_attributes_for :professional_educations, :reject_if => lambda { |a| a[:school_name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :professional_accomplishments, :reject_if => lambda { |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, allow_destroy: true
