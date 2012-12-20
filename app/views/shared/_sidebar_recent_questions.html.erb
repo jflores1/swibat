@@ -1,6 +1,11 @@
-<div class="course-overview">
+<div class="sidebar">
   <header class="course-header">
-    <h3 class="wide">Can you help?</h3>
-
+    <h4 class="make-fit wide">Can you answer these?</h4>
   </header>
+  <section>
+    <% Question.sidebar.each do |question| %>
+        <%= link_to question.title, question_path(question), class:"sidebar-link" %>
+    <% end %>
+
+  </section>
 </div>

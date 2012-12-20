@@ -3,11 +3,11 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
-  $('div#comment-form').hide()
-
-  showComment = (e)->
-    e.preventDefault()
-    $('div#comment-form').show()
-    $(this).hide()
-
-  $('#show-comment').click showComment
+  $('#comment-form').hide()
+  $('#show-comment').click ->
+    if $('#comment-form').is(':visible')
+      $('#comment-form').hide()
+      $(this).text("Add a comment")
+    else
+      $('#comment-form').show()
+      $(this).text("Hide Comment")

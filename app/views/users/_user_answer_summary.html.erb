@@ -5,7 +5,7 @@
   <% if (current_user && current_user.answers.count == 0) %>
       <p>Help your fellow teachers out. <%= link_to "Answer some questions!", questions_path %></p>
   <% else @user.answers.each do |answer| %>
-      <p><%= answer.text %></p>
+      <p><%= link_to "#{answer.text}", answer_path(answer), class:"gray" %></p>
       <% end %>
   <% end %>
 

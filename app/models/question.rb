@@ -22,4 +22,6 @@ class Question < ActiveRecord::Base
 
   has_reputation :votes, source: :user, aggregated_by: :sum
 
+  scope :sidebar, order("created_at desc").limit(10)
+
 end

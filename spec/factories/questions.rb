@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :question do
     title "Question title"
     text "question text"
-    user_id 1
+    user
   end
 end

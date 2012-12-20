@@ -63,10 +63,14 @@ describe "UserPages" do
       end
 
       describe "with questions" do
-        let!(:question){create(:question)}
+        let!(:question){create(:question, user: @user)}
         before {visit user_path(@user)}
         it {page.should have_selector("p", text: "Question title")}
         it {page.should have_selector("h3", text: "1 Question")}
+        it "allows the user to click through to the question" do
+          find_link("Question title").click
+          current_path.should eq(question_path(question)) 1
+        end
       end
 
       describe "without any answers provided" do
@@ -86,8 +90,16 @@ describe "UserPages" do
       end
 
       describe "The Sidebar" do
+        before(:each) do
+          FactoryGirl.create_list(:question, 10, title:"New Question")
+          visit user_path(@user)
+        end
         it "shows similar courses" do
           page.should have_selector("h3", "Similar Courses")
+        end
+
+        it "shows recent questions" do
+          page.should have_content("New Question")
         end
       end
     end
@@ -192,41 +204,7 @@ describe "UserPages" do
     end
   end
 
-  context "With navigation tools available" do
 
-    xit "A user can access their course info in one place" do
-
-    end
-
-    xit "A user can navigate from course through lesson" do
-
-    end
-
-    xit "A user can see active lessons" do
-
-    end
-  end
-
-  context "With a working feed" do
-
-    describe "Relevant suggestions" do
-
-      xit "Suggested lessons relate to courses the user is teaching" do
-
-      end
-
-      xit "A user can click a link and see a lesson in context" do
-
-      end
-
-    end
-
-
-    xit "A user can see comments provided by friends" do
-
-    end
-
-  end
 
   private
   def can_update_form_field(form_field, form_text)

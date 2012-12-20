@@ -224,7 +224,8 @@ describe "CoursePages" do
   end
 
   context "The Course Index Page" do
-    let(:course){create(:course, user: @user)}
+    let!(:user){create(:user)}
+    let!(:course){create(:course, user: user)}
     before(:each) do
       visit courses_path
     end
