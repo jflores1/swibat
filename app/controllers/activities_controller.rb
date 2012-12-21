@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
     @activity = @lesson.activities.create(params[:activity])
     if @activity.save!
       respond_to do |format|
-        format.js {render js: %(window.location.pathname='#{unit_lesson_path(@unit, @lesson)}')}
+        format.js
       end
     else
       flash[:error] = "Oops. Didn't save"

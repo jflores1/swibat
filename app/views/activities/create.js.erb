@@ -1,0 +1,1 @@
+$('#activities table tbody').append("<tr id='<%= escape_html(@activity.id) %>'><td><%= escape_html(@activity.activity) %></td><td><%= escape_html(@activity.duration) %></td><td><%= escape_html(@activity.agent) %></td></tr>")
