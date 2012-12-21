@@ -159,6 +159,16 @@ describe "LessonPages" do
           }.to change(Activity, :count).by(1)
         end
       end
+
+      describe "it removes activities from the lesson" do
+        let!(:activity){lesson.activities.create(activity: "Lecture", duration:"15 mins", agent:"Teacher")}
+        before {visit unit_lesson_path(unit, lesson)}
+        it "should destroy an activity" do
+          expect{
+            find("tr#activity_#{activity.id}").click_link("delete")
+          }.to change(Activity, :count).by(-1)
+        end
+      end
     end
 
     describe "Vote div" do
