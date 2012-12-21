@@ -7,7 +7,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
     @course = @unit.course
     @user = @course.user
-    @activity = @lesson.activities.build
+    
   end
 
   def new

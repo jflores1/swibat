@@ -119,7 +119,7 @@
 
     </div>
     <div id="activity-form">
-      <%= form_for [@lesson, @activity], remote: true do |activity| %>
+      <%= form_for [@lesson, @lesson.activities.build], remote: true do |activity| %>
           <%= render 'shared/form_error_messages', object: activity.object %>
             <%= activity.label :activity %>
             <%= activity.text_field :activity %>

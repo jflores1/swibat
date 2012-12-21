@@ -1,0 +1,2 @@
+var activity_row = $('<%= j(render(:partial => "activities/activity", :locals => {:activity => @activity}))%>');
+$('#activities table').append(activity_row);
