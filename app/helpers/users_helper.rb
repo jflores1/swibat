@@ -5,15 +5,15 @@ module UsersHelper
 		content_tag :div, :class => "friendship" do
 		  	if friendship != nil
 				if friendship.status == 'accepted'
-					link_to "Unfriend", friendship, :method => :delete, class: "btn"
+					link_to "Disconnect", friendship, :method => :delete, class: "btn"
 				elsif friendship.requested_by?(current_user)
-					link_to "Revoke Friend Request", friendship, :method => :delete, class: "btn"
+					link_to "Revoke Request", friendship, :method => :delete, class: "btn"
 				elsif friendship.requested_by?(friend)
-					link_to("Accept Friend Request", accept_friendship_path(friendship), :method => :post, class: "btn") + ' ' +
-					link_to("Decline Friend Request", friendship, :method => :delete, class: "btn")
+					link_to("Accept Connection", accept_friendship_path(friendship), :method => :post, class: "btn") + ' ' +
+					link_to("Decline Connection", friendship, :method => :delete, class: "btn")
 				end
 			else
-				link_to "Add as Friend", add_friendship_path(friend.id), :method => :post, class: "btn"
+				link_to "Connect", add_friendship_path(friend.id), :method => :post, class: "btn"
 			end			
 		end		
 	end

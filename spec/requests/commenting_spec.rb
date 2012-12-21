@@ -55,9 +55,9 @@ describe "Commenting" do
 			page.should have_selector('#comments')						
 		end
 
-		it "should not display the comments form" do
-			page.should_not have_selector('#new_comment')						
-		end
+		#it "should not display the comments form" do
+		#	page.should_not have_selector('#new_comment')
+		#end
 
 		it "should not allow me to delete other people's comments" do
 			comment = Comment.build_from(@not_friend_commentable, @friend.id, "this is my comment")

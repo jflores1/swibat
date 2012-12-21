@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8e40e5b-4458-4862-a0a6-499463a7ca3a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/activities/create.js.coffee.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/courses.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/courses.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/comments.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/comments.css.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/question.rb" afterPath="$PROJECT_DIR$/app/models/question.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_sidebar_other_user_courses.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_sidebar_other_user_courses.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/users_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/users_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ability.rb" afterPath="$PROJECT_DIR$/app/models/ability.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/_comments.html.erb" afterPath="$PROJECT_DIR$/app/views/comments/_comments.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/lessons/show.html.erb" afterPath="$PROJECT_DIR$/app/views/lessons/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_form_error_messages.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_form_error_messages.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_sidebar_recent_questions.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_sidebar_recent_questions.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/_user_answer_summary.html.erb" afterPath="$PROJECT_DIR$/app/views/users/_user_answer_summary.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/_user_question_summary.html.erb" afterPath="$PROJECT_DIR$/app/views/users/_user_question_summary.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/questions.rb" afterPath="$PROJECT_DIR$/spec/factories/questions.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/users.rb" afterPath="$PROJECT_DIR$/spec/factories/users.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/requests/course_pages_spec.rb" afterPath="$PROJECT_DIR$/spec/requests/course_pages_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/requests/user_pages_spec.rb" afterPath="$PROJECT_DIR$/spec/requests/user_pages_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_sidebar_related_courses.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_sidebar_related_courses.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/units/show.html.erb" afterPath="$PROJECT_DIR$/app/views/units/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/requests/commenting_spec.rb" afterPath="$PROJECT_DIR$/spec/requests/commenting_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/requests/lesson_pages_spec.rb" afterPath="$PROJECT_DIR$/spec/requests/lesson_pages_spec.rb" />
     </list>
     <ignored path="swibat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,15 +41,6 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/courses/index.html.erb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="19" column="105" selection-start="704" selection-end="704" vertical-scroll-proportion="-0.625">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="factories.rb" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/factories.rb">
               <provider selected="true" editor-type-id="text-editor">
@@ -56,28 +50,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/questions/index.html.erb">
+          <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/views/lessons/show.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="2" column="13" selection-start="66" selection-end="66" vertical-scroll-proportion="-1.25">
+                <state line="123" column="18" selection-start="4010" selection-end="4010" vertical-scroll-proportion="0.6848306">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="question.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/models/question.rb">
+          <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/config/routes.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="24" column="52" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="_comments.html.erb" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/views/comments/_comments.html.erb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                <state line="25" column="18" selection-start="664" selection-end="664" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -87,52 +72,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="courses.css.scss" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/courses.css.scss">
+          <file leaf-file-name="activity.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/models/activity.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="154" column="0" selection-start="2274" selection-end="2274" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="courses_controller.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="44" column="21" selection-start="1115" selection-end="1115" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="course_pages_spec.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/requests/course_pages_spec.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="227" column="8" selection-start="6683" selection-end="6683" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="user_pages_spec.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/spec/requests/user_pages_spec.rb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="71" column="59" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.0">
-                  <folding>
-                    <element signature="e#627#845#0" expanded="false" />
-                    <element signature="e#880#970#0" expanded="false" />
-                    <element signature="e#1522#1854#0" expanded="false" />
-                    <element signature="e#2358#2679#0" expanded="false" />
-                    <element signature="e#2720#2934#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="courses.js.coffee" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/assets/javascripts/courses.js.coffee">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="32" selection-start="491" selection-end="491" vertical-scroll-proportion="0.259366">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -141,16 +84,37 @@
           <file leaf-file-name="users.css.scss" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="171" column="23" selection-start="2901" selection-end="2901" vertical-scroll-proportion="-18.76923">
+                <state line="162" column="24" selection-start="2814" selection-end="2814" vertical-scroll-proportion="-20.384615">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="custom.css.scss.erb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss.erb">
+          <file leaf-file-name="lesson_pages_spec.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/requests/lesson_pages_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="52" column="23" selection-start="1276" selection-end="1276" vertical-scroll-proportion="41.4">
+                <state line="157" column="32" selection-start="5894" selection-end="5894" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <element signature="e#407#3304#0" expanded="false" />
+                    <element signature="e#3534#5515#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="activities_controller.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="11" column="91" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="create.js.coffee.erb" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/views/activities/create.js.coffee.erb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="63" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -171,28 +135,28 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/lessons/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/courses.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/courses/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/questions/index.html.erb" />
-        <option value="$PROJECT_DIR$/spec/factories/users.rb" />
-        <option value="$PROJECT_DIR$/spec/factories/questions.rb" />
-        <option value="$PROJECT_DIR$/spec/requests/course_pages_spec.rb" />
-        <option value="$PROJECT_DIR$/app/models/question.rb" />
-        <option value="$PROJECT_DIR$/app/views/users/_user_question_summary.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/users/_user_answer_summary.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/ability.rb" />
+        <option value="$PROJECT_DIR$/app/views/comments/_comments.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/comments.css.scss" />
+        <option value="$PROJECT_DIR$/spec/requests/commenting_spec.rb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_form_error_messages.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/shared/_sidebar_other_user_courses.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss.erb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_sidebar_related_courses.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/units/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/shared/_sidebar_recent_questions.html.erb" />
-        <option value="$PROJECT_DIR$/spec/requests/user_pages_spec.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/courses.js.coffee" />
+        <option value="$PROJECT_DIR$/spec/requests/lesson_pages_spec.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/views/activities/create.js.erb" />
+        <option value="$PROJECT_DIR$/app/views/activities/create.js.coffee.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/lessons/show.html.erb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1449" />
-    <option name="y" value="7" />
+    <option name="y" value="9" />
     <option name="width" value="1862" />
     <option name="height" value="864" />
   </component>
@@ -270,20 +234,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swibat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swibat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -324,7 +274,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="comments" />
+              <option name="myItemId" value="activities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -535,11 +485,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1449" y="7" width="1862" height="864" extended-state="0" />
+    <frame x="1449" y="9" width="1862" height="864" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839838" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15925394" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1657489" sideWeight="0.6716016" order="0" side_tool="false" content_ui="combo" />
@@ -551,7 +502,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839838" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294271" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -611,120 +561,117 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/users/_user_summary.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_sidebar_related_courses.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.3652968">
+        <state line="2" column="15" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0433526">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/factories/questions.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/units/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="8" selection-start="175" selection-end="175" vertical-scroll-proportion="0.129683">
+        <state line="79" column="81" selection-start="2483" selection-end="2483" vertical-scroll-proportion="0.31506848">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/factories/users.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_form_error_messages.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="5" selection-start="437" selection-end="437" vertical-scroll-proportion="0.259366">
+        <state line="16" column="51" selection-start="668" selection-end="668" vertical-scroll-proportion="0.3652968">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/_user_answer_summary.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="71" selection-start="415" selection-end="415" vertical-scroll-proportion="0.15981735">
+        <state line="43" column="25" selection-start="1384" selection-end="1384" vertical-scroll-proportion="0.8506401">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/_user_question_summary.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/comments/_comments.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="88" selection-start="480" selection-end="480" vertical-scroll-proportion="0.15981735">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="23" selection-start="2901" selection-end="2901" vertical-scroll-proportion="-18.76923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_sidebar_other_user_courses.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="64" selection-start="119" selection-end="119" vertical-scroll-proportion="0.04477612">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="23" selection-start="1276" selection-end="1276" vertical-scroll-proportion="41.4">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_sidebar_recent_questions.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="51" selection-start="106" selection-end="106" vertical-scroll-proportion="0.04477612">
+        <state line="3" column="59" selection-start="165" selection-end="165" vertical-scroll-proportion="0.066273935">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/question.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="52" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0">
+        <state line="24" column="52" selection-start="669" selection-end="669" vertical-scroll-proportion="0.5027933">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/requests/course_pages_spec.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/ability.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="227" column="8" selection-start="6683" selection-end="6683" vertical-scroll-proportion="0.0">
+        <state line="53" column="45" selection-start="2165" selection-end="2165" vertical-scroll-proportion="0.6401138">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/requests/user_pages_spec.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_sidebar_recent_questions.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="59" selection-start="2288" selection-end="2288" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#627#845#0" expanded="false" />
-            <element signature="e#880#970#0" expanded="false" />
-            <element signature="e#1522#1854#0" expanded="false" />
-            <element signature="e#2358#2679#0" expanded="false" />
-            <element signature="e#2720#2934#0" expanded="false" />
-          </folding>
+        <state line="2" column="7" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0433526">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/comments/_comments.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="162" column="24" selection-start="2814" selection-end="2814" vertical-scroll-proportion="-20.384615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/factories.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/courses.css.scss">
+    <entry file="file://$PROJECT_DIR$/spec/requests/lesson_pages_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="0" selection-start="2274" selection-end="2274" vertical-scroll-proportion="0.0">
+        <state line="157" column="32" selection-start="5894" selection-end="5894" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#407#3304#0" expanded="false" />
+            <element signature="e#3534#5515#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="18" selection-start="664" selection-end="664" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/courses.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/views/lessons/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="32" selection-start="491" selection-end="491" vertical-scroll-proportion="0.259366">
+        <state line="123" column="18" selection-start="4010" selection-end="4010" vertical-scroll-proportion="0.6848306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/activity.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="91" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activities/create.js.coffee.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="63" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

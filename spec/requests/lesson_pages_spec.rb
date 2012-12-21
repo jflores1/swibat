@@ -147,6 +147,18 @@ describe "LessonPages" do
         end
 
       end
+
+      describe "it adds activities to the lesson" do
+        before {visit unit_lesson_path(unit, lesson)}
+        it "should add an activity" do
+          expect{
+            fill_in "activity_activity",  with: "Activity"
+            fill_in "activity_duration",  with: "5 mins"
+            select  "Teacher",            from: "activity_agent"
+            click_button "Submit"
+          }.to change(Activity, :count).by(1)
+        end
+      end
     end
 
     describe "Vote div" do

@@ -117,6 +117,19 @@
       <% end %>
 
     </div>
+    <div id="activity-form">
+      <%= form_for [@lesson, @activity], remote: true do |activity| %>
+          <%= render 'shared/form_error_messages', object: activity.object %>
+            <%= activity.label :activity %>
+            <%= activity.text_field :activity %>
+            <%= activity.label :duration %>
+            <%= activity.text_field :duration %>
+            <%= activity.label :agent %>
+            <%= activity.select(:agent, [["Teacher", "Teacher"],["Student", "Student"],["Class", "Class"]]) %>
+            <%= activity.submit "Submit" %>
+      <% end %>
+
+    </div>
 
   </section>
 
@@ -124,7 +137,7 @@
     <h2>Comments</h2>
   </header>
   <section class="course-info">
-    <%= render :partial => 'comments/comments', :locals => {:commentable => @course} %>
+    <%= render :partial => 'comments/comments', :locals => {:commentable => @lesson} %>
   </section>
 
 </div>

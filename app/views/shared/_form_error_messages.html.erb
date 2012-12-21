@@ -1,7 +1,7 @@
 <% if object.errors.any? %>
     <div id="errorModal" class="modal">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close modal-dismiss" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Sorry, but this form contains the following <%= pluralize(object.errors.count, "error") %>. </h3>
       </div>
       <div class="modal-body">
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-monkey" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-monkey modal-dismiss" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
     </div>
 

@@ -51,7 +51,7 @@ class Ability
       can :manage, Comment, :commentable => {:user_id => user.id}      
       # Can create comments if they are friends with the user the commentable belongs to
       can :create, Comment do |comment|
-        comment.try(:commentable).try(:user).try(:friends).include? user 
+        comment.try(:commentable).try(:user) #.try(:friends).include? user
       end
 
       can :update, User, :id => user.id
