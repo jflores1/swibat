@@ -106,10 +106,11 @@
             </thead>
             <tbody>
             <% @lesson.activities.each do |activity| %>
-                <tr>
+                <tr id="<%= dom_id(activity) %>">
                   <td><%= activity.activity %></td>
                   <td><%= activity.duration %></td>
                   <td><%= activity.agent %></td>
+                  <td><%= link_to "delete", [@lesson, activity], method: :delete, remote: true %></td>
                 </tr>
             <% end %>
             </tbody>

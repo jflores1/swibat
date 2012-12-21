@@ -16,6 +16,14 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def destroy
+    @activity = @lesson.activities.find(params[:id])
+    @activity.destroy
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def find_lesson
     @lesson = Lesson.find(params[:lesson_id])
     @unit = @lesson.unit
