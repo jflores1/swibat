@@ -69,7 +69,7 @@ describe "UserPages" do
         it {page.should have_selector("h3", text: "1 Question")}
         it "allows the user to click through to the question" do
           find_link("Question title").click
-          current_path.should eq(question_path(question)) 1
+          current_path.should eq(question_path(question))
         end
       end
 

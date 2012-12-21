@@ -1,1 +1,2 @@
-$('#activities table tbody').append("<tr id='<%= escape_html(@activity.id) %>'><td><%= escape_html(@activity.activity) %></td><td><%= escape_html(@activity.duration) %></td><td><%= escape_html(@activity.agent) %></td></tr>")
+var activity_row = $('<%= j(render(:partial => "activities/activity", :locals => {:activity => @activity}))%>');
+$('#activities table').append(activity_row);
