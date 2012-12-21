@@ -1,5 +1,4 @@
-<tr class="field">	
-	<td>
-		<%= f.text_field :objective, :onblur => "retrieveSimilarObjectiveables('Lesson')", :class => "objectiveName" %> <%= link_to_remove_fields "remove", f, true %>
-	</td>
-</tr>
+<div class="field">
+	<%= f.text_field :objective, :onblur => "retrieveSimilarObjectiveables('Lesson', 'objectives')", placeholder: "Add an objective", class: "objectiveName single-edit-input" %>
+	<%= link_to_remove_fields '<i class="icon-trash icon-white"></i>', f, false,"btn btn-monkey" %>
+</div>

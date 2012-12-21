@@ -1,52 +1,51 @@
 <%= form_for @course do |course| %>
-    <%= render 'shared/form_error_messages', object: course.object %>
+  <%= render 'shared/form_error_messages', object: course.object %>
 
-    <%= course.label "What do you want to call this course?" %>
-    <%= course.text_field :course_name, placeholder: "Course Title", id:"course_name"%>
+  <%= course.label "What do you want to call this course?" %>
+  <%= course.text_field :course_name, placeholder: "Course Title", id:"course_name", class: 'objectiveable-name', onblur: "retrieveSimilarObjectiveables('Course', 'name')" %>
 
-    <%= course.label "What's it about?" %>
-    <%= course.text_area :course_summary, placeholder:"Provide a summary like you might on a syllabus.", id:"course_summary"%>
+  <%= course.label "What's it about?" %>
+  <%= course.text_area :course_summary, placeholder:"Provide a summary like you might on a syllabus.", id:"course_summary"%>
 
-    <p>When are you teaching it?</p>
-    <div class="two-column-form span12 no-left-margin">
-      <div class="span6 pull-left">
-        <%= course.label "Semester" %>
-        <%= course.select(:course_semester,[['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer'], ['Winter','Winter']] ) %>
-      </div>
-
-      <div class="span6 pull-right">
-        <%= course.label "Year" %>
-        <%= course.select :course_year, options_for_select((2012..2030).step(1).to_a.map{|y| ["#{y}", y]}) %>
-      </div>
+  <p>When are you teaching it?</p>
+  <div class="two-column-form span12 no-left-margin">
+    <div class="span6 pull-left">
+      <%= course.label "Semester" %>
+      <%= course.select(:course_semester,[['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer'], ['Winter','Winter']] ) %>
     </div>
 
-    <%= course.label :grade_id, "What age are the students?" %>
-    <%= course.collection_select(:grade_id, Grade.all, :id, :grade_level, options ={:prompt => "Select Grade"})  %>
-
-    <%= course.label :objectives, "What should students be able to do when it's over?" %>
-        <%= course.fields_for :objectives do |objective| %>
-        <%= render "shared/objective_fields", f: objective %>
-     <% end %>
-     <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', course, :objectives,"btn btn-monkey" %>
-
-
-    <div class="two-column-form">
-      <div class="pull-left">
-        <%= course.submit "< Save and Return", name: "save_and_return", class:"btn btn-monkey" %>
-      </div>
-      <div class="pull-right">
-        <%= course.submit "Create a Unit >", name: "course_to_unit", class:"btn btn-monkey" %>
-      </div>
+    <div class="span6 pull-right">
+      <%= course.label "Year" %>
+      <%= course.select :course_year, options_for_select((2012..2030).step(1).to_a.map{|y| ["#{y}", y]}) %>
     </div>
+  </div>
 
-    <% end %>
+  <%= course.label :grade_id, "What age are the students?" %>
+  <%= course.collection_select(:grade_id, Grade.all, :id, :grade_level, options ={:prompt => "Select Grade"})  %>
+
+  <%= course.label :objectives, "What should students be able to do when it's over?" %>
+      <%= course.fields_for :objectives do |objective| %>
+      <%= render "shared/objective_fields", f: objective, objectiveable_type: 'Course' %>
+   <% end %>
+   <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', course, :objectives,"btn btn-monkey" %>
+
+  <div class="two-column-form">
+    <div class="pull-left">
+      <%= course.submit "< Save and Return", name: "save_and_return", class:"btn btn-monkey" %>
+    </div>
+    <div class="pull-right">
+      <%= course.submit "Create a Unit >", name: "course_to_unit", class:"btn btn-monkey" %>
+    </div>
+  </div>
+
+<% end %> 
 
 <%= content_for :sidebar do %>
     <%= content_for :sidebar_invite do %>
         <%= render 'shared/sidebar_invite' %>
     <% end %>
-
     <%= render 'layouts/application_sidebar' %>
+    <%= render 'shared/sidebar_related_courses' %>
 
 <% end %>
 

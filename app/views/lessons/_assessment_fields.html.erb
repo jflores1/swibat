@@ -1,3 +1,4 @@
 <div class="field">
-	<%= f.text_field :assessment_name %> <%= link_to_remove_fields "remove", f, true %>
+    <%= f.text_field :assessment_name, placeholder:"Add an assessment", class:"single-edit-input" %>
+    <%= link_to_remove_fields '<i class="icon-trash icon-white"></i>', f, false, "btn btn-monkey" %>
 </div>

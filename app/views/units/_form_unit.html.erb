@@ -3,7 +3,7 @@
 
 
       <%= unit.label "What big question does this unit answer?" %>
-      <%= unit.text_field :unit_title, id:"unit_title", placeholder:"Unit Title" %>
+      <%= unit.text_field :unit_title, id:"unit_title", placeholder:"Unit Title", class: 'objectiveable-name', onblur: "retrieveSimilarObjectiveables('Unit', 'name')" %>
 
 
       <%= unit.label :prior_knowledge, "What will students need to know before you start?" %>
@@ -11,7 +11,7 @@
 
       <%= unit.label :objectives, "What should students be able to do when it's over?" %>
       <%= unit.fields_for :objectives do |objective| %>
-          <%= render "shared/objective_fields", :f => objective %>
+          <%= render "shared/objective_fields", :f => objective, objectiveable_type: 'Unit' %>
       <% end %>
       <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', unit, :objectives, "btn btn-monkey" %>
 
@@ -53,3 +53,11 @@
 
   <% end %>
 
+<%= content_for :sidebar do %>
+    <%= content_for :sidebar_invite do %>
+        <%= render 'shared/sidebar_invite' %>
+    <% end %>
+    <%= render 'layouts/application_sidebar' %>
+    <%= render 'shared/sidebar_related_units' %>
+
+<% end %>
