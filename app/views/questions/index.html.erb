@@ -4,10 +4,8 @@
   </header>
   <% @questions.each do |question| %>
       <div class="index-meta row-fluid">
-        <div class="span2">
-          <div class="vote-summary">
-            vote count
-          </div>
+        <div class="span2">          
+            <%= generate_vote_form question, vote_question_path(question) %>          
         </div>
         <div class="span10">
           <header>

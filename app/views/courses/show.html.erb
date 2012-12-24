@@ -75,16 +75,20 @@
 <% content_for :sidebar do %>
 
     <%= content_for :sidebar_profile do %>
-          <%= render 'shared/sidebar_profile' %>
+      <%= render 'shared/sidebar_profile' %>
     <% end %>
 
     <%= content_for :sidebar_invite do %>
-          <%= render 'shared/sidebar_invite' %>
+      <%= render 'shared/sidebar_invite' %>
     <% end %>
 
     <%= content_for :sidebar_other_user_courses do %>
-        <%= render 'shared/sidebar_other_user_courses' %>
+      <%= render 'shared/sidebar_other_user_courses' %>
     <% end %>
+
+    <%= content_for :sidebar_related_courses do %>
+      <%= render 'shared/sidebar_related_courses' %>
+    <% end %> 
 
     <%= render 'layouts/application_sidebar' %>
 <% end %>

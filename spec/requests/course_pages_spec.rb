@@ -117,6 +117,10 @@ describe "CoursePages" do
         end
       end
 
+      describe "Displays similar courses" do
+        it {should have_content("Similar Courses")}
+      end
+
       describe "Presence of Course Summary Information" do
         it {should have_content("Course Summary")}
         it {should have_content("This is a course summary")}

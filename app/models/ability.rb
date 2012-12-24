@@ -48,7 +48,9 @@ class Ability
       # Can delete comment only if they have created it
       can :destroy, Comment, :user_id => user.id
       # Can manage comments if they are the owners of the commentable of the comment (Course, Unit, etc.)
-      can :manage, Comment, :commentable => {:user_id => user.id}      
+      can :manage, Comment do |comment|
+        comment.try(:commentable).try(:user).try(:id) == user.id
+      end
       # Can create comments if they are friends with the user the commentable belongs to
       can :create, Comment do |comment|
         comment.try(:commentable).try(:user) #.try(:friends).include? user

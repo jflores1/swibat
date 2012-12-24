@@ -1,2 +1,8 @@
 var activity_row = $('<%= j(render(:partial => "activities/activity", :locals => {:activity => @activity}))%>');
-$('#activities table').append(activity_row);
+var activities_table = $('#activities table');
+if (activities_table.length == 0){
+	$('#activities').html('<table><tr><th>Activity</th><th>Duration</th><th>Active Person</th></tr></table>');
+	activities_table = $('#activities table');
+}
+activities_table.append(activity_row);
+

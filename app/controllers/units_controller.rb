@@ -7,6 +7,12 @@ class UnitsController < ApplicationController
     @course = Course.find(params[:course_id])
     @user = @course.user
     @unit = Unit.find(params[:id])
+
+    @similar_units_based_on_name = Objective.find_similar_objectiveables([@unit.to_s], "Unit", "name")
+    @similar_units_based_on_name.delete_if {|c| c[:objectiveable].id == @unit.id}    
+    objectives = @unit.objectives.collect {|o| o.objective }
+    @similar_units_based_on_objectives = Objective.find_similar_objectiveables(objectives, "Unit", "objectives")
+    @similar_units_based_on_objectives.delete_if {|c| c[:objectiveable].id == @unit.id}    
   end
 
   def new

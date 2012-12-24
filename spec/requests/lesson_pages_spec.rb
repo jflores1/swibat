@@ -132,6 +132,10 @@ describe "LessonPages" do
           end
         end
 
+        describe "Displays similar lessons" do
+          it {should have_content("Similar Lessons")}
+        end
+
         context "filled out lesson" do
           let!(:objective){lesson.objectives.create(objective:"Describe the important people of the gilded age.")}
           let!(:assessment){lesson.assessments.create(assessment_name:"Quiz")}

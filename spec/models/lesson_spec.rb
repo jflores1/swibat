@@ -62,7 +62,7 @@ describe Lesson do
   context "With valid information" do
     let(:lesson){FactoryGirl.create(:lesson)}
     describe "With valid lesson status" do
-      before {lesson.lesson_status = "Pending"}
+      before {lesson.lesson_status = "Not Yet Started"}
       it {should be_valid}
     end
   end

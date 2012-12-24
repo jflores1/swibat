@@ -49,7 +49,9 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :flags
-  
+  has_many :units, :through => :courses
+  has_many :lessons, :through => :units
+
   # Define the friendship relations with some semantics.
   has_many :friendships, :conditions => "status = 'accepted'"
   has_many :friends, :through => :friendships
@@ -62,11 +64,13 @@ class User < ActiveRecord::Base
            :class_name => :Friendship,
            :conditions => "status = 'requested'"           
 
-  has_reputation :reputation, :source => [
-          { :reputation => :votes, :of => :questions},
-          { :reputation => :votes, :of => :answers},
-          { :reputation => :votes, :of => :courses},
-        ]
+  has_reputation :quality_of_contributions, :source => [
+    { :reputation => :votes, :of => :questions, :weight => 0.15},
+    { :reputation => :votes, :of => :answers, :weight => 0.15},
+    { :reputation => :votes, :of => :courses, :weight => 0.3},
+    { :reputation => :votes, :of => :units, :weight => 0.25},
+    { :reputation => :votes, :of => :lessons, :weight => 0.15},  
+  ]
 
   accepts_nested_attributes_for :professional_educations, :reject_if => lambda { |a| a[:school_name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :professional_accomplishments, :reject_if => lambda { |a| a[:name].blank? }, allow_destroy: true

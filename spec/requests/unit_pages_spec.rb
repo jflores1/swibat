@@ -111,6 +111,10 @@ describe "UnitPages" do
         page.should have_content("Gilded Age")
       end
 
+      describe "Displays similar units" do
+        it {should have_content("Similar Units")}
+      end
+
       describe "Working vote model" do
         it "should display the voting buttons" do
           page.should have_selector(".vote")

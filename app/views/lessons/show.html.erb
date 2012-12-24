@@ -106,12 +106,7 @@
             </thead>
             <tbody>
             <% @lesson.activities.each do |activity| %>
-                <tr id="<%= dom_id(activity) %>">
-                  <td><%= activity.activity %></td>
-                  <td><%= activity.duration %></td>
-                  <td><%= activity.agent %></td>
-                  <td><%= link_to "delete", [@lesson, activity], method: :delete, remote: true %></td>
-                </tr>
+              <%= render partial: "activities/activity", :locals => {activity: activity} %>                
             <% end %>
             </tbody>
           </table>
@@ -155,6 +150,10 @@
     <%= content_for :sidebar_other_unit_lessons do %>
         <%= render 'shared/sidebar_other_unit_lessons' %>
     <% end %>
+
+    <%= content_for :sidebar_related_lessons do %>
+      <%= render 'shared/sidebar_related_lessons' %>
+    <% end %> 
 
     <%= render 'layouts/application_sidebar' %>
 

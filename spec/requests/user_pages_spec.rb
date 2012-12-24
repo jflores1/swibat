@@ -53,22 +53,26 @@ describe "UserPages" do
         end
       end
 
+      describe "Displays user reputation" do
+        it {page.should have_content("Reputation")}
+      end
+
       describe "without any questions asked" do
         it {page.should have_selector("p", text:"It doesn't look like you've asked any questions.")}
         it {page.should have_selector("h3", text: "0 Questions")}
         it "directs the user to add a question" do
-          find_link("Have one?").click
+          find('.course-overview').find_link("Have one?").click
           current_path.should == new_question_path
         end
       end
 
       describe "with questions" do
-        let!(:question){create(:question, user: @user)}
+        let!(:question){create(:question, user: @user, :title => 'This is my question')}
         before {visit user_path(@user)}
-        it {page.should have_selector("p", text: "Question title")}
+        it {page.should have_selector("p", text: "This is my question")}
         it {page.should have_selector("h3", text: "1 Question")}
         it "allows the user to click through to the question" do
-          find_link("Question title").click
+          find_link("This is my question").click
           current_path.should eq(question_path(question))
         end
       end
@@ -83,7 +87,8 @@ describe "UserPages" do
       end
 
       describe "with answers provided" do
-        let!(:answer){create(:answer)}
+        let!(:question){create(:question, user: @user)}
+        let!(:answer){create(:answer, :question => question, :user => @user)}
         before {visit user_path(@user)}
         it {page.should have_selector("p", text: "MyText")}
         it {page.should have_selector("h3", text: "1 Answer")}

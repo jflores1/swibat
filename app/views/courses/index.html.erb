@@ -5,9 +5,7 @@
   <% @courses.each do |course| %>
   <div class="index-meta row-fluid">
     <div class="span2">
-      <div class="vote-summary">
-        vote count
-      </div>
+      <%= generate_vote_form course, course_path(course) %>
     </div>
     <div class="span10">
       <header>

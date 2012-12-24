@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
   validates :title, :presence => true
   validates :text, :presence => true, :length => {:maximum => 4000} 
 
-  has_reputation :votes, source: :user, aggregated_by: :sum
+  has_reputation :votes, source: :user, aggregated_by: :sum, :source_of => [{ :reputation => :reputation, :of => :user }]
 
   scope :sidebar, order("created_at desc").limit(10)
 

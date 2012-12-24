@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to(@commentable, :notice => 'Comment was successfully created.') }        
+        format.html { redirect_to(:back, :notice => 'Comment was successfully created.') }        
       else
         format.html { render @commentable }        
       end
@@ -20,9 +20,9 @@ class CommentsController < ApplicationController
   	@comment = Comment.find(params[:id])
   	respond_to do |format|
 	  	if @comment.destroy  		
-	  		format.html { redirect_to(@comment.commentable, :notice => 'Comment was successfully deleted.') }        
+	  		format.html { redirect_to(:back, :notice => 'Comment was successfully deleted.') }        
 	  	else
-	  		format.html { redirect_to(@comment.commentable, :notice => 'There was an error while trying to delete the comment.') }        
+	  		format.html { redirect_to(:back, :notice => 'There was an error while trying to delete the comment.') }        
 	  	end
   	end
   end

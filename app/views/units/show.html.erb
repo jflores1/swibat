@@ -95,6 +95,10 @@
         <%= render 'shared/sidebar_other_course_units' %>
     <% end %>
 
+    <%= content_for :sidebar_related_units do %>
+      <%= render 'shared/sidebar_related_units' %>
+    <% end %> 
+
     <%= render 'layouts/application_sidebar' %>
 
 <% end %>

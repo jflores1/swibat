@@ -7,6 +7,12 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
     @course = @unit.course
     @user = @course.user
+
+    @similar_lessons_based_on_name = Objective.find_similar_objectiveables([@lesson.to_s], "Lesson", "name")
+    @similar_lessons_based_on_name.delete_if {|c| c[:objectiveable].id == @lesson.id}    
+    objectives = @lesson.objectives.collect {|o| o.objective }
+    @similar_lessons_based_on_objectives = Objective.find_similar_objectiveables(objectives, "Lesson", "objectives")
+    @similar_lessons_based_on_objectives.delete_if {|c| c[:objectiveable].id == @lesson.id} 
   end
 
   def new
