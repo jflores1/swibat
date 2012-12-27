@@ -1,23 +1,23 @@
 <div class="sidebar">
   <header class="course-header">
-    <h3 class="wide">Similar Courses</h3>
+    <h4>Similar Courses</h4>
   </header>
   <section>
-  	<h4>Based on common objectives</h4>
+    <!-- some based on title -->
+    <div id="similarObjectiveablesTitle">
+      <% if @similar_courses_based_on_name %>
+          <% @similar_courses_based_on_name.each do |entry| %>
+              <%= link_to entry[:objectiveable].to_s.titleize, entry[:objectiveable] %><br />
+          <% end %>
+      <% end %>
+    </div>
+  	<!-- and some based on objectives -->
   	<div id="similarObjectiveables">
       <% if @similar_courses_based_on_objectives %>        
         <% @similar_courses_based_on_objectives.each do |entry| %>
-        <%= link_to entry[:objectiveable].to_s, entry[:objectiveable] %><br />
+        <%= link_to entry[:objectiveable].to_s.titleize, entry[:objectiveable] %><br />
         <% end %>        
       <% end %>
     </div>
-  	<h4>Based on title</h4>
-  	<div id="similarObjectiveablesTitle">
-      <% if @similar_courses_based_on_name %>
-        <% @similar_courses_based_on_name.each do |entry| %>
-          <%= link_to entry[:objectiveable].to_s, entry[:objectiveable] %><br />
-        <% end %>
-      <% end %>
-  	</div>
   </section>
 </div>

@@ -93,23 +93,30 @@ describe "UnitPages" do
       end
 
       #lists objectives. Pluralize "Objective" and "Assessment" based on count
+      it {print page.html}
       it {should have_selector("h2", text: "Unit Objectives")}
-      it {should have_selector("li", text:"Describe how Carnegie changed steel")}
-      it {should have_selector("li", text:"Describe how Rockefeller changed oil")}
+      it {should have_selector("li", text:"Describe How Carnegie Changed Steel")}
+      it {should have_selector("li", text:"Describe How Rockefeller Changed Oil")}
 
       #lists assessments, Pluralized based on count
       it {should have_selector("h2", text: "Unit Assessment")}
       it {should have_selector("li", text: "A business plan for the 21st century")}
 
       #displays lesson accordion
-      it {should have_selector("h2", text: "Lessons")}
-      it "should have a link to add lessons" do
-        find("#add-lesson").click
-        current_path.should eq(new_unit_lesson_path(unit))
+      describe "The lesson accordion" do
+        let!(:lesson){create(:lesson, unit: unit)}
+        let!(:activity){lesson.activities.create(activity:"Quiz", duration: "15 minutes", agent: "Teacher")}
+        before {visit course_unit_path(course, unit)}
+        it {should have_selector("h2", text: "Lessons")}
+        it "should have a link to add lessons" do
+          find("#add-lesson").click
+          current_path.should eq(new_unit_lesson_path(unit))
+        end
+        it "should have activity titles" do
+          page.should have_content("Quiz")
+        end
       end
-      it "should have lesson titles" do
-        page.should have_content("Gilded Age")
-      end
+
 
       describe "Displays similar units" do
         it {should have_content("Similar Units")}

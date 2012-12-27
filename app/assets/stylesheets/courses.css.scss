@@ -17,7 +17,7 @@ div.course-form{
   }
 
   form {
-    $minFormHeight: 2em;//32px:16px
+    $minFormHeight: 1.25em;//32px:16px
 
     padding: 2%;
     float:left;
@@ -55,7 +55,8 @@ div.course-form{
     input[type="text"], textarea{
       width: 100%;
       min-height: $minFormHeight;
-      font-size: 1.23em;
+      font-size: 1.0769em;
+      color: rgba(80, 89, 107, 0.90);
     }
     input[type="text"].cleared{
       clear:right;

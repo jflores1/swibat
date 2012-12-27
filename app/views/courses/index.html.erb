@@ -9,10 +9,10 @@
     </div>
     <div class="span10">
       <header>
-        <h3><%= link_to "#{course.course_name}", course_path(course)%></h3>
+        <h3><%= link_to "#{course.course_name.titleize}", course_path(course)%></h3>
       </header>
       <section>
-        <p><%= truncate("#{course.course_summary}", length: 140) %></p>
+        <p><%= truncate("#{course.course_summary.humanize}", length: 140) %></p>
         <div class="index-profile">
           <%= image_tag course.user.image.url, alt: "#{course.user.full_name}" %>
           <span>Created by <%= link_to course.user.full_name, course.user %> <%= time_ago_in_words course.created_at %> ago</span>

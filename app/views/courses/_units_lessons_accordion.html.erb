@@ -2,7 +2,8 @@
   <% @course.units.each do |unit| %>
       <div class="accordion-group">
         <div class="accordion-heading">
-          <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= unit.id  %>"><%= unit.unit_title %> (<%= pluralize((unit.lessons.count), 'lesson') %>) </a>
+          <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= unit.id  %>"><%= unit.unit_title.titleize %> (<%= pluralize((unit.lessons.count),
+                                                                                                                                       'lesson') %>) </a>
           <% if can? :update, @course %>
               <a class="btn btn-mini btn-monkey pull-right" href="<%= course_unit_path(@course, unit) %>"><i class="icon-pencil icon-white"></i></a>
           <% else %>

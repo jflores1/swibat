@@ -28,11 +28,11 @@ class Unit < ActiveRecord::Base
 
   has_reputation :votes, source: :user, aggregated_by: :sum
   
-  #before_save do |unit|
-  #  unit.prior_knowledge = prior_knowledge.humanize
-  #  unit.unit_status = unit_status.capitalize
-  #  unit.unit_title = unit_title.titleize
-  #end
+  before_save do |unit|
+    unit.prior_knowledge = prior_knowledge.humanize
+    unit.unit_status = unit_status.capitalize
+    unit.unit_title = unit_title.titleize
+  end
 
   VALID_STATUS = ["Pending", "Started", "Complete"]
 

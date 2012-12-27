@@ -14,6 +14,7 @@ gem 'aws-sdk', '~> 1.3.4'
 gem 'aws-s3', :require => 'aws/s3'
 gem "paperclip", "~> 3.0"
 gem 'activerecord-reputation-system'
+#//TODO: add gem 'bootstrap-wysihtml5-rails' for Question formatting. Resolve Safari browser issue and view first.
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
@@ -35,8 +36,6 @@ end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
 
 
 # Gems used only for assets and not required

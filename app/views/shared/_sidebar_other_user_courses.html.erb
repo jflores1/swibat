@@ -4,7 +4,7 @@
   </header>
   <section>
     <% @user.courses.each do |course| %>
-        <%= link_to course.course_name, course_path(course), class:"sidebar-link" %>
+        <%= link_to course.course_name.titleize, course_path(course), class:"sidebar-link" %>
     <% end %>
 
   </section>

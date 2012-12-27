@@ -1,33 +1,19 @@
-<%= form_for @question, :html => {:class => "form-horizontal"} do |question| %>
-		
-	<% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
-      <ul>
-      <% @question.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div id="question-form">
+    <%= form_for @question do |question| %>
+        <%= render 'shared/form_error_messages', object: question.object %>
+      <div class="row-fluid">
+        <div class="span12">
+          <%= question.label :title %>
+          <%= question.text_field :title, class:"span12", placeholder: "What's your teaching question? Be specific." %>
+        </div>
 
-  <div class="control-group">
-    <%= question.label :title, :class => "control-label" %> 
-    <div class="controls">
-      <%= question.text_field :title %>
-    </div>
-  </div>
+        <div class="span12 no-left-margin">
+          <%= question.text_area :text, rows: "15", class:"span12" %>
+        </div>
 
-  <div class="control-group">
-    <%= question.label :text, :class => "control-label" %> 
-    <div class="controls">
-      <%= question.text_area :text %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <div class="controls">     
-      <%= question.submit "Submit" %>
-    </div>
-  </div>
-<% end %>
+        <div class="span12 no-left-margin">
+          <%= question.submit "Ask Question", class:"btn btn-monkey" %>
+        </div>
+      </div>
+    <% end %>
+</div>

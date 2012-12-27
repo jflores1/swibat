@@ -10,7 +10,7 @@
 
   <header class="course-header top-margin">
     <div class="span8">
-      <h2><%= @course.course_name %></h2>
+      <h2><%= @course.course_name.titleize %></h2>
     </div>
     <div class="span4">
       <h2 class="pull-right"><%= @course.grade.grade_level %>, <%= @course.course_semester %> <%= @course.course_year %></h2>
@@ -33,7 +33,7 @@
     <article>
       <ul>
         <% @course.objectives.each do |objective| %>
-            <li><%= objective.objective %></li>
+            <li><%= objective.objective.humanize %></li>
         <% end %>
       </ul>
     </article>

@@ -1,3 +1,15 @@
-<h1>Ask a question</h1>
-
 <%= render :partial => 'form' %>
+
+<% content_for :sidebar do %>
+
+    <% content_for :sidebar_invite do %>
+        <%= render 'shared/sidebar_invite' %>
+    <% end %>
+
+    <% content_for :sidebar_recent_questions do %>
+        <%= render 'shared/sidebar_recent_questions' %>
+    <% end %>
+
+    <%= render 'layouts/application_sidebar' %>
+
+<% end %>

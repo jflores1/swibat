@@ -1,0 +1,22 @@
+<%= form_for [@lesson, @lesson.activities.build], remote: true do |activity| %>
+    <%= render 'shared/form_error_messages', object: activity.object %>
+    <div class="span12">
+      <%= activity.label :activity %>
+      <%= activity.text_field :activity, class:"span11" %>
+    </div>
+
+    <div class="two-column-form span12">
+      <div class="span6 pull-left">
+        <%= activity.label :duration %>
+        <%= activity.select(:duration, [["5 Minutes", "5 Minutes"],["10 Minutes", "10 Minutes"],["15 Minutes", "15 Minutes"],["20 Minutes", "20 Minutes"],["30 Minutes",                                                                                                                                                     "30 Minutes"],["45 Minutes", "45 Minutes"],["50 Minutes", "50 Minutes"], ["60 Minutes", "60 Minutes"], ["75 Minutes", "75 Minutes"], ["90 Minutes", "90 Minutes"]]) %>
+      </div>
+      <div class="span6 pull-right">
+        <%= activity.label :agent, "Who's most active?" %>
+        <%= activity.select(:agent, [["Teacher", "Teacher"],["Student", "Student"],["Group", "Group"],["Class", "Class"]]) %>
+      </div>
+    </div>
+
+    <div class="span12">
+      <%= activity.submit "Add Activity", class:"btn btn-monkey" %>
+    </div>
+<% end %>

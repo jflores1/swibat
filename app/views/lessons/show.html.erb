@@ -9,8 +9,8 @@
 
   <header class="course-header top-margin">
     <div class="span12">
-      <h2><%= link_to "#{@unit.unit_title}:", course_unit_path(@course, @unit), class:"disguised-header-link" %><br/>
-        <%= @lesson.lesson_title %></h2>
+      <h2><%= link_to "#{@unit.unit_title.titleize}:", course_unit_path(@course, @unit), class:"disguised-header-link" %><br/>
+        <%= @lesson.lesson_title.titleize %></h2>
     </div>
   </header>
 
@@ -19,7 +19,7 @@
       <h2>Prior Knowledge <%= link_to "(edit lesson)", edit_unit_lesson_path(@unit, @lesson) if can? :update, @lesson %></h2>
     </header>
     <article>
-      <p><%= @lesson.prior_knowledge %></p>
+      <p><%= @lesson.prior_knowledge.humanize %></p>
     </article>
   </section>
 
@@ -33,7 +33,7 @@
       <% else %>
           <ul>
             <% @lesson.objectives.each do |objective| %>
-                <li><%= objective.objective %></li>
+                <li><%= objective.objective.humanize %></li>
             <% end %>
           </ul>
       <% end %>
@@ -51,7 +51,7 @@
       <% else %>
           <ul>
             <% @lesson.assessments.each do |assessment| %>
-                <li><%= assessment.assessment_name %></li>
+                <li><%= assessment.assessment_name.humanize %></li>
             <% end %>
           </ul>
       <% end %>
@@ -88,18 +88,18 @@
   <header class="course-header">
     <h2>Lesson Activities</h2>
     <% if can? :update, @lesson %>
-        <button class="btn btn-small btn-monkey pull-right"><a id="add-lesson" href="<%= new_unit_lesson_path(@unit) %>"><i class="icon-plus icon-white"></i></a></button>
+        <button class="btn btn-small btn-monkey pull-right"><a class="add-new-activity" href="#"><i class="icon-plus icon-white"></i></a></button>
     <% end %>
   </header>
   <section class="course-info">
     <div id="activities">
       <% if @lesson.activities.count == 0 %>
-        <p>No activities planned for this lesson? Hmm... <%= link_to "Add some stuff to do", edit_unit_lesson_path(@unit, @lesson) if can? :update, @lesson %></p>
+        <p>No activities planned for this lesson? Hmm... <% if can? :update, @lesson %><a class="add-new-activity" href="#">add some</a><% end %></p>
       <% else %>
           <table>
             <thead>
             <tr>
-              <th>Activity</th>
+              <th class="large">Activity</th>
               <th>Duration</th>
               <th>Active Person</th>
             </tr>
@@ -114,17 +114,8 @@
 
     </div>
     <div id="activity-form">
-      <%= form_for [@lesson, @lesson.activities.build], remote: true do |activity| %>
-          <%= render 'shared/form_error_messages', object: activity.object %>
-            <%= activity.label :activity %>
-            <%= activity.text_field :activity %>
-            <%= activity.label :duration %>
-            <%= activity.text_field :duration %>
-            <%= activity.label :agent %>
-            <%= activity.select(:agent, [["Teacher", "Teacher"],["Student", "Student"],["Class", "Class"]]) %>
-            <%= activity.submit "Submit" %>
-      <% end %>
-
+      <%= render 'form_activity' %>
+      <a class="remove-new-activity">Done Adding</a>
     </div>
 
   </section>

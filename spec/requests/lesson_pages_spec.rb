@@ -133,7 +133,7 @@ describe "LessonPages" do
         end
 
         describe "Displays similar lessons" do
-          it {should have_content("Similar Lessons")}
+          it {page.should have_content("Similar Lessons")}
         end
 
         context "filled out lesson" do
@@ -143,7 +143,7 @@ describe "LessonPages" do
           before(:each) do
             visit unit_lesson_path(unit, lesson)
           end
-          it {page.should have_content("Describe the important people")}
+          it {page.should have_content("describe the important people of the gilded age.")}
           it {page.should have_content("Quiz")}
           it {page.should have_content("Lecture")}
           it {page.should have_content("15 mins")}
@@ -157,9 +157,9 @@ describe "LessonPages" do
         it "should add an activity" do
           expect{
             fill_in "activity_activity",  with: "Activity"
-            fill_in "activity_duration",  with: "5 mins"
+            select "15 Minutes",          from: "activity_duration"
             select  "Teacher",            from: "activity_agent"
-            click_button "Submit"
+            click_button "Add Activity"
           }.to change(Activity, :count).by(1)
         end
       end

@@ -15,7 +15,7 @@ class Activity < ActiveRecord::Base
   attr_accessible :activity, :duration, :agent
   belongs_to :lesson
 
-  VALID_AGENT = ["Teacher", "Student", "Class"]
+  VALID_AGENT = ["Teacher", "Student", "Group", "Class"]
 
   validate :valid_agent
   validates :activity, presence: true

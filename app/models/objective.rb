@@ -14,6 +14,8 @@ class Objective < ActiveRecord::Base
   attr_accessible :objective
   belongs_to :objectiveable, polymorphic: true
 
+
+
   # Returns similar objectiveable
   def self.find_similar_objectiveables input_strings, type, based_on, threshold = 0.3, limit = nil
   	# Fetch all objectivables of the same type from the database

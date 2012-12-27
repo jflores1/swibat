@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :load_similar_courses, except: [:index, :new]
   load_and_authorize_resource
   skip_authorize_resource
 
@@ -11,12 +12,6 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @user = @course.user
-    
-    @similar_courses_based_on_name = Objective.find_similar_objectiveables([@course.to_s], "Course", "name")
-    @similar_courses_based_on_name.delete_if {|c| c[:objectiveable].id == @course.id}    
-    objectives = @course.objectives.collect {|o| o.objective }
-    @similar_courses_based_on_objectives = Objective.find_similar_objectiveables(objectives, "Course", "objectives")
-    @similar_courses_based_on_objectives.delete_if {|c| c[:objectiveable].id == @course.id}    
   end
 
   def new
@@ -69,6 +64,16 @@ class CoursesController < ApplicationController
       @course.add_or_update_evaluation(:votes, value, current_user)
     end
     redirect_to :back, notice: "Thank you for voting"   
+  end
+
+  def load_similar_courses
+    @course = Course.find(params[:id])
+    @similar_courses_based_on_name = Objective.find_similar_objectiveables([@course.to_s], "Course", "name").first(5)
+    @similar_courses_based_on_name.delete_if {|c| c[:objectiveable].id == @course.id}
+    objectives = @course.objectives.collect {|o| o.objective }
+    @similar_courses_based_on_objectives = Objective.find_similar_objectiveables(objectives, "Course", "objectives").first(5)
+    @similar_courses_based_on_objectives.delete_if {|c| c[:objectiveable].id == @course.id}
+
   end
 
 end

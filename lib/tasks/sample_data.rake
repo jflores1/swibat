@@ -74,7 +74,7 @@ namespace :db do
       lesson_title = Faker::Lorem.sentence(word_count = 6)
       lesson_start_date = "2012-12-01"
       lesson_end_date = "2012-12-10"
-      lesson_status = "Pending"
+      lesson_status = "Not Yet Started"
       prior_knowledge = Faker::Lorem.sentence(word_count = 6)
       units.each do |unit|
         unit.objectives.create!(

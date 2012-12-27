@@ -9,8 +9,8 @@
 
   <header class="course-header top-margin">
     <div class="span12">
-      <h2><%= link_to "#{@course.course_name}:", course_path(@course), class:"disguised-header-link" %><br/>
-        <%= @unit.unit_title %></h2>
+      <h2><%= link_to "#{@course.course_name.titleize}:", course_path(@course), class:"disguised-header-link" %><br/>
+        <%= @unit.unit_title.titleize %></h2>
     </div>
   </header>
 
@@ -30,7 +30,7 @@
     <article>
       <ul>
         <% @unit.objectives.each do |objective| %>
-            <li><%= objective.objective %></li>
+            <li><%= objective.objective.humanize %></li>
         <% end %>
       </ul>
     </article>
@@ -43,7 +43,7 @@
     <article>
       <ul>
         <% @unit.assessments.each do |assessment| %>
-            <li><%= assessment.assessment_name %></li>
+            <li><%= assessment.assessment_name.humanize %></li>
         <% end %>
       </ul>
     </article>

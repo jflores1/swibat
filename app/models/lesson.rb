@@ -30,6 +30,10 @@ class Lesson < ActiveRecord::Base
   accepts_nested_attributes_for :activities, :reject_if => lambda { |a| a[:activity].blank? }, allow_destroy: true
 
   has_reputation :votes, source: :user, aggregated_by: :sum
+
+  before_save do |lesson|
+    lesson.lesson_title = lesson_title.titleize
+  end
   
   VALID_STATUS = ["Not Yet Started", "Started", "Complete"]
 
