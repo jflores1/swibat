@@ -64,12 +64,12 @@ class User < ActiveRecord::Base
            :class_name => :Friendship,
            :conditions => "status = 'requested'"           
 
-  has_reputation :quality_of_contributions, :source => [
+  has_reputation :reputation, :source => [
     { :reputation => :votes, :of => :questions, :weight => 0.15},
     { :reputation => :votes, :of => :answers, :weight => 0.15},
     { :reputation => :votes, :of => :courses, :weight => 0.3},
     { :reputation => :votes, :of => :units, :weight => 0.25},
-    { :reputation => :votes, :of => :lessons, :weight => 0.15},  
+    { :reputation => :votes, :of => :lessons, :weight => 0.15}  
   ]
 
   accepts_nested_attributes_for :professional_educations, :reject_if => lambda { |a| a[:school_name].blank? }, allow_destroy: true
