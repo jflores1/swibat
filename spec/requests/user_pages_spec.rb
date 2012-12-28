@@ -168,6 +168,67 @@ describe "UserPages" do
 
   end
 
+  context "An unregistered user" do
+    context "Public question pages" do
+      describe "The index page" do
+        before{visit questions_path}
+        it {page.should have_selector("h2", text: "All Questions")}
+      end
+
+      describe "The show page" do
+        let(:user){create(:user)}
+        let(:question){create(:question)}
+        before {visit question_path(question)}
+        it {page.should have_content(question.title)}
+      end
+    end
+
+    context "Public user pages" do
+      describe "User profile page" do
+        let(:user){create(:user)}
+        before{visit user_path(user)}
+        it {page.should have_content(user.full_name)}
+      end
+    end
+
+    context "Can visit public course pages" do
+      describe "Course Index Page" do
+        before {visit courses_path}
+        it {page.should have_selector("h2", text: "All Courses")}
+      end
+
+      describe "Course Show Page" do
+        let(:user){create(:user)}
+        let(:course){create(:course, user: user)}
+        before {visit course_path(course)}
+        it {page.should have_content(course.course_name)}
+      end
+    end
+
+    context "Can visit public unit pages" do
+      describe "Unit Show Page" do
+        let(:user){create(:user)}
+        let(:course){create(:course, user: user)}
+        let(:unit){create(:unit)}
+        before {visit course_unit_path(course, unit)}
+        it {page.should have_content(unit.unit_title)}
+      end
+    end
+
+    describe "Can visit public lesson pages" do
+      describe "Lesson show page" do
+        let(:user){create(:user)}
+        let(:course){create(:course, user: user)}
+        let(:unit){create(:unit)}
+        let(:lesson){create(:lesson)}
+        before {visit unit_lesson_path(unit, lesson)}
+        it {print page.html}
+        it {page.should have_content(lesson.lesson_title)}
+      end
+
+    end
+  end
+
   context "With relevant profile information displayed" do
     before do 
       sign_in_via_form           

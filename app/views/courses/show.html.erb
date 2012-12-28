@@ -40,10 +40,9 @@
 
   <section class="course-info">
     <header>
-      <h2>Standards Covered</h2>
+      <h2>Tags</h2>
     </header>
-    <article>
-    </article>
+    <p><%= raw @course.tag_list.map {|t| link_to t, tag_courses_path(t), class:"tag_link"}.join(" ") %></p>
   </section>
 
   <header class="course-header">

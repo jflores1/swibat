@@ -2,5 +2,5 @@
   <td class="large"><%= activity.activity %></td>
   <td><%= activity.duration %></td>
   <td><%= activity.agent %></td>
-  <td class="small"><%= link_to "delete", [activity.lesson, activity], method: :delete, remote: true %></td>
+  <td class="small"><%= link_to "delete", [activity.lesson, activity], method: :delete, remote: true if can? :destroy, activity %></td>
 </tr>

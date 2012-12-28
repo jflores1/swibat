@@ -15,8 +15,9 @@
 
 class Course < ActiveRecord::Base
   acts_as_commentable
+  acts_as_taggable
   
-  attr_accessible :course_name, :course_semester, :course_summary, :course_year, :grade, :grade_id, :objectives_attributes
+  attr_accessible :course_name, :course_semester, :course_summary, :course_year, :grade, :grade_id, :objectives_attributes, :tag_list
 
   has_many :objectives, as: :objectiveable
   has_many :units

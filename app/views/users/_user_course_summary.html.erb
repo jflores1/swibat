@@ -1,0 +1,29 @@
+<header class="course-header">
+  <h3><%= @user.courses.count %> Courses </h3>
+  <% if can? :update, @user  %>
+      <a class="btn btn-monkey pull-right" id="user-add-course" href="<%= new_course_path %>"><i class="icon-plus icon-white"></i></a>
+  <% end %>
+</header>
+
+<div class="accordion">
+  <% @user.courses.each do |course| %>
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= course.id  %>"><%= course.course_name.titleize %> (<%= pluralize((course.units.count),
+                                                                                                                                                  'unit') %>) </a>
+          <% if can? :update, @user %>
+              <a class="btn btn-mini btn-monkey pull-right edit-user-course" href="<%= course_path(course) %>"><i class="icon-pencil icon-white"></i></a>
+          <% else %>
+              <a class="btn btn-mini btn-monkey pull-right edit-user-course" href="<%= course_path(course) %>"><i class="icon-search icon-white"></i></a>
+          <% end %>
+        </div>
+        <div id="collapse_<%= course.id %>" class="accordion-body collapse">
+          <% course.units.each do |unit| %>
+              <div class="accordion-inner">
+                <%= unit.unit_title %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>

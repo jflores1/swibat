@@ -29,12 +29,15 @@
    <% end %>
    <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', course, :objectives,"btn btn-monkey" %>
 
+  <%= course.label :tag_list, "Tags" %>
+  <%= course.text_field :tag_list, placeholder: "Tags (separated by commas)" %>
+
   <div class="two-column-form">
     <div class="pull-left">
-      <%= course.submit "< Save and Return", name: "save_and_return", class:"btn btn-monkey" %>
+      <%= course.submit "Save and Return", name: "save_and_return", class:"btn btn-monkey" %>
     </div>
     <div class="pull-right">
-      <%= course.submit "Create a Unit >", name: "course_to_unit", class:"btn btn-monkey" %>
+      <%= course.submit "Create a Unit", name: "course_to_unit", class:"btn btn-monkey" %>
     </div>
   </div>
 

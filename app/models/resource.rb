@@ -27,6 +27,6 @@ class Resource < ActiveRecord::Base
   validates :name, :presence => true
   validates :description, :length => {:maximum => 1000}
   validates_attachment_size :upload, :in => 0.megabytes..15.megabytes
-  validates_attachment_presence :upload
+  #validates_attachment_presence :upload
 
 end

@@ -36,6 +36,7 @@ Swibat::Application.routes.draw do
     member { post :vote }
     collection do
       get 'feed'
+      get 'tags/:tag', to: 'courses#index', as: :tag
     end
   end
 

@@ -40,7 +40,8 @@
 ) jQuery
 
 $(document).ready ->
-  $('textarea.span6').charCount()
+  $('.char-count').charCount()
+
   $('button.modal-dismiss').click (e) ->
     (e).preventDefault()
     $("#errorModal").fadeOut()

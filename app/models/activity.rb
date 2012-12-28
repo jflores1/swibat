@@ -23,4 +23,8 @@ class Activity < ActiveRecord::Base
   def valid_agent
     errors.add(:agent, "is not a valid actor") unless VALID_AGENT.include? agent
   end
+
+  def user
+    self.lesson.user
+  end
 end

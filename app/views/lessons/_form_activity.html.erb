@@ -11,8 +11,8 @@
         <%= activity.select(:duration, [["5 Minutes", "5 Minutes"],["10 Minutes", "10 Minutes"],["15 Minutes", "15 Minutes"],["20 Minutes", "20 Minutes"],["30 Minutes",                                                                                                                                                     "30 Minutes"],["45 Minutes", "45 Minutes"],["50 Minutes", "50 Minutes"], ["60 Minutes", "60 Minutes"], ["75 Minutes", "75 Minutes"], ["90 Minutes", "90 Minutes"]]) %>
       </div>
       <div class="span6 pull-right">
-        <%= activity.label :agent, "Who's most active?" %>
-        <%= activity.select(:agent, [["Teacher", "Teacher"],["Student", "Student"],["Group", "Group"],["Class", "Class"]]) %>
+        <%= activity.label :agent, "Who's leading?" %>
+        <%= activity.select(:agent, [["Teacher", "Teacher"],["Student", "Student"]]) %>
       </div>
     </div>
 

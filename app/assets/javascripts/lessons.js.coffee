@@ -7,3 +7,11 @@ $(document).ready ->
     $('div#activity-form').fadeIn()
   $('.remove-new-activity').click (e)->
     $('div#activity-form').hide()
+
+  jQuery ->
+    $('.add-new-activity').tooltip({
+      'trigger':'hover'
+      'title':'Test Title'
+    })
+
+

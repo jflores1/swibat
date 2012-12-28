@@ -44,6 +44,9 @@ class Ability
       can :manage, Answer do |answer|
         answer.new_record? || answer.try(:user).try(:id) == user.id
       end
+      can :manage, Activity do |activity|
+        activity.new_record? || activity.try(:user).try(:id) == user.id
+      end
 
       # Can delete comment only if they have created it
       can :destroy, Comment, :user_id => user.id

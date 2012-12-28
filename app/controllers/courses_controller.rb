@@ -1,11 +1,15 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index]
-  before_filter :load_similar_courses, except: [:index, :new, :feed]
+  before_filter :load_similar_courses, except: [:index, :new, :create, :feed]
   load_and_authorize_resource
-  skip_authorize_resource
+  skip_authorize_resource only: [:show, :index]
 
   def index
-    @courses = Course.recent
+    if params[:tag]
+      @courses = Course.tagged_with(params[:tag]).recent
+    else
+      @courses = Course.recent
+    end
   end
 
   def show
@@ -26,7 +30,7 @@ class CoursesController < ApplicationController
     elsif @course.save && params[:course_to_unit]
       redirect_to new_course_unit_path(@course)
     else
-      flash[:notice] = "Sorry, there was a mistake with the form"
+      flash[:error] = "Sorry, there was a mistake with the form"
       render :action => 'new'
     end
   end

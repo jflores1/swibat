@@ -1,7 +1,8 @@
 class UnitsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show]
   before_filter :find_current_course, :except => [:vote]
   load_and_authorize_resource
+  skip_authorize_resource only: :show
 
   def show
     @course = Course.find(params[:course_id])
