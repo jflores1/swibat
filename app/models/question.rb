@@ -11,11 +11,16 @@
 #
 
 class Question < ActiveRecord::Base
-  attr_accessible :title, :text, :user, :answers
+  attr_accessible :title, :text, :user, :answers, :tag_list
+  acts_as_taggable
 
   belongs_to :user
   has_many :answers
   has_many :flags, :as => :flaggable, :dependent => :destroy
+
+  before_save do |question|
+    question.title = title.titleize
+  end
 
   validates :title, :presence => true
   validates :text, :presence => true, :length => {:maximum => 4000} 

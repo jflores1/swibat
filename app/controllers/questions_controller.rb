@@ -4,11 +4,16 @@ class QuestionsController < ApplicationController
   load_and_authorize_resource
 
   def index
-  	@questions = Question.recent
+    if params[:tag]
+      @questions = Question.recent.tagged_with(params[:tag])
+    else
+      @questions = Question.recent
+    end
   end
 
   def show
-    @question = Question.find(params[:id])    
+    @question = Question.find(params[:id])
+    @user = @question.user
   end
 
   def new

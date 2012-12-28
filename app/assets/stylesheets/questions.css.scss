@@ -9,3 +9,20 @@ div#question-form{
     }
   }
 }
+
+a.tag_link {
+  $text-and-border: #ffffff;
+  background: rgba(80, 89, 109, 0.9); //rgba(152, 161, 186, 0.1);
+  font-size: 1em;//13px:13px
+  padding: 3px;
+  //background: rgb(221, 98, 75);
+  color: $text-and-border;
+  margin: 0px 0px 5px 0px;
+  border:solid 1px $text-and-border;
+  text-decoration: none;
+}
+
+a.tag_link:hover{
+  background-color: rgba(234, 231, 216, 1);
+  color: #2B2F3A;
+}

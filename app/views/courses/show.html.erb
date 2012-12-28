@@ -1,7 +1,6 @@
 <div class="span2">
 
   <%= generate_vote_form @course, vote_course_path(@course) %>
-  <%= render :partial => 'flags/flag', :locals => {:resource => @course} if can? :flag, Flag %>
   <div class="favoritecount">
     <b></b>
   </div>

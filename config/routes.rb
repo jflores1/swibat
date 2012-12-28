@@ -20,6 +20,9 @@ Swibat::Application.routes.draw do
       member { post :vote }
     end
     member { post :vote }
+    collection do
+      get 'tags/:tag', to: 'questions#index', as: :tag
+    end
   end
 
   resources :leads

@@ -15,6 +15,7 @@ gem 'aws-s3', :require => 'aws/s3'
 gem "paperclip", "~> 3.0"
 gem 'activerecord-reputation-system'
 #//TODO: add gem 'bootstrap-wysihtml5-rails' for Question formatting. Resolve Safari browser issue and view first.
+gem 'acts-as-taggable-on', '~> 2.3.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

@@ -17,6 +17,7 @@
               <%= image_tag question.user.image.url, alt: "#{question.user.full_name}" %>
               <span>Asked by <%= link_to question.user.full_name, question.user %> <%= time_ago_in_words question.created_at %> ago</span>
             </div>
+            <p class="top-margin"><%= raw question.tag_list.map {|t| link_to t, tag_questions_path(t), class:"tag_link"}.join(" ") %></p>
           </section>
         </div>
       </div>

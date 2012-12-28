@@ -1,61 +1,77 @@
-<% if can? :manage, @question %>
-	<div class="actions pull-right">
-		<%= link_to("Edit", edit_question_path(@question), class:"btn") %>
-		<%= link_to("Delete", @question, :method => "delete", class:"btn") %>
-	</div>
-<% end %>
-
-<%= generate_vote_form @question, vote_question_path(@question) %>
-<%= render :partial => 'flags/flag', :locals => {:resource => @question} if can? :flag, Flag %>
-
-<h1><%= @question.title %></h1>
-<span>Asked by <%= link_to @question.user.full_name, @question.user %> <%= time_ago_in_words @question.created_at %> ago</span>
-
-<div>
-	<%= raw parse_text @question.text %>
+<div class="span2">
+  <%= generate_vote_form @question, vote_question_path(@question) %>
 </div>
-<hr />
 
+<div class="span10">
+  <header class="course-header">
+    <h2><%= @question.title %></h2>
+  </header>
 
-<h2>Answers</h2>
-<% if @question.answers.any? %>
-	<% @question.answers.each do |answer| %>
-		<div class="well answer">
-			<%= generate_vote_form answer, vote_question_answer_path(@question, answer) %>
-			<span>Answered by <%= link_to answer.user.full_name, answer.user %> <%= time_ago_in_words answer.created_at %> ago</span>
-			<% if can? :manage, answer %>
+  <section class="course-info">
+    <p><%= raw parse_text @question.text %></p>
+    <p><%= raw @question.tag_list.map {|t| link_to t, tag_questions_path(t), class:"tag_link"}.join(" ") %></p>
+  </section>
+
+  <section class="course-info">
+    <header class="course-header">
+      <h2>Answers</h2>
+    </header>
+    <% if @question.answers.any? %>
+        <% @question.answers.each do |answer| %>
+            <div class="well answer">
+              <%= generate_vote_form answer, vote_question_answer_path(@question, answer) %>
+              <span>Answered by <%= link_to answer.user.full_name, answer.user %> <%= time_ago_in_words answer.created_at %> ago</span>
+              <% if can? :manage, answer %>
 				<span class="actions">
-					<%= link_to "Edit", edit_question_answer_path(answer.question, answer) %> | 
-					<%= link_to "Delete", [@question, answer], :method => "delete" %>
+					<%= link_to "Edit", edit_question_answer_path(answer.question, answer) %> |
+                  <%= link_to "Delete", [@question, answer], :method => "delete" %>
 				</span>
-			<% end %>
-			<div>
-				<%= raw parse_text answer.text %>	
-			</div>
-			<div class="clear"></div>
-		</div>
-	<% end %>
-<% else %>
-	<i>This question doesn't have any answers yet.</i>
-<% end %>
-<hr />
+              <% end %>
+              <div>
+                <%= raw parse_text answer.text %>
+              </div>
+              <div class="clear"></div>
+            </div>
+        <% end %>
+    <% else %>
+        <i>This question doesn't have any answers yet.</i>
+    <% end %>
+  </section>
 
-<h2>Submit an answer</h2>
-<div>
-	<%= form_for [@question, @question.answers.build] do |answer| %>		
 
-	  <div class="control-group">
-	    <%= answer.label :text, :class => "control-label" %> 
-	    <div class="controls">
-	      <%= answer.text_area :text %>
-	    </div>
-	  </div>
+  <section class="course-info">
+    <header class="course-header">
+      <h2>Have an answer?</h2>
+    </header>
+    <%= form_for [@question, @question.answers.build] do |answer| %>
 
-	  <div class="control-group">
-	    <div class="controls">     
-	      <%= answer.submit "Submit Answer" %>
-	    </div>
-	  </div>
+        <div class="control-group">
+          <%= answer.label :text, :class => "control-label" %>
+          <div class="controls">
+            <%= answer.text_area :text, rows: "10", cols: "200" %>
+          </div>
+        </div>
 
-	<% end %>
+        <div class="control-group">
+          <div class="controls">
+            <%= answer.submit "Submit Answer" %>
+          </div>
+        </div>
+
+    <% end %>
+
+  </section>
+
 </div>
+
+<% content_for :sidebar do %>
+      <% content_for :sidebar_profile do %>
+            <%= render :partial => 'shared/sidebar_profile', :user => @question.user %>
+      <% end %>
+
+      <% content_for :sidebar_invite do %>
+            <%= render 'shared/sidebar_invite' %>
+      <% end %>
+
+      <%= render 'layouts/application_sidebar' %>
+<% end %>

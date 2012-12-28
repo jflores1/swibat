@@ -12,6 +12,11 @@
         </div>
 
         <div class="span12 no-left-margin">
+          <%= question.label :tag_list, "Tags" %>
+          <%= question.text_field :tag_list, class: "span12", placeholder: "Tags (separated by commas)" %>
+        </div>
+
+        <div class="span12 no-left-margin">
           <%= question.submit "Ask Question", class:"btn btn-monkey" %>
         </div>
       </div>
