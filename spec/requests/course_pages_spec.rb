@@ -241,6 +241,24 @@ describe "CoursePages" do
     it {page.should have_content(course.user.full_name)}
   end
 
+  context "The Course Feed" do
+    before do
+      sign_in_via_form
+      visit feed_courses_path
+    end
+    it {page.should have_content("Feed")}
+
+    describe "it shows a friend's course" do
+      let!(:user){create(:user)}
+      let(:user2){create(:user, id: 2, first_name: "John")}
+      let!(:friendship){create(:friendship)}
+      let!(:course){create(:course, user_id: 2)}
+      it {print page.html}
+      it {page.should have_content("Physics")}
+      it {page.should have_content("John")}
+    end
+  end
+
   private
   def sign_in_user_and_go_to_page
     sign_in_as_a_valid_user

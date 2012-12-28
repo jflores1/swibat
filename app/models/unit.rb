@@ -30,7 +30,6 @@ class Unit < ActiveRecord::Base
   
   before_save do |unit|
     unit.prior_knowledge = prior_knowledge.humanize
-    unit.unit_status = unit_status.capitalize
     unit.unit_title = unit_title.titleize
   end
 
@@ -49,6 +48,10 @@ class Unit < ActiveRecord::Base
 
   def valid_unit_status
     errors.add(:unit_status, "is not a valid status") unless VALID_STATUS.include? unit_status
+  end
+
+  def to_param
+    "#{id}-#{self.unit_title.parameterize}"
   end
 
   def to_s

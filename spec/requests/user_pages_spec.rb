@@ -14,6 +14,11 @@ describe "UserPages" do
         current_path.should eq(user_path(@user))
       end
 
+      it "can access user feed" do
+        find_link("Feed").click
+        current_path.should eq (feed_courses_path)
+      end
+
       it "can access course index" do
         find_link("Courses").click
         current_path.should eq(courses_path)

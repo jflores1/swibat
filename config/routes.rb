@@ -31,6 +31,9 @@ Swibat::Application.routes.draw do
     resources :units
     resources :comments, :only => [:create, :destroy]
     member { post :vote }
+    collection do
+      get 'feed'
+    end
   end
 
   resources :units do

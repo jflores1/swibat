@@ -1,12 +1,11 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index]
-  before_filter :load_similar_courses, except: [:index, :new]
+  before_filter :load_similar_courses, except: [:index, :new, :feed]
   load_and_authorize_resource
   skip_authorize_resource
 
   def index
-    @courses = Course.all
-
+    @courses = Course.recent
   end
 
   def show
@@ -38,7 +37,6 @@ class CoursesController < ApplicationController
   end
 
   def update
-
     @course = Course.find(params[:id])
     if @course.update_attributes(params[:course])
       redirect_to course_path(@course)
@@ -52,6 +50,10 @@ class CoursesController < ApplicationController
   end
 
   def destroy
+
+  end
+
+  def feed
 
   end
 
@@ -73,7 +75,6 @@ class CoursesController < ApplicationController
     objectives = @course.objectives.collect {|o| o.objective }
     @similar_courses_based_on_objectives = Objective.find_similar_objectiveables(objectives, "Course", "objectives").first(5)
     @similar_courses_based_on_objectives.delete_if {|c| c[:objectiveable].id == @course.id}
-
   end
 
 end

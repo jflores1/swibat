@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   has_many :flags
   has_many :units, :through => :courses
   has_many :lessons, :through => :units
+  has_many :friend_courses, through: :friends, source: :courses
 
   # Define the friendship relations with some semantics.
   has_many :friendships, :conditions => "status = 'accepted'"
@@ -64,12 +65,12 @@ class User < ActiveRecord::Base
            :class_name => :Friendship,
            :conditions => "status = 'requested'"           
 
-  has_reputation :quality_of_contributions, :source => [
+  has_reputation :reputation, :source => [
     { :reputation => :votes, :of => :questions, :weight => 0.15},
     { :reputation => :votes, :of => :answers, :weight => 0.15},
     { :reputation => :votes, :of => :courses, :weight => 0.3},
     { :reputation => :votes, :of => :units, :weight => 0.25},
-    { :reputation => :votes, :of => :lessons, :weight => 0.15},  
+    { :reputation => :votes, :of => :lessons, :weight => 0.15},
   ]
 
   accepts_nested_attributes_for :professional_educations, :reject_if => lambda { |a| a[:school_name].blank? }, allow_destroy: true
@@ -98,7 +99,11 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    self.first_name + " " + self.last_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
+  def to_param
+    "#{id}-#{full_name.strip.parameterize}"
   end
 
   def friends_with?(user)

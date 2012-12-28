@@ -49,13 +49,13 @@
 
   <header class="course-header">
     <h2>Units</h2>
-    <% if can? :udpdate, @course %>
+    <% if can? :edit, @course %>
         <button class="btn btn-small btn-monkey pull-right"><a href="<%= new_course_unit_path(@course) %>"><i class="icon-plus icon-white"></i></a></button>
     <% end %>
   </header>
   <section class="course-info">
     <% if current_user? && @course.units.count == 0 %>
-          <p class="top-margin">It doesn't look like you have any units. <%= link_to "Create one now.", new_course_unit_path(@course) %></p>
+          <p class="top-margin">It doesn't look like you have any units. <%= link_to "Create one now.", new_course_unit_path(@course) if can? :edit, @course %></p>
     <% elsif @course.units.count == 0%>
           <p class="top-margin">Sad. It doesn't look like this user has created any courses yet.</p>
     <% else %>

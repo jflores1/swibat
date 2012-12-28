@@ -42,8 +42,15 @@ class Course < ActiveRecord::Base
   validates :course_year, presence:true, length:{is:4}
   validate :has_valid_semester
 
+  #scopes
+  scope :recent, order('created_at desc')
+
   def has_valid_semester
     errors.add(:course_semester, "is not a valid semester") unless VALID_SEMESTER.include? course_semester
+  end
+
+  def to_param
+    "#{id}-#{self.course_name.strip.parameterize}"
   end
 
   def to_s

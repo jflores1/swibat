@@ -52,6 +52,10 @@ class Lesson < ActiveRecord::Base
     self.unit.user
   end
 
+  def to_param
+    "#{id}-#{self.lesson_title.strip.parameterize}"
+  end
+
   def to_s
     self.lesson_title
   end

@@ -22,6 +22,11 @@ class Question < ActiveRecord::Base
 
   has_reputation :votes, source: :user, aggregated_by: :sum, :source_of => [{ :reputation => :reputation, :of => :user }]
 
-  scope :sidebar, order("created_at desc").limit(10)
+  scope :recent, order('created_at desc')
+  scope :sidebar, recent.limit(10)
+
+  def to_param
+    "#{id}-#{self.title.strip.parameterize}"
+  end
 
 end

@@ -2,8 +2,11 @@
   <h3><%= pluralize(@user.questions.count, "Question") %></h3>
 </header>
 <section class="user-content-summary">
-  <% if (current_user && current_user.questions.count == 0) %>
-         <p>It doesn't look like you've asked any questions. <%= link_to "Have one?", new_question_path, class:"user-add-question" %></p>
+  <% if (@user.questions.count == 0) %>
+      <% if can? :update, @user %>
+          <p>It doesn't look like you've asked any questions. <%= link_to "Have one?", new_question_path, class:"user-add-question" %></p>
+      <% end %>
+
   <% else @user.questions.each do |question| %>
                 <p><%= link_to "#{question.title}", question_path(question), class:"gray" %></p>
           <% end %>
