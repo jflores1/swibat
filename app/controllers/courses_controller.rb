@@ -58,6 +58,7 @@ class CoursesController < ApplicationController
   end
 
   def feed
+    @courses = current_user.friend_courses.feed_sort
 
   end
 

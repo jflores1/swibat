@@ -63,7 +63,7 @@ $(document).ready ->
   })
 
   #calendar
-  $('.datepicker').datepicker()
+  $('.datepicker').datepicker({"dateFormat":"yy-mm-dd"})
 
 
 

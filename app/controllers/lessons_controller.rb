@@ -30,7 +30,6 @@ class LessonsController < ApplicationController
     elsif @lesson.save && params[:return_to_profile]
       redirect_to user_path(current_user)
     else
-      flash[:error] = "Sorry, there was a mistake with the form"
       render 'new'
     end
   end

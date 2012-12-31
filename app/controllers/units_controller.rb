@@ -29,7 +29,6 @@ class UnitsController < ApplicationController
     elsif @unit.save && params[:move_on]
       redirect_to new_unit_lesson_path(@unit)
     else
-      flash[:notice] = "Sorry, there was a mistake with the form"
       render 'new'
     end
   end

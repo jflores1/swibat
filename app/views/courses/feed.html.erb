@@ -2,7 +2,7 @@
   <header class="index-header">
     <h2>My Feed</h2>
   </header>
-  <% current_user.friend_courses.each do |course| %>
+  <% @courses.each do |course| %>
       <div class="index-meta row-fluid">
         <div class="span2">
           <%= generate_vote_form course, course_path(course) %>

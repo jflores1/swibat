@@ -45,6 +45,7 @@ class Course < ActiveRecord::Base
 
   #scopes
   scope :recent, order('created_at desc')
+  scope :feed_sort, lambda { order('updated_at desc')}
 
   def has_valid_semester
     errors.add(:course_semester, "is not a valid semester") unless VALID_SEMESTER.include? course_semester
