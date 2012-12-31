@@ -46,6 +46,7 @@ $(document).ready ->
     (e).preventDefault()
     $("#errorModal").fadeOut()
 
+  #tooltips
   $('#user-add-course').tooltip({'title':'Add a new course'})
   $('.edit-user-course').tooltip({
     'title':'Edit this course'
@@ -60,5 +61,9 @@ $(document).ready ->
     'title':'Edit this lesson'
     'placement':'right'
   })
+
+  #calendar
+  $('.datepicker').datepicker()
+
 
 
