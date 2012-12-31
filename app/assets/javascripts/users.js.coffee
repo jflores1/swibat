@@ -46,4 +46,19 @@ $(document).ready ->
     (e).preventDefault()
     $("#errorModal").fadeOut()
 
+  $('#user-add-course').tooltip({'title':'Add a new course'})
+  $('.edit-user-course').tooltip({
+    'title':'Edit this course'
+    'placement':'right'})
+  $('#course-add-unit').tooltip({'title':'Add a new unit'})
+  $('.edit-course-unit').tooltip({
+    'title':'Edit this unit'
+    'placement':'right'
+  })
+  $('#add-lesson').tooltip({'title':'Add a new lesson'})
+  $('.edit-unit-lesson').tooltip({
+    'title':'Edit this lesson'
+    'placement':'right'
+  })
+
 

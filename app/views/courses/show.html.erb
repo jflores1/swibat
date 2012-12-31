@@ -48,7 +48,7 @@
   <header class="course-header">
     <h2>Units</h2>
     <% if can? :edit, @course %>
-        <button class="btn btn-small btn-monkey pull-right"><a href="<%= new_course_unit_path(@course) %>"><i class="icon-plus icon-white"></i></a></button>
+        <button class="btn btn-small btn-monkey pull-right"><a id="course-add-unit" href="<%= new_course_unit_path(@course) %>"><i class="icon-plus icon-white"></i></a></button>
     <% end %>
   </header>
   <section class="course-info">

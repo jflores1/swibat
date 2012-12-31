@@ -4,7 +4,9 @@
 <% content_for :chalkboard_promo_text do %>
     <h1>Great Teachers + Great Teams = Great Schools.</h1>
     <h2>Easily Create and Manage SLEs, Professional Development Plans, and Curriculum Maps.</h2>
-    <%= link_to "Try For Free", request_trial_path, class: "primary-cta-btn" %>
+<% end %>
+<% content_for :sign_up_form do %>
+      <%= render 'registration_form_static' %>
 <% end %>
 <%= render 'static_pages/hero_chalkboard' %>
 

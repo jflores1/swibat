@@ -4,7 +4,10 @@
 <% content_for :chalkboard_promo_text do %>
     <h1>Those Who "Can," Teach.</h1>
     <h2>You Work Hard to Master Your Craft. We Can Help You Reach Your Next Milestone.</h2>
-    <%= link_to "Get Started Free", request_trial_path, class: "primary-cta-btn" %>
+<% end %>
+<% content_for :sign_up_form do %>
+    <%= render 'registration_form_static' %>
+
 <% end %>
 <%= render 'static_pages/hero_chalkboard' %>
 

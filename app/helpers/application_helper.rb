@@ -21,6 +21,19 @@ module ApplicationHelper
     link_to_function(raw(name), raw("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"), :class=>"#{link_class}")
   end
 
+  #helpers to allow sign up from any controller. //TODO: Decide whether this should just be on static pages controller.
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
   def current_user?
     current_user
   end

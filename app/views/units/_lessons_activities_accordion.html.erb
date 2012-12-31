@@ -4,7 +4,7 @@
         <div class="accordion-heading">
           <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= lesson.id  %>"><%= lesson.lesson_title.titleize %></a>
           <% if can? :update, @unit %>
-              <a class="btn btn-mini btn-monkey pull-right" href="<%= unit_lesson_path(@unit, lesson) %>"><i class="icon-pencil icon-white"></i></a>
+              <a class="btn btn-mini btn-monkey pull-right edit-unit-lesson" href="<%= unit_lesson_path(@unit, lesson) %>"><i class="icon-pencil icon-white"></i></a>
           <% else %>
               <a class="btn btn-mini btn-monkey pull-right" href="<%= unit_lesson_path(@unit, lesson) %>"><i class="icon-search icon-white"></i></a>
           <% end %>

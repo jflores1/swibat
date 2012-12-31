@@ -17,7 +17,7 @@
 
 .navbar-chalkboard{
     background: transparent;
-    margin-top:30px;
+    margin-top:15px;
     -moz-box-shadow: none;
     box-shadow: none;
 
@@ -94,7 +94,46 @@ section.chalkboard{
         }
     }
 
-    .primary-cta-btn{
+    div.chalkboard-form{
+        display: block;
+        position: relative;
+        float: left;
+        top: 12em;
+        color: #ffffff;
+
+        form{
+            label{
+                display: block;
+                float: left;
+                width: 100%;
+            }
+            input[type="text"]{
+                display: block;
+                float: left;
+                height: 2.5em;
+                margin-top: 2%;
+            }
+
+            input[type="submit"]{
+                display: block;
+                float: left;
+                clear: left;
+            }
+
+            ::-webkit-input-placeholder{
+              font-size: 1.23076923em;
+            }
+            ::-moz-placeholder{
+                font-size: 1.23076923em;
+            } /* firefox 19+ */
+            input:-moz-placeholder{
+                font-size: 1.23076923em;
+            }
+        }
+
+    }
+
+    .primary-cta-btn, .static-sign-up-btn{
         display: inline-block;
         background-color: rgba(255, 200, 120, 1);
         background-image: -webkit-linear-gradient(top, #FFC878, #CCA060);
@@ -121,8 +160,13 @@ section.chalkboard{
         text-decoration: none;
     }
 
-    .primary-cta-btn:hover{
+    .primary-cta-btn:hover, .static-sign-up-btn:hover{
         background: #CCA060;
+    }
+
+    .static-sign-up-btn{
+        width: 100%;
+        padding: 0.4em;
     }
 
 }
