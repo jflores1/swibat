@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8e40e5b-4458-4862-a0a6-499463a7ca3a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/units/_form_unit.html.erb" afterPath="$PROJECT_DIR$/app/views/units/_form_unit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
     </list>
     <ignored path="swibat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,7 +88,7 @@
           <file leaf-file-name="users.js.coffee" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="65" column="17" selection-start="1956" selection-end="1956" vertical-scroll-proportion="0.9526387">
+                <state line="65" column="17" selection-start="1956" selection-end="1956" vertical-scroll-proportion="0.797023">
                   <folding />
                 </state>
               </provider>
@@ -644,7 +641,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="17" selection-start="1956" selection-end="1956" vertical-scroll-proportion="0.9526387">
+        <state line="65" column="17" selection-start="1956" selection-end="1956" vertical-scroll-proportion="0.797023">
           <folding />
         </state>
       </provider>
