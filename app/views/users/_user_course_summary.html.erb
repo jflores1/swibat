@@ -4,6 +4,13 @@
       <a class="btn btn-monkey pull-right" id="user-add-course" href="<%= new_course_path %>"><i class="icon-plus icon-white"></i></a>
   <% end %>
 </header>
+<section class="user-content-summary">
+  <% if (@user.courses.count == 0) %>
+      <% if can? :update, @user %>
+          <p>It doesn't look like any courses have been created yet. <%= link_to "Add one now!", new_course_path, class:"user-add-question" %></p>
+      <% end %>
+  <% end %>
+</section>
 
 <div class="accordion">
   <% @user.courses.each do |course| %>
