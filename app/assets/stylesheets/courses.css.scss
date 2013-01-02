@@ -103,11 +103,18 @@ div#course-summary, div.course-overview{
         font-size: 1.3077em;//17px:13px
         float:left;
         //color: rgb(164, 50, 32);
+        width: 100%;
 
         a{
           font-size:0.8em;
         }
 
+      }
+
+      a.get-syllabus{
+        display: inline-block;
+        float: right;
+        margin-top: 0.5em;
       }
 
     }
@@ -136,21 +143,32 @@ div#course-summary, div.course-overview{
 
 }
 
+p.question{
+  font-size: 1.0769em;//14px:13px
+  margin-top: 0.5em;
+  float: left;
+  width: 100%;
+}
+
 header.course-header, header.index-header{
   font-weight: 300;
   float:left;
   width:100%;
   border-bottom:1px solid rgba(152, 161, 186, 0.5);
 
+  h2, h3{
+    color: rgb(164, 50, 32);
+  }
+
   h2, {
     float:left;
-    color: rgb(164, 50, 32);
     font-size: 1.5385em;//20px:13px
   }
 
   a.disguised-header-link{
     color: #5f6e68;
   }
+
 }
 
 

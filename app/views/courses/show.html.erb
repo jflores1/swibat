@@ -18,7 +18,11 @@
 
   <section class="course-info">
     <header>
-      <h2>Course Summary <%= link_to "(edit course)", edit_course_path(@course), class:"header-edit" if can? :edit, @course %></h2>
+      <h2>
+        Course Summary
+        <%= link_to "(edit course)", edit_course_path(@course), class:"header-edit" if can? :edit, @course %>
+        <a class="btn btn-monkey btn-small get-syllabus" href="<%= syllabus_course_path(@course) %>"><i class="icon-book icon-white"></i></a>
+      </h2>
     </header>
     <article>
       <p><%= @course.course_summary %></p>

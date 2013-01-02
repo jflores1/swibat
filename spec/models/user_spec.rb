@@ -113,4 +113,13 @@ describe User do
 
   end
 
+  context "Automated Email" do
+    describe "When a new user is created" do
+      it "sends the user a notification" do
+        user = create(:user, email:"jesse@swibat.com")
+        last_email.to.should include("jesse@swibat.com")
+      end
+    end
+  end
+
 end

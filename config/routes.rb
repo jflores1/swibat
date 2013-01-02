@@ -33,7 +33,10 @@ Swibat::Application.routes.draw do
     resources :assessments
     resources :units
     resources :comments, :only => [:create, :destroy]
-    member { post :vote }
+    member do
+      post :vote
+      get 'syllabus'
+    end
     collection do
       get 'feed'
       get 'tags/:tag', to: 'courses#index', as: :tag

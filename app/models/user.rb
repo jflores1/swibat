@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
                     :styles => { :medium => "300x300#", :x100 => "100x100#", :x50 => "50x50#" },
                     :storage => :s3, :s3_credentials => "#{Rails.root}/config/amazon_s3.yml",
                     :path => "users/:id-:style.:extension",
-                    :default_url => "https://s3.amazonaws.com/trancepodium/images/unknown.jpg"
+                    :default_url => "https://s3.amazonaws.com/swibat_development/icon-graduation-cap.png"
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :institution, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes
@@ -92,6 +92,8 @@ class User < ActiveRecord::Base
     user.institution = institution.titleize
   end
 
+  after_create :signup_confirmation
+
   ROLES = %w[admin school_admin teacher]
 
   def role?(role)
@@ -114,6 +116,10 @@ class User < ActiveRecord::Base
 
   def valid_role
     errors.add(:role, "is not a valid role") unless ROLES.include? role
+  end
+
+  def signup_confirmation
+    UserMailer.signup_confirmation(self).deliver
   end
 
 end

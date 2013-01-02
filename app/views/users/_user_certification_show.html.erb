@@ -1,0 +1,11 @@
+<% if @certifications.any? %>
+    <header>
+      <h3>Certifications</h3>
+    </header>
+    <dl class="dl-horizontal">
+      <% @certifications.each do |cert| %>
+        <dt><%= "(" + cert.year.to_s + ")" if cert.year %></dt>
+        <dd><%= cert.name %> </dd>
+      <% end %>
+    </dl>
+<% end %>

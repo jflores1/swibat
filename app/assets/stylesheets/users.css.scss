@@ -168,17 +168,23 @@ div.course-overview, div.sidebar{
 }
 
 .user-content-summary{
+  color: #50596D;
 
   li, p{
     float:left;
     font-size: 1.2308em; //16px:13px
-    color: #50596D;
     margin-top:0.5em;
     padding-left: 15px;
   }
 
   a.gray{
     color: #50596D;
+  }
+
+  header{
+    h3{
+      font-size: 1.230769em; //16px:13px
+    }
   }
 
 }

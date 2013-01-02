@@ -10,13 +10,6 @@
       <dt>Works at:</dt>
       <dd><%= @user.institution %></dd>
 
-      <% if @user.specialties.any? %>
-        <dt>Specializes in:</dt>
-        <dd>       
-          <%= @user.specialties.collect{|sp| sp.name }.to_sentence %>
-        </dd>
-      <% end %>
-
       <% if @user.links.any? %>
           <% @user.links.each do |link| %>
         <dt><%= link.link_type.split(' ').first %>:</dt>

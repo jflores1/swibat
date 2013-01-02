@@ -62,6 +62,10 @@ class CoursesController < ApplicationController
 
   end
 
+  def syllabus
+
+  end
+
   def vote
     @course = Course.find(params[:id])
     if params[:type] == 'clear'

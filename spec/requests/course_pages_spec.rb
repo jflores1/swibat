@@ -51,7 +51,7 @@ describe "CoursePages" do
           fill_out_course_form_with_valid_info
           click_button unit_button
         }.to change(Course, :count).by(1)
-        current_path.should == new_course_unit_path(1)
+        current_path.should eq(new_course_unit_path(course))
       end
 
       it "Adds at least one objective to the course" do
@@ -95,8 +95,7 @@ describe "CoursePages" do
   context "The Course/Show Page" do
     context "The owning user" do
       let(:course){create(:course)}
-      let!(:objective){course.objectives.create(objective: "objective one")}
-      let!(:objective2){course.objectives.create(objective:"objective two")}
+      let(:objective){course.objectives.create(objective: "objective one")}
 
       before(:each) do
         sign_in_via_form
@@ -115,6 +114,10 @@ describe "CoursePages" do
           find_link("edit course").click
           current_path.should eq(edit_course_path(course))
         end
+        it "has a link to the syllabus page" do
+          find('a.get-syllabus').click
+          current_path.should eq(syllabus_course_path(course))
+        end
       end
 
       describe "Displays similar courses" do
@@ -129,7 +132,6 @@ describe "CoursePages" do
       describe "Presence of Course Objectives" do
         it {should have_content("Course Objectives")}
         it {should have_content("objective one")}
-        it {should have_content("objective two")}
       end
 
       it {should have_content("Standards Covered")}

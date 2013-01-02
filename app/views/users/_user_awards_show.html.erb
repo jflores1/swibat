@@ -1,0 +1,12 @@
+<% if @awards.any? %>
+    <header>
+      <h3>Awards Won</h3>
+    </header>
+    <dl class="dl-horizontal">
+      <% @awards.each do |award| %>
+          <dt><%= "(" + award.year.to_s + ")" if award.year %></dt>
+          <dd><%= award.name %></dd>
+      <% end %>
+    </dl>
+
+<% end %>

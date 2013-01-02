@@ -34,6 +34,8 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :commentable_id, :commentable_type, :body
 
+  after_create :new_comment_notification
+
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
   # example in readme
@@ -67,5 +69,10 @@ class Comment < ActiveRecord::Base
   # given the commentable class name and id
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
+  end
+
+  private
+  def new_comment_notification
+    CommentMailer.new_comment_notification(self).deliver
   end
 end

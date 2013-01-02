@@ -15,50 +15,21 @@
     <h3>Profile</h3>
   </header>
 
-  <% if @user.professional_educations.any? %>
-      <dt>Education:</dt>
-      <dd>
-        <% @user.professional_educations.each do |education| %>
-            <div class="well">
-              <dl class="dl-horizontal">
-                <dt>School:</dt>
-                <dd><%= education.school_name %></dd>
-                <% if education.degree %>
-                    <dt>Degree:</dt>
-                    <dd><%= education.degree %></dd>
-                <% end %>
-                <% if education.field_of_study %>
-                    <dt>Fields of Study:</dt>
-                    <dd><%= education.field_of_study %></dd>
-                <% end %>
-                <% if education.enroll_date || education.graduation_date %>
-                    <dt>Period:</dt>
-                    <dd><%= education.enroll_date if education.enroll_date %> - <%= education.graduation_date if education.graduation_date %> </dd>
-                <% end %>
-              </dl>
-            </div>
-        <% end %>
-      </dd>
-  <% end %>
+  <section class="user-content-summary">
+    <%= render 'user_education_show' %>
+  </section>
 
-  <% if @certifications.any? %>
-      <dt>Certifications:</dt>
-      <dd>
-        <% @certifications.each do |cert| %>
-            <%= cert.name %> <%= "(" + cert.year.to_s + ")" if cert.year %>
-        <% end %>
-      </dd>
-  <% end %>
+  <section class="user-content-summary">
+    <%= render 'user_certification_show' %>
+  </section>
 
-  <% if @awards.any? %>
-      <dt>Awards:</dt>
-      <dd>
-        <% @awards.each do |award| %>
-            <%= award.name %> <%= "(" + award.year.to_s + ")" if award.year %>
-        <% end %>
-      </dd>
-  <% end %>
+  <section class="user-content-summary">
+    <%= render 'user_awards_show' %>
+  </section>
 
+  <section class="user-content-summary">
+    <%= render 'user_specializations_show' %>
+  </section>
 
 </div>
 
