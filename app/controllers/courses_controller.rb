@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :authenticate_user!, except: [:show, :index, :syllabus]
   before_filter :load_similar_courses, except: [:index, :new, :create, :feed]
   load_and_authorize_resource
-  skip_authorize_resource only: [:show, :index]
+  skip_authorize_resource only: [:show, :index, :syllabus]
 
   def index
     if params[:tag]
@@ -63,6 +63,7 @@ class CoursesController < ApplicationController
   end
 
   def syllabus
+    @user = @course.user
 
   end
 

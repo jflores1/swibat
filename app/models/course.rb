@@ -51,6 +51,10 @@ class Course < ActiveRecord::Base
     errors.add(:course_semester, "is not a valid semester") unless VALID_SEMESTER.include? course_semester
   end
 
+  def taught_during
+    self.course_semester + " " + self.course_year.to_s
+  end
+
   def to_param
     "#{id}-#{self.course_name.strip.parameterize}"
   end

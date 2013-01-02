@@ -80,7 +80,7 @@ div.favoritecount{
 
 }
 
-div#course-summary, div.course-overview{
+div#course-summary, div.course-overview, div#syllabus{
   float:left;
 
   section.course-info{
@@ -160,9 +160,14 @@ header.course-header, header.index-header{
     color: rgb(164, 50, 32);
   }
 
-  h2, {
+  h2 {
     float:left;
     font-size: 1.5385em;//20px:13px
+  }
+
+  h3{
+    font-size: 1.3077em;
+
   }
 
   a.disguised-header-link{

@@ -236,7 +236,6 @@ describe "CoursePages" do
       visit courses_path
     end
     it {current_path.should eq(courses_path)}
-    it {print page.html}
     it {page.should have_content("All Courses")}
     it {page.should have_content("Physics")}
     it {page.should have_content("This is a course summary.")}
@@ -259,6 +258,16 @@ describe "CoursePages" do
       it {page.should have_content("Physics")}
       it {page.should have_content("John")}
     end
+  end
+
+  context "The Course/syllabus page" do
+    let!(:course){create(:course)}
+    before(:each) do
+      visit syllabus_course_path(course)
+    end
+    it {print page.html}
+    it {page.should have_content(course.course_name)}
+    it {page.should have_content(course.grade)}
   end
 
   private
