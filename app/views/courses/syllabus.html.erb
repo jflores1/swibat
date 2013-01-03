@@ -1,157 +1,56 @@
-<div class="span1">
+<div class="span1 hidden-print">
 
 </div>
 <div class="span11" id="syllabus">
-  <header class="course-header top-margin">
-    <div class="span8">
-      <h2><%= @course.course_name.titleize %></h2>
-    </div>
-    <div class="span4">
-      <h2 class="pull-right"><%= @course.grade.grade_level %>, <%= @course.taught_during %></h2>
-    </div>
-  </header>
-
-  <section class="course-info">
-    <header>
-      <h2>
-        Course Summary
-      </h2>
+  <% present @course do |course_presenter| %>
+    <header class="course-header show-print">
+      <div class="span12">
+        <h2> <%= course_presenter.full_name %><br/>
+            <%= "#{course_presenter.grade_level}, #{course_presenter.taught_during}" %>
+        </h2>
+      </div>
     </header>
-    <article>
-      <p><%= @course.course_summary %></p>
-    </article>
-  </section>
 
-  <section class="course-info">
-    <header>
-      <h2>Course Objectives</h2>
-    </header>
-    <article>
-      <ul>
-        <% @course.objectives.each do |objective| %>
-            <li><%= objective.objective %></li>
-        <% end %>
-      </ul>
-    </article>
-  </section>
-
-  <section class="course-info">
-    <header>
-      <h2>Tags</h2>
-    </header>
-    <p><%= raw @course.tag_list.map {|t| link_to t, tag_courses_path(t), class:"tag_link"}.join(" ") %></p>
-  </section>
-
-  <% @course.units.each do |unit| %>
-    <header class="course-header">
-      <h2>Unit: <%= unit.unit_title %></h2>
+    <header class="course-header top-margin hidden-print">
+      <div class="row-fluid">
+        <div class="span8">
+          <h2 class="pull-left"><%= course_presenter.course_name.titleize %></h2>
+        </div>
+        <div class="span4">
+          <h2 class="pull-right"><%= course_presenter.grade_level %>, <%= course_presenter.taught_during %></h2>
+        </div>  
+      </div>
     </header>
 
     <section class="course-info">
       <header>
-        <h2>Prior Knowledge</h2>
+        <h2>Course Summary</h2>
       </header>
       <article>
-        <p><%= unit.prior_knowledge %></p>
+        <p><%= course_presenter.course_summary %></p>
       </article>
     </section>
 
     <section class="course-info">
       <header>
-        <h2>Unit <%= "Objective".pluralize(unit.objectives.count) %></h2>
+        <h2>Course Objectives</h2>
       </header>
       <article>
-        <ul>
-          <% unit.objectives.each do |unit_objective| %>
-            <li><%= unit_objective.objective %></li>
-          <% end %>
-        </ul>
+          <%= course_presenter.course_objectives %>
       </article>
     </section>
 
     <section class="course-info">
       <header>
-        <h2>Unit <%= "Assessment".pluralize(unit.assessments.count) %></h2>
+        <h2>Tags</h2>
       </header>
-      <article>
-        <ul>
-          <% unit.assessments.each do |unit_assessment| %>
-            <li><%= unit_assessment.assessment_name %></li>
-          <% end %>
-        </ul>
-      </article>
+        <%= course_presenter.tags %>
     </section>
 
-    <% unit.lessons.each do |lesson| %>
-      <header class="course-header">
-        <h3>Lesson: <%= lesson.lesson_title %></h3>
-      </header>
-
-      <section class="course-info">
-        <header>
-          <h2>Prior Knowledge</h2>
-        </header>
-        <article>
-          <p><%= lesson.prior_knowledge %></p>
-        </article>
-      </section>
-
-      <section class="course-info">
-        <header>
-          <h2>Lesson <%= "Objective".pluralize(lesson.objectives.count) %></h2>
-        </header>
-        <article>
-          <ul>
-            <% lesson.objectives.each do |lesson_objectives| %>
-              <li><%= lesson_objectives.objective %></li>
-            <% end %>
-          </ul>
-        </article>
-      </section>
-
-      <section class="course-info">
-        <header>
-          <h2>Lesson <%= "Assessment".pluralize(lesson.assessments.count) %></h2>
-        </header>
-        <article>
-          <ul>
-            <% lesson.assessments.each do |lesson_assessment| %>
-                <li><%= lesson_assessment.assessment_name  %></li>
-            <% end %>
-          </ul>
-        </article>
-      </section>
-
-      <section class="course-info">
-        <header>
-          <h2>Lesson <%= "Resource".pluralize(lesson.resources.count) %></h2>
-        </header>
-        <article>
-          <ul>
-            <% lesson.resources.each do |lesson_resource| %>
-                <%= lesson_resource.name %>
-            <% end %>
-          </ul>
-        </article>
-      </section>
-
-      <section class="course-info">
-        <header>
-          <h2>Lesson <%= "Activity".pluralize(lesson.activities.count) %></h2>
-        </header>
-        <article>
-          <% lesson.activities.each do |lesson_activity| %>
-              <div class="span6 no-left-margin"><%= lesson_activity.activity %></div>
-              <div class="span3 no-left-margin"><%= lesson_activity.duration %></div>
-              <div class="span3 no-left-margin"><%= lesson_activity.agent %></div>
-          <% end %>
-        </article>
-      </section>
-
+    <% course_presenter.units.each do |unit| %>
+      <%= render partial: 'unit_detail', locals: {:unit => unit} %>
     <% end %>
   <% end %>
-
-
 </div>
 
 <% content_for :sidebar do %>

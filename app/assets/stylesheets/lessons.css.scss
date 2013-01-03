@@ -9,31 +9,31 @@ div#activities{
     margin-top: 2%;
   }
 
-  table{
-    width: 100%;
-    font-size: 1em;
+}
 
-    th{
-      text-align: left;
-    }
+table.activities, div#activities table{
+  width: 100%;
+  font-size: 1em;
 
-    tr:hover{
-      background: rgba(152, 161, 186, 0.10);
-    }
-
-    th, td{
-      width: 20%;
-    }
-
-    th.large, td.large{
-      width: 60%;
-    }
-
-    th.small, td.small{
-      width: 10%;
-    }
+  th{
+    text-align: left;
   }
 
+  tr:hover{
+    background: rgba(152, 161, 186, 0.10);
+  }
+
+  th, td{
+    width: 20%;
+  }
+
+  th.large, td.large{
+    width: 60%;
+  }
+
+  th.small, td.small{
+    width: 10%;
+  }
 }
 
 div#activity-form{

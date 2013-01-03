@@ -18,6 +18,9 @@ gem 'activerecord-reputation-system'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'pg_search'
 gem 'will_paginate', '~> 3.0'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
@@ -26,6 +29,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'database_cleaner'
   gem 'faker'
+  gem 'unicorn'
 end
 
 group :development do

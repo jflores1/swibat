@@ -403,6 +403,10 @@ div.inner-form{
     text-align: right;
 }
 
+.show-print{
+    visibility: hidden;
+}
+
 /*******************************************
 Media Queries
 *******************************************/
@@ -590,6 +594,34 @@ Media Queries
         margin-top: 435px !important;
     }
 
+
+}
+
+/* Print media */
+@media print {
+
+    body{
+        background: none !important;
+        background-color: #ffffff;
+    }
+
+    .navbar-inner{
+        background: #ffffff;
+        border: none;
+    }
+
+    .hidden-print{
+        display: none !important;
+        visibility: hidden;
+    }
+
+    .show-print{
+        visibility: visible !important;
+    }
+
+    .page-break{
+        page-break-before: auto;
+    }
 
 }
 
