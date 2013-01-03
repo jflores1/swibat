@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228062114) do
+ActiveRecord::Schema.define(:version => 20130103123816) do
 
   create_table "activities", :force => true do |t|
     t.string   "activity"
@@ -174,6 +174,14 @@ ActiveRecord::Schema.define(:version => 20121228062114) do
   end
 
   add_index "objectives", ["objectiveable_id", "objectiveable_type"], :name => "index_objectives_on_objectiveable_id_and_objectiveable_type"
+
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "professional_accomplishments", :force => true do |t|
     t.string   "accomplishment_type"

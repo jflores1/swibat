@@ -11,6 +11,8 @@
 #
 
 class Answer < ActiveRecord::Base
+	include PgSearch
+
   attr_accessible :question, :text, :user
   belongs_to :user
   belongs_to :question
@@ -19,4 +21,11 @@ class Answer < ActiveRecord::Base
   validates :text, :presence => true, :length => {:maximum => 4000} 
 
   has_reputation :votes, source: :user, aggregated_by: :sum
+
+  multisearchable :against => [:text]
+
+  def to_s
+  	self.text
+  end
+  
 end

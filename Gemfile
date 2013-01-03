@@ -16,6 +16,8 @@ gem "paperclip", "~> 3.0"
 gem 'activerecord-reputation-system'
 #//TODO: add gem 'bootstrap-wysihtml5-rails' for Question formatting. Resolve Safari browser issue and view first.
 gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'pg_search'
+gem 'will_paginate', '~> 3.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
@@ -27,7 +29,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'sqlite3'
+  # gem 'sqlite3'
+  gem 'pg'
 end
 
 group :production do

@@ -14,6 +14,8 @@
 #
 
 class Unit < ActiveRecord::Base
+  include PgSearch
+
   acts_as_commentable
   
   attr_accessible :expected_end_date, :expected_start_date, :prior_knowledge, :unit_status, :unit_title, :objectives_attributes, :assessments_attributes
@@ -41,6 +43,8 @@ class Unit < ActiveRecord::Base
   validates :expected_start_date, presence: true, date: {before: :expected_end_date}
   validates :unit_status, length:{maximum: 50}, allow_blank: true
   validates :unit_title, presence: true
+
+  multisearchable :against => [:unit_title]
 
   def user
     self.course.user

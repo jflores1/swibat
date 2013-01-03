@@ -1,4 +1,6 @@
 Swibat::Application.routes.draw do
+  match "search" => "search#index"
+
   root to: 'static_pages#home'
 
   devise_for :users

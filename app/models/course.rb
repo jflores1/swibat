@@ -14,6 +14,8 @@
 #
 
 class Course < ActiveRecord::Base
+  include PgSearch
+
   acts_as_commentable
   acts_as_taggable
   
@@ -47,6 +49,8 @@ class Course < ActiveRecord::Base
   scope :recent, order('created_at desc')
   scope :feed_sort, lambda { order('updated_at desc')}
 
+  multisearchable :against => [:course_name, :course_summary]
+  
   def has_valid_semester
     errors.add(:course_semester, "is not a valid semester") unless VALID_SEMESTER.include? course_semester
   end
