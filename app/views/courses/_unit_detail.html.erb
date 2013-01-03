@@ -1,0 +1,36 @@
+<% present unit do |unit_presenter| %>
+    <header class="course-header top-margin page-break">
+      <h2>Unit: <%= unit_presenter.unit_title %></h2>
+    </header>
+
+    <section class="course-info">
+      <header>
+        <h2>Prior Knowledge</h2>
+      </header>
+      <article>
+        <p><%= unit_presenter.prior_knowledge %></p>
+      </article>
+    </section>
+
+    <section class="course-info">
+      <header>
+        <h2>Unit <%= "Objective".pluralize(unit.objectives.count) %></h2>
+      </header>
+      <article>
+        <%= unit_presenter.unit_objectives %>
+      </article>
+    </section>
+
+    <section class="course-info">
+      <header>
+        <h2>Unit <%= "Assessment".pluralize(unit.assessments.count) %></h2>
+      </header>
+      <article>
+        <%= unit_presenter.unit_assessments %>
+      </article>
+    </section>
+
+    <% unit.lessons.each do |lesson| %>
+        <%= render partial: 'lesson_detail', locals: {:lesson => lesson} %>
+    <% end %>
+<% end %>

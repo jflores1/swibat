@@ -1,0 +1,78 @@
+<% present lesson do |lesson_presenter| %>
+    <header class="course-header top-margin">
+      <h3>Lesson: <%= lesson_presenter.lesson_title %></h3>
+    </header>
+
+    <section class="course-info">
+      <header>
+        <h2>Prior Knowledge</h2>
+      </header>
+      <article>
+        <p><%= lesson_presenter.prior_knowledge %></p>
+      </article>
+    </section>
+
+    <section class="course-info">
+      <header>
+        <h2>Lesson <%= "Objective".pluralize(lesson.objectives.count) %></h2>
+      </header>
+      <article>
+        <%= lesson_presenter.lesson_objectives %>
+      </article>
+    </section>
+
+    <section class="course-info">
+      <header>
+        <h2>Lesson <%= "Assessment".pluralize(lesson.assessments.count) %></h2>
+      </header>
+      <article>
+        <%= lesson_presenter.lesson_assessments %>
+      </article>
+    </section>
+
+    <section class="course-info">
+      <header>
+        <h2>Lesson <%= "Resource".pluralize(lesson.resources.count) %></h2>
+      </header>
+      <article>
+        <%= lesson_presenter.lesson_resources %>
+      </article>
+    </section>
+
+    <section class="course-info">
+      <header>
+        <h2>Lesson <%= "Activity".pluralize(lesson.activities.count) %></h2>
+      </header>
+      <article>
+        <% if lesson.activities.any? %>
+            <table class="activities">
+              <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Duration</th>
+                  <th>Who's Leading</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= lesson_presenter.lesson_activity_row %>
+              </tbody>
+            </table>
+        <% else %>
+            <p class="none-provided">None provided yet...</p>
+        <% end %>
+      </article>
+    </section>
+
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
