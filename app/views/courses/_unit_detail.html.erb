@@ -31,6 +31,6 @@
     </section>
 
     <% unit.lessons.each do |lesson| %>
-        <%= render partial: 'lesson_detail', locals: {:lesson => lesson} %>
+        <%= render partial: 'lesson_detail.html.erb', locals: {:lesson => lesson} %>
     <% end %>
 <% end %>

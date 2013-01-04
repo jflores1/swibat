@@ -405,6 +405,7 @@ div.inner-form{
 
 .show-print{
     visibility: hidden;
+    display: none;
 }
 
 /*******************************************
@@ -617,10 +618,17 @@ Media Queries
 
     .show-print{
         visibility: visible !important;
+        display: block;
     }
 
     .page-break{
-        page-break-before: auto;
+        page-break-before: always;
+    }
+
+    header.course-header{
+        border-bottom: 1px solid rgba(152, 161, 186, 1) !important;
+        /*border: 1px solid rgba(152, 161, 186, 0.5);*/
+
     }
 
 }
