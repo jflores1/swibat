@@ -16,7 +16,7 @@ gem "paperclip", "~> 3.0"
 gem 'activerecord-reputation-system'
 #//TODO: add gem 'bootstrap-wysihtml5-rails' for Question formatting. Resolve Safari browser issue and view first.
 gem 'acts-as-taggable-on', '~> 2.3.1'
-gem 'wicked_pdf', :git => "git@github.com:mileszs/wicked_pdf.git"
+gem 'wicked_pdf'
 gem 'pg_search'
 gem 'will_paginate', '~> 3.0'
 
