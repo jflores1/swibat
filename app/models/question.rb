@@ -11,6 +11,8 @@
 #
 
 class Question < ActiveRecord::Base
+  include PgSearch
+
   attr_accessible :title, :text, :user, :answers, :tag_list
   acts_as_taggable
 
@@ -30,8 +32,14 @@ class Question < ActiveRecord::Base
   scope :recent, order('created_at desc')
   scope :sidebar, recent.limit(10)
 
+  multisearchable against: [:title, :text]
+
   def to_param
     "#{id}-#{self.title.strip.parameterize}"
+  end
+
+  def to_s
+    self.title
   end
 
 end

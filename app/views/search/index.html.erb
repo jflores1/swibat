@@ -1,0 +1,33 @@
+<div class="application-row row-fluid">
+	<h1>Search</h1>
+	<form class="form-search">
+	  <input type="text" name="query" value="<%= @query %>" />
+	  <input type="submit" class="btn" name="search" value="Search" />
+	</form>
+
+	<% if !@query.blank? %>
+    <h3>Displaying search results for: <%= @query %></h3>    
+	<% end %>
+
+	<% if @results.any? %>
+		<% @results.each do |result| %>		
+			<div class="search-result">
+				<h3><%= link_to title_for(result), path_for(result) %></h3>
+				<span class="result-content"><%= truncate(result.content, :length => 200)  %></span><br />
+				<span class="result-type"><%= result.searchable_type %></span>
+			</div>
+		<% end %>
+		<%= will_paginate @results, :renderer => WillPaginate::ActionView::LinkRenderer %>
+	<% else %>
+		No results were found.
+	<% end %>
+</div>
+
+<% content_for :sidebar do %>
+  <% content_for :sidebar_invite do %>
+        <%= render 'shared/sidebar_invite' %>
+  <% end %>
+
+  <%= render 'layouts/application_sidebar', :renderer => 'BootstrapPaginationHelper::LinkRenderer' %>
+<% end %>
+
