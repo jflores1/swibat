@@ -13,11 +13,11 @@
 
     <header class="course-header top-margin hidden-print">
       <div class="row-fluid">
-        <div class="span8">
-          <h2 class="pull-left"><%= course_presenter.course_name.titleize %></h2>
+        <div class="span12">
+          <h2><%= link_to "#{course_presenter.course_name.titleize}", course_path(@course), class:"disguised-header-link red" %></h2>
         </div>
-        <div class="span4">
-          <h2 class="pull-right"><%= course_presenter.grade_level %>, <%= course_presenter.taught_during %></h2>
+        <div class="span12 no-left-margin">
+          <h2><%= course_presenter.grade_level %>, <%= course_presenter.taught_during %></h2>
         </div>  
       </div>
     </header>

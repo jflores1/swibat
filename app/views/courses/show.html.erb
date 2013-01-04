@@ -11,11 +11,11 @@
 <div class="span10" id="course-summary">
 
   <header class="course-header top-margin">
-    <div class="span8">
+    <div class="span12">
       <h2><%= @course.course_name.titleize %></h2>
     </div>
-    <div class="span4">
-      <h2 class="pull-right"><%= @course.grade.grade_level %>, <%= @course.course_semester %> <%= @course.course_year %></h2>
+    <div class="span12 no-left-margin">
+      <h2 class=""><%= @course.grade.grade_level %>, <%= @course.course_semester %> <%= @course.course_year %></h2>
     </div>
   </header>
 
