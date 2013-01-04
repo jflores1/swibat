@@ -64,6 +64,25 @@ class CoursesController < ApplicationController
 
   def syllabus
     @user = @course.user
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "syllabus",
+               :template => "courses/syllabus.pdf.erb",
+               :margin => {
+                  :top => "15",
+                  :right => "15",
+                  :bottom => "15",
+                  :left => "15"
+                },
+               :footer => {
+                  :html => {
+                    :template => 'courses/syllabus_footer.pdf.erb'
+                  },
+                  :left => "Some text"
+               }
+      end
+    end
 
   end
 

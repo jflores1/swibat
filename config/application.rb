@@ -65,7 +65,5 @@ module Swibat
     #autoload lib directory
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
-    #PDFKit Middleware
-    config.middleware.use PDFKit::Middleware
   end
 end

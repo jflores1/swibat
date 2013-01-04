@@ -38,6 +38,12 @@ Swibat::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-    #Default URL options
+  #Default URL options
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  #Enable threading
+  #config.threadsafe!
+
+  #Eager load paths
+  #config.eager_load_paths += ["#{config.root}/lib"]
 end
