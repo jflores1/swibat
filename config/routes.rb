@@ -29,6 +29,7 @@ Swibat::Application.routes.draw do
 
   resources :leads
   resources :users
+  resources :posts
 
   resources :courses do
     resources :objectives

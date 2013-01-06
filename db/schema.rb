@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103123816) do
+ActiveRecord::Schema.define(:version => 20130105233628) do
 
   create_table "activities", :force => true do |t|
     t.string   "activity"
@@ -182,6 +182,16 @@ ActiveRecord::Schema.define(:version => 20130103123816) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "professional_accomplishments", :force => true do |t|
     t.string   "accomplishment_type"

@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :flags
+  has_many :posts
   has_many :units, :through => :courses
   has_many :lessons, :through => :units
   has_many :friend_courses, through: :friends, source: :courses
