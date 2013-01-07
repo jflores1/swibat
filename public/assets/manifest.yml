@@ -14,7 +14,10 @@ img-set-sles.png: img-set-sles-f64653973fcb9e144cc9c35f12d2a86b.png
 img-teacher-development-plan.png: img-teacher-development-plan-d4ff37f30682c897e43c378b238bbbf6.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 sprite-arrows.png: sprite-arrows-2f7a36fc8a49ac5a288850ff5df710fd.png
-application.js: application-6ceadb7b2b34b8ea5ab46f5dd387ea48.js
-application.css: application-4cb3e50a4be5ac18048c0531706e5484.css
+application.js: application-422042848a67f6d96b9732322eeb8c06.js
+application.css: application-1289633595193147450d032e80e7840b.css
+bootstrap-wysihtml5.js: bootstrap-wysihtml5-7c815e111ed135136816014220ded7c8.js
+bootstrap-wysihtml5.css: bootstrap-wysihtml5-1573fbde2cb780c586ac63d16da41914.css
+bootstrap-wysihtml5/wysiwyg-color.css: bootstrap-wysihtml5/wysiwyg-color-1d85e8d5e3376375b5c20c9680350cda.css
 glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
 glyphicons-halflings.png: glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
