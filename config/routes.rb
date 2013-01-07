@@ -29,7 +29,11 @@ Swibat::Application.routes.draw do
 
   resources :leads
   resources :users
-  resources :posts
+  resources :posts do
+    collection do
+      get 'tags/:tag', to: 'posts#index', as: :tag
+    end
+  end
 
   resources :courses do
     resources :objectives

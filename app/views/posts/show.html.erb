@@ -1,0 +1,25 @@
+<div class="show-post span12">
+  <section class="post">
+    <header class="post-header">
+      <h1><%= @post.title %></h1>
+      <p>
+        <span>Posted on: <%= @post.created_at.strftime("%B %d, %Y") %>, by <%= @post.author %></span>
+      </p>
+    </header>
+    <article>
+      <p><%= raw @post.content %></p>
+    </article>
+  </section>
+
+</div>
+
+<% content_for :sidebar do %>
+
+    <% content_for :sidebar_invite do %>
+        <%= render 'shared/sidebar_invite' %>
+    <% end %>
+
+    <%= render 'layouts/application_sidebar' %>
+
+
+<% end %>

@@ -34,3 +34,6 @@ $(document).ready ->
 
   #calendar
   $('.datepicker').datepicker({"dateFormat":"yy-mm-dd"})
+
+  #wysihtml5 editor
+  $('.wysihtml5').wysihtml5()

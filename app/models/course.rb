@@ -33,7 +33,6 @@ class Course < ActiveRecord::Base
   has_reputation :votes, source: :user, aggregated_by: :sum
 
   before_save do |course|
-    course.course_name = course_name.titleize
     course.course_semester = course_semester.capitalize
     course.course_summary = course_summary.humanize
   end

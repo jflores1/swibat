@@ -2,6 +2,10 @@
     <input type="text" class="input-medium" name="query" />
     <button type="submit" class="btn"><i class="icon-search"></i></button>
   </form>
+
+  <% unless user_signed_in? %>
+      <%= render 'shared/sidebar_sign_up' %>
+  <% end %>
   
   <%= yield :sidebar_profile %>
 

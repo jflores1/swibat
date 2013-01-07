@@ -1,0 +1,24 @@
+<div id="post-form">
+  <%= form_for @post do |post| %>
+      <%= render 'shared/form_error_messages', object: post.object %>
+      <div class="row-fluid">
+        <div class="span12">
+          <%= post.label :title %>
+          <%= post.text_field :title, class:"span12" %>
+        </div>
+
+        <div class="span12 no-left-margin">
+          <%= post.text_area :content, rows: "15", class:"span12 wysihtml5" %>
+        </div>
+
+        <div class="span12 no-left-margin">
+          <%= post.label :tag_list, "Tags" %>
+          <%= post.text_field :tag_list, class: "span12", placeholder: "Tags (separated by commas)" %>
+        </div>
+
+        <div class="span12 no-left-margin">
+          <%= post.submit "Add Post", class:"btn btn-monkey" %>
+        </div>
+      </div>
+  <% end %>
+</div>

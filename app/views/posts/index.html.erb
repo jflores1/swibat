@@ -1,1 +1,29 @@
-<p>This is the posts/index page!</p>
+<div class="post-index-container span12">
+    <h1>Pedagogy, Policy, and Professional Development Blog</h1>
+    <%= link_to "Add a New Post", new_post_path if can? :add, @post  %>
+    <% @posts.each do |post| %>
+        <section class="post-index">
+            <header class="post-index-title">
+              <h2><%= link_to "#{ post.title}", post_path(post), class:"disguised-header-link" %></h2>
+              <span>Posted: <%= post.created_at.strftime("%B %d, %Y") %> by <%= post.author %> <%= link_to "Edit Post", edit_post_path(post) if can? :update, @post  %></span>
+            </header>
+            <article>
+              <p class="article-snippet"><%= raw truncate("#{post.content}", length: 500) %></p>
+              <p class="post-meta">
+                Tags: <%= raw post.tag_list.map {|t| link_to t, tag_posts_path(t), class:"tag_link"}.join(" ") %>
+              </p>
+            </article>
+        </section>
+    <% end %>
+</div>
+
+<% content_for :sidebar do %>
+
+    <% content_for :sidebar_invite do %>
+        <%= render 'shared/sidebar_invite' %>
+    <% end %>
+
+    <%= render 'layouts/application_sidebar' %>
+
+
+<% end %>

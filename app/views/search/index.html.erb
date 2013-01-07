@@ -13,7 +13,7 @@
 		<% @results.each do |result| %>		
 			<div class="search-result">
 				<h3><%= link_to title_for(result), path_for(result) %></h3>
-				<span class="result-content"><%= truncate(result.content, :length => 200)  %></span><br />
+				<span class="result-content"><%= raw truncate(result.content, :length => 200)  %></span><br />
 				<span class="result-type"><%= result.searchable_type %></span>
 			</div>
 		<% end %>
