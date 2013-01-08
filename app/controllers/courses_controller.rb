@@ -79,7 +79,7 @@ class CoursesController < ApplicationController
                   :html => {
                     :template => 'courses/syllabus_footer.pdf.erb'
                   },
-                  :left => "Some text"
+                  :left => "Create your own course for free! Visit http://www.swibat.com"
                }
       end
     end

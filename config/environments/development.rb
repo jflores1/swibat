@@ -47,10 +47,10 @@ Swibat::Application.configure do
   #Eager load paths
   #config.eager_load_paths += ["#{config.root}/lib"]
   
-  # config.after_initialize do
-  #   WickedPdf.config = {
-  #     :exe_path => "/usr/local/bin/wkhtmltopdf"
-  #     }
-  # end
+  config.after_initialize do
+    WickedPdf.config = {
+      :exe_path => "/usr/local/bin/wkhtmltopdf"
+      }
+  end
 
 end
