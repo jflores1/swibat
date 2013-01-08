@@ -56,7 +56,7 @@
     <% end %>
   </header>
   <section class="course-info">
-    <% if can? :update, @unit && @unit.lessons.count == 0 %>
+    <% if current_user? && @unit.lessons.count == 0 %>
         <p class="top-margin">It doesn't look like you have any lessons. <%= link_to "Create one now.", new_unit_lesson_path(@unit) %></p>
     <% elsif @unit.lessons.count == 0%>
         <p class="top-margin">Sad. It doesn't look like this user has created any lessons yet.</p>
