@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
 
   validates :content, :title, presence: true
 
+  multisearchable :against => [:title, :content]
+
   def author
     self.user.full_name
   end
@@ -14,6 +16,8 @@ class Post < ActiveRecord::Base
     "#{id}-#{self.title.strip.parameterize}"
   end
 
-  multisearchable :against => [:title, :content]
+  def to_s
+    self.title
+  end
 
 end
