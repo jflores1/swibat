@@ -69,7 +69,13 @@
       <% else %>
           <ul>
             <% @lesson.resources.each do |resource| %>
-                <li><%= resource.name %></li>
+                <li>
+                  <% if resource.upload_file_name %>
+                    <%= link_to resource.name, resource.upload.url, title: "Download resource" %>
+                  <% else %>
+                    <%= resource.name %> 
+                  <% end %>
+                </li>
             <% end %>
           </ul>
       <% end %>

@@ -48,6 +48,10 @@ class Ability
         activity.new_record? || activity.try(:user).try(:id) == user.id
       end
 
+      can :manage, Post do |post|
+        post.new_record? || post.try(:user).try(:id) == user.id
+      end
+
       # Can delete comment only if they have created it
       can :destroy, Comment, :user_id => user.id
       # Can manage comments if they are the owners of the commentable of the comment (Course, Unit, etc.)
@@ -60,7 +64,6 @@ class Ability
       end
 
       can :update, User, :id => user.id
-
       can :read, User
       can :read, Course
       can :read, Lesson
