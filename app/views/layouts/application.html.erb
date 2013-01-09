@@ -18,7 +18,10 @@
         <%= render 'layouts/application_nav' %>
           <div class="application-row row-fluid">
             <div class="span9">
-              <%= yield %>
+              <%= render 'shared/banner_sign_up' %>
+              <div class="row-fluid">
+                <%= yield %>
+              </div>
             </div>
             <div class="span3 hidden-print" id="right-sidebar">
               <%= yield(:sidebar) %>

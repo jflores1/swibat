@@ -413,6 +413,14 @@ div.inner-form{
     display: none;
 }
 
+/*Sign Up Banner*/
+.banner-sign-up{
+    background: rgba(234, 231, 216, 1);
+    padding: 1%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
 /*******************************************
 Media Queries
 *******************************************/
@@ -643,7 +651,7 @@ Media Queries
 }
 
 /* Vote arrows */
-.vote {
+.vote, .vote-display {
     width: 50%;
     text-align: center;
     margin: 1em auto;
@@ -670,16 +678,15 @@ Media Queries
 
     .downvote-active, .downvote:hover {
         background-position: 40px -42px;
-    }
-
-    
+    }    
 
     .vote-count {
-        font-size: 2.2em;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        color: $header-gradient-light-color;
-    }      
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 1em;
+    margin-bottom: 10px;
+    color: $header-gradient-light-color;
+    }  
 }
 
 .clear {

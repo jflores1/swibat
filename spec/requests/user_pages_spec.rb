@@ -166,6 +166,21 @@ describe "UserPages" do
       it {page.should have_content("All Users")}
     end
 
+    describe "is prompted to sign up" do
+      before {visit courses_path}
+      it "should have a sign up modal" do
+        find_link("Sign Up").click
+        fill_in "user_first_name", with: "Jesse"
+        fill_in "user_last_name", with: "Flores"
+        fill_in "user_institution", with:"New School"
+        fill_in "user_email", with:"new_email@email.com"
+        fill_in "user_password", with:"password"
+        fill_in "user_password_confirmation", with:"password"
+        click_button "Sign Up!"
+        page.should have_content("Jesse")
+      end
+    end
+
   end
 
   context "An unregistered user" do

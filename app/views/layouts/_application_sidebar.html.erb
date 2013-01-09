@@ -3,15 +3,15 @@
     <button type="submit" class="btn"><i class="icon-search"></i></button>
   </form>
 
+  <%= yield :sidebar_profile %>
+
+  <%= render 'shared/sidebar_share_this' %>
+
   <% unless user_signed_in? %>
       <%= render 'shared/sidebar_sign_up' %>
   <% end %>
   
-  <%= yield :sidebar_profile %>
-
   <%= yield :sidebar_invite %>
-
-  <%= render 'shared/sidebar_share_this' %>
 
   <%= yield :sidebar_other_user_courses %>
 

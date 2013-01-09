@@ -22,7 +22,7 @@ module ReputationsHelper
         end
       end
     else
-      content_tag :div, class: "vote" do
+      content_tag :div, class: "vote-display" do
         concat ( content_tag :div, :class => "vote-count" do
           concat resource.reputation_for(:votes).to_i
         end ) + "votes"
