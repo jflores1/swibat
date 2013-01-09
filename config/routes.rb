@@ -5,6 +5,8 @@ Swibat::Application.routes.draw do
 
   devise_for :users
 
+  post "invitations/send_invitation"
+  
   get "answers/new"
   get "answers/edit"
   get "flags/flag"
