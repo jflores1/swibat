@@ -4,48 +4,12 @@
 <% content_for :chalkboard_promo_text do %>
 	<h1>Teach Better, Together.</h1>
 	<h2>Swibat is a community of teachers who work together to build and share great courses, help each other out, and make our schools awesome.</h2>
-	<a class="primary-cta-btn" href="#accessModal" data-toggle="modal">Request Access</a>
+	<a class="primary-cta-btn" href="#accessModal" data-toggle="modal">Request an Invite!</a>
 <% end %>
 <%= render 'static_pages/hero_signup' %>
+<%= render 'feature_footer' %>
 
-<div class="row-fluid offset1 leader-div bottom-padded">
-	<div class="span3">
-		<section class="leader-content">
-			<div class="inner-content">
-				<header class="intro-content" style="line-height: 1.619em; margin-bottom: 0px;">
-					<h3>connect and share</h3>
-				</header>
-				<article>
-					<p>Create and easily share course, unit and lesson plans with colleagues, mentors, or administrators. Work together to create great content.</p>
-				</article>
-			</div>
-		</section>
-	</div>
-	<div class="span4">
-		<section class="leader-content">
-			<div class="inner-content">
-				<header class="intro-content" style="line-height: 1.619em; margin-bottom: 0px;">
-					<h3>get the wheels turning</h3>
-				</header>
-				<article>
-					<p>Ever been stuck trying to figure out how to teach something? We'll recommend other courses for you to check out so you can find inspiration.</p>
-				</article>
-			</div>
-		</section>
-	</div>
-	<div class="span3">
-		<section class="leader-content">
-			<div class="inner-content">
-				<header class="intro-content" style="line-height: 1.619em; margin-bottom: 0px;">
-					<h3>get and give help</h3>
-				</header>
-				<article>
-					<p>Have a classroom management question? Trying to manage parent or colleague relationships? Our Q & A Forum is the perfect place to give - and get - advice.</p>
-				</article>
-			</div>
-		</section>
-	</div>
-</div>
+
 
 <div id="accessModal" class="modal hide fade">
 	<%= render 'forms/lead_form_modal' %>
