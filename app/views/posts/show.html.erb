@@ -18,11 +18,15 @@
 
 <% content_for :sidebar do %>
 
-    <% content_for :sidebar_invite do %>
-        <%= render 'shared/sidebar_invite' %>
-    <% end %>
+  <% content_for :sidebar_mailchimp do %>
+    <%= render 'shared/sidebar_mailchimp' %>
+  <% end %>
 
-    <%= render 'layouts/application_sidebar' %>
+  <% content_for :sidebar_invite do %>
+      <%= render 'shared/sidebar_invite' %>
+  <% end %>
+
+  <%= render 'layouts/application_sidebar' %>
 
 <% end %>
 
