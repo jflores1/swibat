@@ -1,0 +1,32 @@
+	<div class="modal-header grey-background">
+		<button class="close" type="button" data-dismiss="modal" aria-hidden="true">
+			&times;
+		</button>
+		<h2>Request Access to Swibat!</h2>
+	</div>
+
+	<%= form_for @lead, remote: true do |lead| %>
+
+		<div class="modal-body">
+			<p>We are currently in a private beta and are allowing limited access to our platform. Fill out your information below to request access! </p>
+			<div class="row-fluid">
+		    <%= lead.label "Your Name: " %>
+		    <%= lead.text_field :name, placeholder: "Full Name", id:"name" %>
+
+		    <%= lead.label "Your Role: " %>
+		    <%= lead.select(:role, options_for_select([['Teacher', 'teacher'],['Administrator', 'administrator']])) %>
+
+
+		    <%= lead.label "Your School: " %>
+		    <%= lead.text_field :school, placeholder: "School", id:"school" %>
+
+		    <%= lead.label "Your Email Address: " %>
+		    <%= lead.text_field :email, placeholder: "Email Address", id:"email" %>
+			</div>
+		</div>
+
+	<div class="modal-footer grey-background">
+		<%= lead.submit "Request Access!", class:"btn btn-monkey" %>
+		
+	</div>
+	<% end %>

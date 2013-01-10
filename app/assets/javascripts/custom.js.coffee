@@ -28,8 +28,12 @@ $(document).ready ->
   })
   $('.add-new-activity').tooltip({'title':'Add an activity to this lesson'})
   $('.get-syllabus').tooltip({
-  'title':'Get the full syllabus'
-  'placement':'left'
+  'title':'See the full syllabus'
+  'placement':'right'
+  })
+  $('.header-edit').tooltip({
+  'title':'Edit Course'
+  'placement':'top'
   })
 
   #calendar

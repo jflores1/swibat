@@ -57,7 +57,6 @@
         .nav li a:hover {
             background: #606E67;
             color: rgba(234, 231, 216, 1);
-
         }
     }
 }
@@ -169,6 +168,10 @@ section.chalkboard{
     .static-sign-up-btn{
         width: 100%;
         padding: 0.4em;
+        font-family: Helvetica, Arial, sans-serif;
+        text-transform: none;
+        font-size: 1.23076923em;
+        padding: 0.69230769em;
     }
 
 }
@@ -198,22 +201,41 @@ section.leader-content, .section-content{
         text-align: center;
         margin: 20px 0px 20px 0px;
 
+        h1, h3, h4{
+          font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
+
+        }
+
         h1 {
-            font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
-            font-weight: 700;
-            font-size: 4em; /* 64px / 13px */
-            color: #3f4944;
-            text-shadow: 1px 1px 0 #FFFFFF;
-            line-height: 1.2;
+          font-weight: 700;
+          font-size: 4em; /* 64px / 13px */
+          color: #3f4944;
+          text-shadow: 1px 1px 0 #FFFFFF;
+          line-height: 1.2;
         }
 
-        h3 {
-            font-family: 'Open Sans', sans-serif, 'Helvetica', 'Arial', sans-serif;
-            font-weight: 300;
-            font-size: 1.8em; /*24px / 13px*/
-            color: #7c7c7f;
+        h3, h4{
+          font-weight: 300;
+          color: #7c7c7f
         }
 
+        h3 {            
+          font-size: 1.8em; /*24px / 13px*/
+        }
+
+        h4 {
+          font-size: 1.5385em;
+        }
+
+    }
+
+    article{
+      text-align: center;
+      p{
+        font-size: 1.2308em;
+        color: #5f6e68;
+        line-height: 1.619em;
+      }
     }
 
     .screenshot, .screenshot-right {

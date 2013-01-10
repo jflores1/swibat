@@ -16,4 +16,8 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def request_invite
+  	@lead = Lead.new
+  end
+
 end

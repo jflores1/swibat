@@ -1,7 +1,7 @@
 Swibat::Application.routes.draw do
   match "search" => "search#index"
 
-  root to: 'static_pages#home'
+  root to: 'static_pages#request_invite'
 
   devise_for :users
 
@@ -16,6 +16,7 @@ Swibat::Application.routes.draw do
   match 'resources',      to: 'static_pages#resources'
   match 'pricing',        to: 'static_pages#pricing'
   match 'request-trial',  to: 'leads#new', as: "request_trial"
+  match 'request-invite', to: 'static_pages#request_invite', as: "request_invite"
 
   get 'objectives/similar_objectiveables'
 

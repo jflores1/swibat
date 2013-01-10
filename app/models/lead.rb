@@ -20,7 +20,7 @@ class Lead < ActiveRecord::Base
 
   before_validation do |lead|
     lead.role = role.downcase
-    lead.phone = phone.gsub(/\D/,'')
+    #lead.phone = phone.gsub(/\D/,'')
     lead.email = email.downcase
   end
 
@@ -32,8 +32,8 @@ class Lead < ActiveRecord::Base
   after_save :new_lead_notification
 
   validate  :valid_role
-  validates :email, :name, :phone, :role, :school, presence: true
-  validates :phone, length: {in:6..13}
+  validates :email, :name, :role, :school, presence: true
+  #validates :phone, length: {in:6..13}
   validates :email, format: {with: VALID_EMAIL_REGEX}
 
 

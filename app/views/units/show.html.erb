@@ -1,16 +1,8 @@
-<div class="span2">
-  <%= generate_vote_form @unit, vote_unit_path(@unit) %>
-  <%= render :partial => 'flags/flag', :locals => {:resource => @unit} if can? :flag, Flag %>
-  <div class="favoritecount">
-    <b></b>
-  </div>
-</div>
-<div class="span10" id="course-summary">
+<div class="span12" id="course-summary">
 
   <header class="course-header top-margin">
     <div class="span12">
-      <h2><%= link_to "#{@course.course_name.titleize}:", course_path(@course), class:"disguised-header-link" %><br/>
-        <%= @unit.unit_title.titleize %></h2>
+      <h2 class="breadcrumb-header"><%= link_to "#{@course.course_name.titleize}", course_path(@course), class:"disguised-header-link" %> / <%= @unit.unit_title.titleize %></h2>
     </div>
   </header>
 
@@ -30,7 +22,7 @@
     <article>
       <ul>
         <% @unit.objectives.each do |objective| %>
-            <li><%= objective.objective.humanize %></li>
+            <li><%= objective.objective %></li>
         <% end %>
       </ul>
     </article>
@@ -43,7 +35,7 @@
     <article>
       <ul>
         <% @unit.assessments.each do |assessment| %>
-            <li><%= assessment.assessment_name.humanize %></li>
+            <li><%= assessment.assessment_name %></li>
         <% end %>
       </ul>
     </article>
@@ -52,7 +44,7 @@
   <header class="course-header">
     <h2>Lessons</h2>
     <% if can? :update, @unit %>
-        <button class="btn btn-small btn-monkey pull-right"><a id="add-lesson" href="<%= new_unit_lesson_path(@unit) %>"><i class="icon-plus icon-white"></i></a></button>
+        <a id="add-lesson" href="<%= new_unit_lesson_path(@unit) %>"><i class="title-icon icon-plus"></i></a>
     <% end %>
   </header>
   <section class="course-info">

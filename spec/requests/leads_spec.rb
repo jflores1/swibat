@@ -28,7 +28,6 @@ describe "Leads" do
           select  "Teacher"
           fill_in "school",             with: "Holy Spirit Prep"
           fill_in "email",              with: "jesse@test.com"
-          fill_in "phone",              with: "555-555-5555"
         end
 
         it "should create a lead" do
@@ -37,6 +36,18 @@ describe "Leads" do
       end
 
     end
+
+    context "The Request Invite page" do
+      before {visit request_invite_path}
+      it "should create a lead" do
+        find_link("Request Access").click
+        fill_in "name",               with: "Jesse Flores"
+        select  "Teacher"
+        fill_in "school",             with: "Holy Spirit Prep"
+        fill_in "email",              with: "jesse@test.com"
+        expect{click_button "Request Access!"}.to change(Lead, :count).by(1)
+      end
+    end 
 
   end
 end

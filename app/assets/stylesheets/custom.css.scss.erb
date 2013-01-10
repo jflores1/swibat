@@ -37,10 +37,55 @@ body.patterned {
 .hero {
     clear:both;
     margin-bottom:55px;
+    float: left;
+}
+
+section.chalkboard{
+    display: block;
+    float: left;
+    clear: both;
+
+    header.hero-header{
+      display: block;
+      width: 85%;
+      margin: 0 auto;
+    }
 }
 
 .red{
     color: rgb(164, 50, 32) !important;
+}
+
+.grey-background{
+    background: rgba(152, 161, 186, 0.1);
+}
+
+#feedback{
+    height: 8em;
+    width: 8em;
+    text-align: center;
+    position: fixed;
+    top: 45%;
+    z-index: 999;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+    a{
+        display: block;
+        background: rgb(164, 50, 32);
+        font-size: 1.2308em;
+        height: 1.5em;
+        width: 7em;
+        padding: 0.5em 0.5em;
+        color: #ffffff;
+        border-color: rgb(164, 50, 32) rgb(164, 50, 32) #B13623;
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fadein(rgba(0, 0, 0, 0.1), 15%);
+        *background-color: rgb(164, 50, 32);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    }
 }
 
 /********************************
@@ -98,8 +143,18 @@ Navbar Modifications
     .fixed-header-logo {
         width: 45%;
         padding-top: 10px;
-        padding-left: 15px;
         float: left;
+
+        a{
+            display: inline-block;
+            float:left;
+        }
+
+        form{
+            display: inline-block;
+            float: left;
+            margin: -10px 0px 0px 2em;
+        }
     }
 
     .fixed-header-nav {
@@ -246,6 +301,8 @@ div.inner{
     margin: 0 auto;
     min-height: 800px;
     padding-bottom: 100px;
+    padding-left: 2%;
+    padding-right: 2%;
 
     box-shadow:
         5px 0 5px -5px $header-gradient-dark-color,
@@ -264,7 +321,8 @@ div.accordion{
     .accordion-heading {
 
         a{
-            font-size: 1.2308em; //16px:13px
+            //font-size: 1.2308em; //16px:13px
+            font-size: 1.07692308em; //14px:13px
             color: #50596D;
             text-decoration: none;
         }
@@ -329,6 +387,18 @@ div.index-profile{
         font-size: 1em;
         margin-left: 0;
     }
+}
+
+/*************************
+Footer
+*************************/
+footer{
+    display: block;
+    float: left;
+    clear: both;
+    width: 100%;
+    position: relative;
+    bottom: 0;
 }
 
 
@@ -413,6 +483,10 @@ div.inner-form{
     display: none;
 }
 
+.bottom-padded{
+    padding-bottom: 30px;
+}
+
 /*Sign Up Banner*/
 .banner-sign-up{
     background: rgba(234, 231, 216, 1);
@@ -438,6 +512,8 @@ Media Queries
     }
 
     section.leader-content, .section-content {
+        display: block;
+
         .feature-paragraph {
             p.intro-paragraph {
                 margin-top: 1em !important;
@@ -477,6 +553,7 @@ Media Queries
 
     section.chalkboard {
         header.hero-header {
+
             h1 {
                 font-size: 2.5em !important;
 

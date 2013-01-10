@@ -5,9 +5,9 @@
           <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= unit.id  %>"><%= unit.unit_title.titleize %> (<%= pluralize((unit.lessons.count),
                                                                                                                                        'lesson') %>) </a>
           <% if can? :update, @course %>
-              <a class="btn btn-mini btn-monkey pull-right edit-course-unit" href="<%= course_unit_path(@course, unit) %>"><i class="icon-pencil icon-white"></i></a>
+              <a class="pull-right edit-course-unit" href="<%= course_unit_path(@course, unit) %>"><i class="icon-pencil pulled-icon"></i></a>
           <% else %>
-              <a class="btn btn-mini btn-monkey pull-right" href="<%= course_unit_path(@course, unit) %>"><i class="icon-search icon-white"></i></a>
+              <a class="pull-right see-course-unit pulled-icon" href="<%= course_unit_path(@course, unit) %>"><i class="icon-search"></i></a>
           <% end %>
         </div>
         <div id="collapse_<%= unit.id %>" class="accordion-body collapse">

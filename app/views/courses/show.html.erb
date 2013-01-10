@@ -1,20 +1,12 @@
 <% provide(:title, "#{@course.course_name.titleize}") %>
-
-<div class="span2">
-
-  <%= generate_vote_form @course, vote_course_path(@course) %>
-  <div class="favoritecount">
-    <b></b>
-  </div>
-</div>
-<div class="span10" id="course-summary">
+<div class="span12" id="course-summary">
 
   <header class="course-header top-margin">
     <div class="span12">
-      <h2><%= @course.course_name.titleize %></h2>
+      <h2 class="breadcrumb-header"><%= @course.course_name.titleize %></h2>
     </div>
     <div class="span12 no-left-margin">
-      <h2 class=""><%= @course.grade.grade_level %>, <%= @course.course_semester %> <%= @course.course_year %></h2>
+      <h2 class="breadcrumb-header"><%= @course.grade.grade_level %>, <%= @course.course_semester %> <%= @course.course_year %></h2>
     </div>
   </header>
 
@@ -22,8 +14,8 @@
     <header>
       <h2>
         Course Summary
-        <%= link_to "(edit course)", edit_course_path(@course), class:"header-edit" if can? :edit, @course %>
-        <a class="btn btn-monkey btn-small get-syllabus" href="<%= syllabus_course_path(@course) %>"><i class="icon-book icon-white"></i></a>
+        <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_course_path(@course), class:"header-edit" if can? :edit, @course %>
+        <a class="get-syllabus" href="<%= syllabus_course_path(@course) %>"><i class="icon-book"></i></a>
       </h2>
     </header>
     <article>
@@ -54,7 +46,7 @@
   <header class="course-header">
     <h2>Units</h2>
     <% if can? :edit, @course %>
-        <button class="btn btn-small btn-monkey pull-right"><a id="course-add-unit" href="<%= new_course_unit_path(@course) %>"><i class="icon-plus icon-white"></i></a></button>
+        <a id="course-add-unit" href="<%= new_course_unit_path(@course) %>"><i class="title-icon icon-plus"></i></a>
     <% end %>
   </header>
   <section class="course-info">

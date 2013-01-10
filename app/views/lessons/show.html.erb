@@ -1,15 +1,8 @@
-<div class="span2">
-  <%= generate_vote_form @lesson, vote_lesson_path(@lesson) %>
-  <%= render :partial => 'flags/flag', :locals => {:resource => @lesson} if can? :flag, Flag %>
-  <div class="favoritecount">
-    <b></b>
-  </div>
-</div>
-<div class="span10" id="course-summary">
+<div class="span12" id="course-summary">
 
   <header class="course-header top-margin">
     <div class="span12">
-      <h2><%= link_to "#{@unit.unit_title.titleize}:", course_unit_path(@course, @unit), class:"disguised-header-link" %><br/>
+      <h2 class="breadcrumb-header"> <%= link_to "#{@unit.course.course_name.titleize}", course_path(@unit.course), class:"disguised-header-link" %> / <%= link_to "#{@unit.unit_title.titleize}", course_unit_path(@course, @unit), class:"disguised-header-link" %> / <br/>
         <%= @lesson.lesson_title.titleize %></h2>
     </div>
   </header>

@@ -55,7 +55,7 @@ div.course-form{
     input[type="text"], textarea{
       width: 100%;
       min-height: $minFormHeight;
-      font-size: 1.0769em;
+      font-size: 1.07692308em;
       color: rgba(80, 89, 107, 0.90);
     }
     input[type="text"].cleared{
@@ -84,7 +84,7 @@ div#course-summary, div.course-overview, div#syllabus{
     width:100%;
 
     p, li{
-      font-size: 1.0769em;//14px:13px
+      font-size: 1.07692308em;//14px:13px
     }
 
     p.standard-font{
@@ -100,7 +100,8 @@ div#course-summary, div.course-overview, div#syllabus{
       width:100%;
 
       h2{
-        font-size: 1.3077em;//17px:13px
+        //font-size: 1.3077em;//17px:13px
+        font-size: 1.23076923em;//16px:13px
         float:left;
         //color: rgb(164, 50, 32);
         width: 100%;
@@ -111,9 +112,8 @@ div#course-summary, div.course-overview, div#syllabus{
 
       }
 
-      a.get-syllabus{
+      a.get-syllabus, a.edit-course-unit, a.see-course-unit, a.edit-unit-lesson, a.see-unit-lesson{
         display: inline-block;
-        float: right;
         margin-top: 0.5em;
       }
 
@@ -144,7 +144,7 @@ div#course-summary, div.course-overview, div#syllabus{
 }
 
 p.question{
-  font-size: 1.0769em;//14px:13px
+  font-size: 1.07692308em;//14px:13px
   margin-top: 0.5em;
   float: left;
   width: 100%;
@@ -162,7 +162,11 @@ header.course-header, header.index-header{
 
   h2 {
     float:left;
-    font-size: 1.5385em;//20px:13px
+    font-size: 1.38461538em;//18px:13px
+  }
+
+  h2.breadcrumb-header{
+    font-size: 1.38461538em;
   }
 
   h3{
@@ -172,6 +176,19 @@ header.course-header, header.index-header{
 
   a.disguised-header-link{
     color: #5f6e68;
+  }
+
+  .title-icon{
+    display:inline-block;
+    margin-top: 0.9em;
+    margin-left: 0.5em;
+    float: left;
+  }
+
+  .pulled-icon{
+    display: inline-block;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
   }
 
 }

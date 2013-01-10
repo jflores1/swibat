@@ -16,7 +16,6 @@
                 <ul class="nav nav-pills">
                   <% if signed_in? %>
                         <li class=""><%= link_to "Your Profile", user_path(current_user) %></li>
-                        <li><%= link_to "Feed", feed_courses_path %></li>
                   <% end %>
                   <li class=""><%= link_to "Courses", courses_path %></li>
                   <li class=""><%= link_to "Questions", questions_path %></li>

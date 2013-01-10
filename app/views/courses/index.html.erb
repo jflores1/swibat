@@ -4,9 +4,6 @@
   </header>
   <% @courses.each do |course| %>
   <div class="index-meta row-fluid">
-    <div class="span2">
-      <%= generate_vote_form course, course_path(course) %>
-    </div>
     <div class="span10">
       <header>
         <h3><%= link_to "#{course.course_name.titleize}", course_path(course)%></h3>
