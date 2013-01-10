@@ -1,5 +1,5 @@
 class InvitationsMailer < ActionMailer::Base
-  default from: "feedback@swibat.com"
+  default from: "mail@swibat.com"
 
   def invitation(address, from, message)
     @from = from
