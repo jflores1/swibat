@@ -20,7 +20,7 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'wicked_pdf'
 gem 'pg_search'
 gem 'will_paginate', '~> 3.0'
-
+gem 'amoeba'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

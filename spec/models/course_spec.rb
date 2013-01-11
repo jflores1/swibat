@@ -102,4 +102,63 @@ describe Course do
 
   end
 
+  describe "Duplicating" do
+    let(:course){ Course.create(course_name:"Physics", course_semester:"Spring", course_year:"2013", course_summary:"It is a summary.", grade_id: "1") }
+
+    before do
+      @user = FactoryGirl.create(:user)
+      @tom = FactoryGirl.create(:user, first_name: "Tom", last_name: "Hanks")
+      course.user = @user      
+      course.save
+      unit = FactoryGirl.create(:unit, course: course)
+      unit.save
+      comment = Comment.build_from(course, @tom.id, "my comment")
+      comment.save
+      course.objectives.create(objective: "first objective")
+      course.objectives.create(objective: "second objective")      
+      course.tag_list = "tag 1, tag 2"
+      f = Flag.build_from(course, @user.id)
+      f.save      
+      course.add_or_update_evaluation(:votes, 1, @user)
+      
+      @new_course = course.duplicate_for @tom
+    end
+
+    it "should duplicate the object" do
+      Course.count.should be(2)
+    end
+
+    it "should assign the object to the current_user" do      
+      Course.count.should be(2)
+      Course.last.user_id.should be(@tom.id)
+    end
+
+    it "should duplicate the objectives" do
+      Objective.count.should be(4)
+    end
+
+    it "should copy the tags" do
+      @new_course.tag_list.count.should be(2)
+    end
+
+    it "should exclude the flags" do 
+      @new_course.flags.count.should be(0)
+    end
+
+    it "should reset the ratings" do
+      @new_course.reputation_for(:votes).should eq(0.0)
+      @new_course.has_evaluation?(:votes, @user).should be_false
+    end
+
+    it "should not copy the comments" do
+      @new_course.comment_threads.count.should be(0)
+    end
+
+    it "should duplicate the units" do 
+      Unit.count.should be(2)
+      Unit.last.course_id.should be(@new_course.id)
+    end
+    
+  end
+
 end

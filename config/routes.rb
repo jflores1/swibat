@@ -45,6 +45,7 @@ Swibat::Application.routes.draw do
     resources :comments, :only => [:create, :destroy]
     member do
       post :vote
+      post :fork
       get 'syllabus'
     end
     collection do

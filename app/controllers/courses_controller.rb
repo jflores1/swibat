@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index, :syllabus]
-  before_filter :load_similar_courses, except: [:index, :new, :create, :feed]
+  before_filter :load_similar_courses, except: [:index, :new, :create, :feed, :vote, :fork]
   load_and_authorize_resource
   skip_authorize_resource only: [:show, :index, :syllabus]
 
@@ -96,6 +96,17 @@ class CoursesController < ApplicationController
     end
     redirect_to :back, notice: "Thank you for voting"   
   end
+
+  def fork
+    @course = Course.find(params[:id])
+    @new_course = @course.duplicate_for current_user
+    if @new_course != nil      
+      redirect_to course_path(@new_course), notice: "Successfully copied the course"
+    else
+      redirect_to :back, notice: "There has been an error while trying to copy the course"
+    end
+  end
+
 
   def load_similar_courses
     @course = Course.find(params[:id])

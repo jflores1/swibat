@@ -96,4 +96,74 @@ describe Unit do
 
   end
 
+
+  describe "Duplicating" do    
+    let(:course){ Course.create(course_name:"Physics", course_semester:"Spring", course_year:"2013", course_summary:"It is a summary.", grade_id: "1") }
+
+    before do
+      @user = FactoryGirl.create(:user)
+      @tom = FactoryGirl.create(:user, first_name: "Tom", last_name: "Hanks")
+      course.user = @user      
+      course.save
+
+      @unit = FactoryGirl.create(:unit, course: course)
+      @unit.save
+
+      comment = Comment.build_from(@unit, @tom.id, "my comment")
+      comment.save
+
+      @unit.objectives.create(objective: "first objective")
+      @unit.objectives.create(objective: "second objective")      
+      @unit.assessments.create(assessment_name: "first assessment")
+      @unit.assessments.create(assessment_name: "second assessment")
+
+      FactoryGirl.create(:lesson, unit_id: @unit.id)
+
+      f = Flag.build_from(@unit, @user.id)
+      f.save      
+
+      @unit.add_or_update_evaluation(:votes, 1, @user)
+      
+      @new_course = course.duplicate_for @tom
+      @new_unit = Unit.last
+    end
+
+    it "should duplicate the object" do
+      Unit.count.should be(2)
+    end
+
+    it "should assign the object to the proper course" do      
+      @new_unit.course_id.should be(@new_course.id)      
+    end
+
+    it "should duplicate the objectives" do
+      Objective.count.should be(4)
+      @new_unit.objectives.count.should be(2)
+    end
+
+    it "should duplicate the assessments" do
+      Assessment.count.should be(4)
+      @new_unit.assessments.count.should be(2)
+    end
+
+    it "should exclude the flags" do 
+      @new_unit.flags.count.should be(0)
+    end
+
+    it "should reset the ratings" do
+      @new_unit.reputation_for(:votes).should eq(0.0)
+      @new_unit.has_evaluation?(:votes, @user).should be_false
+    end
+
+    it "should not copy the comments" do
+      @new_unit.comment_threads.count.should be(0)
+    end
+
+    it "should duplicate the lessons" do 
+      Lesson.count.should be(2)
+      Lesson.last.unit_id.should be(@new_unit.id)
+    end
+    
+  end
+
 end

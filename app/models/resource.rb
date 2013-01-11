@@ -22,11 +22,22 @@ class Resource < ActiveRecord::Base
 
   belongs_to :lesson
 
-  attr_accessible :description, :name, :upload
+  attr_accessible :description, :name, :upload, :lesson_id
 
   validates :name, :presence => true
   validates :description, :length => {:maximum => 1000}
   validates_attachment_size :upload, :in => 0.megabytes..15.megabytes
   #validates_attachment_presence :upload
+
+  # Duplication rules
+  amoeba do 
+  	exclude_field [:upload_file_name, :upload_content_type, :upload_file_size, :upload_updated_at]
+
+  	# copy the attachment file
+  	override(lambda { |original_resource, new_resource|
+      new_resource.upload = original_resource.upload
+    })
+
+  end
 
 end
