@@ -67,4 +67,86 @@ describe Lesson do
     end
   end
 
+  describe "Duplicating" do    
+    let(:course){ Course.create(course_name:"Physics", course_semester:"Spring", course_year:"2013", course_summary:"It is a summary.", grade_id: "1") }
+
+    before do
+      @user = FactoryGirl.create(:user)
+      @tom = FactoryGirl.create(:user, first_name: "Tom", last_name: "Hanks")
+      course.user = @user      
+      course.save
+
+      unit = FactoryGirl.create(:unit, course: course)
+      lesson = FactoryGirl.create(:lesson, unit: unit)
+      
+      comment = Comment.build_from(lesson, @tom.id, "my comment")
+      comment.save
+
+      lesson.objectives.create(objective: "first objective")
+      lesson.objectives.create(objective: "second objective")      
+
+      lesson.assessments.create(assessment_name: "first assessment")
+      lesson.assessments.create(assessment_name: "second assessment")
+
+      FactoryGirl.create(:activity, lesson_id: lesson.id)
+      
+      resource = Resource.new(lesson_id: lesson.id, name: "MyString", description: "MyText", upload: File.new(Rails.root + 'spec/fixtures/files/upload.txt'))
+      resource.save
+
+      f = Flag.build_from(lesson, @user.id)
+      f.save      
+
+      lesson.add_or_update_evaluation(:votes, 1, @user)
+      
+      @new_course = course.duplicate_for @tom
+      @new_unit = Unit.last
+      @new_lesson = Lesson.last
+    end
+
+    it "should duplicate the object" do
+      Lesson.count.should be(2)
+    end
+
+    it "should assign the object to the proper unit" do      
+      @new_lesson.unit_id.should be(@new_unit.id)      
+    end
+
+    it "should duplicate the assessments" do
+      Assessment.count.should be(4)
+      @new_lesson.assessments.count.should be(2)
+    end
+
+    it "should duplicate the objectives" do
+      Objective.count.should be(4)
+      @new_lesson.objectives.count.should be(2)
+    end
+
+    it "should duplicate the activities" do 
+      Activity.count.should be(2)
+      Activity.last.lesson_id.should be(@new_lesson.id)
+    end
+
+    it "should exclude the flags" do 
+      @new_lesson.flags.count.should be(0)
+    end
+
+    it "should reset the ratings" do
+      @new_lesson.reputation_for(:votes).should eq(0.0)
+      @new_lesson.has_evaluation?(:votes, @user).should be_false
+    end
+
+    it "should not copy the comments" do
+      @new_lesson.comment_threads.count.should be(0)
+    end
+
+    it "should duplicate the resources and the files" do
+      Resource.count.should be(2)
+      @new_lesson.resources.count.should be(1)      
+      first_file = Resource.first.upload
+      second_file = Resource.last.upload
+      first_file.url.should_not equal second_file.url
+    end   
+    
+  end
+
 end

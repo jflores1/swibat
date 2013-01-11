@@ -19,11 +19,11 @@ class Unit < ActiveRecord::Base
   acts_as_commentable
   
   attr_accessible :expected_end_date, :expected_start_date, :prior_knowledge, :unit_status, :unit_title, :objectives_attributes, :assessments_attributes
-  has_many :objectives, as: :objectiveable
-  has_many :assessments, as: :assessable
-  has_many :lessons
+  has_many :objectives, as: :objectiveable, dependent: :destroy
+  has_many :assessments, as: :assessable, dependent: :destroy
+  has_many :lessons, dependent: :destroy
   belongs_to :course
-  has_many :flags, :as => :flaggable, :dependent => :destroy  
+  has_many :flags, :as => :flaggable, dependent: :destroy
 
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
   accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true
@@ -62,4 +62,7 @@ class Unit < ActiveRecord::Base
     self.unit_title
   end
 
+  amoeba do 
+    exclude_field [:flags, :comment_threads, :evaluations, :reputations]
+  end
 end

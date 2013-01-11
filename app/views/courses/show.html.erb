@@ -84,9 +84,19 @@
 
     <%= content_for :sidebar_related_courses do %>
       <%= render 'shared/sidebar_related_courses' %>
-    <% end %> 
+    <% end %>  
 
     <%= render 'layouts/application_sidebar' %>
+
+    <div class="sidebar">
+      <header class="course-header">
+        <h4>Fork this course!</h4>
+      </header>
+      <section>
+        <p>Copy this course along with all its units and lessons into your own courses collection</p>
+        <%= link_to "Fork Course", fork_course_path(@course), method: "post", class: "btn btn-monkey" %>
+      </section>
+    </div>
 <% end %>
 
 

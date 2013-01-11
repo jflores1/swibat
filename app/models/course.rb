@@ -21,12 +21,11 @@ class Course < ActiveRecord::Base
   
   attr_accessible :course_name, :course_semester, :course_summary, :course_year, :grade, :grade_id, :objectives_attributes, :tag_list
 
-  has_many :objectives, as: :objectiveable
-  has_many :units
-  has_and_belongs_to_many :subjects
+  has_many :objectives, as: :objectiveable, dependent: :destroy
+  has_many :units, dependent: :destroy
   belongs_to :user
   belongs_to :grade
-  has_many :flags, :as => :flaggable, :dependent => :destroy
+  has_many :flags, :as => :flaggable, dependent: :destroy
 
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
 
@@ -64,5 +63,18 @@ class Course < ActiveRecord::Base
 
   def to_s
     self.course_name
+  end
+
+  # duplication rules
+  amoeba do 
+    exclude_field [:flags, :comment_threads, :evaluations, :reputations]
+  end
+
+  def duplicate_for user
+    new_course = self.amoeba_dup
+    new_course.user = user
+    new_course.save
+
+    new_course
   end
 end

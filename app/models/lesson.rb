@@ -19,12 +19,12 @@ class Lesson < ActiveRecord::Base
   acts_as_commentable
 
   attr_accessible :lesson_end_date, :lesson_start_date, :lesson_status, :lesson_title, :prior_knowledge, :resources_attributes, :objectives_attributes, :assessments_attributes
-  has_many :objectives, as: :objectiveable
-  has_many :assessments, as: :assessable
-  has_many :resources
-  has_many :activities
+  has_many :objectives, as: :objectiveable, dependent: :destroy
+  has_many :assessments, as: :assessable, dependent: :destroy
+  has_many :resources, dependent: :destroy
+  has_many :activities, dependent: :destroy
   belongs_to :unit
-  has_many :flags, :as => :flaggable, :dependent => :destroy
+  has_many :flags, :as => :flaggable, dependent: :destroy
 
   accepts_nested_attributes_for :resources, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
@@ -62,5 +62,10 @@ class Lesson < ActiveRecord::Base
 
   def to_s
     self.lesson_title
+  end
+
+  # duplication rules
+  amoeba do
+    exclude_field [:flags, :comment_threads, :evaluations, :reputations]
   end
 end
