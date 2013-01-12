@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c8e40e5b-4458-4862-a0a6-499463a7ca3a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/swibat.iml" afterPath="$PROJECT_DIR$/.idea/swibat.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/custom.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/custom.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="swibat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,16 +58,16 @@
           <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Gemfile">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="3" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
+                <state line="4" column="0" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_lead_form_modal.html.erb" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="_lead_form_modal.html.erb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/forms/_lead_form_modal.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="28" column="0" selection-start="1007" selection-end="1095" vertical-scroll-proportion="0.5874126">
+                <state line="28" column="90" selection-start="1091" selection-end="1091" vertical-scroll-proportion="0.5874126">
                   <folding />
                 </state>
               </provider>
@@ -95,7 +95,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="users.css.scss" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="users.css.scss" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="58" column="15" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.019946808">
@@ -146,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/posts/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/posts.css.scss" />
@@ -162,6 +161,7 @@
         <option value="$PROJECT_DIR$/app/views/shared/_sidebar_sign_up.html.erb" />
         <option value="$PROJECT_DIR$/app/views/static_pages/_registration_form_static.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/custom.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/forms/_lead_form_modal.html.erb" />
       </list>
     </option>
   </component>
@@ -681,7 +681,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0">
+        <state line="4" column="0" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -707,13 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/forms/_lead_form_modal.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1007" selection-end="1095" vertical-scroll-proportion="0.5874126">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/requests/post_pages_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="41" selection-start="1997" selection-end="1997" vertical-scroll-proportion="0.0">
@@ -731,6 +724,13 @@
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="15" selection-start="1219" selection-end="1219" vertical-scroll-proportion="0.019946808">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/forms/_lead_form_modal.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="90" selection-start="1091" selection-end="1091" vertical-scroll-proportion="0.5874126">
           <folding />
         </state>
       </provider>
