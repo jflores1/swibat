@@ -2,6 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/********************************
+Variables
+********************************/
+//Fonts
+$header-gradient-dark-color: #2B2F3A;
+$header-gradient-light-color: #50596D;
+$open-sans: 'Open Sans', 'Helvetica Neue Light', sans-serif;
+$fancy-gray: rgba(80, 89, 109, 0.9);
+$soft-gray: rgba(80, 89, 109, 0.5);
+
+
+//Padding and Such
+$page-width: 980px;
+$box-margin: 0.7692em !important;
+
+/*********************************
+Begin Course-specific css - but make
+sure to copy over variables
+*********************************/
+
 div.course-form{
   float:left;
 
@@ -74,6 +94,27 @@ div.course-form{
 
 div.favoritecount{
 
+}
+
+div#user-header{
+  display: block;
+  float: left;
+
+  img.header-profile-picture{
+    width: 18%;
+    height: 18%;
+  }
+
+  h3{
+    a{
+      color: #50596D;
+    }
+
+    a:hover{
+      color: rgb(164, 50, 32);
+      text-decoration: none;
+    }
+  }
 }
 
 div#course-summary, div.course-overview, div#syllabus{
@@ -151,13 +192,29 @@ p.question{
 }
 
 header.course-header, header.index-header{
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  margin-top: 1.5385em; //20px:13px
+  margin-bottom: 1.5385em;//20px:13px
   font-weight: 300;
   float:left;
   width:100%;
-  border-bottom: 1px solid rgba(152, 161, 186, 0.5);
 
-  h2, h3{
-    color: rgb(164, 50, 32);
+
+  h1, h2, h3{
+    color: $fancy-gray;
+    font-weight: 300;
+  }
+
+  h1{
+    font-size: 1.8462em;//24px:13px
+    line-height: 1em;
+
+    span{
+      i{
+        display: inline-block;
+        margin-top: 8px;
+      }
+    }
   }
 
   h2 {
@@ -170,7 +227,12 @@ header.course-header, header.index-header{
   }
 
   h3{
-    font-size: 1.3077em;
+    font-size: 1.3077em;//17px:13px
+    line-height: 1.619em;
+
+    span{
+      font-size: 0.7647em;
+    }
 
   }
 
@@ -192,6 +254,85 @@ header.course-header, header.index-header{
   }
 
 }
+
+div#course-organizer{
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  color: $fancy-gray;
+  float: left;
+  width: 100%;
+
+  h3{
+    font-weight: 300;
+    margin-left: 0.7692em;//10px:13px
+
+    span{
+      i{
+        display: inline-block;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  p{
+    margin-left: 1em;//10px:13px
+  }
+
+  ul{
+    li:hover{
+      background: #e7e7e7;
+    }
+  }
+
+  .box-top-margin{
+    margin-top: $box-margin;
+  }
+
+  .box-right-margin{
+    margin-right: $box-margin;
+  }
+
+  .box-bottom-margin{
+    margin-bottom: $box-margin;
+  }
+
+  .box-left-margin{
+    margin-left: $box-margin;
+  }
+
+  div.box-container{
+    float: left;
+    max-width: 27.2em; //354px:13px;
+  }
+
+  div.span12box{
+    width: 100%;
+    border: 1px solid $soft-gray;
+    margin-bottom: 0.7692em;
+  }
+
+  div.span3box{
+    width: 23% !important;
+    float: left;
+    border: 1px solid $soft-gray;
+    min-height: 320px !important;
+  }
+
+  div.span6box{
+    width: 100%;
+    float: left;
+    border: 1px solid $soft-gray;
+    min-height: 155px;
+    margin-left: 10px !important;
+
+  }
+
+}
+
+
+
+
+
+
 
 
 

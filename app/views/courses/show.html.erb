@@ -1,71 +1,76 @@
 <% provide(:title, "#{@course.course_name.titleize}") %>
-<div class="span12" id="course-summary">
+<div class="row-fluid">
+  <div id="user-header">
+      <%= image_tag @user.image.url, class:"img-polaroid header-profile-picture", alt: "#{@user.full_name}" %>
+      <h3><%= link_to "#{@user.full_name}", user_path(@user) %></h3>
+      <p><%= @user.institution %></p>
+      <%= display_friendship_actions @user if @user != current_user %>
+      <%= link_to "Edit Profile", edit_user_path(current_user), :class => "btn btn-monkey pull-left" if can? :update, @user %>
+  </div>
 
-  <header class="course-header top-margin">
-    <div class="span12">
-      <h2 class="breadcrumb-header"><%= @course.course_name.titleize %></h2>
-    </div>
-    <div class="span12 no-left-margin">
-      <h2 class="breadcrumb-header"><%= @course.grade.grade_level %>, <%= @course.course_semester %> <%= @course.course_year %></h2>
-    </div>
-  </header>
-
-  <section class="course-info">
-    <header>
-      <h2>
-        Course Summary
+  <header class="course-header">
+    <h1>Course: <%= @course.course_name %>
+      <span>
         <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_course_path(@course), class:"header-edit" if can? :edit, @course %>
         <a class="get-syllabus" href="<%= syllabus_course_path(@course) %>"><i class="icon-book"></i></a>
-      </h2>
-    </header>
-    <article>
+      </span>
+    </h1>
+
+    <h3><%= @course.grade.grade_level %>, <%= @course.course_semester %> <%= @course.course_year %></h3>
+    <h3>Subject: Include one</h3>
+    <h3>Tags: <span><%= raw @course.tag_list.map {|t| link_to t, tag_courses_path(t), class:"tag_link"}.join(" ") %></span></h3>
+  </header>
+
+  <div id="course-organizer">
+    <div class="span12box no-left-margin">
+      <h3>Course Summary</h3>
       <p><%= @course.course_summary %></p>
-    </article>
-  </section>
 
-  <section class="course-info">
-    <header>
-      <h2>Course Objectives</h2>
-    </header>
-    <article>
-      <ul>
-        <% @course.objectives.each do |objective| %>
-            <li><%= objective.objective.humanize %></li>
+    </div>
+
+    <div class="span3box no-left-margin">
+      <h3>Standards Met:</h3>
+    </div>
+
+    <div class="box-container box-right-margin">
+      <div class="span6box box-bottom-margin">
+        <h3>Course Goals</h3>
+        <ul>
+          <% @course.objectives.each do |objective| %>
+              <li><%= objective.objective.humanize %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="span6box">
+        <h3>Course Units
+          <span>
+            <%= link_to '<i class="icon-plus"></i>'.html_safe, new_course_unit_path(@course), class:"header-edit", id:"course-add-unit" if can? :edit, @course %>
+          </span>
+        </h3>
+        <% if current_user? && @course.units.count == 0 %>
+            <p>It doesn't look like you have any units. <%= link_to "Create one now.", new_course_unit_path(@course) if can? :edit, @course %></p>
+        <% elsif @course.units.count == 0%>
+            <p>Sad. It doesn't look like this user has created any courses yet.</p>
+        <% else %>
+            <%= render 'units_lessons_accordion' %>
         <% end %>
-      </ul>
-    </article>
-  </section>
+      </div>
+    </div>
 
-  <section class="course-info">
-    <header>
-      <h2>Tags</h2>
+    <div class="span3box box-left-margin">
+      <h3>Related Courses</h3>
+    </div>
+  </div>
+
+  <div class="span12 no-left-margin">
+    <header class="course-header">
+      <h2>Comments</h2>
     </header>
-    <p><%= raw @course.tag_list.map {|t| link_to t, tag_courses_path(t), class:"tag_link"}.join(" ") %></p>
-  </section>
-
-  <header class="course-header">
-    <h2>Units</h2>
-    <% if can? :edit, @course %>
-        <a id="course-add-unit" href="<%= new_course_unit_path(@course) %>"><i class="title-icon icon-plus"></i></a>
-    <% end %>
-  </header>
-  <section class="course-info">
-    <% if current_user? && @course.units.count == 0 %>
-          <p class="top-margin">It doesn't look like you have any units. <%= link_to "Create one now.", new_course_unit_path(@course) if can? :edit, @course %></p>
-    <% elsif @course.units.count == 0%>
-          <p class="top-margin">Sad. It doesn't look like this user has created any courses yet.</p>
-    <% else %>
-        <%= render 'units_lessons_accordion' %>
-    <% end %>
-  </section>
-
-  <header class="course-header">
-    <h2>Comments</h2>
-  </header>
-  <section class="course-info">
-    <%= render :partial => 'comments/comments', :locals => {:commentable => @course} %>
-  </section>
-
+    <section class="course-info">
+      <%= render :partial => 'comments/comments', :locals => {:commentable => @course} %>
+    </section>
+  </div>
 </div>
 
 <% content_for :sidebar do %>

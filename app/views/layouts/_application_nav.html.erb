@@ -1,31 +1,28 @@
 <header class="navbar hidden-print" id="application-header">
-    <div class="row-fluid">
-      <div class="span12">
-        <!--
-          <div class="logo">
-            # link_to "#{current_user.full_name}", user_path(current_user), class: "application-header-brand"
-          </div>-->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <div class="navdiv">
-            <div class="nav-collapse collapse">
-              <nav class="application-nav">
-                <ul class="nav nav-pills">
-                  <% if signed_in? %>
-                        <li class=""><%= link_to "Your Profile", user_path(current_user) %></li>
-                  <% end %>
-                  <li class=""><%= link_to "Courses", courses_path %></li>
-                  <li class=""><%= link_to "Questions", questions_path %></li>
-                  <li class="offset4"><%= link_to "Ask a Question", new_question_path, class:"btn btn-warning" %></li>
-                </ul>
-              </nav>
-            </div>
+  <div class="row-fluid">
+    <div class="span12">
+
+    </div>
+  </div>
+  <div class="row-fluid">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <div class="navdiv">
+      <div class="nav-collapse collapse">
+        <nav class="application-nav">
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li><%= link_to "my courses", "#", class:"last" %></li>
+              <li><%= link_to "maps", "#" %></li>
+            </ul>
           </div>
+        </nav>
       </div>
     </div>
+  </div>
 </header>
 
 
