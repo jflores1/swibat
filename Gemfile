@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'bootstrap-sass', '2.0.4'
+gem 'bootstrap-sass', '2.2.2.0'
 gem 'bcrypt-ruby'
 gem 'thin'
 gem 'devise'
@@ -56,6 +56,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
   gem 'jquery_datepicker'
+  gem 'font-awesome-rails'
 end
 
 

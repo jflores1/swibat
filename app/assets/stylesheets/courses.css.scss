@@ -11,11 +11,12 @@ $header-gradient-light-color: #50596D;
 $open-sans: 'Open Sans', 'Helvetica Neue Light', sans-serif;
 $fancy-gray: rgba(80, 89, 109, 0.9);
 $soft-gray: rgba(80, 89, 109, 0.5);
+$lightest-gray: #CDCDCD;
 
 
 //Padding and Such
 $page-width: 980px;
-$box-margin: 0.7692em !important;
+$box-margin: 0.9em !important;
 
 /*********************************
 Begin Course-specific css - but make
@@ -29,7 +30,6 @@ div.course-form{
     margin-bottom: 2%;
 
     h1{
-      font-size: 3em;
       color: #5f6e68;
       text-shadow: 2px 2px rgba(234, 231, 231, 0.8);
     }
@@ -37,7 +37,7 @@ div.course-form{
   }
 
   form {
-    $minFormHeight: 1.25em;//32px:16px
+    $minFormHeight: 1.8em;//18px:10px
 
     padding: 2%;
     float:left;
@@ -68,14 +68,14 @@ div.course-form{
     }
 
     label, p {
-      font-size: 1.23em; //16px : 13px
+      font-size: 1.6em; //16px : 10px
       margin: 10px 0px 10px 0px;
     }
 
     input[type="text"], textarea{
       width: 100%;
       min-height: $minFormHeight;
-      font-size: 1.07692308em;
+      font-size: 1.3em;
       color: rgba(80, 89, 107, 0.90);
     }
     input[type="text"].cleared{
@@ -87,7 +87,7 @@ div.course-form{
     }
 
     textarea{
-      height: 60px;
+      height: 6em;
     }
   }
 }
@@ -106,6 +106,7 @@ div#user-header{
   }
 
   h3{
+
     a{
       color: #50596D;
     }
@@ -123,14 +124,6 @@ div#course-summary, div.course-overview, div#syllabus{
   section.course-info{
     float:left;
     width:100%;
-
-    p, li{
-      font-size: 1.07692308em;//14px:13px
-    }
-
-    p.standard-font{
-      font-size: 1em;//10px:13px
-    }
 
     p.none-provided{
       font-style: italic;
@@ -192,21 +185,18 @@ p.question{
 }
 
 header.course-header, header.index-header{
-  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  margin-top: 1.5385em; //20px:13px
-  margin-bottom: 1.5385em;//20px:13px
-  font-weight: 300;
+  margin-top: 2em; //20px:10px
+  margin-bottom: 2em;//20px:10px
   float:left;
   width:100%;
 
 
   h1, h2, h3{
     color: $fancy-gray;
-    font-weight: 300;
+    //font-weight: 300;
   }
 
   h1{
-    font-size: 1.8462em;//24px:13px
     line-height: 1em;
 
     span{
@@ -219,16 +209,9 @@ header.course-header, header.index-header{
 
   h2 {
     float:left;
-    font-size: 1.38461538em;//18px:13px
-  }
-
-  h2.breadcrumb-header{
-    font-size: 1.38461538em;
   }
 
   h3{
-    font-size: 1.3077em;//17px:13px
-    line-height: 1.619em;
 
     span{
       font-size: 0.7647em;
@@ -255,14 +238,186 @@ header.course-header, header.index-header{
 
 }
 
-div#course-organizer{
+div.unit-header{
+  float: left;
+  width: 100%;
+  color: $fancy-gray;
+
+  p.calendar{
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 0px;
+  }
+
+  a{
+    color: $fancy-gray;
+  }
+}
+
+div.course-organizer{
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   color: $fancy-gray;
   float: left;
   width: 100%;
+  margin-top: 1em;
+
+  div.box-row{
+    float: left;
+    width: 100%;
+
+    .no-border{
+      border: none !important;
+    }
+
+    .no-bottom-margin{
+      margin-bottom: 0px !important;
+    }
+
+    .height1{
+      min-height: 3em;
+      margin-bottom: 1em;
+      overflow: scroll;
+    }
+
+    .height2{
+      min-height: 6em;
+      margin-bottom: 1em;
+      overflow: scroll;
+    }
+
+    .height3{
+      min-height: 9em;
+      margin-bottom: 1em;
+      overflow: scroll;
+    }
+
+    .height4{
+      min-height: 11em;
+      margin-bottom: 1em;
+      overflow: scroll;
+    }
+
+    .height5{
+      min-height: 15em;
+      margin-bottom: 1em;
+      overflow: scroll;
+    }
+
+    .height6{
+      min-height: 19em;
+      margin-bottom: 1em;
+      overflow: scroll;
+    }
+
+    .height7{
+      min-height: 21em;
+      margin-bottom: 1em;
+      overflow: scroll;
+    }
+
+    .height8{
+      min-height: 24em;
+      overflow: scroll;
+    }
+
+    .height9{
+      min-height: 27em;
+      overflow: scroll;
+    }
+
+    .height10{
+      min-height: 30em;
+      overflow: scroll;
+    }
+
+    .height11{
+      min-height: 33em;
+      overflow: scroll;
+    }
+
+    .height12{
+      min-height: 35em;
+      overflow: scroll;
+    }
+
+    .span12box {
+      width: 100%;
+      *width: 99.94680851063829%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span11box {
+      width: 91.48936170212765%;
+      *width: 91.43617021276594%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span10box {
+      width: 82.97872340425532%;
+      *width: 82.92553191489361%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span9box {
+      width: 74.46808510638297%;
+      *width: 74.41489361702126%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span8box {
+      width: 65.95744680851064%;
+      *width: 65.90425531914893%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span7box {
+      width: 57.44680851063829%;
+      *width: 57.39361702127659%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span6box {
+      width: 48.93617021276595%;
+      *width: 48.88297872340425%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span5box {
+      width: 40.42553191489362%;
+      *width: 40.37234042553192%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span4box {
+      width: 31.914893617021278%;
+      *width: 31.861702127659576%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span3box {
+      width: 24.09638554216870%;
+      //width: 23.404255319148934%;
+      //*width: 23.351063829787233%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span2box {
+      width: 14.893617021276595%;
+      *width: 14.840425531914894%;
+      border: 1px solid $lightest-gray;
+    }
+
+    .span1box {
+      width: 6.382978723404255%;
+      *width: 6.329787234042553%;
+      border: 1px solid $lightest-gray;
+    }
+
+  }
+
 
   h3{
-    font-weight: 300;
+    font-weight: 400;
     margin-left: 0.7692em;//10px:13px
 
     span{
@@ -301,29 +456,7 @@ div#course-organizer{
 
   div.box-container{
     float: left;
-    max-width: 27.2em; //354px:13px;
-  }
-
-  div.span12box{
-    width: 100%;
-    border: 1px solid $soft-gray;
-    margin-bottom: 0.7692em;
-  }
-
-  div.span3box{
-    width: 23% !important;
-    float: left;
-    border: 1px solid $soft-gray;
-    min-height: 320px !important;
-  }
-
-  div.span6box{
-    width: 100%;
-    float: left;
-    border: 1px solid $soft-gray;
-    min-height: 155px;
-    margin-left: 10px !important;
-
+    min-width: 35.4em; //354px:10px;
   }
 
 }

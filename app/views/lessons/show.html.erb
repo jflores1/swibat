@@ -1,125 +1,83 @@
-<div class="span12" id="course-summary">
+<% provide(:title, "#{@lesson.lesson_title}") %>
+<div class="row-fluid">
+  <%= render 'shared/user_header' %>
+  <div class="unit-header">
+    <p class="calendar">
+      <%= @lesson.lesson_start_date.strftime("%B %d") %> - <%= @lesson.lesson_end_date.strftime("%B %d, %Y") %>
+    </p>
+    <h2>
+      <span>
+        <%= link_to "#{@unit.course.course_name.titleize}", course_path(@unit.course), class:"disguised-header-link" %> / <%= link_to "#{@unit.unit_title.titleize}", course_unit_path(@course, @unit), class:"disguised-header-link" %> / <br/>
+        <%= @lesson.lesson_title.titleize %>
+      </span>
+      <span>
+        <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_unit_lesson_path(@unit, @lesson), class:"edit-unit-lesson" if can? :edit, @lesson %>
+      </span>
+    </h2>
+  </div>
 
-  <header class="course-header top-margin">
-    <div class="span12">
-      <h2 class="breadcrumb-header"> <%= link_to "#{@unit.course.course_name.titleize}", course_path(@unit.course), class:"disguised-header-link" %> / <%= link_to "#{@unit.unit_title.titleize}", course_unit_path(@course, @unit), class:"disguised-header-link" %> / <br/>
-        <%= @lesson.lesson_title.titleize %></h2>
-    </div>
-  </header>
+  <div class="course-organizer">
+    <div class="box-row">
+      <div class="span3box height12 no-left-margin box-right-margin">
+        <h3>Standards Met:</h3>
+      </div>
 
-  <section class="course-info">
-    <header>
-      <h2>Prior Knowledge <%= link_to "(edit lesson)", edit_unit_lesson_path(@unit, @lesson) if can? :update, @lesson %></h2>
-    </header>
-    <article>
-      <p><%= @lesson.prior_knowledge.humanize %></p>
-    </article>
-  </section>
+      <div class="span6box no-border no-left-margin no-bottom-margin height7">
+        <div class="span12box height4">
+          <h3>Content Covered:</h3>
+        </div>
+        <div class="span12box height4 no-left-margin">
+          <h3>Skills</h3>
+        </div>
+        <div class="span12box height4 no-left-margin">
+          <h3>Assessments</h3>
+          <%= list_assessments(@lesson) %>
+        </div>
+      </div>
 
-  <section class="course-info">
-    <header>
-      <h2>Lesson <%= "Objective".pluralize(@lesson.objectives.count) %></h2>
-    </header>
-    <article>
-      <% if @lesson.objectives.count == 0 %>
-        <p>No objectives? Boo. <%= link_to "Add some.", edit_unit_lesson_path(@unit, @lesson) if can? :update, @lesson %></p>
-      <% else %>
-          <ul>
-            <% @lesson.objectives.each do |objective| %>
-                <li><%= objective.objective.humanize %></li>
-            <% end %>
-          </ul>
-      <% end %>
+      <div class="span3box height12 box-left-margin">
+        <h3>Other Lessons</h3>
+      </div>
 
-    </article>
-  </section>
+      <div class="span12box no-left-margin height7">
+        <h3>Learning Strategies</h3>
+      </div>
 
-  <section class="course-info">
-    <header>
-      <h2>Lesson <%= "Assessment".pluralize(@lesson.assessments.count) %></h2>
-    </header>
-    <article>
-      <% if @lesson.assessments.count == 0 %>
-          <p>No assessments? For shame. <%= link_to "Add an assessment.", edit_unit_lesson_path(@unit, @lesson) if can? :update, @lesson %></p>
-      <% else %>
-          <ul>
-            <% @lesson.assessments.each do |assessment| %>
-                <li><%= assessment.assessment_name.humanize %></li>
-            <% end %>
-          </ul>
-      <% end %>
-
-    </article>
-  </section>
-
-  <section class="course-info">
-    <header>
-      <h2>Lesson <%= "Resource".pluralize(@lesson.resources.count) %></h2>
-    </header>
-    <article>
-      <% if @lesson.resources.count == 0 %>
-          <p>The only resource needed here is awesome teaching. <%= link_to "Add a resource.", edit_unit_lesson_path(@unit, @lesson) if can? :update, @lesson %></p>
-      <% else %>
-          <ul>
-            <% @lesson.resources.each do |resource| %>
-                <li>
-                  <% if resource.upload_file_name %>
-                    <%= link_to resource.name, resource.upload.url, title: "Download resource" %>
-                  <% else %>
-                    <%= resource.name %> 
-                  <% end %>
-                </li>
-            <% end %>
-          </ul>
-      <% end %>
-
-    </article>
-  </section>
-
-  <!-- TODO: Add a component for attributing lessons to core standards -->
-
-  <header class="course-header">
-    <h2>Lesson Activities</h2>
-    <% if can? :update, @lesson %>
-        <button class="btn btn-small btn-monkey pull-right"><a class="add-new-activity" href="#"><i class="icon-plus
-        icon-white"></i></a></button>
-    <% end %>
-  </header>
-  <section class="course-info">
-    <div id="activities">
-      <% if @lesson.activities.count == 0 %>
-        <p>No activities planned for this lesson? Hmm... <% if can? :update, @lesson %><a class="add-new-activity" href="#">add some</a><% end %></p>
-      <% else %>
-          <table>
-            <thead>
-            <tr>
-              <th class="large">Activity</th>
-              <th>Duration</th>
-              <th>Leading</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% @lesson.activities.each do |activity| %>
-              <%= render partial: "activities/activity", :locals => {activity: activity} %>                
-            <% end %>
-            </tbody>
-          </table>
-      <% end %>
+      <div class="span12box no-border no-left-margin box-top-margin">
+        <div class="span6box no-left-margin height5" style="margin-right:1.3em;">
+          <h3>Resources</h3>
+          <% if @lesson.resources.count == 0 %>
+              <p>No resources have been added yet. <%= link_to "Add some.", edit_unit_lesson_path(@unit, @lesson) if can? :update, @lesson %></p>
+          <% else %>
+              <ul>
+                <% @lesson.resources.each do |resource| %>
+                    <li>
+                      <% if resource.upload_file_name %>
+                          <%= link_to resource.name, resource.upload.url, title: "Download resource" %>
+                      <% else %>
+                          <%= resource.name %>
+                      <% end %>
+                    </li>
+                <% end %>
+              </ul>
+          <% end %>
+        </div>
+        <div class="span6box no-left-margin height5">
+          <h3>Differentiation Strategies</h3>
+        </div>
+      </div>
 
     </div>
-    <div id="activity-form">
-      <%= render 'form_activity' %>
-      <a class="remove-new-activity">Done Adding</a>
-    </div>
+  </div>
 
-  </section>
-
-  <header class="course-header">
-    <h2>Comments</h2>
-  </header>
-  <section class="course-info">
-    <%= render :partial => 'comments/comments', :locals => {:commentable => @lesson} %>
-  </section>
+  <div class="span12 no-left-margin">
+    <header class="course-header">
+      <h2>Comments</h2>
+    </header>
+    <section class="course-info">
+      <%= render :partial => 'comments/comments', :locals => {:commentable => @unit} %>
+    </section>
+  </div>
 
 </div>
 

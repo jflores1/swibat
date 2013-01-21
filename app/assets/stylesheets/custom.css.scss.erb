@@ -2,12 +2,36 @@
 @import "bootstrap";
 body {
   //padding-top: 60px;
+    font-size: 62.5%;//1em=10px
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+    h1{
+        font-size: 2.4em;
+        line-height: 1.619em;
+        margin: 0px;
+    }
+
+    h2 {
+        font-size: 2em;
+        line-height: 1.619em;
+        margin: 0px;
+    }
+
+    h3 {
+        font-size: 1.8em;
+        line-height: 1.619em;
+        margin: 0px;
+    }
+
+    p, li {
+        font-size: 1.3em;
+        line-height: 1.619em;
+    }
 
 }
 @import "bootstrap-responsive";
+@import "font-awesome";
 @import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
-//call the font family: font-family: 'Permanent Marker', cursive;
-//gray - rgba(96, 110, 103, 1)
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
@@ -20,11 +44,15 @@ Variables
 $header-gradient-dark-color: #2B2F3A;
 $header-gradient-light-color: #50596D;
 $open-sans: 'Open Sans', 'Helvetica Neue Light', sans-serif;
+$permanent-marker: 'Permanent Marker', cursive;
 $fancy-gray: rgba(80, 89, 109, 0.9);
 $soft-gray: rgba(80, 89, 109, 0.5);
+$lightest-gray: #CDCDCD;
+
 
 //Padding and Such
 $page-width: 980px;
+$box-margin: 0.7692em !important;
 
 /********************************
 Body CSS
@@ -91,6 +119,19 @@ section.chalkboard{
     }
 }
 
+i{
+    font-size: 0.8em;
+    color: $fancy-gray;
+}
+
+.white{
+    color: #ffffff !important;
+}
+
+i:hover{
+    text-decoration: none;
+}
+
 /********************************
 Sidebar
 ********************************/
@@ -147,7 +188,7 @@ Navbar Modifications
 
     .fixed-header-logo {
         width: 45%;
-        padding-top: 10px;
+        padding-top: 1em;
         float: left;
 
         a{
@@ -173,6 +214,10 @@ Navbar Modifications
 
 }
 
+.navbar .nav > li > a {
+    padding:  0.5em;
+}
+
 header.navbar {
 
     .brand {
@@ -186,22 +231,20 @@ header.navbar {
         //color:$header-gradient-dark-color;
         color: rgb(164, 50, 32);
         font-family: 'Permanent Marker', cursive, "Helvetica Neue", sans-serif;
-        font-size: 1.8461539em; /*24px:13px*/
         text-decoration:none;
     }
 
     nav.application-nav {
         font-family: $open-sans;
 
-        .nav > li > a{
-            font-size: 1em;//13px
+        .nav > li > a, .nav > li > a:active{
             //background: rgb(221, 98, 75);
             color: $fancy-gray;
             border-color: $soft-gray;
             border-bottom: none;
             text-shadow: none;
-            -moz-box-shadow: inset -2px 2px #e7e7e7;
-            box-shadow: inset -2px 2px #e7e7e7;
+            -moz-box-shadow: inset -1px 1px #e7e7e7;
+            box-shadow: inset -1px 1px #e7e7e7;
         }
 
         .nav > li > a:hover{
@@ -217,7 +260,6 @@ header.navbar {
     nav.navmenu-chalkboard {
         .nav > li > a {
             color:#FFFFFF;
-            font-size: 1em; /*13px*/
         }
 
         .nav > li > a:hover {
@@ -233,12 +275,22 @@ header.navbar {
 
 }
 
+.dropdown-menu{
+    font-size: 0.7692em;//10px:13pxevaluated
+}
+
 /*****************************
 Application Header
 *****************************/
 header#application-header {
     margin-bottom: 2%;
     border-bottom: 1px solid $soft-gray;
+
+    h1.application-nav-header{
+        font-size: 1.8462em;
+        color: $fancy-gray;
+        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    }
 
     div.logo{
         width: 40%;
@@ -252,6 +304,16 @@ header#application-header {
             margin-right: none;
         }
     }
+}
+
+.gray-caret{
+    border-top-color: $fancy-gray !important;
+    border-bottom-color: $fancy-gray !important;
+}
+
+.white-caret{
+    border-top-color: #ffffff !important;
+    border-bottom-color: #ffffff !important;
 }
 
 
@@ -345,6 +407,10 @@ div.accordion{
     a.accordion-toggle{
         width:80%;
         display:inline-block;
+    }
+
+    i{
+        display: inline-block;
     }
 }
 
@@ -469,6 +535,11 @@ Position, Formatting, Fonts
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fadein(rgba(0, 0, 0, 0.1), 15%);
     *background-color: rgb(164, 50, 32);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+
+    i{
+        color:#ffffff;
+        font-size: 1.3em;
+    }
 }
 
 .btn-monkey:hover, .btn-monkey:active, .btn-monkey.active, .btn-monkey.disabled, .btn-monkey[disabled]{
@@ -554,7 +625,7 @@ Media Queries
         }
 
         .navdiv .nav > li > a {
-            font-size: 1em; /*16px /13 */
+            letter-spacing: 2px;
         }
     }
 

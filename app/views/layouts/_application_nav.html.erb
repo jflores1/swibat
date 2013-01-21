@@ -1,6 +1,7 @@
 <header class="navbar hidden-print" id="application-header">
   <div class="row-fluid">
     <div class="span12">
+      <h1 class="application-nav-header"><%= current_user.institution.titleize %></h1>
 
     </div>
   </div>
@@ -15,7 +16,14 @@
         <nav class="application-nav">
           <div class="tabbable">
             <ul class="nav nav-tabs">
-              <li><%= link_to "my courses", "#", class:"last" %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">my courses <b class="caret gray-caret"></b></a>
+                <ul class="dropdown-menu">
+                  <% current_user.courses.each do |course| %>
+                    <li><%= link_to "#{course.course_name}", course_path(course) %></li>
+                  <% end %>
+                </ul>
+              </li>
               <li><%= link_to "maps", "#" %></li>
             </ul>
           </div>

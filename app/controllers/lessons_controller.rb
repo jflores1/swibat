@@ -28,7 +28,7 @@ class LessonsController < ApplicationController
     if @lesson.save && params[:add_another_lesson]
       redirect_to new_unit_lesson_path(@unit)
     elsif @lesson.save && params[:return_to_profile]
-      redirect_to user_path(current_user)
+      redirect_to unit_lesson_path(@unit, @lesson)
     else
       render 'new'
     end

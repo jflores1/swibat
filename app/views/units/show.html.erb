@@ -1,68 +1,75 @@
-<div class="span12" id="course-summary">
+<% provide(:title, "#{@unit.unit_title}") %>
+<div class="row-fluid">
+  <%= render 'shared/user_header' %>
+  <div class="unit-header">
+    <p class="calendar">
+      <%= @unit.expected_start_date.strftime("%B %d") %> - <%= @unit.expected_end_date.strftime("%B %d, %Y") %>
+    </p>
+    <h2>
+      <span>
+        <%= link_to "#{@course.course_name.titleize}", course_path(@course), class:"disguised-header-link" %> / <%= @unit.unit_title.titleize %>
+      </span>
+      <span>
+        <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_course_unit_path(@course, @unit), class:"edit-course-unit" if can? :edit, @unit %>
+      </span>
+    </h2>
+  </div>
 
-  <header class="course-header top-margin">
-    <div class="span12">
-      <h2 class="breadcrumb-header"><%= link_to "#{@course.course_name.titleize}", course_path(@course), class:"disguised-header-link" %> / <%= @unit.unit_title.titleize %></h2>
+  <div class="course-organizer">
+    <div class="box-row">
+      <div class="span3box height12 no-left-margin box-right-margin">
+        <h3>Standards Met:</h3>
+
+      </div>
+
+      <div class="span6box no-border no-left-margin no-bottom-margin height7">
+        <div class="span12box height4">
+          <h3>Content Covered:</h3>
+
+        </div>
+        <div class="span12box height4 no-left-margin">
+          <h3>Skills</h3>
+
+        </div>
+
+        <div class="span12box height4 no-left-margin">
+          <h3>Assessments</h3>
+        </div>
+      </div>
+
+      <div class="span3box height12 box-left-margin">
+        <h3>Other Units</h3>
+
+      </div>
+
+      <div class="span12box no-left-margin">
+        <h3>Unit Lessons
+            <span>
+              <%= link_to '<i class="icon-plus"></i>'.html_safe, new_unit_lesson_path(@unit), class:"header-edit", id:"add-lesson" if can? :edit, @unit %>
+            </span>
+        </h3>
+        <% if @unit.lessons.count == 0 %>
+           <p>No lessons have been added yet. <%= link_to "Add one now", new_unit_lesson_path(@unit) if can? :update, @unit %></p>
+        <% else %>
+            <ul>
+              <% @unit.lessons.each do |lesson| %>
+                    <li><%= link_to "#{lesson.lesson_title}", unit_lesson_path(@unit, lesson) %></li>
+              <% end %>
+            </ul>
+        <% end %>
+      </div>
+
     </div>
-  </header>
+  </div>
 
-  <section class="course-info">
-    <header>
-      <h2>Prior Knowledge <%= link_to "(edit unit)", edit_course_unit_path(@course, @unit) if can? :update, @unit %></h2>
+  <div class="span12 no-left-margin">
+    <header class="course-header">
+      <h2>Comments</h2>
     </header>
-    <article>
-      <p><%= @unit.prior_knowledge %></p>
-    </article>
-  </section>
-
-  <section class="course-info">
-    <header>
-      <h2>Unit <%= "Objective".pluralize(@unit.objectives.count) %></h2>
-    </header>
-    <article>
-      <ul>
-        <% @unit.objectives.each do |objective| %>
-            <li><%= objective.objective %></li>
-        <% end %>
-      </ul>
-    </article>
-  </section>
-
-  <section class="course-info">
-    <header>
-      <h2>Unit <%= "Assessment".pluralize(@unit.assessments.count) %></h2>
-    </header>
-    <article>
-      <ul>
-        <% @unit.assessments.each do |assessment| %>
-            <li><%= assessment.assessment_name %></li>
-        <% end %>
-      </ul>
-    </article>
-  </section>
-
-  <header class="course-header">
-    <h2>Lessons</h2>
-    <% if can? :update, @unit %>
-        <a id="add-lesson" href="<%= new_unit_lesson_path(@unit) %>"><i class="title-icon icon-plus"></i></a>
-    <% end %>
-  </header>
-  <section class="course-info">
-    <% if current_user? && @unit.lessons.count == 0 %>
-        <p class="top-margin">It doesn't look like you have any lessons. <%= link_to "Create one now.", new_unit_lesson_path(@unit) %></p>
-    <% elsif @unit.lessons.count == 0%>
-        <p class="top-margin">Sad. It doesn't look like this user has created any lessons yet.</p>
-    <% else %>
-        <%= render 'lessons_activities_accordion' %>
-    <% end %>
-  </section>
-
-  <header class="course-header">
-    <h2>Comments</h2>
-  </header>
-  <section class="course-info">
-    <%= render :partial => 'comments/comments', :locals => {:commentable => @unit} %>
-  </section>
+    <section class="course-info">
+      <%= render :partial => 'comments/comments', :locals => {:commentable => @unit} %>
+    </section>
+  </div>
 
 </div>
 
