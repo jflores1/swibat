@@ -39,8 +39,8 @@ sprite-arrows.png: sprite-arrows-aa6c15033e25321c219551ea3fcaee6c.png
 sprite-arrows/index.png: sprite-arrows-aa6c15033e25321c219551ea3fcaee6c.png
 application.js: application-2f560a8e6c55cc88101d1ed0a023921a.js
 application/index.js: application-2f560a8e6c55cc88101d1ed0a023921a.js
-application.css: application-ff8796631dd852a165b16d8ce5b6f248.css
-application/index.css: application-ff8796631dd852a165b16d8ce5b6f248.css
+application.css: application-394b264dd6bbddc29846f7fc31e8762c.css
+application/index.css: application-394b264dd6bbddc29846f7fc31e8762c.css
 FontAwesome.otf: FontAwesome-468f83b63df32064983141584a19ff17.otf
 FontAwesome/index.otf: FontAwesome-468f83b63df32064983141584a19ff17.otf
 fontawesome-webfont.eot: fontawesome-webfont-635909f146e208b3509acdf3b154bf0d.eot

@@ -41,8 +41,18 @@ module ApplicationHelper
     presenter
   end
 
-  def current_user?
-    current_user
+  def show_institution
+    if signed_in?
+      current_user.institution.titleize
+    else
+      content_tag :p, "Sign Up"
+    end
+  end
+
+  def show_current_user_courses
+    if signed_in?
+      render 'shared/header_current_user_courses'
+    end
   end
 
 end
