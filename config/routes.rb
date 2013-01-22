@@ -1,4 +1,5 @@
 Swibat::Application.routes.draw do
+  
   match "search" => "search#index"
 
   root to: 'static_pages#request_invite'
@@ -31,7 +32,11 @@ Swibat::Application.routes.draw do
   end
 
   resources :leads
-  resources :users
+  resources :users do
+    member { get :followers }
+    member { get :following }
+  end
+
   resources :posts do
     collection do
       get 'tags/:tag', to: 'posts#index', as: :tag
@@ -70,10 +75,9 @@ Swibat::Application.routes.draw do
     member { post :vote }
   end
 
-  resources :friendships, :only => [:index, :destroy] do
+  resources :followings, :only => [:destroy] do
     member do
-      post 'add'
-      post 'accept'      
+      post 'follow'
     end
   end
   

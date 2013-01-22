@@ -11,6 +11,7 @@
 #  updated_at      :datetime         not null
 #  user_id         :integer
 #  grade_id        :integer
+#  subject_id      :integer
 #
 
 class Course < ActiveRecord::Base

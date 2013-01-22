@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 	load_and_authorize_resource
-  skip_authorize_resource only: [:index, :show]
+  skip_authorize_resource only: [:index, :show, :following, :followers]
   before_filter :load_courses
 
   def index
@@ -37,6 +37,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def following
+    @user = User.find(params[:id])
+    @users = @user.people_followed
+
+    respond_to do |format|      
+      format.html { render action: "followers" }
+    end
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
+    
+    respond_to do |format|      
+      format.html
+    end
+  end
+
   def load_courses
     @user = User.find(params[:id])
     @courses = @user.courses.all
@@ -47,7 +65,6 @@ class UsersController < ApplicationController
       @similar_courses_based_on_objectives = Objective.find_similar_objectiveables(objectives, "Course", "objectives").first(5)
       @similar_courses_based_on_objectives.delete_if {|c| c[:objectiveable].id == course.id}
     end
-
   end
 
 end

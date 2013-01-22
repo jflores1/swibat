@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122050601) do
+ActiveRecord::Schema.define(:version => 20130122151013) do
 
   create_table "activities", :force => true do |t|
     t.string   "activity"
@@ -106,16 +106,15 @@ ActiveRecord::Schema.define(:version => 20130122050601) do
     t.datetime "updated_at",     :null => false
   end
 
-  create_table "friendships", :force => true do |t|
+  create_table "followings", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "friend_id"
-    t.string   "status",     :default => "pending", :null => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.integer  "followee_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
-  add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
+  add_index "followings", ["followee_id"], :name => "index_friendships_on_friend_id"
+  add_index "followings", ["user_id"], :name => "index_friendships_on_user_id"
 
   create_table "grades", :force => true do |t|
     t.string   "grade_level"

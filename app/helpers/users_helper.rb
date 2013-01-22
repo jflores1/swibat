@@ -1,25 +1,18 @@
 module UsersHelper
 
-	def display_friendship_actions friend
+	def display_follow_actions followee
     if user_signed_in?
-      friendship = Friendship.find_by_user_id_and_friend_id(current_user.id, friend.id)
-      content_tag :div, :class => "friendship" do
-        if friendship != nil
-          if friendship.status == 'accepted'
-            link_to "Disconnect", friendship, :method => :delete, class: "btn"
-          elsif friendship.requested_by?(current_user)
-            link_to "Revoke Request", friendship, :method => :delete, class: "btn"
-          elsif friendship.requested_by?(friend)
-            link_to("Accept Connection", accept_friendship_path(friendship), :method => :post, class: "btn") + ' ' +
-                link_to("Decline Connection", friendship, :method => :delete, class: "btn")
-          end
+      following = Following.find_by_user_id_and_followee_id(current_user.id, followee.id)
+      content_tag :div, :class => "following" do
+        if following != nil         
+          link_to "Unfollow", following, :method => :delete, class: "btn"          
         else
-          link_to "Connect", add_friendship_path(friend.id), :method => :post, class: "btn"
+          link_to "Follow", follow_following_path(followee.id), :method => :post, class: "btn"
         end
       end
     else
-      content_tag :div, class: "friendship" do
-        link_to "Connect", new_user_registration_path, class: "btn"
+      content_tag :div, class: "following" do
+        link_to "Follow", new_user_registration_path, class: "btn"
       end
     end
 	end

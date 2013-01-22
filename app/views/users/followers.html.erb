@@ -1,0 +1,8 @@
+<table class="table table-striped">
+	<% @users.each do |user| %>
+		<tr>			
+			<td><%= image_tag user.image.url(:x50), alt: "#{user.full_name}" %> <%= link_to user.full_name, user_path(user) %></td>
+			<td><%= display_follow_actions user if user != current_user %>    </td>
+		</tr>
+	<% end %>
+</table>

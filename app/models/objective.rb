@@ -8,7 +8,7 @@
 #  objectiveable_type :string(255)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  objective_type     :string(255)
+#  objective_type     :string(255)      default("Goal")
 #
 
 class Objective < ActiveRecord::Base

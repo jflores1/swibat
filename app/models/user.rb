@@ -55,16 +55,24 @@ class User < ActiveRecord::Base
   has_many :friend_courses, through: :friends, source: :courses
 
   # Define the friendship relations with some semantics.
-  has_many :friendships, :conditions => "status = 'accepted'"
-  has_many :friends, :through => :friendships
+  has_many  :followings,
+            :class_name => :Following,
+            foreign_key: :user_id
+  
+  has_many  :incoming_followings,             
+            :class_name => :Following,
+            foreign_key: :followee_id
 
-  has_many :sent_friend_requests, 
-           :class_name => :Friendship,           
-           :conditions => "status = 'pending'"           
+  has_many  :followers, through: :incoming_followings, source: :user
+  has_many  :people_followed, through: :followings, source: :followee
 
-  has_many :incoming_friend_requests,
-           :class_name => :Friendship,
-           :conditions => "status = 'requested'"           
+  # has_many :sent_friend_requests, 
+  #          :class_name => :Friendship,           
+  #          :conditions => "status = 'pending'"           
+
+  # has_many :incoming_friend_requests,
+  #          :class_name => :Friendship,
+  #          :conditions => "status = 'requested'"           
 
   has_reputation :reputation, :source => [
     { :reputation => :votes, :of => :questions, :weight => 0.15},
@@ -109,9 +117,9 @@ class User < ActiveRecord::Base
     "#{id}-#{full_name.strip.parameterize}"
   end
 
-  def friends_with?(user)
-    self.friends.include?(user)
-  end
+  # def friends_with?(user)
+  #   self.friends.include?(user)
+  # end
 
   private
 
