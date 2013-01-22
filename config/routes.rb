@@ -4,7 +4,7 @@ Swibat::Application.routes.draw do
 
   root to: 'static_pages#request_invite'
 
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   post "invitations/send_invitation"
   
