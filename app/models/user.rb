@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   has_many :units, :through => :courses
   has_many :lessons, :through => :units
   has_many :friend_courses, through: :friends, source: :courses
-  has_many :microposts, dependent: destroy
+  has_many :microposts, dependent: :destroy
 
   # Define the friendship relations with some semantics.
   has_many  :followings,
