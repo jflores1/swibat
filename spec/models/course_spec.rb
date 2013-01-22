@@ -28,6 +28,7 @@ describe Course do
     it {should respond_to(:grade_id)}
     it {should respond_to(:flags)}
     it {should respond_to(:reputation_for)}
+    it {should respond_to(:subject)}
   end
 
   context "With proper validation" do

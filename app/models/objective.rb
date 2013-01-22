@@ -8,13 +8,18 @@
 #  objectiveable_type :string(255)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  objective_type     :string(255)
 #
 
 class Objective < ActiveRecord::Base
-  attr_accessible :objective
+  attr_accessible :objective, :objective_type
   belongs_to :objectiveable, polymorphic: true
 
+  OBJECTIVE_TYPES = ["Goal", "Content", "Skill"]
+  validate :valid_objective_type
 
+  scope :content, where(objective_type: "Content")
+  scope :skills, where(objective_type: "Skill")
 
   # Returns similar objectiveable
   def self.find_similar_objectiveables input_strings, type, based_on, threshold = 0.3, limit = nil
@@ -51,6 +56,11 @@ class Objective < ActiveRecord::Base
   	result_set = result_set.sort_by { |entry| entry[:similarity] }
   	limit ||= result_set.length  	
   	result_set.reverse[0..limit-1]
+  end
+
+  private
+  def valid_objective_type
+    errors.add(:objective_type, "is not a valid objective type") unless OBJECTIVE_TYPES.include? objective_type
   end
 
 end

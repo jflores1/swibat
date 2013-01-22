@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe "UnitPages" do
-  let(:course){FactoryGirl.create(:course)}
+  let(:user){create(:user)}
+  let(:course){create(:course, user: user)}
 
   context "When a user is signed in" do
     describe "it allows access" do
@@ -16,7 +17,6 @@ describe "UnitPages" do
       let(:submit){"Save and Come Back Later"}
       let(:move_on){"Add Some Lessons"}
       let(:unit){course.units}
-
 
       context "with valid information" do
         before {sign_in_and_go_to_form}
@@ -65,116 +65,6 @@ describe "UnitPages" do
       end
     end
 
-    describe "The unit show path" do
-      let(:unit){create(:unit_with_lessons)}
-      let(:user){course.user}
-      let!(:objective){unit.objectives.create(objective: "Describe how Carnegie changed steel")}
-      let!(:objective2){unit.objectives.create(objective:"Describe how Rockefeller changed oil")}
-      let!(:assessment){unit.assessments.create(assessment_name:"A business plan for the 21st century")}
-
-      before do
-        sign_in_via_form
-        visit course_unit_path(course, unit)
-      end
-      subject {page}
-
-      #header information
-      it {should have_selector("h2", text: "Physics")}
-      it {should have_selector("h2",text: "The Industrial Revolution")}
-      it {should have_selector("h2", text: "Prior Knowledge")}
-      it {should have_selector("p", text: "The Great Barons")}
-      it "should have a link to edit the unit" do
-        find_link("edit unit").click
-        current_path.should eq(edit_course_unit_path(course, unit))
-      end
-      it "should have a link back to the parent course" do
-        find_link("Physics").click
-        current_path.should eq(course_path(course))
-      end
-
-      #lists objectives. Pluralize "Objective" and "Assessment" based on count
-      it {print page.html}
-      it {should have_selector("h2", text: "Unit Objectives")}
-      it {should have_selector("li", text:"Describe How Carnegie Changed Steel")}
-      it {should have_selector("li", text:"Describe How Rockefeller Changed Oil")}
-
-      #lists assessments, Pluralized based on count
-      it {should have_selector("h2", text: "Unit Assessment")}
-      it {should have_selector("li", text: "A business plan for the 21st century")}
-
-      #displays lesson accordion
-      describe "The lesson accordion" do
-        let!(:lesson){create(:lesson, unit: unit)}
-        let!(:activity){lesson.activities.create(activity:"Quiz", duration: "15 minutes", agent: "Teacher")}
-        before {visit course_unit_path(course, unit)}
-        it {should have_selector("h2", text: "Lessons")}
-        it "should have a link to add lessons" do
-          find("#add-lesson").click
-          current_path.should eq(new_unit_lesson_path(unit))
-        end
-        it "should have activity titles" do
-          page.should have_content("Quiz")
-        end
-      end
-
-
-      describe "Displays similar units" do
-        it {should have_content("Similar Units")}
-      end
-
-      describe "Working vote model" do
-        it "should display the voting buttons" do
-          page.should have_selector(".vote")
-        end
-
-        it "should have working upvote button" do
-          unit.reputation_for(:votes).to_i.should == 0
-          upvote = find(".upvote").first(:xpath,".//..")        
-          upvote.click
-          unit.reputation_for(:votes).to_i.should == 1
-        end
-
-        it "clicking the upvote button should change its color and type param" do       
-          upvote = find(".upvote").first(:xpath,".//..")
-          upvote.click
-          page.should have_selector(".upvote-active")
-          have_xpath("//a[contains(@href,'type=clear')]")
-        end
-
-        it "clicking a red upvote button should reset the user's vote for that resource" do
-          upvote = find(".upvote").first(:xpath,".//..")
-          upvote.click
-          unit.reputation_for(:votes).to_i.should == 1
-          upvote = find(".upvote-active").first(:xpath,".//..")
-          upvote.click
-          unit.reputation_for(:votes).to_i.should == 0
-        end
-
-        it "should have working downvote button" do
-          unit.reputation_for(:votes).to_i.should == 0
-          downvote = find(".downvote").first(:xpath,".//..")                
-          downvote.click
-          unit.reputation_for(:votes).to_i.should == -1
-        end
-
-        it "clicking the downvote button should change its color and type param" do       
-          downvote = find(".downvote").first(:xpath,".//..")
-          downvote.click
-          page.should have_selector(".downvote-active")
-          have_xpath("//a[contains(@href,'type=clear')]")
-        end
-
-        it "clicking a red downvote button should reset the user's vote for that resource" do
-          downvote = find(".downvote").first(:xpath,".//..")
-          downvote.click
-          unit.reputation_for(:votes).to_i.should == -1
-          downvote = find(".downvote-active").first(:xpath,".//..")
-          downvote.click
-          unit.reputation_for(:votes).to_i.should == 0
-        end
-      end
-    end
-
     describe "Can update a unit" do
       let(:course){create(:course)}
       let(:unit){create(:unit)}
@@ -196,6 +86,127 @@ describe "UnitPages" do
       before {get new_course_unit_path(course)}
       it {response.status.should be(302)}
     end
+  end
+
+  context "The unit show path" do
+    let(:user){create(:user)}
+    let(:course){create(:course, user: user)}
+    let(:unit){create(:unit_with_lessons, course: course)}
+    let!(:objective){unit.objectives.create(objective: "Describe how Carnegie changed steel", objective_type: "Content")}
+    let!(:objective2){unit.objectives.create(objective:"Describe how Rockefeller changed oil", objective_type: "Skill")}
+    let!(:assessment){unit.assessments.create(assessment_name:"A business plan for the 21st century")}
+
+    before do
+      sign_in_via_form
+      visit course_unit_path(course, unit)
+    end
+    subject {page}
+
+    #header information
+    it {should have_selector("p", text: "#{unit.expected_start_date.strftime('%B %d')} - #{unit.expected_end_date.strftime('%B %d, %Y')}")}
+    it {should have_selector("h2", text: "Physics / The Industrial Revolution")}
+
+    #Standards Met
+    xit {should have_content("standards")}
+
+    #Content Covered
+    it {should have_content("Describe how Carnegie changed steel")}
+
+    #Skills Covered
+    it {should have_content("Describe how Rockefeller changed oil")}
+
+    it "should have a link to edit the unit" do
+      find("a.edit-course-unit").click
+      current_path.should eq(edit_course_unit_path(course, unit))
+    end
+    it "should have a link back to the parent course" do
+      find_link("Physics").click
+      current_path.should eq(course_path(course))
+    end
+
+    #lists assessments
+    it {should have_selector("h3", text: "Assessments")}
+    it {should have_selector("li", text: "A business plan for the 21st century")}
+
+    #lists unit lessons, with links
+    it {should have_selector("h3", text: "Unit Lessons")}
+    it {should have_content("#{unit.lessons.first.lesson_title}")}
+    it "should have a link to the unit lesson page" do
+      find_link("#{unit.lessons.first.lesson_title}").click
+      page.should have_selector("h2", text: "#{unit.lessons.first.lesson_title}")
+    end
+
+    #displays lesson accordion
+    #describe "The lesson accordion" do
+    #  let!(:lesson){create(:lesson, unit: unit)}
+    #  let!(:activity){lesson.activities.create(activity:"Quiz", duration: "15 minutes", agent: "Teacher")}
+    #  before {visit course_unit_path(course, unit)}
+    #  it {should have_selector("h2", text: "Lessons")}
+    #  it "should have a link to add lessons" do
+    #    find("#add-lesson").click
+    #    current_path.should eq(new_unit_lesson_path(unit))
+    #  end
+    #  it "should have activity titles" do
+    #    page.should have_content("Quiz")
+    #  end
+    #end
+
+
+    describe "Displays similar units" do
+      it {should have_content("Similar Units")}
+    end
+
+    #describe "Working vote model" do
+    #  it "should display the voting buttons" do
+    #    page.should have_selector(".vote")
+    #  end
+    #
+    #  it "should have working upvote button" do
+    #    unit.reputation_for(:votes).to_i.should == 0
+    #    upvote = find(".upvote").first(:xpath,".//..")
+    #    upvote.click
+    #    unit.reputation_for(:votes).to_i.should == 1
+    #  end
+    #
+    #  it "clicking the upvote button should change its color and type param" do
+    #    upvote = find(".upvote").first(:xpath,".//..")
+    #    upvote.click
+    #    page.should have_selector(".upvote-active")
+    #    have_xpath("//a[contains(@href,'type=clear')]")
+    #  end
+    #
+    #  it "clicking a red upvote button should reset the user's vote for that resource" do
+    #    upvote = find(".upvote").first(:xpath,".//..")
+    #    upvote.click
+    #    unit.reputation_for(:votes).to_i.should == 1
+    #    upvote = find(".upvote-active").first(:xpath,".//..")
+    #    upvote.click
+    #    unit.reputation_for(:votes).to_i.should == 0
+    #  end
+    #
+    #  it "should have working downvote button" do
+    #    unit.reputation_for(:votes).to_i.should == 0
+    #    downvote = find(".downvote").first(:xpath,".//..")
+    #    downvote.click
+    #    unit.reputation_for(:votes).to_i.should == -1
+    #  end
+    #
+    #  it "clicking the downvote button should change its color and type param" do
+    #    downvote = find(".downvote").first(:xpath,".//..")
+    #    downvote.click
+    #    page.should have_selector(".downvote-active")
+    #    have_xpath("//a[contains(@href,'type=clear')]")
+    #  end
+    #
+    #  it "clicking a red downvote button should reset the user's vote for that resource" do
+    #    downvote = find(".downvote").first(:xpath,".//..")
+    #    downvote.click
+    #    unit.reputation_for(:votes).to_i.should == -1
+    #    downvote = find(".downvote-active").first(:xpath,".//..")
+    #    downvote.click
+    #    unit.reputation_for(:votes).to_i.should == 0
+    #  end
+    #end
   end
 
   private

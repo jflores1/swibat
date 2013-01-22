@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105233628) do
+ActiveRecord::Schema.define(:version => 20130122050601) do
 
   create_table "activities", :force => true do |t|
     t.string   "activity"
@@ -68,8 +68,10 @@ ActiveRecord::Schema.define(:version => 20130105233628) do
     t.datetime "updated_at",      :null => false
     t.integer  "user_id"
     t.integer  "grade_id"
+    t.integer  "subject_id"
   end
 
+  add_index "courses", ["subject_id"], :name => "index_courses_on_subject_id"
   add_index "courses", ["user_id"], :name => "index_courses_on_user_id"
 
   create_table "domain_grades", :force => true do |t|
@@ -169,8 +171,9 @@ ActiveRecord::Schema.define(:version => 20130105233628) do
     t.string   "objective"
     t.integer  "objectiveable_id"
     t.string   "objectiveable_type"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "objective_type",     :default => "Goal"
   end
 
   add_index "objectives", ["objectiveable_id", "objectiveable_type"], :name => "index_objectives_on_objectiveable_id_and_objectiveable_type"

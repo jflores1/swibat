@@ -2,13 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8e40e5b-4458-4862-a0a6-499463a7ca3a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/_header_current_user_courses.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/swibat.iml" afterPath="$PROJECT_DIR$/.idea/swibat.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss.erb" afterPath="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/demo.css.scss.erb" afterPath="$PROJECT_DIR$/app/assets/stylesheets/demo.css.scss.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/courses_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_application_nav.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_application_nav.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/units_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/units_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/course.rb" afterPath="$PROJECT_DIR$/app/models/course.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/objective.rb" afterPath="$PROJECT_DIR$/app/models/objective.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/post.rb" afterPath="$PROJECT_DIR$/app/models/post.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/unit.rb" afterPath="$PROJECT_DIR$/app/models/unit.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/_form_course.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/_form_course.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/courses/show.html.erb" afterPath="$PROJECT_DIR$/app/views/courses/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_header_current_user_courses.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_header_current_user_courses.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/units/show.html.erb" afterPath="$PROJECT_DIR$/app/views/units/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories.rb" afterPath="$PROJECT_DIR$/spec/factories.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/course_spec.rb" afterPath="$PROJECT_DIR$/spec/models/course_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/objective_spec.rb" afterPath="$PROJECT_DIR$/spec/models/objective_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/post_spec.rb" afterPath="$PROJECT_DIR$/spec/models/post_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/requests/course_pages_spec.rb" afterPath="$PROJECT_DIR$/spec/requests/course_pages_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/requests/unit_pages_spec.rb" afterPath="$PROJECT_DIR$/spec/requests/unit_pages_spec.rb" />
     </list>
     <ignored path="swibat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,37 +46,46 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="custom.css.scss.erb" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss.erb">
+          <file leaf-file-name="unit.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/models/unit.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="259" column="27" selection-start="5536" selection-end="5536" vertical-scroll-proportion="0.62650603">
+                <state line="57" column="26" selection-start="1864" selection-end="1864" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="courses.css.scss" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/courses.css.scss">
+          <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/views/courses/show.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="39" column="30" selection-start="929" selection-end="929" vertical-scroll-proportion="0.0">
+                <state line="13" column="44" selection-start="613" selection-end="613" vertical-scroll-proportion="0.29191616">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_navbar.html.erb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/layouts/_navbar.html.erb">
+          <file leaf-file-name="courses_controller.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="30" column="114" selection-start="1498" selection-end="1498" vertical-scroll-proportion="0.0">
+                <state line="38" column="20" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="lessons_helper.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/helpers/lessons_helper.rb">
+          <file leaf-file-name="application_helper.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="3" column="60" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0">
+                <state line="60" column="30" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_header_current_user_courses.html.erb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/shared/_header_current_user_courses.html.erb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="7" column="51" selection-start="380" selection-end="380" vertical-scroll-proportion="-4.375">
                   <folding />
                 </state>
               </provider>
@@ -73,17 +95,8 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/lessons/show.html.erb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="46" column="51" selection-start="1727" selection-end="1727" vertical-scroll-proportion="-0.625">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="assessment.rb" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/models/assessment.rb">
+          <file leaf-file-name="subject.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/models/subject.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
                   <folding />
@@ -95,6 +108,33 @@
             <entry file="file://$PROJECT_DIR$/app/assets/javascripts/custom.js.coffee">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="units_helper.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/helpers/units_helper.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="course_pages_spec.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/spec/requests/course_pages_spec.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="284" column="21" selection-start="8402" selection-end="8402" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_form_course.html.erb" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/views/courses/_form_course.html.erb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="23" column="99" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.5164671">
                   <folding />
                 </state>
               </provider>
@@ -115,28 +155,28 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$USER_HOME$/.rvm/gems/ruby-1.9.3-p194/gems/bootstrap-sass-2.0.4.0/vendor/assets/stylesheets/_bootstrap.scss" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_user_header.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/courses/show.html.erb" />
+        <option value="$PROJECT_DIR$/spec/models/objective_spec.rb" />
+        <option value="$PROJECT_DIR$/app/models/objective.rb" />
+        <option value="$PROJECT_DIR$/app/models/unit.rb" />
+        <option value="$PROJECT_DIR$/spec/requests/unit_pages_spec.rb" />
         <option value="$PROJECT_DIR$/app/views/units/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/courses.css.scss" />
-        <option value="$PROJECT_DIR$/app/controllers/lessons_controller.rb" />
-        <option value="$PROJECT_DIR$/app/helpers/lessons_helper.rb" />
-        <option value="$PROJECT_DIR$/app/views/lessons/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/shared/_header_current_user_courses.html.erb" />
+        <option value="$PROJECT_DIR$/app/helpers/units_helper.rb" />
+        <option value="$PROJECT_DIR$/db/seeds.rb" />
+        <option value="$PROJECT_DIR$/spec/models/course_spec.rb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_application_nav.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/demo.css.scss.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss.erb" />
+        <option value="$PROJECT_DIR$/app/views/shared/_header_current_user_courses.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
+        <option value="$PROJECT_DIR$/spec/requests/course_pages_spec.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130122050601_add_subject_id_to_course.rb" />
+        <option value="$PROJECT_DIR$/app/views/courses/_form_course.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/courses/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/course.rb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="15" />
-    <option name="y" value="27" />
+    <option name="x" value="8" />
+    <option name="y" value="26" />
     <option name="width" value="1899" />
     <option name="height" value="875" />
   </component>
@@ -185,6 +225,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -271,7 +312,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
+              <option name="myItemId" value="units" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -309,21 +350,20 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Database.TableEditor.Splitter" value="0.9" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.editor" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="dynamic.classpath" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -504,14 +544,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="15" y="27" width="1899" height="875" extended-state="0" />
+    <frame x="8" y="26" width="1899" height="875" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293556" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15866163" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15464513" sideWeight="0.06307692" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14732866" sideWeight="0.92615384" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14894766" sideWeight="0.92615384" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39956802" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -580,84 +620,63 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/courses/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="195" selection-end="461" vertical-scroll-proportion="0.13473053" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/presenters/base_presenter.rb">
+    <entry file="file://$PROJECT_DIR$/app/helpers/units_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/lesson.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/unit.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="57" column="26" selection-start="1864" selection-end="1864" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/lessons_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="60" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/units/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="37" selection-start="2297" selection-end="2297" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/lessons/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="51" selection-start="1727" selection-end="1727" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/courses.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="30" selection-start="929" selection-end="929" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+    <entry file="dbDummy://dbElement:/ab7de48f/3d87398c-b844-4662-b840-ed1a8e69e7eb/..courses">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="48" selection-start="1668" selection-end="1668" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/demo.css.scss.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="37" selection-start="228" selection-end="228" vertical-scroll-proportion="0.1138088">
+        <state line="60" column="30" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/shared/_header_current_user_courses.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="5" selection-start="312" selection-end="312" vertical-scroll-proportion="0.15718563">
+        <state line="7" column="51" selection-start="380" selection-end="380" vertical-scroll-proportion="-4.375">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_application_nav.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="41" selection-start="799" selection-end="799" vertical-scroll-proportion="0.46255508">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/presenters/course_presenter.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/courses/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/questions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="20" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/models/course_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="36" selection-start="996" selection-end="996" vertical-scroll-proportion="-0.12605043">
           <folding />
         </state>
       </provider>
@@ -669,69 +688,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss.erb">
+    <entry file="file://$PROJECT_DIR$/spec/requests/course_pages_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="259" column="27" selection-start="5536" selection-end="5536" vertical-scroll-proportion="0.62650603">
+        <state line="284" column="21" selection-start="8402" selection-end="8402" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="uml://DATABASE/3d87398c-b844-4662-b840-ed1a8e69e7eb">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>3d87398c-b844-4662-b840-ed1a8e69e7eb</OriginalElement>
-          <nodes>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:summaries</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:rs_evaluations</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:sqlite_sequence</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:profiles</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:users</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:flags</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:educational_standards</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:friendships</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:rs_reputations</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:subjects</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:standard_strands</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:taggings</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:links</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:leads</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:professional_accomplishments</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:professional_educations</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:specialties</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:domain_grades</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:resources</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:rs_reputation_messages</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:units</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:institutions</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:objectives</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:courses</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:professional_experiences</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:answers</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:questions</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:activities</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:comments</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:grades</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:assessments</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:lessons</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:schema_migrations</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:educational_domains</node>
-            <node x="" y="">3d87398c-b844-4662-b840-ed1a8e69e7eb.table:tags</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.4181937172774869" x="754.0" y="717.5" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
+    <entry file="file://$PROJECT_DIR$/app/models/grade.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/assessment.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130122050601_add_subject_id_to_course.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="3" column="36" selection-start="149" selection-end="149" vertical-scroll-proportion="0.06382979">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/courses/_form_course.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="99" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.5164671">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/course.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="53" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.8236994">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/courses/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="44" selection-start="613" selection-end="613" vertical-scroll-proportion="0.29191616">
           <folding />
         </state>
       </provider>

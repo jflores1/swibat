@@ -18,13 +18,13 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = current_user.courses.new
+    @course = Course.new
     @course.objectives.build
   end
 
   def create
     @grades = Grade.all
-    @course = current_user.courses.new(params[:course])
+    @course = current_user.courses.build(params[:course])
     if @course.save && params[:save_and_return]
       redirect_to course_path(@course)
     elsif @course.save && params[:course_to_unit]
@@ -36,7 +36,7 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @course = current_user.courses.find(params[:id])
+    @course = Course.find(params[:id])
     @course.objectives.all
   end
 

@@ -50,8 +50,16 @@ module ApplicationHelper
   end
 
   def show_current_user_courses
-    if signed_in?
+    if signed_in? && current_user.courses.count > 0
       render 'shared/header_current_user_courses'
+    elsif signed_in?
+      content_tag :li do
+        concat(link_to "add course", new_course_path)
+      end
+    else
+      content_tag :li do
+        concat(link_to "sign up", new_user_registration_path)
+      end
     end
   end
 

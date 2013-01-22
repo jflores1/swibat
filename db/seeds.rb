@@ -8,6 +8,13 @@
 
 require 'csv'
 
+#Subjects
+puts "Creating subjects"
+subjects = ["English", "Science", "Math", "Social Studies", "Foreign Language", "Art", "Humanities", "Health & PE", "Religion"]
+subjects.sort.each do |subject|
+  Subject.find_or_create_by_subject(subject)
+end
+
 # Grades
 puts "Creating grades"
 grades = ["Kindergarten", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", 

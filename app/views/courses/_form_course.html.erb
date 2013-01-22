@@ -21,7 +21,10 @@
   </div>
 
   <%= course.label :grade_id, "What age are the students?" %>
-  <%= course.collection_select(:grade_id, Grade.all, :id, :grade_level, options ={:prompt => "Select Grade"})  %>
+  <%= course.collection_select(:grade_id, Grade.all, :id, :grade_level, options ={:prompt => "Grade"})  %>
+
+  <%= course.label :subject_id, "Course subject?" %>
+  <%= course.collection_select(:subject_id, Subject.all, :id, :subject, options ={:prompt => "Subject"}) %>
 
   <%= course.label :objectives, "What should students be able to do when it's over?" %>
       <%= course.fields_for :objectives do |objective| %>

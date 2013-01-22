@@ -25,15 +25,16 @@
       <div class="span6box no-border no-left-margin no-bottom-margin height7">
         <div class="span12box height4">
           <h3>Content Covered:</h3>
-
+          <%= unit_content(@unit) %>
         </div>
         <div class="span12box height4 no-left-margin">
           <h3>Skills</h3>
-
+          <%= unit_skills(@unit) %>
         </div>
 
         <div class="span12box height4 no-left-margin">
           <h3>Assessments</h3>
+          <%= unit_assessments(@unit) %>
         </div>
       </div>
 
@@ -48,15 +49,7 @@
               <%= link_to '<i class="icon-plus"></i>'.html_safe, new_unit_lesson_path(@unit), class:"header-edit", id:"add-lesson" if can? :edit, @unit %>
             </span>
         </h3>
-        <% if @unit.lessons.count == 0 %>
-           <p>No lessons have been added yet. <%= link_to "Add one now", new_unit_lesson_path(@unit) if can? :update, @unit %></p>
-        <% else %>
-            <ul>
-              <% @unit.lessons.each do |lesson| %>
-                    <li><%= link_to "#{lesson.lesson_title}", unit_lesson_path(@unit, lesson) %></li>
-              <% end %>
-            </ul>
-        <% end %>
+        <%= unit_lessons(@unit) %>
       </div>
 
     </div>

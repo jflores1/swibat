@@ -50,6 +50,14 @@ class Unit < ActiveRecord::Base
     self.course.user
   end
 
+  def content_taught
+    self.objectives.content
+  end
+
+  def skills_taught
+    self.objectives.skills
+  end
+
   def valid_unit_status
     errors.add(:unit_status, "is not a valid status") unless VALID_STATUS.include? unit_status
   end

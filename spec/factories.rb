@@ -35,6 +35,7 @@ FactoryGirl.define do
 
   factory :objective do
     objective           "Measure average velocity of Sparrow's wing speed"
+    objective_type      "Goal"
   end
 
 

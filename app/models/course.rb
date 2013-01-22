@@ -19,12 +19,13 @@ class Course < ActiveRecord::Base
   acts_as_commentable
   acts_as_taggable
   
-  attr_accessible :course_name, :course_semester, :course_summary, :course_year, :grade, :grade_id, :objectives_attributes, :tag_list
+  attr_accessible :course_name, :course_semester, :course_summary, :course_year, :grade, :grade_id, :objectives_attributes, :tag_list, :subject_id
 
   has_many :objectives, as: :objectiveable, dependent: :destroy
   has_many :units, dependent: :destroy
   belongs_to :user
   belongs_to :grade
+  belongs_to :subject
   has_many :flags, :as => :flaggable, dependent: :destroy
 
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
@@ -39,7 +40,7 @@ class Course < ActiveRecord::Base
   VALID_SEMESTER = %w[Fall Spring Summer Winter]
 
   validates :course_name, presence: true
-  validates :course_semester, :grade_id, presence: true
+  validates :course_semester, :grade_id, :subject_id, presence: true
   validates :course_year, presence:true, length:{is:4}
   validate :has_valid_semester
 

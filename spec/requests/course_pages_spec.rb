@@ -3,7 +3,6 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "CoursePages" do
-
   context "Accessing the new user course page" do
     describe "An authorized user tries to get access" do
       it "should allow access" do
@@ -21,17 +20,18 @@ describe "CoursePages" do
   end
 
   describe "A Working Form" do
+    let(:user){create(:user)}
+    let(:course){create(:course, user: user)}
     before do
       sign_in_via_form
       FactoryGirl.create_list(:grade, 14)
-      visit new_course_path      
+      visit new_course_path
     end
     after(:each) do
       FactoryGirl.reload
     end
     let(:unit_button){"Create a Unit"}
     let(:save_button){"Save and Return"}
-    let(:course){@user.courses}
 
     describe "There is a form on the page" do
       it {page.should have_selector("form")}
@@ -282,6 +282,7 @@ describe "CoursePages" do
     select  'Fall',            from: "course_course_semester"
     select  '2012',            from: "course_course_year"
     select  'Grade 5'
+    select  'Science'
     fill_in 'course_summary',  with: "This is a valid course summary."
     fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end
