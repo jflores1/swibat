@@ -101,6 +101,7 @@ GEM
     font-awesome-rails (3.0.1.0)
       railties (>= 3.1)
     google-analytics-rails (0.0.3)
+    hashie (1.2.0)
     hike (1.2.1)
     httparty (0.9.0)
       multi_json (~> 1.0)
@@ -123,6 +124,20 @@ GEM
     multi_json (1.5.0)
     multi_xml (0.5.1)
     nokogiri (1.5.5)
+    oauth (0.4.7)
+    omniauth (1.1.1)
+      hashie (~> 1.2)
+      rack
+    omniauth-khan-academy (0.1.0)
+      activesupport
+      multi_json
+      oauth
+      omniauth (~> 1.0)
+    omniauth-linkedin (0.0.8)
+      omniauth-oauth (~> 1.0)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
     orm_adapter (0.4.0)
     paperclip (3.3.1)
       activemodel (>= 3.0.0)
@@ -240,6 +255,8 @@ DEPENDENCIES
   google-analytics-rails
   jquery-rails
   jquery_datepicker
+  omniauth-khan-academy
+  omniauth-linkedin
   paperclip (~> 3.0)
   pg
   pg_search
