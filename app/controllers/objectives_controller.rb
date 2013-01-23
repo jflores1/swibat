@@ -16,7 +16,6 @@ class ObjectivesController < ApplicationController
     else
       #
     end
-
   end
 
   def similar_objectiveables

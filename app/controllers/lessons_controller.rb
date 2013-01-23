@@ -1,8 +1,9 @@
 class LessonsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_filter :find_current_unit, :except => [:vote]
+  before_filter :find_current_unit, :except => [:vote, :lesson_content, :lesson_skills]
   load_and_authorize_resource
   skip_authorize_resource only: :show
+  respond_to :html, :json
 
   def show
     @lesson = Lesson.find(params[:id])
@@ -43,11 +44,8 @@ class LessonsController < ApplicationController
 
   def update
     @lesson = Lesson.find(params[:id])
-    if @lesson.update_attributes(params[:lesson])
-      redirect_to {unit_lesson_path [@unit, @lesson], notice: 'Lesson was successfully updated.' }
-    else
-      render action: "edit"
-    end
+    @lesson.update_attributes(params[:lesson])
+    respond_with [@unit, @lesson]
   end
 
   def destroy
@@ -65,6 +63,16 @@ class LessonsController < ApplicationController
       @lesson.add_or_update_evaluation(:votes, value, current_user)
     end
     redirect_to :back, notice: "Thank you for voting"   
+  end
+
+  def lesson_content
+    @lesson = @lesson.objectives.build(params[:objective])
+    @lesson.save!
+  end
+
+  def lesson_skills
+    @lesson = @lesson.objectives.build(params[:objective])
+    @lesson.save!
   end
 
   private

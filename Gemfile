@@ -22,6 +22,7 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'wicked_pdf'
 gem 'pg_search'
 gem 'will_paginate', '~> 3.0'
+gem 'best_in_place'
 gem 'amoeba'
 
 group :development, :test do

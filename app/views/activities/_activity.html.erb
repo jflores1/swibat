@@ -1,6 +1,4 @@
-<tr id="<%= dom_id(activity) %>">
-  <td class="large"><%= activity.activity %></td>
-  <td><%= activity.duration %></td>
-  <td><%= activity.agent %></td>
-  <td class="small"><%= link_to "delete", [activity.lesson, activity], method: :delete, remote: true if can? :destroy, activity %></td>
-</tr>
+<li id="<%= dom_id(activity) %>">
+  <%= activity.activity %> - <%= activity.duration %>, <span><%= activity.agent %></span>
+  <span><%= link_to '<i class="icon-trash"></i>'.html_safe, [activity.lesson, activity], method: :delete, remote: true if can? :destroy, activity %></span>
+</li>

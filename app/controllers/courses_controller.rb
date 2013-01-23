@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
   before_filter :load_similar_courses, except: [:index, :new, :create, :feed, :vote, :fork]
   load_and_authorize_resource
   skip_authorize_resource only: [:show, :index, :syllabus]
+  respond_to :html, :json
 
   def index
     if params[:tag]
@@ -42,15 +43,8 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find(params[:id])
-    if @course.update_attributes(params[:course])
-      redirect_to course_path(@course)
-    elsif @course.update_attributes(params[course_to_unit: params[:course]])
-      redirect_to new_course_unit_path(@course)
-    else
-      flash[:error] = "Sorry, there was a mistake with the form"
-      render 'edit'
-    end
-
+    @course.update_attributes(params[:course])
+    respond_with @course
   end
 
   def destroy

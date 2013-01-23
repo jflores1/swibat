@@ -52,6 +52,14 @@ class Lesson < ActiveRecord::Base
     errors.add(:lesson_status, "is not a valid status") unless VALID_STATUS.include? lesson_status
   end
 
+  def content_taught
+    self.objectives.content
+  end
+
+  def skills_taught
+    self.objectives.skills
+  end
+
   def user
     self.unit.user
   end

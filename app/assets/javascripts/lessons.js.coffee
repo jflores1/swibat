@@ -8,4 +8,12 @@ $(document).ready ->
   $('.remove-new-activity').click (e)->
     $('div#activity-form').hide()
 
+  $('div#lesson-content-form').hide()
+  $('.add-lesson-content').click (e)->
+    $('div#lesson-content-form').fadeIn()
+
+  $('div#lesson-skill-form').hide()
+  $('.add-lesson-skill').click (e)->
+    $('div#lesson-skill-form').fadeIn()
+
 

@@ -3,7 +3,7 @@
   <%= render 'shared/user_header' %>
 
   <header class="course-header">
-    <h1>Course: <%= @course.course_name %>
+    <h1>Course: <%= best_in_place_if (can? :edit, @course), @course, :course_name %>
       <span>
         <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_course_path(@course), class:"header-edit" if can? :edit, @course %>
         <a class="get-syllabus" href="<%= syllabus_course_path(@course) %>"><i class="icon-book"></i></a>
@@ -19,7 +19,7 @@
     <div class="box-row">
       <div class="span12box no-left-margin box-bottom-margin">
         <h3>Course Summary</h3>
-        <p><%= @course.course_summary %></p>
+        <p><%= best_in_place_if (can? :edit, @course), @course, :course_summary, type: :textarea %></p>
       </div>
 
       <div class="span3box height12 no-left-margin box-right-margin">
