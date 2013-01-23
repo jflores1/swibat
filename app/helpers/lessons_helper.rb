@@ -36,4 +36,31 @@ module LessonsHelper
       end
     end
   end
+
+
+  def display_educational_domain_children(domain)
+    tree = content_tag :li do   
+      concat domain.name + "(" + domain.id.to_s + ")"
+      if domain.children.any?
+        concat raw "<ul>"
+        domain.children.each do |child|
+          concat raw "#{display_educational_domain_children(child)}"
+        end
+        concat raw "</ul>"
+      end
+    end
+
+    tree
+  end
+
+  def display_educational_domains_for_grade(grade)
+    tree = ""  
+    if grade.educational_domains.any?
+      grade.educational_domains.each do |domain|
+        tree += raw "#{display_educational_domain_children(domain)}"
+      end
+    end
+    raw tree
+  end
+
 end

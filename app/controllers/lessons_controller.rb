@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_filter :find_current_unit, :except => [:vote, :lesson_content, :lesson_skills]
+  before_filter :find_current_unit, :except => [:vote, :lesson_content, :lesson_skills, :standards]
   load_and_authorize_resource
   skip_authorize_resource only: :show
   respond_to :html, :json
@@ -73,6 +73,11 @@ class LessonsController < ApplicationController
   def lesson_skills
     @lesson = @lesson.objectives.build(params[:objective])
     @lesson.save!
+  end
+
+  def standards
+    @grades = Grade.all
+    @domains = EducationalDomain.where(:parent_id => nil)
   end
 
   private

@@ -52,9 +52,9 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :units, :through => :courses
   has_many :lessons, :through => :units
-  has_many :friend_courses, through: :friends, source: :courses
+  has_many :friend_courses, through: :people_followed, source: :courses
   has_many :microposts, dependent: :destroy
-
+  
   # Define the friendship relations with some semantics.
   has_many  :followings,
             :class_name => :Following,
@@ -66,14 +66,6 @@ class User < ActiveRecord::Base
 
   has_many  :followers, through: :incoming_followings, source: :user
   has_many  :people_followed, through: :followings, source: :followee
-
-  # has_many :sent_friend_requests, 
-  #          :class_name => :Friendship,           
-  #          :conditions => "status = 'pending'"           
-
-  # has_many :incoming_friend_requests,
-  #          :class_name => :Friendship,
-  #          :conditions => "status = 'requested'"           
 
   has_reputation :reputation, :source => [
     { :reputation => :votes, :of => :questions, :weight => 0.15},
@@ -117,10 +109,6 @@ class User < ActiveRecord::Base
   def to_param
     "#{id}-#{full_name.strip.parameterize}"
   end
-
-  # def friends_with?(user)
-  #   self.friends.include?(user)
-  # end
 
   private
 

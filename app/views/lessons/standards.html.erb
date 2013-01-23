@@ -1,0 +1,18 @@
+<h1>Standards</h1>
+
+<ul>
+<% @grades.each do |grade| %>
+	<li>
+		<%= grade.grade_level %>
+		<ul>
+			<%= display_educational_domains_for_grade grade %>
+		</ul>
+	</li>
+<% end %>
+</ul>
+
+<!-- <ul>
+<% @domains.each do |domain| %>
+	<%= display_educational_domain_children domain %>
+<% end %>
+</ul> -->

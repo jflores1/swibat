@@ -67,7 +67,7 @@ Swibat::Application.routes.draw do
     member { post :vote }
   end
 
-  resources :lessons do
+  resources :lessons do    
     resources :objectives
     resources :assessments
     resources :activities
@@ -76,6 +76,9 @@ Swibat::Application.routes.draw do
       post :vote
       post :lesson_content
       post :lesson_skills
+    end
+    collection do
+      get :standards
     end
   end
 
