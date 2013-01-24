@@ -68,11 +68,11 @@ module LessonsHelper
   end
 
   def display_standards_for_domain(domain)
-    content = raw "<ul>"
+    content = raw "<ul class=\"standards-list\">"
     domain.standard_strands.each do |strand|
       strand.educational_standards.each do |standard|
         next if standard.parent != nil
-        content += raw "<li class=\"draggable\" data-id=\"#{standard.id.to_s}\">#{standard.name}</li>"
+        content += raw "<li data-content=\"#{standard.description}\" title=\"#{standard.name}\" class=\"draggable\" data-id=\"#{standard.id.to_s}\">#{standard.name}</li>"
       end
     end
 
