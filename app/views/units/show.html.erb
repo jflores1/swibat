@@ -17,45 +17,47 @@
 
   <div class="course-organizer">
     <div class="box-row">
-      <div class="span3box height12 no-left-margin box-right-margin">
-        <h3>Standards Met:</h3>
-
-      </div>
-
-      <div class="span6box no-border no-left-margin no-bottom-margin height7">
-        <div class="span12box height4">
-          <h3>Content Covered:</h3>
-          <%= unit_content(@unit) %>
+      <div class="span12 box-bottom-margin">
+        <div class="span6 box no-left-margin height7">
+          <h3>Standards Met</h3>
+          
         </div>
-        <div class="span12box height4 no-left-margin">
-          <h3>Skills</h3>
-          <%= unit_skills(@unit) %>
-        </div>
-
-        <div class="span12box height4 no-left-margin">
+        <div class="span6 box height7">
           <h3>Assessments</h3>
           <%= unit_assessments(@unit) %>
         </div>
       </div>
 
-      <div class="span3box height12 box-left-margin">
-        <h3>Other Units</h3>
+      <div class="span12 box-bottom-margin no-left-margin">
+        <div class="span6 box no-left-margin height7">
+          <h3>Content Covered:</h3>
+          <%= unit_content(@unit) %>
+        </div>
 
+        <div class="span6 box height7">
+          <h3>Skills</h3>
+          <%= unit_skills(@unit) %>
+        </div>
       </div>
 
-      <div class="span12box no-left-margin">
-        <h3>Unit Lessons
-            <span>
-              <%= link_to '<i class="icon-plus"></i>'.html_safe, new_unit_lesson_path(@unit), class:"header-edit", id:"add-lesson" if can? :edit, @unit %>
-            </span>
-        </h3>
-        <%= unit_lessons(@unit) %>
-      </div>
+      <div class="span12 box-bottom-margin no-left-margin">
+        <div class="span6 box no-left-margin height7">
+          <h3>Unit Lessons
+              <span>
+                <%= link_to '<i class="icon-plus"></i>'.html_safe, new_unit_lesson_path(@unit), class:"header-edit", id:"add-lesson" if can? :edit, @unit %>
+              </span>
+          </h3>
+          <%= unit_lessons(@unit) %>
+        </div>
 
+        <div class="span6 box height7">
+          <h3>Other Units</h3>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="span12 no-left-margin">
+  <div class="span12 box-bottom-margin no-left-margin">
     <header class="course-header">
       <h2>Comments</h2>
     </header>

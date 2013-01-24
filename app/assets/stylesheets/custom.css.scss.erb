@@ -51,7 +51,8 @@ $lightest-gray: #CDCDCD;
 
 
 //Padding and Such
-$page-width: 980px;
+$page-width: 1920px;
+$body-width: 100%;
 $box-margin: 0.7692em !important;
 
 /********************************
@@ -96,7 +97,7 @@ section.chalkboard{
     width: 8em;
     text-align: center;
     position: fixed;
-    top: 45%;
+    top: 50%;
     z-index: 999;
     transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);
@@ -106,14 +107,17 @@ section.chalkboard{
 
     a{
         display: block;
-        background: rgb(164, 50, 32);
+        background: rgba(0, 0, 0, 0.5);
         font-size: 1.2308em;
-        height: 1.5em;
-        width: 7em;
+        height: 1.7em;
+        width: 9em;
         padding: 0.5em 0.5em;
         color: #ffffff;
         border-color: rgb(164, 50, 32) rgb(164, 50, 32) #B13623;
         border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fadein(rgba(0, 0, 0, 0.1), 15%);
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
         *background-color: rgb(164, 50, 32);
         filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
     }
@@ -292,8 +296,8 @@ header.navbar {
 Application Header
 *****************************/
 header#application-header {
-    margin-bottom: 2%;
-    border-bottom: 1px solid $soft-gray;
+    //border-bottom: 1px solid $soft-gray;
+    margin-bottom: 0px;
 
     h1.application-nav-header{
         font-size: 1.8462em;
@@ -363,27 +367,32 @@ header#application-header {
 
 }
 
-
 div.inner{
     //max-width: 127.659574%; /*1200/940*/
     //max-width:1010px;
     max-width:$page-width;
     background:#ffffff;
     margin: 0 auto;
+}
+
+.body-inner{
+    border-top: 1px solid $soft-gray;
+    max-width: $body-width;
+    //background: rgba(224, 224, 224, 0.3) !important;
+    background: #f7f7f7 !important;
     min-height: 800px;
+    padding-top: 2em;
     padding-bottom: 100px;
+
     //padding-left: 2%;
     //padding-right: 2%;
-
-    /*box-shadow:*/
+        /*box-shadow:*/
         /*5px 0 5px -5px $header-gradient-dark-color,*/
         /*-5px 0 5px -5px $header-gradient-dark-color;*/
 }
 
 header.application-header{
     float:left;
-
-
 }
 
 div.accordion{

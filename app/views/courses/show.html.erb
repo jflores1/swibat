@@ -17,17 +17,17 @@
 
   <div class="course-organizer">
     <div class="box-row">
-      <div class="span12box no-left-margin box-bottom-margin">
+      <div class="span12 box box-bottom-margin">
         <h3>Course Summary</h3>
         <p><%= best_in_place_if (can? :edit, @course), @course, :course_summary, type: :textarea %></p>
       </div>
 
-      <div class="span3box height12 no-left-margin box-right-margin">
-        <h3>Standards Met:</h3>
-      </div>
-
-      <div class="span6box no-border no-left-margin">
-        <div class="span12box box-bottom-margin height5">
+      <div class="span12 no-left-margin box-bottom-margin">
+        <div class="span6 box height5">
+          <h3>Standards Met:</h3>
+          
+        </div>
+        <div class="span6 box height5">
           <h3>Course Goals</h3>
           <ul>
             <% @course.objectives.each do |objective| %>
@@ -35,8 +35,10 @@
             <% end %>
           </ul>
         </div>
+      </div>
 
-        <div class="span12box height6 no-left-margin">
+      <div class="span12 no-left-margin box-bottom-margin">
+        <div class="span6 box height6 no-left-margin">
           <h3>Course Units
           <span>
             <%= link_to '<i class="icon-plus"></i>'.html_safe, new_course_unit_path(@course), class:"header-edit", id:"course-add-unit" if can? :edit, @course %>
@@ -52,10 +54,11 @@
               </ul>
           <% end %>
         </div>
-      </div>
 
-      <div class="span3box height12 box-left-margin">
-        <h3>Related Courses</h3>
+        <div class="span6 box height6">
+          <h3>Related Courses</h3>
+        </div>
+
       </div>
 
     </div>

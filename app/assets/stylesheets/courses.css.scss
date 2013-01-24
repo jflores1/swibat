@@ -12,11 +12,12 @@ $open-sans: 'Open Sans', 'Helvetica Neue Light', sans-serif;
 $fancy-gray: rgba(80, 89, 109, 0.9);
 $soft-gray: rgba(80, 89, 109, 0.5);
 $lightest-gray: #CDCDCD;
+$fancy-red: #a43220;
 
 
 //Padding and Such
 $page-width: 980px;
-$box-margin: 0.9em !important;
+$box-margin: 1.7em !important;
 
 /*********************************
 Begin Course-specific css - but make
@@ -99,13 +100,15 @@ div.favoritecount{
 div#user-header{
   display: block;
   float: left;
+  width: 100%;
 
   img.header-profile-picture{
-    width: 18%;
-    height: 18%;
+    width: 8em;
+    height: 8em;
   }
 
   h3{
+    padding-top: 1em;
 
     a{
       color: #50596D;
@@ -192,7 +195,8 @@ header.course-header, header.index-header{
 
 
   h1, h2, h3{
-    color: $fancy-gray;
+    color: #a43220;
+    //color: $fancy-gray;
     //font-weight: 300;
   }
 
@@ -261,9 +265,26 @@ div.course-organizer{
   width: 100%;
   margin-top: 1em;
 
+  h1, h2, h3{
+    //color: #a43220;
+  }
+
+  div.box{
+    background: #ffffff !important;
+    border: 1px solid #bfbfbf;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 0.5em;
+  }
+
   div.box-row{
     float: left;
     width: 100%;
+
+    div.span12{
+      background: none;
+    }
 
     .no-border{
       border: none !important;
@@ -338,79 +359,6 @@ div.course-organizer{
     .height12{
       min-height: 35em;
       overflow: scroll;
-    }
-
-    .span12box {
-      width: 100%;
-      *width: 99.94680851063829%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span11box {
-      width: 91.48936170212765%;
-      *width: 91.43617021276594%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span10box {
-      width: 82.97872340425532%;
-      *width: 82.92553191489361%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span9box {
-      width: 74.46808510638297%;
-      *width: 74.41489361702126%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span8box {
-      width: 65.95744680851064%;
-      *width: 65.90425531914893%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span7box {
-      width: 57.44680851063829%;
-      *width: 57.39361702127659%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span6box {
-      width: 48.93617021276595%;
-      *width: 48.88297872340425%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span5box {
-      width: 40.42553191489362%;
-      *width: 40.37234042553192%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span4box {
-      width: 31.914893617021278%;
-      *width: 31.861702127659576%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span3box {
-      width: 24.09638554216870%;
-      //width: 23.404255319148934%;
-      //*width: 23.351063829787233%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span2box {
-      width: 14.893617021276595%;
-      *width: 14.840425531914894%;
-      border: 1px solid $lightest-gray;
-    }
-
-    .span1box {
-      width: 6.382978723404255%;
-      *width: 6.329787234042553%;
-      border: 1px solid $lightest-gray;
     }
 
   }

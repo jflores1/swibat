@@ -10,15 +10,19 @@
   </div>
 <div id="main" role="main">
   <div class="content">
-    <div class="inner" id="application-container">
+    <div class="inner">
       <%= render 'layouts/navbar' %>
-      <div class="application-body container">
+      <div class="application-body container-fluid">
         <div class="row-fluid" id="flash-messages">
           <div class="span12">
             <%= render 'layouts/messages' %>
           </div><!--end of .span12 -->
         </div><!--end of .row-fluid -->
         <%= render 'layouts/application_nav' %>
+      </div>
+    </div>
+    <div class="inner body-inner" id="application-container">
+      <div class="application-body container-fluid">
           <div class="application-row row-fluid">
             <div class="span9">
               <!--had banner_application_sign_up-->
@@ -30,8 +34,8 @@
               <%= yield(:sidebar) %>
             </div>
           </div>
-      </div><!--end of .container-->
-    </div><!--end of .inner -->
+      </div>
+    </div>
     <%= render 'layouts/footer' %>
   </div><!--end of .content> -->
 </div><!--end of .main> -->
