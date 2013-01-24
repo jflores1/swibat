@@ -77,7 +77,6 @@ class CoursesController < ApplicationController
                }
       end
     end
-
   end
 
   def vote
@@ -109,6 +108,11 @@ class CoursesController < ApplicationController
     objectives = @course.objectives.collect {|o| o.objective }
     @similar_courses_based_on_objectives = Objective.find_similar_objectiveables(objectives, "Course", "objectives").first(5)
     @similar_courses_based_on_objectives.delete_if {|c| c[:objectiveable].id == @course.id}
+  end
+
+  def course_goal
+    @course = @course.objectives.build(params[:objective])
+    @course.save!
   end
 
 end

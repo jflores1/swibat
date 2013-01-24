@@ -51,6 +51,7 @@ Swibat::Application.routes.draw do
     member do
       post :vote
       post :fork
+      post :course_goal
       get 'syllabus'
     end
     collection do

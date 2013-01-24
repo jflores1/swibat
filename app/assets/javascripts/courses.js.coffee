@@ -11,3 +11,7 @@ $(document).ready ->
     else
       $('#comment-form').show()
       $(this).text("Hide Comment")
+
+  $('.add-goal').hide()
+  $('#add-course-goal').click (e)->
+  	$('.add-goal').show()
