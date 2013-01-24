@@ -1,0 +1,3 @@
+var course_content_row = $('<%= j(render(partial: "objectives/course_goal", locals: {:course => @course})) %>');
+var course_content_list = $('#course-goal-list ul');
+course_content_list.append(course_content_row);
