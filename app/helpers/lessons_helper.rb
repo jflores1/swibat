@@ -39,15 +39,17 @@ module LessonsHelper
 
 
   def display_educational_domain_children(domain)
-    tree = content_tag :li do   
-      concat domain.name + "(" + domain.id.to_s + ")"
-      if domain.children.any?
-        concat raw "<ul>"
-        domain.children.each do |child|
-          concat raw "#{display_educational_domain_children(child)}"
-        end
-        concat raw "</ul>"
+    
+    tree = content_tag :h3, domain.name
+    if domain.children.any?
+
+      tree += raw '<div><div class="corestandards-accordion">'
+      domain.children.each do |child|
+        tree += raw "#{display_educational_domain_children(child)}"
       end
+      tree += raw "</div></div>"
+    else
+      tree+= raw "<div>#{display_standards_for_domain(domain)}</div>"
     end
 
     tree
@@ -56,11 +58,26 @@ module LessonsHelper
   def display_educational_domains_for_grade(grade)
     tree = ""  
     if grade.educational_domains.any?
-      grade.educational_domains.each do |domain|
-        tree += raw "#{display_educational_domain_children(domain)}"
+      tree += content_tag :div, class: "corestandards-accordion" do   
+        grade.educational_domains.each do |domain|          
+            concat raw "#{display_educational_domain_children(domain)}"          
+        end
       end
     end
     raw tree
+  end
+
+  def display_standards_for_domain(domain)
+    content = raw "<ul>"
+    domain.standard_strands.each do |strand|
+      strand.educational_standards.each do |standard|
+        next if standard.parent != nil
+        content += raw "<li class=\"draggable\" data-id=\"#{standard.id.to_s}\">#{standard.name}</li>"
+      end
+    end
+
+    content += raw "</ul>"
+    content
   end
 
 end

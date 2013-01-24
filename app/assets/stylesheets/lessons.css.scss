@@ -73,3 +73,54 @@ div#activity-form{
   }
 
 }
+
+
+.corestandards-accordion {
+  margin-bottom: 0;
+  h3 {
+    padding: 10px 10px 10px 25px;
+    font-size: 12px;
+  }
+}
+
+.ui-widget-content {
+  border: none;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  border:none;
+  background: #ddd;
+}
+
+.ui-accordion {
+  .ui-accordion-content {
+    padding: 0 0 0 20px;
+  }
+}
+
+
+
+.standards {
+  background: #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  .placeholder{
+    color: #666;
+    font-style: italic; 
+  }
+  ul {
+    margin-left: 0;
+  }
+  li {
+    background: #ddd;
+    margin:1px;
+    list-style: none;
+    padding:2px 5px 2px 5px;   
+    i {
+      font-size: 1em;
+      margin-top: 3px;
+      cursor: pointer;
+    }     
+  }
+}

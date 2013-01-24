@@ -15,7 +15,7 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  role                   :string(255)
+#  role                   :string(255)      default("teacher")
 #  first_name             :string(255)
 #  last_name              :string(255)
 #  institution            :string(255)
@@ -24,6 +24,8 @@
 #  image_file_size        :integer
 #  image_updated_at       :datetime
 #  profile_summary        :text
+#  provider               :string(255)
+#  uid                    :string(255)
 #
 
 class User < ActiveRecord::Base

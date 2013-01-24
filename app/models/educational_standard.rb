@@ -19,5 +19,7 @@ class EducationalStandard < ActiveRecord::Base
   belongs_to :parent, :foreign_key => "parent_id", :class_name => "EducationalStandard"
   has_many :children, :foreign_key => "parent_id", :class_name => "EducationalStandard"
 
+  has_many :lesson_standards, dependent: :destroy
+  has_many :lessons, through: :lesson_standards
   
 end
