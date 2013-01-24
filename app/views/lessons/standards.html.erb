@@ -1,18 +1,44 @@
-<h1>Standards</h1>
+<div class="row-fluid">
+	<h1>Standards for <%= @lesson.lesson_title %></h1>
 
-<ul>
-<% @grades.each do |grade| %>
-	<li>
-		<%= grade.grade_level %>
-		<ul>
-			<%= display_educational_domains_for_grade grade %>
-		</ul>
-	</li>
-<% end %>
-</ul>
+	<div class="span5">		
+		<div class="standards">
+			<p class="placeholder">Drag standards here</p>
+			<ul>
+				<% @lesson.educational_standards.each do |standard| %>
+					<li data-id="<%= standard.id %>"><%= standard.name %><i title="Remove this standard" class="icon-remove pull-right"></i></li>
+				<% end %>
+			</ul>
+		</div>
+		<%= form_tag save_standards_lesson_path(@lesson), remote: true, id: "saveStandardsForm" do %>
+		 	<input type="hidden" name="standards" id="standardsField" />
+			<%= submit_tag "Save Standards", class: "btn btn-monkey", disable_with: "Savong..." %>	
+		<% end %>
+		
+	</div>
 
-<!-- <ul>
-<% @domains.each do |domain| %>
-	<%= display_educational_domain_children domain %>
-<% end %>
-</ul> -->
+	<div class="span6">
+		<div class="accordion">
+			<% @grades.each do |grade| %>
+				<h3><%= grade.grade_level %></h3>
+				<div>
+					<%= display_educational_domains_for_grade grade %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div id="successModal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h2 id="ajaxStatus">Success</h2>
+  </div>  
+	  <div class="modal-body">
+	   	<p id="ajaxResponse">The standards have been saved successfully</p>
+    </div>
+    <div class="modal-footer">
+    </div>
+</div>
+
+

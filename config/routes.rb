@@ -76,10 +76,9 @@ Swibat::Application.routes.draw do
       post :vote
       post :lesson_content
       post :lesson_skills
-    end
-    collection do
-      get :standards
-    end
+      get  :standards
+      post :save_standards
+    end    
   end
 
   resources :followings, :only => [:destroy] do

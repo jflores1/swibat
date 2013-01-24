@@ -26,6 +26,9 @@ class Lesson < ActiveRecord::Base
   belongs_to :unit
   has_many :flags, :as => :flaggable, dependent: :destroy
 
+  has_many :lesson_standards, dependent: :destroy
+  has_many :educational_standards, through: :lesson_standards
+
   accepts_nested_attributes_for :resources, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
   accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true

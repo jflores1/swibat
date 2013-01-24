@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_filter :find_current_unit, :except => [:vote, :lesson_content, :lesson_skills, :standards]
+  before_filter :find_current_unit, :except => [:vote, :lesson_content, :lesson_skills, :standards, :save_standards]
   load_and_authorize_resource
   skip_authorize_resource only: :show
   respond_to :html, :json
@@ -76,8 +76,19 @@ class LessonsController < ApplicationController
   end
 
   def standards
+    @lesson = Lesson.find(params[:id])
     @grades = Grade.all
     @domains = EducationalDomain.where(:parent_id => nil)
+  end
+
+  # POST
+  def save_standards
+    @lesson = Lesson.find(params[:id])
+    @lesson.lesson_standards.destroy_all
+    standard_ids = params[:standards].split(',') || []
+    standard_ids.each do |id|
+      @lesson.educational_standards << EducationalStandard.find(id)      
+    end
   end
 
   private
