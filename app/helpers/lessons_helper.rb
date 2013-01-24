@@ -43,7 +43,7 @@ module LessonsHelper
     tree = content_tag :h3, domain.name
     if domain.children.any?
 
-      tree += raw '<div><div class="accordion">'
+      tree += raw '<div><div class="corestandards-accordion">'
       domain.children.each do |child|
         tree += raw "#{display_educational_domain_children(child)}"
       end
@@ -58,7 +58,7 @@ module LessonsHelper
   def display_educational_domains_for_grade(grade)
     tree = ""  
     if grade.educational_domains.any?
-      tree += content_tag :div, class: "accordion" do   
+      tree += content_tag :div, class: "corestandards-accordion" do   
         grade.educational_domains.each do |domain|          
             concat raw "#{display_educational_domain_children(domain)}"          
         end

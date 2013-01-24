@@ -19,7 +19,7 @@ $(document).ready ->
     $('div#lesson-skill-form').fadeIn()
 
   # Standards form
-  $( ".accordion" ).accordion({
+  $( ".corestandards-accordion" ).accordion({
     collapsible: true,
     heightStyle: "content",
     active: false

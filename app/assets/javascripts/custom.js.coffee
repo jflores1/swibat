@@ -1,10 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-$(document).ready ->
-  $('.best_in_place').best_in_place()
-  $('.char-count').charCount()
-
+$(document).ready ->  
   $('button.modal-dismiss').click (e) ->
     (e).preventDefault()
     $("#errorModal").fadeOut()
@@ -42,3 +39,6 @@ $(document).ready ->
 
   #wysihtml5 editor
   $('.wysihtml5').wysihtml5()
+
+  $('.best_in_place').best_in_place()
+  # $('.char-count').charCount()
