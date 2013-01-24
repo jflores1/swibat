@@ -20,9 +20,9 @@
 				<% end %>
 			</ul>
 		</div>
-		<%= form_tag save_standards_lesson_path(@lesson), remote: true, id: "saveStandardsForm" do %>
+		<%= form_tag save_standards_lesson_path(@lesson), remote: false, id: "saveStandardsForm" do %>
 		 	<input type="hidden" name="standards" id="standardsField" />
-			<%= submit_tag "Save Standards", class: "btn btn-monkey", disable_with: "Savong..." %>	
+			<%= submit_tag "Save Standards", class: "btn btn-monkey", disable_with: "Saving..." %>	
 		<% end %>
 		
 	</div>

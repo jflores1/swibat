@@ -62,8 +62,10 @@ $(document).ready ->
     ids = []
     standards = $('.standards > ul > li')    
     standards.each (i, element)=>
-      ids.push($(element).data('id'))    
-    $('#standardsField')[0].value = ids.toString();
+      ids.push($(element).data('id'))
+    standardsField = $('#standardsField')
+
+    $('#standardsField')[0].value = ids.toString() if $('#standardsField').size() > 0
 
   $('#saveStandardsForm')    
     .bind("ajax:success", (evt, data, status, xhr)->      
