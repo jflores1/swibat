@@ -2,11 +2,11 @@
 class NLPTools
 	# Implementation of Dice's coefficient 
 	# http://stackoverflow.com/questions/653157/a-better-similarity-ranking-algorithm-for-variable-length-strings
-  def self.find_similarity first_string, second_string
-  	first_string.downcase! 
+  def self.find_similarity first, second
+  	first_string = first.downcase
 		pairs1 = (0..first_string.length-2).collect {|i| first_string[i,2]}.reject {
 		  |pair| pair.include? " "}
-		second_string.downcase! 
+		second_string = second.downcase
 		pairs2 = (0..second_string.length-2).collect {|i| second_string[i,2]}.reject {
 		  |pair| pair.include? " "}
 		union = pairs1.size + pairs2.size 

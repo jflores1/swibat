@@ -89,6 +89,8 @@ class LessonsController < ApplicationController
     standard_ids.each do |id|
       @lesson.educational_standards << EducationalStandard.find(id)      
     end
+
+    redirect_to [@lesson.unit, @lesson]
   end
 
   private

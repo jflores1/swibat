@@ -40,11 +40,15 @@ $(document).ready ->
   $( ".standards" ).droppable({
     drop: ( event, ui )-> 
       #$( this ).find( ".placeholder" ).remove()
-      $( "<li data-id='" + ui.draggable.data('id') + "'></li>" ).html( ui.draggable.text() + recycle_icon ).appendTo( $(this).find('ul') )
+      element = $( "<li data-id='" + ui.draggable.data('id') + "' data-content='" + ui.draggable.data('content') + "' title='" + ui.draggable.data('original-title') + "'></li>" ).html( ui.draggable.html() + recycle_icon ).appendTo( $(this).find('ul') )
       updateStandardsFormField()
       # bind the click event on the remove icon    
       $('i.icon-remove').click (event)->
         removeStandard($(this).parent())
+      $(element).popover({      
+        placement: 'top',
+        trigger: 'hover'
+      })  
   });
 
   # remove the standard from the standards list
@@ -58,8 +62,10 @@ $(document).ready ->
     ids = []
     standards = $('.standards > ul > li')    
     standards.each (i, element)=>
-      ids.push($(element).data('id'))    
-    $('#standardsField')[0].value = ids.toString();
+      ids.push($(element).data('id'))
+    standardsField = $('#standardsField')
+
+    $('#standardsField')[0].value = ids.toString() if $('#standardsField').size() > 0
 
   $('#saveStandardsForm')    
     .bind("ajax:success", (evt, data, status, xhr)->      
@@ -72,7 +78,18 @@ $(document).ready ->
   $('i.icon-remove').click (event)->
     removeStandard($(this).parent())
 
-  
+  # bind the popover event to standards
+  $('.standards-list > li').each (i, element)=>
+    $(element).popover({      
+      placement: 'top',
+      trigger: 'hover'
+    })  
+
+  $('.standards > ul > li').each (i, element)=>
+    $(element).popover({      
+      placement: 'top',
+      trigger: 'hover'
+    })  
 
 
 
