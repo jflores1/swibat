@@ -20,7 +20,11 @@
     <div class="box-row">
       <div class="span12 box-bottom-margin">
         <div class="span6 box no-left-margin height7 standards">
-          <h3>Standards Met</h3>
+          <h3>Standards Met
+            <span>
+              <%= link_to '<i class="icon-plus"></i>'.html_safe, standards_lesson_path(@lesson), class:"add-standard" if can? :edit, @unit %>
+            </span>
+          </h3>
           <ul>
             <% @lesson.educational_standards.each do |standard| %>
               <li data-id="<%= standard.id %>" data-content="<%= standard.description%>" title="<%= standard.name %>"><%= standard.name %></li>

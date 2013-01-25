@@ -297,68 +297,68 @@ div.course-organizer{
     .height1{
       min-height: 3em;
       margin-bottom: 1em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height2{
       min-height: 6em;
       margin-bottom: 1em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height3{
       min-height: 9em;
       margin-bottom: 1em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height4{
       min-height: 11em;
       margin-bottom: 1em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height5{
       min-height: 15em;
       margin-bottom: 1em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height6{
       min-height: 19em;
       margin-bottom: 1em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height7{
       min-height: 21em;
       margin-bottom: 1em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height8{
       min-height: 24em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height9{
       min-height: 27em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height10{
       min-height: 30em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height11{
       min-height: 33em;
-      overflow: scroll;
+      overflow: auto;
     }
 
     .height12{
       min-height: 35em;
-      overflow: scroll;
+      overflow: auto;
     }
 
   }
@@ -407,6 +407,10 @@ div.course-organizer{
     min-width: 35.4em; //354px:10px;
   }
 
+}
+
+ul#course-goal-list{
+  float: left;
 }
 
 

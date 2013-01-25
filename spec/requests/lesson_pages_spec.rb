@@ -173,6 +173,11 @@ describe "LessonPages" do
           }.to change(Activity, :count).by(-1)
         end
       end
+
+      it "provides a link to add standards" do
+        find("a.add-standard").click
+        page.should have_content("Standards for #{lesson.lesson_title}")
+      end
     end
 
     describe "Vote div" do

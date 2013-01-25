@@ -33,6 +33,9 @@ $(document).ready ->
   'title':'Edit Course'
   'placement':'top'
   })
+  $('.add-standard').tooltip({
+    'title':'Assign or Edit Standards'
+  })
 
   #calendar
   $('.datepicker').datepicker({"dateFormat":"yy-mm-dd"})

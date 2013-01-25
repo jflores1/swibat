@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.microposts{
+.micropost-sidebar{
 	form{
 		padding: 1em 1em 0em 1em;
 	}
@@ -17,6 +17,7 @@
 	ol{
 		background: #ffffff;
 		border: none;
+		margin-left: 0;
 	}
 
 	li{

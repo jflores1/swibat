@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @objective = @course.objectives.build
     @user = @course.user
     @microposts = @user.microposts.all
   end
@@ -112,9 +113,14 @@ class CoursesController < ApplicationController
     @similar_courses_based_on_objectives.delete_if {|c| c[:objectiveable].id == @course.id}
   end
 
+  def new_course_goal
+    @course = Course.find(params[:id])
+    @objective = @course.objectives.build
+  end
+
   def course_goal
-    @course = @course.objectives.build(params[:objective])
-    @course.save!
+    @objective = @course.objectives.build(params[:objective])
+    @objective.save!
   end
 
   def new_micropost 

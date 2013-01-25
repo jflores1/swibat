@@ -223,16 +223,26 @@ describe "CoursePages" do
         current_path.should eq(edit_course_path(course))
       end
 
-      describe "can add a new goal to the course" do
+      describe "can add a new goal to the course", js: true do
         it "has a link to add a goal" do
           find('a#add-course-goal').click
-          page.should have_selector("div.add-goal")
+          page.should have_selector("form#new_objective")
         end
 
         it "fills in the form and adds a goal" do
+          find('a#add-course-goal').click
           fill_in "objective_objective", with: "goal"
           click_button ("Add")
           page.should have_content("goal")
+        end
+      end
+
+      describe "can delete goals from the course", js: true do
+        let(:goal){build_stubbed(:objective, objectiveable: course)}
+        it "finds the link and deletes" do
+          expect{
+            find('a.delete-goal').click
+          }.to change(Objective, :count).by(-1)
         end
       end
 
@@ -243,6 +253,13 @@ describe "CoursePages" do
           fill_in "micropost_content", with: "some content"
           click_button "Post"
           }.to change(Micropost, :count).by(1)
+        end
+        it "does not reload the page" do 
+          expect {
+            fill_in "micropost_content", with: "some content"
+            click_button "Post"
+          }.to_not change{page.response_headers}
+          page.should have_content("some content")
         end
       end
 
