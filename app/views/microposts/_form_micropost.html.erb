@@ -1,0 +1,4 @@
+<%= form_for @micropost, remote: true do |micropost| %>
+	<%= micropost.text_area :content, placeholder: "What's on your mind?", class:"span12", rows: 2 %>
+	<%= micropost.submit "Post", class: "btn btn-small btn-monkey offset9" %>
+<% end %>	

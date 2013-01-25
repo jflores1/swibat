@@ -1,0 +1,3 @@
+var micropost = $('<%= j(render(partial: "microposts/microposts", locals: {:micropost => micropost})) %>');
+var micropost_list = $(".micropost ol");
+micropost_list.append(micropost);

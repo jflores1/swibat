@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index, :syllabus]
   before_filter :load_similar_courses, except: [:index, :new, :create, :feed, :vote, :fork]
+  before_filter :new_micropost, only: [:show]
   load_and_authorize_resource
   skip_authorize_resource only: [:show, :index, :syllabus]
   respond_to :html, :json
@@ -16,6 +17,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @user = @course.user
+    @microposts = @user.microposts.all
   end
 
   def new
@@ -113,6 +115,10 @@ class CoursesController < ApplicationController
   def course_goal
     @course = @course.objectives.build(params[:objective])
     @course.save!
+  end
+
+  def new_micropost 
+    @micropost = current_user.microposts.build
   end
 
 end

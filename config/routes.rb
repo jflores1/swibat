@@ -87,6 +87,8 @@ Swibat::Application.routes.draw do
       post 'follow'
     end
   end
+
+  resources :microposts, only: :create
   
   match 'demo/:action' => 'demo#:action'
   match 'static_pages/:action' => 'static_pages#:action'

@@ -1,0 +1,53 @@
+// Place all the styles related to the Microposts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.microposts{
+	form{
+		padding: 1em 1em 0em 1em;
+	}
+	color: rgba(80, 89, 109, 0.9);
+	list-style: none;
+	margin: 0.5em 0 0 0;
+	border: 1px solid rgba(80, 89, 109, 0.5);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+
+	ol{
+		background: #ffffff;
+		border: none;
+	}
+
+	li{
+		padding: 1em;
+		border-top: 1px solid rgba(80, 89, 109, 0.3);
+		background: #ffffff;
+	}
+}
+
+.content{
+	display: block;
+
+	.feed-image{
+		height: 100%;
+		float: left;
+		padding-bottom: 1em;
+
+		img{
+		display: block;
+		float: left;
+		width: 3em;
+		height: 3em;
+		border: 1px solid rgba(80, 89, 109, 0.5);
+		margin-right: 1em;
+		}
+	}
+}
+
+.timestamp{
+	display: block;
+	font-size: 0.8em;
+	text-align: right;
+	clear: both;
+}

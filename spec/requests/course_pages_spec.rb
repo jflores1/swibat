@@ -196,6 +196,18 @@ describe "CoursePages" do
         it {should have_content("This is a course summary")}
       end
 
+      describe "the user can add microposts" do
+        it "finds the add-micropost button" do
+          find('a.add-micropost').click
+          page.should have_content('Add Post')
+        end
+      end
+
+      describe "it displays microposts" do
+        let(:micropost){create(:micropost, user: user)}
+        it {should have_content("Lorem Ipsum")}
+        it {print page.html}
+      end
     end
 
     context "The owning user" do 
@@ -221,6 +233,16 @@ describe "CoursePages" do
           fill_in "objective_objective", with: "goal"
           click_button ("Add")
           page.should have_content("goal")
+        end
+      end
+
+      describe "adding microposts", js: true do
+        it {page.should have_selector("form#new_micropost")}
+        it "adds a micropost" do
+          expect {
+          fill_in "micropost_content", with: "some content"
+          click_button "Post"
+          }.to change(Micropost, :count).by(1)
         end
       end
 

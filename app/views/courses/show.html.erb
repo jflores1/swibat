@@ -35,7 +35,7 @@
           </h3>
           <ul id="course-goal-list">
             <% @course.objectives.each do |objective| %>
-                <li><%= objective.objective.humanize %></li>
+                <li><%= objective.objective %></li>
             <% end %>
           </ul>
           <div class="add-goal">
@@ -82,24 +82,9 @@
 </div>
 
 <% content_for :sidebar do %>
+ 
 
-    <%= content_for :sidebar_profile do %>
-      <%= render 'shared/sidebar_profile' %>
-    <% end %>
-
-    <%= content_for :sidebar_invite do %>
-      <%= render 'shared/sidebar_invite' %>
-    <% end %>
-
-    <%= content_for :sidebar_other_user_courses do %>
-      <%= render 'shared/sidebar_other_user_courses' %>
-    <% end %>
-
-    <%= content_for :sidebar_related_courses do %>
-      <%= render 'shared/sidebar_related_courses' %>
-    <% end %>  
-
-    <%= render 'layouts/application_sidebar' %>
+    <%= render 'layouts/application_feed' %>
 
     <div class="sidebar">
       <header class="course-header">
