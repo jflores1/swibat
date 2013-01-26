@@ -1,0 +1,6 @@
+<div class="span12" id="add-unit-assessment">
+	<%= form_for @assessment url: create_unit_assessment_unit_url(@unit) do |assessment| %>
+		<%= assessment.text_field :assessment_name, placeholder: "What do you want to call it?" %>
+		<%= assessment.submit "Add" %>
+	<% end %>
+</div>

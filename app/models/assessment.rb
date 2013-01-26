@@ -14,8 +14,4 @@ class Assessment < ActiveRecord::Base
   attr_accessible :assessment_name
   belongs_to :assessable, polymorphic: true
 
-  before_save do |assessment|
-    assessment.assessment_name = assessment_name.humanize
-  end
-
 end

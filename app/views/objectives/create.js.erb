@@ -1,0 +1,28 @@
+<% if @objective.objective_type == "Content" %>
+	var initial_paragraph = $('.content-covered p');
+	var content_list = $('.content-list');
+	var content_objective = $('<%= j render(@objective) %>');
+	if(initial_paragraph.text().length > 0){
+		initial_paragraph.remove();
+		$('.content-covered').append(content_list).append(content_objective);
+	}
+	content_list.append(content_objective);
+	$('.content-covered form').remove();
+
+<% elsif @objective.objective_type == "Skill" %>
+	var initial_paragraph = $('.skill-covered p');
+	var skill_list = $('.skill-list');
+	var skill_objective = $('<%= j render(@objective) %>');
+	if(initial_paragraph.text().length > 0){
+		initial_paragraph.remove();
+		$('.skill-covered').append(skill_list).append(skill_objective);
+	}
+	skill_list.append(skill_objective);
+	$(".skill-covered form").remove();
+<% else %>
+	var goal_list = $('.goal-list');
+	var goal_objective = $('<%= j render(@objective) %>');
+	goal_list.append(goal_objective);
+	$('.goals-covered form').remove();
+
+<% end %>

@@ -16,7 +16,6 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @objective = @course.objectives.build
     @user = @course.user
     @microposts = @user.microposts.all
   end

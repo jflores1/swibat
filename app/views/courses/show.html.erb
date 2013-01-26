@@ -27,15 +27,15 @@
           <h3>Standards Met:</h3>
           
         </div>
-        <div class="span6 box height5" id="course-goals">
+        <div class="span6 box height5 goals-covered" id="course-goals">
           <h3>Course Goals
           <span>
             <%= link_to '<i class="icon-plus"></i>'.html_safe, new_course_goal_course_path(@course), id:"add-course-goal", remote: true if can? :edit, @course %>
           </span>
           </h3>
-          <ul id="course-goal-list">
-            <% @course.objectives.each do |objective| %>
-                <li><%= objective.objective %>
+          <ul class="goal-list" id="course-goal-list">
+            <% @course.objectives.collect do |objective| %>
+                <li id="<%= dom_id(objective) %>"><%= objective.objective %>
                     <span><%= link_to '<i class="icon-trash"></i>'.html_safe, [objective.objectiveable, objective], method: :delete, class: "delete-goal", remote: true if can? :destroy, @course %></span>
                 </li>
             <% end %>

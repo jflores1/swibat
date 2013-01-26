@@ -1,0 +1,6 @@
+<%= form_for [@assessable, @assessable.assessments.build], remote: true do |assessment| %>
+	
+	<%= assessment.text_field :assessment_name, placeholder: "How will you assess student learning?", class:'span12' %>
+	<%= assessment.submit "Add", class:"btn btn-monkey pull-right" %>
+
+<% end %>

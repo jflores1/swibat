@@ -1,0 +1,3 @@
+var form = $('<%= j render partial: 'forms/form_assessment', locals: {assessment: @assessment} %>');
+var form_div = $('.assessable h3');
+form_div.append(form);

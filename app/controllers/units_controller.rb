@@ -1,6 +1,6 @@
 class UnitsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_filter :find_current_course, :except => [:vote]
+  before_filter :find_current_course, :except => [:vote, :new_unit_content, :new_unit_skill]
   load_and_authorize_resource
   skip_authorize_resource only: :show
 
@@ -57,6 +57,14 @@ class UnitsController < ApplicationController
       @unit.add_or_update_evaluation(:votes, value, current_user)
     end
     redirect_to :back, notice: "Thank you for voting"   
+  end
+
+  def new_unit_content
+    @objective = @unit.objectives.build
+  end
+
+  def new_unit_skill
+    @objective = @unit.objectives.build
   end
 
 

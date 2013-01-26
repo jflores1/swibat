@@ -66,7 +66,11 @@ Swibat::Application.routes.draw do
     resources :assessments
     resources :lessons
     resources :comments, :only => [:create, :destroy]
-    member { post :vote }
+    member do
+      post :vote
+      get :new_unit_content
+      get :new_unit_skill
+    end
   end
 
   resources :lessons do    

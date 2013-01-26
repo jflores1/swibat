@@ -36,6 +36,9 @@ $(document).ready ->
   $('.add-standard').tooltip({
     'title':'Assign or Edit Standards'
   })
+  $('.add-unit-assessment').tooltip({
+    'title':'Add an Assessment'
+  })
 
   #calendar
   $('.datepicker').datepicker({"dateFormat":"yy-mm-dd"})
@@ -44,4 +47,7 @@ $(document).ready ->
   $('.wysihtml5').wysihtml5()
 
   $('.best_in_place').best_in_place()
+  $('.best_in_place').bind "ajax:success", ->
+    @innerHTML = @innerHTML.replace(/\n/g, "<br/>")
+    
   # $('.char-count').charCount()

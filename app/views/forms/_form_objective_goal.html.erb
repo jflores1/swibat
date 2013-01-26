@@ -1,0 +1,7 @@
+<%= form_for [objectiveable, objectiveable.objectives.build], remote: true do |objective| %>
+
+  <%= objective.text_field :objective, placeholder:"Students will be able to...", class:"span12" %>
+  <%= objective.hidden_field :objective_type, value: "Goal" %>
+  <%= objective.submit "Add", class: "btn btn-small btn-monkey pull-right" %>
+    
+<% end %>

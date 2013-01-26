@@ -1,0 +1,4 @@
+<li id="<%= dom_id(objective) %>">
+	<%= objective.objective %>
+	 <span><%= link_to '<i class="icon-trash"></i>'.html_safe, [objective.objectiveable, objective], method: :delete, class: "delete-objective", remote: true if can? :destroy, objective.objectiveable %></span>
+</li>

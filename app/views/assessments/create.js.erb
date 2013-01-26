@@ -1,0 +1,4 @@
+var assessment_list = $('.assessment-list');
+var assessment = $('<%= j render(@assessment) %>');
+assessment_list.append(assessment);
+$('.assessable form').remove();

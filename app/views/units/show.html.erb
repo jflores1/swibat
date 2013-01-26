@@ -22,20 +22,32 @@
           <h3>Standards Met</h3>
           
         </div>
-        <div class="span6 box height7">
-          <h3>Assessments</h3>
+        <div class="span6 box height7 assessable">
+          <h3>Assessments
+            <span>
+              <%= link_to '<i class="icon-plus"></i>'.html_safe, new_unit_assessment_path(@unit), class:"add-unit-assessment", remote: true if can? :edit, @unit %>
+            </span>
+          </h3>
           <%= unit_assessments(@unit) %>
         </div>
       </div>
 
       <div class="span12 box-bottom-margin no-left-margin">
-        <div class="span6 box no-left-margin height7">
-          <h3>Content Covered:</h3>
+        <div class="span6 box no-left-margin height7 content-covered">
+          <h3>Content Covered
+            <span>
+              <%= link_to '<i class="icon-plus"></i>'.html_safe, new_unit_content_unit_path(@unit), class:"add-content-objective", remote: true if can? :edit, @unit %>
+            </span>
+          </h3>
           <%= unit_content(@unit) %>
         </div>
 
-        <div class="span6 box height7">
-          <h3>Skills</h3>
+        <div class="span6 box height7 skill-covered">
+          <h3>Skills
+            <span>
+              <%= link_to '<i class="icon-plus"></i>'.html_safe, new_unit_skill_unit_path(@unit), class:"add-skill-objective", remote: true if can? :edit, @unit %>
+            </span>
+          </h3>
           <%= unit_skills(@unit) %>
         </div>
       </div>
@@ -69,23 +81,8 @@
 </div>
 
 <% content_for :sidebar do %>
-    <%= content_for :sidebar_profile do %>
-          <%= render 'shared/sidebar_profile' %>
-    <% end %>
 
-    <%= content_for :sidebar_invite do %>
-        <%= render 'shared/sidebar_invite' %>
-    <% end %>
-
-    <%= content_for :sidebar_other_course_units do %>
-        <%= render 'shared/sidebar_other_course_units' %>
-    <% end %>
-
-    <%= content_for :sidebar_related_units do %>
-      <%= render 'shared/sidebar_related_units' %>
-    <% end %> 
-
-    <%= render 'layouts/application_sidebar' %>
+    <%= render 'layouts/application_feed' %>
 
 <% end %>
 

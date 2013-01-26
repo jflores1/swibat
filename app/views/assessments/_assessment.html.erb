@@ -1,0 +1,4 @@
+<li id="<%= dom_id(assessment) %>">
+	<%= assessment.assessment_name %>
+	 <span><%= link_to '<i class="icon-trash"></i>'.html_safe, [assessment.assessable, assessment], method: :delete, class: "delete-assessment", remote: true if can? :destroy, assessment.assessable %></span>
+</li>

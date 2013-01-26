@@ -4,10 +4,8 @@ module UnitsHelper
     if unit.content_taught.count == 0
       content_tag :p, "No content objectives have been added yet."
     else
-      content_tag :ul do
-        unit.content_taught.collect do |content|
-          concat(content_tag :li, content.objective)
-        end
+      content_tag :ul, class:"content-list" do
+        render partial: 'objectives/objective', collection: unit.objectives.content
       end
     end
   end
@@ -16,10 +14,8 @@ module UnitsHelper
     if unit.skills_taught.count == 0
       content_tag :p, "No skill objectives have been added yet."
     else
-      content_tag :ul do
-        unit.skills_taught.collect do |skill|
-          concat(content_tag :li, skill.objective)
-        end
+      content_tag :ul, class:"skill-list" do
+        render partial: 'objectives/objective', collection: unit.objectives.skills
       end
     end
   end
@@ -28,10 +24,8 @@ module UnitsHelper
     if unit.assessments.count == 0
       content_tag :p, "No assessments have been added yet."
     else
-      content_tag :ul do
-        unit.assessments.collect do |assessment|
-          concat(content_tag :li, assessment.assessment_name)
-        end
+      content_tag :ul, class:"assessment-list" do
+        render partial: 'assessments/assessment', collection: unit.assessments
       end
     end
   end

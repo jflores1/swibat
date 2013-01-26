@@ -238,9 +238,10 @@ describe "CoursePages" do
       end
 
       describe "can delete goals from the course", js: true do
-        let(:goal){build_stubbed(:objective, objectiveable: course)}
         it "finds the link and deletes" do
           expect{
+            find('a#add-course-goal').click
+            fill_in "objective_objective", with: "objective"
             find('a.delete-goal').click
           }.to change(Objective, :count).by(-1)
         end

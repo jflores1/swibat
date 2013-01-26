@@ -18,6 +18,11 @@ class ObjectivesController < ApplicationController
     end
   end
 
+  def destroy 
+    @objective = @objectiveable.objectives.find(params[:id])
+    @objective.destroy
+  end
+
   def similar_objectiveables
     based_on = params[:based_on]
     objectives = JSON.parse(params[:objectives])    

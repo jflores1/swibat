@@ -16,7 +16,8 @@ describe "UnitPages" do
     describe "Can add a unit" do
       let(:submit){"Save and Come Back Later"}
       let(:move_on){"Add Some Lessons"}
-      let(:unit){course.units}
+      let(:units){course.units}
+      let(:unit){create(:unit, course: course)}
 
       context "with valid information" do
         before {sign_in_and_go_to_form}
@@ -24,7 +25,7 @@ describe "UnitPages" do
           expect {
             fill_out_form_with_valid_information
             click_button submit
-          }.to change(unit, :count).by(1)
+          }.to change(Unit, :count).by(1)
           current_path.should eq(course_path(course))
         end
 
@@ -32,15 +33,15 @@ describe "UnitPages" do
           expect {
             fill_out_form_with_valid_information
             click_button move_on
-          }.to change(unit, :count).by(1)
-          current_path.should == new_unit_lesson_path(1)
+          }.to change(Unit, :count).by(1)
+          current_path.should eq(new_unit_lesson_path(Unit.last))
         end
 
         it "has at least one objective" do
           expect {
             fill_out_form_with_valid_information
             click_button submit
-          }.to change(unit, :count).by(1)
+          }.to change(Unit, :count).by(1)
           Unit.last.objectives.count.should == 1
         end
 
@@ -48,7 +49,7 @@ describe "UnitPages" do
           expect {
             fill_out_form_with_valid_information
             click_button submit
-          }.to change(unit, :count).by(1)
+          }.to change(Unit, :count).by(1)
           Unit.last.assessments.count.should == 1
         end
       end
@@ -151,6 +152,67 @@ describe "UnitPages" do
     #  end
     #end
 
+
+    context "for the owning user" do 
+      let(:course){create(:course)}
+      let(:unit){create(:unit)}
+      let(:user){unit.user}
+
+      before do
+        visit course_unit_path(course, unit)
+      end
+
+      it "displays the assessment form", js: true do
+        find("a.add-unit-assessment").click
+        page.should have_selector("form#new_assessment")
+      end
+      it "allows the user to add an assessment", js: true do
+        expect{
+        find("a.add-unit-assessment").click
+        fill_in "assessment_assessment_name", with: "Some text"
+        click_button "Add"
+        }.to change(Assessment, :count).by(1)
+        page.should have_content("Some text")
+      end
+      it "allows the user to delete an assessment", js: true do
+        expect{first('.delete-assessment').click}.to change(Assessment, :count).by(-1)
+      end
+
+      it "allows the user to add content objectives", js: true do
+        find('a.add-content-objective').click
+        page.should have_selector("form#new_objective")
+      end
+
+      it "can add a content objective", js: true do
+        expect{
+          find('a.add-content-objective').click
+          fill_in "objective_objective", with: "Content objective"
+          click_button "Add"
+        }.to change(Objective, :count).by(1)
+        page.should have_content("Content objective")
+      end
+
+      it "can remove a content objective", js: true do
+        expect{
+          first('.delete-objective').click
+        }.to change(Objective, :count).by(-1)
+        page.should_not have_content("Describe how Carnegie changed steel")
+      end
+
+      it "can has a skill objective form", js: true do
+        find('a.add-skill-objective').click
+        page.should have_selector('form#new_objective')
+      end
+
+      it "can add a skill objective", js: true do
+        expect{
+          find('a.add-skill-objective').click
+          fill_in "objective_objective", with: "Skill Objective"
+          click_button "Add"
+        }.to change(Objective, :count).by(1)
+        page.should have_content("Skill Objective")
+      end
+    end
 
     describe "Displays similar units" do
       it {should have_content("Similar Units")}
