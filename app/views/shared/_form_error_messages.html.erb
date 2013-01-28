@@ -1,5 +1,5 @@
 <% if object.errors.any? %>
-    <div id="errorModal" class="modal">
+    <div id="errorModal" class="modal hide fade">
       <div class="modal-header">
         <button type="button" class="close modal-dismiss" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Sorry, but this form contains the following <%= pluralize(object.errors.count, "error") %>. </h3>

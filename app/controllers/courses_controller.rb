@@ -126,4 +126,8 @@ class CoursesController < ApplicationController
     @micropost = current_user.microposts.build if signed_in?
   end
 
+  def journal
+    @course = Course.find(params[:id])
+  end
+
 end

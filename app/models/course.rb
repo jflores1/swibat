@@ -28,7 +28,7 @@ class Course < ActiveRecord::Base
   belongs_to :grade
   belongs_to :subject
   has_many :flags, :as => :flaggable, dependent: :destroy
-
+  
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
 
   has_reputation :votes, source: :user, aggregated_by: :sum

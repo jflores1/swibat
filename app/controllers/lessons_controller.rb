@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_filter :find_current_unit, :except => [:vote, :lesson_content, :lesson_skills, :standards, :save_standards]
+  before_filter :find_current_unit, :except => [:vote, :lesson_content, :lesson_skills, :standards, :save_standards, :update_journal_entry]
   load_and_authorize_resource
   skip_authorize_resource only: :show
   respond_to :html, :json
@@ -9,6 +9,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
     @course = @unit.course
     @user = @course.user
+    @journal_entry = @lesson.journal_entry || JournalEntry.new
 
     @similar_lessons_based_on_name = Objective.find_similar_objectiveables([@lesson.to_s], "Lesson", "name").first(5)
     @similar_lessons_based_on_name.delete_if {|c| c[:objectiveable].id == @lesson.id}    
@@ -91,6 +92,14 @@ class LessonsController < ApplicationController
     end
 
     redirect_to [@lesson.unit, @lesson]
+  end
+
+  # POST
+  def update_journal_entry
+    @lesson = Lesson.find(params[:id])    
+    @journal_entry = JournalEntry.find_or_initialize_by_lesson_id(@lesson.id)
+    @journal_entry.update_attributes(params[:journal_entry])
+    @journal_entry.save
   end
 
   private
