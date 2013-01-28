@@ -1,4 +1,4 @@
-<li class="post" id="<%= micropost.id %>">
+<li class="post" id="<%= micropost.id %>" data-id="<%= micropost.id %>">
 	<div class="feed-image">
 		<%= image_tag micropost.user.image.url, alt: "#{micropost.user.full_name}" %>	
 	</div>
@@ -6,7 +6,7 @@
 		<%= link_to "#{micropost.user.full_name}", user_path(micropost.user)%>
 	</span>
 	<span class="content">
-		<%= micropost.content %>
+		<%= auto_link(micropost.content) %>
 	</span>
 	<span class="timestamp">
 		<%= time_ago_in_words(micropost.created_at) %>
