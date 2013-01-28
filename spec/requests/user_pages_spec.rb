@@ -156,6 +156,41 @@ describe "UserPages" do
       end
     end
 
+    describe "follow/unfollow buttons" do
+      let(:other_user){create(:user)}
+
+      describe "following a user" do
+        before {visit user_path(other_user)}
+        it "should increment the user's people_followed count" do
+          expect{
+            click_button("Follow")
+          }.to change(@user.people_followed, :count).by(1)
+        end
+        it "should increment the other user's follower count" do
+          expect{
+            click_button("Follow")
+          }.to change(other_user.followers, :count).by(1)
+        end
+        describe "toggling the button", js: true do
+          before {click_button "Follow"}
+          it {page.should have_selector('input', value: 'Unfollow')}
+        end
+      end
+
+      describe "unfollowing a user" do
+        before do
+          @user.follow!(other_user)
+          visit user_path(other_user)
+        end
+
+        it "should decrement the followed user count" do
+          expect{click_button "Unfollow"}.to change(@user.people_followed, :count).by(-1)
+        end
+        it "should decrement the number of followers" do
+          expect {click_button "Unfollow"}.to change(other_user.followers, :count).by(-1)
+        end
+      end
+    end
   end
 
   context "When not signed in" do

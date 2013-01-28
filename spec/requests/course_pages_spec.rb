@@ -196,17 +196,18 @@ describe "CoursePages" do
         it {should have_content("This is a course summary")}
       end
 
-      describe "the user can add microposts" do
-        it "finds the add-micropost button" do
-          find('a.add-micropost').click
-          page.should have_content('Add Post')
-        end
+      describe "the user cannot access user restricted actions" do
+        it {page.should_not have_selector('a.add-micropost')}
+        it {page.should_not have_selector('.header-edit')}
+        it {page.should_not have_selector('.add-course-goal')}
+        it {page.should_not have_selector('.delete-goal')}
+        it {page.should_not have_selector('#course-add-unit')}
+        it {page.should_not have_content("Add one now.")}
       end
 
       describe "it displays microposts" do
         let(:micropost){create(:micropost, user: user)}
         it {should have_content("Lorem Ipsum")}
-        it {print page.html}
       end
     end
 
@@ -238,11 +239,10 @@ describe "CoursePages" do
       end
 
       describe "can delete goals from the course", js: true do
+        let(:objective) {course.objectives.create(objective: "Objective", objective_type: "Goal")}
         it "finds the link and deletes" do
           expect{
-            find('a#add-course-goal').click
-            fill_in "objective_objective", with: "objective"
-            find('a.delete-goal').click
+            first('.delete-goal').click
           }.to change(Objective, :count).by(-1)
         end
       end
@@ -263,37 +263,7 @@ describe "CoursePages" do
           page.should have_content("some content")
         end
       end
-
-
     end
-    
-    
-
-    context "A signed in user" do
-      describe "cannot access owning user permissions" do
-        xit "does not see a button to add a new unit to the course" do
-
-        end
-
-        xit "does not see a button to add objectives" do
-
-        end
-      end
-
-
-    end
-
-    context "An unregistered user" do
-      xit "can access the page" do
-
-      end
-
-      xit "sees an option to create an account" do
-
-      end
-
-    end
-
   end
 
   context "The Course Index Page" do
@@ -316,15 +286,6 @@ describe "CoursePages" do
     end
     it {page.should have_content("Feed")}
 
-    describe "it shows a friend's course" do
-      let!(:user){create(:user)}
-      let(:user2){create(:user, id: 2, first_name: "John")}
-      let!(:friendship){create(:friendship)}
-      let!(:course){create(:course, user_id: 2)}
-      it {print page.html}
-      it {page.should have_content("Physics")}
-      it {page.should have_content("John")}
-    end
   end
 
   context "The Course/syllabus page" do
@@ -332,7 +293,6 @@ describe "CoursePages" do
     before(:each) do
       visit syllabus_course_path(course)
     end
-    it {print page.html}
     it {page.should have_content(course.course_name)}
     it {page.should have_content(course.grade)}
   end

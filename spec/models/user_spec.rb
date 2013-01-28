@@ -43,6 +43,11 @@ describe User do
   it {should respond_to(:answers)}
   it {should respond_to(:flags)}
   it {should respond_to(:microposts)}
+  it {should respond_to(:feed)}
+  it {should respond_to(:followings)}#relationships
+  it {should respond_to(:people_followed)}#followed_users
+  it {should respond_to(:incoming_followings)}#reverse relationships
+  it {should respond_to(:followers)}
 
   context "Has validation on non-devise columns" do
     describe "When missing first name" do
@@ -86,17 +91,57 @@ describe User do
         it {should_not be_valid}
         it {expect {user.save!}.to raise_error(ActiveRecord::RecordInvalid)}
       end
-
     end
-
   end
 
-  context "When creating a course" do
-    let(:user){FactoryGirl.build(:user)}
+  describe "following" do
+    let(:user){build(:user)}
+    let(:other_user){create(:user)}
+    
+    before do
+      user.save
+      user.follow!(other_user)
+    end
 
-    describe "User can create a course" do
-      before{@course = user.courses.build(course_name:"Physics", course_semester:"Fall", course_year:2012, course_summary:"Summary", :grade => FactoryGirl.create(:grade))}
-      it {expect{user.save!}.to change{Course.count}.by(1)}
+    it {should be_following(other_user)}
+    its(:people_followed){should include(other_user)}
+
+    describe "followed user" do
+      subject {other_user}
+      its(:followers){should include(user)}
+    end
+
+    describe "and unfollowing" do
+      before {user.unfollow!(other_user)}
+      it {should_not be_following(other_user)}
+      its(:people_followed) {should_not include(other_user)}
+    end
+  end
+
+  context "micropost associations" do
+    let(:user){build(:user)}
+    before {user.save}
+    let(:older_micropost){create(:micropost, user: user, created_at: 1.day.ago)}
+    let(:new_micropost){create(:micropost, user: user, created_at: 1.hour.ago)}
+
+    describe "status" do
+      let(:unfollowed_post){create(:micropost, user: create(:user))}
+      let(:followed_user){create(:user)}
+
+
+      before do
+        user.follow!(followed_user)
+        3.times {followed_user.microposts.create!(content:"Lorem Ipsum")}
+      end
+
+      its(:feed){should include(new_micropost)}
+      its(:feed){should include(older_micropost)}
+      its(:feed){should_not include(unfollowed_post)}
+      its(:feed) do
+        followed_user.microposts.each do |micropost|
+          should include(micropost)
+        end
+      end
     end
   end
 

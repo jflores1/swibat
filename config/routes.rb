@@ -87,7 +87,7 @@ Swibat::Application.routes.draw do
     end    
   end
 
-  resources :followings, :only => [:destroy] do
+  resources :followings, :only => [:create, :destroy] do
     member do
       post 'follow'
     end

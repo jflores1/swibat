@@ -1,13 +1,12 @@
 <div class="span12 micropost-sidebar">
+	<%= subscribe_to "/microposts/new" %>
+	<h3>Tweachings</h3>
 	<% if signed_in? %>
 		<%= render 'microposts/form_micropost' %>
 	<% end %>
-	<% if @user.microposts.any? %>
+	<% if @microposts.any? %>
 		<ol class="microposts">
-			<% @user.microposts.each do |micropost| %>
-				<%= render partial: 'microposts/microposts', locals: {micropost: micropost} %>
-			<% end %>
-		</ol>
-		
+			<%= render partial: 'microposts/micropost', collection: @microposts %>
+		</ol>	
 	<% end %>
 </div>

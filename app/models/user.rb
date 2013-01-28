@@ -59,8 +59,8 @@ class User < ActiveRecord::Base
   
   # Define the friendship relations with some semantics.
   has_many  :followings,
-            :class_name => :Following,
-            foreign_key: :user_id
+            foreign_key: :user_id,
+            dependent: :destroy
   
   has_many  :incoming_followings,             
             :class_name => :Following,
@@ -112,6 +112,23 @@ class User < ActiveRecord::Base
     "#{id}-#{full_name.strip.parameterize}"
   end
 
+  def feed
+    Micropost.from_users_followed_by(self)
+  end
+
+  def following?(other_user)
+    followings.find_by_followee_id(other_user.id)
+  end
+
+  def follow!(other_user)
+    followings.create!(followee_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    followings.find_by_followee_id(other_user.id).destroy
+  end
+
+  #Private Methods
   private
 
   def valid_role

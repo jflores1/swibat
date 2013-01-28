@@ -14,7 +14,7 @@ class Following < ActiveRecord::Base
   belongs_to :user
   belongs_to :followee, :class_name => "User"
 
-  attr_accessible :user, :followee
+  attr_accessible :user, :followee_id
 
   validates :user, :presence => true
   validates :followee, :presence => true

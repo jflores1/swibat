@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @user = @course.user
-    @microposts = @user.microposts.all
+    @microposts = @user.feed
   end
 
   def new
@@ -123,7 +123,7 @@ class CoursesController < ApplicationController
   end
 
   def new_micropost 
-    @micropost = current_user.microposts.build
+    @micropost = current_user.microposts.build if signed_in?
   end
 
 end

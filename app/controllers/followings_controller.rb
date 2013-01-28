@@ -1,6 +1,15 @@
 class FollowingsController < ApplicationController
+	#before_filter :authenticate_user!
+	#load_and_authorize_resource
+	respond_to :html, :js
   
   # POST
+  def create
+  	@user = User.find(params[:following][:followee_id])
+  	current_user.follow!(@user)
+  	respond_with @user
+  end
+
   def follow
   	followee = User.find(params[:id])
 		if (Following.follow(current_user, followee))
@@ -14,13 +23,7 @@ class FollowingsController < ApplicationController
 
   # DELETE
   def destroy
-  	following = Following.find(params[:id])
-		if following.destroy
-			flash[:notice] = "Successfully unfollowed user."
-			redirect_to :back
-		else
-			flash[:error] = "There was a problem while trying to unfollow the user."
-			redirect_to :back
-		end
+  	@user = Following.find(params[:id]).followee
+  	current_user.unfollow!(@user)
   end
 end
