@@ -95,7 +95,7 @@ Swibat::Application.routes.draw do
     end
   end
 
-  resources :microposts, only: :create
+  resources :microposts, only: [:create, :index]
   
   match 'demo/:action' => 'demo#:action'
   match 'static_pages/:action' => 'static_pages#:action'
