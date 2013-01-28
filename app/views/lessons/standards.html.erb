@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<h1>Standards for <%= @lesson.lesson_title %></h1>
+	<h1>Editing standards for <%= link_to @lesson.lesson_title, [@lesson.unit, @lesson] %></h1>
 	<div class="span6">
 		<div class="corestandards-accordion">
 			<% @grades.each do |grade| %>

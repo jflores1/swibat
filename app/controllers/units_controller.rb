@@ -8,6 +8,7 @@ class UnitsController < ApplicationController
     @course = Course.find(params[:course_id])
     @user = @course.user
     @unit = Unit.find(params[:id])
+    @microposts = @user.feed
 
     @similar_units_based_on_name = Objective.find_similar_objectiveables([@unit.to_s], "Unit", "name").first(5)
     @similar_units_based_on_name.delete_if {|c| c[:objectiveable].id == @unit.id}    

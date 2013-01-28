@@ -38,13 +38,12 @@ module LessonsHelper
   end
 
 
-  def display_educational_domain_children(domain)
-    
+  def display_educational_domain_children(domain)    
     tree = content_tag :h3, domain.name
     if domain.children.any?
-
       tree += raw '<div><div class="corestandards-accordion">'
-      domain.children.each do |child|
+      domain.children.each do |child|        
+        
         tree += raw "#{display_educational_domain_children(child)}"
       end
       tree += raw "</div></div>"
@@ -60,6 +59,8 @@ module LessonsHelper
     if grade.educational_domains.any?
       tree += content_tag :div, class: "corestandards-accordion" do   
         grade.educational_domains.each do |domain|          
+          # skip if they are not root domains
+          next if ![1,69].include?(domain.parent_id )
             concat raw "#{display_educational_domain_children(domain)}"          
         end
       end
@@ -79,5 +80,29 @@ module LessonsHelper
     content += raw "</ul>"
     content
   end
+
+  def display_standards_for_lesson(lesson)
+    content = raw "<ul class=\"standards-list\">"
+    lesson.educational_standards.each do |standard|      
+      content += raw "<li data-content=\"#{standard.description}\" title=\"#{standard.name}\" data-id=\"#{standard.id.to_s}\">#{standard.name}</li>"
+    end
+    content += raw "</ul>"
+    content
+  end
+
+  def display_standards_for_unit(unit)
+    tree = raw "" 
+    if unit.lessons.any?      
+      tree += content_tag :div, class: "corestandards-accordion" do   
+        unit.lessons.each do |lesson|  
+            concat raw "<h3>#{lesson.lesson_title}</h3>"        
+            concat raw "#{display_standards_for_lesson(lesson)}"                      
+        end  
+      end    
+    end
+    raw tree
+  end
+  
+
 
 end

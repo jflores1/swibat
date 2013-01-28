@@ -25,7 +25,14 @@
       <div class="span12 no-left-margin box-bottom-margin">
         <div class="span6 box height5">
           <h3>Standards Met:</h3>
-          
+          <div class="corestandards-accordion">
+            <% @course.units.each do |unit| %>
+              <h3><%= unit.unit_title %></h3>
+              <div>
+                <%= display_standards_for_unit(unit) %>              
+              </div>
+            <% end %>
+          </div>
         </div>
         <div class="span6 box height5 goals-covered" id="course-goals">
           <h3>Course Goals

@@ -26,9 +26,7 @@
             </span>
           </h3>
           <ul>
-            <% @lesson.educational_standards.each do |standard| %>
-              <li data-id="<%= standard.id %>" data-content="<%= standard.description%>" title="<%= standard.name %>"><%= standard.name %></li>
-            <% end %>
+            <%= display_standards_for_lesson(@lesson) %>            
           </ul>
         </div>
         <div class="span6 box height7">
