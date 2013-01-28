@@ -24,6 +24,7 @@ gem 'pg_search'
 gem 'will_paginate', '~> 3.0'
 gem 'best_in_place'
 gem 'amoeba'
+gem 'private_pub'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
