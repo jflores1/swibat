@@ -29,6 +29,8 @@ class Lesson < ActiveRecord::Base
   has_many :lesson_standards, dependent: :destroy
   has_many :educational_standards, through: :lesson_standards, :uniq => true
 
+  has_one :journal_entry, dependent: :destroy
+
   accepts_nested_attributes_for :resources, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
   accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true

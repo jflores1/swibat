@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124151321) do
+ActiveRecord::Schema.define(:version => 20130128144000) do
 
   create_table "activities", :force => true do |t|
     t.string   "activity"
@@ -133,6 +133,30 @@ ActiveRecord::Schema.define(:version => 20130124151321) do
     t.string   "zip_code"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "journal_entries", :force => true do |t|
+    t.float    "average_score"
+    t.float    "median_score"
+    t.float    "highest_score"
+    t.float    "lowest_score"
+    t.text     "lesson_pros"
+    t.text     "lesson_cons"
+    t.integer  "lesson_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "journals", :force => true do |t|
+    t.float    "average_score"
+    t.float    "median_score"
+    t.float    "highest_score"
+    t.float    "lowest_score"
+    t.text     "course_pros"
+    t.text     "course_cons"
+    t.integer  "course_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "leads", :force => true do |t|

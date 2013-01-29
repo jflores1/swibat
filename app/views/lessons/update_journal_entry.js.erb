@@ -1,0 +1,12 @@
+<% if @journal_entry.errors.any? %>
+	$('#errorModal').remove();
+	var error_modal = $('<%= j(render(partial: "shared/form_error_messages", locals: {object: @journal_entry} )) %>');
+	$('body').append(error_modal);
+	$('#errorModal').modal('show');
+<% else %>
+	$('#completeLessonModal').modal('hide');
+	$('#errorModal').remove();
+	var success_modal = $('<%= j(render(partial: "shared/form_success_modal", locals: {message: "Successfully saved journal entry."} )) %>');
+	$('body').append(success_modal);
+	$('#successModal').modal('show');
+<% end %>

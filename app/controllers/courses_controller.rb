@@ -132,5 +132,9 @@ class CoursesController < ApplicationController
     @microposts = @user.feed
     @units_by_date = @course.units.all.group_by(&:expected_start_date)
   end
+  
+  def journal
+    @course = Course.find(params[:id])
+  end
 
 end

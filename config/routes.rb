@@ -55,6 +55,8 @@ Swibat::Application.routes.draw do
       post :course_goal
       get 'syllabus'
       get :unit_calendar
+      get  :syllabus
+      get  :journal
     end
     collection do
       get 'feed'
@@ -85,6 +87,7 @@ Swibat::Application.routes.draw do
       post :lesson_skills
       get  :standards
       post :save_standards
+      post :update_journal_entry
     end    
   end
 
