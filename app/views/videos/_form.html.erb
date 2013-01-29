@@ -1,0 +1,24 @@
+<%= render 'shared/form_error_messages', object: @video %>
+
+<div class="group">
+  <%= f.label :title %>
+  <%= f.text_field :title %> 
+</div>
+
+<div class="group">
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+</div>
+
+<div>
+<% if @video.new_record?%>
+  <button class="btn btn-monkey" type="submit">
+     Step 2
+  </button>
+<%else%>
+  <button class="btn btn-monkey" type="submit">
+     Save
+  </button>
+<%end%>
+<%= link_to "Cancel", videos_path, :class => "btn btn-monkey" %>
+</div>

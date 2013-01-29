@@ -1,0 +1,11 @@
+common: &common
+  username: swibat
+  password: swibat123
+  dev_key: AI39si5yumd9fnmClctxOikdyo1spEm0Q9_vXiTAoXJX_xBTFPTCeXhmEKtXbrSuDXWKFXu3dMptLhaFbE3T38MB4nLMKiK7jg
+  
+test:
+  <<: *common
+development:
+  <<: *common
+production:
+  <<: *common

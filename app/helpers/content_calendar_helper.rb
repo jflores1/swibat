@@ -1,4 +1,5 @@
 module ContentCalendarHelper
+
 	def content_calendar(date = Date.today, &block)
 		ContentCalendar.new(self, date, block).table
 	end

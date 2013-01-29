@@ -25,6 +25,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'best_in_place'
 gem 'amoeba'
 gem 'rails_autolink'
+gem 'youtube_it'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'

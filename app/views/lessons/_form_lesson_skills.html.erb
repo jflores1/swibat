@@ -1,4 +1,4 @@
-<%= form_for [@lesson, @lesson.objectives.build], url: lesson_skills_lesson_path(@lesson), remote: true do |f| %>
+<%= form_for [@lesson, @lesson.objectives.build], url: new_lesson_skill_lesson_path(@lesson), remote: true do |f| %>
 
     <div class="span12">
       <%= f.text_field :objective, placeholder:"Students will be able to...", class:"span11" %>

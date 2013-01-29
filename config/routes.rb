@@ -80,7 +80,14 @@ Swibat::Application.routes.draw do
     resources :objectives
     resources :assessments
     resources :activities
-    resources :comments, :only => [:create, :destroy]    
+    resources :comments, :only => [:create, :destroy]  
+    resources :videos do  
+      new do
+         post :upload
+         get  :save_video
+       end
+    end  
+    
     member do
       post :vote
       get  :standards

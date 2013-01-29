@@ -130,6 +130,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @user = @course.user
     @microposts = @user.feed
+    @date = Date.today
     @units_by_date = @course.units.all.group_by(&:expected_start_date)
   end
   

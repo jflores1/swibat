@@ -115,6 +115,26 @@
         </div>
       </div>
 
+      <div class="span12 box-bottom-margin no-left-margin">
+        <div class="span6 box no-left-margin height5">
+          <h3>Videos</h3>
+          <% if @lesson.videos.count == 0 %>
+              <p>No videos have been uploaded for this lesson. <%= link_to "Upload one", new_lesson_video_path(@lesson) %>.</p>
+          <% else %>
+            <ul class="videos">
+              <% @lesson.videos.each do |video| %>
+                  <li>
+                    <%= link_to image_tag("http://img.youtube.com/vi/#{video.yt_video_id}/1.jpg"), lesson_video_path(@lesson, video) %>
+                    <%= link_to video.title, lesson_video_path(@lesson, video) %>
+                  </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+        
+      </div>
+
+
     </div>
   </div>
 

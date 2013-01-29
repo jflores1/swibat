@@ -1,0 +1,6 @@
+<div class="block">            
+  <h2>Edit Video</h2>
+  <%= form_for @video, :url => video_path(@video), :html => { :class => :form } do |f| -%>
+    <%= render :partial => "form", :locals => {:f => f} %>
+  <% end -%>
+</div>

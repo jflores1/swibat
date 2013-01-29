@@ -1,0 +1,19 @@
+<h1>Displaying videos for <%= link_to @lesson.lesson_title, [@lesson.unit, @lesson] %></h1>
+<table class="table table-striped">
+  <tr>             
+    <th>Title</th>
+    <th>&nbsp;</th>
+  </tr>
+
+  <% @videos.each do |video| -%>
+  <tr>
+    <td>
+      <%= link_to video.title, lesson_video_path(video.lesson, video) %>
+    </td>
+    <td class="last">      
+      <%= link_to "Edit", edit_lesson_video_path(video.lesson, video), class: "btn btn-monkey" %>
+      <%= link_to "Delete", lesson_video_path(video.lesson, video), :method => :delete, :confirm => "Are you sure?", class: "btn btn-monkey" %>
+    </td>
+  </tr>          
+  <% end -%>
+</table>
