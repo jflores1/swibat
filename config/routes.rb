@@ -83,11 +83,11 @@ Swibat::Application.routes.draw do
     resources :comments, :only => [:create, :destroy]    
     member do
       post :vote
-      post :lesson_content
-      post :lesson_skills
       get  :standards
       post :save_standards
       post :update_journal_entry
+      get  :new_lesson_content
+      get  :new_lesson_skill
     end    
   end
 

@@ -6,8 +6,14 @@
 		<%= render 'courses/course_header' %>
 	</header>	
 
-	<%= content_calendar do %>
-		
+	<%= content_calendar do |date| %>
+		<% if @units_by_date[date] %>
+			<ul>
+				<% @units_by_date[date].each do |unit| %>
+					<li><%= unit.unit_title %></li>
+				<% end -%>
+			</ul>
+		<% end %>
 	<% end %>
 
 

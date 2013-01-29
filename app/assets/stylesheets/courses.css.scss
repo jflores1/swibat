@@ -276,6 +276,24 @@ div.course-organizer{
     -webkit-border-radius: 4px;
     border-radius: 4px;
     padding: 0.5em;
+
+    ul{
+      margin-left: 0px;
+
+      li{
+        list-style: none;
+        padding: 0.25em;
+        padding-left: 1em;
+      }
+      li:nth-child(odd){
+        background: #e7e7e7;
+      }
+
+      i{
+        display: inline-block;
+        float: right;
+      }
+    }
   }
 
   div.box-row{
@@ -407,10 +425,6 @@ div.course-organizer{
     min-width: 35.4em; //354px:10px;
   }
 
-}
-
-ul#course-goal-list{
-  float: left;
 }
 
 

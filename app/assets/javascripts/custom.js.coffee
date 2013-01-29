@@ -39,6 +39,9 @@ $(document).ready ->
   $('.add-unit-assessment').tooltip({
     'title':'Add an Assessment'
   })
+  $('.complete-lesson').tooltip({
+    'title':'Mark the Lesson Complete'
+  })
 
   #calendar
   $('.datepicker').datepicker({"dateFormat":"yy-mm-dd"})

@@ -147,18 +147,6 @@ ActiveRecord::Schema.define(:version => 20130128144000) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "journals", :force => true do |t|
-    t.float    "average_score"
-    t.float    "median_score"
-    t.float    "highest_score"
-    t.float    "lowest_score"
-    t.text     "course_pros"
-    t.text     "course_cons"
-    t.integer  "course_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
   create_table "leads", :force => true do |t|
     t.string   "name"
     t.string   "role"

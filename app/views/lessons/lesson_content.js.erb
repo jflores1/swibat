@@ -1,4 +1,0 @@
-var lesson_content_row = $('<%= j(render(partial: "objectives/lesson_content", locals: {:lesson => @lesson} )) %>');
-var lesson_content_list = $('#lesson_content ul');
-lesson_content_list.append(lesson_content_row);
-$('div#lesson-content-form').hide();

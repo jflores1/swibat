@@ -5,10 +5,8 @@ module LessonsHelper
     if lesson.content_taught.count == 0
       content_tag :p, "No content objectives have been added yet."
     else
-      content_tag :ul do
-        lesson.content_taught.collect do |objective|
-          concat(content_tag :li, objective.objective)
-        end
+      content_tag :ul, class:"content-list" do
+        render partial: 'objectives/objective', collection: lesson.objectives.content
       end
     end
   end
@@ -17,10 +15,8 @@ module LessonsHelper
     if lesson.skills_taught.count == 0
       content_tag :p, "No skill objectives have been added yet."
     else
-      content_tag :ul do
-        lesson.skills_taught.collect do |objective|
-          concat(content_tag :li, objective.objective)
-        end
+      content_tag :ul, class:"skill-list" do
+        render partial: 'objectives/objective', collection: lesson.objectives.skills
       end
     end
   end
@@ -29,10 +25,8 @@ module LessonsHelper
     if lesson.assessments.count == 0
       content_tag :p, "No assessments have been added yet."
     else
-      content_tag :ul do
-        lesson.assessments.collect do |lesson_assessment|
-          concat(content_tag :li, lesson_assessment.assessment_name )
-        end
+      content_tag :ul, class:"assessment-list" do
+        render partial: 'assessments/assessment', collection: lesson.assessments
       end
     end
   end

@@ -95,149 +95,38 @@ describe "LessonPages" do
       end
     end
 
-    context "The Lesson Show page" do
-      let(:lesson){create(:lesson, unit: unit)}
-      before do
-        sign_in_via_form
-        visit unit_lesson_path(unit, lesson)
-      end
+    context "The Lesson Show Page" do
+      describe "a user not signed in" do
+        let(:user){create(:user)}
+        let(:course){create(:course, user: user)}
+        let(:unit){create(:unit, course: course)}
+        let(:lesson){create(:lesson, unit: unit)}
 
-      describe "it shows lesson information" do
-        it {page.should have_content("The End of the Gilded Age")}
-        it {page.should have_content("The end of Antebellum era")}
-
-        context "lesson missing parts" do
-          describe "should prompt to add an objective" do
-            it {page.should have_selector("p", text: "No objectives? Boo.")}
-            it "should prompt to add an objective" do
-              find_link("Add some.").click
-              current_path.should eq(edit_unit_lesson_path(unit, lesson))
-            end
-          end
-
-          describe "should prompt to add an assessment" do
-            it {page.should have_selector("p", text:"No assessments? For shame.")}
-            it "should prompt to add an assessment" do
-              find_link("Add an assessment.").click
-              current_path.should eq(edit_unit_lesson_path(unit, lesson))
-            end
-          end
-
-          describe "should prompt to add resources" do
-            it {page.should have_selector("p", text: "The only resource needed here is awesome teaching.")}
-            it "should prompt to add a resource" do
-              find_link("Add a resource.").click
-              current_path.should eq(edit_unit_lesson_path(unit, lesson))
-            end
-          end
-        end
-
-        describe "Displays similar lessons" do
-          it {page.should have_content("Similar Lessons")}
-        end
-
-        context "filled out lesson" do
-          let!(:objective){lesson.objectives.create(objective:"Describe the important people of the gilded age.")}
-          let!(:assessment){lesson.assessments.create(assessment_name:"Quiz")}
-          let!(:activity){lesson.activities.create(activity: "Lecture", duration:"15 mins", agent:"Teacher")}
-          before(:each) do
-            visit unit_lesson_path(unit, lesson)
-          end
-          it {page.should have_content("describe the important people of the gilded age.")}
-          it {page.should have_content("Quiz")}
-          it {page.should have_content("Lecture")}
-          it {page.should have_content("15 mins")}
-          it {page.should have_content("Teacher")}
-        end
-
-      end
-
-      describe "it adds activities to the lesson" do
         before {visit unit_lesson_path(unit, lesson)}
-        it "should add an activity" do
-          expect{
-            fill_in "activity_activity",  with: "Activity"
-            select "15 Minutes",          from: "activity_duration"
-            select  "Teacher",            from: "activity_agent"
-            click_button "Add Activity"
-          }.to change(Activity, :count).by(1)
-        end
-      end
 
-      describe "it removes activities from the lesson" do
-        let!(:activity){lesson.activities.create(activity: "Lecture", duration:"15 mins", agent:"Teacher")}
-        before {visit unit_lesson_path(unit, lesson)}
-        it "should destroy an activity" do
-          expect{
-            find("tr#activity_#{activity.id}").click_link("delete")
-          }.to change(Activity, :count).by(-1)
-        end
-      end
+        it {page.should have_content(lesson.lesson_title)}
+        it {page.should have_content(lesson.user.full_name)}
+        it {page.should have_content(lesson.lesson_start_date.strftime("%B %d"))}
+        it {page.should have_content(lesson.lesson_end_date.strftime("%B %d, %Y"))}
 
-      it "provides a link to add standards" do
-        find("a.add-standard").click
-        page.should have_content("Standards for #{lesson.lesson_title}")
+        #shows assessments
+        describe "it shows assessments" do
+          before {lesson.assessments.create(assessment_name: "Assessment")}
+          it {page.should have_content("Assessment")}
+        end
+
+        describe "it shows content objectives" do
+          before {lesson.objectives.create(objective: "Content Objective", objective_type: "Content")}
+          it {page.should have_content("Content Objective")}
+        end
+
+        describe "it shows skill objectives" do
+          before {lesson.objectives.create(objective: "Skill Objective", objective_type: "Skill")}
+          it {page.should have_content("Skill Objective")}
+        end
+
       end
     end
-
-    describe "Vote div" do
-      let(:lesson){FactoryGirl.create(:lesson, :unit => unit)}
-      before do  
-        sign_in_via_form       
-        visit unit_lesson_path unit, lesson
-      end
-
-      it "should display the voting buttons" do
-        page.should have_selector(".vote")
-      end
-
-      it "should have working upvote button" do
-        lesson.reputation_for(:votes).to_i.should == 0
-        upvote = find(".upvote").first(:xpath,".//..")        
-        upvote.click
-        lesson.reputation_for(:votes).to_i.should == 1
-      end
-
-      it "clicking the upvote button should change its color and type param" do       
-        upvote = find(".upvote").first(:xpath,".//..")
-        upvote.click
-        page.should have_selector(".upvote-active")
-        have_xpath("//a[contains(@href,'type=clear')]")
-      end
-
-      it "clicking a red upvote button should reset the user's vote for that resource" do
-        upvote = find(".upvote").first(:xpath,".//..")
-        upvote.click
-        lesson.reputation_for(:votes).to_i.should == 1
-        upvote = find(".upvote-active").first(:xpath,".//..")
-        upvote.click
-        lesson.reputation_for(:votes).to_i.should == 0
-      end
-
-      it "should have working downvote button" do
-        lesson.reputation_for(:votes).to_i.should == 0
-        downvote = find(".downvote").first(:xpath,".//..")                
-        downvote.click
-        lesson.reputation_for(:votes).to_i.should == -1
-      end
-
-      it "clicking the downvote button should change its color and type param" do       
-        downvote = find(".downvote").first(:xpath,".//..")
-        downvote.click
-        page.should have_selector(".downvote-active")
-        have_xpath("//a[contains(@href,'type=clear')]")
-      end
-
-      it "clicking a red downvote button should reset the user's vote for that resource" do
-        downvote = find(".downvote").first(:xpath,".//..")
-        downvote.click
-        lesson.reputation_for(:votes).to_i.should == -1
-        downvote = find(".downvote-active").first(:xpath,".//..")
-        downvote.click
-        lesson.reputation_for(:votes).to_i.should == 0
-      end
-    end
-
   end
 
   context "A user not signed in" do

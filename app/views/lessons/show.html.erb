@@ -13,8 +13,10 @@
       <span>
         <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_unit_lesson_path(@unit, @lesson), class:"edit-unit-lesson" if can? :edit, @lesson %>
       </span>
+      <span>
+        <%= link_to '<i class="icon-ok"></i>'.html_safe, "#completeLessonModal", data: {toggle: "modal", title: "Mark the lesson complete"} %>
+      </span>
     </h2>
-    <a class="btn btn-monkey" href="#completeLessonModal" data-toggle="modal">Complete Lesson</a>
   </div>
 
   <div class="course-organizer">
@@ -30,17 +32,21 @@
             <%= display_standards_for_lesson(@lesson) %>            
           </ul>
         </div>
-        <div class="span6 box height7">
-          <h3>Assessments</h3>
+        <div class="span6 box height7 assessable">
+          <h3>Assessments
+            <span>
+              <%= link_to '<i class="icon-plus"></i>'.html_safe, new_lesson_assessment_path(@lesson), class:"add-lesson-assessment", remote: true if can? :edit, @lesson %>
+            </span>
+          </h3>
           <%= list_assessments(@lesson) %>
         </div>
       </div>
 
       <div class="span12 box-bottom-margin no-left-margin">
-        <div class="span6 box no-left-margin height7" id="lesson_content">
+        <div class="span6 box no-left-margin height7 content-covered" id="lesson_content">
           <h3>Content Covered
             <span>
-              <%= link_to '<i class="icon-plus"></i>'.html_safe, "#", class:"add-lesson-content" if can? :edit, @unit %>
+              <%= link_to '<i class="icon-plus"></i>'.html_safe, new_lesson_content_lesson_path(@lesson), class:"add-lesson-objective", remote: true if can? :edit, @lesson %>
             </span>
           </h3>
             <%= lesson_content(@lesson) %>
@@ -49,10 +55,10 @@
           </div>
         </div>
 
-        <div class="span6 box height7" id="lesson_skills">
+        <div class="span6 box height7 skill-covered" id="lesson_skills">
           <h3>Skills
             <span>
-              <%= link_to '<i class="icon-plus"></i>'.html_safe, "#", class:"add-lesson-skill" if can? :edit, @unit %>
+              <%= link_to '<i class="icon-plus"></i>'.html_safe, new_lesson_skill_lesson_path(@lesson), class:"add-lesson-objective", remote: true if can? :edit, @lesson %>
             </span>
           </h3>
           <%= lesson_skills(@lesson) %>

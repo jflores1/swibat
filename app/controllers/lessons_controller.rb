@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_filter :find_current_unit, :except => [:vote, :lesson_content, :lesson_skills, :standards, :save_standards, :update_journal_entry]
+  before_filter :find_current_unit, :except => [:vote, :new_lesson_content, :new_lesson_skill, :standards, :save_standards, :update_journal_entry]
   load_and_authorize_resource
   skip_authorize_resource only: :show
   respond_to :html, :json
@@ -66,14 +66,12 @@ class LessonsController < ApplicationController
     redirect_to :back, notice: "Thank you for voting"   
   end
 
-  def lesson_content
-    @lesson = @lesson.objectives.build(params[:objective])
-    @lesson.save!
+  def new_lesson_content
+    @objective = @lesson.objectives.build
   end
 
-  def lesson_skills
-    @lesson = @lesson.objectives.build(params[:objective])
-    @lesson.save!
+  def new_lesson_skill
+    @objective = @lesson.objectives.build
   end
 
   def standards
