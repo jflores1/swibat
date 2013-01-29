@@ -1,0 +1,3 @@
+var target = $('.skill-covered');
+var form = $('<%= j render partial:'forms/form_objective_skill', locals:{objectiveable: @lesson} %>')
+target.append(form);

@@ -1,0 +1,3 @@
+var target = $('.content-covered');
+var form = $('<%= j render partial:'forms/form_objective_content', locals:{objectiveable: @lesson} %>')
+target.append(form);
