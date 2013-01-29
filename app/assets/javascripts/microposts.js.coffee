@@ -6,7 +6,7 @@
 		setTimeout @request, 5000
 
 	request: ->
-		$.get($('.microposts').data('url'))
+		$.get($('.microposts').data('url'), after: $('.microposts').last().data('id'))
 
 jQuery ->
 	if $('.microposts').length > 0

@@ -297,6 +297,34 @@ describe "CoursePages" do
     it {page.should have_content(course.grade)}
   end
 
+  describe "The unit calendar page" do
+    let(:course){create(:course, user: @user)}
+    let(:unit){create(:unit, course: course)}
+    before do
+      sign_in_via_form      
+    end
+
+    context "The Calendar dropdown menu" do
+      it "takes the user to the unit calendar page" do
+        click_link("calendars")
+        click_link("My Courses")
+        select("#{course.course_name}")
+        current_path.should be(unit_calendar_course_path(course))  
+      end      
+    end
+
+    context "The Unit Calendar Page" do
+      before do
+        visit unit_calendar_course_path(course)
+      end
+      it {page.should have_content(course.course_name)}
+      it {page.should have_content(course.user.full_name)}
+      it {page.should have_content(Date.today.month)}
+      it {page.should have_content(unit.unit_title)}
+    end
+
+  end
+
   private
   def sign_in_user_and_go_to_page
     sign_in_as_a_valid_user

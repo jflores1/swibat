@@ -126,4 +126,11 @@ class CoursesController < ApplicationController
     @micropost = current_user.microposts.build if signed_in?
   end
 
+  def unit_calendar
+    @course = Course.find(params[:id])
+    @user = @course.user
+    @microposts = @user.feed
+    @units_by_date = @course.units.all.group_by(&:expected_start_date)
+  end
+
 end

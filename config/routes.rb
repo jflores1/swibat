@@ -54,6 +54,7 @@ Swibat::Application.routes.draw do
       get  :new_course_goal
       post :course_goal
       get 'syllabus'
+      get :unit_calendar
     end
     collection do
       get 'feed'

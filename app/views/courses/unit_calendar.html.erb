@@ -1,0 +1,30 @@
+<% provide(:title, "#{@course.course_name} Unit Calendar") %>
+<div class="row-fluid">
+	<%= render 'shared/user_header' %>
+
+	<header class="course-header">
+		<%= render 'courses/course_header' %>
+	</header>	
+
+	<%= content_calendar do %>
+		
+	<% end %>
+
+
+</div>
+
+<% content_for :sidebar do %>
+ 
+
+    <%= render 'layouts/application_feed' %>
+
+    <div class="sidebar">
+      <header class="course-header">
+        <h4>Fork this course!</h4>
+      </header>
+      <section>
+        <p>Copy this course along with all its units and lessons into your own courses collection</p>
+        <%= link_to "Fork Course", fork_course_path(@course), method: "post", class: "btn btn-monkey" %>
+      </section>
+    </div>
+<% end %>
