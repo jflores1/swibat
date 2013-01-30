@@ -34,6 +34,9 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'database_cleaner'
   gem 'faker'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 group :development do

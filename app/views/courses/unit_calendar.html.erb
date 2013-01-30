@@ -4,32 +4,39 @@
 
 	<header class="course-header">
 		<%= render 'courses/course_header' %>
-	</header>	
+	</header>
 
-	<%= content_calendar do |date| %>
-		<% if @units_by_date[date] %>
-			<ul>
-				<% @units_by_date[date].each do |unit| %>
-					<li><%= unit.unit_title %></li>
+	<table>
+		<tr>
+			<% @months.map do |m| %>
+				<td><%= m %></td>
+			<% end -%>
+		</tr>
+		<tr>
+			<td>
+				Unit Title
+			</td>
+			<%= @months.collect do %>
+				<%= content_tag :td do %>
+					<% @units_by_date[@date].each do |unit| %>
+						<%= unit.unit_title %>
+					<% end -%>
 				<% end -%>
-			</ul>
-		<% end %>
-	<% end %>
+			<% end -%>
+
+		</tr>
+		
+
+	</table>	
+
+	<%= javascript_tag do %>
+		var data = d3.json('<%= @course %>');
+		console.log(data);
+	<% end -%>	
+
+
+
 
 
 </div>
 
-<% content_for :sidebar do %>
-
-    <%= render 'layouts/application_feed' %>
-
-    <div class="sidebar">
-      <header class="course-header">
-        <h4>Fork this course!</h4>
-      </header>
-      <section>
-        <p>Copy this course along with all its units and lessons into your own courses collection</p>
-        <%= link_to "Fork Course", fork_course_path(@course), method: "post", class: "btn btn-monkey" %>
-      </section>
-    </div>
-<% end %>

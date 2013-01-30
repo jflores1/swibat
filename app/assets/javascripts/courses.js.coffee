@@ -10,4 +10,4 @@ $(document).ready ->
       $(this).text("Add a comment")
     else
       $('#comment-form').show()
-      $(this).text("Hide Comment")
+      $(this).text("Hide Comment")     

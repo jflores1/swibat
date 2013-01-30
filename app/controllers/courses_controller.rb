@@ -130,8 +130,12 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @user = @course.user
     @microposts = @user.feed
-    @date = Date.today
-    @units_by_date = @course.units.all.group_by(&:expected_start_date)
+    @date = Date.today.beginning_of_month
+    @units_by_date = @course.units.group_by {|unit| unit.expected_start_date.beginning_of_month}
+    @months = ["January", "February", "March"]
+    respond_with @course do |format|
+      format.json {render json: @course}
+    end
   end
   
   def journal

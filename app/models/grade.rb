@@ -9,7 +9,7 @@
 #
 
 class Grade < ActiveRecord::Base
-  attr_accessible :grade_level, :courses_attributes
+  attr_accessible :grade_level, :courses_attributes, :educational_domains_attributes
   has_many :domain_grades, :dependent => :destroy
   has_many :educational_domains, :through => :domain_grades
   has_many :courses
