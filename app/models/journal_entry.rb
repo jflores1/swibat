@@ -23,4 +23,8 @@ class JournalEntry < ActiveRecord::Base
   validates :lowest_score, presence: true, numericality: true, inclusion: {in: 0..100, message: 'must be between 0 and 100'}  
   validates :median_score, presence: true, numericality: true, inclusion: {in: 0..100, message: 'must be between 0 and 100'}  
 
+  def self.belongs_to_course(course_id)
+  	self.joins(lesson: {unit: :course}).where('courses.id = ?', course_id)
+  end
+
 end

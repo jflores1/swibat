@@ -26,3 +26,15 @@
 		<% end %>
 	<% end %>
 </table>
+
+<% @journalentries.each do |j| %>
+	<p><%= j.lesson.lesson_title %></p>
+	<p><%= j.average_score %></p>
+	<p><%= j.median_score%></p>
+<% end -%>
+
+<%= javascript_tag do %>
+	var data = d3.json('../1/journal.json', function(error, data){
+		console.log(data[0].average_score);
+});
+<% end -%>

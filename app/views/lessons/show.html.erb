@@ -50,9 +50,6 @@
             </span>
           </h3>
             <%= lesson_content(@lesson) %>
-          <div id="lesson-content-form">
-            <%= render 'form_lesson_content' %>
-          </div>
         </div>
 
         <div class="span6 box height7 skill-covered" id="lesson_skills">
@@ -62,9 +59,6 @@
             </span>
           </h3>
           <%= lesson_skills(@lesson) %>
-          <div id="lesson-skills-form">
-            <%= render 'form_lesson_skills' %>
-          </div>
         </div>
 
       </div>
@@ -111,12 +105,6 @@
           <% end %>
         </div>
         <div class="span6 box height5">
-          <h3>Differentiation Strategies</h3>
-        </div>
-      </div>
-
-      <div class="span12 box-bottom-margin no-left-margin">
-        <div class="span6 box no-left-margin height5">
           <h3>Videos</h3>
           <% if @lesson.videos.count == 0 %>
               <p>No videos have been uploaded for this lesson. <%= link_to "Upload one", new_lesson_video_path(@lesson) %>.</p>
@@ -131,10 +119,7 @@
             </ul>
           <% end %>
         </div>
-        
       </div>
-
-
     </div>
   </div>
 
@@ -172,35 +157,37 @@
 <div id="completeLessonModal" class="modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h2>Complete Lesson</h2>
+    <h2>WooHoo! Another lesson completed!</h2>
   </div>  
   <%= form_for @journal_entry, url: update_journal_entry_lesson_url(@lesson), method: :post, remote: true, id: 'complete_lesson_form' do |form| %>
     <div class="modal-body">
-      <p>Congratulations on finishing the lesson!<br />Just a few quick questions:</p>
+      <p>Now, that it's over, let's take a minute to ask a few quick questions.<br/>
+        On your assessment, what was:
+      </p>
         <div class="row-fluid">
           <div class="span11">
-           <label for="average_score">What was the average score (%) on the assessments?</label>
+           <label for="average_score">the average score (%)?</label>
             <%= form.text_field :average_score, class: "span11" %>
           </div>          
         </div>
 
         <div class="row-fluid">
           <div class="span11">
-           <label for="median_score">What was the median score (%) on the assessments?</label>
+           <label for="median_score">the median score (%)?</label>
             <%= form.text_field :median_score, class: "span11" %>
           </div>          
         </div>
 
         <div class="row-fluid">
           <div class="span11">
-           <label for="highest_score">What was the highest score (%) on the assessments?</label>
+           <label for="highest_score">the highest score (%) ?</label>
             <%= form.text_field :highest_score, class: "span11" %>
           </div>          
         </div>
 
         <div class="row-fluid">
           <div class="span11">
-           <label for="lowest_score">What was the lowest score (%) on the assessments?</label>
+           <label for="lowest_score">the lowest score (%)?</label>
             <%= form.text_field :lowest_score, class: "span11" %>
           </div>          
         </div>

@@ -30,8 +30,10 @@
 	</table>	
 
 	<%= javascript_tag do %>
-		var data = d3.json('<%= @course %>');
-		console.log(data);
+		var data = d3.json('../1/unit_calendar.json', function(error, data){
+			console.log(data.course_name);	
+	});
+		
 	<% end -%>	
 
 
