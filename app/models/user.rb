@@ -18,7 +18,6 @@
 #  role                   :string(255)      default("teacher")
 #  first_name             :string(255)
 #  last_name              :string(255)
-#  institution            :string(255)
 #  image_file_name        :string(255)
 #  image_content_type     :string(255)
 #  image_file_size        :integer
@@ -26,6 +25,7 @@
 #  profile_summary        :text
 #  provider               :string(255)
 #  uid                    :string(255)
+#  institution_id         :integer
 #
 
 class User < ActiveRecord::Base
@@ -42,7 +42,8 @@ class User < ActiveRecord::Base
                     :default_url => "https://s3.amazonaws.com/swibat_development/icon-graduation-cap.png"
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :institution, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes
+  belongs_to :institution
   has_many :courses
   has_many :professional_educations
   has_many :professional_accomplishments
@@ -82,10 +83,11 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :professional_accomplishments, :reject_if => lambda { |a| a[:name].blank? }, allow_destroy: true
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, allow_destroy: true
   accepts_nested_attributes_for :specialties, :reject_if => lambda { |a| a[:name].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :institution
 
   validate :valid_role
   validates_uniqueness_of :email, case_sensitive: false
-  validates :first_name, :last_name, :role, :institution, :email, presence: true
+  validates :first_name, :last_name, :role, :email, presence: true
   validates :profile_summary, length:{maximum: 160}, allow_blank: true
   validates_attachment_size :image, :less_than => 2.megabytes
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
@@ -94,7 +96,6 @@ class User < ActiveRecord::Base
     user.first_name = first_name.capitalize
     user.last_name = last_name.capitalize
     user.role = role.downcase
-    user.institution = institution.titleize
   end
 
   after_create :signup_confirmation

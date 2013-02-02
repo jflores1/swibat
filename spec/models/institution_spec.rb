@@ -18,5 +18,31 @@
 require 'spec_helper'
 
 describe Institution do
-  pending "add some examples to (or delete) #{__FILE__}"
+	describe "the model and associations" do
+		let(:institution) {Institution.new(name: "A School", enrollment: "200", num_faculty: "15", address_line_1: "Address 1", address_line_2: "Address 2", city: "Atlanta", state: "GA", zip_code: 30082)}
+
+  	before {institution.save!}
+  	subject {institution}
+  	it {should respond_to(:name)}
+  	it {should respond_to(:enrollment)}
+  	it {should respond_to(:num_faculty)} 
+  	it {should respond_to(:address_line_1)}
+  	it {should respond_to(:address_line_2)}
+  	it {should respond_to(:city)}
+  	it {should respond_to(:state)}
+  	it {should respond_to(:zip_code)}
+  	it {should respond_to(:users)}
+	end
+
+	describe "Validations" do
+	  let(:institution){build(:institution)}
+	  describe "it requires a name" do
+	    before {institution.name = " "}
+	    it {should_not be_valid}
+	    it {expect {institution.save!}.to raise_error(ActiveRecord::RecordInvalid)}
+	  end
+	end
+   
+
+
 end

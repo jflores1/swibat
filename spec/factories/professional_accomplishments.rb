@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :professional_accomplishment do
-    type ""
+    accomplishment_type "Certification"
     name "MyString"
     year 1
   end

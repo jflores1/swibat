@@ -16,5 +16,8 @@
 #
 
 class Institution < ActiveRecord::Base
-  attr_accessible :address_line_1, :address_line_2, :city, :enrollment, :name, :num_faculty, :state, :zip_code
+  attr_accessible :address_line_1, :address_line_2, :city, :enrollment, :name, :num_faculty, :state, :zip_code, :users_attributes
+  has_many :users
+
+  validates :name, presence: true
 end

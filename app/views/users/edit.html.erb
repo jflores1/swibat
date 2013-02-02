@@ -1,6 +1,6 @@
 <!--rendered in /application.html.erb:21 -->
 <div class="span3 bordered">
-  <%= image_tag @user.image.url, class:"img-polaroid header-profile-picture", alt: "#{@user.full_name}" %>
+  <%= image_tag @user.image.url, class:"main-profile-picture", alt: "#{@user.full_name}" %>
 </div>
 <div class="span9 bordered">
   <%= form_for(@user, :html => {multipart: true, class:"profile-form"}) do |f| %>
@@ -23,8 +23,10 @@
         <%= f.label :last_name, "Last Name" %>
         <%= f.text_field :last_name, id:"last_name", class:"span6" %>
 
-        <%= f.label :institution, "Where You Work" %>
-        <%= f.text_field :institution, placeholder: "Your School", id:"institution", class:"span6" %>
+        <%= f.fields_for :institution do |school| %>
+          <%= school.label :institution, "Where you Work" %>
+          <%= school.text_field :institution, placeholder: "Your School", class: "span6" %>
+        <% end %>
 
         <%= f.label :profile_summary, "Your Professional Bio (in 160 characters or less)" %>
         <%= f.text_area :profile_summary, size: "24x4", id:"profile_summary", class:"span6 char-count" %>

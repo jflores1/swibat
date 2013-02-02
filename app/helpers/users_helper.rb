@@ -15,4 +15,15 @@ module UsersHelper
       end
     end
 	end
+
+  def display_profile_institution(user)
+    if user.institution.present?
+      content_tag :dl, class:"dl-horizontal" do
+        content_tag :dt, "Works at:"
+        content_tag :dd, user.institution
+      end
+    else
+      content_tag :p, ""
+    end
+  end
 end

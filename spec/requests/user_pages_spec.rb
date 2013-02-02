@@ -3,281 +3,228 @@ require 'spec_helper'
 describe "UserPages" do
   subject { page }
 
-  context "When signed in" do
-    before do
-      sign_in_via_form
+  describe "Application Header" do
+    let(:user){create(:user)}
+
+    context "when not signed in" do
+      before {visit user_path(user)}
+      it {page.should have_selector("a", text: "sign up" )}
     end
 
-    describe "Application Header" do
-      it "can access user profile" do
-        find_link("Your Profile").click
-        current_path.should eq(user_path(@user))
+    context "when signed in" do
+      before do
+        sign_in_via_form
       end
 
-      it "can access user feed" do
-        find_link("Feed").click
-        current_path.should eq (feed_courses_path)
+      describe "and user has no courses" do
+        it {page.should have_selector("a", text: "add course")}
       end
 
-      it "can access course index" do
-        find_link("Courses").click
-        current_path.should eq(courses_path)
-      end
-
-      it "can access question index" do
-        find_link("Questions").click
-        current_path.should eq(questions_path)
-      end
-    end
-
-    describe "Accesses Profile Page" do
-      before {visit user_path(@user)}
-      it {page.should have_content(@user.full_name)}
-      it {page.should have_selector("img[alt='Jesse Flores']")}
-      it {page.should have_css('i.icon-plus')}      
-    end
-
-    describe "Can see All Users" do
-      before {visit users_path}
-      it {page.should have_content "All Users"}
-    end
-
-    context "Current user profile page" do
-      let!(:course){create(:course)}
-      before {visit user_path(@user)}
-
-      describe "Can add a new course" do
-        before {find('#user-add-course').click}
-        it {page.current_path.should eq(new_course_path)}
-      end
-
-      describe "Can navigate to course show page" do
-        it "should navigate to edit_user_course_page" do
-          find('.edit-user-course').click
-          current_path.should == course_path(course)
-        end
-      end
-
-      describe "Displays user reputation" do
-        it {page.should have_content("Reputation")}
-      end
-
-      describe "without any questions asked" do
-        it {page.should have_selector("p", text:"It doesn't look like you've asked any questions.")}
-        it {page.should have_selector("h3", text: "0 Questions")}
-        it "directs the user to add a question" do
-          find('.course-overview').find_link("Have one?").click
-          current_path.should == new_question_path
-        end
-      end
-
-      describe "with questions" do
-        let!(:question){create(:question, user: @user, :title => 'This is my question')}
-        before {visit user_path(@user)}
-        it {page.should have_selector("p", text: "This is my question")}
-        it {page.should have_selector("h3", text: "1 Question")}
-        it "allows the user to click through to the question" do
-          find_link("This is my question").click
-          current_path.should eq(question_path(question))
-        end
-      end
-
-      describe "without any answers provided" do
-        it {page.should have_selector("p", text:"Help your fellow teachers out.")}
-        it {page.should have_selector("h3", text:"0 Answers")}
-        it "should link to the questions page" do
-          find_link("Answer some questions!").click
-          current_path.should eq(questions_path)
-        end
-      end
-
-      describe "with answers provided" do
-        let!(:question){create(:question, user: @user)}
-        let!(:answer){create(:answer, :question => question, :user => @user)}
-        before {visit user_path(@user)}
-        it {page.should have_selector("p", text: "MyText")}
-        it {page.should have_selector("h3", text: "1 Answer")}
-      end
-
-      describe "The Sidebar" do
-        before(:each) do
-          FactoryGirl.create_list(:question, 10, title:"New Question")
+      describe "and user has a course" do
+        let!(:course){create(:course, user: @user)}
+        before do
           visit user_path(@user)
         end
-        it "shows similar courses" do
-          page.should have_selector("h3", "Similar Courses")
-        end
-
-        it "shows recent questions" do
-          page.should have_content("New Question")
-        end
+        it {page.should have_selector("a", text: "my courses")}
       end
     end
 
-    context "User Edit Page" do
-      before {visit edit_user_path(@user)}
+  end
+
+  describe "User profile page" do
+    context "The user isn't signed in" do
+      let(:user){create(:user)}
+      before {visit user_path(user)}
+
+      it {page.should have_content(user.full_name)}
       it {page.should have_selector("img[alt='Jesse Flores']")}
-      it {page.should have_selector("form")}
+      it {page.should have_selector("a", text: "Follow")}
+      it "clicking follow redirects to sign in page" do
+        click_link("Follow")
+        current_path.should eq(new_user_registration_path)
+      end
 
-      describe "can update profile information" do
-        let(:save){"Save Changes"}
+      context "a user with courses" do
+        let!(:course){create(:course, user: user)}
+        before {visit user_path(user)}
+        it {page.should have_content("Physics")}
+      end
 
-        context "Users's personal information" do
-          it {can_update_form_field("first_name", "Dave")}
-          it {can_update_form_field("last_name", "Matthews")}
-          it {can_update_form_field("institution", "Music Academy")}
-          it {can_update_form_field("profile_summary", "Arbitrarily long text")}
-        end
+      context "a user belonging to a school" do
+        let(:user_with_school){create(:user_with_profile)}
+        before {visit user_path(user_with_school)}
+        it {page.should have_content("School")}
+      end
 
-        context "User's educational information" do
-          before do
-            click_link "Your Education"
-            click_link "Add a School"
-          end
-          it {can_update_form_field("user_professional_educations_attributes_0_school_name", "Juliard Music Academy")}
-          xit {can_update_form_field("user_professional_educations_attributes_0_degree", "Masters of Music")}
-          xit {can_update_form_field("user_professional_educations_attributes_0_field_of_study", "Music")}
-          xit {can_update_form_field("user_professional_educations_attributes_0_enroll_date", "May 2011")}
-          xit {can_update_form_field("user_professional_educations_attributes_0_graduation_date", "June 2012")}
-        end
-
-        context "User's professional information" do
-          before do
-            @user.professional_accomplishments.build({accomplishment_type: "Award", name: "Emmy", year: "2000"})
-            visit edit_user_path(@user)
-            click_link "Your Work"            
-          end
-
-          it {can_update_form_field("user_specialties_attributes_0_name", "Specialty")}
-          it {can_update_select_field("Award", "user_professional_accomplishments_attributes_0_accomplishment_type")}
-          it {can_update_form_field("user_professional_accomplishments_attributes_0_year", "1996")}
-          it {can_update_form_field("user_professional_accomplishments_attributes_0_name", "Grammy")}
-        end
+      context "a user with a profile" do
+        let(:user_with_profile){create(:user_with_profile)}
+        before {visit user_path(user_with_profile)}
+        it {page.should have_content("My College")}
+        it {page.should have_content("Award")}
+        it {page.should have_content("@twitter")}
       end
     end
-
-    describe "follow/unfollow buttons" do
-      let(:other_user){create(:user)}
-
-      describe "following a user" do
-        before {visit user_path(other_user)}
-        it "should increment the user's people_followed count" do
-          expect{
-            click_button("Follow")
-          }.to change(@user.people_followed, :count).by(1)
-        end
-        it "should increment the other user's follower count" do
-          expect{
-            click_button("Follow")
-          }.to change(other_user.followers, :count).by(1)
-        end
-        describe "toggling the button", js: true do
-          before {click_button "Follow"}
-          it {page.should have_selector('input', value: 'Unfollow')}
-        end
-      end
-
-      describe "unfollowing a user" do
+    context "The user is signed in" do
+      describe "and viewing his own profile page" do
         before do
-          @user.follow!(other_user)
-          visit user_path(other_user)
+          sign_in_via_form
+          visit user_path(@user)
         end
 
-        it "should decrement the followed user count" do
-          expect{click_button "Unfollow"}.to change(@user.people_followed, :count).by(-1)
+        it {page.should have_selector("a", text: "Add Some Personality!")}
+        it "clicking 'Add Some Personality' goes to the the edit path" do
+          click_link("Add Some Personality!")
+          current_path.should eq(edit_user_path(@user))
         end
-        it "should decrement the number of followers" do
-          expect {click_button "Unfollow"}.to change(other_user.followers, :count).by(-1)
+        it {page.should have_selector("a#user-add-course")}
+        it "clicking 'user-add-course' navigates to new course path" do
+          click_link("user-add-course")
+          current_path.should eq(new_course_path)
         end
+
+        describe "can navigate to an existing course" do
+          let!(:course){create(:course, user: @user)}
+          before {visit user_path(@user)}
+          it {page.should have_selector("a.edit-user-course")}
+          it "should go to the edit course page" do
+            find("a.edit-user-course").click
+            current_path.should eq(course_path(course))
+          end
+
+        end
+      end
+      describe "and viewing another users profile page" do
+        describe "follow/unfollow buttons" do
+          let(:other_user){create(:user)}
+          before do
+            sign_in_via_form
+          end
+
+          describe "following a user" do
+            before {visit user_path(other_user)}
+            it "should increment the user's people_followed count" do
+              expect{
+                click_button("Follow")
+              }.to change(@user.people_followed, :count).by(1)
+            end
+            it "should increment the other user's follower count" do
+              expect{
+                click_button("Follow")
+              }.to change(other_user.followers, :count).by(1)
+            end
+            describe "toggling the button", js: true do
+              before {click_button "Follow"}
+              it {page.should have_selector('input', value: 'Unfollow')}
+            end
+          end
+
+          describe "unfollowing a user" do
+            before do
+              @user.follow!(other_user)
+              visit user_path(other_user)
+            end
+
+            it "should decrement the followed user count" do
+              expect{click_button "Unfollow"}.to change(@user.people_followed, :count).by(-1)
+            end
+            it "should decrement the number of followers" do
+              expect {click_button "Unfollow"}.to change(other_user.followers, :count).by(-1)
+            end
+          end
+        end
+
       end
     end
   end
 
-  context "When not signed in" do
-    let(:user){FactoryGirl.create(:user)}
-
-    describe "Can access users path" do
-      before {visit users_path}
-      it {page.should have_content("All Users")}
+  describe "User Edit Page" do
+    let(:user){create(:user)}
+    context "an unregistered user" do
+      before {visit edit_user_path(user)}
+      it "should deny access" do
+        current_path.should eq(user_session_path)
+      end
     end
 
-    describe "is prompted to sign up" do
-      before {visit courses_path}
-      it "should have a sign up modal" do
-        find_link("Sign Up").click
-        fill_in "user_first_name", with: "Jesse"
-        fill_in "user_last_name", with: "Flores"
-        fill_in "user_institution", with:"New School"
-        fill_in "user_email", with:"new_email@email.com"
-        fill_in "user_password", with:"password"
-        fill_in "user_password_confirmation", with:"password"
-        click_button "Sign Up!"
-        page.should have_content("Jesse")
+    context "a registered user" do
+      before do
+        sign_in_via_form
+        visit edit_user_path(user)
       end
+      it {page.should have_content("Sorry, you don't have access to this page!")}
+      it {current_path.should eq(user_path(@user))}
+    end
+
+    context "the owning user" do
+      before do
+        sign_in_via_form
+        visit edit_user_path(@user)
+      end
+
+      it {current_path.should eq(edit_user_path(@user))}
+      describe "can update user information" do
+        it "allows user to update first name" do
+          fill_in "first_name", with: "Bob"
+          click_button("Save Changes")
+          page.should have_content("Bob")
+        end
+        it "allows the user to update last name" do
+          fill_in "last_name", with: "Smith"
+          click_button("Save Changes")
+          page.should have_content("Smith")
+        end
+
+        describe "it allows the user to write a bio" do
+          it "allows the user to add a short blurb" do
+            fill_in "profile_summary", with: "A short blurb"
+            click_button("Save Changes")
+            page.should have_content("A short blurb")
+          end
+
+          it "does not allow a long blurb" do
+            fill_in "profile_summary", with: ("a"*180)
+            click_button("Save Changes")
+            page.should have_content("Sorry")
+          end
+        end
+
+        describe "it allows the user to edit Institution" do
+          it "allows the user to add an institution" do
+            expect {
+              fill_in "institution", with: "A new school"
+              click_button("Save Changes")
+            }.to change(Institution, :count).by(1)
+            page.should have_content("A new school")
+          end
+        end
+      end
+
     end
 
   end
 
-  context "An unregistered user" do
-    context "Public question pages" do
-      describe "The index page" do
-        before{visit questions_path}
-        it {page.should have_selector("h2", text: "All Questions")}
-      end
-
-      describe "The show page" do
-        let(:user){create(:user)}
-        let(:question){create(:question)}
-        before {visit question_path(question)}
-        it {page.should have_content(question.title)}
+  describe "The User Index Page" do
+    before(:all) do
+      25.times do
+        create(:user)
       end
     end
-
-    context "Public user pages" do
-      describe "User profile page" do
-        let(:user){create(:user)}
-        before{visit user_path(user)}
-        it {page.should have_content(user.full_name)}
-      end
+    before(:each) do
+      visit users_path
     end
 
-    context "Can visit public course pages" do
-      describe "Course Index Page" do
-        before {visit courses_path}
-        it {page.should have_selector("h2", text: "All Courses")}
-      end
+    it {page.should have_content("All Users")}
 
-      describe "Course Show Page" do
-        let(:user){create(:user)}
-        let(:course){create(:course, user: user)}
-        before {visit course_path(course)}
-        it {page.should have_content(course.course_name)}
-      end
+    describe "the search feature" do
+      xit "it allows search by name"
+      xit "it allows search by school"
     end
 
-    context "Can visit public unit pages" do
-      describe "Unit Show Page" do
-        let(:user){create(:user)}
-        let(:course){create(:course, user: user)}
-        let(:unit){create(:unit)}
-        before {visit course_unit_path(course, unit)}
-        it {page.should have_content(unit.unit_title)}
-      end
-    end
-
-    describe "Can visit public lesson pages" do
-      describe "Lesson show page" do
-        let(:user){create(:user)}
-        let(:course){create(:course, user: user)}
-        let(:unit){create(:unit)}
-        let(:lesson){create(:lesson)}
-        before {visit unit_lesson_path(unit, lesson)}
-        it {print page.html}
-        it {page.should have_content(lesson.lesson_title)}
-      end
+    describe "it allows users to invite other users" do
 
     end
   end
+
 
   context "With relevant profile information displayed" do
     before do 

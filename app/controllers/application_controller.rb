@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
   helper_method :yt_client
   
   rescue_from CanCan::AccessDenied do |exception|
+    exception.default_message = "Sorry, you don't have access to this page!"
     flash[:error] = exception.message
-    redirect_to root_url
+    redirect_to user_session_path
   end
 
   def after_sign_in_path_for(resource)

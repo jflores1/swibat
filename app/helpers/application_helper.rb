@@ -42,7 +42,7 @@ module ApplicationHelper
   end
 
   def show_institution
-    if signed_in?
+    if signed_in? && current_user.institution.present?
       current_user.institution.titleize
     else
       content_tag :p, "Sign Up"

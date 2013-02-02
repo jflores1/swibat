@@ -14,7 +14,6 @@ div.application-body{
   div.profile-header{
     width: 100%;
     float:left;
-    background: rgba(152, 161, 186, 0.1);
     //background: #ffffff;
 
     div.profile-summary{
@@ -186,6 +185,11 @@ div.course-overview, div.sidebar{
     }
   }
 
+}
+
+.main-profile-picture{
+  width: 20.5em;
+  height: 20em;
 }
 
 

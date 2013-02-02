@@ -18,11 +18,7 @@
         <div class="accordion-heading">
           <a class="accordion-toggle" data-toggle="collapse" href="#collapse_<%= course.id  %>"><%= course.course_name.titleize %> (<%= pluralize((course.units.count),
                                                                                                                                                   'unit') %>) </a>
-          <% if can? :update, @user %>
-              <a class="btn btn-mini btn-monkey pull-right edit-user-course" href="<%= course_path(course) %>"><i class="icon-pencil icon-white"></i></a>
-          <% else %>
-              <a class="btn btn-mini btn-monkey pull-right edit-user-course" href="<%= course_path(course) %>"><i class="icon-search icon-white"></i></a>
-          <% end %>
+          <a class="btn btn-mini btn-monkey pull-right edit-user-course" href="<%= course_path(course) %>"><i class="icon-search icon-white"></i></a>
         </div>
         <div id="collapse_<%= course.id %>" class="accordion-body collapse">
           <% course.units.each do |unit| %>

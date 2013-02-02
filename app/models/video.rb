@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  description :text
+#  yt_video_id :string(255)
+#  is_complete :boolean          default(FALSE)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  lesson_id   :integer
+#  user_id     :integer
+#
+
 class Video < ActiveRecord::Base
   attr_accessible :yt_video_id, :description, :title, :is_complete
 

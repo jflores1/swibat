@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129155405) do
+ActiveRecord::Schema.define(:version => 20130131211534) do
 
   create_table "activities", :force => true do |t|
     t.string   "activity"
@@ -399,7 +399,6 @@ ActiveRecord::Schema.define(:version => 20130129155405) do
     t.string   "role",                   :default => "teacher"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "institution"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -407,6 +406,7 @@ ActiveRecord::Schema.define(:version => 20130129155405) do
     t.text     "profile_summary"
     t.string   "provider"
     t.string   "uid"
+    t.integer  "institution_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

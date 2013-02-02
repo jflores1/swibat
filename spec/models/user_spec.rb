@@ -18,7 +18,6 @@
 #  role                   :string(255)      default("teacher")
 #  first_name             :string(255)
 #  last_name              :string(255)
-#  institution            :string(255)
 #  image_file_name        :string(255)
 #  image_content_type     :string(255)
 #  image_file_size        :integer
@@ -26,6 +25,7 @@
 #  profile_summary        :text
 #  provider               :string(255)
 #  uid                    :string(255)
+#  institution_id         :integer
 #
 
 require 'spec_helper'
@@ -38,7 +38,6 @@ describe User do
   it {should respond_to(:role)}
   it {should respond_to(:first_name)}
   it {should respond_to(:last_name)}
-  it {should respond_to(:institution)}
   it {should respond_to(:questions)}
   it {should respond_to(:answers)}
   it {should respond_to(:flags)}
@@ -48,6 +47,7 @@ describe User do
   it {should respond_to(:people_followed)}#followed_users
   it {should respond_to(:incoming_followings)}#reverse relationships
   it {should respond_to(:followers)}
+  it {should respond_to(:institution)}
 
   context "Has validation on non-devise columns" do
     describe "When missing first name" do
@@ -58,12 +58,6 @@ describe User do
 
     describe "When missing last name" do
       before {user.last_name = ""}
-      it {should_not be_valid}
-      it {expect {user.save!}.to raise_error(ActiveRecord::RecordInvalid)}
-    end
-
-    describe "When missing institution" do
-      before {user.institution = ""}
       it {should_not be_valid}
       it {expect {user.save!}.to raise_error(ActiveRecord::RecordInvalid)}
     end
