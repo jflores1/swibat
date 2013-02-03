@@ -19,7 +19,8 @@
 <% end -%>
 
 <%- if devise_mapping.omniauthable? %>
+<p>Or, log in with:</p>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class:"#{provider}-logo" %><br />
   <% end -%>
 <% end -%>

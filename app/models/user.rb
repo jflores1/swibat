@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
                     :default_url => "https://s3.amazonaws.com/swibat_development/icon-graduation-cap.png"
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :full_name, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes, :institution_attributes
   belongs_to :institution
   has_many :courses
   has_many :professional_educations
@@ -87,14 +87,14 @@ class User < ActiveRecord::Base
 
   validate :valid_role
   validates_uniqueness_of :email, case_sensitive: false
-  validates :first_name, :last_name, :role, :email, presence: true
+  validates :role, :email, presence: true
   validates :profile_summary, length:{maximum: 160}, allow_blank: true
   validates_attachment_size :image, :less_than => 2.megabytes
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   before_save do |user|
-    user.first_name = first_name.capitalize
-    user.last_name = last_name.capitalize
+    user.first_name = first_name.capitalize if user.first_name.present?
+    user.last_name = last_name.capitalize if user.last_name.present?
     user.role = role.downcase
   end
 
@@ -107,7 +107,13 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    "#{self.first_name} #{self.last_name}"
+    [first_name, last_name].join(' ')
+  end
+
+  def full_name=(name)
+    split = name.split(' ', 2)
+    self.first_name = split.first
+    self.last_name = split.last
   end
 
   def to_param

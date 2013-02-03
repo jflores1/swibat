@@ -192,5 +192,34 @@ div.course-overview, div.sidebar{
   height: 20em;
 }
 
+div.course-form{
+  background: #ffffff;
+  padding: 1em;
+  font-family: 'Permanent Marker', cursive;
+  margin-top: 2.5em;
+
+  h2{
+
+  }
+
+  form{
+    display: block;
+    float: left;
+    width: 93%;
+
+    input[type="submit"]{
+      padding: 1em 6em 1em 6em;
+      display: block;
+      margin: 0px auto;
+    }
+
+  }
+
+  .course-form-links{
+    float: left;
+    clear: left;
+  }
+}
+
 
 

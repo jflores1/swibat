@@ -1,20 +1,14 @@
-<div class="course-form">
+<div class="course-form span6 offset5">
 
   <header class="course-header">
-    <h2>Sign Up</h2>
+    <h2>Start Sharing Awesome Curriculum (for free)!</h2>
   </header>
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
-
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
-
-      <%= f.label :institution, "School" %>
-      <%= f.text_field :institution %>
+      <%= f.label :full_name, "Your Real Name" %>
+      <%= f.text_field :full_name %>
 
       <%= f.label :email, "Email (will be used to log in)" %>
       <%= f.text_field :email %>
@@ -31,8 +25,9 @@
 
   <% end %>
 
-  <%= render "devise/shared/links" %>
-
+  <div class="course-form-links">
+    <%= render "devise/shared/links" %>
+  </div>
 
 </div>
 

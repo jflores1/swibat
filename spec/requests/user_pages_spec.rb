@@ -203,6 +203,20 @@ describe "UserPages" do
 
   end
 
+  describe "Signing up a User" do
+    before {visit new_user_registration_path}
+    it "adds a new user" do
+      expect{
+        fill_in "user_full_name", with: "Jesse Flores"
+        fill_in "user_email", with: "new_user@email.com"
+        fill_in "user_password", with: "password"
+        fill_in "user_password_confirmation", with: "password"    
+        click_button "Sign Up!"
+      }.to change(User, :count).by(1)  
+    end
+    
+  end
+
   describe "The User Index Page" do
     before(:all) do
       25.times do
