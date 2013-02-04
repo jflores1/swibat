@@ -6,21 +6,23 @@
 		<%= render 'courses/course_header' %>
 	</header>
 
-	<table>
-		<tr>
-			<td>
-				
-			</td>
-			<%		
-				$start_month = @semester[@course.course_semester]
-				$i = 0 
-				while $i < 3  do
-			%>
-				<td><%= @months_helper[$start_month + $i] %></td>
-			<% 		
-					$i += 1
-				end -%>
-		</tr>
+	<table class="unit-calendar">
+		<thead>
+			<tr>
+				<th>
+					
+				</th>
+				<%		
+					$start_month = @semester[@course.course_semester]
+					$i = 0 
+					while $i < 3  do
+				%>
+					<th><%= @months_helper[$start_month + $i] %></th>
+				<% 		
+						$i += 1
+					end -%>
+			</tr>
+		</thead>
 		<tr>
 			<td>
 				Unit Title
