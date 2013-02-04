@@ -7,8 +7,7 @@ namespace :db do
     password_confirmation: "password",
     role:                  "teacher",
     first_name:            "Jesse",
-    last_name:             "Flores",
-    institution:           "Some School"
+    last_name:             "Flores"
     )
 
     99.times do |n|
@@ -17,15 +16,13 @@ namespace :db do
       first_name = Faker::Name.first_name
       last_name = Faker::Name.last_name
       role = "teacher"
-      institution = Faker::Company.name
       User.create!(
           email: email,
           password: password,
           password_confirmation: password,
           role: role,
           first_name: first_name,
-          last_name: last_name,
-          institution: institution
+          last_name: last_name
       )
     end
 
@@ -41,7 +38,8 @@ namespace :db do
             course_semester: course_semester,
             course_year: course_year,
             course_summary: course_summary,
-            grade_id: 10
+            grade_id: 10,
+            subject_id: 5
         )
       end
     end
