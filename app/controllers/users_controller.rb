@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 	load_and_authorize_resource
-  skip_authorize_resource only: [:index, :show, :following, :followers]
-  before_filter :load_courses
+  skip_authorize_resource only: [:index, :show, :following, :followers, :search]
+  before_filter :load_courses, except: [:index]
 
   def index
-    @user = User.all
+    @users = User.text_search(params[:q])
   end
 
   def show
@@ -65,6 +65,11 @@ class UsersController < ApplicationController
       @similar_courses_based_on_objectives = Objective.find_similar_objectiveables(objectives, "Course", "objectives").first(5)
       @similar_courses_based_on_objectives.delete_if {|c| c[:objectiveable].id == course.id}
     end
+  end
+
+  def followed_courses
+    @user = User.find(params[:id])
+    @courses = Course.from_users_followed_by(@user)
   end
 
 end

@@ -33,8 +33,11 @@ Swibat::Application.routes.draw do
 
   resources :leads
   resources :users do
-    member { get :followers }
-    member { get :following }
+    member do
+      get :followers
+      get :following
+      get :followed_courses
+    end
   end
 
   resources :posts do

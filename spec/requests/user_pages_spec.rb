@@ -9,6 +9,17 @@ describe "UserPages" do
     context "when not signed in" do
       before {visit user_path(user)}
       it {page.should have_selector("a", text: "sign up" )}
+      it {page.should have_selector("a", text: "Explore")}
+      it "navigates to the /users path" do
+        click_link("Explore")
+        click_link("Users")
+        current_path.should eq(users_path)
+      end
+      it "navigates to the /courses path" do
+        click_link("Explore")
+        click_link("Courses")
+        current_path.should eq(courses_path)
+      end
     end
 
     context "when signed in" do
@@ -89,6 +100,21 @@ describe "UserPages" do
           it "should go to the edit course page" do
             find("a.edit-user-course").click
             current_path.should eq(course_path(course))
+          end
+
+          describe "can navigate to followed courses" do
+            let(:other_user){create(:user)}
+            let(:other_user_course){create(:course, user: other_user)}
+            before do
+              @user.follow!(other_user)
+              visit user_path(@user)
+            end
+            it "goes to the users followed courses" do
+              click_link("my courses")
+              click_link("Courses I Follow")
+              page.should have_content(other_user.first_name)
+              current_path.should eq(followed_courses_user_path(@user))
+            end
           end
 
         end
@@ -218,20 +244,31 @@ describe "UserPages" do
   end
 
   describe "The User Index Page" do
-    before(:all) do
-      25.times do
-        create(:user)
-      end
-    end
+
     before(:each) do
       visit users_path
     end
 
     it {page.should have_content("All Users")}
+    it {page.should have_selector("form")}
 
-    describe "the search feature" do
-      xit "it allows search by name"
-      xit "it allows search by school"
+    describe "it displays all users" do
+      let!(:users){create_list(:user, 10)}
+      before {visit users_path}
+      it {page.should have_selector("div#user_10")}
+    end
+
+    describe "the user search form" do
+      let!(:search_user){create(:user, first_name: "Fred", last_name:"Astaire")}
+      before do
+        visit users_path
+      end
+      it "returns the user" do
+        fill_in "q", with: "Fred"
+        click_button "Search"
+        page.should have_content("Fred Astaire")
+        page.should_not have_content("Jesse Flores")
+      end
     end
 
     describe "it allows users to invite other users" do

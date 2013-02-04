@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
+  include PgSearch
+  pg_search_scope :search_by_name, against:[:first_name, :last_name]
 
   has_attached_file :image, 
                     :styles => { :medium => "300x300#", :x100 => "100x100#", :x50 => "50x50#" },
@@ -134,6 +136,14 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     followings.find_by_followee_id(other_user.id).destroy
+  end
+
+  def self.text_search(query)
+    if query.present?
+      self.search_by_name(query)
+    else
+      scoped
+    end
   end
 
   #Private Methods

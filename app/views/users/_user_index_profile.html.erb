@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+    <div class="profile-result span6 no-left-margin" id="<%= dom_id(user) %>">
+      <%= image_tag user.image.url, class:"img-polaroid header-profile-picture", alt: "#{user.full_name}" %>
+      <h4>
+        <%= link_to "#{user.full_name}", user_path(user) %>
+      </h4>
+    </div>
+<% end %>

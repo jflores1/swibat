@@ -67,6 +67,12 @@ class Course < ActiveRecord::Base
     self.course_name
   end
 
+  def self.from_users_followed_by(user)
+    followed_user_ids = user.people_followed_ids
+    where('user_id IN ?', followed_user_ids)
+  end
+
+
   # duplication rules
   amoeba do 
     exclude_field [:flags, :comment_threads, :evaluations, :reputations]

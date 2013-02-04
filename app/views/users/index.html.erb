@@ -1,5 +1,12 @@
 <h1>All Users</h1>
-<% @user.each do |user| %>
-    <%= link_to "#{user.full_name}", user_path(user) %>
+<div class="span6 offset3">
+  <%= form_tag(users_url, method: :get, class:"form-search", id:"user-search-form") do %>
+      <%= text_field_tag :q, nil, class:"input-large search-query", placeholder: "Search Users" %>
+      <%= submit_tag "Search", class:"btn btn-monkey" %>
+  <% end %>
+</div>
 
-<% end %>
+<div class="list-users">
+    <%= render partial: 'users/user_index_profile', collection: @users %>
+</div>
+
