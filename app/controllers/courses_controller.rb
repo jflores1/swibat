@@ -132,7 +132,15 @@ class CoursesController < ApplicationController
     @microposts = @user.feed
     @date = Date.today.beginning_of_month
     @units_by_date = @course.units.group_by {|unit| unit.expected_start_date.beginning_of_month}
-    @months = ["January", "February", "March"]
+    @months_helper = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Octobor", "November", "December"]
+    #@semester = new Hash();
+    @semester = {
+      "Spring" => 0,
+      "Summer" => 3,
+      "Fall" => 6,
+      "Winter" =>9
+    } 
+    
     respond_with @course, status: :ok, location: unit_calendar_course_path
     #TODO: What if no units? Throws error
   end
