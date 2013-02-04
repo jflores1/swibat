@@ -6,25 +6,54 @@
 		<%= render 'courses/course_header' %>
 	</header>
 
-	<table>
-		<tr>
-			<% @months.map do |m| %>
-				<td><%= m %></td>
-			<% end -%>
-		</tr>
+	<table class="unit-calendar">
+		<thead>
+			<tr>
+				<th>
+					
+				</th>
+				<%		
+					$start_month = @semester[@course.course_semester]
+					$i = 0 
+					while $i < 3  do
+				%>
+					<th><%= @months_helper[$start_month + $i] %></th>
+				<% 		
+						$i += 1
+					end -%>
+			</tr>
+		</thead>
 		<tr>
 			<td>
 				Unit Title
 			</td>
-			<%= @months.collect do %>
-				<%= content_tag :td do %>
-					<% @units_by_date[@date].each do |unit| %>
-						<%= unit.unit_title %>
+			<%
+				$i = 0
+				while $i < 3  do %>
+					<%= content_tag :td do %>
+						
+						<% 
+						date = DateTime.new(@course.course_year, $start_month + $i + 1 ,1)
+						puts date
+						if @units_by_date[date].nil? then
+						else
+							@units_by_date[date].each do |unit| %>
+								
+								<%= link_to course_unit_path(@course, unit) do  %>
+									<%= unit.unit_title %>
+								<% end %>
+								<br />
+							<% end %>
+						<% end -%>
+						
 					<% end -%>
-				<% end -%>
-			<% end -%>
+				<% 
+					$i += 1
+				end -%>
 
 		</tr>
+		
+		
 		
 
 	</table>	
