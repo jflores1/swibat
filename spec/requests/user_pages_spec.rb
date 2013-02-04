@@ -110,6 +110,7 @@ describe "UserPages" do
               visit user_path(@user)
             end
             it "goes to the users followed courses" do
+              #TODO: it's unclear why this test fails; it works in the browser. Fix it.
               click_link("my courses")
               click_link("Courses I Follow")
               page.should have_content(other_user.first_name)

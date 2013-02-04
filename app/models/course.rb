@@ -69,7 +69,7 @@ class Course < ActiveRecord::Base
 
   def self.from_users_followed_by(user)
     followed_user_ids = user.people_followed_ids
-    where('user_id IN ?', followed_user_ids)
+    where('user_id IN (?)', followed_user_ids)
   end
 
 

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 	load_and_authorize_resource
   skip_authorize_resource only: [:index, :show, :following, :followers, :search]
   before_filter :load_courses, except: [:index]
+  respond_to :html, :js, :json, :xml
 
   def index
     @users = User.text_search(params[:q])
@@ -70,6 +71,12 @@ class UsersController < ApplicationController
   def followed_courses
     @user = User.find(params[:id])
     @courses = Course.from_users_followed_by(@user)
+    if @courses
+      respond_with @courses
+    else
+      flash[:error] = "It doesn't look you're following anyone with courses!"
+      redirect_to :back
+    end
   end
 
 end
