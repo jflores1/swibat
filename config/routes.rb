@@ -2,7 +2,7 @@ Swibat::Application.routes.draw do
   
   match "search" => "search#index"
 
-  root to: 'static_pages#request_invite'
+  root to: 'static_pages#teachers'
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 

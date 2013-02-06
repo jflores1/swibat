@@ -1,41 +1,26 @@
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<div class="chalkboard-form">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-    <%= render 'shared/form_error_messages', object: f.object %>
+      <%= f.label :full_name, "Your Real Name" %>
+      <%= f.text_field :full_name, class: "span8" %>
 
-    <div class="row-fluid">
-        <div class="span5">
-          <%= f.text_field :first_name, placeholder:"Your First Name", class:"span12"%>
-        </div>
+      <%= f.label :email, "Email (will be used to log in)" %>
+      <%= f.text_field :email, class:"span8" %>
 
-        <div class="span6">
-          <%= f.text_field :last_name, placeholder:"Your Last Name", class:"span10"%>
-        </div>
-    </div>
 
-    <div class="row-fluid">
-      <div class="span10">
-        <%= f.text_field :institution, placeholder:"Your School",class:"span12" %>
+      <%= f.label :password %>
+      <%= f.text_field :password, class:"span8" %>
 
-        <%= f.text_field :email, placeholder:"Your Email Address (will be used to log in)",class:"span12" %>
-      </div>
-    </div>
+      <%= f.label :password_confirmation, "Confirm" %>
+      <%= f.text_field :password_confirmation, class:"span8" %>
 
-    <div class="row-fluid">
-      <div class="span5">
-        <%= f.password_field :password, placeholder:"Choose a Password", class:"span12" %>
+      <%= f.hidden_field :role, value: "teacher" %>
+      <%= f.submit "Sign up!", class:"btn primary-cta-btn" %>
 
-      </div>
-      <div class="span6">
-        <%= f.password_field :password_confirmation, placeholder:"Confirm It", class:"span10" %>
-      </div>
-    </div>
 
-    <%= f.hidden_field :role, value: "teacher" %>
+  <% end %>
+  <p>(it's free and always will be!)</p>
 
-    <div class="row-fluid">
-      <div class="span10">
-        <%= f.submit "Sign up for free!", class:"btn static-sign-up-btn span12" %>
-      </div>
-    </div>
+</div>
 
-<% end %>
