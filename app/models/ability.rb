@@ -63,7 +63,7 @@ class Ability
         comment.try(:commentable).try(:user) #.try(:friends).include? user
       end
 
-      can :update, User, :id => user.id
+      can :manage, User, :id => user.id
       can :read, User
       can :read, Course
       can :read, Lesson
