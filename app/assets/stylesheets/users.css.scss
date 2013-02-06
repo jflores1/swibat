@@ -261,20 +261,28 @@ table.standards-table{
   border-radius: 4px;
   font-size: 1.1em;
   color: rgba(80, 89, 109, 0.9);
+  width: 90em;
 
   tr{
     td, th{
       padding: 1em;
+      width: 25em;
     }
 
     td:nth-child(1){
       width: 12em;
+    }
+    td:nth-child(2){
+      text-align: center;
     }
 
   }
 
   tr:nth-child(even){
         background: #f7f7f7;
+  }
+  tr:hover{
+    background: rgba(80, 89, 109, 0.2);
   }
 
 }

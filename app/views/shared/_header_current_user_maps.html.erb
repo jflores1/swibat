@@ -5,7 +5,7 @@
           <li><%= link_to "My Courses", content_map_user_path(current_user) %></li>
     <% end %>
     <% if current_user.people_followed.count > 0 %>
-        <li><%= link_to "Courses I Follow", followed_courses_user_path(current_user) %></li>
+        <li><%= link_to "Followed Courses", followed_maps_user_path(current_user) %></li>
     <% end %>
   </ul>
 </li>

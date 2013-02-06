@@ -308,6 +308,22 @@ describe "UserPages" do
 
   end
 
+  describe "The Followed User Map Page" do
+    let!(:other_user){create(:user)}
+    let!(:other_course){create(:course, user: other_user)}
+    before do
+      sign_in_via_form
+      @user.follow!(other_user)
+    end
+    it "is navigable from the application header" do
+      click_link("maps")
+      click_link("Followed Courses")
+      page.should have_content("Mapped Objectives")
+      current_path.should eq(followed_maps_user_path(@user))
+    end
+
+  end
+
 
   context "With relevant profile information displayed" do
     before do 

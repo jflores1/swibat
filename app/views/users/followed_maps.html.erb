@@ -1,0 +1,41 @@
+<div class="row-fluid">
+	<div class="span6 offset3">
+	  <%= form_tag("#", method: :get, class:"form-search", id:"user-search-form") do %>
+	      <%= text_field_tag :q, nil, class:"input-xlarge search-query", placeholder: "Search by User, Description, or Lesson" %>
+	      <%= submit_tag "Search", class:"btn btn-monkey" %>
+	  <% end %>
+	</div>
+	<table class="standards-table">
+	<thead>
+		<tr>
+			<th>Lessons</th>
+			<th>Taught By</th>
+			<th>Standard</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @mapped_lessons.each do |standard| %>
+		<tr>
+			<td>
+				<% standard.lesson_standards.each do |lesson| %>
+					<%= link_to "#{lesson.lesson.lesson_title}", unit_lesson_path(lesson.lesson.unit, lesson.lesson) %><br/>
+				<% end %>
+			</td>
+			<td>
+				<% standard.lesson_standards.each do |lesson| %>
+					<%= link_to "#{lesson.lesson.user.full_name}", user_path(lesson.lesson.user) %><br/>
+				<% end %>
+			</td>
+			<td>
+				<%= standard.name %>
+			</td>
+			<td>
+				<%= standard.description %>
+			</td>
+		</tr>
+		<% end %>	
+	</tbody>
+</table>	
+</div>
+

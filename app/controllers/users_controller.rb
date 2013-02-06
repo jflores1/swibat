@@ -82,7 +82,10 @@ class UsersController < ApplicationController
   def content_map
     @mapped_lessons = EducationalStandard.covered_by_user(@user)
     @unmapped_lessons = @user.lessons.unmapped
-    
+  end
+
+  def followed_maps
+    @mapped_lessons = EducationalStandard.covered_by_people_followed(@user)
   end
 
 end

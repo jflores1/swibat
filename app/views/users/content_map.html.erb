@@ -26,6 +26,8 @@
 			<div class="standards-container tab-pane active" id="unmapped-lessons">
 				<% if @unmapped_lessons.count > 0 %>
 					<%= render 'users/unmapped_lessons' %>
+				<% elsif @user.lessons.count == 0 %>
+					<p>It doesn't look like you've added any lessons yet! Go add some, for pete's sake!</p>
 				<% else %>
 					<p>Hooray! You've mapped all your content! Give yourself one of those coveted gold stars!</p>
 				<% end %>

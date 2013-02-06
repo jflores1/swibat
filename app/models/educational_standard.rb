@@ -25,7 +25,11 @@ class EducationalStandard < ActiveRecord::Base
   def self.covered_by_user(user)
   	covered_lesson_ids = user.lesson_ids
   	joins(lesson_standards: :lesson).where('lessons.id in (?)', covered_lesson_ids)
-  	
+  end
+
+  def self.covered_by_people_followed(user)
+    covered_lesson_ids = Course.from_users_followed_by(user).joins(units: :lessons).pluck('lessons.id')
+    joins(lesson_standards: :lesson).where('lessons.id in (?)', covered_lesson_ids)
   end
   
 end

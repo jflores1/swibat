@@ -142,7 +142,7 @@ class User < ActiveRecord::Base
     if query.present?
       self.search_by_name(query)
     else
-      scoped
+      self.all
     end
   end
 
