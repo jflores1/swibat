@@ -1,0 +1,33 @@
+<table class="standards-table" style="width: 100em;">
+	<thead>
+		<tr>
+			<th>Lesson</th>
+			<th>Unit</th>
+			<th>Content Objectives</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @unmapped_lessons.each do |lesson| %>
+		<tr>
+			<td>
+				<%= link_to "#{lesson.lesson_title}", unit_lesson_path(lesson.unit, lesson) %>
+			</td>
+			<td>
+				<%= link_to "#{lesson.unit.unit_title}", course_unit_path(lesson.unit.course, lesson.unit) %>
+			</td>
+			<td>
+				<% if lesson.content_taught.present? %>
+					<% lesson.content_taught.each do |objective| %>
+						<%= objective.objective %><br/>
+					<% end %>
+				<% else %>
+					It doesn't look like you've added any content objectives yet. <%= link_to "Add some", unit_lesson_path(lesson.unit, lesson) %>
+				<% end %>
+			</td>
+		</tr>
+
+		<% end %>
+	</tbody>
+</table>
+	
+</div>

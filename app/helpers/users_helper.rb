@@ -26,4 +26,5 @@ module UsersHelper
       content_tag :p, ""
     end
   end
+
 end

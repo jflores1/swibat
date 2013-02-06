@@ -20,6 +20,10 @@ describe "UserPages" do
         click_link("Courses")
         current_path.should eq(courses_path)
       end
+
+      it "does not navigate to the /users/:id/maps path" do
+        page.should_not have_selector("a", text: "maps")
+      end
     end
 
     context "when signed in" do
@@ -28,7 +32,7 @@ describe "UserPages" do
       end
 
       describe "and user has no courses" do
-        it {page.should have_selector("a", text: "add course")}
+        it {page.should have_selector("a", text: "Add a Course")}
       end
 
       describe "and user has a course" do
@@ -37,6 +41,7 @@ describe "UserPages" do
           visit user_path(@user)
         end
         it {page.should have_selector("a", text: "my courses")}
+        it {page.should have_selector("a", text: "maps")}
       end
     end
 
@@ -275,6 +280,32 @@ describe "UserPages" do
     describe "it allows users to invite other users" do
 
     end
+  end
+
+  describe "The User Map Page" do
+    before do
+      sign_in_via_form
+    end
+    let!(:course){create(:course, user: @user)}
+
+    #TODO: Unclear why this test fails; it works in the browser. Is it the current_user variable?
+    it "navigates to the content map page" do
+      click_link("maps")
+      click_link("My Courses")
+      page.should have_content("Content Map")
+    end
+
+    describe "it shows the standards covered by user lessons" do
+      let!(:course){create(:course, user: @user)}
+      let!(:unit){create(:unit_with_lessons, course: course)}
+
+      before {visit content_map_user_path(@user)}
+
+      it "lists all standards for the grades taught by the teacher" do
+        #
+      end
+    end
+
   end
 
 

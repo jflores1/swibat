@@ -59,6 +59,13 @@ module ApplicationHelper
     end
   end
 
+  def show_current_user_maps
+    if signed_in?
+      render 'shared/header_current_user_maps'
+    end
+    
+  end
+
   def show_current_user_calendar
     if signed_in? && current_user.courses.count > 0
       render 'shared/header_current_user_calendars'

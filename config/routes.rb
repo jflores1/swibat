@@ -37,6 +37,7 @@ Swibat::Application.routes.draw do
       get :followers
       get :following
       get :followed_courses
+      get :content_map
     end
   end
 

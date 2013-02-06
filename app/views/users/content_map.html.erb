@@ -1,0 +1,37 @@
+<% provide(:title, "#{@user.full_name}'s Content Map") %>
+<div class="row-fluid">
+	<%= render 'shared/user_header' %>
+
+	<div class="tabbable">
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a href="#unmapped-lessons" data-toggle="tab">Unmapped Lessons</a>
+			</li>
+			<li>
+				<a href="#mapped-lessons" data-toggle="tab">Mapped Lessons</a>
+			</li>			
+		</ul>
+
+		<div class="tab-content">
+
+			<div class="standards-container tab-pane" id="mapped-lessons">
+
+				<% if @mapped_lessons.count == 0 && @user.lessons.count == 0 %>
+					<p>You haven't added any lessons yet! Go add some, for cryin' out loud!</p>
+				<% else %>
+					<%= render 'users/standards_covered_table' %>
+				<% end %>		
+			</div>
+
+			<div class="standards-container tab-pane active" id="unmapped-lessons">
+				<% if @unmapped_lessons.count > 0 %>
+					<%= render 'users/unmapped_lessons' %>
+				<% else %>
+					<p>Hooray! You've mapped all your content! Give yourself one of those coveted gold stars!</p>
+				<% end %>
+			</div>
+		</div>
+
+	</div>
+
+</div>

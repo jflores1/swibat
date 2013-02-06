@@ -244,5 +244,40 @@ div.followed-course:nth-of-type(odd){
   margin-left: 0px !important;
 }
 
+div.standards-container{
+  margin-top: 2em;
+  float: left;
+
+  h3{
+    margin: 1em auto;
+  }
+}
+
+table.standards-table{
+  background: #ffffff;
+  border: 1px solid #bfbfbf;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 1.1em;
+  color: rgba(80, 89, 109, 0.9);
+
+  tr{
+    td, th{
+      padding: 1em;
+    }
+
+    td:nth-child(1){
+      width: 12em;
+    }
+
+  }
+
+  tr:nth-child(even){
+        background: #f7f7f7;
+  }
+
+}
+
 
 

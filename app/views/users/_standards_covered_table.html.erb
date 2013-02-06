@@ -1,0 +1,26 @@
+<table class="standards-table">
+	<thead>
+		<tr>
+			<th>Standard</th>
+			<th>Description</th>
+			<th>Lessons Where Covered</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @mapped_lessons.each do |standard| %>
+		<tr>
+			<td>
+				<%= standard.name %>
+			</td>
+			<td>
+				<%= standard.description %>
+			</td>
+			<td>
+				<% standard.lesson_standards.each do |lesson| %>
+					<%= link_to "#{lesson.lesson.lesson_title}", unit_lesson_path(lesson.lesson.unit, lesson.lesson) %>
+				<% end %>
+			</td>
+		</tr>
+		<% end %>	
+	</tbody>
+</table>

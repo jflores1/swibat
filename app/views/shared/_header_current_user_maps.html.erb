@@ -1,0 +1,11 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">maps <b class="caret gray-caret"></b></a>
+  <ul class="dropdown-menu">
+    <% if current_user.courses.count > 0 %>
+          <li><%= link_to "My Courses", content_map_user_path(current_user) %></li>
+    <% end %>
+    <% if current_user.people_followed.count > 0 %>
+        <li><%= link_to "Courses I Follow", followed_courses_user_path(current_user) %></li>
+    <% end %>
+  </ul>
+</li>

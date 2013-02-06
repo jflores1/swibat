@@ -8,6 +8,12 @@ FactoryGirl.define do
     user_id             1
     association :grade, factory: :grade, grade_level:"Grade 1"
     association :subject, factory: :subject, subject: "Science"
+
+    factory :course_with_units do
+      after(:create) do |c|
+        FactoryGirl.create(:unit, course: c)
+      end
+    end
   end
 
   factory :unit do

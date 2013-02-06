@@ -21,5 +21,11 @@ class EducationalStandard < ActiveRecord::Base
 
   has_many :lesson_standards, dependent: :destroy
   has_many :lessons, through: :lesson_standards
+
+  def self.covered_by_user(user)
+  	covered_lesson_ids = user.lesson_ids
+  	joins(lesson_standards: :lesson).where('lessons.id in (?)', covered_lesson_ids)
+  	
+  end
   
 end

@@ -78,6 +78,10 @@ class Lesson < ActiveRecord::Base
     self.lesson_title
   end
 
+  def self.unmapped
+    joins('LEFT JOIN lesson_standards ON lessons.id = lesson_standards.lesson_id').where('lesson_standards.lesson_id IS NULL')
+  end
+
   # duplication rules
   amoeba do
     exclude_field [:flags, :comment_threads, :evaluations, :reputations]
