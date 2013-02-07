@@ -26,6 +26,7 @@ gem 'best_in_place'
 gem 'amoeba'
 gem 'rails_autolink'
 gem 'youtube_it'
+gem 'pusher'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
