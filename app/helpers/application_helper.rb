@@ -43,7 +43,7 @@ module ApplicationHelper
 
   def show_institution
     if signed_in? && current_user.institution.present?
-      current_user.institution.titleize
+      current_user.institution.name.titleize
     elsif signed_in?
       render partial: 'shared/banner_invite'
     else
@@ -72,6 +72,12 @@ module ApplicationHelper
     if signed_in? && current_user.courses.count > 0
       render 'shared/header_current_user_calendars'
     end
+  end
+
+  def broadcast(channel, &block)
+    message = {channel: channel, data: capture(&block)}
+    uri = URI.parse("http://localhost:9292/faye")
+    Net::HTTP.post_form(uri, message: message.to_json)
   end
 
 

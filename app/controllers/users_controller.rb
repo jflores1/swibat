@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @user.professional_accomplishments.build
     @user.professional_educations.build
-    @user.specialties.build    
+    @user.specialties.build   
   end
 
   def update
