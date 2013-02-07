@@ -54,7 +54,3 @@ $(document).ready ->
     @innerHTML = @innerHTML.replace(/\n/g, "<br/>")
     
   # $('.char-count').charCount()
-
-  faye = new Faye.Client('http://swibat-faye-server.herokuapp.com/faye')
-  faye.subscribe '/microposts/new', (data) ->
-    eval data

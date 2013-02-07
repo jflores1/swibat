@@ -1,7 +1,5 @@
-<% broadcast "/microposts/new" do %>
-	var micropost = $('<%= j(render(partial: "microposts/micropost", locals:{micropost: @micropost})) %>');
-	var micropost_list = $(".microposts");
-	micropost_list.prepend(micropost);
-<% end %>
+var micropost = $('<%= j(render(partial: "microposts/micropost", locals:{micropost: @micropost})) %>');
+var micropost_list = $(".microposts");
+micropost_list.prepend(micropost);
 
 $('.micropost-sidebar form')[0].reset();
