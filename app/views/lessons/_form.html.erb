@@ -8,12 +8,6 @@
     <%= lesson.label :prior_knowledge, "What do students need to know before you start?" %>
     <%= lesson.text_field :prior_knowledge, id: "prior_knowledge", placeholder:"Prior Knowledge" %>
 
-    <%= lesson.label :objectives, "What will students be able to do when the lesson is over?" %>
-    <%= lesson.fields_for :objectives do |objective| %>
-        <%= render "shared/objective_fields", f: objective, objectiveable_type: 'Lesson' %>
-    <% end %>
-    <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', lesson, :objectives, "btn btn-monkey" %>
-
     <%= lesson.label :assessments, "How will you assess their learning?" %>
     <%= lesson.fields_for :assessments do |assessment| %>
         <%= render "shared/assessment_fields", f: assessment %>

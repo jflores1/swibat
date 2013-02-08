@@ -10,6 +10,7 @@ class LessonsController < ApplicationController
     @course = @unit.course
     @user = @course.user
     @journal_entry = @lesson.journal_entry || JournalEntry.new
+    @microposts = @user.microposts
 
     @similar_lessons_based_on_name = Objective.find_similar_objectiveables([@lesson.to_s], "Lesson", "name").first(5)
     @similar_lessons_based_on_name.delete_if {|c| c[:objectiveable].id == @lesson.id}    

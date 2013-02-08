@@ -4,17 +4,11 @@
 <%= render 'user_summary' %>
 
 <% content_for :sidebar do %>
-    <%= content_for :sidebar_invite do %>
-          <%= render 'shared/sidebar_invite' %>
-    <% end %>
 
-    <%= content_for :sidebar_recent_questions do %>
-        <%= render 'shared/sidebar_recent_questions' %>
-    <% end %>
+  <% content_for :sidebar_invite do %>
+    <%= render 'shared/sidebar_invite' %>
+  <% end %>
+ 
+<%= render 'layouts/application_feed' %>
 
-    <%= content_for :sidebar_related_units do %>
-        <%= render 'shared/sidebar_related_courses' %>
-    <% end %>
-
-    <%= render 'layouts/application_sidebar' %>
 <% end %>

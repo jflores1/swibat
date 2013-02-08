@@ -52,11 +52,10 @@ Swibat::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
+      :address              => "smtp.mandrillapp.com",
       :port                 => 587,
-      :domain               => 'swibat.com',
-      :user_name            => 'jesse@swibat.com',
-      :password             => 'sw1b@t123',
+      :user_name            => 'oid::c7c9158d9d9a954e37536b0b740a9fb3c5a8e708',
+      :password             => 'quveqAD-VDaI7-WWY75_WQ',
       :authentication       => :plain,
       :enable_starttls_auto => true  }
 

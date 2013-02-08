@@ -5,15 +5,8 @@
       <%= unit.label "What big question does this unit answer?" %>
       <%= unit.text_field :unit_title, id:"unit_title", placeholder:"Unit Title", class: 'objectiveable-name', onblur: "retrieveSimilarObjectiveables('Unit', 'name')" %>
 
-
       <%= unit.label :prior_knowledge, "What will students need to know before you start?" %>
       <%= unit.text_field :prior_knowledge, id:"prior_knowledge", placeholder:"Prior Knowledge" %>
-
-      <%= unit.label :objectives, "What should students be able to do when it's over?" %>
-      <%= unit.fields_for :objectives do |objective| %>
-          <%= render "shared/objective_fields", :f => objective, objectiveable_type: 'Unit' %>
-      <% end %>
-      <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', unit, :objectives, "btn btn-monkey" %>
 
       <%= unit.label :assessments, "How will you assess their learning?" %>
       <%= unit.fields_for :assessments do |assessment| %>

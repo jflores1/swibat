@@ -135,23 +135,13 @@
 </div>
 
 <% content_for :sidebar do %>
-    <%= content_for :sidebar_profile do %>
-        <%= render 'shared/sidebar_profile' %>
-    <% end %>
 
-    <%= content_for :sidebar_invite do %>
-        <%= render 'shared/sidebar_invite' %>
-    <% end %>
+  <% content_for :sidebar_invite do %>
+    <%= render 'shared/sidebar_invite' %>
+  <% end %>
+ 
+<%= render 'layouts/application_feed' %>
 
-    <%= content_for :sidebar_other_unit_lessons do %>
-        <%= render 'shared/sidebar_other_unit_lessons' %>
-    <% end %>
-
-    <%= content_for :sidebar_related_lessons do %>
-      <%= render 'shared/sidebar_related_lessons' %>
-    <% end %> 
-
-    <%= render 'layouts/application_sidebar' %>        
 <% end %>
 
 <div id="completeLessonModal" class="modal hide fade">
