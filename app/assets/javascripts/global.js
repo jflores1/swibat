@@ -75,8 +75,6 @@ function displayObjectiveables(result){
 	} else {
 		$('#similarObjectiveablesTitle').html(result_html);	
 	}
-
-	
 }
 
 
@@ -89,10 +87,9 @@ function calendarScrollNext(){
 	if (startingColumn + displayMonths < 2 + monthCount){
 		$('#calendar td:nth-child(' + startingColumn + ')').hide();			
 		$('#calendar td:nth-child(' + (startingColumn + displayMonths) + ')').show();		
-		startingColumn++;	
-	} else {
-		alert('end');
-	}	
+		startingColumn++;
+		updateCalendarNavigationButtons();
+	} 
 }
 
 function calendarScrollPrev(){
@@ -100,13 +97,28 @@ function calendarScrollPrev(){
 		$('#calendar td:nth-child(' + (startingColumn - 1) + ')').show();			
 		$('#calendar td:nth-child(' + (startingColumn + displayMonths - 1) + ')').hide();		
 		startingColumn--;	
+		updateCalendarNavigationButtons();
+	} 
+}
+
+function updateCalendarNavigationButtons(){
+	if (startingColumn + displayMonths < 2 + monthCount){
+		$('#calendarNext').removeClass('disabled');
 	} else {
-		alert('end');
-	}	
+		$('#calendarNext').addClass('disabled');
+	}
+
+	if (startingColumn > 2){
+		$('#calendarPrev').removeClass('disabled');
+	} else {
+		$('#calendarPrev').addClass('disabled');
+	}
 }
 
 function trimCalendar(){
+	monthCount = $('.month').size();
 	for ( var i = 2 + displayMonths; i < 2+ monthCount; i++ ){
 		$('#calendar td:nth-child(' + i + ')').hide();		
 	}	
+	updateCalendarNavigationButtons();
 }
