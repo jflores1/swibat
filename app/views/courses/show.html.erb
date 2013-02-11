@@ -79,6 +79,10 @@
 </div>
 
 <% content_for :sidebar do %>
+
+  <% content_for :sidebar_invite do %>
+    <%= render 'shared/sidebar_invite' %>
+  <% end %>
  
 
     <%= render 'layouts/application_feed' %>

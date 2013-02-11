@@ -43,9 +43,11 @@ module ApplicationHelper
 
   def show_institution
     if signed_in? && current_user.institution.present?
-      current_user.institution.titleize
+      current_user.institution.name.titleize
+    elsif signed_in?
+      render partial: 'shared/banner_invite'
     else
-      content_tag :p, "Sign Up"
+      render partial: 'shared/banner_sign_up'
     end
   end
 

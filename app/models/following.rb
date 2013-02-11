@@ -14,10 +14,12 @@ class Following < ActiveRecord::Base
   belongs_to :user
   belongs_to :followee, :class_name => "User"
 
-  attr_accessible :user, :followee_id
+  attr_accessible :user, :followee_id, :user_id, :followee
 
   validates :user, :presence => true
   validates :followee, :presence => true
+
+  after_create :being_followed_notification
 
 
   # User follows someone
@@ -37,6 +39,11 @@ class Following < ActiveRecord::Base
 
   def self.exists?(user, followee)
     Following.find_by_user_id_and_followee_id(user.id, followee.id) != nil
+  end
+
+  private
+  def being_followed_notification
+    FollowingMailer.being_followed(self.user, self.followee)
   end
 
 end

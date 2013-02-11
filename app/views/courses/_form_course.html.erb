@@ -26,12 +26,6 @@
   <%= course.label :subject_id, "Course subject?" %>
   <%= course.collection_select(:subject_id, Subject.all, :id, :subject, options ={:prompt => "Subject"}) %>
 
-  <%= course.label :objectives, "What should students be able to do when it's over?" %>
-      <%= course.fields_for :objectives do |objective| %>
-      <%= render "shared/objective_fields", f: objective, objectiveable_type: 'Course' %>
-   <% end %>
-   <%= link_to_add_fields '<i class="icon-plus icon-white"></i>', course, :objectives,"btn btn-monkey" %>
-
   <%= course.label :tag_list, "Tags" %>
   <%= course.text_field :tag_list, placeholder: "Tags (separated by commas)" %>
 

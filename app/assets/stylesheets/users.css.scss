@@ -32,6 +32,7 @@ div.application-body{
         }
         dd {
           margin-left: 0px;
+          font-size: 1.3em;
         }
       }
     }
@@ -143,11 +144,11 @@ div.course-overview, div.sidebar{
     clear:both;
     border-bottom: 1px solid rgba(152, 161, 186, 0.5);
     color: rgb(164, 50, 32);
+    margin: 0 !important;
 
     h3{
       font-size:1.538462em;
       float:left;
-      width:50%;
       margin-bottom: 0.25em; //05px:20px
       }
 

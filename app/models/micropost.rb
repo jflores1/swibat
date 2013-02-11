@@ -16,7 +16,7 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true
   validates :content, length: {maximum: 140}
 
-  default_scope order('created_at desc').limit(15)
+  default_scope lambda { order('created_at desc').limit(15) }
 
   def self.from_users_followed_by(user)
   	followed_user_ids = user.people_followed_ids

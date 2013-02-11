@@ -54,7 +54,19 @@ describe Following do
 			Following.unfollow(@user, @followee)
 			@user.followings.count.should == 0
 		end
+  end
 
-	end
+  context "It notifies the followed that he's being followed" do
+    describe "When a new following is created" do
+      let!(:user){create(:user)}
+      let!(:other_user){create(:user, email:"other_user@swibat.com")}
+      before do
+        user.follow!(other_user)
+      end
+      it "sends the followed a notification" do
+        last_email.to.should include("other_user@swibat.com")
+      end
+    end
+  end
 
 end

@@ -10,5 +10,9 @@ respond_to :js
 		@micropost = current_user.microposts.build(params[:micropost])
 		@micropost.save!
 		respond_with @micropost
-	end
+
+    Pusher['post_channel'].trigger('new_post',{})
+
+  end
+
 end

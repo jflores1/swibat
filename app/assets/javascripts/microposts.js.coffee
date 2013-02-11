@@ -7,7 +7,3 @@
 
 	request: ->
 		$.get($('.microposts').data('url'), after: $('.microposts').last().data('id'))
-
-jQuery ->
-	if $('.microposts').length > 0
-		CommentPoller.poll()

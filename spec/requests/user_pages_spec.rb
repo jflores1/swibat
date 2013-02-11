@@ -183,7 +183,6 @@ describe "UserPages" do
         sign_in_via_form
         visit edit_user_path(user)
       end
-      it {page.should have_content("Sorry, you don't have access to this page!")}
       it {current_path.should eq(user_path(@user))}
     end
 
@@ -223,7 +222,7 @@ describe "UserPages" do
         describe "it allows the user to edit Institution" do
           it "allows the user to add an institution" do
             expect {
-              fill_in "institution", with: "A new school"
+              fill_in "user_institution_attributes_name", with: "A new school"
               click_button("Save Changes")
             }.to change(Institution, :count).by(1)
             page.should have_content("A new school")

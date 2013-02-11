@@ -223,6 +223,14 @@ Navbar Modifications
             float:left;
         }
 
+        span{
+            display: inline-block;
+            float: left;
+            font: $open-sans;
+            font-size: 1.1em;
+            color: #ffffff;
+        }
+
         form{
             display: inline-block;
             float: left;
@@ -388,7 +396,7 @@ header#application-header {
 }
 
 .bordered {
-  border: 1px #e7e7e7 solid;
+  border: 1px solid #bfbfbf;
   border-radius: 3px;
   padding: 10px;
   margin-bottom:10px;
@@ -478,9 +486,9 @@ img.header-profile-picture {
     float: left;
     margin: 2%;
     vertical-align: top;
-    width: 12.82%; /*150px : 1170px*/
-    height: 12.82%;/*150px;*/
-    border: 10px solid #FFF;
+    width: 12em; /*150px : 1170px*/
+    height: 12em;/*150px;*/
+    border: 1em solid #FFF;
     -moz-box-shadow: 2px 2px 10px rgb(1, 21, 38);
     box-shadow: 2px 2px 10px rgb(1, 21, 38);
 }
@@ -632,9 +640,17 @@ div.inner-form{
 /*Sign Up Banner*/
 .banner-sign-up{
     background: rgba(234, 231, 216, 1);
-    padding: 1%;
-    margin-bottom: 2%;
+    padding: 0.5em;
+    margin-bottom: 2em;
     text-align: center;
+    
+
+    h3{
+        font-size: 1.3em;
+    }
+    p{
+        font-size: 1em;
+    }
 }
 
 /*******************************************

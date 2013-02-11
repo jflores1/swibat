@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @certifications = @user.professional_accomplishments.where(:accomplishment_type => "Certificate")
     @awards = @user.professional_accomplishments.where(:accomplishment_type => "Award")
+    @microposts = @user.microposts
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @user.professional_accomplishments.build
     @user.professional_educations.build
-    @user.specialties.build    
+    @user.specialties.build   
   end
 
   def update
