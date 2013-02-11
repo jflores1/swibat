@@ -14,7 +14,7 @@
 	<div class="span5">
 		<div class="fixed">		
 			<div class="standards">
-				<p class="placeholder">Drag standards here</p>
+				<p class="placeholder">Drag applicable standards here</p>
 				<ul>
 					<% @lesson.educational_standards.each do |standard| %>
 						<li data-id="<%= standard.id %>" data-content="<%= standard.description%>" title="<%= standard.name %>"><%= standard.name %><i title="Remove this standard" class="icon-remove pull-right"></i></li>

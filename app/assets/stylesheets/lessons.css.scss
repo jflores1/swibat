@@ -156,3 +156,11 @@ div#activity-form{
   width: 400px;
 
 }
+
+.list-description{
+  font-size: 1.2em;
+  border-bottom: 1px dashed #cdcdcd;
+}
+.list-description:nth-child(even){
+  background: #ffffff;
+}
