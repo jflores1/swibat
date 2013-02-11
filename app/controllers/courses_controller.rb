@@ -149,20 +149,32 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @user = @course.user
     @month_list = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
-    @months = {}
-    @month_list.each do |month|
-      @months[month.to_sym] = {}
+
+    # find the minimum and maximum date through which the course spans
+    min_date = @course.units.first.expected_start_date
+    max_date = @course.units.first.expected_end_date
+    @course.units.each do |unit|
+      min_date = unit.expected_start_date if min_date > unit.expected_start_date
+      max_date = unit.expected_end_date if max_date < unit.expected_end_date
     end
 
-    @course.units.each do |unit|
-      start_month = unit.expected_start_date.month-1
-      end_month = unit.expected_end_date.month-1
-
-      (start_month..end_month).each do |m|
-        month = @month_list[m]
-        @months[month.to_s.downcase.to_sym][:units] ||= []
-        @months[month.to_s.downcase.to_sym][:units] << unit
+    @months = {}
+    # initialize the months hash
+    dates = list_all_months min_date, max_date
+    dates.each do |date|
+      key = @month_list[date.month-1] + " " + date.year.to_s
+      @months[key.to_sym] = {}
+    end
+    
+    # place each of the course's units under the proper month in the months hash
+    @course.units.each do |unit|      
+      dates = list_all_months(unit.expected_start_date, unit.expected_end_date)
+      dates.each do |date|
+        key = @month_list[date.month-1] + " " + date.year.to_s
+        @months[key.to_sym][:units] ||= []
+        @months[key.to_sym][:units] << unit
       end
+
     end 
 
   end
@@ -172,5 +184,18 @@ class CoursesController < ApplicationController
     @journalentries = JournalEntry.belongs_to_course(@course.id)
     respond_with @journalentries 
   end
+
+  private
+
+    def list_all_months start_date, end_date    
+      start_date, end_date = end_date, start_date if start_date > end_date
+      m = Date.new start_date.year, start_date.month
+      result = []
+      while m <= end_date
+        result << m
+        m >>= 1
+      end
+      result
+    end
 
 end

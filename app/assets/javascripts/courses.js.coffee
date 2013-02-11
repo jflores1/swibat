@@ -14,3 +14,4 @@ $(document).ready ->
 
   # Trim the calendar in the calendar view, displaying only 3 months
   trimCalendar()
+  
