@@ -80,3 +80,33 @@ function displayObjectiveables(result){
 }
 
 
+// Scrolling of the calendar table
+startingColumn = 2;
+monthCount = 12;
+displayMonths = 3;
+
+function calendarScrollNext(){
+	if (startingColumn + displayMonths < 2 + monthCount){
+		$('#calendar td:nth-child(' + startingColumn + ')').hide();			
+		$('#calendar td:nth-child(' + (startingColumn + displayMonths) + ')').show();		
+		startingColumn++;	
+	} else {
+		alert('end');
+	}	
+}
+
+function calendarScrollPrev(){
+	if (startingColumn > 2){
+		$('#calendar td:nth-child(' + (startingColumn - 1) + ')').show();			
+		$('#calendar td:nth-child(' + (startingColumn + displayMonths - 1) + ')').hide();		
+		startingColumn--;	
+	} else {
+		alert('end');
+	}	
+}
+
+function trimCalendar(){
+	for ( var i = 2 + displayMonths; i < 2+ monthCount; i++ ){
+		$('#calendar td:nth-child(' + i + ')').hide();		
+	}	
+}
