@@ -60,6 +60,7 @@ Swibat::Application.routes.draw do
       post :course_goal
       get 'syllabus'
       get :unit_calendar
+      get :calendar
       get  :syllabus
       get  :journal
     end

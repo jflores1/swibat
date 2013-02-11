@@ -132,7 +132,7 @@ class CoursesController < ApplicationController
     @microposts = @user.feed
     @date = Date.today.beginning_of_month
     @units_by_date = @course.units.group_by {|unit| unit.expected_start_date.beginning_of_month}
-    @months_helper = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Octobor", "November", "December"]
+    @month_helper = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Octobor", "November", "December"]
     #@semester = new Hash();
     @semester = {
       "Spring" => 0,
@@ -143,6 +143,28 @@ class CoursesController < ApplicationController
     
     respond_with @course, status: :ok, location: unit_calendar_course_path
     #TODO: What if no units? Throws error
+  end
+
+  def calendar
+    @course = Course.find(params[:id])
+    @user = @course.user
+    @month_list = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+    @months = {}
+    @month_list.each do |month|
+      @months[month.to_sym] = {}
+    end
+
+    @course.units.each do |unit|
+      start_month = unit.expected_start_date.month-1
+      end_month = unit.expected_end_date.month-1
+
+      (start_month..end_month).each do |m|
+        month = @month_list[m]
+        @months[month.to_s.downcase.to_sym][:units] ||= []
+        @months[month.to_s.downcase.to_sym][:units] << unit
+      end
+    end 
+
   end
   
   def journal
