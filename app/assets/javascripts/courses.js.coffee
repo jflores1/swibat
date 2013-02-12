@@ -10,4 +10,8 @@ $(document).ready ->
       $(this).text("Add a comment")
     else
       $('#comment-form').show()
-      $(this).text("Hide Comment")     
+      $(this).text("Hide Comment")
+
+  # Trim the calendar in the calendar view, displaying only 3 months
+  trimCalendar()
+  

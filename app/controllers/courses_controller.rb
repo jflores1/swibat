@@ -132,7 +132,7 @@ class CoursesController < ApplicationController
     @microposts = @user.feed
     @date = Date.today.beginning_of_month
     @units_by_date = @course.units.group_by {|unit| unit.expected_start_date.beginning_of_month}
-    @months_helper = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Octobor", "November", "December"]
+    @month_helper = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Octobor", "November", "December"]
     #@semester = new Hash();
     @semester = {
       "Spring" => 0,
@@ -144,11 +144,58 @@ class CoursesController < ApplicationController
     respond_with @course, status: :ok, location: unit_calendar_course_path
     #TODO: What if no units? Throws error
   end
+
+  def calendar
+    @course = Course.find(params[:id])
+    @user = @course.user
+    @month_list = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+
+    # find the minimum and maximum date through which the course spans
+    min_date = @course.units.first.expected_start_date
+    max_date = @course.units.first.expected_end_date
+    @course.units.each do |unit|
+      min_date = unit.expected_start_date if min_date > unit.expected_start_date
+      max_date = unit.expected_end_date if max_date < unit.expected_end_date
+    end
+
+    @months = {}
+    # initialize the months hash
+    dates = list_all_months min_date, max_date
+    dates.each do |date|
+      key = @month_list[date.month-1] + " " + date.year.to_s
+      @months[key.to_sym] = {}
+    end
+    
+    # place each of the course's units under the proper month in the months hash
+    @course.units.each do |unit|      
+      dates = list_all_months(unit.expected_start_date, unit.expected_end_date)
+      dates.each do |date|
+        key = @month_list[date.month-1] + " " + date.year.to_s
+        @months[key.to_sym][:units] ||= []
+        @months[key.to_sym][:units] << unit
+      end
+
+    end 
+
+  end
   
   def journal
     @course = Course.find(params[:id])
     @journalentries = JournalEntry.belongs_to_course(@course.id)
     respond_with @journalentries 
   end
+
+  private
+
+    def list_all_months start_date, end_date    
+      start_date, end_date = end_date, start_date if start_date > end_date
+      m = Date.new start_date.year, start_date.month
+      result = []
+      while m <= end_date
+        result << m
+        m >>= 1
+      end
+      result
+    end
 
 end

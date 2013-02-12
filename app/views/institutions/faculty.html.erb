@@ -1,0 +1,19 @@
+<div class="row-fluid">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Faculty Member</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% @faculty.each do |faculty| %>
+				<tr id="user_<%= faculty.id %>">
+					<td><%= link_to "#{faculty.full_name}", user_path(faculty) %></td>
+
+				</tr>
+			<% end %>
+		</tbody>
+
+	</table>
+</div>

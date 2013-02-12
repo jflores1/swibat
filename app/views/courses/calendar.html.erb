@@ -1,0 +1,121 @@
+<% provide(:title, "#{@course.course_name} Unit Calendar") %>
+<div class="row-fluid">
+	<%= render 'shared/user_header' %>
+
+	<header class="course-header">
+		<%= render 'courses/course_header' %>
+	</header>
+
+	<table class="table table-striped" id="calendar">		
+		<tr>
+			<td class="title">
+				<a id="calendarPrev" onclick="calendarScrollPrev()" class="btn">Prev</a>
+			</td>
+			<% @months.each do |month, v| %>
+				<td class="month"><%= month.to_s.titlecase %></td>
+			<% end %> 
+			<td>
+				<a id="calendarNext"onclick="calendarScrollNext()" class="btn">Next</a>
+			</td>
+		</tr>
+
+		<tr>
+			<td>Curricular Themes</td>
+			<% @months.each do |month, month_params| %>
+				<td>
+					
+				</td>
+			<% end %> 
+			<td></td>
+		</tr>
+
+		<tr>
+			<td>Essential Questions</td>
+			<% @months.each do |month, month_params| %>
+				<td>
+					<% if month_params[:units] %>
+						<% month_params[:units].each do |unit| %>
+							<%= link_to unit.unit_title, [unit.course, unit] %><br />
+						<% end %>
+					<% end %>
+				</td>
+			<% end %> 
+			<td></td>
+		</tr>
+
+		<tr>
+			<td>Standards Covered</td>
+			<% @months.each do |month, month_params| %>
+				<td>
+					<% if month_params[:units] %>
+						<% month_params[:units].each do |unit| %>
+							
+							<% unit.lessons.each do |lesson| %>
+	              <%= display_standards_for_lesson lesson %>
+	            <% end %>
+
+						<% end %>
+					<% end %>
+				</td>
+			<% end %> 
+			<td></td>
+		</tr>
+
+		<tr>
+			<td>Content</td>
+			<% @months.each do |month, month_params| %>
+				<td>
+					<% if month_params[:units] %>
+						<% month_params[:units].each do |unit| %>
+							
+							<% unit.content_taught.each do |content| %>
+	              <%= content.objective %><br />
+	            <% end %>
+
+						<% end %>
+					<% end %>
+				</td>
+			<% end %> 
+			<td></td>
+		</tr>
+
+		<tr>
+			<td>Skills</td>
+			<% @months.each do |month, month_params| %>
+				<td>
+					<% if month_params[:units] %>
+						<% month_params[:units].each do |unit| %>
+							
+							<% unit.skills_taught.each do |skill| %>
+	              <%= skill.objective %><br />
+	            <% end %>
+
+						<% end %>
+					<% end %>
+				</td>
+			<% end %> 
+			<td></td>
+		</tr>
+
+		<tr>
+			<td>Assessments</td>
+			<% @months.each do |month, month_params| %>
+				<td>
+					<% if month_params[:units] %>
+						<% month_params[:units].each do |unit| %>
+							
+							<% unit.assessments.each do |assessment| %>
+	              <%= assessment.assessment_name %><br />
+	            <% end %>
+
+						<% end %>
+					<% end %>
+				</td>
+			<% end %> 
+			<td></td>
+		</tr>
+
+
+	</table>
+
+</div>

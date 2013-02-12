@@ -76,6 +76,7 @@ class Ability
 
     elsif user.role == "school_admin"
       can :read, :all
+      can :manage, Institution
     end
   end
 end

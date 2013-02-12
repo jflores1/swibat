@@ -60,6 +60,7 @@ Swibat::Application.routes.draw do
       post :course_goal
       get 'syllabus'
       get :unit_calendar
+      get :calendar
       get  :syllabus
       get  :journal
     end
@@ -106,6 +107,12 @@ Swibat::Application.routes.draw do
   resources :followings, :only => [:create, :destroy] do
     member do
       post 'follow'
+    end
+  end
+
+  resources :institutions do
+    member do
+      get :faculty
     end
   end
 
