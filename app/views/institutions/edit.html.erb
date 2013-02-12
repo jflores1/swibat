@@ -1,0 +1,17 @@
+<div class="row-fluid">
+	<h2>Edit School Information for <%= current_user.institution.name %></h2>
+</div>
+
+<%= form_for current_user.institution do |school| %>
+	
+	<%= school.text_field :name %>
+	<%= school.text_field :enrollment %>
+	<%= school.text_field :num_faculty %>
+	<%= school.text_field :address_line_1 %>
+	<%= school.text_field :address_line_2 %>
+	<%= school.text_field :city %>
+	<%= school.text_field :state %>
+	<%= school.text_field :zip_code %>
+	<%= school.submit "Submit" %>
+
+<% end %>

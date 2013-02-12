@@ -74,5 +74,11 @@ module ApplicationHelper
     end
   end
 
+  def show_manage_options
+    if signed_in?
+      render 'shared/header_current_user_manage_options'
+    end
+  end
+
 
 end

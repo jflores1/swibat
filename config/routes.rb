@@ -110,6 +110,12 @@ Swibat::Application.routes.draw do
     end
   end
 
+  resources :institutions do
+    member do
+      get :faculty
+    end
+  end
+
   resources :microposts, only: [:create, :index]
   
   match 'demo/:action' => 'demo#:action'
