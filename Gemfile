@@ -45,6 +45,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 end
 
 group :production do
