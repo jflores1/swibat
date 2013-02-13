@@ -1,0 +1,38 @@
+<dl>
+  <dt>Standards Met</dt>
+  	<dd>
+  		<% unit.lessons.each do |lesson| %>
+        <%= display_standards_for_lesson lesson %>
+      <% end %>
+  	</dd>
+
+  <% if unit.content_taught.any? %>
+  <dt>Content</dt>
+    <dd>
+    	<% unit.content_taught.each do |content| %>
+        <%= content.objective %><br />
+      <% end %>
+    </dd>
+  <% end %>
+
+  <% if unit.skills_taught.any? %>
+  <dt>Skills</dt>
+    <dd>
+    	<% unit.skills_taught.each do |skill| %>
+        <%= skill.objective %>
+      <% end %>
+    </dd>
+  <% end %>
+
+	<% if unit.assessments.any? %>
+  <dt>Assessments</dt>
+    <dd>
+    	<% unit.assessments.each do |assessment| %>
+        <%= assessment.assessment_name %><br />
+      <% end %>
+    </dd>
+  <% end %>
+
+
+
+</dl>
