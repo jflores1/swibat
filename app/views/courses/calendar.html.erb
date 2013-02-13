@@ -6,12 +6,13 @@
 		<%= render 'courses/course_header' %>
 	</header>
 
+	<% calendar = calendar_for_single_course(@course) %>
 	<table class="table table-striped" id="calendar">		
 		<tr>
 			<td class="title">
 				<a id="calendarPrev" onclick="calendarScrollPrev()" class="btn">Prev</a>
 			</td>
-			<% @months.each do |month, v| %>
+			<% calendar.each do |month, v| %>
 				<td class="month"><%= month.to_s.titlecase %></td>
 			<% end %> 
 			<td>
@@ -21,9 +22,9 @@
 
 		<tr>
 			<td>Curricular Themes</td>
-			<% @months.each do |month, month_params| %>
+			<% calendar.each do |month, month_params| %>
 				<td>
-					
+
 				</td>
 			<% end %> 
 			<td></td>
@@ -31,7 +32,7 @@
 
 		<tr>
 			<td>Essential Questions</td>
-			<% @months.each do |month, month_params| %>
+			<% calendar.each do |month, month_params| %>
 				<td>
 					<% if month_params[:units] %>
 						<% month_params[:units].each do |unit| %>
@@ -45,7 +46,7 @@
 
 		<tr>
 			<td>Standards Covered</td>
-			<% @months.each do |month, month_params| %>
+			<% calendar.each do |month, month_params| %>
 				<td>
 					<% if month_params[:units] %>
 						<% month_params[:units].each do |unit| %>
@@ -63,7 +64,7 @@
 
 		<tr>
 			<td>Content</td>
-			<% @months.each do |month, month_params| %>
+			<% calendar.each do |month, month_params| %>
 				<td>
 					<% if month_params[:units] %>
 						<% month_params[:units].each do |unit| %>
@@ -81,7 +82,7 @@
 
 		<tr>
 			<td>Skills</td>
-			<% @months.each do |month, month_params| %>
+			<% calendar.each do |month, month_params| %>
 				<td>
 					<% if month_params[:units] %>
 						<% month_params[:units].each do |unit| %>
@@ -99,7 +100,7 @@
 
 		<tr>
 			<td>Assessments</td>
-			<% @months.each do |month, month_params| %>
+			<% calendar.each do |month, month_params| %>
 				<td>
 					<% if month_params[:units] %>
 						<% month_params[:units].each do |unit| %>
@@ -114,8 +115,6 @@
 			<% end %> 
 			<td></td>
 		</tr>
-
-
 	</table>
 
 </div>

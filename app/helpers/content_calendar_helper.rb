@@ -1,57 +1,78 @@
 module ContentCalendarHelper
 
-	def content_calendar(date = Date.today, &block)
-		ContentCalendar.new(self, date, block).table
+	MONTH_LIST = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+
+	def calendar_for_single_course(course)		
+		calendar = initialize_calendar_hash(course)  	  	
+
+		course.units.each do |unit|      
+      dates = list_months_in_date_range(unit.expected_start_date, unit.expected_end_date)
+      dates.each do |date|
+        key = MONTH_LIST[date.month-1] + " " + date.year.to_s
+        calendar[key.to_sym][:units] ||= []
+        calendar[key.to_sym][:units] << unit
+      end
+    end 
+    calendar
 	end
 
-	class ContentCalendar < Struct.new(:view, :date, :callback)
-		delegate :content_tag, to: :view
+	def calendar_for_multiple_courses(courses)
+		calendar = initialize_calendar_hash(courses)  
 
-		HEADER = %w[January February March April May June July August September October November December]
-		START_MONTH = Date.today.month
-
-		def table
-			content_tag :table, class: "content-calendar" do
-				header + unit_title_row
-			end
-		end
-
-		def header
-			content_tag :thead do
-				content_tag :tr do
-					leading_header_cell + month_header
-				end
-			end
-		end
-
-		def leading_header_cell(title = nil)
-			content_tag :th
-		end
-
-		def month_header
-			HEADER.map {|month| content_tag :th, month}.join.html_safe
-		end
-
-		def unit_title_row
-			months.map do |month|
-				content_tag :tr do
-					month.map { |cell| cell(content)}.join.html_safe
-				end
-			end.join.html_safe
-		end
-
-		def cell(content)
-			content_tag :td, view_capture(content, &callback)
-		end
-
-		def months
-			first = date.beginning_of_month
-			last = date.end_of_quarter
-			(first..last).to_a.in_groups_of(13)
-		end
-		
-		
+		courses.each do |course|
+      course.units.each do |unit|      
+        dates = list_months_in_date_range(unit.expected_start_date, unit.expected_end_date)
+        dates.each do |date|
+          key = MONTH_LIST[date.month-1] + " " + date.year.to_s
+          calendar[key.to_sym][course.id.to_s.to_sym] ||= {}
+          calendar[key.to_sym][course.id.to_s.to_sym][:units] ||= []
+          calendar[key.to_sym][course.id.to_s.to_sym][:units] << unit
+        end
+      end 
+    end	  	
+    calendar
 	end
 
+	private
+	
+		def extract_date_range(courses)
+			if !courses.kind_of?(Array)
+				courses = [courses]
+			end
+
+			min_date = courses.first.units.first.expected_start_date
+	    max_date = courses.first.units.first.expected_end_date
+	    courses.each do |course|
+	      course.units.each do |unit|
+	        min_date = unit.expected_start_date if min_date > unit.expected_start_date
+	        max_date = unit.expected_end_date if max_date < unit.expected_end_date
+	      end
+	    end
+
+	    [min_date, max_date]
+		end
+
+		def list_months_in_date_range start_date, end_date    
+	    m = Date.new start_date.year, start_date.month
+	    result = []
+	    while m <= end_date
+	      result << m
+	      m >>= 1
+	    end
+	    result
+	  end 
+
+	  def initialize_calendar_hash(courses)  	  	
+	  	calendar = {}
+	  	
+	  	stard_date, end_date = extract_date_range(courses)
+			dates = list_months_in_date_range(stard_date, end_date)
+
+	    dates.each do |date|
+	      key = MONTH_LIST[date.month-1] + " " + date.year.to_s
+	      calendar[key.to_sym] = {}
+	    end
+	    calendar
+	  end
 
 end

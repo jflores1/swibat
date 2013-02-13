@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index, :syllabus]
-  before_filter :load_similar_courses, except: [:index, :new, :create, :feed, :vote, :fork]
+  before_filter :load_similar_courses, except: [:index, :new, :create, :feed, :vote, :fork, :course_maps]
   before_filter :new_micropost, only: [:show]
   load_and_authorize_resource
   skip_authorize_resource only: [:show, :index, :syllabus]
@@ -147,36 +147,12 @@ class CoursesController < ApplicationController
 
   def calendar
     @course = Course.find(params[:id])
-    @user = @course.user
-    @month_list = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+    @user = @course.user    
+  end
 
-    # find the minimum and maximum date through which the course spans
-    min_date = @course.units.first.expected_start_date
-    max_date = @course.units.first.expected_end_date
-    @course.units.each do |unit|
-      min_date = unit.expected_start_date if min_date > unit.expected_start_date
-      max_date = unit.expected_end_date if max_date < unit.expected_end_date
-    end
-
-    @months = {}
-    # initialize the months hash
-    dates = list_all_months min_date, max_date
-    dates.each do |date|
-      key = @month_list[date.month-1] + " " + date.year.to_s
-      @months[key.to_sym] = {}
-    end
-    
-    # place each of the course's units under the proper month in the months hash
-    @course.units.each do |unit|      
-      dates = list_all_months(unit.expected_start_date, unit.expected_end_date)
-      dates.each do |date|
-        key = @month_list[date.month-1] + " " + date.year.to_s
-        @months[key.to_sym][:units] ||= []
-        @months[key.to_sym][:units] << unit
-      end
-
-    end 
-
+  def course_maps    
+    @courses = Course.all
+    @user = current_user
   end
   
   def journal

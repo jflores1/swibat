@@ -67,6 +67,7 @@ Swibat::Application.routes.draw do
     collection do
       get 'feed'
       get 'tags/:tag', to: 'courses#index', as: :tag
+      get :course_maps
     end
   end
 

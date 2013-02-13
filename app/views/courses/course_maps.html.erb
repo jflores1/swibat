@@ -1,0 +1,38 @@
+<% provide(:title, "Course Maps") %>
+
+<div class="row-fluid">
+	<%= render 'shared/user_header' %>
+	<% calendar = calendar_for_multiple_courses(@courses) %>
+	<table class="table table-striped" id="calendar">
+		<tr>
+			<td class="title">
+				<a id="calendarPrev" onclick="calendarScrollPrev()" class="btn">Prev</a>
+			</td>
+			<% calendar.each do |month, v| %>
+				<td class="month"><%= month.to_s.titlecase %></td>
+			<% end %> 
+			<td>
+				<a id="calendarNext"onclick="calendarScrollNext()" class="btn">Next</a>
+			</td>
+		</tr>
+		
+		<% @courses.each do |course| %>
+			<tr>
+				<td><%= course.course_name %></td>
+
+				<% calendar.each do |month, month_params| %>
+					<td>
+						<% if month_params[course.id.to_s.to_sym] && month_params[course.id.to_s.to_sym][:units] %>
+							<% month_params[course.id.to_s.to_sym][:units].each do |unit| %>
+							<%= link_to(unit.unit_title, course_unit_path(unit.course, unit), :class => "popover-with-html", :title => unit.unit_title, "data-content" => (render 'unit_popover', unit: unit ).gsub('"', '\"')) %>
+							<% end %>
+						<% end %>
+					</td>
+				<% end %> 
+				<td></td>
+			</tr>
+		<% end %>
+
+	</table>
+
+</div>
