@@ -307,6 +307,26 @@ describe "UserPages" do
 
   end
 
+  describe "The User Video Page" do
+    let(:admin){create(:user_with_profile, role:"school_admin")}
+    let(:faculty_member){create(:user_with_profile, first_name:"Bob", role:"teacher")}
+    context "The Teacher" do
+      before do
+        5.times do
+          create(:video)
+        end
+        sign_in_via_form
+        visit videos_user_path(@user)
+      end
+      it {page.should have_content("#{@user.full_name}'s Videos")}
+      
+    end
+
+    context "The Administrator" do
+      
+    end
+  end
+
   describe "The Followed User Map Page" do
     let!(:other_user){create(:user)}
     let!(:other_course){create(:course, user: other_user)}

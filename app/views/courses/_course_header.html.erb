@@ -1,12 +1,13 @@
-<h1>Course: <%= best_in_place_if (can? :edit, @course), @course, :course_name %>
-  <span>
-    <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_course_path(@course), class:"header-edit" if can? :edit, @course %>
-    <a class="get-syllabus" href="<%= syllabus_course_path(@course) %>"><i class="icon-th-list"></i></a>
-    <%= link_to '<i class="icon-book"></i>'.html_safe, journal_course_path(@course), data: {title: "Course Journal"} %>
-  </span>
-</h1>
+<h1>Course: <%= best_in_place_if (can? :edit, @course), @course, :course_name %></h1>
 
 <h3><%= @course.grade.grade_level %>, <%= @course.course_semester %> <%= @course.course_year %></h3>
 <h3>Subject: <%= @course.subject.subject %></h3>
-<h3>Tags: <span><%= raw @course.tag_list.map {|t| link_to t, tag_courses_path(t), class:"tag_link"}.join(" ") %></span>
+<h3 style="margin-bottom: 0.5em;">Tags: <span><%= raw @course.tag_list.map {|t| link_to t, tag_courses_path(t), class:"tag_link"}.join(" ") %></span>
 </h3>
+<div class="btn-group">
+	<span>
+    <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_course_path(@course), class:"header-edit btn btn-monkey" if can? :edit, @course %>
+    <a class="get-syllabus btn btn-monkey" href="<%= syllabus_course_path(@course) %>"><i class="icon-th-list"></i></a>
+    <%= link_to '<i class="icon-book"></i>'.html_safe, journal_course_path(@course), class:"btn btn-monkey", data: {title: "Course Journal"} %>
+	</span>
+</div>

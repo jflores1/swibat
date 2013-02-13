@@ -89,4 +89,9 @@ class UsersController < ApplicationController
     @mapped_lessons = EducationalStandard.covered_by_people_followed(@user)
   end
 
+  def videos
+    @user = User.find(params[:id])
+    @videos = @user.videos
+  end
+
 end

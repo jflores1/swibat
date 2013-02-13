@@ -75,7 +75,7 @@ class Ability
       can :flag, Flag
 
     elsif user.role == "school_admin"
-      can :read, :all
+      can :videos, User #TODO: Restrict access to users scoped into the school.
       can :manage, Institution
     end
   end

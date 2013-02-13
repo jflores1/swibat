@@ -81,6 +81,23 @@ describe "InstitutionPages" do
   	end  	
   end
 
+  describe "uploading a video for a teacher" do
+    context "a school admin" do
+      let(:school){faculty_member.institution}
+      let(:user){create(:user_with_profile, role: "school_admin")}
+      let(:faculty_member){create(:user_with_profile, first_name:"Bob", role:"teacher")}
+      before do
+        login(user)
+        visit faculty_institution_path(school)
+      end
+      it {print page.html}
+      it "navigates to the user's video index" do
+        find("a.upload-video").click
+        current_path.should eq(videos_user_path(faculty_member))
+      end
+    end
+  end
+
   private
   def login(user)
   	visit new_user_session_path

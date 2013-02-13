@@ -39,6 +39,7 @@ Swibat::Application.routes.draw do
       get :followed_courses
       get :content_map
       get :followed_maps
+      get :videos
     end
   end
 
@@ -125,7 +126,6 @@ Swibat::Application.routes.draw do
   if Rails.env.development?
     mount MailPreview => 'mail_view'
   end
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

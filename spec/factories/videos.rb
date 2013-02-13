@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :video do
-    title "MyString"
-    description "MyText"
+    title "Video Title"
+    description "A description of the video"
     address "MyString"
   end
 end
