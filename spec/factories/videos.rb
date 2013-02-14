@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :video do
     title "Video Title"
     description "A description of the video"
-    address "MyString"
+    yt_video_id "MyString"
   end
 end

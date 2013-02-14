@@ -125,6 +125,19 @@ describe "LessonPages" do
           it {page.should have_content("Skill Objective")}
         end
 
+        describe "videos icon" do
+          it "displays a videos icon when there are videos" do
+            lesson.videos.create(yt_video_id: "ID", description: "description", title: "Title", is_complete: true)
+            visit unit_lesson_path(unit, lesson)
+            page.should have_xpath("//i[@class='icon-film']")
+          end
+
+          it "does not display a videos icon when there are no videos" do
+            page.should_not have_xpath("//i[@class='icon-film']")
+          end
+        end
+
+
       end
     end
   end

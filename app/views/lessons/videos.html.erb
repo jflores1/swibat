@@ -1,0 +1,3 @@
+<%= provide(:title, "#{@lesson.lesson_title} Videos") %>
+<h1><%= link_to @lesson.lesson_title, [@lesson.unit, @lesson] %> videos</h1>
+<%= render partial: 'videos/collection', locals: {videos: @videos} %>

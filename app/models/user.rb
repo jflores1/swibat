@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
                     :default_url => "https://s3.amazonaws.com/swibat_development/icon-graduation-cap.png"
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :full_name, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes, :institution_attributes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :full_name, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes, :institution_attributes, :institution_id, :provider, :uid
   belongs_to :institution
   has_many :courses
   has_many :professional_educations

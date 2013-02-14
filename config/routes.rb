@@ -1,5 +1,9 @@
 Swibat::Application.routes.draw do
   
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   match "search" => "search#index"
 
   root to: 'static_pages#teachers'
@@ -88,13 +92,7 @@ Swibat::Application.routes.draw do
     resources :objectives
     resources :assessments
     resources :activities
-    resources :comments, :only => [:create, :destroy]  
-    resources :videos do  
-      new do
-         post :upload
-         get  :save_video
-       end
-    end  
+    resources :comments, :only => [:create, :destroy]      
     
     member do
       post :vote
@@ -103,8 +101,17 @@ Swibat::Application.routes.draw do
       post :update_journal_entry
       get  :new_lesson_content
       get  :new_lesson_skill
+      get  :videos
     end    
   end
+
+  resources :videos do  
+    resources :comments, :only => [:create, :destroy]
+    new do
+       post :upload
+       get  :save_video
+     end
+  end  
 
   resources :followings, :only => [:create, :destroy] do
     member do

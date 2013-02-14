@@ -28,6 +28,9 @@ gem 'rails_autolink'
 gem 'youtube_it'
 gem 'pusher'
 
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'

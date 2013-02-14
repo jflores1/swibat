@@ -1,12 +1,15 @@
+
 <h1><%= @video.title %></h1>
 <p>
   <%= raw yt_client.my_video(@video.yt_video_id).embed_html %>
 </p>
+<% if @video.lesson %>
+	<p>
+	  Lesson: <%= link_to @video.lesson.lesson_title, [@video.lesson.unit, @video.lesson] %>
+	</p>
+<% end %>
 <p>
-  Lesson: <%= link_to @video.lesson.lesson_title, [@video.lesson.unit, @video.lesson] %>
-</p>
-<p>
-  Uploaded by <%= link_to @video.user.full_name, @video.user %>
+  Uploaded by <%= link_to @video.user.full_name, @video.user %>, <%= time_ago_in_words @video.created_at %> ago
 </p>
 <p>
   <strong>Description</strong><br />
@@ -17,3 +20,5 @@
   <%= link_to "Edit", edit_video_path(@video), :class => "btn btn-monkey" %> 
   <%= link_to "Delete", video_path(@video), :method => "delete", :class => "btn btn-monkey", :confirm => "Are you sure?" %>
 </div>      
+<hr />
+<%= render :partial => 'comments/comments', :locals => {:commentable => @video} %>

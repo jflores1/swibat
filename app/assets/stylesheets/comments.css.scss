@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div#comments{
-  margin: 2% 0 2% 2%;
+  margin: 2% 0 2% 0;
   clear:both;
   border-bottom: 1px rgba(152, 161, 186, 0.5) dashed;
 
@@ -18,7 +18,13 @@ div#comments{
   div.comment:hover{
     background: rgba(152, 161, 186, 0.10);
   }
-
-
-
 }
+
+div#comment-form{
+  textarea{
+    width: 500px;
+  }  
+}
+
+
+

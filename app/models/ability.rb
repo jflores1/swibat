@@ -57,11 +57,9 @@ class Ability
       # Can manage comments if they are the owners of the commentable of the comment (Course, Unit, etc.)
       can :manage, Comment do |comment|
         comment.try(:commentable).try(:user).try(:id) == user.id
-      end
-      # Can create comments if they are friends with the user the commentable belongs to
-      can :create, Comment do |comment|
-        comment.try(:commentable).try(:user) #.try(:friends).include? user
-      end
+      end      
+
+      can :manage, Video, :user_id => user.id
 
       can :manage, User, :id => user.id
       can :read, User
@@ -70,6 +68,9 @@ class Ability
       can :read, Unit
       can :read, Question
       can :read, Answer
+      can :read, Video do |video|
+        video.try(:lesson).try(:user).try(:institution) == user.institution
+      end     
 
       can :vote, :all
       can :flag, Flag

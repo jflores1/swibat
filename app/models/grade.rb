@@ -18,4 +18,8 @@ class Grade < ActiveRecord::Base
 
   validates :grade_level, :presence => true
   validates :grade_level, :uniqueness => true
+
+  def to_s
+  	grade_level
+  end
 end

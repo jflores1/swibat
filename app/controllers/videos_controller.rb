@@ -1,17 +1,18 @@
 class VideosController < ApplicationController
 
-  before_filter :load_lesson
-
+  load_and_authorize_resource
+  
 	def index
-		@videos = @lesson.videos
+		@videos = Video.all
 	end
 
 	def show
 		@video = Video.find(params[:id])
 	end
 
-	def new
+	def new    
 		@video = Video.new    
+    @video.lesson_id = params[:lesson_id] if params[:lesson_id]
 	end
 
 	def edit
@@ -19,8 +20,7 @@ class VideosController < ApplicationController
 	end
 
 	def upload
-    @video = Video.new(params[:video])
-    @video.lesson = @lesson
+    @video = Video.new(params[:video])    
     @video.user = current_user
     if @video.save
       @upload_info = Video.token_form(params[:video], save_video_new_lesson_video_url(:video_id => @video.id))
@@ -72,9 +72,4 @@ class VideosController < ApplicationController
     def collection
       @videos ||= end_of_association_chain.completes
     end
-
-    def load_lesson
-      @lesson = Lesson.find(params[:lesson_id])
-    end
-
 end

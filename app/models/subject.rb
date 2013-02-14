@@ -10,4 +10,8 @@
 
 class Subject < ActiveRecord::Base
   attr_accessible :subject
+
+  def to_s
+  	subject
+  end
 end

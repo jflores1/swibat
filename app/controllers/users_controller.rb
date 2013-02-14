@@ -91,7 +91,7 @@ class UsersController < ApplicationController
 
   def videos
     @user = User.find(params[:id])
-    @videos = @user.videos
+    @videos = @user.videos    
   end
 
 end

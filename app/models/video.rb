@@ -14,6 +14,10 @@
 #
 
 class Video < ActiveRecord::Base
+
+  acts_as_commentable
+  acts_as_taggable
+  
   attr_accessible :yt_video_id, :description, :title, :is_complete
 
   belongs_to :lesson

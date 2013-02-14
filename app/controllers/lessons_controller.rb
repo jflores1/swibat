@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_filter :find_current_unit, :except => [:vote, :new_lesson_content, :new_lesson_skill, :standards, :save_standards, :update_journal_entry]
+  before_filter :find_current_unit, :except => [:vote, :new_lesson_content, :new_lesson_skill, :standards, :save_standards, :update_journal_entry, :videos]
   load_and_authorize_resource
   skip_authorize_resource only: :show
   respond_to :html, :json
@@ -99,6 +99,11 @@ class LessonsController < ApplicationController
     @journal_entry = JournalEntry.find_or_initialize_by_lesson_id(@lesson.id)
     @journal_entry.update_attributes(params[:journal_entry])
     @journal_entry.save
+  end
+
+  def videos
+    @lesson = Lesson.find(params[:id])
+    @videos = @lesson.videos
   end
 
   private
