@@ -10,7 +10,7 @@ describe "InstitutionPages" do
   		it "allows access to the page" do
   			click_link("Manage")
   			click_link("School Info")
-  			page.should have_content("Edit School Info")
+  			current_path.should eq(institution_path(user.institution))
   		end
 
   		describe "updating the Institution Information" do
@@ -90,7 +90,6 @@ describe "InstitutionPages" do
         login(user)
         visit faculty_institution_path(school)
       end
-      it {print page.html}
       it "navigates to the user's video index" do
         find("a.upload-video").click
         current_path.should eq(videos_user_path(faculty_member))

@@ -1,0 +1,75 @@
+<h1>Route: /users/:id/eval/new</h1>
+<h2>Render shared/user/header (Shows the person for whom this eval is associated)</h2>
+
+<table class="table faculty-table">
+	<thead>
+		<tr>
+			<th></th>
+			<th class="eval">Unsatisfactory</th>
+			<th class="eval">Basic</th>
+			<th class="eval">Proficient</th>
+			<th class="eval">Distinguished</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="domain-row">
+			<td class="domain">Planning and Preparation</td>
+		</tr>
+		<tr class="subdomain-row">
+			<td class="subdomain">Teacher demonstrates knowledge of content and pedagogy</td>
+			<% 4.times do %>
+				<td class="eval"><%= radio_button_tag 'score', '#' %></td>
+			<% end %>
+		</tr>
+		<tr class="subdomain-row">
+			<td class="subdomain">Teacher demonstrates knowledge of students</td>
+			<% 4.times do %>
+				<td class="eval"><%= radio_button_tag 'score', '#' %></td>
+			<% end %>
+		</tr>
+		<tr class="subdomain-row">
+			<td class="subdomain">Teacher sets instructional outcomes</td>
+			<% 4.times do %>
+				<td class="eval"><%= radio_button_tag 'score', '#' %></td>
+			<% end %>
+		</tr>
+		<tr class="domain-row">
+			<td class="domain">The Classroom Environment</td>
+		</tr>
+		<tr class="subdomain-row">
+			<td class="subdomain">Teacher communicates effectively with students</td>
+			<% 4.times do %>
+				<td class="eval"><%= radio_button_tag 'score', '#' %></td>
+			<% end %>
+		</tr>
+		<tr class="subdomain-row">
+			<td class="subdomain">Teacher engages students in learning</td>
+			<% 4.times do %>
+				<td class="eval"><%= radio_button_tag 'score', '#' %></td>
+			<% end %>
+		</tr>
+		<tr class="subdomain-row">
+			<td class="subdomain">Teacher uses questioning nad discussion techniques</td>
+			<% 4.times do %>
+				<td class="eval"><%= radio_button_tag 'score', '#' %></td>
+			<% end %>
+		</tr>
+	</tbody>
+</table>
+<%= link_to "Save Draft", "#", class:"btn btn-monkey pull-left" %>
+<%= link_to "Publish", "#", class:"btn btn-monkey pull-right" %>
+
+<div class="requirements pull-left" style="clear:both">
+	<h2>Requirements</h2>
+	<ul>
+		<li>This is (obviously) an incomplete list of <%= link_to "Evaluative Criteria", "/demo/eval_template" %>. There would be a loop based on said criteria.</li>
+		<li>This should be commentable with comments possible at the bottom. Comments here should be Private (we might need to add a Private boolean) where only the school_admin and teacher can read them. Maybe the comment's privacy is tied to can?, :create and @user? </li>
+		<li>Can we make comments that are published here not deletable? (lower priority)</li>
+		<li>In fact, the eval should be private and readable only by the teacher and the school_admin</li>
+		<li>There should be a numerical value with each of "Unsatisfactory"..."Distinguished" from 1..4</li>
+		<li>"Publish" renders this evaluation uneditable. Emails teacher that it is now published and available at the url.</li>
+		<li>"Publish Date" is a field; it's the day it gets published.</li>
+		<li>(a cool to have) an Artifactable polymorphic association on Video, Lesson, Unit, Course, Journal that allows those artifacts to be associated to an evaluation as evidence for the the scores.</li>
+	</ul>
+</div>
+

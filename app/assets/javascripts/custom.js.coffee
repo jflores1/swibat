@@ -42,6 +42,9 @@ $(document).ready ->
   $('.complete-lesson').tooltip({
     'title':'Mark the Lesson Complete'
   })
+  $('.delete-domain').tooltip({
+    'title':'Delete Domain'
+  })
 
   #calendar
   $('.datepicker').datepicker({"dateFormat":"yy-mm-dd"})

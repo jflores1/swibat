@@ -40,5 +40,16 @@ class DemoController < ApplicationController
 
   end
 
+  def eval_template
+    render layout: 'application'
+    
+  end
+
+  def teacher_eval
+    render layout: 'application'
+    @user = User.first
+    
+  end
+
 
 end

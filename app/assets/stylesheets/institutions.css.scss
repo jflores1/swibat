@@ -8,5 +8,27 @@
 		font-size: 1.3em;
 	}
 
+	td{
+		border: none;
+	}
+
+	td.domain{
+		border-top: none;
+		font-weight: bold;
+	}
+	td.subdomain{
+		padding-left: 2em;
+	}
+	.subdomain-row:nth-of-type(even){
+		background: #ffffff;
+	}
+	.eval{
+		text-align: center;
+		width: 10em;
+	}
+	tr.subdomain-row:hover{
+		background: #fffacd;
+	}
+
 
 }

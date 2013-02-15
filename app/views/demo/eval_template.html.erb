@@ -1,0 +1,127 @@
+<h1>Route: /institutions/:id/eval_template/</h1>
+
+<h3>@institution.name Evaluation Template</h3>
+<p>Edit as often as you like. We've taken the liberty of prepopulating it with some commonly used evaluation criteria. Keep all of it. Or none of it. Your call. Click "Publish" it when you're ready to make it official and share it with the school!</p>
+<h2>Requirements</h2>
+<ul>
+	<li>.delete-domain should trigger alert "You're about to delete this domain and all the data with it."</li>
+	<li>Add Subdomain should load a form in the div (above the link, perhaps?) so the administrator can add multiple criteria.</li>
+	<li>"Publish" is a boolean. If "Y", can? be read by "teacher"</li>
+	<li>last updated is the last time the evaluation_template model was updated</li>
+	<li>Add another domain is also an onpage form. When published, there is a new box object where subdomains can be added</li>
+</ul>
+
+<div class="eval-criteria">
+	<div class="course-organizer">
+		<span>last updated: 2/15/2013</span>
+		<div class="box-row">
+			<div class="span12 box height5">
+				<h3>Domain: Planning and Preparation
+					<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#", class:"btn btn-monkey delete-domain" %></span>
+				</h3>
+				<ul>
+					<li>Teacher demonstrates knowledge of content and pedagogy.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher demonstrates knowledge of students.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher sets instructional outcomes.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher demonstrates knowledge of resources.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher designs coherent instruction.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher aligns assessments with standards and instructional outcomes.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+				</ul>
+				<%= link_to "Add Subdomain", "#", class:"btn btn-monkey" %>
+			</div>
+
+			<div class="span12 no-left-margin box height5">
+				<h3>Domain: The Classroom Environment
+					<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#", class:"btn btn-monkey delete-domain" %></span>
+				</h3>
+				<ul>
+					<li>Teacher creates an environment of respect and rapport.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher establishes a culture of learning.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher manages classroom procedures.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher manages student behavior.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher manages physical space.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+				</ul>
+				<%= link_to "Add Subdomain", "#", class:"btn btn-monkey" %>
+			</div>
+
+			<div class="span12 no-left-margin box height5">
+				<h3>Domain: Instruction
+					<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#", class:"btn btn-monkey delete-domain" %></span>
+				</h3>
+				<ul>
+					<li>Teacher communicates with students effectively.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher uses questioning and discussion techniques.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher engages students in learning.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher uses assessment in instruction.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher demonstrates flexibility and responsivness.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+				</ul>
+				<%= link_to "Add Subdomain", "#", class:"btn btn-monkey" %>
+			</div>
+
+			<div class="span12 no-left-margin box height5">
+				<h3>Domain: Professional Responsibilities
+					<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#", class:"btn btn-monkey delete-domain" %></span>
+				</h3>
+				<ul>
+					<li>Teacher reflects on their teaching and uses it for improvement.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher maintains accurate and timely records.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher communicates effectively with families.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher participates in the school community.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher grows and develops professionally.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+					<li>Teacher maintains professional conduct.
+						<span><%= link_to "<i class='icon-trash'></i>".html_safe, "#" %></span>
+					</li>
+				</ul>
+				<%= link_to "Add Subdomain", "#", class:"btn btn-monkey" %>
+			</div>
+
+			<%= link_to "Add another Domain", "#", class:"btn btn-monkey" %>
+			<div class="btn-group">
+				<%= link_to "Publish", "#", class:"btn btn-monkey" %>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -3,6 +3,9 @@ class InstitutionsController < ApplicationController
 	before_filter :load_institution
 	load_and_authorize_resource
 
+def show
+	
+end
 
 def edit
 	
