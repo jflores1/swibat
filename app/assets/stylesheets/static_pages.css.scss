@@ -1,0 +1,354 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Navbar */
+.navbar-absolute-top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 10;
+    padding: 0.416667% 0 0 0;
+    width: 97%;
+    display: block;
+}
+
+.navbar-chalkboard{
+    background: transparent;
+    margin-top:15px;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    .logo {
+        color: #FFFFFF;
+        float: left;
+        width: 43%;
+
+        p{
+            float:left;
+            font-size: 1em; /*13px /13 */
+            clear:left;
+        }
+
+    }
+
+    .navdiv {
+        float: right;
+    }
+
+    .navmenu-chalkboard{
+        margin-top: 20px;
+
+    }
+
+    .navmenu-extended {
+        background-color: rgba(234, 231, 216, 1);
+        @include rounded-corners(3px);
+
+        .nav li a {
+            color: #606E67;
+            text-shadow: none;
+        }
+
+        .nav li a:hover {
+            background: #606E67;
+            color: rgba(234, 231, 216, 1);
+        }
+    }
+}
+
+
+
+section.chalkboard{
+    background: asset-url('bg-chalkboard.png', image) top center repeat-x;
+    width:100%;
+    height:100%;
+    position:absolute;
+    right:0;
+    top:0;
+
+    header.hero-header{
+        display: block;
+        position: relative;
+        top: 13em; /*200/13*/
+        text-align: center;
+        color: #FFFFFF;
+
+        h1{
+            text-shadow: 1px 1px 0px #606E67;
+            font-family: $open-sans;
+            font-weight: 700;
+            font-size: 4em; /* 39px / 13px */
+            line-height: 1.619em;
+        }
+
+        h2{
+            font-family: $open-sans;
+            font-weight: 300;
+            margin-bottom: 20px;
+            padding: 0px 5px 0px 5px;
+            line-height: 1.619em;
+        }
+    }
+
+    div.chalkboard-form{
+        display: block;
+        position: relative;
+        float: left;
+        top: 12em;
+        color: #ffffff;
+
+        form{
+            label{
+                display: block;
+                float: left;
+                width: 100%;
+            }
+            input[type="text"]{
+                display: block;
+                float: left;
+                height: 2.5em;
+                margin-top: 2%;
+            }
+
+            input[type="submit"]{
+                display: block;
+                float: left;
+                clear: left;
+            }
+
+            ::-webkit-input-placeholder{
+              font-size: 1.23076923em;
+            }
+            ::-moz-placeholder{
+                font-size: 1.23076923em;
+            } /* firefox 19+ */
+            input:-moz-placeholder{
+                font-size: 1.23076923em;
+            }
+        }
+
+    }
+
+    .primary-cta-btn, .static-sign-up-btn{
+        display: block;
+        margin-left: 2em;
+        background-color: rgba(255, 200, 120, 1);
+        background-image: -webkit-linear-gradient(top, #FFC878, #CCA060);
+        background-image: -moz-linear-gradient(top, #FFC878, #CCA060);
+        background-image: -ms-linear-gradient(top, #FFC878, #CCA060);
+        background-image: -o-linear-gradient(top, #FFC878, #CCA060);
+        background-image: linear-gradient(top, #FFC878,#CCA060);
+        width: 10.7692308em; /*140/13*/
+        text-align: center;
+        padding: 0.5em;
+        @include rounded-corners(5px);
+        border: 1px solid #915c38;
+        -webkit-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        -moz-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        -o-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+        color: rgba(255, 255, 255, 1);
+        font-size: 2em; /*26px / 13px */
+        text-transform: uppercase;
+        text-shadow: 1px 1px 0 rgba(96, 110, 103, 1);
+        font-family: 'Open Sans Condensed', sans-serif, 'Helvetica', 'Arial', sans-serif;
+        text-decoration: none;
+    }
+
+    .primary-cta-btn:hover, .static-sign-up-btn:hover{
+        background: #CCA060;
+    }
+
+    .static-sign-up-btn{
+        width: 100%;
+        padding: 0.4em;
+        font-family: Helvetica, Arial, sans-serif;
+        text-transform: none;
+        font-size: 1.23076923em;
+        padding: 0.69230769em;
+    }
+
+}
+
+.leader-div{
+    margin-top: 440px;
+}
+
+section.leader-content, .section-content{
+    //display: block;
+    //margin-top:400px;
+
+    hr.beige-banner{
+        background-color: #a9a9a9;
+        height:10px;
+        border-top: 0px;
+        border-bottom: 1px solid #FFFFFF;
+    }
+
+    div.header-image{
+        margin: 0 auto;
+        margin-top: 3em;
+
+        img{
+            display: block;
+            margin: 0 auto;
+            width: 250px;
+            height: 225px;
+        }
+
+        img.turned{
+            transform:rotate(45deg);
+            -moz-transform: rotate(20deg);
+        }
+
+    }
+
+    div.inner-content{
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    header.intro-content{
+
+        text-align: center;
+        margin: 20px 0px 20px 0px;
+
+        h1, h3, h4{
+          font-family: $open-sans;
+
+        }
+
+        h1 {
+          font-weight: 700;
+          font-size: 4em; /* 64px / 13px */
+          color: #3f4944;
+          text-shadow: 1px 1px 0 #FFFFFF;
+          line-height: 1.2;
+        }
+
+        h3, h4{
+          font-weight: 300;
+          color: #7c7c7f
+        }
+
+        h3 {            
+          font-size: 1.8em; /*24px / 13px*/
+        }
+
+        h4 {
+          font-size: 1.5385em;
+        }
+
+    }
+
+    article{
+      text-align: center;
+      p{
+        font-size: 1.2308em;
+        color: #5f6e68;
+        line-height: 1.619em;
+      }
+    }
+
+    .screenshot, .screenshot-right {
+        width: 45%;
+        float: left;
+
+        img.feature-image {
+            width:95.744681%;
+            margin-left: 4.255319%;
+            border: 1px solid #a9a9a9;
+        }
+    }
+
+    .screenshot-right {
+        float: right;
+    }
+
+    .feature-paragraph, .feature-paragraph-left {
+        width: 50%;
+        float: right;
+
+        p.intro-paragraph {
+            font-family: 'Open Sans' sans-serif, 'Helvetica', 'Arial', sans-serif;
+            font-weight: 300;
+            font-size: 2em; /* 26px / 13px */
+            color: #3f4944;
+            margin: 0em 0em 1em 0em;
+            padding: 0px;
+            line-height: 1.25;
+        }
+
+        .try-it-btn{
+            display: block;
+            margin: 0 auto;
+            background-color: rgba(255, 200, 120, 1);
+            background-image: -webkit-linear-gradient(top, #FFC878, #CCA060);
+            background-image: -moz-linear-gradient(top, #FFC878, #CCA060);
+            background-image: -ms-linear-gradient(top, #FFC878, #CCA060);
+            background-image: -o-linear-gradient(top, #FFC878, #CCA060);
+            background-image: linear-gradient(top, #FFC878,#CCA060);
+            text-align: center;
+            padding: 3.125% 31.25% 3.125% 31.25%;
+            @include rounded-corners(5px);
+            border: 1px solid #915c38;
+            -webkit-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+            -moz-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+            -o-transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+            transition: opacity 0.2s ease-in-out,bottom 0.2s ease-in-out;
+            color: rgba(255, 255, 255, 1);
+            font-size: 2em; /*26px / 13px*/
+            text-transform: uppercase;
+            text-shadow: 1px 1px 0 rgba(96, 110, 103, 1);
+            font-family: 'Open Sans Condensed', sans-serif, 'Helvetica', 'Arial', sans-serif;
+            text-decoration: none;
+        }
+
+        .try-it-btn:hover{
+            background: #CCA060;
+        }
+
+    }
+
+    .feature-paragraph-left {
+        float: left;
+    }
+
+
+}
+
+.section-content{
+    margin-top: 50px;
+
+    hr.beige-banner{
+        background-color: #a9a9a9;
+        height:2px;
+        border: 1px solid #FFFFFF;
+    }
+}
+
+footer.chalkboard{
+    background: #606E67;
+    min-height: 50px;
+    //margin-top: 100px;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 20px;
+
+    p{
+        margin: 0 auto;
+    }
+}
+
+div.devise-form{
+    float:left;
+    margin-left: 3em;
+
+    form{
+        
+    }
+}
+

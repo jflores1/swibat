@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <%= render 'layouts/head_content' %>
-</head>
+  <head>
+    <%= render 'layouts/head_content' %>
+  </head>
 
-<body class="padded plain-bg">
-  <div id="feedback">
-    <a href="mailto:feedback@swibat.com">feedback</a>
-  </div>
-<div id="main" role="main">
-  <div class="content">
-    <div class="inner">
-      <%= render 'layouts/navbar' %>
-      <div class="application-body container-fluid">
-        <div class="row-fluid" id="flash-messages">
-          <div class="span12">
-            <%= render 'layouts/messages' %>
-          </div><!--end of .span12 -->
-        </div><!--end of .row-fluid -->
-        <%= render 'layouts/application_nav' %>
-      </div>
+  <body class="padded plain-bg">
+    <div id="feedback">
+      <a href="mailto:feedback@swibat.com">feedback</a>
     </div>
-    <div class="inner body-inner" id="application-container">
-      <div class="application-body container-fluid">
-          <div class="application-row row-fluid">
-            <div class="span9">
-              <!--had banner_application_sign_up-->
-              <div class="row-fluid">
-                <%= yield %>
+  <div id="main" role="main">
+    <div class="content">
+      <div class="inner">
+        <%= render 'layouts/navbar' %>
+        <div class="application-body container-fluid">
+          <div class="row-fluid" id="flash-messages">
+            <div class="span12">
+              <%= render 'layouts/messages' %>
+            </div><!--end of .span12 -->
+          </div><!--end of .row-fluid -->
+          <%= render 'layouts/application_nav' %>
+        </div>
+      </div>
+      <div class="inner body-inner" id="application-container">
+        <div class="application-body container-fluid">
+            <div class="application-row row-fluid">
+              <div class="span9">
+                <!--had banner_application_sign_up-->
+                <div class="row-fluid">
+                  <%= yield %>
+                </div>
+              </div>
+              <div class="span3 hidden-print" id="right-sidebar">
+                <%= yield(:sidebar) %>
               </div>
             </div>
-            <div class="span3 hidden-print" id="right-sidebar">
-              <%= yield(:sidebar) %>
-            </div>
-          </div>
+        </div>
       </div>
-    </div>
-    <%= render 'layouts/footer' %>
-  </div><!--end of .content> -->
-</div><!--end of .main> -->
-<% yield :disqus_count %>
-</body>
+      <%= render 'layouts/footer' %>
+    </div><!--end of .content> -->
+  </div><!--end of .main> -->
+  <% yield :disqus_count %>
+  </body>
 </html>
