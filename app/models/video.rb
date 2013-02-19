@@ -18,16 +18,16 @@ class Video < ActiveRecord::Base
   acts_as_commentable
   acts_as_taggable
   
-  attr_accessible :yt_video_id, :description, :title, :is_complete
+  attr_accessible :yt_video_id, :description, :title, :is_complete, :user_id, :lesson_id, :tag_list
 
   belongs_to :lesson
   belongs_to :user
+  belongs_to :uploader, class_name: "User"
 
   scope :completes,   where(:is_complete => true)
   scope :incompletes, where(:is_complete => false)
 
   validates :title, presence: true
-
 
   def self.yt_session
     @yt_session ||= YouTubeIt::Client.new(:username => YouTubeITConfig.username , :password => YouTubeITConfig.password , :dev_key => YouTubeITConfig.dev_key)    
@@ -45,7 +45,7 @@ class Video < ActiveRecord::Base
     video.update_attributes(params)
   end
 
-  def self.token_form(params, nexturl)
+  def self.token_form(params, nexturl)    
     yt_session.upload_token(video_options(params), nexturl)
   end
 

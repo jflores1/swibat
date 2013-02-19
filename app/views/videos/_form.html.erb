@@ -10,8 +10,15 @@
   <%= f.text_area :description %>
 </div>
 
-
-<%= f.hidden_field :lesson_id %>
+<div class="group">
+  <%= f.label :lesson %>
+  <%= f.select :lesson_id, @video.user.lessons.collect{ |l| [l.lesson_title, l.id] }, {:include_blank => 'Select a lesson'} %>
+</div>
+<%= f.hidden_field :user_id %>
+<div class="group">
+  <%= f.label :tag_list, "Tags" %>
+  <%= f.text_field :tag_list, placeholder: "Tags (separated by commas)" %>
+</div>
 
 
 <div>

@@ -4,4 +4,4 @@
 
 <%= render partial: 'videos/collection', locals: {videos: @videos} %>
 
-<p>For the administrator, there should be a link to add a video that goes to video show page</p>
+<%= link_to("Upload a new video", new_video_url(user_id: @user.id) , class: "btn btn-monkey") if can? :upload, Video %> 

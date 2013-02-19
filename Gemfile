@@ -40,6 +40,7 @@ group :development, :test do
   gem 'faker'
   gem 'jasminerice'
   gem 'poltergeist'
+  gem 'spork-rails'
 end
 
 group :development do

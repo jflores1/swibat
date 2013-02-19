@@ -15,13 +15,8 @@
 #
 
 class JournalEntry < ActiveRecord::Base
-  attr_accessible :average_score, :highest_score, :lesson_cons, :lesson_pros, :lowest_score, :median_score
+  attr_accessible :cons, :pros
   belongs_to :lesson
-
-  validates :average_score, presence: true, numericality: true, inclusion: {in: 0..100, message: 'must be between 0 and 100'}  
-  validates :highest_score, presence: true, numericality: true, inclusion: {in: 0..100, message: 'must be between 0 and 100'}  
-  validates :lowest_score, presence: true, numericality: true, inclusion: {in: 0..100, message: 'must be between 0 and 100'}  
-  validates :median_score, presence: true, numericality: true, inclusion: {in: 0..100, message: 'must be between 0 and 100'}  
 
   def self.belongs_to_course(course_id)
   	self.joins(lesson: {unit: :course}).where('courses.id = ?', course_id)

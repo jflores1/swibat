@@ -32,6 +32,7 @@ describe Institution do
   	it {should respond_to(:state)}
   	it {should respond_to(:zip_code)}
   	it {should respond_to(:users)}
+  	it {should respond_to(:evaluation_template)}
 	end
 
 	describe "Validations" do

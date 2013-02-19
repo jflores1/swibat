@@ -1,6 +1,27 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/********************************
+Variables and Mixins
+********************************/
+//Fonts
+$header-gradient-dark-color: #2B2F3A;
+$header-gradient-light-color: #50596D;
+$open-sans: 'Open Sans', 'Helvetica Neue Light', sans-serif;
+$permanent-marker: 'Permanent Marker', cursive;
+$fancy-gray: rgba(80, 89, 109, 0.9);
+$soft-gray: rgba(80, 89, 109, 0.5);
+$lightest-gray: #CDCDCD;
+
+
+//Padding and Such
+$page-width: 1920px;
+$body-width: 100%;
+$box-margin: 0.7692em !important;
+
+//Rounded Corners
+@mixin rounded-corners($radius){
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
 
 /* Navbar */
 .navbar-absolute-top{

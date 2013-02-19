@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
 
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:save_video]
   
 	def index
 		@videos = Video.all
@@ -11,8 +11,9 @@ class VideosController < ApplicationController
 	end
 
 	def new    
-		@video = Video.new    
-    @video.lesson_id = params[:lesson_id] if params[:lesson_id]
+		@video = Video.new
+    @video.user = User.find(params[:user_id]) if params[:user_id]
+    @video.lesson = Lesson.find(params[:lesson_id]) if params[:lesson_id]
 	end
 
 	def edit
@@ -21,9 +22,9 @@ class VideosController < ApplicationController
 
 	def upload
     @video = Video.new(params[:video])    
-    @video.user = current_user
+    @video.uploader = current_user
     if @video.save
-      @upload_info = Video.token_form(params[:video], save_video_new_lesson_video_url(:video_id => @video.id))
+      @upload_info = Video.token_form(params[:video], save_video_new_video_url(:video_id => @video.id))
     else
       respond_to do |format|
         format.html { render "/videos/new" }
@@ -37,7 +38,7 @@ class VideosController < ApplicationController
     respond_to do |format|
       format.html do
         if @result
-          redirect_to [@video.lesson, @video], :notice => "video successfully updated"
+          redirect_to @video, :notice => "video successfully updated"
         else
           respond_to do |format|
             format.html { render "/videos/_edit" }
@@ -48,14 +49,18 @@ class VideosController < ApplicationController
   end
 
   def save_video
-    @video = Video.find(params[:video_id])
+    @id = params[:video_id]
+    @yt_video_id = params[:id]
+
+
+    @video = Video.find(@id)
     if params[:status].to_i == 200
-      @video.update_attributes(:yt_video_id => params[:id].to_s, :is_complete => true)
+      @video.update_attributes(:yt_video_id => @yt_video_id.to_s, :is_complete => true)
       Video.delete_incomplete_videos
     else
       Video.delete_video(@video)
     end
-    redirect_to lesson_videos_path(@lesson), :notice => "video successfully uploaded"
+    redirect_to @video, :notice => "video successfully uploaded"
   end
 
   def destroy
