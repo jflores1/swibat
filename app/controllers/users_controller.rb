@@ -94,4 +94,18 @@ class UsersController < ApplicationController
     @videos = @user.videos    
   end
 
+  def eval
+    @user = User.find(params[:id])
+    @evaluation = @user.teacher_evaluations.build
+    @institution = @user.institution
+    @evaluation.evaluation_template = @institution.evaluation_template
+
+    @evaluation.evaluation_template.evaluation_domains.each do |domain|
+      domain.evaluation_criteria.each do |criterion|
+        @evaluation.evaluation_ratings.build(criterion: criterion)
+      end
+    end
+
+  end
+
 end

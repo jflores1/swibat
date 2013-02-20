@@ -59,6 +59,7 @@ class User < ActiveRecord::Base
   has_many :lessons, :through => :units
   has_many :friend_courses, through: :people_followed, source: :courses
   has_many :microposts, dependent: :destroy
+  has_many :teacher_evaluations, foreign_key: :teacher_id
   
   has_many  :videos
 

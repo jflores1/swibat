@@ -3,4 +3,6 @@ class EvaluationTemplate < ActiveRecord::Base
 
   belongs_to :institution
   has_many :evaluation_domains, dependent: :destroy
+  has_many :evaluations
+
 end

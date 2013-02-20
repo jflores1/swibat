@@ -46,6 +46,7 @@ Swibat::Application.routes.draw do
       get :content_map
       get :followed_maps
       get :videos
+      get :eval
     end
   end
 
@@ -130,7 +131,7 @@ Swibat::Application.routes.draw do
       end
     end
 
-    resources :evaluations, only: [:index] do
+    resources :evaluations, only: [:index, :create, :show] do
       
     end
     

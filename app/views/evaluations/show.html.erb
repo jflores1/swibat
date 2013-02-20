@@ -1,0 +1,39 @@
+<%= provide(:title, "Evaluation for #{@user.full_name}") %>
+
+<%= render 'shared/user_header' %>
+
+<h1>Evaluation for <%= @user.full_name %></h1>
+<p>Published <%= time_ago_in_words @evaluation.updated_at %> ago</p>
+<table class="table faculty-table">
+	<thead>
+		<tr>
+			<th></th>
+			<th class="eval">Unsatisfactory</th>
+			<th class="eval">Basic</th>
+			<th class="eval">Proficient</th>
+			<th class="eval">Distinguished</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+			<% @evaluation.evaluation_template.evaluation_domains.each do |domain| %>
+				<tr class="domain-row">
+					<td class="domain"><%= domain.name %></td>
+				</tr>
+
+				<% domain.evaluation_criteria.each do |criterion| %>
+					<tr class="subdomain-row">
+						<td class="subdomain"><%= criterion.contents %></td>
+						<% rating = EvaluationRating.find_by_criterion_id_and_evaluation_id(criterion.id, @evaluation.id) %>
+						<% (1..4).each do |i| %>
+							<td class="eval">
+								<%= "X" if rating && rating.score == i %>
+							</td>
+						<% end %>
+					</tr>
+				<% end %>
+			
+
+		<% end %>
+	</tbody>
+</table>

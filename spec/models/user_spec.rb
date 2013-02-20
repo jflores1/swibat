@@ -48,6 +48,7 @@ describe User do
   it {should respond_to(:incoming_followings)}#reverse relationships
   it {should respond_to(:followers)}
   it {should respond_to(:institution)}
+  it {should respond_to(:evaluations)}
 
   context "Has validation on non-devise columns" do
     describe "When missing first name" do
