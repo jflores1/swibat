@@ -1,0 +1,4 @@
+var domains_list = $('#evaluation-domains');
+var domain = $('<%= j render partial: "evaluation_domain", locals: {domain: @domain} %>');
+$(domain).hide().appendTo(domains_list).fadeIn();
+$('#domain-form').fadeOut().empty();

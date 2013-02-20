@@ -1,0 +1,11 @@
+<%= form_for [institution, institution.evaluation_template, domain], remote: true do |f| %>
+    <div class="control-group <%= "error" if domain.errors.any? %>">
+        <div class="controls">
+            <%= f.text_field :name, placeholder: "Enter domain name" %> 
+            <span class="help-inline"><%= domain.errors[:name].first if domain.errors.include?(:name) %></span>
+        </div>
+    </div>
+    <div class="control-group">
+        <%= f.submit "Save", class: "btn btn-monkey" %>
+    </div>
+<% end %>

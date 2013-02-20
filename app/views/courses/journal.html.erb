@@ -1,13 +1,9 @@
 <h1><%= link_to @course.course_name, @course %> - Journal</h1>
 <table class="table table-striped">
 	<tr>
-		<th>Lesson Title</th>
-		<th>Average Score</th>
-		<th>Median Score</th>
-		<th>Highest Score</th>
-		<th>Lowest Score</th>
-		<th>Lesson Pros</th>
-		<th>Lesson Cons</th>
+		<th>Lesson Title</th>		
+		<th>Pros</th>
+		<th>Cons</th>
 	</tr>
 	<% @course.units.each do |unit| %>
 		<tr><td colspan="7"><h2><%= unit.unit_title %></h2></td></tr>
@@ -15,26 +11,11 @@
 			<% if lesson.journal_entry %>
 				<tr>
 					<td><h3><%= lesson.lesson_title %></h3></td>
-					<td><%= number_with_precision lesson.journal_entry.average_score, precision: 2 %>%</td>
-					<td><%= number_with_precision lesson.journal_entry.median_score, precision: 2 %>%</td>
-					<td><%= number_with_precision lesson.journal_entry.highest_score, precision: 2 %>%</td>
-					<td><%= number_with_precision lesson.journal_entry.lowest_score, precision: 2 %>%</td>
-					<td><%= lesson.journal_entry.lesson_pros %></td>
-					<td><%= lesson.journal_entry.lesson_cons %></td>
+					<td><%= lesson.journal_entry.pros %></td>
+					<td><%= lesson.journal_entry.cons %></td>
 				</tr>
 			<% end %>
 		<% end %>
 	<% end %>
 </table>
 
-<% @journalentries.each do |j| %>
-	<p><%= j.lesson.lesson_title %></p>
-	<p><%= j.average_score %></p>
-	<p><%= j.median_score%></p>
-<% end -%>
-
-<%= javascript_tag do %>
-	var data = d3.json('../1/journal.json', function(error, data){
-		console.log(data[0].average_score);
-});
-<% end -%>

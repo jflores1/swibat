@@ -1,7 +1,7 @@
 <div class="block">    
-  <h2>New Video for <%= link_to @lesson.lesson_title, [@lesson.unit, @lesson] %></h2>    
+  <h2>New Video for <%= @video.user.full_name %></h2>    
   <p>Step 1: Add information about your video.</p>
-  <%= form_for @video, :url => upload_new_lesson_video_path, :html => { :class => :form } do |f| -%>
+  <%= form_for @video, :url => upload_new_video_path, :html => { :class => :form } do |f| -%>
     <%= render :partial => "form", :locals => {:f => f} %>
   <% end -%>    
 </div>

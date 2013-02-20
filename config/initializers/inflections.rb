@@ -10,6 +10,7 @@
 # end
 #
 # These inflection rules are supported but not enabled by default:
-# ActiveSupport::Inflector.inflections do |inflect|
-#   inflect.acronym 'RESTful'
-# end
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.plural(/rion$/ ,'ria') # criterion => criteria
+  inflect.singular(/ria$/, 'rion') # criteria => criterion
+end

@@ -18,6 +18,10 @@ require "cancan/matchers"
 
 describe Video do
   
+  context "Tags" do
+
+  end
+
   context "Abilities" do
   	before do 
   		@institution = Institution.create(name: "My institution")
@@ -27,12 +31,15 @@ describe Video do
   		course = FactoryGirl.create(:course, user: @other_user)
 			unit = FactoryGirl.create(:unit, course: course)
 			lesson = FactoryGirl.create(:lesson, unit: unit)
-			@video = FactoryGirl.create(:video, user: @other_user, lesson: lesson)
+			@video = FactoryGirl.create(:video, user: @other_user, lesson: lesson, uploader: @other_user)
   		@ability = Ability.new(@user)	
   	end
 
   	describe "Users from the same institution" do
   		before { @other_user.institution = @institution }  			
+      it "can access user's videos index" do
+        @ability.should be_able_to(:videos, @other_user)
+      end
 
   		it "can access videos" do
   			@ability.should be_able_to(:read, @video)
@@ -46,9 +53,17 @@ describe Video do
   	describe "Users from other institutions" do 
   		before {@other_user.institution = @other_institution}
 
+      it "can not access user's videos index" do
+        @ability.should_not be_able_to(:videos, @other_user)
+      end
+
   		it "can not access videos" do
 				@ability.should_not be_able_to(:read, @video)
   		end
+
+      it "can not upload videos" do
+        @ability.should_not be_able_to(:upload, Video)
+      end
 
   	end
   end

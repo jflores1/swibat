@@ -17,5 +17,12 @@
 require 'spec_helper'
 
 describe JournalEntry do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe "Attributes" do
+  	it {should respond_to(:lesson)}
+    it {should respond_to(:pros)}
+    it {should respond_to(:cons)}
+  end
+
+
 end

@@ -9,8 +9,9 @@
 	</p>
 <% end %>
 <p>
-  Uploaded by <%= link_to @video.user.full_name, @video.user %>, <%= time_ago_in_words @video.created_at %> ago
+  Uploaded by <%= link_to @video.uploader.full_name, @video.uploader %>, <%= time_ago_in_words @video.created_at %> ago
 </p>
+<p>Teacher in this video: <%= link_to @video.user.full_name, @video.user %></p>
 <p>
   <strong>Description</strong><br />
   <%= @video.description %>

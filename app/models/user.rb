@@ -59,9 +59,15 @@ class User < ActiveRecord::Base
   has_many :lessons, :through => :units
   has_many :friend_courses, through: :people_followed, source: :courses
   has_many :microposts, dependent: :destroy
-  has_many :videos, dependent: :destroy
+  has_many :teacher_evaluations, foreign_key: :teacher_id
   
-  # Define the friendship relations with some semantics.
+  has_many  :videos
+
+  has_many  :uploaded_videos, 
+            class_name: :Video,
+            foreign_key: :uploader_id,
+            dependent: :destroy
+  
   has_many  :followings,
             foreign_key: :user_id,
             dependent: :destroy

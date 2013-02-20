@@ -1,0 +1,5 @@
+var criteria_list = $('#criteria-list-<%= @domain.id %>');
+var criteria = $('<%= j render partial: "evaluation_criterion", locals: {criterion: @criterion, domain: @domain} %>');
+
+$(criteria).hide().appendTo(criteria_list).fadeIn();
+$('#criterion-form-<%= @domain.id %>').fadeOut().empty();

@@ -28,7 +28,7 @@ class Ability
     user ||= User.new
     if user.role == "admin"
       can :manage, :all
-    elsif user.role == "teacher"
+    elsif user.role == "teacher" || user.role == "school_admin"
       can :manage, Course do |course|
         course.new_record? || course.try(:user).try(:id) == user.id
       end
@@ -59,25 +59,34 @@ class Ability
         comment.try(:commentable).try(:user).try(:id) == user.id
       end      
 
-      can :manage, Video, :user_id => user.id
-
       can :manage, User, :id => user.id
       can :read, User
-      can :read, Course
-      can :read, Lesson
-      can :read, Unit
-      can :read, Question
-      can :read, Answer
+      can :videos, User, institution_id: user.institution_id
+
+      can :read, [Course, Lesson, Unit, Question, Answer]      
+
+      can :manage, Video do |video|
+        video.try(:uploader_id) == user.id || video.try(:user_id) == user.id        
+      end
+      can :new, Video
+
+      
       can :read, Video do |video|
-        video.try(:lesson).try(:user).try(:institution) == user.institution
+        video.try(:user).try(:institution) == user.institution
       end     
+
+      can [:read, :faculty], Institution, id: user.institution_id
 
       can :vote, :all
       can :flag, Flag
 
     elsif user.role == "school_admin"
-      can :videos, User #TODO: Restrict access to users scoped into the school.
-      can :manage, Institution
+      can :videos, User, institution_id: user.institution_id 
+      can :manage, Institution, id: user.institution_id      
+      
+      can :manage, Video do |video|
+        video.try(:user).try(:institution_id) == user.institution_id
+      end
     end
   end
 end

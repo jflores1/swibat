@@ -141,48 +141,19 @@
   </div>  
   <%= form_for @journal_entry, url: update_journal_entry_lesson_url(@lesson), method: :post, remote: true, id: 'complete_lesson_form' do |form| %>
     <div class="modal-body">
-      <p>Now, that it's over, let's take a minute to ask a few quick questions.<br/>
-        On your assessment, what was:
+      <p>Now, that it's over, let's take a minute to ask a few quick questions.        
       </p>
         <div class="row-fluid">
           <div class="span11">
-           <label for="average_score">the average score (%)?</label>
-            <%= form.text_field :average_score, class: "span11" %>
+           <label for="pros">What about the lesson went well?</label>
+            <%= form.text_area :pros, class: "span11", rows: "4" %>
           </div>          
         </div>
 
         <div class="row-fluid">
           <div class="span11">
-           <label for="median_score">the median score (%)?</label>
-            <%= form.text_field :median_score, class: "span11" %>
-          </div>          
-        </div>
-
-        <div class="row-fluid">
-          <div class="span11">
-           <label for="highest_score">the highest score (%) ?</label>
-            <%= form.text_field :highest_score, class: "span11" %>
-          </div>          
-        </div>
-
-        <div class="row-fluid">
-          <div class="span11">
-           <label for="lowest_score">the lowest score (%)?</label>
-            <%= form.text_field :lowest_score, class: "span11" %>
-          </div>          
-        </div>
-
-        <div class="row-fluid">
-          <div class="span11">
-           <label for="lesson_pros">What about the lesson went well?</label>
-            <%= form.text_area :lesson_pros, class: "span11", rows: "4" %>
-          </div>          
-        </div>
-
-        <div class="row-fluid">
-          <div class="span11">
-           <label for="lesson_cons">What would you do differently?</label>
-            <%= form.text_area :lesson_cons, class: "span11", rows: "4" %>
+           <label for="cons">What would you do differently?</label>
+            <%= form.text_area :cons, class: "span11", rows: "4" %>
           </div>          
         </div>
       

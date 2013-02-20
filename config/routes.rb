@@ -1,5 +1,7 @@
 Swibat::Application.routes.draw do
   
+  get "evaluation_template/index"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -44,6 +46,7 @@ Swibat::Application.routes.draw do
       get :content_map
       get :followed_maps
       get :videos
+      get :eval
     end
   end
 
@@ -119,9 +122,22 @@ Swibat::Application.routes.draw do
     end
   end
 
-  resources :institutions do
+  resources :institutions do 
+    resources :evaluation_template, only: [:index] do
+      resources :evaluation_domains do
+        resources :evaluation_criteria do 
+
+        end
+      end
+    end
+
+    resources :evaluations, only: [:index, :create, :show] do
+      
+    end
+    
     member do
       get :faculty
+      get :eval_template
     end
   end
 
