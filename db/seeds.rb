@@ -24,7 +24,6 @@ grades.each do |grade|
 end
 
 # Importing the CoreStandards
-# English Language Arts Standards
 ["english.csv", "math.csv"].each do |dataset|
 	puts "Importing the Core Standards: " + dataset
 
@@ -145,4 +144,17 @@ end
 
 		standard.save
 	end
+end
+
+# Creating a default evaluation template
+puts "Creating a default evaluation template"
+template = EvaluationTemplate.create(published: false)
+
+CSV.foreach("#{Rails.root}/db/seed_data/default_evaluation_template.csv", :headers => :first_row) do |row|
+	domain_name = row[0].strip
+	criterion_contents = row[1].strip	
+	domain = EvaluationDomain.find_or_create_by_name_and_evaluation_template_id(domain_name, template.id)
+	domain.evaluation_template = template
+	domain.save
+	criterion = EvaluationCriterion.create(evaluation_domain: domain, contents: criterion_contents)
 end

@@ -1,6 +1,5 @@
 Swibat::Application.routes.draw do
   
-  get "evaluation_template/index"
 
   ActiveAdmin.routes(self)
 
