@@ -5,4 +5,9 @@ class EvaluationDomain < ActiveRecord::Base
   has_many :evaluation_criteria, dependent: :destroy
 
   validates :name, presence: :true
+
+  # duplication rules
+  amoeba do
+  	enable
+  end
 end

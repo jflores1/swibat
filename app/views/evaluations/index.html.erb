@@ -1,1 +1,25 @@
-<%= link_to "Evaluation Template", template_institution_evaluations_path(@institution), class: "btn btn-monkey" %>
+<%= link_to "Edit Evaluation Template", institution_evaluation_template_index_path(@institution), class: "btn btn-monkey" %>
+
+<h2>Evaluations</h2>
+
+<% if @evaluations %>
+	<table class="table table-striped">
+		<tr>
+			<th>
+				Teacher
+			</th>
+			<th>
+				Published
+			</th>
+		</tr>
+
+		<% @evaluations.each do |evaluation| %>
+			<tr>
+				<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@institution, evaluation) %></td>
+				<td><%= time_ago_in_words evaluation.created_at %> ago</td>
+			</tr>
+		<% end %>
+	</table>
+<% else %>
+	There are no evaluations yet.
+<% end %>
