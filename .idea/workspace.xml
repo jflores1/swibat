@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8e40e5b-4458-4862-a0a6-499463a7ca3a" name="Default" comment="" />
+    <list default="true" id="c8e40e5b-4458-4862-a0a6-499463a7ca3a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/swibat.iml" afterPath="$PROJECT_DIR$/.idea/swibat.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="swibat.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,19 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="courses_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="courses_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="25" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_head_content.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/_head_content.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="26" selection-start="730" selection-end="730" vertical-scroll-proportion="0.22">
+            <state line="6" column="25" selection-start="386" selection-end="386" vertical-scroll-proportion="0.020632736">
               <folding />
             </state>
           </provider>
@@ -68,14 +64,16 @@
         <option value="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/microposts/create.js.erb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_head_content.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/microposts_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_head_content.html.erb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="2" />
+    <option name="y" value="29" />
+    <option name="width" value="1899" />
+    <option name="height" value="875" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -151,7 +149,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -165,11 +167,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="environments" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swibat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swibat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -181,14 +201,14 @@
     <property name="Database.TableEditor.Splitter" value="0.9" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.editor" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views" />
-    <property name="FullScreen" value="true" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="dynamic.classpath" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Library/Preferences/RubyMine40/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -481,17 +501,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <frame x="2" y="29" width="1899" height="875" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293556" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15866163" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15464513" sideWeight="0.06307692" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15423243" sideWeight="0.5555556" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16028063" sideWeight="0.6707441" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16082029" sideWeight="0.22679046" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16082029" sideWeight="0.6710875" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925585" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29213482" sideWeight="0.9945325" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -557,110 +577,203 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+    <entry file="file://$PROJECT_DIR$/config/initializers/better_errors.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="8" selection-start="118" selection-end="122" vertical-scroll-proportion="-2.1340342">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/requests/user_pages_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="291" column="26" selection-start="9234" selection-end="9234" vertical-scroll-proportion="-13.730769" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/models/followings_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="59" selection-start="1979" selection-end="1979" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/mailers/following_mailer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="24" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.ru">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="23" selection-start="304" selection-end="304" vertical-scroll-proportion="0.1">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/better_errors.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/wicked_pdf.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/pusher.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="40" selection-start="1917" selection-end="1917" vertical-scroll-proportion="0.9031008">
+        <state line="58" column="40" selection-start="1917" selection-end="1917" vertical-scroll-proportion="0.9031008" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/microposts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="2" selection-start="360" selection-end="360" vertical-scroll-proportion="0.27131784" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/microposts/create.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="40" selection-start="219" selection-end="219" vertical-scroll-proportion="0.08" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_head_content.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="35" selection-start="185" selection-end="185" vertical-scroll-proportion="0.048387095" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="17" vertical-scroll-proportion="-0.54197663" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/swibat.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.5407097">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-6.5987124">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="16" selection-start="2764" selection-end="2778" vertical-scroll-proportion="0.020632736">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/video.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.20632738">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/models/video_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.56808805">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/factories/videos.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/56d130ca-9d76-4cb3-9eba-2d97041b6cc5.schema:public">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>56d130ca-9d76-4cb3-9eba-2d97041b6cc5.schema:public</OriginalElement>
+          <nodes>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.rs_evaluations_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.courses_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.educational_domains_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.educational_domains</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.rs_reputations_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.grades_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.teacher_evaluations_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.summaries_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.flags_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.rs_reputations</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.grades</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.objectives_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.standard_strands</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.taggings</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_criteria_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.subjects_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.followings</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.resources_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.tags_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.admin_users_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.units</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.specialties_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.schema_migrations</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.rs_evaluations</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.domain_grades</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.teacher_evaluations</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.professional_experiences</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.posts</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.leads</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.comments</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.assessments</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.questions_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_domains</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.questions</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_templates_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.users_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.professional_accomplishments</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.links</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.institutions_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.lesson_standards</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.summaries</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_criteria</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.active_admin_comments_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.professional_educations</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.units_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.subjects</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.profiles</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.professional_experiences_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.journal_entries_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.answers</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.lessons_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.microposts_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.activities</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.professional_accomplishments_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.domain_grades_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.answers_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.videos</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.rs_reputation_messages</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.courses</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.active_admin_comments</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.professional_educations_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.journal_entries</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.microposts</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.specialties</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_domains_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.taggings_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.tags</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.institutions</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.lessons</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.lesson_standards_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.pg_search_documents_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.flags</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_templates</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.resources</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.activities_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.profiles_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.assessments_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.standard_strands_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.comments_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.pg_search_documents</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.educational_standards_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.links_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.leads_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_ratings_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.objectives</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.posts_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_ratings</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.videos_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.educational_standards</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.users</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.followings_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.rs_reputation_messages_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.admin_users</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.26575550493545935" x="1262.8371428571431" y="1087.0000000000002" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+          </Categories>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="25" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/microposts_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="2" selection-start="360" selection-end="360" vertical-scroll-proportion="0.27131784">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/microposts/create.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="40" selection-start="219" selection-end="219" vertical-scroll-proportion="0.08">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_head_content.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="26" selection-start="730" selection-end="730" vertical-scroll-proportion="0.22">
+        <state line="6" column="25" selection-start="386" selection-end="386" vertical-scroll-proportion="0.020632736">
           <folding />
         </state>
       </provider>
