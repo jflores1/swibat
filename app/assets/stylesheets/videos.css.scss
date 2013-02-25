@@ -1,3 +1,39 @@
 // Place all the styles related to the Videos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.video-show{
+	margin: 0 auto;
+	span{
+		float: left;
+		margin-right: 1em;
+
+		i{
+			font-size: 2em;
+		}
+	}
+}
+
+.video-thumbnail{
+
+	img{
+		display: block;
+		margin: 1em auto;
+		width: 20em;
+	}
+	
+	span{
+		font-size: 1em;
+		font-style: italic;
+	}
+
+	.video-links{
+		a{
+			margin: 0 auto;
+		}
+	}
+}
+
+.header-button{
+	display:block;
+	float:left;
+}
