@@ -13,6 +13,8 @@
 #  zip_code       :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  longitude      :float
+#  latitude       :float
 #
 
 require 'spec_helper'

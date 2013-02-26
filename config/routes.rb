@@ -122,6 +122,8 @@ Swibat::Application.routes.draw do
   end
 
   resources :institutions do 
+    get :autocomplete_institution_name, :on => :collection
+
     resources :evaluation_template, only: [:index] do
       resources :evaluation_domains do
         resources :evaluation_criteria do 

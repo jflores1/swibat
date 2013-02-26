@@ -70,6 +70,7 @@ class Ability
       end
       can :new, Video
 
+      can :autocomplete_institution_name, Institution
       
       can :read, Video do |video|
         video.try(:user).try(:institution) == user.institution

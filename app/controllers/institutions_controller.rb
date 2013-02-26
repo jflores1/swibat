@@ -1,7 +1,9 @@
 class InstitutionsController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :load_institution
+	before_filter :load_institution, except: [:autocomplete_institution_name]
 	load_and_authorize_resource
+
+	autocomplete :institution, :name, :full => true, :display_value => :display_name
 
 	def show
 		

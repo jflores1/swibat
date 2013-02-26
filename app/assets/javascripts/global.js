@@ -1,3 +1,20 @@
+// Autocomplete
+$(document).ready(function(){
+  $('input[data-autocomplete]').on('focus', function(i){
+    $(this).autocomplete({
+      source: $(this).attr('data-autocomplete'),
+      select: function(event, ui) {
+        $(this).val(ui.item.value);
+        if ($(this).attr('id_element')) {
+          $($(this).attr('id_element')).val(ui.item.id);
+        }
+        return false;
+      }
+    });
+  });
+});
+
+
 // Adding and removing fields in forms
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
