@@ -25,7 +25,7 @@
 
         <%= f.label :institution, "Where you Work", :class => "control-label" %>
         <%= f.autocomplete_field :institution_name, autocomplete_institution_name_institutions_path, :id_element => '#institution_id', class: "span6" %>
-        <%= f.text_field :institution_id, id: "institution_id" %>
+        <%= f.hidden_field :institution_id, id: "institution_id" %>
 
 
         <%= f.label :profile_summary, "Your Professional Bio (in 160 characters or less)" %>
