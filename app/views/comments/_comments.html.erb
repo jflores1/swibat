@@ -1,5 +1,4 @@
 <div id="comments">  
-  <h2>Comments</h2>
   <% commentable.comment_threads.each do |comment| %>
     <div class="comment">
       <p><%= comment.body %> - <span class="shrink-text"><%= link_to comment.user.full_name, comment.user %>, <%= comment.created_at.strftime("%B %d, %Y") %></span> </p>

@@ -34,15 +34,6 @@
         <%= f.label :image, "Your Profile Pic" %>
         <%= f.file_field :image %>
 
-        <%= f.label :links, "How You Connect" %>
-        <%= f.fields_for :links do |link| %>
-            <%= render 'link_fields', f: link %>            
-        <% end %>
-        <div class="span12 no-left-margin">
-          <%= link_to_add_fields 'Add A Link', f, :links, "btn btn-monkey" %>
-        </div>
-
-
       </div>
 
       <div class="tab-pane" id="professional">

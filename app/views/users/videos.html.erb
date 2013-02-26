@@ -1,7 +1,11 @@
 <%= provide(:title, "#{@user.full_name}'s Videos") %>
 
-<%= render 'shared/user_header' %>
+<%= render partial: 'shared/user_header', locals: {user: @user} %>
+
+<div class="span12">
+	<%= link_to("Upload a new video", new_video_url(user_id: @user.id) , class: "btn btn-monkey header-button") if can? :upload, Video %> 	
+</div>
 
 <%= render partial: 'videos/collection', locals: {videos: @videos} %>
+<!--TODO: Add searching on the videos -->
 
-<%= link_to("Upload a new video", new_video_url(user_id: @user.id) , class: "btn btn-monkey") if can? :upload, Video %> 

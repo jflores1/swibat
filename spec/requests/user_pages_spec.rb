@@ -92,9 +92,9 @@ describe "UserPages" do
           click_link("Add Some Personality!")
           current_path.should eq(edit_user_path(@user))
         end
-        it {page.should have_selector("a#user-add-course")}
-        it "clicking 'user-add-course' navigates to new course path" do
-          click_link("user-add-course")
+        it {page.should have_selector("a", text:"Add a Course")}
+        it "clicking 'Add a Course' navigates to new course path" do
+          find("Add a Course").click
           current_path.should eq(new_course_path)
         end
 
@@ -123,6 +123,14 @@ describe "UserPages" do
             end
           end
 
+        end
+
+        describe "a user with videos" do
+          it "navigates to the user's video index page" do
+            find(".dropdown-toggle").click
+            find_link("Videos").click
+            current_path.should eq(videos_user_path(@user))
+          end
         end
       end
       describe "and viewing another users profile page" do
@@ -259,8 +267,11 @@ describe "UserPages" do
 
     describe "it displays all users" do
       let!(:users){create_list(:user, 10)}
-      before {visit users_path}
-      it {page.should have_selector("div#user_10")}
+      before do
+        @last_user = User.last
+        visit users_path
+      end
+      it {page.should have_selector("div", id: "user_#{@last_user.id}")}
     end
 
     describe "the user search form" do
@@ -336,7 +347,7 @@ describe "UserPages" do
     end
     it "is navigable from the application header" do
       click_link("maps")
-      click_link("Followed Courses")
+      click_link("Courses I Follow")
       page.should have_content("Mapped Objectives")
       current_path.should eq(followed_maps_user_path(@user))
     end

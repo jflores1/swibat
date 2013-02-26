@@ -1,6 +1,6 @@
 <% provide(:title, "#{@lesson.lesson_title}") %>
 <div class="row-fluid">
-  <%= render 'shared/user_header' %>
+  <%= render partial: 'shared/user_header', locals: {user: @lesson.user} %>
   <div class="unit-header">
     <p class="calendar">
       <%= @lesson.lesson_start_date.strftime("%B %d") %> - <%= @lesson.lesson_end_date.strftime("%B %d, %Y") %>
