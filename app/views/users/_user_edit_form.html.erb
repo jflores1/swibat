@@ -37,6 +37,8 @@
       <%= f.label :institution, :class => "control-label" %>
       <div class="controls">
         <%= f.text_field :institution %>
+        <%= f.autocomplete_field :institution_name, autocomplete_institution_name_institution_path, :id_element => '#institution_id' %>
+        <%= f.text_field :institution_id, id: "institution_id" %>
       </div>
     </div>
 

@@ -1,3 +1,3 @@
 <h1>All videos</h1>
+<%= link_to "Upload Video", new_video_path, class: 'btn btn-monkey header-button' %>
 <%= render partial: 'collection', locals: {videos: @videos} %>
-<%= link_to "Upload Video", new_video_path, class: 'btn btn-monkey' %>

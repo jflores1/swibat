@@ -23,29 +23,16 @@
         <%= f.label :last_name, "Last Name" %>
         <%= f.text_field :last_name, id:"last_name", class:"span6" %>
 
-        <% unless @user.institution.present? %>
+        <%= f.label :institution, "Where you Work", :class => "control-label" %>
+        <%= f.autocomplete_field :institution_name, autocomplete_institution_name_institutions_path, :id_element => '#institution_id', class: "span6" %>
+        <%= f.hidden_field :institution_id, id: "institution_id" %>
 
-          <%= f.fields_for :institution, Institution.new do |school| %>
-            <%= school.label :name, "Where you Work" %>
-            <%= school.text_field :name, placeholder: "Your School", class: "span6" %>
-          <% end %>
-
-        <% end %>
 
         <%= f.label :profile_summary, "Your Professional Bio (in 160 characters or less)" %>
         <%= f.text_area :profile_summary, size: "24x4", id:"profile_summary", class:"span6 char-count" %>
 
         <%= f.label :image, "Your Profile Pic" %>
         <%= f.file_field :image %>
-
-        <%= f.label :links, "How You Connect" %>
-        <%= f.fields_for :links do |link| %>
-            <%= render 'link_fields', f: link %>            
-        <% end %>
-        <div class="span12 no-left-margin">
-          <%= link_to_add_fields 'Add A Link', f, :links, "btn btn-monkey" %>
-        </div>
-
 
       </div>
 

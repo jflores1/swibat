@@ -1,7 +1,9 @@
-<div class="block">    
-  <h2>New Video for <%= @video.user.full_name %></h2>    
-  <p>Step 1: Add information about your video.</p>
-  <%= form_for @video, :url => upload_new_video_path, :html => { :class => :form } do |f| -%>
-    <%= render :partial => "form", :locals => {:f => f} %>
-  <% end -%>    
+<div class="course-form">
+	<header class="course-header">
+		<h2>Upload a new video for <%= @video.user.full_name %></h2>
+	</header>
+	<p>Step 1: Provide a little info about the video.</p>
+	<%= form_for @video, url: upload_new_video_path, html: {class: :form} do |f| %>
+		<%= render partial: "form", locals: {f: f} %>	  
+	<% end %>
 </div>

@@ -8,19 +8,13 @@
   <%= course.text_area :course_summary, placeholder:"Provide a summary like you might on a syllabus.", id:"course_summary"%>
 
   <p>When are you teaching it?</p>
-  <div class="two-column-form span12 no-left-margin">
-    <div class="span6 pull-left">
-      <%= course.label "Semester" %>
-      <%= course.select(:course_semester,[['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer'], ['Winter','Winter']] ) %>
-    </div>
+    <%= course.label "Semester" %>
+    <%= course.select(:course_semester,[['Fall', 'Fall'], ['Spring', 'Spring'], ['Summer', 'Summer'], ['Winter','Winter']] ) %>
 
-    <div class="span6 pull-right">
-      <%= course.label "Year" %>
-      <%= course.select :course_year, options_for_select((2012..2030).step(1).to_a.map{|y| ["#{y}", y]}) %>
-    </div>
-  </div>
+    <%= course.label "Year" %>
+    <%= course.select :course_year, options_for_select((2012..2030).step(1).to_a.map{|y| ["#{y}", y]}) %>
 
-  <%= course.label :grade_id, "What age are the students?" %>
+  <%= course.label :grade_id, "What grade level are the students?" %>
   <%= course.collection_select(:grade_id, Grade.all, :id, :grade_level, options ={:prompt => "Grade"})  %>
 
   <%= course.label :subject_id, "Course subject?" %>

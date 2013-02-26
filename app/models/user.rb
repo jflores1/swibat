@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
                     :default_url => "https://s3.amazonaws.com/swibat_development/icon-graduation-cap.png"
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :full_name, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes, :institution_attributes, :institution_id, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :first_name, :last_name, :full_name, :image, :profile_summary, :professional_educations_attributes, :specialties_attributes, :professional_accomplishments_attributes, :links_attributes, :institution_attributes, :institution_id, :provider, :uid, :institution_name
   belongs_to :institution
   has_many :courses
   has_many :professional_educations
@@ -130,6 +130,14 @@ class User < ActiveRecord::Base
 
   def feed
     Micropost.from_users_followed_by(self)
+  end
+
+  def institution_name
+    self.institution.display_name if self.institution
+  end
+
+  def institution_name=(institution_name)
+
   end
 
   def following?(other_user)

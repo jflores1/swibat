@@ -13,6 +13,8 @@
 #  zip_code       :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  longitude      :float
+#  latitude       :float
 #
 
 class Institution < ActiveRecord::Base
@@ -21,4 +23,10 @@ class Institution < ActiveRecord::Base
   has_one :evaluation_template
 
   validates :name, presence: true
+
+  def display_name  	
+  	result = self.name + ", " + self.city + ", " + self.state
+    result.titleize
+  end
+
 end

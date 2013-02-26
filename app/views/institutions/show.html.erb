@@ -1,6 +1,17 @@
-School Info
+<h1><%= @institution.name.titleize %></h1>
+
+
+<p>
+	<%= @institution.address_line_1.titleize %><br />
+	<%= @institution.zip_code + " " + @institution.city.titleize %><br />
+	<%= @institution.state.titleize %>
+</p>
+
+<% if @institution.longitude && @institution.latitude %>
+<p>
+	<%= raw show_map(@institution.longitude, @institution.latitude) %>
+</p>
+<% end %>
 
 <%= link_to "Faculty", faculty_institution_path(@institution), class: "btn btn-monkey" %>
 <%= link_to "Evaluations", institution_evaluations_path(@institution), class: "btn btn-monkey" %>
-
-Evaluations

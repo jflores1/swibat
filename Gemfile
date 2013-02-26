@@ -27,6 +27,7 @@ gem 'amoeba'
 gem 'rails_autolink'
 gem 'youtube_it'
 gem 'pusher'
+gem 'rails3-jquery-autocomplete'
 
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'

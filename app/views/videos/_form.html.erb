@@ -11,7 +11,7 @@
 </div>
 
 <div class="group">
-  <%= f.label :lesson %>
+  <%= f.label :lesson, "Which lesson is this associated with?" %>
   <%= f.select :lesson_id, @video.user.lessons.collect{ |l| [l.lesson_title, l.id] }, {:include_blank => 'Select a lesson'} %>
 </div>
 <%= f.hidden_field :user_id %>
@@ -33,3 +33,6 @@
 <%end%>
 <%= link_to "Cancel", videos_path, :class => "btn btn-monkey" %>
 </div>
+
+#TODO: Set up an index method similar to Courses where Videos can be filtered by tags
+#TODO: Spinning UI, maybe a modal that says "Processing" so user has feedback that the video is being uploaded.

@@ -20,7 +20,7 @@ module UsersHelper
     if user.institution.present?
       content_tag :dl, class:"dl-horizontal" do
         content_tag :dt, "Works at:"
-        content_tag :dd, user.institution.name
+        content_tag :dd, user.institution.display_name
       end
     else
       content_tag :p, ""
