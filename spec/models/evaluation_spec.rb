@@ -1,6 +1,6 @@
 require 'spec_helper'
 
 describe Evaluation do
-  it {should respond_to(:evaluation_template)}
-	it {should respond_to(:teacher)}
+  xit "table renamed to teacher_evaluations"
+  #TODO: Do we need to delete this file?
 end

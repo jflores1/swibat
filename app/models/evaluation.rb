@@ -3,4 +3,6 @@ class Evaluation < ActiveRecord::Base
 
   belongs_to :teacher, class_name: :User
   belongs_to :evaluation_template
+
+  #TODO: Do we need to delete this file?
 end

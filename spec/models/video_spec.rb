@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #  lesson_id   :integer
 #  user_id     :integer
+#  uploader_id :integer
 #
 
 require 'spec_helper'

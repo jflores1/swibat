@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: evaluation_criteria
+#
+#  id                   :integer          not null, primary key
+#  contents             :string(255)
+#  evaluation_domain_id :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
 require 'spec_helper'
 
 describe EvaluationCriterion do

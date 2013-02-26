@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: teacher_evaluations
+#
+#  id                     :integer          not null, primary key
+#  teacher_id             :integer
+#  evaluation_template_id :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
 class TeacherEvaluation < ActiveRecord::Base
   attr_accessible :evaluation_template_id, :teacher_id
 

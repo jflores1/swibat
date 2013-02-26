@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: evaluation_templates
+#
+#  id             :integer          not null, primary key
+#  institution_id :integer
+#  published      :boolean
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 class EvaluationTemplate < ActiveRecord::Base
   attr_accessible :institution_id, :published
 
