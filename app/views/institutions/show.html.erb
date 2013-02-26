@@ -1,3 +1,5 @@
+<%= render partial: "shared/user_header", locals: {user: current_user} %>
+
 <h1><%= @institution.name.titleize %></h1>
 
 
@@ -13,5 +15,6 @@
 </p>
 <% end %>
 
-<%= link_to "Faculty", faculty_institution_path(@institution), class: "btn btn-monkey" %>
+<%= render partial: 'institutions/faculty_table', locals: {faculty: @institution.faculty} %>
+
 <%= link_to "Evaluations", institution_evaluations_path(@institution), class: "btn btn-monkey" %>

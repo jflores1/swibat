@@ -1,6 +1,13 @@
 .faculty-table{
 	font-size: 1.3em;
 
+	thead tr{
+		background: #ffffff;
+		border: 1px solid $soft-gray;
+
+		@include rounded-corners(5px);
+	}
+
 	i{
 		font-size: 1.3em;
 	}

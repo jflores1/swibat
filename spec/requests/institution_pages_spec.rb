@@ -8,12 +8,26 @@ describe "InstitutionPages" do
   			login(user)
   		end
   		it "allows access to the page" do
-  			click_link("Manage")
+  			click_link("manage")
   			click_link("School Info")
   			current_path.should eq(institution_path(user.institution))
   		end
 
-  		describe "updating the Institution Information" do
+      describe "it lists the faculty members" do
+        let(:institution){user.institution}
+        before do
+          visit institution_path(institution)
+        end
+        it "lists all the faculty" do
+          25.times do
+            create(:user_with_profile, role: "teacher", institution: institution)
+          end
+          page.should have_selector("tr", id:"user_24")
+        end
+      end
+
+  		#TODO: Do we still give users the opportunity to edit information? What if they're school isn't listed?
+      describe "updating the Institution Information" do
   			before {visit edit_institution_path(user.institution)}
   			it {page.should have_selector("form")}
   			it "updates the user school info" do
@@ -30,7 +44,7 @@ describe "InstitutionPages" do
   		before do
   			login(user)
   		end
-  		it {page.should_not have_selector("a", "Manage")}
+  		it {page.should_not have_selector("a", "manage")}
   	end
 
   	context "a user without a school" do
@@ -46,7 +60,7 @@ describe "InstitutionPages" do
   	context "a user not signed in" do
   		let(:user){create(:user_with_profile)}
   		before {visit user_path(user)}
-  		it {page.should_not have_selector("a", "Manage")}
+  		it {page.should_not have_selector("a", "manage")}
   	end
   end
 
@@ -57,10 +71,11 @@ describe "InstitutionPages" do
   			login(user)
   		end
 
+      #TODO: This presupposes that the user is associated with a school. We need to manage the case where there isn't a school yet selected.
   		describe "visiting the faculty page" do
   			describe "a working link" do
   				it "navigates to the faculty page" do
-  					click_link("Manage")
+  					click_link("manage")
   					click_link("Faculty")
   					current_path.should eq(faculty_institution_path(user.institution))
   				end

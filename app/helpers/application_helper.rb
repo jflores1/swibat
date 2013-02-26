@@ -51,6 +51,12 @@ module ApplicationHelper
     end
   end
 
+  def show_current_user_management
+    if signed_in? && current_user.school_admin? && !current_user.institution.nil?
+      render 'shared/header_current_user_management'
+    end
+  end
+
   def show_current_user_courses
     if signed_in?
       render 'shared/header_current_user_courses'

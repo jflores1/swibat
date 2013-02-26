@@ -46,6 +46,9 @@ $(document).ready ->
     'title':'Delete Domain'
   })
   $('.course-journal').tooltip()
+  $('.upload-observation').tooltip()
+  $('.upload-video').tooltip()
+  $('.add-evaluation').tooltip()
 
   #calendar
   $('.datepicker').datepicker({"dateFormat":"yy-mm-dd"})

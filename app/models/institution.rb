@@ -29,4 +29,8 @@ class Institution < ActiveRecord::Base
     result.titleize
   end
 
+  def faculty
+  	self.users
+  end
+
 end

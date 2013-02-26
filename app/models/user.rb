@@ -160,6 +160,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def school_admin?
+    self.role == "school_admin"
+  end
+
+  def teacher?
+    self.role == "teacher"
+  end
+
   #Private Methods
   private
 

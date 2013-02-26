@@ -1,0 +1,33 @@
+<table class="faculty-table table">
+	<thead>
+		<tr>
+			<th>Faculty Member</th>
+			<th>Last Observation</th>
+			<th>Next Observation</th>
+			<th>Last Evaluation</th>
+			<th>Next Evaluation</th>
+			<th></th>
+
+		</tr>
+	</thead>
+		<tbody>
+		<% faculty.each do |faculty| %>
+			<tr id="user_<%= faculty.id %>">
+				<td><%= link_to "#{faculty.full_name}", user_path(faculty) %></td>
+				<td>last observation date</td>
+				<td>next obs date</td>
+				<td>last evaluation date</td>
+				<td>next eval date</td>
+				<td>
+					<span>
+						<%= link_to "<i class='icon-cloud-upload'></i>".html_safe, "#", class:"upload-observation btn btn-monkey", data: {toggle: "tooltip", title: "Upload Observation"} %>
+					</span>
+					<span><%= link_to "<i class='icon-film'></i>".html_safe, videos_user_path(faculty), class:"upload-video btn btn-monkey", data: {toggle: "tooltip", title: "Upload Videos"} %>
+					</span>
+					<span><%= link_to "<i class='icon-file-alt'></i>".html_safe, "#", class:"add-evaluation btn btn-monkey", data: {toggle: "tooltip", title: "Add Evaluation"} %>
+					</span>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

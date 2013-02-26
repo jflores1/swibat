@@ -1,24 +1,3 @@
 <div class="row-fluid">
-	<table class="faculty-table table table-striped">
-		<thead>
-			<tr>
-				<th>Faculty Member</th>
-				<th>Last Observation</th>
-
-			</tr>
-		</thead>
-		<tbody>
-			<% @faculty.each do |faculty| %>
-				<tr id="user_<%= faculty.id %>">
-					<td><%= link_to "#{faculty.full_name}", user_path(faculty) %></td>
-					<td>last observation date</td>
-					<td><%= link_to "<i class='icon-cloud-upload'></i>".html_safe, "#", class:"upload-observation btn btn-monkey" %></td>
-					<td><%= link_to "<i class='icon-film'></i>".html_safe, videos_user_path(faculty), class:"upload-video btn btn-monkey" %></td>
-					<td><%= link_to "<i class='icon-file-alt'></i>".html_safe, "#", class:"add-evaluation btn btn-monkey" %></td>
-
-				</tr>
-			<% end %>
-		</tbody>
-
-	</table>
+	<%= render partial: 'institutions/faculty_table', locals: {faculty: @faculty} %>
 </div>
