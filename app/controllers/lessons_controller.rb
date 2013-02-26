@@ -3,7 +3,7 @@ class LessonsController < ApplicationController
   before_filter :find_current_unit, :except => [:vote, :new_lesson_content, :new_lesson_skill, :standards, :save_standards, :update_journal_entry, :videos]
   load_and_authorize_resource
   skip_authorize_resource only: :show
-  respond_to :html, :json
+  respond_to :html, :json  
 
   def show
     @lesson = Lesson.find(params[:id])
@@ -77,8 +77,8 @@ class LessonsController < ApplicationController
 
   def standards
     @lesson = Lesson.find(params[:id])
-    @grades = Grade.all
-    @domains = EducationalDomain.where(:parent_id => nil)
+    @grades = Grade.includes(:educational_domains => [:standard_strands => [:educational_standards] ]).all
+    
   end
 
   # POST

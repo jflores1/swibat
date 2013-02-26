@@ -1,14 +1,16 @@
 <div class="row-fluid">
 	<h2>Apply Standards to: <%= link_to @lesson.lesson_title, [@lesson.unit, @lesson] %></h2>
 	<div class="span6">
-		<div class="corestandards-accordion">
-			<% @grades.each do |grade| %>
-				<h3><%= grade.grade_level %></h3>
-				<div>
-					<%= display_educational_domains_for_grade grade %>
-				</div>
-			<% end %>
-		</div>
+		<% cache('standards_tree') do %>
+			<div class="corestandards-accordion">
+				<% @grades.each do |grade| %>
+					<h3><%= grade.grade_level %></h3>
+					<div>
+						<%= display_educational_domains_for_grade grade %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
 	</div>
 
 	<div class="span5">
