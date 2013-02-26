@@ -1,6 +1,6 @@
 <% provide(:title, "#{@course.course_name} Unit Calendar") %>
 <div class="row-fluid">
-	<%= render 'shared/user_header' %>
+	<%= render partial: 'shared/user_header', locals: {user: @course.user} %>
 
 	<header class="course-header">
 		<%= render 'courses/course_header' %>

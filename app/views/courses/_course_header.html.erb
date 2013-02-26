@@ -8,6 +8,6 @@
 	<span>
     <%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_course_path(@course), class:"header-edit btn btn-monkey" if can? :edit, @course %>
     <a class="get-syllabus btn btn-monkey" href="<%= syllabus_course_path(@course) %>"><i class="icon-th-list"></i></a>
-    <%= link_to '<i class="icon-book"></i>'.html_safe, journal_course_path(@course), class:"btn btn-monkey", data: {title: "Course Journal"} %>
+    <%= link_to '<i class="icon-book"></i>'.html_safe, journal_course_path(@course), class:"btn btn-monkey course-journal", data: {toggle: "tooltip", title: "Course Journal", placement:"right"} %>
 	</span>
 </div>

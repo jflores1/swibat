@@ -24,11 +24,14 @@
       <div class="inner body-inner" id="application-container">
         <div class="application-body container-fluid">
             <div class="application-row row-fluid">
-              <div class="span10 offset1">
+              <div class="span9">
                 <!--had banner_application_sign_up-->
                 <div class="row-fluid">
                   <%= yield %>
                 </div>
+              </div>
+              <div class="span3 hidden-print" id="right-sidebar">
+                <%= yield(:sidebar) %>
               </div>
             </div>
         </div>

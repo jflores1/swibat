@@ -3,7 +3,7 @@ class CoursePresenter < BasePresenter
   delegate :course_name, :taught_during, to: :course
 
   def full_name
-    course.user.first_name + " " + course.user.last_name
+    course.user.full_name
   end
 
   def grade_level

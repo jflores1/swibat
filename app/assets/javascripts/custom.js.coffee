@@ -27,7 +27,7 @@ $(document).ready ->
   $('.add-new-activity').tooltip({'title':'Add an activity to this lesson'})
   $('.get-syllabus').tooltip({
   'title':'See the full syllabus'
-  'placement':'right'
+  'placement':'bottom'
   })
   $('.header-edit').tooltip({
   'title':'Edit Course'
@@ -45,6 +45,7 @@ $(document).ready ->
   $('.delete-domain').tooltip({
     'title':'Delete Domain'
   })
+  $('.course-journal').tooltip()
 
   #calendar
   $('.datepicker').datepicker({"dateFormat":"yy-mm-dd"})

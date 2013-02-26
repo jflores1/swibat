@@ -40,7 +40,6 @@ describe "CoursePages" do
 
     context "With valid information" do
       it "adds a course" do
-        print page.html
         expect {
           fill_out_course_form_with_valid_info
           click_button save_button
@@ -54,14 +53,6 @@ describe "CoursePages" do
           click_button unit_button
         }.to change(Course, :count).by(1)
         page.should have_selector("form")
-      end
-
-      it "Adds at least one objective to the course" do
-        expect {
-          fill_out_course_form_with_valid_info
-          click_button save_button
-        }.to change(Course, :count).by_at_least(1)
-        Course.last.objectives.count.should == 1
       end
     end
 
@@ -119,7 +110,7 @@ describe "CoursePages" do
       end
 
       describe "Displays similar courses" do
-        it {should have_content("Similar Courses")}
+        xit {should have_content("Similar Courses")}
       end
 
       describe "Presence of Course Summary Information" do
@@ -128,6 +119,10 @@ describe "CoursePages" do
       end
 
       describe "Presence of Course Objectives" do
+        before do
+          course.objectives.create(attributes_for(:objective, objective: "objective one", objective_type: "Content"))
+          visit course_path(course)
+        end
         it {should have_content("Course Goals")}
         it {should have_content("objective one")}
       end
@@ -135,8 +130,9 @@ describe "CoursePages" do
       it {should have_content("Standards Met")}
       it {should have_content("Units")}
 
+      #consider deleting if we don't keep a sidebar.
       describe "The sidebar" do
-        it {page.should have_content("Invite")}
+        xit {page.should have_content("Invite")}
       end
 
       # describe "Vote div" do
@@ -197,7 +193,7 @@ describe "CoursePages" do
       end
 
       describe "the user cannot access user restricted actions" do
-        it {page.should_not have_selector('a.add-micropost')}
+        xit {page.should_not have_selector('a.add-micropost')}
         it {page.should_not have_selector('.header-edit')}
         it {page.should_not have_selector('.add-course-goal')}
         it {page.should_not have_selector('.delete-goal')}
@@ -207,21 +203,21 @@ describe "CoursePages" do
 
       describe "it displays microposts" do
         let(:micropost){create(:micropost, user: user)}
-        it {should have_content("Lorem Ipsum")}
+        xit {should have_content("Lorem Ipsum")}
+        #TODO: Consider deleting this test if single_page layout ends up being permanent
       end
     end
 
     context "The owning user" do 
-      let(:user){create(:user)}
-      let(:course){create(:course)}
       before do
         sign_in_via_form
-        visit course_path(course)
+        @course = @user.courses.create(attributes_for(:course))
+        visit course_path(@course)
       end
 
       it "has a link to edit the page" do
         find("a.header-edit").click
-        current_path.should eq(edit_course_path(course))
+        current_path.should eq(edit_course_path(@course))
       end
 
       describe "can add a new goal to the course", js: true do
@@ -247,15 +243,16 @@ describe "CoursePages" do
         end
       end
 
+      #TODO: Consider deleting this test if we keep the single page layout
       describe "adding microposts", js: true do
-        it {page.should have_selector("form#new_micropost")}
-        it "adds a micropost" do
+        xit {page.should have_selector("form#new_micropost")}
+        xit "adds a micropost" do
           expect {
           fill_in "micropost_content", with: "some content"
           click_button "Post"
           }.to change(Micropost, :count).by(1)
         end
-        it "does not reload the page" do 
+        xit "does not reload the page" do 
           expect {
             fill_in "micropost_content", with: "some content"
             click_button "Post"
@@ -340,7 +337,6 @@ describe "CoursePages" do
     select  'Grade 5'
     select  'Subject 5'
     fill_in 'course_summary',  with: "This is a valid course summary."
-    fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end
 
   def fill_out_course_form_with_invalid_info
@@ -348,7 +344,6 @@ describe "CoursePages" do
     select  'Fall',            from: "course_course_semester"
     select  '2012',            from: "course_course_year"
     fill_in 'course_summary',  with: "This is a valid course summary."
-    fill_in 'course_objectives_attributes_0_objective',       with: "An objective"
   end
 
   def invalid_form_expectations

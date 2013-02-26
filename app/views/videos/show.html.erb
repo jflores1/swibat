@@ -1,6 +1,6 @@
 <%= render partial: 'shared/user_header', locals: {user: @video.user} %>
 
-<div class="video-show offset5">
+<div class="centered">
 	<header class="course-header bottom-margin">
 		<h2><%= @video.title %></h2>	
 	</header>
@@ -26,11 +26,11 @@
 	</p>
 
 	<div>
-	  <%= link_to "Edit", edit_video_path(@video), :class => "btn btn-monkey" %> 
-	  <%= link_to "Delete", video_path(@video), :method => "delete", :class => "btn btn-monkey", :confirm => "Are you sure?" %>
+	  <%= link_to "Edit", edit_video_path(@video), :class => "btn btn-monkey" if can? :edit, @video %> 
+	  <%= link_to "Delete", video_path(@video), :method => "delete", :class => "btn btn-monkey", :confirm => "Are you sure?" if can? :delete, @video %>
 	</div>      
 	<hr />
 	<%= render :partial => 'comments/comments', :locals => {:commentable => @video} %>
-		
-</div>
+</div>		
+
 <!--TODO: link to on line 22 should take user to filtered index page-->

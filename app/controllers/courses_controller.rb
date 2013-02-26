@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index, :syllabus]
-  before_filter :load_similar_courses, except: [:index, :new, :create, :feed, :vote, :fork, :course_maps]
+  before_filter :load_similar_courses, except: [:index, :new, :create, :feed, :vote, :fork, :course_maps, :syllabus]
   before_filter :new_micropost, only: [:show]
   load_and_authorize_resource
   skip_authorize_resource only: [:show, :index, :syllabus]

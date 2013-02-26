@@ -1,6 +1,6 @@
 <% provide(:title, "#{@user.full_name}'s Content Map") %>
 <div class="row-fluid">
-	<%= render 'shared/user_header' %>
+	<%= render partial: 'shared/user_header', locals: {user: @user} %>
 
 	<div class="tabbable">
 		<ul class="nav nav-tabs">

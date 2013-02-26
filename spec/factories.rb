@@ -5,7 +5,6 @@ FactoryGirl.define do
     course_semester     "Fall"
     course_year         2012
     course_summary      "This is a course summary."
-    user_id             1
     association :grade, factory: :grade, grade_level:"Grade 1"
     association :subject, factory: :subject, subject: "Science"
 
