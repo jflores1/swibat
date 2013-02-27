@@ -1,7 +1,7 @@
 <% provide(:title, "Course Maps") %>
 
 <div class="row-fluid">
-	<%= render 'shared/user_header' %>
+	<%= render partial: 'shared/user_header', locals: {user: @user} %>
 	<% calendar = calendar_for_multiple_courses(@courses) %>
 	<table class="table table-striped" id="calendar">
 		<tr>

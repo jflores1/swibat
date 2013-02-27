@@ -162,5 +162,8 @@ div#activity-form{
   border-bottom: 1px dashed #cdcdcd;
 }
 .list-description:nth-child(even){
-  background: #ffffff;
+  // Commented ths out because the popover script inserts another element in the list
+  // thereby changing the order and the background of all the elements bellow it, which
+  // doesn't look really good
+  // background: #ffffff;
 }

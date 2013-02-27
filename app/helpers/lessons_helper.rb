@@ -67,7 +67,7 @@ module LessonsHelper
     domain.standard_strands.each do |strand|
       strand.educational_standards.each do |standard|
         next if standard.parent != nil
-        content += raw "<li data-content=\"#{standard.description}\" title=\"#{standard.name}\" class=\"draggable list-description\" data-id=\"#{standard.id.to_s}\">#{standard.description}</li>"
+        content += raw "<li data-content=\"#{standard.description}\" title=\"#{standard.name}\" class=\"draggable list-description\" data-id=\"#{standard.id.to_s}\">#{standard.name}</li>"
       end
     end
 
