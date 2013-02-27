@@ -24,10 +24,11 @@
 					</span>
 					<span><%= link_to "<i class='icon-film'></i>".html_safe, videos_user_path(faculty), class:"upload-video btn btn-monkey", data: {toggle: "tooltip", title: "Upload Videos"} %>
 					</span>
-					<span><%= link_to "<i class='icon-file-alt'></i>".html_safe, "#", class:"add-evaluation btn btn-monkey", data: {toggle: "tooltip", title: "Add Evaluation"} %>
+					<span><%= link_to "<i class='icon-file-alt'></i>".html_safe, eval_user_path(faculty), class:"add-evaluation btn btn-monkey", data: {toggle: "tooltip", title: "Add Evaluation"} %>
 					</span>
 				</td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
+<!-- TODO: Add sorting on this table. Maybe filtering -->

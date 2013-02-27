@@ -1,4 +1,4 @@
-<div class="course-form span6 offset5">
+<div class="">
 
   <header class="course-header">
     <h2>Start Sharing Awesome Curriculum (for free)!</h2>
@@ -15,10 +15,10 @@
 
 
       <%= f.label :password %>
-      <%= f.text_field :password %>
+      <%= f.password_field :password %>
 
       <%= f.label :password_confirmation %>
-      <%= f.text_field :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
 
       <%= f.hidden_field :role, value: "teacher" %>
       <%= f.submit "Sign Up!", class:"btn btn-monkey" %>

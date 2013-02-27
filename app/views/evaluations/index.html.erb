@@ -1,5 +1,7 @@
-<h1>Evaluations</h1>
-<%= link_to "Edit Evaluation Template", institution_evaluation_template_index_path(@institution), class: "btn btn-monkey pull-right" %> <br /><br />
+<header class="course-header">
+	<h2>Faculty Evaluations and Observations</h2>	
+	<%= link_to "Edit Evaluation Template", institution_evaluation_template_index_path(@institution), class: "btn btn-monkey pull-right" %> <br /><br />
+</header>
 
 <% if @evaluations && @evaluations.any? %>
 	<table class="table faculty-table">

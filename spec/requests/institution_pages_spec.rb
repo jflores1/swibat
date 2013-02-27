@@ -20,9 +20,14 @@ describe "InstitutionPages" do
         end
         it "lists all the faculty" do
           25.times do
-            create(:user_with_profile, role: "teacher", institution: institution)
+            build_stubbed(:user_with_profile, role: "teacher", institution: institution)
           end
           page.should have_selector("tr", id:"user_24")
+        end
+        it "allows links to add an evaluation" do
+          build_stubbed(:user_with_profile, role: "teacher", institution: institution)
+          first('a.add-evaluation').click
+          current_path.should be(eval_user_path(first_user))
         end
       end
 

@@ -1,17 +1,19 @@
 <div class="row-fluid">
 	<div class="span6 offset3">
+		<!--TODO: Need to implement search feature -->
 	  <%= form_tag("#", method: :get, class:"form-search", id:"user-search-form") do %>
 	      <%= text_field_tag :q, nil, class:"input-xlarge search-query", placeholder: "Search by User, Description, or Lesson" %>
 	      <%= submit_tag "Search", class:"btn btn-monkey" %>
 	  <% end %>
 	</div>
-	<% if @mapped_lessons.present? %>
-		<%= render 'users/followed_maps' %>
-	<% else %>
-		<p>Hmmm...doesn't look like anyone you're following has mapped any courses yet!</p>
-
-		
-	<% end %>
+	<div class="span12">
+		<% if @mapped_lessons.present? %>
+			<%= render 'users/followed_maps' %>
+		<% else %>
+				<p>Hmmm...doesn't look like anyone you're following has mapped any courses yet!</p>
+		<% end %>
+	</div>
+	
 	
 </div>
 
