@@ -63,6 +63,9 @@ module Swibat
     #forces your application to not access the DB or load models when precompiling your assets.
     config.assets.initialize_on_precompile = false
 
+    # precompiles the activeadmin assets to prevent a problem while deploying to heroku
+    config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js]
+
     #autoload lib directory
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 

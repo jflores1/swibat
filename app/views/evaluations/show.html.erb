@@ -1,8 +1,8 @@
-<%= provide(:title, "Evaluation for #{@user.full_name}") %>
+<%= provide(:title, "#{@evaluation.eval_type.capitalize} for #{@user.full_name}") %>
 
 <%= render :partial => 'shared/user_header', locals: {user: @user} %>
 
-<h1>Evaluation for <%= @user.full_name %></h1>
+<h1><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
 <p>Published <%= time_ago_in_words @evaluation.updated_at %> ago</p>
 <table class="table faculty-table">
 	<thead>

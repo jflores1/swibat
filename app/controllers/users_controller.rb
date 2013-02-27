@@ -96,12 +96,13 @@ class UsersController < ApplicationController
 
   def evaluations
     @user = User.find(params[:id])
-    @evaluations = @user.teacher_evaluations
+    @evaluations = @user.teacher_evaluations    
   end
 
   def eval
     @user = User.find(params[:id])
     @evaluation = @user.teacher_evaluations.build
+    @evaluation.eval_type = params[:eval_type] ? params[:eval_type] : 'evaluation'
     @institution = @user.institution
     @evaluation.evaluation_template = @institution.evaluation_template
 

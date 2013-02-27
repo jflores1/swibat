@@ -10,7 +10,7 @@
 #
 
 class TeacherEvaluation < ActiveRecord::Base
-  attr_accessible :evaluation_template_id, :teacher_id
+  attr_accessible :evaluation_template_id, :teacher_id, :eval_type
 
   belongs_to :teacher, class_name: :User
   belongs_to :evaluation_template
