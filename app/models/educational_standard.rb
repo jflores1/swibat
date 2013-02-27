@@ -31,5 +31,10 @@ class EducationalStandard < ActiveRecord::Base
     covered_lesson_ids = Course.from_users_followed_by(user).joins(units: :lessons).pluck('lessons.id')
     joins(lesson_standards: :lesson).where('lessons.id in (?)', covered_lesson_ids)
   end
+
+  def display_value
+    result = self.description
+    result
+  end
   
 end

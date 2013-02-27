@@ -11,6 +11,8 @@ Swibat::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
+  get "educational_standards/autocomplete_educational_standard_description", as: "autocomplete_educational_standard_description"
+
   post "invitations/send_invitation"
   
   get "answers/new"
@@ -46,6 +48,7 @@ Swibat::Application.routes.draw do
       get :followed_maps
       get :videos
       get :eval
+      get :evaluations
     end
   end
 
@@ -104,6 +107,9 @@ Swibat::Application.routes.draw do
       get  :new_lesson_content
       get  :new_lesson_skill
       get  :videos
+      get  :new_standard
+      put  :add_standard
+      post :remove_standard
     end    
   end
 

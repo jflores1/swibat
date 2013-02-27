@@ -1,0 +1,32 @@
+<%= provide(:title, "Evaluate #{@user.full_name}") %>
+
+<%= render :partial => 'shared/user_header', locals: {user: @user} %>
+
+<h1>Evaluations and Observations for <%= @user.full_name %></h1>
+
+<% if @evaluations && @evaluations.any? %>
+	<table class="table faculty-table">
+		<thead>
+			<tr>
+				<th>
+					Teacher
+				</th>
+				<th>
+					Published
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @evaluations.each do |evaluation| %>
+				<tr>
+					<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@user.institution, evaluation) %></td>
+					<td><%= time_ago_in_words evaluation.created_at %> ago</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	There are no evaluations yet.
+<% end %>
+
+<%= link_to "Create a new Evaluation", eval_user_path(@user), class: "btn btn-monkey" if can? :eval, @user %>

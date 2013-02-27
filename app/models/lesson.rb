@@ -18,7 +18,7 @@ class Lesson < ActiveRecord::Base
 
   acts_as_commentable
 
-  attr_accessible :lesson_end_date, :lesson_start_date, :lesson_status, :lesson_title, :prior_knowledge, :resources_attributes, :objectives_attributes, :assessments_attributes
+  attr_accessible :lesson_end_date, :lesson_start_date, :lesson_status, :lesson_title, :prior_knowledge, :resources_attributes, :objectives_attributes, :assessments_attributes, :standard_description, :standard_id
   has_many :objectives, as: :objectiveable, dependent: :destroy
   has_many :assessments, as: :assessable, dependent: :destroy
   has_many :resources, dependent: :destroy
@@ -82,6 +82,21 @@ class Lesson < ActiveRecord::Base
     joins('LEFT JOIN lesson_standards ON lessons.id = lesson_standards.lesson_id').where('lesson_standards.lesson_id IS NULL')
   end
 
+  def standard_description
+
+  end
+
+  def standard_description=(standard_description)
+
+  end
+
+  def standard_id
+
+  end
+
+  def standard_id=(standard_id)
+  end
+  
   # duplication rules
   amoeba do
     exclude_field [:flags, :comment_threads, :evaluations, :reputations]

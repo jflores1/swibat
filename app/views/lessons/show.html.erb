@@ -30,12 +30,19 @@
         <div class="span6 box no-left-margin height7 standards">
           <h3>Standards Met
             <span>
-              <%= link_to '<i class="icon-plus"></i>'.html_safe, standards_lesson_path(@lesson), class:"add-standard" if can? :edit, @unit %>
+              <%= link_to '<i class="icon-list"></i>'.html_safe, standards_lesson_path(@lesson), class:"add-standard" if can? :edit, @unit %>
             </span>
+
+            <span>
+              <%= link_to '<i class="icon-plus"></i>'.html_safe, new_standard_lesson_path(@lesson), remote: true if can? :edit, @unit %>
+            </span>          
           </h3>
-          <ul>
-            <%= display_standards_for_lesson(@lesson) %>            
+          <ul id="standards-ul">
+            <%= display_standards_for_lesson(@lesson, true) %>            
           </ul>
+          <div id="standards-form">
+
+          </div>
         </div>
         <div class="span6 box height7 assessable">
           <h3>Assessments

@@ -1,0 +1,4 @@
+var standards_list = $('.standards-ul').first();
+var standard = $('<%= j generate_standard_list_item(@standard, true, @lesson) %>');
+$(standard).hide().appendTo(standards_list).fadeIn();
+$('#standards-form').fadeOut().empty();

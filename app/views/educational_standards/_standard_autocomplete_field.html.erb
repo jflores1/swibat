@@ -1,0 +1,5 @@
+<%= form_for lesson, url: add_standard_lesson_path(lesson), remote: true do |f| %>
+	<%= f.autocomplete_field :standard_description, autocomplete_educational_standard_description_path, :id_element => '#standard_id', class: "span12", placeholder: "Seach for standards" %>
+	<%= f.hidden_field :standard_id, id: "standard_id" %><br />
+	<%= f.submit "Add Standard", class: "btn btn-monkey" %>
+<% end %>

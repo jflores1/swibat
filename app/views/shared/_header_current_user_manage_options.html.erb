@@ -3,9 +3,10 @@
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage <b class="caret white-caret"></b></a>
 		<ul class="dropdown-menu">
 			<% if current_user.institution.present? %>
-		  		<li><%= link_to "School Info", institution_path(current_user.institution) %></li>
-		  	<% end %>
+		  	<li><%= link_to "School Info", institution_path(current_user.institution) %></li>
+		  	
 		  	<li><%= link_to "Faculty", faculty_institution_path(current_user.institution) %></li>
+		  <% end %>
 		</ul>
 	</li>
 <% end %>

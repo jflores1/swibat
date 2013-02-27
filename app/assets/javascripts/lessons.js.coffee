@@ -68,7 +68,7 @@ $(document).ready ->
 
   # bind the click event on the remove icons
   $('i.icon-remove').click (event)->
-    removeStandard($(this).parent())
+    removeStandard($(this).closest('li'))
 
   # bind the popover event to standards
   $('.standards-list > li').each (i, element)=>
@@ -77,13 +77,16 @@ $(document).ready ->
       trigger: 'hover'
     })  
 
+  $('.standard-item').each (i, element)=>
+    $(element).popover({
+      placement: 'top',
+      trigger: 'hover'
+    })
+
   $('.standards > ul > li').each (i, element)=>
     $(element).popover({      
       placement: 'top',
       trigger: 'hover'
     })  
 
- 
-
-
-
+  
