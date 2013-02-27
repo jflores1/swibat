@@ -1,6 +1,6 @@
 <%= provide(:title, "Evaluate #{@user.full_name}") %>
 
-<%= render 'shared/user_header' %>
+<%= render :partial => 'shared/user_header', locals: {user: @user} %>
 
 <h1>Evaluate <%= @user.full_name %></h1>
 <%= form_for([@institution, @evaluation], url: institution_evaluations_path(@institution), :html => {:multipart => true}) do |f| %>

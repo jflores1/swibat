@@ -1,6 +1,6 @@
 <%= provide(:title, "Evaluation for #{@user.full_name}") %>
 
-<%= render 'shared/user_header' %>
+<%= render :partial => 'shared/user_header', locals: {user: @user} %>
 
 <h1>Evaluation for <%= @user.full_name %></h1>
 <p>Published <%= time_ago_in_words @evaluation.updated_at %> ago</p>
