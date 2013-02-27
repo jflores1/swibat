@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_filter :find_current_unit, :except => [:vote, :new_lesson_content, :new_lesson_skill, :standards, :save_standards, :update_journal_entry, :videos]
+  before_filter :find_current_unit, :except => [:vote, :new_lesson_content, :new_lesson_skill, :standards, :save_standards, :update_journal_entry, :videos, :new_standard, :add_standard, :remove_standard]
   load_and_authorize_resource
   skip_authorize_resource only: :show
   respond_to :html, :json  
@@ -78,7 +78,22 @@ class LessonsController < ApplicationController
   def standards
     @lesson = Lesson.find(params[:id])
     @grades = Grade.includes(:educational_domains => [:standard_strands => [:educational_standards] ]).all
-    
+  end
+
+  def new_standard
+    @lesson = Lesson.find(params[:id])
+  end
+  
+  def add_standard
+    @lesson = Lesson.find(params[:id])
+    @standard = EducationalStandard.find(params[:lesson][:standard_id])    
+    @lesson.educational_standards << @standard
+  end
+
+  def remove_standard
+    @lesson = Lesson.find(params[:id])
+    @standard = EducationalStandard.find(params[:standard_id])
+    @lesson.educational_standards.delete(@standard)
   end
 
   # POST

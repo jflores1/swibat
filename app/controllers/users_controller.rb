@@ -94,6 +94,11 @@ class UsersController < ApplicationController
     @videos = @user.videos    
   end
 
+  def evaluations
+    @user = User.find(params[:id])
+    @evaluations = @user.teacher_evaluations
+  end
+
   def eval
     @user = User.find(params[:id])
     @evaluation = @user.teacher_evaluations.build

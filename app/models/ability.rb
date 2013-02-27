@@ -89,11 +89,11 @@ class Ability
       can :videos, User, institution_id: user.institution_id 
       can :manage, Institution, id: user.institution_id      
 
-      can :eval, User, institution_id: user.institution_id
+      can [:eval, :evaluations], User, institution_id: user.institution_id
       can :manage, Video do |video|
         video.try(:user).try(:institution_id) == user.institution_id
       end
     end
-    
+
   end
 end

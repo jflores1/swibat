@@ -956,3 +956,10 @@ Media Queries
       margin: 0 0 0 !important;
   }
 }
+
+.ui-autocomplete {
+    max-width: 500px;
+}
+.ui-autocomplete .ui-menu-item{
+    border-bottom: 1px dashed #cdcdcd;    
+}

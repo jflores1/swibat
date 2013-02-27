@@ -75,13 +75,20 @@ module LessonsHelper
     content
   end
 
-  def display_standards_for_lesson(lesson)
-    content = raw "<ul class=\"standards-list\">"
+  def display_standards_for_lesson(lesson, add_remove_button = false)
+    content = raw "<ul class=\"standards-ul\">"
     lesson.educational_standards.each do |standard|      
-      content += raw "<li data-content=\"#{standard.description}\" title=\"#{standard.name}\" data-id=\"#{standard.id.to_s}\">#{standard.name}</li>"
+      content += raw generate_standard_list_item(standard, add_remove_button, lesson)
     end
     content += raw "</ul>"
     content
+  end
+
+  def generate_standard_list_item(standard, add_remove_button, lesson)
+    result = "<li class=\"standard-item\" id=\"standard-#{standard.id}\" data-content=\"#{standard.description}\" title=\"#{standard.name}\" data-id=\"#{standard.id.to_s}\">#{standard.name}"
+    result += link_to "<i title=\"Remove this standard\" class=\"icon-trash pull-right\"></i>".html_safe, remove_standard_lesson_path(lesson, standard_id: standard.id), method: :post, remote:true if add_remove_button
+    result += "</li>"
+    raw result
   end
 
   def display_standards_for_unit(unit)

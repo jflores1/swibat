@@ -1,0 +1,18 @@
+var form = $('<%= j render partial: "educational_standards/standard_autocomplete_field", locals: {lesson: @lesson} %>');
+var form_div = $('#standards-form');
+form_div.empty();
+form_div.append(form);
+form_div.fadeIn();
+
+$('input[data-autocomplete]').on('focus', function(i){
+  $(this).autocomplete({
+    source: $(this).attr('data-autocomplete'),
+    select: function(event, ui) {
+      $(this).val(ui.item.value);
+      if ($(this).attr('id_element')) {
+        $($(this).attr('id_element')).val(ui.item.id);
+      }
+      return false;
+    }
+  });
+});

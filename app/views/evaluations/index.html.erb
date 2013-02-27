@@ -1,24 +1,26 @@
-<%= link_to "Edit Evaluation Template", institution_evaluation_template_index_path(@institution), class: "btn btn-monkey" %>
-
-<h2>Evaluations</h2>
+<h1>Evaluations</h1>
+<%= link_to "Edit Evaluation Template", institution_evaluation_template_index_path(@institution), class: "btn btn-monkey pull-right" %> <br /><br />
 
 <% if @evaluations && @evaluations.any? %>
-	<table class="table table-striped">
-		<tr>
-			<th>
-				Teacher
-			</th>
-			<th>
-				Published
-			</th>
-		</tr>
-
-		<% @evaluations.each do |evaluation| %>
+	<table class="table faculty-table">
+		<thead>
 			<tr>
-				<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@institution, evaluation) %></td>
-				<td><%= time_ago_in_words evaluation.created_at %> ago</td>
+				<th>
+					Teacher
+				</th>
+				<th>
+					Published
+				</th>
 			</tr>
-		<% end %>
+		</thead>
+		<tbody>
+			<% @evaluations.each do |evaluation| %>
+				<tr>
+					<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@institution, evaluation) %></td>
+					<td><%= time_ago_in_words evaluation.created_at %> ago</td>
+				</tr>
+			<% end %>
+		</tbody>
 	</table>
 <% else %>
 	There are no evaluations yet.
