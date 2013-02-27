@@ -10,10 +10,10 @@
 
 
       <%= f.label :password %>
-      <%= f.text_field :password, class:"span8" %>
+      <%= f.password_field :password, class:"span8" %>
 
       <%= f.label :password_confirmation, "Confirm" %>
-      <%= f.text_field :password_confirmation, class:"span8" %>
+      <%= f.password_field :password_confirmation, class:"span8" %>
 
       <%= f.hidden_field :role, value: "teacher" %>
       <%= f.submit "Sign up!", class:"btn primary-cta-btn" %>
