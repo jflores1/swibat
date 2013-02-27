@@ -28,7 +28,9 @@ class Ability
     user ||= User.new
     if user.role == "admin"
       can :manage, :all
-    elsif user.role == "teacher" || user.role == "school_admin"
+    end
+    
+    if user.role == "teacher" || user.role == "school_admin"
       can :manage, Course do |course|
         course.new_record? || course.try(:user).try(:id) == user.id
       end
@@ -81,13 +83,17 @@ class Ability
       can :vote, :all
       can :flag, Flag
 
-    elsif user.role == "school_admin"
+    end
+
+    if user.role == "school_admin"
       can :videos, User, institution_id: user.institution_id 
       can :manage, Institution, id: user.institution_id      
-      
+
+      can :eval, User, institution_id: user.institution_id
       can :manage, Video do |video|
         video.try(:user).try(:institution_id) == user.institution_id
       end
     end
+    
   end
 end

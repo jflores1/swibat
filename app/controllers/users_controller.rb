@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 	load_and_authorize_resource
   skip_authorize_resource only: [:index, :show, :following, :followers, :search]
-  before_filter :load_courses, except: [:index]
+  before_filter :load_courses, except: [:index, :eval]
   respond_to :html, :js, :json, :xml
 
   def index
