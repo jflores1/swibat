@@ -8,6 +8,7 @@ $(document).ready ->
 
   $('#user-add-course').tooltip({'title':'Add a new course'})
   #tooltips
+  $('.box-profile-pic').tooltip()
   $('.edit-user-course').tooltip({
   'title':'Edit this course'
   'placement':'right'})
@@ -33,6 +34,7 @@ $(document).ready ->
   'title':'Edit Course'
   'placement':'top'
   })
+  $('.see-standards-list').tooltip()
   $('.add-standard').tooltip({
     'title':'Assign or Edit Standards'
   })
