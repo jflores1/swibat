@@ -86,5 +86,11 @@ module ApplicationHelper
     end
   end
 
+  def my_page
+    if current_user == @user
+      true
+    end
+  end
+
 
 end

@@ -662,6 +662,25 @@ div.inner-form{
     }
 }
 
+.border-right{
+    border-right: 1px solid $fancy-gray;
+}
+
+ul.sidebar-nav{
+
+    li{
+        padding: 1.5em 0;
+        font-size: 1.4em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        border-bottom: 1px solid #e7e7e7;
+    }
+}
+
+.no-padding{
+    padding: 0px !important;
+}
+
 /*******************************************
 Media Queries
 *******************************************/

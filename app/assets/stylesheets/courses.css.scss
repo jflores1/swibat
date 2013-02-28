@@ -392,6 +392,11 @@ div.course-organizer{
 
   }
 
+  h1{
+    text-align: center;
+    margin: 1em;
+  }
+
 
   h3{
     font-weight: 400;
@@ -434,6 +439,32 @@ div.course-organizer{
   div.box-container{
     float: left;
     min-width: 35.4em; //354px:10px;
+  }
+
+  div.welcome-icon {
+    display: block;
+    margin: 0px auto;
+    width: 50%;
+    text-align: center;
+
+    i{
+      font-size: 18em;
+    }
+  }
+
+  .welcome-color{
+    color: rgb(136, 151, 185);
+  }
+
+  div.welcome-links{
+    width: 17em;
+    margin: 2em auto;
+
+  }
+
+  a.btn-welcome{
+    width: 12em;
+    padding: 10px;
   }
 
 }
