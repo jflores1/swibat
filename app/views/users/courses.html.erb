@@ -1,9 +1,20 @@
 <%= provide(:title, "#{@user.full_name}'s Courses") %>
 <%= render 'profile_header' %>
+<% if my_page %>
+	<%= render 'teacher_getting_started_partial' %>	
+<% end %>
+
 <% content_for :left_column do %>
 	<%= render partial: "teacher_sidebar_menu" %>
 <% end %>
 <% content_for :right_column do %>
+
+	<% if my_page %>
+		<div class="span12 no-left-margin bottom-margined">
+			<%= link_to "Add a Course", new_course_path, class: "btn btn-monkey" %>
+		</div>
+	<% end %>
+
 	<table class="profile-table">
 		<tr>
 			<th>Title</th>
