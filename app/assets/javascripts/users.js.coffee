@@ -38,6 +38,9 @@
 
 
 ) jQuery
+$(document).ready ->
+  $("tr[data-link]").click (e)->
+    window.location = this.dataset.link
 
 
 

@@ -1,0 +1,25 @@
+<%= provide(:title, "#{@user.full_name}'s Courses") %>
+<%= render 'profile_header' %>
+<% content_for :left_column do %>
+	<%= render partial: "teacher_sidebar_menu" %>
+<% end %>
+<% content_for :right_column do %>
+	<table class="profile-table">
+		<tr>
+			<th>Title</th>
+			<th>Subject</th>
+			<th>Grade Level</th>
+			<th>Units</th>
+		</tr>
+		<% @courses.each do |course| %>
+			<tr data-link="<%= course_path(course) %>">
+				<td><%= course.course_name %></td>
+				<td><%= course.subject %></td>
+				<td><%= course.grade.grade_level %></td>
+				<td><%= course.units.count %></td>
+			</tr>
+		<% end %>	
+	</table>
+	
+<% end %>
+<%= render partial: 'layouts/two_column_partial' %>

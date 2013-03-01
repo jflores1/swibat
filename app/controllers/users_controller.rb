@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show, :courses]
 	load_and_authorize_resource
-  skip_authorize_resource only: [:index, :show, :following, :followers, :search]
+  skip_authorize_resource only: [:index, :show, :following, :followers, :search, :courses]
   before_filter :load_courses, except: [:index, :eval]
   respond_to :html, :js, :json, :xml
 
@@ -111,7 +111,10 @@ class UsersController < ApplicationController
         @evaluation.evaluation_ratings.build(criterion: criterion)
       end
     end
+  end
 
+  def courses
+    @courses = @user.courses
   end
 
 end

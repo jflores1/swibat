@@ -327,5 +327,25 @@ table.standards-table{
 
 }
 
+.profile-table{
+  width: 100%;
+  font-size: 1.3em;
+
+  th{
+    text-align: left;
+  }
+  td, th{
+    width: 25%;
+  }
+  tr:hover{
+    background-color: #e7e7e7;
+    cursor: hand;
+    cursor: pointer;
+  }
+  tr:nth-of-type(5){
+    margin-bottom: 1em;
+  }
+}
+
 
 
