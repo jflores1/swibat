@@ -1,0 +1,44 @@
+<%= provide(:title, "#{@user.full_name}'s Courses") %>
+<%= render 'profile_header' %>
+<% if my_page %>
+	<%= render 'teacher_getting_started_partial' %>	
+<% end %>
+
+<% content_for :left_column do %>
+	<%= render partial: "teacher_sidebar_menu" %>
+<% end %>
+<% content_for :right_column do %>
+
+	<% if my_page %>
+		<div class="span12 no-left-margin bottom-margined">
+			<%= link_to "Add a Course", new_course_path, class: "btn btn-monkey" %>
+		</div>
+	<% end %>
+
+	<% if !@courses.any? %>
+		<div class="user-profile">
+      <h3 class="sad-monkey">Sad. It doesn't look like <%= @user.first_name.titleize %> has created any courses yet.</h3>
+    </div>
+	<% else %>
+		<table class="profile-table">
+			<tr>
+				<th>Title</th>
+				<th>Subject</th>
+				<th>Grade Level</th>
+				<th>Units</th>
+				<th>Lessons</th>
+			</tr>
+			<% @courses.each do |course| %>
+				<tr data-link="<%= course_path(course) %>">
+					<td><%= course.course_name %></td>
+					<td><%= course.subject %></td>
+					<td><%= course.grade.grade_level %></td>
+					<td><%= course.units.count %></td>
+					<td><%= course.lesson_count %></td>
+				</tr>
+			<% end %>	
+		</table>
+	<% end %>
+	
+<% end %>
+<%= render partial: 'layouts/two_column_partial' %>

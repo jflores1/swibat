@@ -221,9 +221,7 @@ div.course-form{
     width: 93%;
 
     input[type="submit"]{
-      padding: 1em 6em 1em 6em;
       display: block;
-      margin: 0px auto;
     }
 
   }
@@ -325,6 +323,26 @@ table.standards-table{
     font-size: 1em;
   }
 
+}
+
+.profile-table{
+  width: 100%;
+  font-size: 1.3em;
+
+  th{
+    text-align: left;
+  }
+  td, th{
+    width: 20%;
+  }
+  tr:hover{
+    background-color: #e7e7e7;
+    cursor: hand;
+    cursor: pointer;
+  }
+  tr:nth-of-type(5){
+    margin-bottom: 1em;
+  }
 }
 
 

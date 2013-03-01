@@ -646,6 +646,10 @@ div.inner-form{
     padding-bottom: 30px;
 }
 
+.bottom-margined{
+    margin-bottom: 2em;
+}
+
 /*Sign Up Banner*/
 .banner-sign-up{
     background: rgba(234, 231, 216, 1);
@@ -675,17 +679,20 @@ ul.sidebar-nav{
     li{
         padding: 0.5em;
         font-size: 1.4em;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
         border-bottom: 1px solid #bfbfbf; 
 
         a{
           color: $fancy-gray;
         }
         a:hover{
-          background-color: #e7e7e7;
+          background-color: #f7f7f7;
         }
     }
+
+    li:hover{
+        background-color: #f7f7f7 !important;
+    }
+
     i{
       float: right;
     }
@@ -710,7 +717,7 @@ Equal Height Columns
   #container1 {
   float: left;
   width: 100%;
-  background: #f7f7f7;
+  background: #e7e7e7;
   position: relative;
   right: 76.92307%;
   border-right: 1px solid #bfbfbf;
@@ -733,6 +740,10 @@ Equal Height Columns
   .span9{
     padding: 1em;
   }
+}
+
+.centered{
+    text-align: center;
 }
 
 

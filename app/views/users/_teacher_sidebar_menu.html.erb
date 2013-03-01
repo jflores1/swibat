@@ -3,7 +3,7 @@
       <%= link_to "#{@user.first_name}<i class='icon-chevron-right'></i>".html_safe, user_path(@user) %>
     </li>
     <li>
-      <a href="#">Courses <i class="icon-chevron-right"></i></a>
+      <%= link_to "Courses <i class='icon-chevron-right'></i>".html_safe, courses_user_path(@user), class:"user-courses" %>
     </li>
     <li>
       <a href="#">Maps <i class="icon-chevron-right"></i></a>
@@ -12,7 +12,7 @@
       <a href="#">Network <i class="icon-chevron-right"></i></a>
     </li>
     <li>
-      <a href="#">Playlist <i class="icon-chevron-right"></i></a>
+      <%= link_to "Videos <i class='icon-chevron-right'></i>".html_safe, videos_user_path(@user), class:"user-videos" %>
     </li>
     <li>
       <a href="#">Observations <i class="icon-chevron-right"></i></a>

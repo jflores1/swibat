@@ -24,8 +24,21 @@ Begin Course-specific css - but make
 sure to copy over variables
 *********************************/
 
+div.two-column-form{
+  input[type="text"], textarea{
+    background-color: #f7f7f7;
+    width: 80%;
+  }
+
+  input[type="submit"]{
+    display: block;
+    margin-top: 1em;
+  }
+}
+
 div.course-form{
   float:left;
+  width: 100%;
 
   header.course-form-header{
     margin-bottom: 2%;
@@ -39,34 +52,7 @@ div.course-form{
 
   form {
     $minFormHeight: 1.8em;//18px:10px
-
-    padding: 2%;
     float:left;
-
-    div.two-column-form{
-      width:100%;
-      float:left;
-      clear:both;
-      margin-top: 2%;
-
-      label{
-        width:40%;
-        display: inline-block;
-        float: left;
-      }
-
-      input[type="select"]{
-        display: inline-block;
-        width: 40%;
-        height:$minFormHeight;
-      }
-    }
-
-    div.form-row{
-      width:100%;
-      float:left;
-      text-align:right;
-    }
 
     label, p {
       font-size: 1.6em; //16px : 10px
@@ -77,7 +63,7 @@ div.course-form{
       width: 100%;
       min-height: $minFormHeight;
       font-size: 1.3em;
-      color: rgba(80, 89, 107, 0.90);
+      background-color: #f7f7f7 !important;
     }
     input[type="text"].cleared{
       clear:right;
@@ -91,10 +77,6 @@ div.course-form{
       height: 6em;
     }
   }
-}
-
-div.favoritecount{
-
 }
 
 div#user-header{

@@ -61,9 +61,28 @@ describe "UserPages" do
       end
 
       context "a user with courses" do
-        let!(:course){create(:course, user: user)}
-        before {visit user_path(user)}
-        it {page.should have_content("Physics")}
+
+        describe "a user course path" do
+          before do
+            user.courses.create(attributes_for(:course))
+            visit courses_user_path(user)
+          end
+
+          it {page.should have_content(user.full_name)}
+          it {page.should have_content("Physics")}
+          it "links to the course/show page" do
+            find_link("Physics").click
+            page.should have_content("Course Summary")
+          end
+        end
+
+        describe "access to the user's courses" do
+          before {visit user_path(user)}
+          it "from the user's profile page" do
+            find(".user-courses").click
+            current_path.should eq(courses_user_path(user))
+          end
+        end
       end
 
       context "a user belonging to a school" do

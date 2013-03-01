@@ -22,18 +22,14 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
-    @course.objectives.build
   end
 
   def create
     @grades = Grade.all
     @course = current_user.courses.build(params[:course])
-    if @course.save && params[:save_and_return]
+    if @course.save
       redirect_to course_path(@course)
-    elsif @course.save && params[:course_to_unit]
-      redirect_to new_course_unit_path(@course)
     else
-      flash[:error] = "Sorry, there was a mistake with the form"
       render :action => 'new'
     end
   end

@@ -49,6 +49,7 @@ Swibat::Application.routes.draw do
       get :videos
       get :eval
       get :evaluations
+      get :courses
     end
   end
 
