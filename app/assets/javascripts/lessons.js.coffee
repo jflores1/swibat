@@ -77,6 +77,12 @@ $(document).ready ->
       trigger: 'hover'
     })  
 
+  $('.standard-item').each (i, element)=>
+    $(element).popover({      
+      placement: 'top',
+      trigger: 'hover'
+    })  
+
   $('.standards > ul > li').each (i, element)=>
     $(element).popover({      
       placement: 'top',

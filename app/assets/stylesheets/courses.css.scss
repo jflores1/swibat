@@ -285,7 +285,10 @@ div.course-organizer{
         padding-left: 1em;
       }
       li:nth-child(odd){
-        background: #e7e7e7;
+        // Commented ths out because the popover script inserts another element in the list
+        // thereby changing the order and the background of all the elements bellow it, which
+        // doesn't look really good
+        // background: #e7e7e7;
       }
 
       i{
