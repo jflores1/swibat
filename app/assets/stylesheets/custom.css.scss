@@ -666,20 +666,76 @@ div.inner-form{
     border-right: 1px solid $fancy-gray;
 }
 
+.border-left{
+    border-left: 1px solid $fancy-gray;
+}
+
 ul.sidebar-nav{
 
     li{
-        padding: 1.5em 0;
+        padding: 0.5em;
         font-size: 1.4em;
         margin-top: 0.5em;
         margin-bottom: 0.5em;
-        border-bottom: 1px solid #e7e7e7;
+        border-bottom: 1px solid #bfbfbf; 
+
+        a{
+          color: $fancy-gray;
+        }
+        a:hover{
+          background-color: #e7e7e7;
+        }
+    }
+    i{
+      float: right;
     }
 }
 
 .no-padding{
     padding: 0px !important;
 }
+
+/******************************************
+Equal Height Columns
+*******************************************/
+#container2 {
+  width: 100%;
+  float: left;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+  border: solid 1px #bfbfbf;
+  @include rounded-corners(4px);
+
+  #container1 {
+  float: left;
+  width: 100%;
+  background: #f7f7f7;
+  position: relative;
+  right: 76.92307%;
+  border-right: 1px solid #bfbfbf;
+
+      #col1{
+      float: left;
+      position: relative;
+      left: 77%;
+      overflow: hidden;
+      }
+
+      #col2{
+        float: left;
+        position: relative;
+        left: 78%;
+        overflow: hidden;
+      }
+  }
+
+  .span9{
+    padding: 1em;
+  }
+}
+
+
 
 /*******************************************
 Media Queries

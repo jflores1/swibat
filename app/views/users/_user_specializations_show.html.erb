@@ -1,11 +1,11 @@
 <% if @user.specialties.any? %>
     <header xmlns="http://www.w3.org/1999/html">
-      <h3>Specialties</h3>
+      <h2>Professional Skillset</h2>
     </header>
-    <dl class="dl-horizontal">
-      <% @user.specialties.each do |special| %>
-          <dd><%= special.name%></dd>
-      <% end %>
-    </dl>
+    <div>
+    	<span>
+    		<%= raw @user.specialties.map {|special| special.name }.join(", ") %>
+    	</span>
+    </div>
 <% end %>
 
