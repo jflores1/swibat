@@ -1,15 +1,17 @@
-<%= provide(:title, "Evaluate #{@user.full_name}") %>
+<%= provide(:title, "#{@evaluation.eval_type.capitalize} for #{@user.full_name}") %>
 
 <%= render :partial => 'shared/user_header', locals: {user: @user} %>
 
-<h1>Evaluate <%= @user.full_name %></h1>
+<h1><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
 <%= form_for([@institution, @evaluation], url: institution_evaluations_path(@institution), :html => {:multipart => true}) do |f| %>
 	<%= f.hidden_field :teacher_id %>
 	<%= f.hidden_field :evaluation_template_id %>
+	<%= f.hidden_field :eval_type %>
 	<table class="table faculty-table">
 		<thead>
 			<tr>
 				<th></th>
+				<th class="eval">N/A</th>
 				<th class="eval">Unsatisfactory</th>
 				<th class="eval">Basic</th>
 				<th class="eval">Proficient</th>
@@ -26,7 +28,9 @@
 					<% domain.evaluation_criteria.each do |criterion| %>
 						<tr class="subdomain-row">
 							<td class="subdomain"><%= criterion.contents %></td>
-
+							<td class="eval">
+								<%= radio_button(:score, criterion.id, -1, checked: true) %>
+							</td>
 							<% (1..4).each do |i| %>
 								<td class="eval">
 									<%= radio_button(:score, criterion.id, i) %>

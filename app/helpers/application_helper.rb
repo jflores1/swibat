@@ -86,5 +86,17 @@ module ApplicationHelper
     end
   end
 
+  def my_page
+    if current_user == @user
+      true
+    end
+  end
+
+  def no_profile_content
+    if !@user.specialties.any? && !@certifications.any? && !@awards.any? && !@user.professional_educations.any?
+      true
+    end
+  end
+
 
 end

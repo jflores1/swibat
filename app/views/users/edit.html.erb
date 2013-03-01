@@ -1,8 +1,13 @@
 <!--rendered in /application.html.erb:21 -->
-<div class="span3 bordered">
+<% content_for :left_column do %>
+  <%= render partial: "teacher_sidebar_menu" %>
+<% end %>
+
+<% content_for :right_column do %>
+<div class="span3">
   <%= image_tag @user.image.url, class:"main-profile-picture", alt: "#{@user.full_name}" %>
 </div>
-<div class="span9 bordered">
+<div class="span9">
   <%= form_for(@user, :html => {multipart: true, class:"profile-form"}) do |f| %>
       <%= render 'shared/form_error_messages', object: f.object %>
   <div class="span12">
@@ -10,7 +15,6 @@
       <li class="active"><a href="#personal" data-toggle="tab">You</a></li>
       <li><a href="#professional" data-toggle="tab">Your Work</a></li>
       <li><a href="#educational" data-toggle="tab">Your Education</a></li>
-      <li><%= f.submit "Save Changes", :class => "btn btn-monkey" %></li>
     </ul>
   </div>
 
@@ -60,12 +64,10 @@
 
       </div>
     </div>
-  </div>
+    <div class="user-profile-button">
+      <%= f.submit "Save Changes", :class => "btn btn-monkey" %>
+    </div>
   <% end %>
 </div>
-
-
-<% content_for :sidebar do %>
-    <%= render 'user_sidebar' %>
 <% end %>
-
+<%= render partial: "layouts/two_column_partial" %>

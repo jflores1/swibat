@@ -1,23 +1,27 @@
 <% if @user.professional_educations.any? %>
     <header>
-      <h3>Education</h3>
+      <h2>Education</h2>
     </header>
       <% @user.professional_educations.each do |education| %>
-          <dl class="dl-horizontal">
-            <dt>Attended:</dt>
-            <dd><%= education.school_name %></dd>
-            <% if education.enroll_date || education.graduation_date %>
-                <dt>From:</dt>
-                <dd><%= education.enroll_date if education.enroll_date %> - <%= education.graduation_date if education.graduation_date %> </dd>
-            <% end %>
-            <% if education.field_of_study %>
-                <dt>Studied:</dt>
-                <dd><%= education.field_of_study %></dd>
-            <% end %>
+        <section>
+          <h3>
+            <%= education.school_name %>
             <% if education.degree %>
-                <dt>Earned:</dt>
-                <dd><%= education.degree %></dd>
+              <%= ", #{education.degree}" %>
             <% end %>
-          </dl>
-      <% end %>
+          </h3>
+          <% if education.enroll_date || education.graduation_date %>
+               <p>
+                  <%= education.enroll_date if education.enroll_date %> - 
+                  <%= education.graduation_date if education.graduation_date %> 
+               </p>
+          <% end %>
+
+          <% if education.field_of_study %>
+            <p><%= education.field_of_study %></p>
+          <% end %>
+
+
+        </section>
+    <% end %>
 <% end %>

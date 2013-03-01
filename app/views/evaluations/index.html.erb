@@ -11,6 +11,9 @@
 					Teacher
 				</th>
 				<th>
+					Type
+				</th>
+				<th>
 					Published
 				</th>
 			</tr>
@@ -19,6 +22,7 @@
 			<% @evaluations.each do |evaluation| %>
 				<tr>
 					<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@institution, evaluation) %></td>
+					<td><%= evaluation.eval_type.capitalize if evaluation.eval_type %></td>
 					<td><%= time_ago_in_words evaluation.created_at %> ago</td>
 				</tr>
 			<% end %>
