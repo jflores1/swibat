@@ -2,10 +2,20 @@
 
 <%= render partial: 'shared/user_header', locals: {user: @user} %>
 
-<div class="span12">
-	<%= link_to("Upload a new video", new_video_url(user_id: @user.id) , class: "btn btn-monkey header-button") if can? :upload, Video %> 	
-</div>
+<% content_for :left_column do %>
+	<%= render 'teacher_sidebar_menu' %>
+<% end %>
 
-<%= render partial: 'videos/collection', locals: {videos: @videos} %>
+<% content_for :right_column do %>
+	<div class="span12">
+		<%= link_to("Upload a new video", new_video_url(user_id: @user.id) , class: "btn btn-monkey header-button") if can? :upload, Video %> 	
+	</div>
+
+	<%= render partial: 'videos/collection', locals: {videos: @videos} %>
+<% end %>
+
+<%= render partial: 'layouts/two_column_partial' %>
+
+
 <!--TODO: Add searching on the videos -->
 

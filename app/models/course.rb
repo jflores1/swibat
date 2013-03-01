@@ -72,6 +72,10 @@ class Course < ActiveRecord::Base
     where('user_id IN (?)', followed_user_ids)
   end
 
+  def lesson_count
+    self.units.joins(:lessons).count
+  end
+
 
   # duplication rules
   amoeba do 

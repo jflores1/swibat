@@ -15,22 +15,30 @@
 		</div>
 	<% end %>
 
-	<table class="profile-table">
-		<tr>
-			<th>Title</th>
-			<th>Subject</th>
-			<th>Grade Level</th>
-			<th>Units</th>
-		</tr>
-		<% @courses.each do |course| %>
-			<tr data-link="<%= course_path(course) %>">
-				<td><%= course.course_name %></td>
-				<td><%= course.subject %></td>
-				<td><%= course.grade.grade_level %></td>
-				<td><%= course.units.count %></td>
+	<% if !@courses.any? %>
+		<div class="user-profile">
+      <h3 class="sad-monkey">Sad. It doesn't look like <%= @user.first_name.titleize %> has created any courses yet.</h3>
+    </div>
+	<% else %>
+		<table class="profile-table">
+			<tr>
+				<th>Title</th>
+				<th>Subject</th>
+				<th>Grade Level</th>
+				<th>Units</th>
+				<th>Lessons</th>
 			</tr>
-		<% end %>	
-	</table>
+			<% @courses.each do |course| %>
+				<tr data-link="<%= course_path(course) %>">
+					<td><%= course.course_name %></td>
+					<td><%= course.subject %></td>
+					<td><%= course.grade.grade_level %></td>
+					<td><%= course.units.count %></td>
+					<td><%= course.lesson_count %></td>
+				</tr>
+			<% end %>	
+		</table>
+	<% end %>
 	
 <% end %>
 <%= render partial: 'layouts/two_column_partial' %>
