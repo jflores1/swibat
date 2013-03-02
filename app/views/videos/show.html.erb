@@ -1,36 +1,45 @@
-<%= render partial: 'shared/user_header', locals: {user: @video.user} %>
+<%= render partial: 'shared/user_header', locals: {user: @user} %>
 
-<div class="centered">
-	<header class="course-header bottom-margin">
-		<h2><%= @video.title %></h2>	
-	</header>
-	
-	<p>
-	  <%= raw yt_client.my_video(@video.yt_video_id).embed_html %>
-	</p>
-	<% if @video.lesson %>
+<% content_for :left_column do %>
+	<%= render partial: 'users/teacher_sidebar_menu' %>
+<% end %>
+
+<% content_for :right_column do %>
+
+	<div class="centered">
+		<header class="course-header bottom-margined">
+			<h2><%= @video.title %></h2>	
+		</header>
+		
 		<p>
-		  Lesson: <%= link_to @video.lesson.lesson_title, [@video.lesson.unit, @video.lesson] %>
+		  <%= raw yt_client.my_video(@video.yt_video_id).embed_html %>
 		</p>
-	<% end %>
-	<p>
-	  Uploaded by <%= link_to @video.uploader.full_name, @video.uploader %>, <%= time_ago_in_words @video.created_at %> ago
-	</p>
-	<p>Teacher in this video: <%= link_to @video.user.full_name, @video.user %></p>
-	<p><%= link_to "See other videos of #{@video.user.full_name}", videos_user_path(@video.user) %></p>
-	<p>
-	  <strong>Description</strong><br />
-	  <%= @video.description %>
-	</p>
-	<p style="margin-bottom: 0.5em;">Tags: <span><%= raw @video.tag_list.map {|t| link_to t, "#", class:"tag_link"}.join(" ") %></span>
-	</p>
+		<% if @video.lesson %>
+			<p>
+			  Lesson: <%= link_to @video.lesson.lesson_title, [@video.lesson.unit, @video.lesson] %>
+			</p>
+		<% end %>
+		<p>
+		  Uploaded by <%= link_to @video.uploader.full_name, @video.uploader %>, <%= time_ago_in_words @video.created_at %> ago
+		</p>
+		<p>Teacher in this video: <%= link_to @video.user.full_name, @video.user %></p>
+		<p><%= link_to "See other videos of #{@video.user.full_name}", videos_user_path(@video.user) %></p>
+		<p>
+		  <strong>Description</strong><br />
+		  <%= @video.description %>
+		</p>
+		<p style="margin-bottom: 0.5em;">Tags: <span><%= raw @video.tag_list.map {|t| link_to t, "#", class:"tag_link"}.join(" ") %></span>
+		</p>
 
-	<div>
-	  <%= link_to "Edit", edit_video_path(@video), :class => "btn btn-monkey" if can? :edit, @video %> 
-	  <%= link_to "Delete", video_path(@video), :method => "delete", :class => "btn btn-monkey", :confirm => "Are you sure?" if can? :delete, @video %>
-	</div>      
-	<hr />
-	<%= render :partial => 'comments/comments', :locals => {:commentable => @video} %>
-</div>		
+		<div>
+		  <%= link_to "Edit", edit_video_path(@video), :class => "btn btn-monkey" if can? :edit, @video %> 
+		  <%= link_to "Delete", video_path(@video), :method => "delete", :class => "btn btn-monkey", :confirm => "Are you sure?" if can? :delete, @video %>
+		</div>      
+		<hr />
+		<%= render :partial => 'comments/comments', :locals => {:commentable => @video} %>
+	</div>		
+<% end %>
 
-<!--TODO: link to on line 22 should take user to filtered index page-->
+<%= render 'layouts/two_column_partial' %>
+
+	<!--TODO: link to on line 22 should take user to filtered index page-->

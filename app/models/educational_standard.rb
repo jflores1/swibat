@@ -32,6 +32,16 @@ class EducationalStandard < ActiveRecord::Base
     joins(lesson_standards: :lesson).where('lessons.id in (?)', covered_lesson_ids)
   end
 
+  def self.standards_not_covered_by(user)
+    covered_lesson_ids = self.covered_by_user(user)
+    where("educational_standards.id != (?)", covered_lesson_ids)
+  end
+
+  def self.filtered_by_grade(grade)
+    grade_level = grade.grade_level
+    includes(standard_strand: {educational_domain: :grades}).where('grades.grade_level = ?', grade_level)
+  end
+
   def display_value
     result = self.description
     result

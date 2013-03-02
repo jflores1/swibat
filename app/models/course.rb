@@ -73,7 +73,7 @@ class Course < ActiveRecord::Base
   end
 
   def lesson_count
-    self.units.joins(:lessons).count
+    self.units.includes(:lessons).count
   end
 
 
