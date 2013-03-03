@@ -106,7 +106,9 @@ class User < ActiveRecord::Base
     user.role = role.downcase
   end
 
-  after_create :signup_confirmation
+  # Commenting it out due to prevent sending e-mails to real email addresses which
+  # were imported for presentation purposes
+  # after_create :signup_confirmation
 
   ROLES = %w[admin school_admin teacher]
 

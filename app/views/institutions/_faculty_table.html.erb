@@ -21,35 +21,45 @@
 				<td>
 
 					<div class="btn-group">
-					  <a class="btn dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
+					  <a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
 					    <i class='icon-cloud-upload'></i> Add Observation
 					    <span class="caret"></span>
 					  </a>
 					  <ul class="dropdown-menu">
-					    <% @institution.evaluation_templates.published.each do |template| %>
+					  	<% if @institution.evaluation_templates.published.any? %>
+					  		<% @institution.evaluation_templates.published.each do |template| %>
 					    	<li>
 					    		<%= link_to template.name, eval_user_path(faculty, eval_type: "observation", template_id: template.id) %>
 					    	</li>
 					    <% end %>
+					  	<% else %>
+					  		<li>No observation templates</li>
+					  	<% end %>
+					    
 					  </ul>
-					</div>
-
-					<span><%= link_to "<i class='icon-film'></i> Upload Video".html_safe, videos_user_path(faculty), class:"upload-video btn btn-monkey", data: {toggle: "tooltip", title: "Upload Videos"} %>
-					</span>
+					</div>				
 
 					<div class="btn-group">
-					  <a class="btn dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
+					  <a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
 					    <i class='icon-file-alt'></i> Add Evaluation
 					    <span class="caret"></span>
 					  </a>
 					  <ul class="dropdown-menu">
-					    <% @institution.evaluation_templates.published.each do |template| %>
-					    	<li>
-					    		<%= link_to template.name, eval_user_path(faculty, eval_type: "evaluation", template_id: template.id) %>
-					    	</li>
-					    <% end %>
+					  	<% if @institution.evaluation_templates.published.any? %>
+						    <% @institution.evaluation_templates.published.each do |template| %>
+						    	<li>
+						    		<%= link_to template.name, eval_user_path(faculty, eval_type: "evaluation", template_id: template.id) %>
+						    	</li>
+						    <% end %>
+						  <% else %>
+						  	<li>No evaluation templates</li>
+						  <% end %>
 					  </ul>
 					</div>
+
+					<span><%= link_to "<i class='icon-film'></i>".html_safe, videos_user_path(faculty), class:"upload-video btn btn-small btn-monkey", data: {toggle: "tooltip", title: "Upload Videos"} %>
+					</span>
+					
 				</td>
 			</tr>
 		<% end %>
