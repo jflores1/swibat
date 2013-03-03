@@ -2,10 +2,7 @@
 	<thead>
 		<tr>
 			<th>Faculty Member</th>
-			<th>Last Observation</th>
-			<th>Next Observation</th>
-			<th>Last Evaluation</th>
-			<th>Next Evaluation</th>
+			<th>Title</th>
 			<th></th>
 
 		</tr>
@@ -14,10 +11,7 @@
 		<% faculty.each do |faculty| %>
 			<tr id="user_<%= faculty.id %>">
 				<td><%= link_to "#{faculty.full_name}", user_path(faculty) %></td>
-				<td>last observation date</td>
-				<td>next obs date</td>
-				<td>last evaluation date</td>
-				<td>next eval date</td>
+				<td><%= faculty.profile_summary %></td>
 				<td>
 
 					<div class="btn-group">

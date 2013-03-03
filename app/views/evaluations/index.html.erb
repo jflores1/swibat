@@ -1,37 +1,48 @@
-<header class="course-header">
-	<h2>Faculty Evaluations and Observations</h2>	
-	<%= link_to "Manage Evaluation Templates", institution_evaluation_templates_path(@institution), class: "btn btn-monkey pull-right" %> <br /><br />
-</header>
+<%= render partial: "shared/user_header", locals: {user: current_user} %>
 
-<% if @evaluations && @evaluations.any? %>
-	<table class="table faculty-table">
-		<thead>
-			<tr>
-				<th>
-					Teacher
-				</th>
-				<th>
-					Evaluation Template
-				</th>
-				<th>
-					Type
-				</th>
-				<th>
-					Published
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @evaluations.each do |evaluation| %>
-				<tr>
-					<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@institution, evaluation) %></td>
-					<td><%= link_to evaluation.evaluation_template.name, [@institution, evaluation.evaluation_template] %></td>
-					<td><%= evaluation.eval_type.capitalize if evaluation.eval_type %></td>
-					<td><%= time_ago_in_words evaluation.created_at %> ago</td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
-<% else %>
-	There are no evaluations yet.
-<% end %>
+<div class="course-overview" xmlns="http://www.w3.org/1999/html">
+  <% content_for :left_column do %>
+    <%= render partial: '/institutions/sidebar', locals: {institution: @institution} %>
+  <% end %>
+
+  <% content_for :right_column do %>
+  	
+		<h2>Faculty Evaluations and Observations</h2>	
+		<%= link_to "Manage Evaluation Templates", institution_evaluation_templates_path(@institution), class: "btn btn-monkey pull-right" %> <br /><br />
+
+		<% if @evaluations && @evaluations.any? %>
+			<table class="table faculty-table">
+				<thead>
+					<tr>
+						<th>
+							Teacher
+						</th>
+						<th>
+							Evaluation Template
+						</th>
+						<th>
+							Type
+						</th>
+						<th>
+							Published
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @evaluations.each do |evaluation| %>
+						<tr>
+							<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@institution, evaluation) %></td>
+							<td><%= link_to evaluation.evaluation_template.name, [@institution, evaluation.evaluation_template] %></td>
+							<td><%= evaluation.eval_type.capitalize if evaluation.eval_type %></td>
+							<td><%= time_ago_in_words evaluation.created_at %> ago</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			There are no evaluations yet.
+		<% end %>
+  <% end %>
+
+  <%= render partial: "layouts/two_column_partial" %>
+</div>

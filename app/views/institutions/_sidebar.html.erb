@@ -1,0 +1,15 @@
+<ul class="nav sidebar-nav">
+    <li>
+      <%= link_to "Details<i class='icon-chevron-right'></i>".html_safe, institution %>
+    </li>  
+    <li>
+      <%= link_to "Faculty<i class='icon-chevron-right'></i>".html_safe, faculty_institution_path(institution) %>
+    </li>  
+    <li>
+      <%= link_to "Evaluations & Observations<i class='icon-chevron-right'></i>".html_safe, institution_evaluations_path(@institution) %>
+    </li>
+    <li>
+      <%= link_to "Evaluation Templates<i class='icon-chevron-right'></i>".html_safe, institution_evaluation_templates_path(@institution) %>
+    </li>
+</ul>
+
