@@ -104,7 +104,7 @@ class UsersController < ApplicationController
     @evaluation = @user.teacher_evaluations.build
     @evaluation.eval_type = params[:eval_type] ? params[:eval_type] : 'evaluation'
     @institution = @user.institution
-    @evaluation.evaluation_template = @institution.evaluation_template
+    @evaluation.evaluation_template = @institution.evaluation_templates.find(params[:template_id])
 
     @evaluation.evaluation_template.evaluation_domains.each do |domain|
       domain.evaluation_criteria.each do |criterion|

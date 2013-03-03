@@ -1,6 +1,6 @@
 <header class="course-header">
 	<h2>Faculty Evaluations and Observations</h2>	
-	<%= link_to "Edit Evaluation Template", institution_evaluation_template_index_path(@institution), class: "btn btn-monkey pull-right" %> <br /><br />
+	<%= link_to "Manage Evaluation Templates", institution_evaluation_templates_path(@institution), class: "btn btn-monkey pull-right" %> <br /><br />
 </header>
 
 <% if @evaluations && @evaluations.any? %>
@@ -9,6 +9,9 @@
 			<tr>
 				<th>
 					Teacher
+				</th>
+				<th>
+					Evaluation Template
 				</th>
 				<th>
 					Type
@@ -22,6 +25,7 @@
 			<% @evaluations.each do |evaluation| %>
 				<tr>
 					<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@institution, evaluation) %></td>
+					<td><%= link_to evaluation.evaluation_template.name, [@institution, evaluation.evaluation_template] %></td>
 					<td><%= evaluation.eval_type.capitalize if evaluation.eval_type %></td>
 					<td><%= time_ago_in_words evaluation.created_at %> ago</td>
 				</tr>

@@ -1,9 +1,9 @@
 class EvaluationCriteriaController < ApplicationController
 
-	before_filter :load_institution_and_domain
+	before_filter :load_institution_template_and_domain
 
 	def new
-		@criterion = @domain.evaluation_criteria.build
+		@criterion = @domain.evaluation_criteria.build		
 	end
 
 	def create
@@ -20,8 +20,9 @@ class EvaluationCriteriaController < ApplicationController
 	end
 
 	private
-		def load_institution_and_domain
-			@institution = Institution.find(params[:institution_id])			
+		def load_institution_template_and_domain
+			@institution = Institution.find(params[:institution_id])		
+			@template = EvaluationTemplate.find(params[:evaluation_template_id])	
 			@domain = EvaluationDomain.find(params[:evaluation_domain_id])
 		end
 

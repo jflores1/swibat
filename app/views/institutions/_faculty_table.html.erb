@@ -19,16 +19,41 @@
 				<td>last evaluation date</td>
 				<td>next eval date</td>
 				<td>
-					<span>
-						<%= link_to "<i class='icon-cloud-upload'></i>".html_safe, eval_user_path(faculty, eval_type: "observation"), class:"upload-observation btn btn-monkey", data: {toggle: "tooltip", title: "Upload Observation"} %>
+
+					<div class="btn-group">
+					  <a class="btn dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
+					    <i class='icon-cloud-upload'></i> Add Observation
+					    <span class="caret"></span>
+					  </a>
+					  <ul class="dropdown-menu">
+					    <% @institution.evaluation_templates.published.each do |template| %>
+					    	<li>
+					    		<%= link_to template.name, eval_user_path(faculty, eval_type: "observation", template_id: template.id) %>
+					    	</li>
+					    <% end %>
+					  </ul>
+					</div>
+
+					<span><%= link_to "<i class='icon-film'></i> Upload Video".html_safe, videos_user_path(faculty), class:"upload-video btn btn-monkey", data: {toggle: "tooltip", title: "Upload Videos"} %>
 					</span>
-					<span><%= link_to "<i class='icon-film'></i>".html_safe, videos_user_path(faculty), class:"upload-video btn btn-monkey", data: {toggle: "tooltip", title: "Upload Videos"} %>
-					</span>
-					<span><%= link_to "<i class='icon-file-alt'></i>".html_safe, eval_user_path(faculty, eval_type: "evaluation"), class:"add-evaluation btn btn-monkey", data: {toggle: "tooltip", title: "Add Evaluation"} %>
-					</span>
+
+					<div class="btn-group">
+					  <a class="btn dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
+					    <i class='icon-file-alt'></i> Add Evaluation
+					    <span class="caret"></span>
+					  </a>
+					  <ul class="dropdown-menu">
+					    <% @institution.evaluation_templates.published.each do |template| %>
+					    	<li>
+					    		<%= link_to template.name, eval_user_path(faculty, eval_type: "evaluation", template_id: template.id) %>
+					    	</li>
+					    <% end %>
+					  </ul>
+					</div>
 				</td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
 <!-- TODO: Add sorting on this table. Maybe filtering -->
+

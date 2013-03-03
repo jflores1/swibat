@@ -3,7 +3,7 @@ class EvaluationsController < ApplicationController
 
   
   def index
-    @evaluations = @institution.evaluation_template.evaluations if @institution.evaluation_template
+    @evaluations = @institution.evaluations
   end
 
   def show

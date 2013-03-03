@@ -1,4 +1,4 @@
-<%= form_for [institution, institution.evaluation_template, domain], remote: true do |f| %>
+<%= form_for [institution, template, domain], remote: true do |f| %>
     <div class="control-group <%= "error" if domain.errors.any? %>">
         <div class="controls">
             <%= f.text_field :name, placeholder: "Enter domain name" %> 

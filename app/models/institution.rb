@@ -20,7 +20,8 @@
 class Institution < ActiveRecord::Base
   attr_accessible :address_line_1, :address_line_2, :city, :enrollment, :name, :num_faculty, :state, :zip_code, :users_attributes
   has_many :users
-  has_one :evaluation_template
+  has_many :evaluation_templates
+  has_many :evaluations, through: :evaluation_templates
 
   validates :name, presence: true
 

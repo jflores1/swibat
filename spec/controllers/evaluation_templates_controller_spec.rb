@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe EvaluationTemplateController do
+describe EvaluationTemplatesController do
 
   describe "GET 'index'" do
     it "returns http success" do

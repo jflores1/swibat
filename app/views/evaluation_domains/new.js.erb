@@ -1,4 +1,4 @@
-var form = $('<%= j render partial: "form", locals: {domain: @domain, institution: @institution} %>');
+var form = $('<%= j render partial: "form", locals: {domain: @domain, institution: @institution, template: @template} %>');
 var form_div = $('#domain-form');
 form_div.empty();
 form_div.append(form);

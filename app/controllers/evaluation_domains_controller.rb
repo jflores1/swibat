@@ -1,12 +1,12 @@
 class EvaluationDomainsController < ApplicationController
-	before_filter :load_institution
+	before_filter :load_institution_and_template
 
 	def new
-		@domain = @institution.evaluation_template.evaluation_domains.build
+		@domain = @template.evaluation_domains.build
 	end
 
 	def create
-		@domain = @institution.evaluation_template.evaluation_domains.build(params[:evaluation_domain])
+		@domain = @template.evaluation_domains.build(params[:evaluation_domain])
 		if @domain.save
 		else
 			render :new
@@ -19,8 +19,9 @@ class EvaluationDomainsController < ApplicationController
 	end
 
 	private
-		def load_institution
+		def load_institution_and_template
 			@institution = Institution.find(params[:institution_id])			
+			@template = EvaluationTemplate.find(params[:evaluation_template_id])		
 		end
 
 

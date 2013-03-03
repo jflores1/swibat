@@ -1,4 +1,4 @@
-<%= form_for [institution, institution.evaluation_template, domain, criterion], remote: true do |f| %>
+<%= form_for [institution, template, domain, criterion], remote: true do |f| %>
     <div class="control-group <%= "error" if criterion.errors.any? %>">
         <div class="controls">
             <%= f.text_field :contents, placeholder: "Enter criterion" %> 
