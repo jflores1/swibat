@@ -89,7 +89,7 @@ class Ability
     if user.role == "school_admin"
       can :videos, User, institution_id: user.institution_id 
       can :manage, Institution, id: user.institution_id      
-
+      can :manage, TeacherEvaluation
       can [:eval, :evaluations], User, institution_id: user.institution_id
       can :manage, Video do |video|
         video.try(:user).try(:institution_id) == user.institution_id

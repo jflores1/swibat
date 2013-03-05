@@ -9,9 +9,47 @@
 <% end %>
 
 <% content_for :right_column do %>
+	<% if can? :eval, @user %>
+		<div class="btn-group">
+		  <a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
+		    <i class='icon-cloud-upload'></i> Add Observation
+		    <span class="caret"></span>
+		  </a>
+		  <ul class="dropdown-menu">
+		  	<% if @user.institution.evaluation_templates.published.any? %>
+		  		<% @user.institution.evaluation_templates.published.each do |template| %>
+		    	<li>
+		    		<%= link_to template.name, eval_user_path(@user, eval_type: "observation", template_id: template.id) %>
+		    	</li>
+		    <% end %>
+		  	<% else %>
+		  		<li>No observation templates</li>
+		  	<% end %>
+		    
+		  </ul>
+		</div>				
 
+		<div class="btn-group">
+		  <a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
+		    <i class='icon-file-alt'></i> Add Evaluation
+		    <span class="caret"></span>
+		  </a>
+		  <ul class="dropdown-menu">
+		  	<% if @user.institution.evaluation_templates.published.any? %>
+			    <% @user.institution.evaluation_templates.published.each do |template| %>
+			    	<li>
+			    		<%= link_to template.name, eval_user_path(@user, eval_type: "evaluation", template_id: template.id) %>
+			    	</li>
+			    <% end %>
+			  <% else %>
+			  	<li>No evaluation templates</li>
+			  <% end %>
+		  </ul>
+		</div>
+		<br /><br />
+	<% end %>
+	
 	<% if @evaluations && @evaluations.any? %>
-		<%= link_to "Create a new Evaluation", eval_user_path(@user), class: "btn btn-monkey" if can? :eval, @user %>
 		<table class="table faculty-table">
 			<thead>
 				<tr>

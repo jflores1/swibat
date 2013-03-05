@@ -1,6 +1,6 @@
 class EvaluationsController < ApplicationController
   before_filter :load_institution, :authenticate_user!
-  load_and_authorize_resource
+  load_and_authorize_resource :class => "TeacherEvaluation"
 
   
   def index
