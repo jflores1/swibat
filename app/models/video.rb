@@ -19,11 +19,12 @@ class Video < ActiveRecord::Base
   acts_as_commentable
   acts_as_taggable
   
-  attr_accessible :yt_video_id, :description, :title, :is_complete, :user_id, :lesson_id, :tag_list
+  attr_accessible :yt_video_id, :description, :title, :is_complete, :user_id, :lesson_id, :tag_list, :observation_id, :observation
 
   belongs_to :lesson
   belongs_to :user
   belongs_to :uploader, class_name: "User"
+  belongs_to :observation, class_name: "TeacherEvaluation"
 
   scope :completes,   where(:is_complete => true)
   scope :incompletes, where(:is_complete => false)

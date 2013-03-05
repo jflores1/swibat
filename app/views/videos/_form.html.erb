@@ -14,6 +14,12 @@
   <%= f.label :lesson, "Which lesson is this associated with?" %>
   <%= f.select :lesson_id, @video.user.lessons.collect{ |l| [l.lesson_title, l.id] }, {:include_blank => 'Select a lesson'} %>
 </div>
+
+<div class="group">
+  <%= f.label :observation, "Is this video associated with an observation?" %>
+  <%= f.select :observation_id, @observations.collect{ |o| [o.created_at.strftime("%d %B %Y"), o.id] }, {:include_blank => 'Select an observation'} %>
+</div>
+
 <%= f.hidden_field :user_id %>
 <div class="group">
   <%= f.label :tag_list, "Tags" %>

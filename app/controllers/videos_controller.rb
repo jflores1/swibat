@@ -13,7 +13,9 @@ class VideosController < ApplicationController
 
 	def new    
 		@video = Video.new
+    @video.observation = TeacherEvaluation.find(params[:observation_id]) if params[:observation_id]
     @video.user = User.find(params[:user_id]) if params[:user_id]
+    @observations = @video.user.teacher_evaluations.where(eval_type: "observation").order("created_at desc")
     @video.lesson = Lesson.find(params[:lesson_id]) if params[:lesson_id]
 	end
 

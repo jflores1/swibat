@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303144819) do
+ActiveRecord::Schema.define(:version => 20130305203147) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -485,12 +485,13 @@ ActiveRecord::Schema.define(:version => 20130303144819) do
     t.string   "title"
     t.text     "description"
     t.string   "yt_video_id"
-    t.boolean  "is_complete", :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "is_complete",    :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "lesson_id"
     t.integer  "user_id"
     t.integer  "uploader_id"
+    t.integer  "observation_id"
   end
 
 end

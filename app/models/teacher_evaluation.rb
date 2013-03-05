@@ -15,6 +15,7 @@ class TeacherEvaluation < ActiveRecord::Base
   belongs_to :teacher, class_name: :User
   belongs_to :evaluation_template
   has_many :evaluation_ratings, foreign_key: :evaluation_id, dependent: :destroy
+  has_one :video, foreign_key: :observation_id
 
   accepts_nested_attributes_for :evaluation_ratings
 end
