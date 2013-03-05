@@ -6,7 +6,7 @@
       <%= link_to "Courses <i class='icon-chevron-right'></i>".html_safe, courses_user_path(@user), class:"user-courses" %>
     </li>
     <li>
-      <a href="#">Maps <i class="icon-chevron-right"></i></a>
+      <%= link_to "Maps<i class='icon-chevron-right'></i>".html_safe, content_map_user_path(@user), class: "user-maps" %>
     </li>
     <li>
       <a href="#">Network <i class="icon-chevron-right"></i></a>
@@ -17,9 +17,11 @@
     <li>
       <a href="#">Observations <i class="icon-chevron-right"></i></a>
     </li>
-    <li>
-      <a href="#">Evaluations <i class="icon-chevron-right"></i></a>
-    </li>
+    <% if can? :read, @user.evaluations %>
+      <li>
+        <%= link_to "Evaluations <i class='icon-chevron-right'></i>".html_safe, evaluations_user_path(@user), class: "user-evals" %>
+      </li>
+    <% end %>
     <li>
       <a href="#">Professional Goals <i class="icon-chevron-right"></i></a>
     </li>
