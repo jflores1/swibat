@@ -83,6 +83,20 @@ describe "UserPages" do
             current_path.should eq(courses_user_path(user))
           end
         end
+
+        describe "cannot see link to access to the user's evaluations" do
+          before {visit user_path(user)}
+          it "does not have a link to the evaluations page" do
+            page.should_not have_content("Evaluations")
+          end
+        end
+
+        describe "from the user's profile page" do
+          it "can access mapped lessons" do
+            find_link("Maps").click
+            current_path.should eq(content_map_user_path(user))
+          end
+        end
       end
 
       context "a user belonging to a school" do
@@ -149,6 +163,13 @@ describe "UserPages" do
             find(".dropdown-toggle").click
             find_link("Videos").click
             current_path.should eq(videos_user_path(@user))
+          end
+        end
+
+        describe "can access evaluations" do
+          it "from the user's profile page" do
+            find_link("Evaluations").click
+            current_path.should eq(evaluations_user_path(@user))
           end
         end
       end

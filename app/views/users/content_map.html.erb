@@ -1,39 +1,50 @@
 <% provide(:title, "#{@user.full_name}'s Content Map") %>
+
+<% content_for :left_column do %>
+	<%= render 'users/teacher_sidebar_menu' %>
+<% end %>
+
+<% content_for :right_column do %>
+
 <div class="row-fluid">
-	<%= render partial: 'shared/user_header', locals: {user: @user} %>
 
-	<div class="tabbable">
-		<ul class="nav nav-tabs">
-			<li class="active">
-				<a href="#unmapped-lessons" data-toggle="tab">Unmapped Lessons</a>
-			</li>
-			<li>
-				<a href="#mapped-lessons" data-toggle="tab">Mapped Lessons</a>
-			</li>			
-		</ul>
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#unmapped-lessons" data-toggle="tab">Unmapped Lessons</a>
+				</li>
+				<li>
+					<a href="#mapped-lessons" data-toggle="tab">Mapped Lessons</a>
+				</li>			
+			</ul>
 
-		<div class="tab-content">
+			<div class="tab-content">
 
-			<div class="standards-container tab-pane" id="mapped-lessons">
+				<div class="standards-container tab-pane" id="mapped-lessons">
 
-				<% if @mapped_lessons.count == 0 && @user.lessons.count == 0 %>
-					<p>You haven't added any lessons yet! Go add some, for cryin' out loud!</p>
-				<% else %>
-					<%= render 'users/standards_covered_table' %>
-				<% end %>		
+					<% if @mapped_lessons.count == 0 && @user.lessons.count == 0 %>
+						<p>You haven't added any lessons yet! Go add some, for cryin' out loud!</p>
+					<% else %>
+						<%= render 'users/standards_covered_table' %>
+					<% end %>		
+				</div>
+
+				<div class="standards-container tab-pane active" id="unmapped-lessons">
+					<% if @unmapped_lessons.count > 0 %>
+						<%= render 'users/unmapped_lessons' %>
+					<% elsif @user.lessons.count == 0 %>
+						<p>It doesn't look like you've added any lessons yet! Go add some, for pete's sake!</p>
+					<% else %>
+						<p>Hooray! You've mapped all your content! Give yourself one of those coveted gold stars!</p>
+					<% end %>
+				</div>
 			</div>
 
-			<div class="standards-container tab-pane active" id="unmapped-lessons">
-				<% if @unmapped_lessons.count > 0 %>
-					<%= render 'users/unmapped_lessons' %>
-				<% elsif @user.lessons.count == 0 %>
-					<p>It doesn't look like you've added any lessons yet! Go add some, for pete's sake!</p>
-				<% else %>
-					<p>Hooray! You've mapped all your content! Give yourself one of those coveted gold stars!</p>
-				<% end %>
-			</div>
 		</div>
 
 	</div>
 
-</div>
+<% end %>
+
+<%= render 'layouts/two_column_partial' %>
+

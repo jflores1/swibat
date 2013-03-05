@@ -82,6 +82,7 @@ class Ability
 
       can :vote, :all
       can :flag, Flag
+      can :evaluations, User, user_id: user.id
 
     end
 

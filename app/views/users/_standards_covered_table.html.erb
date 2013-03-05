@@ -1,8 +1,8 @@
-<table class="standards-table">
+<table class="profile-table">
 	<thead>
 		<tr>
-			<th>Standard</th>
 			<th>Description</th>
+			<th>Standard</th>
 			<th>Lessons Where Covered</th>
 		</tr>
 	</thead>
@@ -10,10 +10,10 @@
 		<% @mapped_lessons.each do |standard| %>
 		<tr>
 			<td>
-				<%= standard.name %>
+				<%= standard.description %>
 			</td>
 			<td>
-				<%= standard.description %>
+				<%= standard.name %>
 			</td>
 			<td>
 				<% standard.lesson_standards.each do |lesson| %>

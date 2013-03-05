@@ -2,31 +2,45 @@
 
 <%= render :partial => 'shared/user_header', locals: {user: @user} %>
 
-<h1>Evaluations and Observations for <%= @user.full_name %></h1>
-
-<% if @evaluations && @evaluations.any? %>
-	<table class="table faculty-table">
-		<thead>
-			<tr>
-				<th>
-					Teacher
-				</th>
-				<th>
-					Published
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @evaluations.each do |evaluation| %>
-				<tr>
-					<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@user.institution, evaluation) %></td>
-					<td><%= time_ago_in_words evaluation.created_at %> ago</td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
-<% else %>
-	There are no evaluations yet.
+<% content_for :left_column do %>
+	
+	<%= render 'users/teacher_sidebar_menu' %>
+	
 <% end %>
 
-<%= link_to "Create a new Evaluation", eval_user_path(@user), class: "btn btn-monkey" if can? :eval, @user %>
+<% content_for :right_column do %>
+
+	<% if @evaluations && @evaluations.any? %>
+		<%= link_to "Create a new Evaluation", eval_user_path(@user), class: "btn btn-monkey" if can? :eval, @user %>
+		<table class="table faculty-table">
+			<thead>
+				<tr>
+					<th>
+						Teacher
+					</th>
+					<th>
+						Published
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @evaluations.each do |evaluation| %>
+					<tr>
+						<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@user.institution, evaluation) %></td>
+						<td><%= time_ago_in_words evaluation.created_at %> ago</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% else %>
+		<div class="user-profile">
+       <h3 class="sad-monkey">Sad. It doesn't look like <%= @user.first_name.titleize %> has had any evaluations yet.
+       	<span><br/><%= link_to "Add One", eval_user_path(@user), class: "btn btn-monkey" if can? :eval, @user %></span>
+       </h3>
+    </div>
+	<% end %>
+
+	
+<% end %>
+
+<%= render 'layouts/two_column_partial' %>
