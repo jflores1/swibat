@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-class Activity < ActiveRecord::Base
+class LessonActivity < ActiveRecord::Base
   attr_accessible :activity, :duration, :agent
   belongs_to :lesson
 

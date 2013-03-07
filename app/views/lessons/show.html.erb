@@ -81,9 +81,9 @@
               <%= link_to '<i class="icon-plus"></i>'.html_safe, "#", class:"add-new-activity" if can? :edit, @unit %>
             </span>
         </h3>
-        <% if @lesson.activities.count > 0 %>
+        <% if @lesson.lesson_activities.count > 0 %>
             <ul>
-              <% @lesson.activities.each do |activity| %>
+              <% @lesson.lesson_activities.each do |activity| %>
                   <li id="<%= dom_id(activity) %>">
                     <%= activity.activity %> - <%= activity.duration %>, <span><%= activity.agent %></span>
                     <span><%= link_to '<i class="icon-trash"></i>'.html_safe, [activity.lesson, activity], method: :delete, remote: true if can? :destroy, activity %></span>

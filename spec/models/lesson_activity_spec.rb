@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: activities
+# Table name: lesson_activities
 #
 #  id         :integer          not null, primary key
 #  activity   :string(255)
@@ -13,9 +13,9 @@
 
 require 'spec_helper'
 
-describe Activity do
+describe LessonActivity do
   context "A new activity" do
-    let(:activity){Activity.new(activity:"Lecture", duration:"15 minutes", agent:"Teacher")}
+    let(:activity){LessonActivity.new(activity:"Lecture", duration:"15 minutes", agent:"Teacher")}
     describe "The Model" do
       subject {activity}
       it {should respond_to(:activity)}
@@ -28,7 +28,7 @@ describe Activity do
       describe "A valid model" do
         it "creates an activity" do
           build_stubbed(:activity)
-          expect{activity.save!}.to change(Activity, :count).by(1)
+          expect{activity.save!}.to change(LessonActivity, :count).by(1)
         end
       end
 
@@ -48,8 +48,8 @@ describe Activity do
 
     describe "Associations" do
       let(:lesson){create(:lesson)}
-      before{@activity = lesson.activities.build(activity:"A new activity", duration:"10 minutes", agent:"Student")}
-      it {expect {lesson.save!}.to change(Activity, :count).by(1)}
+      before{@activity = lesson.lesson_activities.build(activity:"A new activity", duration:"10 minutes", agent:"Student")}
+      it {expect {lesson.save!}.to change(LessonActivity, :count).by(1)}
     end
   end
 

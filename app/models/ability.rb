@@ -46,7 +46,7 @@ class Ability
       can :manage, Answer do |answer|
         answer.new_record? || answer.try(:user).try(:id) == user.id
       end
-      can :manage, Activity do |activity|
+      can :manage, LessonActivity do |activity|
         activity.new_record? || activity.try(:user).try(:id) == user.id
       end
 

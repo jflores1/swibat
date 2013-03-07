@@ -39,8 +39,8 @@ class LessonPresenter < BasePresenter
   end
 
   def lesson_activity_row
-    handle_none(lesson.activities) do
-      lesson.activities.collect do |lesson_activity|
+    handle_none(lesson.lesson_activities) do
+      lesson.lesson_activities.collect do |lesson_activity|
         h.content_tag :tr do
           h.concat(h.content_tag :td, "#{lesson_activity.activity}")
           h.concat(h.content_tag :td, "#{lesson_activity.duration}")

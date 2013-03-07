@@ -22,7 +22,7 @@ class Lesson < ActiveRecord::Base
   has_many :objectives, as: :objectiveable, dependent: :destroy
   has_many :assessments, as: :assessable, dependent: :destroy
   has_many :resources, dependent: :destroy
-  has_many :activities, dependent: :destroy
+  has_many :lesson_activities, dependent: :destroy
   belongs_to :unit
   has_many :flags, :as => :flaggable, dependent: :destroy
 
@@ -35,7 +35,7 @@ class Lesson < ActiveRecord::Base
   accepts_nested_attributes_for :resources, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :objectives, :reject_if => lambda { |a| a[:objective].blank? }, allow_destroy: true
   accepts_nested_attributes_for :assessments, :reject_if => lambda { |a| a[:assessment_name].blank? }, allow_destroy: true
-  accepts_nested_attributes_for :activities, :reject_if => lambda { |a| a[:activity].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :lesson_activities, :reject_if => lambda { |a| a[:activity].blank? }, allow_destroy: true
 
   has_reputation :votes, source: :user, aggregated_by: :sum
 

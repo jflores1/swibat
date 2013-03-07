@@ -137,22 +137,6 @@ describe "UnitPages" do
       page.should have_selector("h2", text: "#{unit.lessons.first.lesson_title}")
     end
 
-    #displays lesson accordion
-    #describe "The lesson accordion" do
-    #  let!(:lesson){create(:lesson, unit: unit)}
-    #  let!(:activity){lesson.activities.create(activity:"Quiz", duration: "15 minutes", agent: "Teacher")}
-    #  before {visit course_unit_path(course, unit)}
-    #  it {should have_selector("h2", text: "Lessons")}
-    #  it "should have a link to add lessons" do
-    #    find("#add-lesson").click
-    #    current_path.should eq(new_unit_lesson_path(unit))
-    #  end
-    #  it "should have activity titles" do
-    #    page.should have_content("Quiz")
-    #  end
-    #end
-
-
     context "for the owning user" do 
       let(:course){create(:course)}
       let(:unit){create(:unit)}

@@ -1,6 +1,6 @@
-class CreateActivities < ActiveRecord::Migration
+class CreateLessonActivities < ActiveRecord::Migration
   def change
-    create_table :activities do |t|
+    create_table :lesson_activities do |t|
       t.string  :activity
       t.string  :duration
       t.string  :agent
@@ -8,6 +8,6 @@ class CreateActivities < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :activities, :lesson_id
+    add_index :lesson_activities, :lesson_id
   end
 end

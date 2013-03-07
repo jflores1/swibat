@@ -1,12 +1,12 @@
-class ActivitiesController < ApplicationController
+class LessonActivitiesController < ApplicationController
   before_filter :find_lesson
 
   def new
-    @activity = Activity.new
+    @activity = LessonActivity.new
   end
 
   def create
-    @activity = @lesson.activities.create(params[:activity])
+    @activity = @lesson.lesson_activities.create(params[:lesson_activity])
     if @activity.save!
       respond_to do |format|
         format.js
@@ -17,7 +17,7 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    @activity = @lesson.activities.find(params[:id])
+    @activity = @lesson.lesson_activities.find(params[:id])
     @activity.destroy
     respond_to do |format|
       format.js

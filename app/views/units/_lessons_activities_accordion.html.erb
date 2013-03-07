@@ -10,7 +10,7 @@
           <% end %>
         </div>
         <div id="collapse_<%= lesson.id %>" class="accordion-body collapse">
-          <% lesson.activities.each do |activity| %>
+          <% lesson.lesson_activities.each do |activity| %>
               <div class="accordion-inner">
                 <%= activity.activity %>  (<%= activity.duration %>)
               </div>

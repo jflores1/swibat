@@ -1,4 +1,4 @@
-<%= form_for [@lesson, @lesson.activities.build], remote: true do |activity| %>
+<%= form_for [@lesson, @lesson.lesson_activities.build], remote: true do |activity| %>
     <%= render 'shared/form_error_messages', object: activity.object %>
     <div class="span12">
       <%= activity.label :activity %>

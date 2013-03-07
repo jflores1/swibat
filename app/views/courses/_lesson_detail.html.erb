@@ -41,10 +41,10 @@
 
     <section class="course-info">
       <header>
-        <h2>Lesson <%= "Activity".pluralize(lesson.activities.count) %></h2>
+        <h2>Lesson <%= "Activity".pluralize(lesson.lesson_activities.count) %></h2>
       </header>
       <article>
-        <% if lesson.activities.any? %>
+        <% if lesson.lesson_activities.any? %>
             <table class="activities">
               <thead>
                 <tr>

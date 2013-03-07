@@ -1,0 +1,5 @@
+var activity_row = $('<%= j(render(:partial => "lesson_activities/activity", :locals => {:activity => @activity}))%>');
+var lesson_activities_list = $('#activities ul');
+lesson_activities_list.append(activity_row);
+$('div#activity-form').hide();
+

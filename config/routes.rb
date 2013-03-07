@@ -97,7 +97,7 @@ Swibat::Application.routes.draw do
   resources :lessons do    
     resources :objectives
     resources :assessments
-    resources :activities
+    resources :lesson_activities
     resources :comments, :only => [:create, :destroy]      
     
     member do
