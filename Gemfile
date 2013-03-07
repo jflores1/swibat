@@ -74,6 +74,7 @@ group :assets do
   gem 'jquery-rails'
   gem 'jquery_datepicker'
   gem 'font-awesome-rails'
+  gem 'angularjs-rails'
 end
 
 
