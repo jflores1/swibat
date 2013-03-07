@@ -15,6 +15,8 @@
 //= require jquery-ui
 //= require bootstrap
 //= require bootstrap-wysihtml5
+//= require angular
+//= require angular-resource
 //= require best_in_place.purr
 //= require best_in_place
 //= require_directory .
