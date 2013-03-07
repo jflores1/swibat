@@ -1,0 +1,13 @@
+<div class="activity-owner-image">
+	<%= link_to image_tag(activity.owner.image.url(:x50)), activity.owner %> 
+</div>
+<div class="activity">		
+	<div class="activity-header"><%= link_to activity.owner.full_name, activity.owner %> is now following</div>
+	<div class="activity-content">
+		<%= link_to image_tag(activity.recipient.image.url(:x50), class:"x30"), activity.recipient %> 
+		<%= link_to activity.recipient.full_name, activity.recipient %>
+	</div>
+	<div class="activity-footer">
+		<%= time_ago_in_words activity.created_at %> ago
+	</div>
+</div>

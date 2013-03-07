@@ -4,9 +4,9 @@ module UsersHelper
     if signed_in?
       content_tag :div, :class => "following", id: "follow-form" do
         if current_user.following?(@user)
-          render 'users/unfollow'
+          render partial: 'users/unfollow', locals: {user: followee}
         else
-          render 'users/follow'
+          render partial: 'users/follow', locals: {user: followee}
         end
       end
     else

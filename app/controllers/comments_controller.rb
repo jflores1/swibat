@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        @comment.create_activity :create, owner: current_user, recipient: @comment        
         format.html { redirect_to(:back, :notice => 'Comment was successfully created.') }        
       else
         format.html { render @commentable }        

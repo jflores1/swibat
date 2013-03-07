@@ -11,6 +11,8 @@
 
 class Following < ActiveRecord::Base
 
+  include PublicActivity::Common
+
   belongs_to :user
   belongs_to :followee, :class_name => "User"
 
@@ -25,7 +27,8 @@ class Following < ActiveRecord::Base
   # User follows someone
   def self.follow(user, followee)
     unless user == followee or Following.exists?(user, followee)
-      create(:user => user, :followee => followee)
+      following = Following.new(:user => user, :followee => followee)
+      following.save      
     end
   end
 

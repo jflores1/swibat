@@ -1,0 +1,9 @@
+<h1>Recent activity</h1>
+
+<ul id="activity-list">
+<% @activities.each do |activity| %>
+	<li class="activity-item">
+  	<%= render_activity(activity) %>
+  </li>
+<% end %>
+</ul>

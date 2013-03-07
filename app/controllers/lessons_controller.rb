@@ -28,10 +28,15 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = @unit.lessons.build(params[:lesson])
-    if @lesson.save && params[:add_another_lesson]
-      redirect_to new_unit_lesson_path(@unit)
-    elsif @lesson.save && params[:return_to_profile]
-      redirect_to unit_lesson_path(@unit, @lesson)
+
+    if @lesson.save
+      @lesson.create_activity :create, owner: current_user, recipient: @lesson
+
+      if params[:add_another_lesson]
+        redirect_to new_unit_lesson_path(@unit)
+      elsif params[:return_to_profile]
+        redirect_to unit_lesson_path(@unit, @lesson)
+      end
     else
       render 'new'
     end

@@ -16,6 +16,7 @@
 
 class Course < ActiveRecord::Base
   include PgSearch
+  include PublicActivity::Common
 
   acts_as_commentable
   acts_as_taggable

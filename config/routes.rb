@@ -1,6 +1,8 @@
 Swibat::Application.routes.draw do
   
 
+  get "timeline/index", as: :timeline
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -122,11 +124,7 @@ Swibat::Application.routes.draw do
      end
   end  
 
-  resources :followings, :only => [:create, :destroy] do
-    member do
-      post 'follow'
-    end
-  end
+  resources :followings, :only => [:create, :destroy]
 
   resources :institutions do 
     get :autocomplete_institution_name, :on => :collection

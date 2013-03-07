@@ -26,8 +26,9 @@ class CoursesController < ApplicationController
 
   def create
     @grades = Grade.all
-    @course = current_user.courses.build(params[:course])
+    @course = current_user.courses.build(params[:course])    
     if @course.save
+      @course.create_activity :create, owner: current_user, recipient: @course    
       redirect_to course_path(@course)
     else
       render :action => 'new'

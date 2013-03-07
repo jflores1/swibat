@@ -1,0 +1,19 @@
+<div class="activity-owner-image">
+	<%= link_to image_tag(activity.owner.image.url(:x50)), activity.owner %> 
+</div>
+<div class="activity">		
+	<div class="activity-header">
+		<%= link_to activity.owner.full_name, activity.owner %> added a new lesson to the unit
+		<%= link_to activity.recipient.unit.unit_title, [activity.recipient.unit.course, activity.recipient.unit] %>
+	</div>
+	<div class="activity-content">		
+		<h4><%= link_to activity.recipient.lesson_title, [activity.recipient.unit, activity.recipient] %></h4>		
+		<p>
+			Starts: <%= normal_date_format activity.recipient.lesson_start_date %><br />
+			Ends: <%= normal_date_format activity.recipient.lesson_end_date %>
+		</p>
+	</div>
+	<div class="activity-footer">
+		<%= time_ago_in_words activity.created_at %> ago
+	</div>
+</div>

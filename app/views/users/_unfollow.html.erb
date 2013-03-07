@@ -1,4 +1,3 @@
-<%= form_for current_user.followings.find_by_followee_id(@user), method: :delete, remote: true do |f| -%>
+<%= form_for current_user.followings.find_by_followee_id(user), method: :delete, remote: true do |f| -%>
 	<%= f.submit "Unfollow", class:"btn btn-monkey unfollow" %>
-  
 <% end -%>

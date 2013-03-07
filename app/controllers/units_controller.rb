@@ -25,10 +25,14 @@ class UnitsController < ApplicationController
 
   def create
     @unit = @course.units.new(params[:unit])
-    if @unit.save && params[:submit]
-      redirect_to course_path(@course)
-    elsif @unit.save && params[:move_on]
-      redirect_to new_unit_lesson_path(@unit)
+    if @unit.save
+      @unit.create_activity :create, owner: current_user, recipient: @unit
+
+      if params[:submit]
+        redirect_to course_path(@course)
+      elsif params[:move_on]
+        redirect_to new_unit_lesson_path(@unit)
+      end            
     else
       render 'new'
     end

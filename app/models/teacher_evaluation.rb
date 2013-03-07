@@ -7,6 +7,7 @@
 #  evaluation_template_id :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  eval_type              :string(255)
 #
 
 class TeacherEvaluation < ActiveRecord::Base

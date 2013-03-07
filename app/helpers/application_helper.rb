@@ -98,5 +98,8 @@ module ApplicationHelper
     end
   end
 
+  def normal_date_format(date)
+    date.strftime("%d %B %Y")    
+  end
 
 end

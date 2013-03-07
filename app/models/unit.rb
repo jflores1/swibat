@@ -15,6 +15,7 @@
 
 class Unit < ActiveRecord::Base
   include PgSearch
+  include PublicActivity::Common
 
   acts_as_commentable
   

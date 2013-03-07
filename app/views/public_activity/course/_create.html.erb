@@ -1,0 +1,18 @@
+<div class="activity-owner-image">
+	<%= link_to image_tag(activity.owner.image.url(:x50)), activity.owner %> 
+</div>
+<div class="activity">		
+	<div class="activity-header"><%= link_to activity.owner.full_name, activity.owner %> created a new course</div>
+	<div class="activity-content">		
+
+		<h4><%= link_to activity.recipient.course_name, activity.recipient %></h4>		
+		<p><%= activity.recipient.course_summary %></p>
+		<p>
+			<%= activity.recipient.grade.grade_level %><br />
+			Subject: <%= activity.recipient.subject.subject %>
+		</p>
+	</div>
+	<div class="activity-footer">
+		<%= time_ago_in_words activity.created_at %> ago
+	</div>
+</div>

@@ -1,0 +1,12 @@
+<div class="activity-owner-image">
+	<%= link_to image_tag(activity.owner.image.url(:x50)), activity.owner %> 
+</div>
+<div class="activity">		
+	<div class="activity-header"><%= link_to activity.owner.full_name, activity.owner %> commented on the <%= activity.recipient.commentable_type.downcase %> <%= link_to activity.recipient.commentable.to_s, activity.recipient.commentable %></div>
+	<div class="activity-content">		
+		<p><%= activity.recipient.body %></p>
+	</div>
+	<div class="activity-footer">
+		<%= time_ago_in_words activity.created_at %> ago
+	</div>
+</div>

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: activities
+# Table name: lesson_activities
 #
 #  id         :integer          not null, primary key
 #  activity   :string(255)

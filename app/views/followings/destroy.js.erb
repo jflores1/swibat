@@ -1,1 +1,1 @@
-$('#follow-form').html('<%= j render(partial: "users/follow") %>');
+$('#follow-form').html('<%= j render(partial: "users/follow", locals: {user: @user}) %>');
