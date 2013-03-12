@@ -1,6 +1,19 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+app = angular.module("swibat", ["ngResource"])
+app.factory "User", ["$resource", ($resource) ->
+  $resource("/users/:id", {id: "@id"}, {
+    show: {method: "GET"}
+    })
+]
+
+@UserCtrl = ["$scope", "User", ($scope, User) ->
+  $scope.users = User.query()
+  $scope.user = User.show(id: 1)
+]
+
+
 (($) ->
   $.fn.charCount = (options) ->
 

@@ -1,17 +1,44 @@
-<div class="row-fluid">
-	<h2>Edit School Information for <%= current_user.institution.name %></h2>
-</div>
+<% content_for :left_column do %>
+	<%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
+<% end %>
 
-<%= form_for current_user.institution do |school| %>
-	
-	<%= school.text_field :name %>
-	<%= school.text_field :enrollment %>
-	<%= school.text_field :num_faculty %>
-	<%= school.text_field :address_line_1 %>
-	<%= school.text_field :address_line_2 %>
-	<%= school.text_field :city %>
-	<%= school.text_field :state %>
-	<%= school.text_field :zip_code %>
-	<%= school.submit "Submit" %>
+<% content_for :right_column do %>
+	<div class="faculty-table">
+		<div class="faculty-header">
+			<h3>Edit School Information for <%= current_user.institution.name %></h3>
+		</div>
 
+	<%= form_for current_user.institution do |school| %>
+		<fieldset>
+
+			<%= school.label :name, "School Name" %>
+			<%= school.text_field :name %>
+
+			<%= school.label :enrollment %>
+			<%= school.text_field :enrollment %>
+
+			<%= school.label :num_faculty, "Total Faculty" %>
+			<%= school.text_field :num_faculty %>
+
+			<%= school.label :address_line_1 %>
+			<%= school.text_field :address_line_1 %>
+
+			<%= school.label :address_line_2 %>
+			<%= school.text_field :address_line_2 %>
+
+			<%= school.label :city %>
+			<%= school.text_field :city %>
+
+			<%= school.label :state %>
+			<%= school.text_field :state %>
+
+			<%= school.label :zip_code %>
+			<%= school.text_field :zip_code %>
+
+			<%= school.submit "Submit", class:"btn btn-monkey" %>
+
+
+		</fieldset>
+	<% end %>
+	</div>
 <% end %>

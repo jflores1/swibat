@@ -192,7 +192,35 @@ describe "UserPages" do
       end
 
       context "The user is a school administrator" do
+        before do
+          sign_in_as_admin
+          visit user_path(@user)
+        end
         
+        describe "the admin sidebar" do
+          subject {page}
+          it {should have_selector("a", text: "Dashboard")}
+          it {should have_selector("a", text: "Faculty")}
+          it {should have_selector("a", text: "Templates")}
+          it {should have_selector("a", text: "School Info")}
+          it {should have_selector("a", text: "Jesse")}
+        end
+
+        describe "working sidebar links" do
+          it "navigates to the faculty page" do
+            find_link("Faculty").click
+            current_path.should eq(faculty_institution_path(@user.institution))
+          end
+          it "navigates to the templates page" do
+            find_link("Templates").click
+            current_path.should eq(institution_evaluation_templates_path(@user.institution))
+          end
+          it "navigates to the school info page" do
+            find_link("School Info").click
+            current_path.should eq(edit_institution_path(@user.institution))
+          end
+        end
+
       end
 
     end

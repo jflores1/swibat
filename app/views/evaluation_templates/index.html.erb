@@ -1,15 +1,21 @@
-<%= render partial: "shared/user_header", locals: {user: current_user} %>
-
 <div class="course-overview" xmlns="http://www.w3.org/1999/html">
   <% content_for :left_column do %>
-    <%= render partial: '/institutions/sidebar', locals: {institution: @institution} %>
+    <%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
   <% end %>
 
   <% content_for :right_column do %>
-  	<h2>Evaluation Templates</h2>
+  <div class="faculty-table">
+  	<div class="faculty-header">
+  		<h3><i class='icon-laptop'></i> School Templates
+  			<span class="pull-right">
+  				<%= link_to "Build From Scratch", new_institution_evaluation_template_path(@institution), class: "btn btn-monkey" %>
+					<%= link_to "New Basic Template", new_prepopulated_template_institution_evaluation_templates_path(@institution), class: "btn btn-monkey" %>
+  			</span>
+  		</h3>
+  	</div>	
 
 		<% if @templates.any? %>
-			<table class="faculty-table table">
+			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
 						<th>Template Name</th>
@@ -35,13 +41,10 @@
 				</tbody>
 			</table>
 		<% else %>
-			<p>There are no evaluation templates created yet for this institution.</p>
-		<% end %>
-		<%= link_to "New Empty Template", new_institution_evaluation_template_path(@institution), class: "btn btn-monkey" %>
-		<%= link_to "New Prepopulated Template", new_prepopulated_template_institution_evaluation_templates_path(@institution), class: "btn btn-monkey" %>
-  <% end %>
-
-  <%= render partial: "layouts/two_column_partial" %>
+				<p>There are no evaluation templates created yet for this institution.</p>
+			<% end %>
+  	<% end %>
+	</div>
 </div>
 
 

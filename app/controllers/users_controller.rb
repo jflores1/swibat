@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.text_search(params[:q])
+    respond_with @users
   end
 
   def show
@@ -14,10 +15,7 @@ class UsersController < ApplicationController
     @certifications = @user.professional_accomplishments.where(:accomplishment_type => "Certificate")
     @awards = @user.professional_accomplishments.where(:accomplishment_type => "Award")
     @microposts = @user.microposts
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-    end
+    respond_with @user
   end
 
   def edit
