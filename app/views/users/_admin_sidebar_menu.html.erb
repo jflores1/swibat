@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs nav-stacked" id="sidebar-nav">
+    <li>
+      <%= link_to "Dashboard <i class='icon-home'></i>".html_safe, user_path(user) %>
+    </li>
+    <li>
+      <%= link_to "Faculty <i class='icon-group'></i>".html_safe, faculty_institution_path(user.institution), class:"user-videos" %>
+    </li>
+    <li>
+      <%= link_to "Templates <i class='icon-laptop'></i>".html_safe, institution_evaluation_templates_path(user.institution)%>
+    </li>
+    <li>
+      <%= link_to "School Info <i class='icon-building'></i>".html_safe, edit_institution_path(user.institution) %>
+    </li>
+    <li>
+      <%= link_to "#{user.first_name}<i class='icon-user'></i>".html_safe, edit_user_path(user) %>
+    </li>
+</ul>

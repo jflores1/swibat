@@ -1,38 +1,61 @@
 .faculty-table{
-	font-size: 1.3em;
-
-	thead tr{
-		background: #ffffff;
-		border: 1px solid $soft-gray;
-
-		@include rounded-corners(5px);
+	
+	table{
+		font-size: 1.3em;	
 	}
+	
+	.table{
+
+	}
+
+	.table-bordered{
+		border-collapse: separate;
+		border-top: none;
+		@include rounded-corners(4px);
+		-webkit-border-top-left-radius: 0px;
+		-webkit-border-top-right-radius: 0px;
+		-moz-border-radius-topleft: 0px;
+		-moz-border-radius-topright: 0px;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+	}
+
+	ul.dropdown-menu{
+		li{
+			a{
+				font-size: 0.722em;
+			}
+		}
+	}
+
+}
+
+.faculty-header{
+	height: 4em;
+	line-height: 4em;
+	@include linear-gradient(top, #FAFAFA, #E9E9E9);
+	border: 1px solid #D5D5D5;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
 
 	i{
-		font-size: 1.3em;
+		margin-left: 1.3em;
+		vertical-align: middle;
 	}
 
-	td{
-		border: none;
+	h3{
+		color: $fancy-gray;
+		position: relative;
+		top: 4px;
 	}
 
-	td.domain{
-		border-top: none;
-		font-weight: bold;
-	}
-	td.subdomain{
-		padding-left: 2em;
-	}
-	.subdomain-row:nth-of-type(even){
-		background: #ffffff;
-	}
-	.eval{
-		text-align: center;
-		width: 10em;
-	}
-	tr.subdomain-row:hover{
-		background: #fffacd;
-	}
+}
 
-
+.right_column_form{
+	margin-top: 1.5em;
+	
 }

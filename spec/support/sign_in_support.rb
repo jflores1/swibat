@@ -23,7 +23,7 @@ module ValidUserRequestHelper
   end
 
   def sign_in_as_admin
-    @user = FactoryGirl.create(:user, role:"admin")
+    @user = FactoryGirl.create(:user_with_profile, role:"school_admin")
     visit new_user_session_path
     fill_in_login_form
   end
