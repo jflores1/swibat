@@ -1,28 +1,17 @@
-<ul class="nav sidebar-nav">
+<ul class="nav nav-tabs nav-stacked" id="sidebar-nav">
     <li>
-      <%= link_to "#{@user.first_name}<i class='icon-chevron-right'></i>".html_safe, user_path(@user) %>
+      <%= link_to "Dashboard <i class='icon-home'></i>".html_safe, user_path(@user) %>
     </li>
     <li>
-      <%= link_to "Courses <i class='icon-chevron-right'></i>".html_safe, courses_user_path(@user), class:"user-courses" %>
+      <%= link_to "Videos <i class='icon-film'></i>".html_safe, videos_user_path(@user), class:"user-videos" %>
     </li>
     <li>
-      <%= link_to "Maps<i class='icon-chevron-right'></i>".html_safe, content_map_user_path(@user), class: "user-maps" %>
+      <%= link_to "Observations <i class='icon-laptop'></i>".html_safe, evaluations_user_path(@user) %>
     </li>
     <li>
-      <a href="#">Network <i class="icon-chevron-right"></i></a>
+      <a href="#">Professional Goals <i class="icon-road"></i></a>
     </li>
     <li>
-      <%= link_to "Videos <i class='icon-chevron-right'></i>".html_safe, videos_user_path(@user), class:"user-videos" %>
-    </li>
-    <li>
-      <a href="#">Observations <i class="icon-chevron-right"></i></a>
-    </li>
-    <% if can? :read, @user.evaluations %>
-      <li>
-        <%= link_to "Evaluations <i class='icon-chevron-right'></i>".html_safe, evaluations_user_path(@user), class: "user-evals" %>
-      </li>
-    <% end %>
-    <li>
-      <a href="#">Professional Goals <i class="icon-chevron-right"></i></a>
+      <%= link_to "#{@user.first_name}<i class='icon-user'></i>".html_safe, edit_user_path(@user) %>
     </li>
 </ul>

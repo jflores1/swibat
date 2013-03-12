@@ -1,40 +1,39 @@
 <div class="course-overview" xmlns="http://www.w3.org/1999/html">
-  
-  <% if my_page %>
-    <%= render 'teacher_getting_started_partial' %>
-  <% end %>
 
   <% content_for :left_column do %>
     <%= render 'teacher_sidebar_menu' %>
   <% end %>
 
   <% content_for :right_column do %>
-    <% if no_profile_content %>
-      <div class="user-profile">
-        <h3 class="sad-monkey">Sad. It doesn't look like <%= @user.first_name.titleize %> has completed a profile yet.</h3>
+  <h1 class="page-title">
+    <i class="icon-home"></i> Dashboard
+  </h1>
+
+  <div class="stat-container">
+    <div class="stat-holder">
+      <div class="stat">
+        <span><%= @user.evaluations.count %></span>
+        <p>Observations</p>
       </div>
-    <% else %>
-      <div class="user-profile">
+    </div>
 
-        <section class="user-content-summary">
-          <%= render 'user_specializations_show' %>
-        </section>
-
-        <section class="user-content-summary">
-          <%= render 'user_certification_show' %>
-        </section>
-
-        <section class="user-content-summary">
-          <%= render 'user_education_show' %>
-        </section>
-
-        <section class="user-content-summary">
-          <%= render 'user_awards_show' %>
-        </section>
+    <div class="stat-holder">
+      <div class="stat">
+        <span><%= @user.videos.count %></span>
+        <p>Videos</p>
       </div>
-    <% end %>
+    </div>
+
+    <div class="stat-holder">
+      <div class="stat">
+        <span><%= @user.evaluations.count %></span>
+        <p>Active Goals</p>
+      </div>
+    </div>
+
+  </div>
+    
   <% end %>
 
-  <%= render partial: "layouts/two_column_partial" %>
 </div>
 

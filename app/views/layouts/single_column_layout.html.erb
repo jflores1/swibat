@@ -20,30 +20,13 @@
     </div>
     <!-- end navbar -->
 
-    <div id="content">
-      <div class="container">
-        <div class="row">
-          <!-- Flash Messages -->
-          <%= render 'layouts/messages' %>
-          <!-- /Flash Messages -->
-
-          <div class="span3">
-            <%= yield(:left_column) %>
-
-          </div>
-          <div class="span9">
-            <%= yield(:right_column) %>
-
-          </div>
-        </div>
-      </div> 
-    </div>
+    <%= yield %>
 
     <!-- footer -->
     <div id="footer">
-      <%= render 'layouts/footer' %>
+
     </div>
     <!-- /footer -->
-    <% yield :disqus_count %>
+
   </body>
 </html>

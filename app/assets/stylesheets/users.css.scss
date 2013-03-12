@@ -1,6 +1,129 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div#login-container{
+  width: 425px;
+  margin: 120px auto 0;
+  display: block;
+
+  div#login-header{
+    padding: 1.2em 2em;
+    margin-bottom: 1em;
+    @include linear-gradient(top, $header-gradient-dark-color, $header-gradient-light-color);
+    @include rounded-corners(5px);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+    h3{
+      font-size: 1.6em;
+      color: #ffffff;
+      margin-bottom: 0;
+    }
+  }
+
+  div#login-content{
+    padding: 2em;
+    background: #ffffff;
+    border: 1px solid #DDD;
+    @include rounded-corners(5px);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.10);
+
+    form{
+      margin: 0 0 1.8em;
+    }
+    
+    input {
+      width: 96%;
+      padding: 2% 2%;
+    }
+
+    div#remember-me{
+      margin-top: 3px;
+
+      input[type="checkbox"]{
+        width: auto;
+        display: inline-block;
+        margin: 3px 0;
+        @include rounded-corners(0px);
+      }
+
+      label{
+        position: relative;
+        top: 2px;
+        display: inline-block;
+        margin-left: 0.5em;
+      }
+
+      input[type="submit"].btn{
+        padding: 4px 12px !important;
+      }
+    }
+  }
+
+  div#login-extra{
+    margin-top: 1.5em;
+    text-align: center;
+  }
+
+
+}
+
+h1.page-title{
+  color: #ffffff;
+  font: $open-sans;
+  font-size: 1.6em;
+  margin-bottom: 1.25em;
+  font-weight: 600;
+  padding: 0.3125em 1em;
+  line-height: 2.25em;
+  @include linear-gradient(top, $header-gradient-dark-color, $header-gradient-light-color);
+  @include rounded-corners(5px);
+  i{
+    color: #ffffff;
+  }
+}
+
+div.stat-container{
+  display: table;
+  margin-bottom: 1.5em;
+  width: 100%;
+
+  div.stat-holder{
+    display: table-cell;
+    width: 33%;
+
+    div.stat{
+      font-size: 1.2em;
+      height: 4.2em;
+      padding: 1.25em;
+      margin-right: 1em;
+      font-style: italic;
+      text-align: center;
+      color: $fancy-gray;
+      background: #ffffff;
+      border: 1px solid $soft-gray;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+      @include rounded-corners(5px);
+
+      span{
+        display: block;
+        margin-bottom: 0.4em;
+        font-size: 2em;
+        color: $header-gradient-dark-color;
+        font-weight: 600;
+      }
+
+      p{
+        font-size: 1.2em;
+      }
+    }
+  }
+  div.stat-holder:last-child{
+    .stat{
+      margin: 0;
+    }
+  }
+}
+
 div.application-body{
   width: 95%;
   margin: 0px auto;

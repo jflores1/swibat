@@ -69,5 +69,10 @@ module Swibat
     #autoload lib directory
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
+    #change layout for devise session controller
+    config.to_prepare do
+        Devise::SessionsController.layout "single_column_layout"
+    end
+
   end
 end

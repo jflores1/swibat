@@ -29,9 +29,9 @@ module ValidUserRequestHelper
   end
 
   def fill_in_login_form
-    fill_in 'Email', with: @user.email
+    fill_in 'Email',    with: @user.email
     fill_in 'Password', with: @user.password
-    click_button 'Sign in'
+    click_button 'Login'
   end
 end
 

@@ -8,6 +8,11 @@ describe "UserPages" do
 
     context "when not signed in" do
       before {visit user_path(user)}
+      it "does not allow access to a user page" do
+        current_path.should eq(new_user_session_path)
+      end
+
+      before {visit user_path(user)}
       it {page.should have_selector("a", text: "sign up" )}
       it {page.should have_selector("a", text: "Explore")}
       it "navigates to the /users path" do
@@ -51,169 +56,145 @@ describe "UserPages" do
     context "The user isn't signed in" do
       let(:user){create(:user)}
       before {visit user_path(user)}
+      it {current_path.should eq(new_user_session_path)}
+      it {page.should_not have_content("Courses")}
 
-      it {page.should have_content(user.full_name)}
-      it {page.should have_selector("img[alt='Jesse Flores']")}
-      it {page.should have_selector("a", text: "Follow")}
-      it "clicking follow redirects to sign in page" do
-        click_link("Follow")
-        current_path.should eq(new_user_registration_path)
-      end
+    #   context "a user with courses" do
 
-      context "a user with courses" do
+    #     describe "a user course path" do
+    #       before do
+    #         user.courses.create(attributes_for(:course))
+    #         visit courses_user_path(user)
+    #       end
 
-        describe "a user course path" do
-          before do
-            user.courses.create(attributes_for(:course))
-            visit courses_user_path(user)
-          end
+    #       it {page.should have_content(user.full_name)}
+    #       it {page.should have_content("Physics")}
+    #       it "links to the course/show page" do
+    #         find_link("Physics").click
+    #         page.should have_content("Course Summary")
+    #       end
+    #     end
 
-          it {page.should have_content(user.full_name)}
-          it {page.should have_content("Physics")}
-          it "links to the course/show page" do
-            find_link("Physics").click
-            page.should have_content("Course Summary")
-          end
-        end
+    #     describe "access to the user's courses" do
+    #       before {visit user_path(user)}
+    #       it "from the user's profile page" do
+    #         find(".user-courses").click
+    #         current_path.should eq(courses_user_path(user))
+    #       end
+    #     end
 
-        describe "access to the user's courses" do
-          before {visit user_path(user)}
-          it "from the user's profile page" do
-            find(".user-courses").click
-            current_path.should eq(courses_user_path(user))
-          end
-        end
+    #     describe "cannot see link to access to the user's evaluations" do
+    #       before {visit user_path(user)}
+    #       it "does not have a link to the evaluations page" do
+    #         page.should_not have_content("Evaluations")
+    #       end
+    #     end
 
-        describe "cannot see link to access to the user's evaluations" do
-          before {visit user_path(user)}
-          it "does not have a link to the evaluations page" do
-            page.should_not have_content("Evaluations")
-          end
-        end
+    #     describe "from the user's profile page" do
+    #       it "can access mapped lessons" do
+    #         find_link("Maps").click
+    #         current_path.should eq(content_map_user_path(user))
+    #       end
+    #     end
+    #   end
 
-        describe "from the user's profile page" do
-          it "can access mapped lessons" do
-            find_link("Maps").click
-            current_path.should eq(content_map_user_path(user))
-          end
-        end
-      end
+    #   context "a user belonging to a school" do
+    #     let(:user_with_school){create(:user_with_profile)}
+    #     before {visit user_path(user_with_school)}
+    #     it {page.should have_content("School")}
+    #   end
 
-      context "a user belonging to a school" do
-        let(:user_with_school){create(:user_with_profile)}
-        before {visit user_path(user_with_school)}
-        it {page.should have_content("School")}
-      end
-
-      context "a user with a profile" do
-        let(:user_with_profile){create(:user_with_profile)}
-        before {visit user_path(user_with_profile)}
-        it {page.should have_content("My College")}
-        it {page.should have_content("Award")}
-        it {page.should have_content("@twitter")}
-      end
+    #   context "a user with a profile" do
+    #     let(:user_with_profile){create(:user_with_profile)}
+    #     before {visit user_path(user_with_profile)}
+    #     it {page.should have_content("My College")}
+    #     it {page.should have_content("Award")}
+    #     it {page.should have_content("@twitter")}
+    #   end
     end
-    context "The user is signed in" do
-      describe "and viewing his own profile page" do
+
+    describe "The user is signed in" do
+      context "The user is a teacher" do
         before do
           sign_in_via_form
           visit user_path(@user)
         end
 
-        it {page.should have_selector("a", text: "Add Some Personality!")}
-        it "clicking 'Add Some Personality' goes to the the edit path" do
-          click_link("Add Some Personality!")
-          current_path.should eq(edit_user_path(@user))
-        end
-        it {page.should have_selector("a", text:"Add a Course")}
-        it "clicking 'Add a Course' navigates to new course path" do
-          find("Add a Course").click
-          current_path.should eq(new_course_path)
+        describe "The teacher sidebar" do
+          subject {page}
+          it {should have_selector("a", text: "Dashboard")}
+          it {should have_selector("a", text: "Videos")}
+          it {should have_selector("a", text: "Observations")}
+          it {should have_selector("a", text: "Professional Goals")}
+          it {should have_selector("a", text: "Jesse")}
         end
 
-        describe "can navigate to an existing course" do
-          let!(:course){create(:course, user: @user)}
-          before {visit user_path(@user)}
-          it {page.should have_selector("a.edit-user-course")}
-          it "should go to the edit course page" do
-            find("a.edit-user-course").click
-            current_path.should eq(course_path(course))
+        describe "Working Links" do
+          it "navigate to the user dashboard" do
+            find_link("Dashboard").click
+            current_path.should eq(user_path(@user))
           end
-
-          describe "can navigate to followed courses" do
-            let(:other_user){create(:user)}
-            let(:other_user_course){create(:course, user: other_user)}
-            before do
-              @user.follow!(other_user)
-              visit user_path(@user)
-            end
-            it "goes to the users followed courses" do
-              #TODO: it's unclear why this test fails; it works in the browser. Fix it.
-              click_link("my courses")
-              click_link("Courses I Follow")
-              page.should have_content(other_user.first_name)
-              current_path.should eq(followed_courses_user_path(@user))
-            end
-          end
-
-        end
-
-        describe "a user with videos" do
-          it "navigates to the user's video index page" do
-            find(".dropdown-toggle").click
+          
+          it "navigate to the videos page" do
             find_link("Videos").click
             current_path.should eq(videos_user_path(@user))
           end
-        end
 
-        describe "can access evaluations" do
-          it "from the user's profile page" do
-            find_link("Evaluations").click
+          xit "navigate to the observations page" do
+            find_link("Observations").click
             current_path.should eq(evaluations_user_path(@user))
           end
-        end
-      end
-      describe "and viewing another users profile page" do
-        describe "follow/unfollow buttons" do
-          let(:other_user){create(:user)}
-          before do
-            sign_in_via_form
+
+          xit "navigate to the professional goals page" do
+            find_link("Professional Goals").click
+            current_path.should eq(professional_goals_user_path(@user))
           end
 
-          describe "following a user" do
-            before {visit user_path(other_user)}
-            it "should increment the user's people_followed count" do
-              expect{
-                click_button("Follow")
-              }.to change(@user.people_followed, :count).by(1)
-            end
-            it "should increment the other user's follower count" do
-              expect{
-                click_button("Follow")
-              }.to change(other_user.followers, :count).by(1)
-            end
-            describe "toggling the button", js: true do
-              before {click_button "Follow"}
-              it {page.should have_selector('input', value: 'Unfollow')}
-            end
-          end
-
-          describe "unfollowing a user" do
-            before do
-              @user.follow!(other_user)
-              visit user_path(other_user)
-            end
-
-            it "should decrement the followed user count" do
-              expect{click_button "Unfollow"}.to change(@user.people_followed, :count).by(-1)
-            end
-            it "should decrement the number of followers" do
-              expect {click_button "Unfollow"}.to change(other_user.followers, :count).by(-1)
-            end
+          it "navgiate to edit the user's profile page" do
+            find_link("Jesse").click
+            current_path.should eq(edit_user_path(@user))
           end
         end
 
+        describe "The dashboard" do
+          it {page.should have_selector("h1", text: "Dashboard")}
+
+          describe "observation content" do
+            context "The user has no observations" do
+              it {page.should have_selector("span", text: "0")}
+              it {page.should have_selector("p", text: "Observations")}
+            end
+
+            context "The user has at least one observation" do
+              
+            end
+          end
+
+          describe "video content" do
+            context "The user has no videos" do
+              it {page.should have_selector("span", text: "0")}
+              it {page.should have_selector("p", text: "Videos")}
+            end
+
+            context "The user has videos" do
+              
+            end
+          end
+
+          describe "Active Goals" do
+            context "The user has no active goals" do
+              it {page.should have_selector("span", text: "0")}
+              it {page.should have_selector("p", text: "Active Goals")}
+            end
+          end
+          
+        end
       end
+
+      context "The user is a school administrator" do
+        
+      end
+
     end
   end
 
