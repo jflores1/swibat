@@ -9,7 +9,12 @@ class CommentMailer < ActionMailer::Base
   def new_comment_notification(comment)
     @greeting = "Hi"
     @comment = comment
-    @user = comment.commentable.user
+    @user = nil
+    if (comment.commentable_type == "TeacherEvaluation")
+      @user = comment.commentable.teacher
+    else 
+      @user = comment.commentable.user
+    end
 
     mail to: @user.email
   end

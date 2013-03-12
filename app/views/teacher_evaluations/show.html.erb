@@ -1,0 +1,164 @@
+<%= provide(:title, "#{@evaluation.eval_type.capitalize} for #{@user.full_name}") %>
+
+<% content_for :head do %>
+	<style>
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		  vector-effect: non-scaling-stroke;
+		}
+
+		.bar {
+		  fill: steelblue;
+		  vector-effect: non-scaling-stroke;
+		}
+
+		.x.axis path {
+		  display: none;
+		}
+
+	</style>
+<% end %>
+
+<%= render :partial => 'shared/user_header', locals: {user: @user} %>
+
+
+<% content_for :left_column do %>
+	<%= render 'users/teacher_sidebar_menu' %>
+<% end %>
+
+<% content_for :right_column do %>
+	<h1><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
+	<p>Published <%= time_ago_in_words @evaluation.updated_at %> ago</p>
+	<h3>Total Score: <%= number_with_precision(@evaluation.calculate_score, :precision => 2) %>%</h3>
+
+	<h3>Score by domain</h3>
+	<div id="graph"></div>
+
+	<table class="table faculty-table">
+		<thead>
+			<tr>
+				<th width="50%"></th>
+				<th class="eval">Unsatisfactory</th>
+				<th class="eval">Basic</th>
+				<th class="eval">Proficient</th>
+				<th class="eval">Distinguished</th>
+			</tr>
+		</thead>
+		<tbody>			
+			<% @evaluation.evaluation_template.evaluation_domains.each do |domain| %>
+				<tr class="domain-row">
+					<td class="domain"><%= domain.name %> (Score: <%= number_with_precision(domain.calculate_score(@evaluation), :precision => 2)%>%)</td>
+				</tr>
+
+				<% domain.evaluation_criteria.each do |criterion| %>
+					<tr class="subdomain-row">
+						<td class="subdomain"><%= criterion.contents %></td>
+						<% rating = EvaluationRating.find_by_criterion_id_and_evaluation_id(criterion.id, @evaluation.id) %>
+						<% (1..4).each do |i| %>
+							<td class="eval">
+								<%= '<i class="icon icon-ok"></i>'.html_safe if rating && rating.score == i %>
+							</td>
+						<% end %>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+
+	
+
+	<% if @evaluation.eval_type == "observation" %>
+		<% if @evaluation.video %>
+			<h2>Associated video</h2>
+			
+			<div class="video-thumbnail span4">
+		    <h4><%= link_to @evaluation.video.title, video_path(@evaluation.video) %></h4>
+		    <%= link_to image_tag("http://img.youtube.com/vi/#{@evaluation.video.yt_video_id}/1.jpg"), video_path(@evaluation.video) %>
+		    <p><%= truncate(@evaluation.video.description, length: 100) %></p>	    
+		  </div>
+		<% else %>
+			<%= link_to("Upload a video", new_video_url(user_id: @evaluation.teacher.id, observation_id: @evaluation.id) , class: "btn btn-monkey header-button")  %> 	
+		<% end %>	
+	<% end %>
+
+	<div>
+	  <header class="course-header">
+	    <h2>Comments</h2>
+	  </header>
+	  <section class="course-info">
+	    <%= render :partial => 'comments/comments', :locals => {:commentable => @evaluation} %>
+	  </section>
+	</div>
+
+
+	<script>
+
+			var w = 650,
+					h = 300;
+			var margin = {top: 20, right: 20, bottom: 30, left: 40},
+			    width = w - margin.left - margin.right,
+			    height = h - margin.top - margin.bottom;
+
+			var formatPercent = d3.format(".0%");
+
+			var x = d3.scale.ordinal()
+			    .rangeRoundBands([0, width], .1);
+
+			var y = d3.scale.linear()
+			    .range([height, 0]);
+
+			var xAxis = d3.svg.axis()
+			    .scale(x)
+			    .orient("bottom");
+
+			var yAxis = d3.svg.axis()
+			    .scale(y)
+			    .orient("left")
+			    .tickFormat(formatPercent);
+
+			var svg = d3.select("#graph").append("svg")
+					.attr("viewBox", "0 0 " + w + " " + h )
+					.attr("height", 400)
+    			.attr("preserveAspectRatio", "xMinYMin meet")    			
+			  	.append("g")
+			    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+				var data = <%= raw @json_data %>;
+
+			  data.forEach(function(d) {
+			    d.score = +d.score;
+			  });
+
+			  x.domain(data.map(function(d) { return d.name; }));
+			  y.domain([0, 1]);
+
+			  svg.append("g")
+			      .attr("class", "x axis")
+			      .attr("transform", "translate(0," + height + ")")
+			      .call(xAxis);
+
+			  svg.append("g")
+			      .attr("class", "y axis")
+			      .call(yAxis)
+			    .append("text")
+			      .attr("transform", "rotate(-90)")
+			      .attr("y", 6)
+			      .attr("dy", ".71em")
+			      .style("text-anchor", "end")
+			      .text("Score");
+
+			  svg.selectAll(".bar")
+			      .data(data)
+			    .enter().append("rect")
+			      .attr("class", "bar")
+			      .attr("x", function(d) { return x(d.name); })
+			      .attr("width", x.rangeBand())
+			      .attr("y", function(d) { return y(d.score); })
+			      .attr("height", function(d) { return height - y(d.score); });
+		</script>
+
+<% end %>
+

@@ -1,3 +1,4 @@
+
 <%= render partial: "shared/user_header", locals: {user: current_user} %>
 
 <div class="course-overview" xmlns="http://www.w3.org/1999/html">
@@ -38,7 +39,7 @@
 							<td><%= link_to evaluation.evaluation_template.name, [@institution, evaluation.evaluation_template] %></td>
 							<td><%= evaluation.eval_type.capitalize if evaluation.eval_type %></td>
 							<td><%= time_ago_in_words evaluation.created_at %> ago</td>
-							<td><%= number_with_precision(@evaluation.calculate_score, :precision => 2) %>%</td>
+							<td><%= number_with_precision(evaluation.calculate_score, :precision => 2) %>%</td>
 						</tr>
 					<% end %>
 				</tbody>
@@ -46,6 +47,7 @@
 		<% else %>
 			There are no evaluations yet.
 		<% end %>
+
   <% end %>
 
 </div>

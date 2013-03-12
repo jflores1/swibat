@@ -1,15 +1,22 @@
-class EvaluationsController < ApplicationController
+class TeacherEvaluationsController < ApplicationController
   before_filter :load_institution, :authenticate_user!
   load_and_authorize_resource :class => "TeacherEvaluation"
 
   
   def index
-    @evaluations = @institution.evaluations
+    @evaluations = @institution.evaluations    
   end
 
   def show
   	@evaluation = TeacherEvaluation.find(params[:id])
   	@user = @evaluation.teacher
+
+
+    @data = []
+    @evaluation.evaluation_template.evaluation_domains.each do |domain|
+      @data << {name: domain.name , score: domain.calculate_score(@evaluation)/100.to_f}
+    end
+    @json_data = @data.to_json
   end
 
   def create

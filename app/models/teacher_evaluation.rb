@@ -11,6 +11,9 @@
 #
 
 class TeacherEvaluation < ActiveRecord::Base
+
+  acts_as_commentable
+  
   attr_accessible :evaluation_template_id, :teacher_id, :eval_type
 
   belongs_to :teacher, class_name: :User

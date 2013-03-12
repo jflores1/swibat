@@ -1,7 +1,7 @@
 Swibat::Application.routes.draw do
   
 
-  get "timeline/index", as: :timeline
+  get "timeline", to: "timeline#index", as: :timeline
 
   ActiveAdmin.routes(self)
 
@@ -126,6 +126,10 @@ Swibat::Application.routes.draw do
 
   resources :followings, :only => [:create, :destroy]
 
+  resources :teacher_evaluations, only: [:show] do
+    resources :comments, :only => [:create, :destroy]
+  end
+
   resources :institutions do 
     get :autocomplete_institution_name, :on => :collection
 
@@ -140,8 +144,8 @@ Swibat::Application.routes.draw do
       end
     end
 
-    resources :evaluations, only: [:index, :create, :show] do
-      
+    resources :teacher_evaluations, only: [:index, :create, :show], :path => :evaluations, :as => :evaluations do
+      resources :comments, :only => [:create, :destroy]
     end
     
     member do

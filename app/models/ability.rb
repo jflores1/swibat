@@ -58,8 +58,12 @@ class Ability
       can :destroy, Comment, :user_id => user.id
       # Can manage comments if they are the owners of the commentable of the comment (Course, Unit, etc.)
       can :manage, Comment do |comment|
-        comment.try(:commentable).try(:user).try(:id) == user.id
-      end      
+        if comment.try(:commentable_type) == "TeacherEvaluation"
+          comment.try(:commentable).try(:teacher_id) == user.id
+        else
+          comment.try(:commentable).try(:user).try(:id) == user.id
+        end
+      end          
 
       can :manage, User, :id => user.id
       can :read, User
