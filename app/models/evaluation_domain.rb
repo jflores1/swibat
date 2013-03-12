@@ -17,6 +17,21 @@ class EvaluationDomain < ActiveRecord::Base
 
   validates :name, presence: :true
 
+  def calculate_score(teacher_evaluation)
+  	domain_score = 0
+  	criteria_count = 0	
+  	self.evaluation_criteria.each do |criterion|
+  		rating = EvaluationRating.find_by_criterion_id_and_evaluation_id(criterion.id, teacher_evaluation.id)
+  		next if rating == nil || rating.score == -1
+  		domain_score += rating.score
+  		criteria_count += 1
+  	end
+  	domain_score /= criteria_count.to_f
+		domain_score = 0 if domain_score.nan?
+    domain_score = domain_score *100 / 4.0
+  	return domain_score
+  end
+
   # duplication rules
   amoeba do
   	enable

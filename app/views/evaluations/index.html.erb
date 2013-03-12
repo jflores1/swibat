@@ -26,6 +26,9 @@
 						<th>
 							Published
 						</th>
+						<th>
+							Score
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,6 +38,7 @@
 							<td><%= link_to evaluation.evaluation_template.name, [@institution, evaluation.evaluation_template] %></td>
 							<td><%= evaluation.eval_type.capitalize if evaluation.eval_type %></td>
 							<td><%= time_ago_in_words evaluation.created_at %> ago</td>
+							<td><%= number_with_precision(@evaluation.calculate_score, :precision => 2) %>%</td>
 						</tr>
 					<% end %>
 				</tbody>
@@ -44,5 +48,4 @@
 		<% end %>
   <% end %>
 
-  <%= render partial: "layouts/two_column_partial" %>
 </div>

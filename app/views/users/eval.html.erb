@@ -1,48 +1,53 @@
 <%= provide(:title, "#{@evaluation.eval_type.capitalize} for #{@user.full_name}") %>
 
-<%= render :partial => 'shared/user_header', locals: {user: @user} %>
+<% content_for :left_column do %>
+	<%= render 'users/teacher_sidebar_menu' %>
+<% end %>
 
-<h1><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
-<%= form_for([@institution, @evaluation], url: institution_evaluations_path(@institution), :html => {:multipart => true}) do |f| %>
-	<%= f.hidden_field :teacher_id %>
-	<%= f.hidden_field :evaluation_template_id %>
-	<%= f.hidden_field :eval_type %>
-	<table class="table faculty-table">
-		<thead>
-			<tr>
-				<th></th>
-				<th class="eval">N/A</th>
-				<th class="eval">Unsatisfactory</th>
-				<th class="eval">Basic</th>
-				<th class="eval">Proficient</th>
-				<th class="eval">Distinguished</th>
-			</tr>
-		</thead>
-		<tbody>
-			
-				<% @evaluation.evaluation_template.evaluation_domains.each do |domain| %>
-					<tr class="domain-row">
-						<td class="domain"><%= domain.name %></td>
-					</tr>
+<% content_for :right_column do %>
 
-					<% domain.evaluation_criteria.each do |criterion| %>
-						<tr class="subdomain-row">
-							<td class="subdomain"><%= criterion.contents %></td>
-							<td class="eval">
-								<%= radio_button(:score, criterion.id, -1, checked: true) %>
-							</td>
-							<% (1..4).each do |i| %>
-								<td class="eval">
-									<%= radio_button(:score, criterion.id, i) %>
-								</td>
-							<% end %>
-						</tr>
-					<% end %>
+	<h1><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
+	<%= form_for([@institution, @evaluation], url: institution_evaluations_path(@institution), :html => {:multipart => true}) do |f| %>
+		<%= f.hidden_field :teacher_id %>
+		<%= f.hidden_field :evaluation_template_id %>
+		<%= f.hidden_field :eval_type %>
+		<table class="table faculty-table">
+			<thead>
+				<tr>
+					<th width="50%"></th>
+					<th class="eval">N/A</th>
+					<th class="eval">Unsatisfactory</th>
+					<th class="eval">Basic</th>
+					<th class="eval">Proficient</th>
+					<th class="eval">Distinguished</th>
+				</tr>
+			</thead>
+			<tbody>
 				
+					<% @evaluation.evaluation_template.evaluation_domains.each do |domain| %>
+						<tr class="domain-row">
+							<td class="domain"><%= domain.name %></td>
+						</tr>
 
-			<% end %>
-		</tbody>
-	</table>
-	<%= f.submit "Save Draft", class:"btn btn-monkey pull-left" %>
-	<%= link_to "Publish", "#", class:"btn btn-monkey pull-right" %>
+						<% domain.evaluation_criteria.each do |criterion| %>
+							<tr class="subdomain-row">
+								<td class="subdomain"><%= criterion.contents %></td>
+								<td class="eval">
+									<%= radio_button(:score, criterion.id, -1, checked: true) %>
+								</td>
+								<% (1..4).each do |i| %>
+									<td class="eval">
+										<%= radio_button(:score, criterion.id, i) %>
+									</td>
+								<% end %>
+							</tr>
+						<% end %>
+					
+
+				<% end %>
+			</tbody>
+		</table>
+		<%= f.submit "Save Draft", class:"btn btn-monkey pull-left" %>
+		<%= link_to "Publish", "#", class:"btn btn-monkey pull-right" %>
+	<% end %>
 <% end %>
