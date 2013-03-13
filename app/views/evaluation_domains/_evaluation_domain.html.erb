@@ -1,16 +1,22 @@
-<div class="span12 no-left-margin box height5" id="domain-<%= domain.id %>">
-	<h3>Domain: <%= domain.name %>
-		<span>
-			<%= link_to "<i class='icon-trash'></i>".html_safe, institution_evaluation_template_evaluation_domain_path(@institution, @template, domain), method: :delete, remote: true, class:"btn btn-monkey delete-domain", confirm: "Are you sure?\nThis will delete the domain along with all it's criteria." %>
-		</span>
-	</h3>
-	<ul id="criteria-list-<%= domain.id %>">
-		<% domain.evaluation_criteria.each do |criterion| %>
-			<%= render partial: "evaluation_criteria/evaluation_criterion", locals: {criterion: criterion, domain: domain} %>			
-		<% end %>		
-	</ul>	
+<div class="faculty-table" id="domain-<%= domain.id %>">
+	<div class="faculty-header padded">
+		<h3>Domain: <%= domain.name %>
+			<span>
+				<%= link_to "<i class='icon-trash no-left-margin'></i> Delete Domain".html_safe, institution_evaluation_template_evaluation_domain_path(@institution, @template, domain), method: :delete, remote: true, class:"btn btn-monkey delete-domain", confirm: "Are you sure?\nThis will delete the domain along with all it's criteria." %>
+			</span>
+		</h3>
+	</div>
+	<div class="row template-list span9 no-left-margin">
+		<ul id="criteria-list-<%= domain.id %>">
+			<% domain.evaluation_criteria.each do |criterion| %>
+				<%= render partial: "evaluation_criteria/evaluation_criterion", locals: {criterion: criterion, domain: domain} %>			
+			<% end %>		
+		</ul>	
+
+
 	<p>
-		<%= link_to "Add Criterion", new_institution_evaluation_template_evaluation_domain_evaluation_criterion_path(@institution, @template, domain), class:"btn btn-monkey", remote: true %>
+		<%= link_to "Add Element", new_institution_evaluation_template_evaluation_domain_evaluation_criterion_path(@institution, @template, domain), class:"btn btn-monkey left-margin", remote: true %>
 	</p>
+	</div>
 	<div id="criterion-form-<%= domain.id %>" style="display: none;"></div>
 </div>

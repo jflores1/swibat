@@ -1,10 +1,11 @@
 .faculty-table{
 	
 	table{
-		font-size: 1.3em;	
+		font-size: 1.3em;
 	}
 	
 	.table{
+
 
 	}
 
@@ -59,3 +60,28 @@
 	margin-top: 1.5em;
 	
 }
+
+.template-list{
+	padding-top: 1em;
+	background: #ffffff;
+	margin-bottom: 1.5em;
+}
+
+th.eval{
+	text-align: center;
+}
+
+td.eval{
+	input[type="radio"]{
+		margin: 0 auto;
+		display: block;
+	}
+}
+
+tr.domain-row{
+	border-collapse: collapse;
+	td{
+		font-size: 1.8em;
+	}
+}
+

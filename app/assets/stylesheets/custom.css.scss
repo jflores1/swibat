@@ -614,6 +614,18 @@ Position, Formatting, Fonts
     margin-top: 2% !important;
 }
 
+.left-margin{
+    margin-left: 1.5em !important;
+}
+
+.right-margin{
+    margin-right: 1.5em !important;
+}
+
+.padded{
+    padding: 0.2em 0.5em !important;
+}
+
 .btn-monkey {
     background-color: rgb(221, 98, 75);
     background-image: -moz-linear-gradient(top, rgb(221, 98, 75), rgb(164, 50, 32));

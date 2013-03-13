@@ -6,10 +6,10 @@
   <% content_for :right_column do %>
   <div class="faculty-table">
   	<div class="faculty-header">
-  		<h3><i class='icon-laptop'></i> School Templates
+  		<h3><i class='icon-laptop'></i> Evaluation Templates
   			<span class="pull-right">
   				<%= link_to "Build From Scratch", new_institution_evaluation_template_path(@institution), class: "btn btn-monkey" %>
-					<%= link_to "New Basic Template", new_prepopulated_template_institution_evaluation_templates_path(@institution), class: "btn btn-monkey" %>
+					<%= link_to "Use A Template", new_prepopulated_template_institution_evaluation_templates_path(@institution), class: "btn btn-monkey right-margin" %>
   			</span>
   		</h3>
   	</div>	

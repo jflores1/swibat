@@ -27,6 +27,11 @@ class EvaluationTemplatesController < ApplicationController
   	redirect_to [@institution, @template], notice: "Template saved successfully"
   end
 
+  def destroy
+    @template = @institution.evaluation_templates.find(params[:id])
+    @template.destroy
+  end
+
   private
   	def load_institution
   		@institution = Institution.find(params[:institution_id])

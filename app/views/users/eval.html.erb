@@ -1,25 +1,25 @@
 <%= provide(:title, "#{@evaluation.eval_type.capitalize} for #{@user.full_name}") %>
 
 <% content_for :left_column do %>
-	<%= render 'users/teacher_sidebar_menu' %>
+	<%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
 <% end %>
 
 <% content_for :right_column do %>
 
-	<h1><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
+	<h1 class="page-title"><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
 	<%= form_for([@institution, @evaluation], url: institution_evaluations_path(@institution), :html => {:multipart => true}) do |f| %>
 		<%= f.hidden_field :teacher_id %>
 		<%= f.hidden_field :evaluation_template_id %>
 		<%= f.hidden_field :eval_type %>
-		<table class="table faculty-table">
+		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
 					<th width="50%"></th>
 					<th class="eval">N/A</th>
-					<th class="eval">Unsatisfactory</th>
-					<th class="eval">Basic</th>
+					<th class="eval">Requires Action</th>
+					<th class="eval">Progressing</th>
 					<th class="eval">Proficient</th>
-					<th class="eval">Distinguished</th>
+					<th class="eval">Exemplary</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,6 +27,11 @@
 					<% @evaluation.evaluation_template.evaluation_domains.each do |domain| %>
 						<tr class="domain-row">
 							<td class="domain"><%= domain.name %></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 
 						<% domain.evaluation_criteria.each do |criterion| %>

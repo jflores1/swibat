@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @certifications = @user.professional_accomplishments.where(:accomplishment_type => "Certificate")
     @awards = @user.professional_accomplishments.where(:accomplishment_type => "Award")
     @microposts = @user.microposts
-    respond_with @user
+    respond_with @user.to_json(include: :institution)
   end
 
   def edit
