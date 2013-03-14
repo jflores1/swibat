@@ -102,4 +102,13 @@ module ApplicationHelper
     date.strftime("%d %B %Y")    
   end
 
+  def show_appropriate_sidebar
+    if current_user.school_admin? || current_user.admin?
+      render partial: 'users/admin_sidebar_menu', locals: {user: current_user}
+    else
+      render partial: 'users/teacher_sidebar_men', locals: {user: @user}
+    end
+
+  end
+
 end

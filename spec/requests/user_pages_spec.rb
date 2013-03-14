@@ -58,59 +58,6 @@ describe "UserPages" do
       before {visit user_path(user)}
       it {current_path.should eq(new_user_session_path)}
       it {page.should_not have_content("Courses")}
-
-    #   context "a user with courses" do
-
-    #     describe "a user course path" do
-    #       before do
-    #         user.courses.create(attributes_for(:course))
-    #         visit courses_user_path(user)
-    #       end
-
-    #       it {page.should have_content(user.full_name)}
-    #       it {page.should have_content("Physics")}
-    #       it "links to the course/show page" do
-    #         find_link("Physics").click
-    #         page.should have_content("Course Summary")
-    #       end
-    #     end
-
-    #     describe "access to the user's courses" do
-    #       before {visit user_path(user)}
-    #       it "from the user's profile page" do
-    #         find(".user-courses").click
-    #         current_path.should eq(courses_user_path(user))
-    #       end
-    #     end
-
-    #     describe "cannot see link to access to the user's evaluations" do
-    #       before {visit user_path(user)}
-    #       it "does not have a link to the evaluations page" do
-    #         page.should_not have_content("Evaluations")
-    #       end
-    #     end
-
-    #     describe "from the user's profile page" do
-    #       it "can access mapped lessons" do
-    #         find_link("Maps").click
-    #         current_path.should eq(content_map_user_path(user))
-    #       end
-    #     end
-    #   end
-
-    #   context "a user belonging to a school" do
-    #     let(:user_with_school){create(:user_with_profile)}
-    #     before {visit user_path(user_with_school)}
-    #     it {page.should have_content("School")}
-    #   end
-
-    #   context "a user with a profile" do
-    #     let(:user_with_profile){create(:user_with_profile)}
-    #     before {visit user_path(user_with_profile)}
-    #     it {page.should have_content("My College")}
-    #     it {page.should have_content("Award")}
-    #     it {page.should have_content("@twitter")}
-    #   end
     end
 
     describe "The user is signed in" do
@@ -218,6 +165,33 @@ describe "UserPages" do
           it "navigates to the school info page" do
             find_link("School Info").click
             current_path.should eq(edit_institution_path(@user.institution))
+          end
+        end
+
+        describe "visiting a teacher's profile page" do
+          let(:teacher){create(:user, role: "teacher", first_name: "Teacher", institution_id: @user.institution_id)}
+          before do
+            visit user_path(teacher)
+          end
+          subject {page}
+          it {print page.html}
+          it {should have_selector("a", text: "Teacher")}
+          it {should have_selector("a", text: "Videos")}
+          it {should have_selector("a", text: "Observations")}
+
+          describe "Working links to teacher specific information" do
+            it "navigates to teacher dashboard" do
+              find_link("Teacher").click
+              current_path.should eq(user_path(teacher))
+            end
+            it "navigates to the teacher's observations" do
+              find_link("Observations").click
+              current_path.should eq(evaluations_user_path(teacher))
+            end
+            it "navigates to the teacher's videos" do
+              find_link("Videos").click
+              current_path.should eq(videos_user_path(teacher))
+            end
           end
         end
 

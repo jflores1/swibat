@@ -89,7 +89,8 @@ class UsersController < ApplicationController
 
   def videos
     @user = User.find(params[:id])
-    @videos = @user.videos    
+    @videos = @user.videos
+    respond_with @videos.to_json 
   end
 
   def evaluations

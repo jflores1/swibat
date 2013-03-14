@@ -1,20 +1,25 @@
 <%= provide(:title, "#{@user.full_name}'s Videos") %>
 
-<%= render partial: 'shared/user_header', locals: {user: @user} %>
-
 <% content_for :left_column do %>
-	<%= render 'teacher_sidebar_menu' %>
-<% end %>
+  <% if current_user.school_admin? %>
+    <%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
+  <% else %>
+    <%= render partial: 'users/teacher_sidebar_menu', locals: {user: @user} %>
+  <% end %>
+  Current User: <%= current_user.first_name %> @user: <%= @user.first_name %><br/>
+  Current User School: <%= current_user.institution_id %> @user school: <%= @user.institution_id %>
+ <% end %>
 
 <% content_for :right_column do %>
 	<div class="span12">
 		<%= link_to("Upload a new video", new_video_url(user_id: @user.id) , class: "btn btn-monkey header-button") if can? :upload, Video %> 	
 	</div>
+	<div ng-controller="UserCtrl">
+		{{user}}
+	</div>
 
 	<%= render partial: 'videos/collection', locals: {videos: @videos} %>
 <% end %>
-
-<%= render partial: 'layouts/two_column_partial' %>
 
 
 <!--TODO: Add searching on the videos -->

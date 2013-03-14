@@ -14,4 +14,17 @@
     <li>
       <%= link_to "#{user.first_name}<i class='icon-user'></i>".html_safe, edit_user_path(user) %>
     </li>
+    <% if @user.present? && @user != current_user %>
+      <li class="dropdown-submenu">
+        <%= link_to "#{@user.first_name}<i class='icon-user'></i>".html_safe, user_path(@user) %>
+        <ul class="dropdown-menu">
+          <li>
+            <%= link_to "Videos <i class='icon-film'></i>".html_safe, videos_user_path(@user), class:"user-videos" %>
+          </li>
+          <li>
+            <%= link_to "Observations <i class='icon-laptop'></i>".html_safe, evaluations_user_path(@user) %>
+          </li>
+        </ul>
+      </li>
+    <% end %>
 </ul>

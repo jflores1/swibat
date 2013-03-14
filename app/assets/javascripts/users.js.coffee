@@ -2,18 +2,24 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 app = angular.module("swibat", ["ngResource"])
-app.config ['$routeProvider', ($routeProvider) ->
+app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+  $locationProvider.html5Mode(true)
   $routeProvider.when('/users/:id', {templateUrl: '/users/:id.json', controller: UserCtrl})
+  $routeProvider.when('/users/:id/videos', {templateUrl: '/users/:id/videos.json', controller: UserCtrl})
 ]
 
 app.factory "User", ["$resource", ($resource) ->
   $resource("/users/:id", {id: "@id"}, {
-    show: {method: "GET"}
+    show: {method: "GET"}, 
+    videos: {method: "GET", isArray:true}
     })
 ]
 
-@UserCtrl = ["$scope", "User", "Institution", ($scope, User, Institution) ->
+@UserCtrl = ["$scope", "$routeParams", "User", ($scope, $routeParams, User) ->
   $scope.user = User.show()
+  $scope.videos = User.videos(id: $routeParams.id)
+  params = $routeParams
+  console.log(params.id) 
 ]
 
 

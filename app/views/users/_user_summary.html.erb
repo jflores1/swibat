@@ -2,10 +2,12 @@
 
   <% content_for :left_column do %>
     <% if current_user.school_admin? %>
-      <%= render partial: 'users/admin_sidebar_menu', locals: {user: @user} %>
+      <%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
     <% else %>
       <%= render partial: 'users/teacher_sidebar_menu', locals: {user: @user} %>
     <% end %>
+    Current User: <%= current_user.first_name %> @user: <%= @user.first_name %><br/>
+    Current User School: <%= current_user.institution_id %> @user school: <%= @user.institution_id %>
   <% end %>
 
   <% content_for :right_column do %>
@@ -35,6 +37,11 @@
       </div>
     </div>
 
+  </div>
+
+  <div ng-controller="UserCtrl">
+    {{user}}
+    {{videos}}
   </div>
     
   <% end %>

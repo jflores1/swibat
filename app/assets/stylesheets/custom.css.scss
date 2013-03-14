@@ -747,6 +747,36 @@ ul#sidebar-nav{
             @include linear-gradient(top, $header-gradient-dark-color, $header-gradient-light-color);
         }
     }
+    .dropdown-submenu > a:after{
+        border-color: transparent transparent transparent $fancy-gray;
+        margin-right: 0.5em;
+    }
+    .dropdown-submenu:hover > a:after{
+        border-color: transparent transparent transparent #ffffff;
+    }
+
+    li.dropdown-submenu{
+
+        ul.dropdown-menu{
+
+            a{
+                font-size: 1em;
+                padding: 3px 20px;
+                background: none;
+                border: none;
+                i{
+                    color: $fancy-gray;
+                }
+            }
+            a:hover{
+                background: $fancy-gray;
+                color: #ffffff;
+                i{
+                    color: #ffffff;
+                }
+            }
+        }
+    }
 }
 
 .no-padding{
