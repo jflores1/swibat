@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @certifications = @user.professional_accomplishments.where(:accomplishment_type => "Certificate")
     @awards = @user.professional_accomplishments.where(:accomplishment_type => "Award")
     @microposts = @user.microposts
-    respond_with @user.to_json(include: :institution)
+    respond_with @user.as_json(include: :institution)
   end
 
   def edit
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
   def videos
     @user = User.find(params[:id])
     @videos = @user.videos
-    respond_with @videos.to_json 
+    respond_with @videos.as_json 
   end
 
   def evaluations

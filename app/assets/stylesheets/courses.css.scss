@@ -37,8 +37,8 @@ div.two-column-form{
 }
 
 div.course-form{
-  float:left;
-  width: 100%;
+  width: 60%;
+  margin: 0 auto;
 
   header.course-form-header{
     margin-bottom: 2%;
@@ -63,7 +63,6 @@ div.course-form{
       width: 100%;
       min-height: $minFormHeight;
       font-size: 1.3em;
-      background-color: #f7f7f7 !important;
     }
     input[type="text"].cleared{
       clear:right;
@@ -170,7 +169,7 @@ p.question{
 }
 
 header.course-header, header.index-header{
-  margin-top: 2em; //20px:10px
+  margin-top: 5.5em; //20px:10px
   float:left;
   width:100%;
 

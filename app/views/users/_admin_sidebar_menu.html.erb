@@ -28,3 +28,7 @@
       </li>
     <% end %>
 </ul>
+<% if @user.present? %>
+  Current User: <%= current_user.first_name %> @user: <%= @user.first_name %><br/>
+  Current User School: <%= current_user.institution_id %> @user school: <%= @user.institution_id %>
+<% end %>

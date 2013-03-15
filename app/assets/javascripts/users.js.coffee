@@ -4,22 +4,33 @@
 app = angular.module("swibat", ["ngResource"])
 app.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode(true)
-  $routeProvider.when('/users/:id', {templateUrl: '/users/:id.json', controller: UserCtrl})
-  $routeProvider.when('/users/:id/videos', {templateUrl: '/users/:id/videos.json', controller: UserCtrl})
+  $routeProvider.when('/users/:id', {templateUrl: '/users/:id.json', controller: 'UserCtrl'})
+  $routeProvider.when('/users/:id/videos', {templateUrl: '/users/:id/videos.json', controller: 'UserCtrl'})
+]
+app.config ['$httpProvider', (provider) ->
+  provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ]
 
 app.factory "User", ["$resource", ($resource) ->
-  $resource("/users/:id", {id: "@id"}, {
-    show: {method: "GET"}, 
-    videos: {method: "GET", isArray:true}
+  $resource("/users/:id", {id: '@id'}, {
+    show: {method: 'GET'},
+    videos: {method: 'GET', isArray:true}
     })
 ]
 
-@UserCtrl = ["$scope", "$routeParams", "User", ($scope, $routeParams, User) ->
-  $scope.user = User.show()
-  $scope.videos = User.videos(id: $routeParams.id)
-  params = $routeParams
-  console.log(params.id) 
+@UserCtrl = ["$scope", '$route', "$routeParams", "$http", '$location', "User", ($scope, $route, $routeParams, $http, $location, User) ->
+  $scope.$route = $route
+  $scope.user = User.show(id: 163)
+  $scope.videos = User.videos(id: 163)
+  $scope.$routeParams = $routeParams
+  console.log($location)
+  console.log($route)
+  console.log($routeParams)
+  console.log($scope.videos)
+  $http.get('videos.json').success((data) ->
+    $scope.videos = data
+    console.log(data)
+    )
 ]
 
 

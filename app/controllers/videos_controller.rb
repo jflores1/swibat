@@ -17,6 +17,7 @@ class VideosController < ApplicationController
     @video.user = User.find(params[:user_id]) if params[:user_id]
     @observations = @video.user.teacher_evaluations.where(eval_type: "observation").order("created_at desc")
     @video.lesson = Lesson.find(params[:lesson_id]) if params[:lesson_id]
+    render layout: 'single_column_layout'
 	end
 
 	def edit
@@ -33,6 +34,7 @@ class VideosController < ApplicationController
         format.html { render "/videos/new" }
       end
     end
+    render layout: 'single_column_layout'
   end
 
   def update

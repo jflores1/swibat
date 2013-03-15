@@ -6,17 +6,24 @@
   <% else %>
     <%= render partial: 'users/teacher_sidebar_menu', locals: {user: @user} %>
   <% end %>
-  Current User: <%= current_user.first_name %> @user: <%= @user.first_name %><br/>
-  Current User School: <%= current_user.institution_id %> @user school: <%= @user.institution_id %>
  <% end %>
 
 <% content_for :right_column do %>
-	<div class="span12">
+<h1 class="page-title">
+	<%= @user.first_name %>'s Videos
+	<span class="pull-right">
 		<%= link_to("Upload a new video", new_video_url(user_id: @user.id) , class: "btn btn-monkey header-button") if can? :upload, Video %> 	
-	</div>
-	<div ng-controller="UserCtrl">
-		{{user}}
-	</div>
+	</span>
+</h1>
+<div ng-controller="UserCtrl">
+	{{videos}}
+	<br/><br/>
+	Params: {{$route.current.params}}
+	<br/><br/>
+	Params Id: {{$route.current.params.id}}
+	<br/>
+	RouteParams: {{$routeParams}}
+</div>
 
 	<%= render partial: 'videos/collection', locals: {videos: @videos} %>
 <% end %>

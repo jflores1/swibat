@@ -42,25 +42,6 @@
 						  </ul>
 						</div>				
 
-						<div class="btn-group">
-						  <a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
-						    <i class='icon-file-alt'></i> New Evaluation
-						    <span class="caret white-caret"></span>
-						  </a>
-						  <ul class="dropdown-menu">
-						  	<% if @institution.evaluation_templates.published.any? %>
-							    <% @institution.evaluation_templates.published.each do |template| %>
-							    	<li>
-							    		<%= link_to template.name, eval_user_path(faculty, eval_type: "evaluation", template_id: template.id) %>
-							    	</li>
-							    <% end %>
-							  <% else %>
-							  	<li><%= link_to "Add Evaluation Template", institution_evaluation_templates_path(@institution) %>
-						  		</li>
-							  <% end %>
-						  </ul>
-						</div>
-
 						<span><%= link_to "New Video <i class='icon-film'></i>".html_safe, videos_user_path(faculty), class:"upload-video btn btn-small btn-monkey", data: {toggle: "tooltip", title: "Upload Videos"} %>
 						</span>
 						

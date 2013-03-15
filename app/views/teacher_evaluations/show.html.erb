@@ -22,11 +22,12 @@
 	</style>
 <% end %>
 
-<%= render :partial => 'shared/user_header', locals: {user: @user} %>
-
-
 <% content_for :left_column do %>
-	<%= render 'users/teacher_sidebar_menu' %>
+  <% if current_user.school_admin? %>
+    <%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
+  <% else %>
+    <%= render partial: 'users/teacher_sidebar_menu', locals: {user: @user} %>
+  <% end %>
 <% end %>
 
 <% content_for :right_column do %>
