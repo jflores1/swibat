@@ -15,16 +15,6 @@
 		<%= link_to("Upload a new video", new_video_url(user_id: @user.id) , class: "btn btn-monkey header-button") if can? :upload, Video %> 	
 	</span>
 </h1>
-<div ng-controller="UserCtrl">
-	{{videos}}
-	<br/><br/>
-	Params: {{$route.current.params}}
-	<br/><br/>
-	Params Id: {{$route.current.params.id}}
-	<br/>
-	RouteParams: {{$routeParams}}
-</div>
-
 	<%= render partial: 'videos/collection', locals: {videos: @videos} %>
 <% end %>
 

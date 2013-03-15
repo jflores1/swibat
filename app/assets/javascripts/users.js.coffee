@@ -14,23 +14,20 @@ app.config ['$httpProvider', (provider) ->
 app.factory "User", ["$resource", ($resource) ->
   $resource("/users/:id", {id: '@id'}, {
     show: {method: 'GET'},
-    videos: {method: 'GET', isArray:true}
+    videos: {method: 'GET'}
     })
 ]
 
-@UserCtrl = ["$scope", '$route', "$routeParams", "$http", '$location', "User", ($scope, $route, $routeParams, $http, $location, User) ->
+@UserCtrl = ['$scope', '$route', '$routeParams', '$location', 'User', ($scope, $route, $routeParams, $location, User) ->
   $scope.$route = $route
   $scope.user = User.show(id: 163)
   $scope.videos = User.videos(id: 163)
   $scope.$routeParams = $routeParams
+  console.log($scope.user)
   console.log($location)
   console.log($route)
   console.log($routeParams)
   console.log($scope.videos)
-  $http.get('videos.json').success((data) ->
-    $scope.videos = data
-    console.log(data)
-    )
 ]
 
 
