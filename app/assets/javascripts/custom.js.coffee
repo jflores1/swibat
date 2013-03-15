@@ -53,6 +53,7 @@ $(document).ready ->
   $('.upload-observation').tooltip()
   $('.upload-video').tooltip()
   $('.add-evaluation').tooltip()
+  $('.add-observation').tooltip()
 
   #calendar
   $('.datepicker').datepicker({"dateFormat":"yy-mm-dd"})

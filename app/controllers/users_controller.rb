@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @institution = @user.institution #TODO: Consider factoring this out and passing as local variable in partial.
     @certifications = @user.professional_accomplishments.where(:accomplishment_type => "Certificate")
     @awards = @user.professional_accomplishments.where(:accomplishment_type => "Award")
     @microposts = @user.microposts

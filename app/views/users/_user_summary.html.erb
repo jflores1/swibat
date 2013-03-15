@@ -13,7 +13,7 @@
     <i class="icon-home"></i> Dashboard
   </h1>
 
-  <div class="stat-container">
+  <div class="stat-container cleafix">
     <div class="stat-holder">
       <div class="stat">
         <span><%= @user.evaluations.count %></span>
@@ -35,6 +35,11 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- Different Dashboards for Faculty and School_Admin. Teachers shouldn't see faculty table -->
+  <div style="position: relative; clear: both; width: auto;">
+    <%= render partial: 'institutions/faculty_table', locals: {faculty: @user.institution.faculty} %>  
   </div>
     
   <% end %>

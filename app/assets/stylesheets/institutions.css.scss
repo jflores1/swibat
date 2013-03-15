@@ -84,4 +84,12 @@ tr.domain-row{
 		font-size: 1.8em;
 	}
 }
+table{
+	tr:first-child th{
+		background-color: #ffffff;
+	}
+	tr:nth-child(even) td{
+		background-color: #ffffff !important;
+	}
+}
 

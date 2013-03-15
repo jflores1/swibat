@@ -23,8 +23,8 @@
 					<td>
 
 						<div class="btn-group">
-						  <a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
-						    <i class='icon-laptop'></i> New Observation
+						  <a class="btn btn-small dropdown-toggle btn-monkey add-observation" data-toggle="dropdown" data-title="Add Observation" href="#">
+						    <i class='icon-laptop'></i>
 						    <span class="caret white-caret"></span>
 						  </a>
 						  <ul class="dropdown-menu">
@@ -42,7 +42,7 @@
 						  </ul>
 						</div>				
 
-						<span><%= link_to "New Video <i class='icon-film'></i>".html_safe, videos_user_path(faculty), class:"upload-video btn btn-small btn-monkey", data: {toggle: "tooltip", title: "Upload Videos"} %>
+						<span><%= link_to "<i class='icon-film'></i>".html_safe, videos_user_path(faculty), class:"upload-video btn btn-small btn-monkey", data: {toggle: "tooltip", title: "Upload Videos"} %>
 						</span>
 						
 					</td>
