@@ -11,12 +11,26 @@
 		}
 
 		.bar {
-		  fill: steelblue;
 		  vector-effect: non-scaling-stroke;
+		}
+
+		.bar:hover{
+			opacity: 0.7;
 		}
 
 		.x.axis path {
 		  display: none;
+		}
+
+		div.tooltip {   
+		  position: absolute;           
+		  text-align: center;           
+		  padding: 5px;             
+		  font: 12px sans-serif;        		    
+		  border: 3px solid #555;      
+		  background: #fff;
+		  border-radius: 8px;           
+		  pointer-events: none;         
 		}
 
 	</style>
@@ -96,6 +110,38 @@
 
 
 	<script>
+			var color = d3.scale.ordinal()
+    .range(["#A9BD9A",
+"#DDC6ED",
+"#F1A07A",
+"#E0F283",
+"#96DEE5",
+"#F0E09E",
+"#B1F2B8",
+"#CDBCBA",
+"#ECACC1",
+"#E4B96B",
+"#88EDD4",
+"#EBB2A2",
+"#B0CBE6",
+"#C0BF68",
+"#D3EECC",
+"#B4E48E",
+"#D8AF82",
+"#AACBC0",
+"#E3E6E2",
+"#D8F0AA",
+"#D6CDB1",
+"#8ECA89",
+"#88D2A7",
+"#B8CC92",
+"#C7BD80",
+"#D0B5CD",
+"#E5E385",
+"#7DD0BF",
+"#E6E5B2",
+"#E8C8A0"]);
+
 
 			var w = 650,
 					h = 300;
@@ -103,7 +149,8 @@
 			    width = w - margin.left - margin.right,
 			    height = h - margin.top - margin.bottom;
 
-			var formatPercent = d3.format("d");
+			var formatPercent = d3.format("d");			
+			var formatDecimal = d3.format(".2f");
 
 			var x = d3.scale.ordinal()
 			    .rangeRoundBands([0, width], .1);
@@ -111,6 +158,9 @@
 			var y = d3.scale.linear()
 			    .range([height, 0]);
 
+			var x0 = d3.scale.ordinal()
+			    		 .rangeRoundBands([0, width], .1);
+			
 			var xAxis = d3.svg.axis()
 			    .scale(x)
 			    .orient("bottom");
@@ -133,8 +183,16 @@
 			    d.score = +d.score;
 			  });
 
-			  x.domain(data.map(function(d) { return d.name; }));
-			  y.domain([1, 4]);
+			  x.domain(data.map(function(d) { return d.domain; }));
+
+  			x0.domain(data.map(function(d) {return d.name}));
+
+			  y.domain([0, 4]);
+
+			  var div = d3.select("body").append("div")   
+							    .attr("class", "tooltip")               
+							    .style("opacity", 0);
+				
 
 			  svg.append("g")
 			      .attr("class", "x axis")
@@ -155,11 +213,24 @@
 			      .data(data)
 			    .enter().append("rect")
 			      .attr("class", "bar")
-			      .attr("x", function(d) { return x(d.name); })
-			      .attr("width", x.rangeBand())
+			      .attr("x", function(d) { return x0(d.name); })			      
+			      .attr("width", x0.rangeBand())
 			      .attr("y", function(d) { return y(d.score); })
-			      .attr("height", function(d) { return height - y(d.score); });
+			      .attr("height", function(d) { return height - y(d.score); })
+			      .style("fill", function(d) { return color(d.name); })
+			    .on("mouseover", function(d) {      
+            div.transition()        
+                .duration(200)      
+                .style("opacity", .9);      
+            div .html(d.name + "<br />  Score: " + formatDecimal(d.score))  
+                .style("left", (d3.event.pageX) + "px")     
+                .style("top", (d3.event.pageY - 28) + "px");    
+            })                  
+        .on("mouseout", function(d) {       
+            div.transition()        
+                .duration(500)      
+                .style("opacity", 0);   
+        });
 		</script>
 
 <% end %>
-
