@@ -1,13 +1,43 @@
+<% content_for :head do %>
+<style>
+ #chart path {
+ stroke: steelblue;
+ stroke-width: 2;
+ fill: none;
+ }
+ .axis { shape-rendering: crispEdges; }
+ .x.axis line { stroke: lightgrey; }
+ .x.axis .minor { stroke-opacity: .5; }
+ .x.axis path { display: none; }
+ .y.axis line, .y.axis path {
+ fill: none;
+ stroke: #000;
+ }
+
+ div.tooltip {   
+		  position: absolute;           
+		  text-align: center;           
+		  padding: 5px;             
+		  font: 12px sans-serif;        		    
+		  border: 3px solid #555;      
+		  background: #fff;
+		  border-radius: 8px;           
+		  pointer-events: none;         
+		}
+
+ </style>
+<% end %>
+
 <%= provide(:title, "Evaluate #{@user.full_name}") %>
 
 <%= render :partial => 'shared/user_header', locals: {user: @user} %>
 
 <% content_for :left_column do %>
-  <% if current_user.school_admin? %>
-    <%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
-  <% else %>
-    <%= render partial: 'users/teacher_sidebar_menu', locals: {user: @user} %>
-  <% end %>
+<% if current_user.school_admin? %>
+<%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
+<% else %>
+<%= render partial: 'users/teacher_sidebar_menu', locals: {user: @user} %>
+<% end %>
 <% end %>
 
 <% content_for :right_column do %>
@@ -16,81 +46,202 @@
 	<span>
 
 		<% if can? :eval, @user %>
-			<div class="btn-group pull-right">
-			  <a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
-			    <i class='icon-cloud-upload'></i> Add Observation
-			    <span class="caret white-caret"></span>
-			  </a>
-			  <ul class="dropdown-menu">
-			  	<% if @user.institution.evaluation_templates.published.any? %>
-			  		<% @user.institution.evaluation_templates.published.each do |template| %>
-			    	<li>
-			    		<%= link_to template.name, eval_user_path(@user, eval_type: "observation", template_id: template.id) %>
-			    	</li>
-			    <% end %>
-			  	<% else %>
-			  		<li>No observation templates</li>
-			  	<% end %>
-			    
-			  </ul>
-			</div>				
+		<div class="btn-group pull-right">
+			<a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
+				<i class='icon-cloud-upload'></i> Add Observation
+				<span class="caret white-caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<% if @user.institution.evaluation_templates.published.any? %>
+				<% @user.institution.evaluation_templates.published.each do |template| %>
+				<li>
+					<%= link_to template.name, eval_user_path(@user, eval_type: "observation", template_id: template.id) %>
+				</li>
+				<% end %>
+				<% else %>
+				<li>No observation templates</li>
+				<% end %>
 
-			<div class="btn-group pull-right">
-			  <a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
-			    <i class='icon-file-alt'></i> Add Evaluation
-			    <span class="caret white-caret"></span>
-			  </a>
-			  <ul class="dropdown-menu">
-			  	<% if @user.institution.evaluation_templates.published.any? %>
-				    <% @user.institution.evaluation_templates.published.each do |template| %>
-				    	<li>
-				    		<%= link_to template.name, eval_user_path(@user, eval_type: "evaluation", template_id: template.id) %>
-				    	</li>
-				    <% end %>
-				  <% else %>
-				  	<li>No evaluation templates</li>
-				  <% end %>
-			  </ul>
-			</div>
-			<br /><br />
+			</ul>
+		</div>				
+
+		<div class="btn-group pull-right">
+			<a class="btn btn-small dropdown-toggle btn-monkey" data-toggle="dropdown" href="#">
+				<i class='icon-file-alt'></i> Add Evaluation
+				<span class="caret white-caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<% if @user.institution.evaluation_templates.published.any? %>
+				<% @user.institution.evaluation_templates.published.each do |template| %>
+				<li>
+					<%= link_to template.name, eval_user_path(@user, eval_type: "evaluation", template_id: template.id) %>
+				</li>
+				<% end %>
+				<% else %>
+				<li>No evaluation templates</li>
+				<% end %>
+			</ul>
+		</div>
+		<br /><br />
 		<% end %>
 	</span>
 </h1>
-	
-	<% if @evaluations && @evaluations.any? %>
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>
-						Teacher
-					</th>
-					<th>
-						Published
-					</th>
-					<th>
-						Score
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @evaluations.each do |evaluation| %>
-					<tr>
-						<td><%= link_to evaluation.teacher.full_name, institution_evaluation_path(@user.institution, evaluation) %></td>
-						<td><%= time_ago_in_words evaluation.created_at %> ago</td>
-						<td><%= number_with_precision(evaluation.calculate_score, :precision => 2) %>%</td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	<% else %>
-		<div class="user-profile">
-       <h3 class="sad-monkey">Sad. It doesn't look like <%= @user.first_name.titleize %> has had any evaluations yet.
-       	<span><br/><%= link_to "Add One", eval_user_path(@user), class: "btn btn-monkey" if can? :eval, @user %></span>
-       </h3>
-    </div>
-	<% end %>
 
-	
+<div id="chart"></div>
+
+
+<% if @evaluations && @evaluations.any? %>
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>
+				Name
+			</th>
+			<th>
+				Published
+			</th>
+			<th>
+				Score
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @evaluations.each do |evaluation| %>
+		<tr>
+			<td><%= link_to evaluation.name, institution_evaluation_path(@user.institution, evaluation) %></td>
+			<td><%= time_ago_in_words evaluation.created_at %> ago</td>
+			<td><%= number_with_precision(evaluation.calculate_score, :precision => 2) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% else %>
+<div class="user-profile">
+	<h3 class="sad-monkey">Sad. It doesn't look like <%= @user.first_name.titleize %> has had any evaluations yet.
+		<span><br/><%= link_to "Add One", eval_user_path(@user), class: "btn btn-monkey" if can? :eval, @user %></span>
+	</h3>
+</div>
 <% end %>
 
-<%= render 'layouts/two_column_partial' %>
+<script type="text/javascript">
+function getDate(d) {
+	var dt = new Date(d.date);
+	dt.setHours(0);
+	dt.setMinutes(0);
+	dt.setSeconds(0);
+	dt.setMilliseconds(0);
+	return dt;
+}
+
+var drawChart = function(data) {
+ // define dimensions of graph
+ var m = [20, 40, 20, 100]; // margins
+ var w = 700 - m[1] - m[3]; // width
+ var h = 360 - m[0] - m[2]; // height
+ 
+ data.sort(function(a, b) {
+ 	var d1 = getDate(a);
+ 	var d2 = getDate(b);
+ 	if (d1 == d2) return 0;
+ 	if (d1 > d2) return 1;
+ 	return -1;
+ });
+ 
+// get max and min dates - this assumes data is sorted
+var minDate = getDate(data[0]),
+maxDate = getDate(data[data.length-1]);
+
+var x = d3.time.scale().domain([minDate, maxDate]).range([0, w]);
+
+// X scale will fit all values from data[] within pixels 0-w
+ //var x = d3.scale.linear().domain([0, data.length]).range([0, w]);
+ // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+ var y = d3.scale.linear().domain([0, d3.max(data, function(d) { return d.score; } )]).range([h, 0]);
+ 
+// create a line function that can convert data[] into x and y points
+var line = d3.svg.line()
+ // assign the X function to plot our line as we wish
+ .x(function(d, i) {
+ // return the X coordinate where we want to plot this datapoint
+ return x(getDate(d)); //x(i);
+})
+ .y(function(d) {
+ // return the Y coordinate where we want to plot this datapoint
+ return y(d.score);
+});
+ 
+ function xx(e) { return x(getDate(e)); };
+ function yy(e) { return y(e.score); };
+ 
+// Add an SVG element with the desired dimensions and margin.
+var graph = d3.select("#chart").append("svg:svg")
+.attr("width", w + m[1] + m[3])
+.attr("height", h + m[0] + m[2])
+.append("svg:g")
+.attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+// create yAxis
+var xAxis = d3.svg.axis().scale(x).ticks(d3.time.weeks, 1).tickSize(-h).tickSubdivide(true);
+ // Add the x-axis.
+ graph.append("svg:g")
+ .attr("class", "x axis")
+ .attr("transform", "translate(0," + h + ")")
+ .call(xAxis);
+ 
+// create left yAxis
+ var yAxisLeft = d3.svg.axis().scale(y).ticks(10).orient("left"); //.tickFormat(formalLabel);
+ // Add the y-axis to the left
+ graph.append("svg:g")
+ .attr("class", "y axis")
+ .attr("transform", "translate(-25,0)")
+ .call(yAxisLeft);
+ 
+ var formatDecimal = d3.format(".2f");
+// Add the line by appending an svg:path element with the data line we created above
+ // do this AFTER the axes above so that the line is above the tick-lines
+ graph
+ .selectAll("circle")
+ .data(data)
+ .enter().append("circle")
+ .attr("fill", "steelblue")
+ .attr("r", 8)
+ .attr("cx", xx)
+ .attr("cy", yy)
+ .on("mouseover", function(d) {      
+  div.transition()        
+      .duration(200)      
+      .style("opacity", .9);      
+  div .html(d.name + "<br />  Score: " + formatDecimal(d.score))  
+      .style("left", (d3.event.pageX) + "px")     
+      .style("top", (d3.event.pageY - 28) + "px");    
+  })                  
+ .on("mouseout", function(d) {       
+  	div.transition()        
+    	 .duration(500)      
+      .style("opacity", 0);   
+});
+
+
+ graph.append("svg:path").attr("d", line(data));
+ graph.append("svg:text")
+ .attr("x", -200)
+ .attr("y", -90)
+ .attr("dy", ".1em")
+ .attr("transform", "rotate(-90)")
+ .text("Score");
+ 
+ 
+ $("#chart").append("<div class='infobox' style='display:none;'>Test</div>");
+}
+
+	var div = d3.select("body").append("div")   
+				    .attr("class", "tooltip")               
+				    .style("opacity", 0);
+
+	var data = <%= raw @json_data %>;
+	drawChart(data);
+</script>
+
+
+<% end %>
+

@@ -561,6 +561,7 @@ div.index-profile{
 Footer
 *************************/
 #footer{
+    margin-top:50px;
     display: block;
     float: left;
     clear: both;
@@ -655,6 +656,11 @@ Position, Formatting, Fonts
 .btn-monkey, .btn-monkey:hover{
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-group.open .btn.dropdown-toggle{
+    background:#A43220 !important;
+
 }
 
 .btn-monkey.active{

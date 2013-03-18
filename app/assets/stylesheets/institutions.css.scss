@@ -76,6 +76,8 @@ td.eval{
 		margin: 0 auto;
 		display: block;
 	}
+	text-align: center;
+	font-size: 2em;
 }
 
 tr.domain-row{
@@ -84,6 +86,7 @@ tr.domain-row{
 		font-size: 1.8em;
 	}
 }
+
 table{
 	tr:first-child th{
 		background-color: #ffffff;
@@ -92,4 +95,3 @@ table{
 		background-color: #ffffff !important;
 	}
 }
-

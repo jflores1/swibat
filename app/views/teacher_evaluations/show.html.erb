@@ -2,21 +2,41 @@
 
 <% content_for :head do %>
 	<style>
-		.axis path,
-		.axis line {
-		  fill: none;
-		  stroke: #000;
-		  shape-rendering: crispEdges;
+	 #graph path {
+ stroke: steelblue;
+ stroke-width: 2;
+ fill: none;
+ }
+		.axis { shape-rendering: crispEdges; }
+ .x.axis line { stroke: lightgrey; }
+ .x.axis .minor { stroke-opacity: .5; }
+ .x.axis path { display: none; }
+ .y.axis line, .y.axis path {
+ fill: none;
+ stroke: #000;
+ }
+
+		.bar {
 		  vector-effect: non-scaling-stroke;
 		}
 
-		.bar {
-		  fill: steelblue;
-		  vector-effect: non-scaling-stroke;
+		.bar:hover{
+			opacity: 0.7;
 		}
 
 		.x.axis path {
 		  display: none;
+		}
+
+		div.tooltip {   
+		  position: absolute;           
+		  text-align: center;           
+		  padding: 5px;             
+		  font: 12px sans-serif;        		    
+		  border: 3px solid #555;      
+		  background: #fff;
+		  border-radius: 8px;           
+		  pointer-events: none;         
 		}
 
 	</style>
@@ -33,12 +53,12 @@
 <% content_for :right_column do %>
 	<h1><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
 	<p>Published <%= time_ago_in_words @evaluation.updated_at %> ago</p>
-	<h3>Total Score: <%= number_with_precision(@evaluation.calculate_score, :precision => 2) %>%</h3>
+	<h3>Total Score: <%= number_with_precision(@evaluation.calculate_score, :precision => 2) %></h3>
 
 	<h3>Score by domain</h3>
 	<div id="graph"></div>
 
-	<table class="table faculty-table">
+	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
 				<th width="50%"></th>
@@ -51,7 +71,7 @@
 		<tbody>			
 			<% @evaluation.evaluation_template.evaluation_domains.each do |domain| %>
 				<tr class="domain-row">
-					<td class="domain"><%= domain.name %> (Score: <%= number_with_precision(domain.calculate_score(@evaluation), :precision => 2)%>%)</td>
+					<td class="domain" colspan="5"><%= domain.name %> (Score: <%= number_with_precision(domain.calculate_score(@evaluation), :precision => 2)%>)</td>
 				</tr>
 
 				<% domain.evaluation_criteria.each do |criterion| %>
@@ -96,6 +116,28 @@
 
 
 	<script>
+			var color = d3.scale.ordinal()
+    .range(["#7E6F51",
+"#AEB1A5",
+"#D1A68B",
+"#666465",
+"#ACAE83",
+"#977770",
+"#7C8C7F",
+"#695145",
+"#4F5C4B",
+"#BE9D99",
+"#AA8267",
+"#89906E",
+"#AC9C80",
+"#95908C",
+"#8E8271",
+"#687560",
+"#6C6356",
+"#A6AF93",
+"#C5AF89",
+"#595146"]);
+
 
 			var w = 650,
 					h = 300;
@@ -103,7 +145,8 @@
 			    width = w - margin.left - margin.right,
 			    height = h - margin.top - margin.bottom;
 
-			var formatPercent = d3.format(".0%");
+			var formatPercent = d3.format("d");			
+			var formatDecimal = d3.format(".2f");
 
 			var x = d3.scale.ordinal()
 			    .rangeRoundBands([0, width], .1);
@@ -111,6 +154,9 @@
 			var y = d3.scale.linear()
 			    .range([height, 0]);
 
+			var x0 = d3.scale.ordinal()
+			    		 .rangeRoundBands([0, width], .1);
+			
 			var xAxis = d3.svg.axis()
 			    .scale(x)
 			    .orient("bottom");
@@ -133,8 +179,16 @@
 			    d.score = +d.score;
 			  });
 
-			  x.domain(data.map(function(d) { return d.name; }));
-			  y.domain([0, 1]);
+			  x.domain(data.map(function(d) { return d.domain; }));
+
+  			x0.domain(data.map(function(d) {return d.name}));
+
+			  y.domain([0, 4]);
+
+			  var div = d3.select("body").append("div")   
+							    .attr("class", "tooltip")               
+							    .style("opacity", 0);
+				
 
 			  svg.append("g")
 			      .attr("class", "x axis")
@@ -155,11 +209,24 @@
 			      .data(data)
 			    .enter().append("rect")
 			      .attr("class", "bar")
-			      .attr("x", function(d) { return x(d.name); })
-			      .attr("width", x.rangeBand())
+			      .attr("x", function(d) { return x0(d.name); })			      
+			      .attr("width", x0.rangeBand())
 			      .attr("y", function(d) { return y(d.score); })
-			      .attr("height", function(d) { return height - y(d.score); });
+			      .attr("height", function(d) { return height - y(d.score); })
+			      .style("fill", function(d) { return color(d.name); })
+			    .on("mouseover", function(d) {      
+            div.transition()        
+                .duration(200)      
+                .style("opacity", .9);      
+            div .html(d.name + "<br />  Score: " + formatDecimal(d.score))  
+                .style("left", (d3.event.pageX) + "px")     
+                .style("top", (d3.event.pageY - 28) + "px");    
+            })                  
+        .on("mouseout", function(d) {       
+            div.transition()        
+                .duration(500)      
+                .style("opacity", 0);   
+        });
 		</script>
 
 <% end %>
-

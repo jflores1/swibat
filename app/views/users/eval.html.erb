@@ -26,12 +26,7 @@
 				
 					<% @evaluation.evaluation_template.evaluation_domains.each do |domain| %>
 						<tr class="domain-row">
-							<td class="domain"><%= domain.name %></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td class="domain" colspan="6"><%= domain.name %></td>							
 						</tr>
 
 						<% domain.evaluation_criteria.each do |criterion| %>

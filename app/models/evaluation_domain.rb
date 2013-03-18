@@ -28,7 +28,10 @@ class EvaluationDomain < ActiveRecord::Base
   	end
   	domain_score /= criteria_count.to_f
 		domain_score = 0 if domain_score.nan?
-    domain_score = domain_score *100 / 4.0
+
+    # Next line transforms the score into percentage
+    # domain_score = domain_score *100 / 4.0
+
   	return domain_score
   end
 
