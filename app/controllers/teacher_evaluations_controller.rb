@@ -14,7 +14,7 @@ class TeacherEvaluationsController < ApplicationController
 
     @data = []
     @evaluation.evaluation_template.evaluation_domains.each do |domain|
-      @data << {name: domain.name , score: domain.calculate_score(@evaluation)/100.to_f}
+      @data << {name: domain.name , score: domain.calculate_score(@evaluation).to_f}
     end
     @json_data = @data.to_json
   end

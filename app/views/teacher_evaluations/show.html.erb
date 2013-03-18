@@ -33,7 +33,7 @@
 <% content_for :right_column do %>
 	<h1><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
 	<p>Published <%= time_ago_in_words @evaluation.updated_at %> ago</p>
-	<h3>Total Score: <%= number_with_precision(@evaluation.calculate_score, :precision => 2) %>%</h3>
+	<h3>Total Score: <%= number_with_precision(@evaluation.calculate_score, :precision => 2) %></h3>
 
 	<h3>Score by domain</h3>
 	<div id="graph"></div>
@@ -51,7 +51,7 @@
 		<tbody>			
 			<% @evaluation.evaluation_template.evaluation_domains.each do |domain| %>
 				<tr class="domain-row">
-					<td class="domain"><%= domain.name %> (Score: <%= number_with_precision(domain.calculate_score(@evaluation), :precision => 2)%>%)</td>
+					<td class="domain"><%= domain.name %> (Score: <%= number_with_precision(domain.calculate_score(@evaluation), :precision => 2)%>)</td>
 				</tr>
 
 				<% domain.evaluation_criteria.each do |criterion| %>
@@ -103,7 +103,7 @@
 			    width = w - margin.left - margin.right,
 			    height = h - margin.top - margin.bottom;
 
-			var formatPercent = d3.format(".0%");
+			var formatPercent = d3.format("d");
 
 			var x = d3.scale.ordinal()
 			    .rangeRoundBands([0, width], .1);
@@ -134,7 +134,7 @@
 			  });
 
 			  x.domain(data.map(function(d) { return d.name; }));
-			  y.domain([0, 1]);
+			  y.domain([1, 4]);
 
 			  svg.append("g")
 			      .attr("class", "x axis")
