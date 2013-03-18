@@ -30,6 +30,7 @@ class EvaluationTemplatesController < ApplicationController
   def destroy
     @template = @institution.evaluation_templates.find(params[:id])
     @template.destroy
+    redirect_to institution_evaluation_templates_path, notice: "Template deleted successfully"
   end
 
   private

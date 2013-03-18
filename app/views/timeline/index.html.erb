@@ -2,6 +2,7 @@
 
 <ul id="activity-list">
 <% @activities.each do |activity| %>
+	<% next if !activity.recipient %>
 	<li class="activity-item">
   	<%= render_activity(activity) %>
   </li>

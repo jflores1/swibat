@@ -10,7 +10,7 @@
 	<%= form_for [@institution, @template] do |f| %>
 		<div class="pull-right">
 			<%= f.submit "Save Template", class:"btn btn-monkey" %>
-			<%= link_to "Cancel", institution_evaluation_templates_path(current_user.institution), class:"btn btn-monkey" %>
+			<%= link_to "<i class='icon-trash no-left-margin'></i> Delete Template".html_safe, [@institution, @template], method: :delete, :confirm => 'Are you sure? This action will delete the template.', class:"btn btn-monkey" %>
 		</div>
 		<div class="control-group">
 			<%= f.label :template_name %>
