@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8e40e5b-4458-4862-a0a6-499463a7ca3a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/swibat.iml" afterPath="$PROJECT_DIR$/.idea/swibat.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/institutions/_faculty_table.html.erb" afterPath="$PROJECT_DIR$/app/views/institutions/_faculty_table.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/_user_summary.html.erb" afterPath="$PROJECT_DIR$/app/views/users/_user_summary.html.erb" />
     </list>
     <ignored path="swibat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,10 +29,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="courses_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="courses_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="25" selection-start="386" selection-end="386" vertical-scroll-proportion="0.020632736">
+            <state line="6" column="25" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="28" selection-start="827" selection-end="827" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="videos.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users/videos.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="73" selection-start="670" selection-end="670" vertical-scroll-proportion="-10.625">
+              <folding>
+                <marker date="1363561279000" expanded="true" signature="384:598" placeholder="..." />
+                <marker date="1363561279000" expanded="true" signature="445:592" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_faculty_table.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/institutions/_faculty_table.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="66" selection-start="453" selection-end="453" vertical-scroll-proportion="0.36635005">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_user_summary.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users/_user_summary.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="14" selection-start="996" selection-end="996" vertical-scroll-proportion="-24.375">
               <folding />
             </state>
           </provider>
@@ -50,10 +90,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/assets/manifest.yml" />
-        <option value="$PROJECT_DIR$/app/views/shared/_user_header.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_navbar_chalkboard.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
         <option value="$PROJECT_DIR$/spec/requests/user_pages_spec.rb" />
         <option value="$PROJECT_DIR$/app/views/following_mailer/being_followed.html.erb" />
@@ -61,19 +97,21 @@
         <option value="$PROJECT_DIR$/app/mailers/following_mailer.rb" />
         <option value="$PROJECT_DIR$/app/models/following.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/microposts/create.js.erb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/app/controllers/microposts_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_head_content.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/courses_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/users/videos.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/institutions/_faculty_table.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/users/_user_summary.html.erb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2" />
-    <option name="y" value="29" />
-    <option name="width" value="1899" />
-    <option name="height" value="875" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -120,7 +158,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,20 +232,21 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Database.TableEditor.Splitter" value="0.9" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.editor" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Library/Preferences/RubyMine40/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar" />
+    <property name="options.lastSelected" value="preferences.editor" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SAMI" />
     <property name="FullScreen" value="false" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -501,14 +539,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2" y="29" width="1899" height="875" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293556" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16028063" sideWeight="0.6707441" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.09397417" sideWeight="0.5555556" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16082029" sideWeight="0.22679046" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16082029" sideWeight="0.6710875" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15997131" sideWeight="0.5555556" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925585" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -577,31 +615,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/initializers/better_errors.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/wicked_pdf.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="40" selection-start="1917" selection-end="1917" vertical-scroll-proportion="0.9031008" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/microposts_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="2" selection-start="360" selection-end="360" vertical-scroll-proportion="0.27131784" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/microposts/create.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="40" selection-start="219" selection-end="219" vertical-scroll-proportion="0.08" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_head_content.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="35" selection-start="185" selection-end="185" vertical-scroll-proportion="0.048387095" />
@@ -614,51 +627,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/swibat.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.5407097">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.5407097" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-6.5987124">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-6.5987124" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="16" selection-start="2764" selection-end="2778" vertical-scroll-proportion="0.020632736">
-          <folding />
-        </state>
+        <state line="124" column="16" selection-start="2764" selection-end="2778" vertical-scroll-proportion="0.020632736" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/video.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.20632738">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.20632738" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/models/video_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.56808805">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.56808805" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/factories/videos.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="uml://DATABASE/56d130ca-9d76-4cb3-9eba-2d97041b6cc5.schema:public">
@@ -682,12 +681,12 @@
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.standard_strands</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.taggings</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_criteria_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.subjects_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.followings</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.subjects_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.resources_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.tags_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.admin_users_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.units</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.admin_users_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.specialties_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.schema_migrations</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.rs_evaluations</node>
@@ -717,63 +716,102 @@
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.professional_experiences_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.journal_entries_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.answers</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.lessons_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.microposts_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.lessons_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.activities</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.professional_accomplishments_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.domain_grades_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.answers_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.videos</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.rs_reputation_messages</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.videos</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.courses</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.active_admin_comments</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.professional_educations_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.active_admin_comments</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.journal_entries</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.microposts</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.specialties</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_domains_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.taggings_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.tags</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.taggings_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.institutions</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.lessons</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.lesson_standards_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.pg_search_documents_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.flags</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.pg_search_documents_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.lesson_standards_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_templates</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.resources</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.activities_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.profiles_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.assessments_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.standard_strands_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.comments_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.pg_search_documents</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.educational_standards_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.links_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.leads_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.educational_standards_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.pg_search_documents</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.comments_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_ratings_id_seq</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.leads_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.objectives</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.posts_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_ratings</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.videos_id_seq</node>
-            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.educational_standards</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.evaluation_ratings</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.users</node>
+            <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.educational_standards</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.followings_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.rs_reputation_messages_id_seq</node>
             <node x="" y="">56d130ca-9d76-4cb3-9eba-2d97041b6cc5.table:public.admin_users</node>
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.26575550493545935" x="1262.8371428571431" y="1087.0000000000002" />
+          <settings layout="Hierarchic Group" zoom="0.26575550493545935" x="1263.0" y="1087.0" />
           <SelectedNodes />
           <Categories>
             <Category>Key columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/courses_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="25" selection-start="386" selection-end="386" vertical-scroll-proportion="0.020632736">
+        <state line="6" column="25" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="28" selection-start="827" selection-end="827" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/videos.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="73" selection-start="670" selection-end="670" vertical-scroll-proportion="-10.625">
+          <folding>
+            <marker date="1363561279000" expanded="true" signature="384:598" placeholder="..." />
+            <marker date="1363561279000" expanded="true" signature="445:592" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/_user_summary.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="14" selection-start="996" selection-end="996" vertical-scroll-proportion="-24.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/institutions/_faculty_table.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="66" selection-start="453" selection-end="453" vertical-scroll-proportion="0.36635005">
           <folding />
         </state>
       </provider>
