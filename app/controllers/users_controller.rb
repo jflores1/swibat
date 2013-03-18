@@ -95,7 +95,13 @@ class UsersController < ApplicationController
 
   def evaluations
     @user = User.find(params[:id])
-    @evaluations = @user.teacher_evaluations    
+    @evaluations = @user.teacher_evaluations.order("created_at desc")
+
+    @data = []
+    @evaluations.each do |evaluation|
+      @data << {date: evaluation.created_at, score: evaluation.calculate_score, name: evaluation.name, type: evaluation.eval_type}
+    end
+    @json_data = @data.to_json
   end
 
   def eval

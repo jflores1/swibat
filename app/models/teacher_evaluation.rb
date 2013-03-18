@@ -35,5 +35,9 @@ class TeacherEvaluation < ActiveRecord::Base
     return evaluation_score
   end
 
+  def name
+    self.eval_type.titleize + " - " + self.created_at.strftime("%d %B %Y")    
+  end
+
   accepts_nested_attributes_for :evaluation_ratings
 end
