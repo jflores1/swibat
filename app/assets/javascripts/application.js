@@ -15,10 +15,15 @@
 //= require jquery-ui
 //= require bootstrap
 //= require bootstrap-wysihtml5
-//= require angular
-//= require angular-bootstrap
-//= require angular-resource
 //= require best_in_place.purr
 //= require best_in_place
 //= require_directory .
 
+//= require underscore
+//= require backbone
+//= require swibat
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
