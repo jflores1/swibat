@@ -1,46 +1,15 @@
 <div class="course-overview" xmlns="http://www.w3.org/1999/html">
 
   <% content_for :left_column do %>
-    <% if current_user.school_admin? %>
-      <%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
-    <% else %>
-      <%= render partial: 'users/teacher_sidebar_menu', locals: {user: @user} %>
-    <% end %>
+    <%= show_appropriate_sidebar(current_user) %>
   <% end %>
 
   <% content_for :right_column do %>
-  <h1 class="page-title">
-    <i class="icon-home"></i> Dashboard
-  </h1>
+    <h1 class="page-title">
+        <i class="icon-home"></i> Dashboard
+    </h1>
 
-  <div class="stat-container cleafix">
-    <div class="stat-holder">
-      <div class="stat">
-        <span><%= @user.teacher_evaluations.count %></span>
-        <p>Observations</p>
-      </div>
-    </div>
-
-    <div class="stat-holder">
-      <div class="stat">
-        <span><%= @user.videos.count %></span>
-        <p>Videos</p>
-      </div>
-    </div>
-
-    <div class="stat-holder">
-      <div class="stat">
-        <span><%= @user.evaluations.count %></span>
-        <p>Active Goals</p>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- TODO: Different Dashboards for Faculty and School_Admin. Teachers shouldn't see faculty table -->
-  <div style="position: relative; clear: both; width: auto;">
-    <%= render partial: 'institutions/faculty_table', locals: {faculty: @user.institution.faculty} %>  
-  </div>
+    <%= show_appropriate_dashboard(@user) %>
     
   <% end %>
 

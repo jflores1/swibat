@@ -134,6 +134,10 @@ describe "UserPages" do
               it {page.should have_selector("p", text: "Active Goals")}
             end
           end
+
+          describe "Cannot see other users' information" do
+            it {page.should_not have_selector("h3", text: "Faculty")}
+          end
           
         end
       end
@@ -166,6 +170,10 @@ describe "UserPages" do
             find_link("School Info").click
             current_path.should eq(edit_institution_path(@user.institution))
           end
+        end
+
+        describe "the admin dashboard" do
+          it {page.should have_selector("h3", text: "Faculty")}
         end
 
         describe "visiting a teacher's profile page" do
