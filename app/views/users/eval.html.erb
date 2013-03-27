@@ -48,6 +48,7 @@
 			</tbody>
 		</table>
 		<%= f.submit "Save Draft", class:"btn btn-monkey pull-left" %>
-		<%= link_to "Publish", "#", class:"btn btn-monkey pull-right" %>
+        <%= link_to "Cancel", user_path(@user), class:"btn btn-monkey pull-right" %>
+        <!-- TODO: MAKE THIS DYNAMIC, MAYBE WITH A CONFIRMATION MESSAGE SO THE USER KNOWS THE REQUEST WAS CANCELLED -->
 	<% end %>
 <% end %>

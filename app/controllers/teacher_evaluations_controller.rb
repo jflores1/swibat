@@ -46,14 +46,14 @@ class TeacherEvaluationsController < ApplicationController
 
   def create
   	@evaluation = TeacherEvaluation.new(params[:teacher_evaluation])
-  	@evaluation.save
-  	params[:score].each do |criterion_id, score|
-  		rating = EvaluationRating.find_or_create_by_criterion_id_and_evaluation_id(criterion_id, @evaluation.id)
-  		rating.score = score
-  		rating.save
-  	end
+    @evaluation.save!
+      params[:score].each do |criterion_id, score|
+        rating = EvaluationRating.find_or_create_by_criterion_id_and_evaluation_id(criterion_id, @evaluation.id)
+        rating.score = score
+        rating.save
+      end
 
-  	redirect_to institution_evaluation_path(@institution, @evaluation)
+    redirect_to institution_evaluation_path(@institution, @evaluation)
   end
 
   private

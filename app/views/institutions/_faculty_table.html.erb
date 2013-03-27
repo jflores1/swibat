@@ -19,7 +19,7 @@
 					<td><%= link_to "#{faculty.first_name}", user_path(faculty) %></td>
 					<td><%= link_to "#{faculty.last_name}", user_path(faculty) %></td>
 					<td><%= mail_to "#{faculty.email}", "#{faculty.email}" %></td>
-					<td><%= link_to "#{faculty.evaluations.count}", evaluations_user_path(faculty)  %></td>
+					<td><%= link_to "#{faculty.teacher_evaluations.count}", evaluations_user_path(faculty)  %></td>
 					<td>
 
 						<div class="btn-group">
