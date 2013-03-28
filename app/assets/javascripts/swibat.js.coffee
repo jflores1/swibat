@@ -4,7 +4,7 @@ window.Swibat =
   Views: {}
   Routers: {}
   initialize: ->
-    new Swibat.Routers.Institutions()
+    new Swibat.Routers.Users()
     if !Backbone.history.started
       Backbone.history.start({
         pushState: true,

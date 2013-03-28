@@ -1,6 +1,10 @@
 Swibat::Application.routes.draw do
   
 
+  get "faculty/index"
+
+  get "faculty/show"
+
   get "timeline", to: "timeline#index", as: :timeline
 
   ActiveAdmin.routes(self)

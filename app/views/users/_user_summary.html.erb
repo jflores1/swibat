@@ -10,6 +10,10 @@
     </h1>
 
     <%= show_appropriate_dashboard(@user) %>
+
+      <%= javascript_tag do %>
+          Swibat.initialize();
+      <% end %>
     
   <% end %>
 

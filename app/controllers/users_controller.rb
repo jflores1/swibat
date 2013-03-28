@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   respond_to :html, :js, :json, :xml
 
   def index
-    @users = User.text_search(params[:q])
+    @school = current_user.institution
+    @users = @school.users
     respond_with @users
   end
 
