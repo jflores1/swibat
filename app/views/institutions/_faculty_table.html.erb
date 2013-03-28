@@ -9,6 +9,7 @@
 				<th>Last Name</th>
 				<th>Email Address</th>
 				<th>Observations</th>
+                <th>Videos</th>
 				<th></th>
 
 			</tr>
@@ -20,6 +21,7 @@
 					<td><%= link_to "#{faculty.last_name}", user_path(faculty) %></td>
 					<td><%= mail_to "#{faculty.email}", "#{faculty.email}" %></td>
 					<td><%= link_to "#{faculty.teacher_evaluations.count}", evaluations_user_path(faculty)  %></td>
+                    <td><%= link_to "#{faculty.videos.count}", videos_user_path(faculty) %></td>
 					<td>
 
 						<div class="btn-group">

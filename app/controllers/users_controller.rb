@@ -13,9 +13,8 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @institution = @user.institution #TODO: Consider factoring this out and passing as local variable in partial.
-    @certifications = @user.professional_accomplishments.where(:accomplishment_type => "Certificate")
-    @awards = @user.professional_accomplishments.where(:accomplishment_type => "Award")
-    @microposts = @user.microposts
+    @total_eval_count = Institution.total_evaluations(@institution.id)
+    @total_video_count = Institution.total_videos(@institution.id)
     respond_with @user.as_json(include: :institution)
   end
 

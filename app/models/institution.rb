@@ -34,4 +34,12 @@ class Institution < ActiveRecord::Base
   	self.users
   end
 
+  def self.total_evaluations(school_id)
+    joins(users: :teacher_evaluations).where('institutions.id = ?', school_id).size
+  end
+
+  def self.total_videos(school_id)
+    joins(users: :videos).where('institutions.id = ?', school_id).size
+  end
+
 end
