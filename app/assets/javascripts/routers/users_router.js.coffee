@@ -4,7 +4,7 @@ class Swibat.Routers.Users extends Backbone.Router
     "users/:id":"show"
   }
 
-  intialize: ->
+  initialize: ->
     @collection = new Swibat.Collections.Users()
     @collection.fetch()
 

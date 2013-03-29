@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    @institution = @user.institution #TODO: Consider factoring this out and passing as local variable in partial.
+    @institution = @user.institution
     @total_eval_count = Institution.total_evaluations(@institution.id)
     @total_video_count = Institution.total_videos(@institution.id)
     respond_with @user.as_json(include: :institution)
