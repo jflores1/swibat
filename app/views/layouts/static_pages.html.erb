@@ -3,23 +3,20 @@
 <head>
   <%= render 'layouts/head_content' %>
 </head>
-<body class="patterned">
+<body>
     <div id="main" role="main">
         <div class="content">
-          <div class="row-fluid">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-            </div><!--end of .span12 -->
-          </div><!--end of .row-fluid -->
+          
+          <div id="bg">
+            <div class="container-fluid">
+              <div class="span12">
+                <%= render 'layouts/messages' %>
+              </div><!--end of .span12 -->
 
-          <%= yield %>
+                <%= yield %>
 
-          <div class="row-fluid">
-            <div class="span12">
-              <%= render 'layouts/footer' %>
-            </div>
-          </div>
-
+          </div><!--end of .container-fluid -->
+        </div><!-- end of #bg -->
 
         </div><!--end of .content> -->
     </div><!--end of .main> -->

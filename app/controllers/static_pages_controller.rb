@@ -8,6 +8,11 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def home
+    render layout: 'static_pages'
+    
+  end
+
   def resources
 
   end
