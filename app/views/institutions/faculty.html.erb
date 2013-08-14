@@ -1,9 +1,7 @@
-<div class="course-overview" xmlns="http://www.w3.org/1999/html">
-  <% content_for :left_column do %>
-    <%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
-  <% end %>
+<% content_for :left_column do %>	
+	<%= render partial: 'institutions/faculty_table', locals: {faculty: @faculty} %>
+<% end %>
 
-  <% content_for :right_column do %>
-		<%= render partial: 'institutions/faculty_table', locals: {faculty: @faculty} %>
-  <% end %>
-</div>
+<% content_for :right_column do %>
+	<%= render partial: 'sidebar' %>
+<% end %>

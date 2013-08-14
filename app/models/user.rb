@@ -174,6 +174,10 @@ class User < ActiveRecord::Base
     self.role == "admin"
   end
 
+  def last_observation
+    self.teacher_evaluations.where(eval_type: 'observation').order(:created_at).last
+  end
+
   #Private Methods
   private
 
@@ -215,6 +219,5 @@ class User < ActiveRecord::Base
     else
       super
     end
-  end
-
+  end  
 end

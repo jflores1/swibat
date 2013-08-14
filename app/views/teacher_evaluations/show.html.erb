@@ -1,62 +1,21 @@
 <%= provide(:title, "#{@evaluation.eval_type.capitalize} for #{@user.full_name}") %>
 
-<% content_for :head do %>
-	<style>
-	 #graph path {
- stroke: steelblue;
- stroke-width: 2;
- fill: none;
- }
-		.axis { shape-rendering: crispEdges; }
- .x.axis line { stroke: lightgrey; }
- .x.axis .minor { stroke-opacity: .5; }
- .x.axis path { display: none; }
- .y.axis line, .y.axis path {
- fill: none;
- stroke: #000;
- }
-
-		.bar {
-		  vector-effect: non-scaling-stroke;
-		}
-
-		.bar:hover{
-			opacity: 0.7;
-		}
-
-		.x.axis path {
-		  display: none;
-		}
-
-		div.tooltip {   
-		  position: absolute;           
-		  text-align: center;           
-		  padding: 5px;             
-		  font: 12px sans-serif;        		    
-		  border: 3px solid #555;      
-		  background: #fff;
-		  border-radius: 8px;           
-		  pointer-events: none;         
-		}
-
-	</style>
-<% end %>
 
 <% content_for :left_column do %>
-  <% if current_user.school_admin? %>
-    <%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
-  <% else %>
-    <%= render partial: 'users/teacher_sidebar_menu', locals: {user: @user} %>
-  <% end %>
-<% end %>
+	<h1><%= @evaluation.eval_type.capitalize %> for <%= link_to @user.full_name, user_path(@user) %></h1>
+	<p>Published on <%= normal_date_format(@evaluation.created_at) %></p>
+	
+	<% if @evaluation.eval_type == "observation" %>
+		<% if @evaluation.video %>						
+				<div class="summary-graph video">
+					<iframe width="100%" height="400px" src="http://www.youtube.com/embed/<%= @evaluation.video.yt_video_id %>" frameborder="0" allowfullscreen></iframe>
+				</div>
+		<% end %>	
+	<% end %>
 
-<% content_for :right_column do %>
-	<h1><%= @evaluation.eval_type.capitalize %> for <%= @user.full_name %></h1>
-	<p>Published <%= time_ago_in_words @evaluation.updated_at %> ago</p>
 	<h3>Total Score: <%= number_with_precision(@evaluation.calculate_score, :precision => 2) %></h3>
 
 	<h3>Score by domain</h3>
-	<div id="graph"></div>
 
 	<table class="table table-striped table-bordered">
 		<thead>
@@ -89,24 +48,8 @@
 		</tbody>
 	</table>
 
-	
-
-	<% if @evaluation.eval_type == "observation" %>
-		<% if @evaluation.video %>
-			<h2>Associated video</h2>
-			
-			<div class="video-thumbnail span4">
-		    <h4><%= link_to @evaluation.video.title, video_path(@evaluation.video) %></h4>
-		    <%= link_to image_tag("http://img.youtube.com/vi/#{@evaluation.video.yt_video_id}/1.jpg"), video_path(@evaluation.video) %>
-		    <p><%= truncate(@evaluation.video.description, length: 100) %></p>	    
-		  </div>
-		<% else %>
-			<%= link_to("Upload a video", new_video_url(user_id: @evaluation.teacher.id, observation_id: @evaluation.id) , class: "btn btn-monkey header-button")  %> 	
-		<% end %>	
-	<% end %>
-
 	<div>
-	  <header class="course-header">
+	  <header>
 	    <h2>Comments</h2>
 	  </header>
 	  <section class="course-info">
@@ -114,119 +57,8 @@
 	  </section>
 	</div>
 
+<% end %>
 
-	<script>
-			var color = d3.scale.ordinal()
-    .range(["#7E6F51",
-"#AEB1A5",
-"#D1A68B",
-"#666465",
-"#ACAE83",
-"#977770",
-"#7C8C7F",
-"#695145",
-"#4F5C4B",
-"#BE9D99",
-"#AA8267",
-"#89906E",
-"#AC9C80",
-"#95908C",
-"#8E8271",
-"#687560",
-"#6C6356",
-"#A6AF93",
-"#C5AF89",
-"#595146"]);
-
-
-			var w = 650,
-					h = 300;
-			var margin = {top: 20, right: 20, bottom: 30, left: 40},
-			    width = w - margin.left - margin.right,
-			    height = h - margin.top - margin.bottom;
-
-			var formatPercent = d3.format("d");			
-			var formatDecimal = d3.format(".2f");
-
-			var x = d3.scale.ordinal()
-			    .rangeRoundBands([0, width], .1);
-
-			var y = d3.scale.linear()
-			    .range([height, 0]);
-
-			var x0 = d3.scale.ordinal()
-			    		 .rangeRoundBands([0, width], .1);
-			
-			var xAxis = d3.svg.axis()
-			    .scale(x)
-			    .orient("bottom");
-
-			var yAxis = d3.svg.axis()
-			    .scale(y)
-			    .orient("left")
-			    .tickFormat(formatPercent);
-
-			var svg = d3.select("#graph").append("svg")
-					.attr("viewBox", "0 0 " + w + " " + h )
-					.attr("height", 400)
-    			.attr("preserveAspectRatio", "xMinYMin meet")    			
-			  	.append("g")
-			    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-				var data = <%= raw @json_data %>;
-
-			  data.forEach(function(d) {
-			    d.score = +d.score;
-			  });
-
-			  x.domain(data.map(function(d) { return d.domain; }));
-
-  			x0.domain(data.map(function(d) {return d.name}));
-
-			  y.domain([0, 4]);
-
-			  var div = d3.select("body").append("div")   
-							    .attr("class", "tooltip")               
-							    .style("opacity", 0);
-				
-
-			  svg.append("g")
-			      .attr("class", "x axis")
-			      .attr("transform", "translate(0," + height + ")")
-			      .call(xAxis);
-
-			  svg.append("g")
-			      .attr("class", "y axis")
-			      .call(yAxis)
-			    .append("text")
-			      .attr("transform", "rotate(-90)")
-			      .attr("y", 6)
-			      .attr("dy", ".71em")
-			      .style("text-anchor", "end")
-			      .text("Score");
-
-			  svg.selectAll(".bar")
-			      .data(data)
-			    .enter().append("rect")
-			      .attr("class", "bar")
-			      .attr("x", function(d) { return x0(d.name); })			      
-			      .attr("width", x0.rangeBand())
-			      .attr("y", function(d) { return y(d.score); })
-			      .attr("height", function(d) { return height - y(d.score); })
-			      .style("fill", function(d) { return color(d.name); })
-			    .on("mouseover", function(d) {      
-            div.transition()        
-                .duration(200)      
-                .style("opacity", .9);      
-            div .html(d.name + "<br />  Score: " + formatDecimal(d.score))  
-                .style("left", (d3.event.pageX) + "px")     
-                .style("top", (d3.event.pageY - 28) + "px");    
-            })                  
-        .on("mouseout", function(d) {       
-            div.transition()        
-                .duration(500)      
-                .style("opacity", 0);   
-        });
-		</script>
-
+<% content_for :right_column do %>
+	<%= render partial: 'sidebar' %>
 <% end %>

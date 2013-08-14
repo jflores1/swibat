@@ -14,4 +14,4 @@ class Swibat.Routers.Users extends Backbone.Router
 
 
   show: (id) ->
-    alert "This is the show route for #{id}!"
+    # alert "This is the show route for #{id}!"

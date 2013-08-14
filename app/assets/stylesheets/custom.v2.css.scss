@@ -1,0 +1,257 @@
+@import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+//universal and refactored CSS - The CSS here is shared across controllers.
+
+/********************************
+Variables and Mixins
+********************************/
+//Fonts
+/*$header-gradient-dark-color: #2B2F3A;*/
+$header-gradient-dark-color: #4A515B;
+/*$header-gradient-light-color: #50596D;*/
+$header-gradient-light-color: #3C4049;
+$open-sans: 'Open Sans', 'Helvetica Neue Light', sans-serif;
+$permanent-marker: 'Permanent Marker', cursive;
+$fancy-gray: rgba(80, 89, 109, 0.9);
+$soft-gray: rgba(80, 89, 109, 0.5);
+$lightest-gray: #CDCDCD;
+
+
+//Padding and Such
+$page-width: 1920px;
+$body-width: 100%;
+$box-margin: 0.7692em !important;
+
+//Rounded Corners
+@mixin rounded-corners($radius){
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin linear-gradient($position, $topColor, $bottomColor){
+    background: $bottomColor;
+
+    background: -moz-linear-gradient($position, $topColor 0%, $bottomColor 100%);
+    background: -webkit-linear-gradient($position, $topColor 0%, $bottomColor 100%);
+    background: -o-linear-gradient($position, $topColor 0%, $bottomColor 100%);
+    background: -ms-linear-gradient($position, $topColor 0%, $bottomColor 100%);
+    background: linear-gradient($position, $topColor 0%, $bottomColor 100%);
+}
+
+
+body{
+	color: #595959;
+	//padding-top: 2em;
+}
+
+body, html{
+	height: 100%;
+}
+
+a{
+	color: #00c8f5;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.container-fluid{
+	padding-left: 0px;
+}
+
+.top-padded{
+	padding-top: 2em;
+}
+
+.navbar-inner{
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00c8f5), to(#00d0ff));
+}
+
+.no-left-margin{
+	margin-left: 0px !important;
+}
+
+.icon-container{
+	display:block;
+	margin: 0 auto;
+	width: 75%;
+	margin-top: 10em;
+}
+
+.icon-container p{
+	text-align: center;
+}
+
+.primer-container{
+	margin-top: 10em;
+}
+
+.icon-focus{
+	display: block;
+	float: left;
+	width: 50%;
+}
+
+.icon-focus h3{
+	text-align: center;
+}
+
+.circle{
+	border: 3px solid #ffffff;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00c8f5), to(#00d0ff));
+	border-radius: 50%;
+	padding: 0.7em;
+}
+
+.circle:hover{
+	background: #00d0ff;
+}
+
+.icon-link{
+	display: block;
+	margin-bottom: 5em;
+	text-decoration: none;
+	text-align: center;
+}
+
+.img-link{
+	display: block;
+	text-decoration: none;
+	text-align: center;
+}
+
+.icon-link:hover{
+	text-decoration:none;
+}
+
+.icon-link i{
+	font-size: 5em;
+	color: #ffffff;
+	width: 50%;
+	margin: 0 auto;
+}
+
+span.icon-text{
+	display: inline-block;
+	float: left;
+	clear: left;
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 1em;
+	text-align: center;
+}
+
+i.blue-icon{
+	color: #00c8f5;
+}
+
+.template-img{
+	border: 1px solid #666666;
+	max-height: 10em;
+}
+
+.domain{
+	margin-bottom: 4em;
+}
+
+.domain label.prominent{
+	font-size: 1.5em;
+}
+
+.domain input{
+	height: 2em;
+}
+
+.domain h4{
+	font-size: 1.5em;
+}
+
+.domain ul li{
+	list-style-type: none;
+	font-size: 1.25em;
+	line-height: 2em;
+
+}
+
+.domain-title {
+	font-size: 1.5em;
+	padding: 10px 0;
+	display: block;
+	font-weight: bold;
+}
+
+.criterion-item {
+	.delete-icon {
+		a {
+			i {
+				padding-top: 10px;		
+			}
+		}
+		
+	}
+}
+
+.criterion-form {
+	margin-left: 25px;
+}
+
+.page-title{
+	margin-bottom: 1em;
+}
+
+.page-title-link{
+	color: #595959;
+}
+
+.summary_table a:hover{
+	text-decoration: none;
+}
+
+.summary_table p{
+	color: #595959;
+}
+
+.sidebar-nav{
+	background: #f7f7f7;
+	min-height: 100%;
+	padding-top: 2em;
+}
+
+.sidebar-nav ul{
+	margin-left: 0px;
+}
+
+.sidebar-nav li{
+	list-style-type: none;
+	font-size: 1.125em;
+	padding-top: 2.625em;
+	padding-bottom: 2.625em;
+	padding-left: 1.75em;
+}
+
+.sidebar-nav li:hover{
+	background: #ffffff;
+	padding-left: none;
+}
+
+.sidebar-nav li i{
+	display: inline-block;
+	margin-right: 1em;
+	font-size: 1.5em;
+}
+
+.sidebar-nav li a{
+	color: #595959;
+}
+
+.bar{
+	color: #000;
+}
+
+.video{
+	margin-bottom: 2em;
+}

@@ -1,14 +1,8 @@
 <%= render partial: "shared/user_header", locals: {user: current_user} %>
 
-<div class="course-overview" xmlns="http://www.w3.org/1999/html">
-
-  <% content_for :left_column do %>
-    <%= render partial: 'sidebar', locals: {institution: @institution} %>
-  <% end %>
-
-  <% content_for :right_column do %>
-  	<h2><%= @institution.name.titleize %></h2>
-    <p>
+	<% content_for :left_column do %>
+		<h2><%= @institution.name.titleize %></h2>
+		<p>
 			<%= @institution.address_line_1.titleize %><br />
 			<%= @institution.zip_code + " " + @institution.city.titleize %><br />
 			<%= @institution.state.titleize %>
@@ -19,7 +13,11 @@
 			<%= raw show_map(@institution.longitude, @institution.latitude) %>
 		</p>
 		<% end %>
-  <% end %>
+	<% end %>
 
-  <%= render partial: "layouts/two_column_partial" %>
+	<% content_for :right_column do %>
+		<%= render partial: 'sidebar' %>
+	<% end %>
+
+	<%= render partial: "layouts/two_column_partial" %>
 </div>

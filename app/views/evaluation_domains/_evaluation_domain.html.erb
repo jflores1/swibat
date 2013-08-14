@@ -1,22 +1,16 @@
-<div class="faculty-table clearfix" id="domain-<%= domain.id %>">
-	<div class="faculty-header padded">
-		<h3>Domain: <%= domain.name %>
-			<span>
-				<%= link_to "<i class='icon-trash no-left-margin'></i> Delete Domain".html_safe, institution_evaluation_template_evaluation_domain_path(@institution, @template, domain), method: :delete, remote: true, class:"btn btn-monkey delete-domain", confirm: "Are you sure?\nThis will delete the domain along with all it's criteria." %>
-			</span>
-		</h3>
-	</div>
-	<div class="row template-list span9 no-left-margin">
+<div id="domain-<%= domain.id %>">
+	<span class="domain-title">Domain: <%= domain.name %> 
+		<span class="pull-right">
+			<%= link_to "<i class='icon-trash no-left-margin'></i>".html_safe, institution_evaluation_template_evaluation_domain_path(@institution, @template, domain), method: :delete, remote: true, class:"btn btn-danger delete-domain", confirm: "Are you sure?\nThis will delete the domain along with all it's criteria." %>
+		</span>
+	</span>
+	<ul>
 		<ul id="criteria-list-<%= domain.id %>">
 			<% domain.evaluation_criteria.each do |criterion| %>
 				<%= render partial: "evaluation_criteria/evaluation_criterion", locals: {criterion: criterion, domain: domain} %>			
 			<% end %>		
-		</ul>	
-
-
-	<p>
-		<%= link_to "Add Element", new_institution_evaluation_template_evaluation_domain_evaluation_criterion_path(@institution, @template, domain), class:"btn btn-monkey left-margin", remote: true %>
-	</p>
-	</div>
-	<div id="criterion-form-<%= domain.id %>" style="display: none;"></div>
+		</ul>
+		<%= link_to "Add Subdomain", new_institution_evaluation_template_evaluation_domain_evaluation_criterion_path(@institution, @template, domain), class:"btn btn-monkey left-margin", remote: true %>
+	</ul>	
+	<div class="criterion-form" id="criterion-form-<%= domain.id %>" style="display: none;"></div>
 </div>

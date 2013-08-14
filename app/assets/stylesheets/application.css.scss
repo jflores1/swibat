@@ -10,12 +10,13 @@
  *
  *= require_self
  *= require bootstrap-wysihtml5
+ *= require font-awesome
  */
 @import url('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css');
 @import "bootstrap";
 @import "bootstrap-responsive";
-@import "font-awesome";
-@import "custom.css.scss";
+@import "custom.v2.css.scss";
+@import "font-awesome.css";
 @import "static_pages.css.scss";
 @import "demo.css.scss";
 @import "users.css.scss";
