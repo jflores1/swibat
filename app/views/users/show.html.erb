@@ -1,4 +1,43 @@
-<%= provide(:title, "#{@user.full_name}'s Profile Page") %>
+<% content_for :left_column do %>	
+	
+	<h1 class="page-title"><%= @user.full_name %>
+		<span class="pull-right">
+		<div class="btn-group">
+		  <a class="btn btn-warning" href="#"><i class="icon-plus icon-white"></i> Observation</a>
+		  <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+		  <ul class="dropdown-menu">
+		    <% if @institution.evaluation_templates.published.any? %>
+          <% @institution.evaluation_templates.published.each do |template| %>
+          <li>
+            <%= link_to template.name, eval_user_path(@user, eval_type: "observation", template_id: template.id) %>
+         </li>
+        <% end %>
+        <% else %>
+          <li><%= link_to "Add Observation Template", institution_evaluation_templates_path(@institution) %>
+          </li>
+        <% end %>
+		  </ul>
+		</div>	
+			<a href="#" class="btn btn-danger" id="delete-user"><i class="icon-trash"></i> <i class="icon-user"></i></a>
+		</span></h1>
+	<div class="summary-graph">
+		This is where the bar graph will go. x-axis is score and y-axis is the domain. No chartjunk. To make computation simple, can filter b/w templates and cumulative vs most recent observations.
+	</div>
+	<h3>Observations</h3>
+	<% @user.teacher_evaluations.each do |observation| %>
+		<div class="summary-table">
+			<h4>
+				<%= link_to normal_date_format(observation.created_at), institution_evaluation_path(@user.institution, observation) %>
+				<span class="pull-right">
+					<a href="faculty_observation.html" class="btn btn-warning"><i class="icon-pencil"></i></a>
+					<a href="#" class="btn btn-danger"><i class="icon-trash"></i></a>
+				</span>
+			</h4>
+			<p>Observation Score: <%= number_with_precision(observation.calculate_score, :precision => 2) %></p>
+		</div>		
+	<% end %>
+<% end %>
 
-<%= render 'profile_header' %>
-<%= render 'user_summary' %>
+<% content_for :right_column do %>
+	<%= render partial: 'sidebar' %>
+<% end %>

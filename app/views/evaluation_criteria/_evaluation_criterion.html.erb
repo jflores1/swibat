@@ -1,5 +1,5 @@
-<li id="criterion-<%= criterion.id %>"><%= criterion.contents %>
-	<span>
+<li class="criterion-item" id="criterion-<%= criterion.id %>"><%= criterion.contents %>
+	<span class="delete-icon">
 		<%= link_to "<i class='icon-trash pull-right right-margin'></i>".html_safe, institution_evaluation_template_evaluation_domain_evaluation_criterion_path(@institution, @template, domain, criterion), method: :delete, remote: true %>
 	</span>
 </li>

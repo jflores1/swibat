@@ -68,18 +68,7 @@ div#login-container{
 }
 
 h1.page-title{
-  color: #ffffff;
-  font: $open-sans;
-  font-size: 1.6em;
-  margin-bottom: 1.25em;
-  font-weight: 600;
-  padding: 0.3125em 1em;
-  line-height: 2.25em;
-  @include linear-gradient(top, $header-gradient-dark-color, $header-gradient-light-color);
-  @include rounded-corners(5px);
-  i{
-    color: #ffffff;
-  }
+
 }
 
 div.stat-container{

@@ -148,6 +148,8 @@ Swibat::Application.routes.draw do
       end
       collection do
         get :new_prepopulated_template
+        get :add
+        get :choose
       end
     end
 

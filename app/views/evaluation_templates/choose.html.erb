@@ -1,0 +1,22 @@
+<% content_for :left_column do %>
+	<div class="icon-container">
+		<div class="icon-focus">
+			<%= link_to image_tag('danielson_framework.png', class: 'template-img'), new_prepopulated_template_institution_evaluation_templates_path(@institution, base_template_id: @danielson.id), class: 'img-link' %>			
+			<h3>Danielson Framework</h3>
+		</div>
+		<div class="icon-focus">
+			<%= link_to image_tag('marzano_framework.png', class: 'template-img'), new_prepopulated_template_institution_evaluation_templates_path(@institution, base_template_id: @marzano.id), class: 'img-link' %>
+			<h3>Marzano Framework</h3>
+		</div>
+		<p><%= link_to 'Or, create a new template from scratch', new_institution_evaluation_template_path(@institution) %></p>
+	</div>			
+<% end %>
+
+<% content_for :right_column do %>
+	<div class="primer-container">
+		<h4>A Quick Primer</h4>
+		<p>Not sure which to use? Learn more about the <a href="#">Danielson Framework</a> and the <a href="#">Marzano Framework</a>.
+
+		</p>
+	</div>
+<% end %>

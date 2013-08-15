@@ -21,8 +21,8 @@ class EvaluationTemplate < ActiveRecord::Base
 
   scope :published, where(published: true)
 
-  def self.create_default_template_for(institution)
-  	default_template = EvaluationTemplate.first
+  def self.create_default_template_for(institution, base_template_id)
+  	default_template = EvaluationTemplate.find(base_template_id)
   	template = default_template.amoeba_dup
   	template.institution = institution
   	template.published = false

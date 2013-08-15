@@ -1,0 +1,26 @@
+<div class="course-overview" xmlns="http://www.w3.org/1999/html">
+  <% content_for :left_column do %>
+			<div class="icon-container">
+				<div class="icon-focus">
+					<%= link_to '<i class="icon-file circle"></i>'.html_safe, choose_institution_evaluation_templates_path(@institution), class: 'icon-link' %>										
+					<h3>Choose a Template</h3>
+				</div>
+				<div class="icon-focus">
+					<%= link_to '<i class="icon-briefcase circle"></i>'.html_safe, institution_evaluation_templates_path(@institution), class: 'icon-link' %>					
+					<h3>See Your Templates</h3>
+				</div>
+				<p><%= link_to 'Or, create a new template from scratch', new_institution_evaluation_template_path(@institution) %></p>
+			</div>			
+  <% end %>
+
+  <% content_for :right_column do %>
+   <div class="primer-container">
+			<h4>A Quick Primer</h4>
+			<p>If you want to use a standard template like the Danielson Framework or Marzano's framework, select <%= link_to 'Choose a Template', choose_institution_evaluation_templates_path(@institution) %>.</a><br><br>
+			If you already have a template you use and want to digitize it - or your an old pro at the computer - then you may want to <%= link_to 'create one from scratch', new_institution_evaluation_template_path(@institution) %>.
+
+			</p>
+		</div>
+  <% end %>
+	
+</div>

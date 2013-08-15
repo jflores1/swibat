@@ -1,50 +1,32 @@
 <div class="course-overview" xmlns="http://www.w3.org/1999/html">
   <% content_for :left_column do %>
-    <%= render partial: 'users/admin_sidebar_menu', locals: {user: current_user} %>
+		<h1 class="page-title">
+			Saved Templates 
+			<span class="pull-right">
+				<%= link_to '<i class="icon-plus"></i> Add Template'.html_safe, add_institution_evaluation_templates_path(@institution), class: "btn btn-warning" %>
+			</span>
+		</h1>
+		
+		<% if @templates.any? %>
+			<% @templates.each do |template| %>
+				<div class="summary-table">
+				<h4>
+					<%= link_to template.name, [@institution, template] %>
+					<span class="pull-right">
+						<%= link_to "<i class='icon-pencil'></i>".html_safe, [@institution, template], class: 'btn btn-warning' %>
+					</span>
+					</h4>
+				<p>Edited on <%= normal_date_format(template.updated_at) %></p>
+				</div>	
+			<% end %>
+		<% end %>
+  	
   <% end %>
 
   <% content_for :right_column do %>
-  <div class="faculty-table">
-  	<div class="faculty-header">
-  		<h3><i class='icon-laptop'></i> Evaluation Templates
-  			<span class="pull-right">
-  				<%= link_to "Build From Scratch", new_institution_evaluation_template_path(@institution), class: "btn btn-monkey" %>
-					<%= link_to "Use A Template", new_prepopulated_template_institution_evaluation_templates_path(@institution), class: "btn btn-monkey right-margin" %>
-  			</span>
-  		</h3>
-  	</div>	
-
-		<% if @templates.any? %>
-			<table class="table table-striped table-bordered">
-				<thead>
-					<tr>
-						<th>Template Name</th>
-						<th>Created</th>
-						<th>Last modified</th>
-						<th>Published</th>				
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @templates.each do |template| %>
-						<tr>
-							<td><%= link_to template.name, [@institution, template] %></td>
-							<td><%= time_ago_in_words template.created_at %> ago</td>
-							<td><%= time_ago_in_words template.updated_at %> ago</td>
-							<td><%= template.published %></td>
-							<td>
-								<%= link_to "Edit", [@institution, template], class: 'btn btn-monkey' %>
-								<%= link_to "Delete", [@institution, template], method: :delete, confirm: "Are you sure?", class: 'btn btn-monkey' %>
-							</td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		<% else %>
-				<p>You haven't added any evaluation templates yet.</p>
-			<% end %>
-  	<% end %>
-	</div>
+   <%= render partial: 'evaluation_templates/sidebar' %>
+  <% end %>
+	
 </div>
 
 
