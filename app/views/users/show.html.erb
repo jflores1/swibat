@@ -2,7 +2,22 @@
 	
 	<h1 class="page-title"><%= @user.full_name %>
 		<span class="pull-right">
-			<a href="#" class="btn btn-warning" id="new-observation"><i class="icon-plus"></i> <i class="icon-file-text"></i></a>
+		<div class="btn-group">
+		  <a class="btn btn-warning" href="#"><i class="icon-plus icon-white"></i> Observation</a>
+		  <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+		  <ul class="dropdown-menu">
+		    <% if @institution.evaluation_templates.published.any? %>
+          <% @institution.evaluation_templates.published.each do |template| %>
+          <li>
+            <%= link_to template.name, eval_user_path(@user, eval_type: "observation", template_id: template.id) %>
+         </li>
+        <% end %>
+        <% else %>
+          <li><%= link_to "Add Observation Template", institution_evaluation_templates_path(@institution) %>
+          </li>
+        <% end %>
+		  </ul>
+		</div>	
 			<a href="#" class="btn btn-danger" id="delete-user"><i class="icon-trash"></i> <i class="icon-user"></i></a>
 		</span></h1>
 	<div class="summary-graph">
