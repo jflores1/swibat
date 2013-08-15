@@ -33,6 +33,14 @@ class EvaluationTemplatesController < ApplicationController
     redirect_to institution_evaluation_templates_path, notice: "Template deleted successfully"
   end
 
+  def add
+
+  end
+
+  def choose
+
+  end
+
   private
   	def load_institution
   		@institution = Institution.find(params[:institution_id])

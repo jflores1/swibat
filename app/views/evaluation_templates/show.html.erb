@@ -15,7 +15,9 @@
 				</div>
 			</div>
 			<div class="control-group ">		
-				<%= f.check_box :published, class: "pull-left" %> <%= f.label :published, "&nbsp Publish".html_safe %>
+				<label class="checkbox">
+		      <%= f.check_box :published, class: "pull-left" %> Published
+		    </label>
 			</div>				
 			<%= f.submit "Save Template", class:"btn btn-monkey" %>
 		<% end %>
