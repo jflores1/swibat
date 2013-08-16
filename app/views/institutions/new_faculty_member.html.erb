@@ -1,0 +1,50 @@
+<% content_for :left_column do %>	
+	<h1 class="page-title">Add new faculty member</h1>
+
+	<%= form_for @user, url: create_faculty_member_institution_url(@institution), html: {class: 'form-horizontal'} do |f| %>
+
+		<% if @user.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+	      <ul>
+	      <% @user.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	  
+		<div class="control-group">
+			<%= f.label :first_name, class: 'control-label' %>
+	    <div class="controls">
+	      <%= f.text_field :first_name %>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+			<%= f.label :last_name, class: 'control-label' %>
+	    <div class="controls">
+	      <%= f.text_field :last_name %>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+			<%= f.label :email, class: 'control-label' %>
+	    <div class="controls">
+	      <%= f.text_field :email %>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+	    <div class="controls">
+	    	<%=	f.submit "Add faculty member", class: 'btn' %>
+	    </div>
+	  </div>
+
+		
+	<% end %>
+<% end %>
+
+<% content_for :right_column do %>
+	<%= render partial: 'sidebar' %>
+<% end %>
