@@ -853,6 +853,7 @@ Media Queries
 
     section.leader-content, .section-content {
         display: block;
+        clear: both;
 
         .feature-paragraph {
             p.intro-paragraph {
@@ -994,6 +995,8 @@ Media Queries
     }
 
     section.leader-content, .section-content {
+        display: block;
+        clear: both;
         header.intro-content {
             h1 {
                 font-size: 3em !important;

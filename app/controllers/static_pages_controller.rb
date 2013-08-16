@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
   end
 
   def home
-    render layout: 'static_pages'
+    render layout: 'photo_background'
     
   end
 
@@ -23,6 +23,10 @@ class StaticPagesController < ApplicationController
 
   def request_invite
   	@lead = Lead.new
+  end
+
+  def features
+    
   end
 
 end
