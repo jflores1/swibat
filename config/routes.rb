@@ -170,10 +170,6 @@ Swibat::Application.routes.draw do
   match 'demo/:action' => 'demo#:action'
   match 'static_pages/:action' => 'static_pages#:action'
 
-  if Rails.env.development?
-    mount MailPreview => 'mail_view'
-  end
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
