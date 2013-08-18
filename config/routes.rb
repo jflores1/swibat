@@ -33,6 +33,7 @@ Swibat::Application.routes.draw do
   match 'pricing',        to: 'static_pages#pricing'
   match 'request-trial',  to: 'leads#new', as: "request_trial"
   match 'request-invite', to: 'static_pages#request_invite', as: "request_invite"
+  match 'features',       to: 'static_pages#features'
 
   get 'objectives/similar_objectiveables'
 
@@ -159,6 +160,10 @@ Swibat::Application.routes.draw do
     member do
       get :faculty
       get :eval_template
+      get :new_faculty_member
+      post :create_faculty_member
+      get :import_faculty
+      post :create_faculty_members
     end
   end
 

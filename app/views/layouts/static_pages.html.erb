@@ -3,11 +3,10 @@
 <head>
   <%= render 'layouts/head_content' %>
 </head>
-<body>
+<body class="grey">
     <div id="main" role="main">
+      <%= render 'layouts/navbar_static_pages' %>
         <div class="content">
-          
-          <div id="bg">
             <div class="container-fluid">
               <div class="span12">
                 <%= render 'layouts/messages' %>
@@ -16,9 +15,8 @@
                 <%= yield %>
 
           </div><!--end of .container-fluid -->
-        </div><!-- end of #bg -->
-
         </div><!--end of .content> -->
+      <%= render 'layouts/footer' %>
     </div><!--end of .main> -->
 </body>
 </html>

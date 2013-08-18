@@ -1,6 +1,7 @@
 <h1 class="page-title">Faculty 
-	<span class="pull-right"><a href="create_template.html" class="btn btn-warning"><i class="icon-plus"></i> <i class="icon-user"></i></a>
-	<a href="create_template.html" class="btn btn-warning"><i class="icon-upload"></i> <i class="icon-group"></i></a>
+	<span class="pull-right">
+		<%= link_to '<i class="icon-plus"></i> <i class="icon-user"></i></a>'.html_safe, new_faculty_member_institution_path(@institution), class: 'btn btn-warning' %>
+		<%= link_to '<i class="icon-upload"></i> <i class="icon-group"></i></a>'.html_safe, import_faculty_institution_path(@institution), class: 'btn btn-warning' %>
 	</span>
 </h1>
 

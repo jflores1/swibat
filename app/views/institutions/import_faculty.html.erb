@@ -1,0 +1,22 @@
+<% content_for :left_column do %>	
+	<h1 class="page-title">Import faculty members</h1>
+
+	<%= form_tag create_faculty_members_institution_url(@institution), class: 'form-horizontal', multipart: true do %>
+		<div class="control-group">
+			<%= label_tag :file, nil, class: 'control-label' %>
+	    <div class="controls">
+	      <%= file_field_tag :file %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <div class="controls">
+	    	<%= submit_tag "Import", class: 'btn' %>
+	    </div>
+	  </div>
+	<% end %>
+<% end %>
+
+<% content_for :right_column do %>
+	<%= render partial: 'sidebar' %>
+<% end %>
+

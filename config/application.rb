@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'net/http'
+require 'csv'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -71,7 +72,8 @@ module Swibat
 
     #change layout for devise session controller
     config.to_prepare do
-        Devise::SessionsController.layout "single_column_layout"
+        Devise::SessionsController.layout "static_pages"
+        Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application"   : "static_pages" }
     end
 
   end

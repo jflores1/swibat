@@ -1,14 +1,13 @@
-<% provide(:title, "Curriculum Map and Performance Development Free Trial") %>
-<% provide(:body_class, "padded")%>
-<%= render 'layouts/navbar' %>
+<% provide(:title, "Free Trial - A Professional Development Tool for Teachers") %>
 
-<div class="leadform">
-  <header class="lead-header">
+<div class="new-user-engagement-form">
+  <header>
     <h1>Request a Free Trial!</h1>
-    <h3>We are currently in a closed beta and accepting members into our early access program. Give us some info and we'll be in touch!</h3>
+    <h3>We are currently in a private beta, but accepting members into our early access program,<br/> which includes a 30 day free trial! Give us some info and we'll be in touch!</h3>
   </header>
 
-  <%= render 'forms/lead_form' %>
-
+  <div class="centered-form">
+	<%= render 'forms/lead_form' %>
+  </div>
 </div>
 

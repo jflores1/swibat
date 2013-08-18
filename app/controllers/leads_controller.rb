@@ -1,4 +1,5 @@
 class LeadsController < ApplicationController
+  layout 'static_pages'
 
   def new
     @lead = Lead.new

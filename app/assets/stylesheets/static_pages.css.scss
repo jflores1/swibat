@@ -23,20 +23,95 @@ $box-margin: 0.7692em !important;
     border-radius: $radius;
 }
 
-#bg{
-    max-width: 100%;
-    min-height: 800px;
-    background: asset-url('teacher_desk.png', image) no-repeat center center fixed;
-    position: relative;
+html#bg{
+    background: asset-url('empty_classroom.jpg', image) no-repeat center center fixed;
+    background-position: 0 5px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 
-    .container-fluid{
-        margin-top: 100px;
+    body{
+        background-color: inherit;
+    }
+}
+
+body.grey{
+    background: #f9f9f9;
+}
+
+div.centered-viewport{
+    color: #ffffff;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+    position: absolute;
+    left: 25%;
+    top: 40%;
+
+    h1{
+        text-align: center;
     }
 
+    h2{
+        text-align: center;
+        margin-top: 1em;
+    }
+
+    p{
+        text-align: center;
+    }
+    
+}
+
+/*Static Pages Navbar*/
+#static_pages_navbar{
+    .menu{
+        color: #656565;
+        display: inline-block;
+        float: left;
+        padding: 0.3em;
+    }
+    .logo-span{
+        display: inline-block;
+        float:left;
+    }
+
+    ul.nav{
+        display: inline-block;
+        float: left;
+
+        li{
+            margin-left: 2em;
+        }
+
+        li a.nav-link{
+            display: inline-block;
+            padding: 0 18px;
+            height: 62px;
+            line-height: 62px;
+            text-align: center;
+            vertical-align: middle;
+            color: #000;
+            text-shadow: none;
+        }
+        li a:hover{
+            background: #f7f7f7;
+            color: #2c9ab7;
+            text-shadow: none;
+        }
+    }
+
+    .btn-warning{
+        text-shadow: none;
+        color: #fff;
+        height: 36px;
+        line-height: 36px;
+        margin: 12px;
+        font-size: 12px;
+        padding: 0 18px;
+        @include rounded-corners(4px);
+    }
 }
 
 /* Navbar */
@@ -223,12 +298,18 @@ section.chalkboard{
     margin-top: 440px;
 }
 
+div.feature-div{
+    float: left;
+    margin-bottom: 5em;
+    width: 100%;
+}
+
 section.leader-content, .section-content{
-    //display: block;
-    //margin-top:400px;
+    display: block;
+    clear: both;
 
     hr.beige-banner{
-        background-color: #a9a9a9;
+        background-color: #3f4944;
         height:10px;
         border-top: 0px;
         border-bottom: 1px solid #FFFFFF;
@@ -258,7 +339,6 @@ section.leader-content, .section-content{
     }
 
     header.intro-content{
-
         text-align: center;
         margin: 20px 0px 20px 0px;
 
@@ -291,7 +371,7 @@ section.leader-content, .section-content{
     }
 
     article{
-      text-align: center;
+
       p{
         font-size: 1.2308em;
         color: #5f6e68;
@@ -299,19 +379,30 @@ section.leader-content, .section-content{
       }
     }
 
+    img.feature-image {
+        border: 1px solid #3f4944;
+    }
+
     .screenshot, .screenshot-right {
         width: 45%;
         float: left;
 
-        img.feature-image {
-            width:95.744681%;
-            margin-left: 4.255319%;
-            border: 1px solid #a9a9a9;
-        }
+
     }
 
     .screenshot-right {
         float: right;
+    }
+
+    p.intro-paragraph {
+        font-family: 'Open Sans' sans-serif, 'Helvetica', 'Arial', sans-serif;
+        font-weight: 300;
+        font-size: 2em; /* 26px / 13px */
+        color: #3f4944;
+        margin: 0em 0em 1em 0em;
+        padding: 0px;
+        line-height: 1.25;
+
     }
 
     .feature-paragraph, .feature-paragraph-left {
@@ -367,7 +458,7 @@ section.leader-content, .section-content{
 }
 
 .section-content{
-    margin-top: 50px;
+    margin-bottom: 50px;
 
     hr.beige-banner{
         background-color: #a9a9a9;
@@ -396,5 +487,52 @@ div.devise-form{
     form{
         
     }
+}
+
+/**********************
+New User Registration
+*********************/
+div.new-user-engagement-form{
+    width: 100%;
+    margin-top: 6%;
+
+    header{
+        text-align: center;
+    }
+
+    .centered-form{
+        display: block;
+        margin: 0 auto;
+        width: 35%;
+    }
+
+    form{
+        width: 75%;
+        margin: 0 auto;
+
+        label{
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        input[type="text"], input[type="password"], select{
+            height: 2em;
+            width: 95%;
+        }
+
+        select{
+            font-size: 1.5em;
+        }
+
+        input[type="submit"]{
+            display: block;
+            margin-bottom: 1.5em;
+        }
+    }
+}
+
+footer#static_pages_footer{
+    text-align: center;
+    margin-top: 5em;
 }
 

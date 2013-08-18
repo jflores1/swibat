@@ -178,6 +178,38 @@ class User < ActiveRecord::Base
     self.teacher_evaluations.where(eval_type: 'observation').order(:created_at).last
   end
 
+  def self.new_faculty_member(institution, attributes)
+    u = User.new
+    u.institution = institution
+    u.first_name = attributes[:first_name]
+    u.last_name = attributes[:last_name]
+    u.email = attributes[:email]
+    u.role = 'teacher'
+    random_password = (0...8).map{(65+rand(26)).chr}.join
+    u.password = random_password
+    u.password_confirmation = random_password
+    return u
+  end
+
+  def self.import(institution, file)
+
+  end
+
+  def self.import(institution, file)
+    CSV.foreach(file.path, :headers => :first_row) do |row|
+      begin
+        user_parameters = Hash[row.to_hash.map { |k, v| [k.downcase.gsub(' ', '_').to_sym, v] }]
+        puts user_parameters
+        user = User.new_faculty_member(institution, user_parameters)
+        user.save!
+      rescue
+        puts 'Failed to save user: '
+        puts user_parameters
+        next
+      end
+    end
+  end
+
   #Private Methods
   private
 
