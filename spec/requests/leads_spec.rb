@@ -12,42 +12,28 @@ describe "Leads" do
     end
   end
 
-  context "Valid Form" do
+  context "The Request Trial Page" do
     before {visit request_trial_path}
 
     describe "it has a form on the page" do
       it {should have_selector("form")}
     end
 
-    describe "a working form" do
+    describe "a valid form" do
       let(:submit){ "Request Access!"}
-
-      describe "with valid information" do
-        before do
-          fill_in "name",               with: "Jesse Flores"
-          select  "Teacher"
-          fill_in "school",             with: "Holy Spirit Prep"
-          fill_in "email",              with: "jesse@test.com"
-        end
-
-        it "should create a lead" do
-          expect {click_button submit}.to change{Lead.count}.by(1)
-        end
-      end
-
-    end
-
-    context "The Request Invite page" do
-      before {visit request_invite_path}
-      it "should create a lead" do
-        find_link("Request Access").click
+      before do
         fill_in "name",               with: "Jesse Flores"
         select  "Teacher"
         fill_in "school",             with: "Holy Spirit Prep"
         fill_in "email",              with: "jesse@test.com"
-        expect{click_button "Request Access!"}.to change(Lead, :count).by(1)
       end
-    end 
-
+      it "should create a lead" do
+        expect {click_button submit}.to change{Lead.count}.by(1)
+      end
+      it "should send me an email" do
+        create(:lead)
+        last_email.to.should include("jesse.flores@me.com")
+      end
+    end
   end
 end

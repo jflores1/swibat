@@ -72,7 +72,8 @@ module Swibat
 
     #change layout for devise session controller
     config.to_prepare do
-        Devise::SessionsController.layout "single_column_layout"
+        Devise::SessionsController.layout "static_pages"
+        Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application"   : "static_pages" }
     end
 
   end

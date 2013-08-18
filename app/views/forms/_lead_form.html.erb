@@ -14,7 +14,7 @@
     <%= lead.text_field :name, placeholder: "Full Name", id:"name" %>
 
     <%= lead.label "Role: " %>
-    <%= lead.select(:role, options_for_select([['Teacher', 'teacher'],['Administrator', 'administrator']])) %>
+    <%= lead.select(:role, options_for_select([['Administrator', 'administrator'],['Teacher', 'teacher'], ['Teacher Coach', 'teacher_coach'], ['Parent','parent'],['Other', 'other']])) %>
 
 
     <%= lead.label "School: " %>
@@ -23,6 +23,6 @@
     <%= lead.label "Email: " %>
     <%= lead.text_field :email, placeholder: "Email Address", id:"email" %>
 
-    <%= lead.submit "Request Access!" %>
+    <%= lead.submit "Request Access!", class: "btn btn-warning btn-large" %>
 
 <% end %>

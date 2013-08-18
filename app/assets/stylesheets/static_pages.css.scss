@@ -489,3 +489,50 @@ div.devise-form{
     }
 }
 
+/**********************
+New User Registration
+*********************/
+div.new-user-engagement-form{
+    width: 100%;
+    margin-top: 6%;
+
+    header{
+        text-align: center;
+    }
+
+    .centered-form{
+        display: block;
+        margin: 0 auto;
+        width: 35%;
+    }
+
+    form{
+        width: 75%;
+        margin: 0 auto;
+
+        label{
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        input[type="text"], input[type="password"], select{
+            height: 2em;
+            width: 95%;
+        }
+
+        select{
+            font-size: 1.5em;
+        }
+
+        input[type="submit"]{
+            display: block;
+            margin-bottom: 1.5em;
+        }
+    }
+}
+
+footer#static_pages_footer{
+    text-align: center;
+    margin-top: 5em;
+}
+
