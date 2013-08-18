@@ -27,6 +27,10 @@ describe "UserPages" do
           find_link('Features').click
           current_path.should eq(features_path)
         end
+        it "has a link to the pricing page" do
+          find_link('Pricing').click
+          current_path.should eq(pricing_path)
+        end
       end
     end
 
@@ -47,7 +51,16 @@ describe "UserPages" do
           current_path.should eq(request_trial_path)
         end
       end
+    end
 
+    context "the pricing page" do
+      before {visit pricing_path}
+      describe "there is a call to action" do
+        it "pricing call to action leads to trial path" do
+          find('#pricing-cta-button').click
+          current_path.should eq(request_trial_path)
+        end
+      end
     end
 
   context "user registration" do
