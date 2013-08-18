@@ -467,6 +467,68 @@ section.leader-content, .section-content{
     }
 }
 
+.pricing{
+    h1{
+        padding-top: 2em;
+    }
+
+    .no-bottom-margin{
+        margin-bottom: 0px;
+    }
+
+    .centered-image{
+        text-align: center;
+    }
+
+    .pricing-p{
+        font-size: 1.6em;
+        margin-bottom: 1.5em;
+    }
+
+    span.small{
+        font-size: 0.5em;
+    }
+
+    .icon-feature-p{
+        font-size: 1.6em;
+        display: block;
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 1em;
+        color: #ffffff;
+        background-color: #f9a732;
+        padding: 0.3em;
+        @include rounded-corners(4px);
+
+        i{
+            color: #ffffff;
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            font-size: 1.2308em;
+        }
+    }
+
+    .pricing-table{
+
+        tr:first-child th{
+            background-color: transparent;
+        }
+        tr:nth-child(even) td, tr:nth-child(odd) td{
+            background-color: transparent !important;
+        }
+        th, td{
+            border: 1px solid #dddddd;
+            background-color: none;
+        }
+        th{
+            font-size: 2em;
+        }
+        td{
+            font-size: 1.3em;
+        }
+    }
+}
+
 footer.chalkboard{
     background: #606E67;
     min-height: 50px;
