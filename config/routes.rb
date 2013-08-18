@@ -3,7 +3,6 @@ Swibat::Application.routes.draw do
 
   resources :faculties
 
-
   get "faculty/index"
 
   get "faculty/show"
@@ -16,7 +15,7 @@ Swibat::Application.routes.draw do
 
   match "search" => "search#index"
 
-  root to: 'static_pages#home'
+  root to: 'static_pages#teachers'
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
