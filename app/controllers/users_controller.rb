@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :courses, :content_map]
 	load_and_authorize_resource
-  skip_authorize_resource only: [:index, :following, :followers, :search, :courses, :content_map]
-  before_filter :load_courses, except: [:index, :eval]
+  skip_authorize_resource only: [:index, :following, :followers, :search, :courses, :content_map, :remove_from_institution]
+  before_filter :load_courses, except: [:index, :eval, :remove_from_institution]
   respond_to :html, :js, :json, :xml
 
   def index
@@ -116,6 +116,17 @@ class UsersController < ApplicationController
       domain.evaluation_criteria.each do |criterion|
         @evaluation.evaluation_ratings.build(criterion: criterion)
       end
+    end
+  end
+
+  def remove_from_institution    
+    @member = User.find(params[:id])
+    @institution = @member.institution
+    @member.institution = nil
+    if @member.save
+      redirect_to faculty_institution_path(@institution), :notice => 'Faculty member removed.'
+    else
+      redirect_to faculty_institution_path(@institution), :notice => 'There was an error trying to remove the faculty member.'
     end
   end
 

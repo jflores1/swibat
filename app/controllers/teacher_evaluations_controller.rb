@@ -56,6 +56,15 @@ class TeacherEvaluationsController < ApplicationController
     redirect_to institution_evaluation_path(@institution, @evaluation)
   end
 
+  def destroy
+    @evaluation = TeacherEvaluation.find(params[:id])
+    if @evaluation.destroy
+      redirect_to :back, :notice => 'Observation was successfully deleted.'
+    else
+      redirect_to :back, :notice => 'There was an error while trying to delete the observation.'
+    end
+  end
+  
   private
   	def load_institution
   		@institution = Institution.find(params[:institution_id])

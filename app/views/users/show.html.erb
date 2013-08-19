@@ -17,8 +17,8 @@
           </li>
         <% end %>
 		  </ul>
-		</div>	
-			<a href="#" class="btn btn-danger" id="delete-user"><i class="icon-trash"></i> <i class="icon-user"></i></a>
+		</div>
+			<%= link_to '<i class="icon-trash"></i> <i class="icon-user"></i>'.html_safe, remove_from_institution_user_path(@user), method: :delete, confirm: 'Are you sure?',class: 'btn btn-danger' %>
 		</span></h1>
 	<div class="summary-graph">
 		This is where the bar graph will go. x-axis is score and y-axis is the domain. No chartjunk. To make computation simple, can filter b/w templates and cumulative vs most recent observations.
@@ -30,7 +30,8 @@
 				<%= link_to normal_date_format(observation.created_at), institution_evaluation_path(@user.institution, observation) %>
 				<span class="pull-right">
 					<a href="faculty_observation.html" class="btn btn-warning"><i class="icon-pencil"></i></a>
-					<a href="#" class="btn btn-danger"><i class="icon-trash"></i></a>
+					<%= link_to '<i class="icon-trash"></i>'.html_safe, institution_evaluation_path(@user.institution, observation), method: :delete, confirm: 'Are you sure?',class: 'btn btn-danger' %>
+					
 				</span>
 			</h4>
 			<p>Observation Score: <%= number_with_precision(observation.calculate_score, :precision => 2) %></p>

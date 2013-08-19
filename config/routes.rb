@@ -56,6 +56,7 @@ Swibat::Application.routes.draw do
       get :eval
       get :evaluations
       get :courses
+      delete :remove_from_institution
     end
   end
 
@@ -150,7 +151,7 @@ Swibat::Application.routes.draw do
       end
     end
 
-    resources :teacher_evaluations, only: [:index, :create, :show], :path => :evaluations, :as => :evaluations do
+    resources :teacher_evaluations, :path => :evaluations, :as => :evaluations do
       resources :comments, :only => [:create, :destroy]
     end
     
