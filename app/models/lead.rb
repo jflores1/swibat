@@ -15,7 +15,7 @@
 class Lead < ActiveRecord::Base
   attr_accessible :email, :name, :phone, :role, :school
 
-  ROLES  = %w[teacher administrator]
+  ROLES  = %w[teacher administrator teacher_coach parent other]
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   before_validation do |lead|
@@ -29,7 +29,7 @@ class Lead < ActiveRecord::Base
     lead.name = name.titleize
   end
 
-  after_save :new_lead_notification
+  after_create :new_lead_notification
 
   validate  :valid_role
   validates :email, :name, :role, :school, presence: true

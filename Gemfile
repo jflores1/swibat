@@ -26,7 +26,6 @@ gem 'best_in_place'
 gem 'amoeba'
 gem 'rails_autolink'
 gem 'youtube_it'
-gem 'pusher'
 gem 'rails3-jquery-autocomplete'
 gem 'public_activity'
 
@@ -52,7 +51,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
-  gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 end
 
 group :production do
@@ -76,7 +74,6 @@ group :assets do
   gem 'jquery-rails'
   gem 'jquery_datepicker'
   gem 'font-awesome-rails'
-  gem 'backbone-on-rails'
 end
 
 

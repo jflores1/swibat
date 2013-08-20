@@ -1,9 +1,9 @@
 body {
     font-size: 62.5%;//1em=10px
     font-family: 'Open Sans', 'Helvetica Neue Light', sans-serif;
-    background: #f7f7f7 !important;
+    color: #595959;
 
-    h1{
+/*    h1{
         font-size: 2.4em;
         line-height: 1.619em;
         margin: 0px;
@@ -20,6 +20,7 @@ body {
         line-height: 1.619em;
         margin: 0px;
     }
+*/
 
     p, li {
         font-size: 1.3em;
@@ -27,6 +28,19 @@ body {
     }
 
 }
+
+body, html{
+    height: 100%;
+}
+
+a{
+    color: #00c8f5;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
 @import url(http://fonts.googleapis.com/css?family=Permanent+Marker);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
@@ -75,10 +89,6 @@ Body CSS
 ********************************/
 body.padded {
     padding-top: 60px;
-}
-
-body.patterned {
-
 }
 
 .hero {
@@ -585,10 +595,6 @@ Position, Formatting, Fonts
     color:#4c9304;
 }
 
-.top-padded {
-    padding-top:10px;
-}
-
 .strong {
     font-weight: bold;
 }
@@ -841,6 +847,9 @@ Media Queries
 
 /* Large Desktop */
 @media screen and (min-width: 1200px) {
+    div.centered-viewport{
+        top: 30% !important;
+    }
 
     section.chalkboard {
         header.hero-header {
@@ -853,6 +862,7 @@ Media Queries
 
     section.leader-content, .section-content {
         display: block;
+        clear: both;
 
         .feature-paragraph {
             p.intro-paragraph {
@@ -870,6 +880,9 @@ Media Queries
 
 /*Portrait tablet to landscape and desktop */
 @media screen and (min-width: 769px) and (max-width: 979px) {
+    div.centered-viewport{
+        top: 30% !important;
+    }
 
     .navbar-chalkboard{
 
@@ -994,6 +1007,8 @@ Media Queries
     }
 
     section.leader-content, .section-content {
+        display: block;
+        clear: both;
         header.intro-content {
             h1 {
                 font-size: 3em !important;

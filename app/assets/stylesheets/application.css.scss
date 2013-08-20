@@ -12,8 +12,9 @@
  *= require font-awesome
  */
 @import url('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css');
-@import "bootstrap-combined.no-icons.min.css";
-@import "custom.v2.css.scss";
+@import "bootstrap";
+@import "custom.css.scss";
+@import "custom_redesign.css.scss";
 @import "static_pages.css.scss";
 @import "demo.css.scss";
 @import "users.css.scss";

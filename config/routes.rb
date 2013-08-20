@@ -1,6 +1,8 @@
 Swibat::Application.routes.draw do
   
 
+  resources :faculties
+
   get "faculty/index"
 
   get "faculty/show"
@@ -31,6 +33,7 @@ Swibat::Application.routes.draw do
   match 'pricing',        to: 'static_pages#pricing'
   match 'request-trial',  to: 'leads#new', as: "request_trial"
   match 'request-invite', to: 'static_pages#request_invite', as: "request_invite"
+  match 'features',       to: 'static_pages#features'
 
   get 'objectives/similar_objectiveables'
 
@@ -169,10 +172,6 @@ Swibat::Application.routes.draw do
   
   match 'demo/:action' => 'demo#:action'
   match 'static_pages/:action' => 'static_pages#:action'
-
-  if Rails.env.development?
-    mount MailPreview => 'mail_view'
-  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

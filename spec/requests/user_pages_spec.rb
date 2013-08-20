@@ -3,6 +3,77 @@ require 'spec_helper'
 describe "UserPages" do
   subject { page }
 
+  context "initial user access" do
+    context "from the home page" do
+      describe "the user can access the signup page" do
+        before {visit root_path}
+        it "should have a link for the user to sign up" do
+          page.should have_selector("a", text: "Sign Up Free")
+        end
+        it "should lead to the request trial path" do
+          find('#main-page-sign-up-button').click
+          current_path.should eq(request_trial_path)
+        end
+      end
+    end
+
+    context "from the navbar" do
+      before {visit root_path}
+        it "should have a link to the user registration page" do
+          find("#navbar-signup").click
+          current_path.should eq(request_trial_path)
+        end
+        it "has a link to the features page" do
+          find_link('Features').click
+          current_path.should eq(features_path)
+        end
+        it "has a link to the pricing page" do
+          find_link('Pricing').click
+          current_path.should eq(pricing_path)
+        end
+      end
+    end
+
+    context "the features page" do
+      before {visit features_path}
+      it {page.should have_selector("title", text: "Features - A Coaching Tool for Teachers")}
+      describe "each of the features has a call to action" do
+        it "feature one button leads to registration path" do
+          find('#feature-one-button').click
+          current_path.should eq(request_trial_path)
+        end
+        it "feature two button leads to trial path" do
+          find('#feature-two-button').click
+          current_path.should eq(request_trial_path)
+        end
+        it "feature three button leads to trial path" do
+          find('#feature-three-button').click
+          current_path.should eq(request_trial_path)
+        end
+      end
+    end
+
+    context "the pricing page" do
+      before {visit pricing_path}
+      describe "there is a call to action" do
+        it "pricing call to action leads to trial path" do
+          find('#pricing-cta-button').click
+          current_path.should eq(request_trial_path)
+        end
+      end
+    end
+
+  context "user registration" do
+    describe "the user can create a new account" do
+      before {visit new_user_registration_path}
+      it {page.should have_selector("form")}
+      it "should have a sign up button" do
+        find('.centered-form').should have_button("Sign Up!")
+      end
+    end
+  end
+
+  #From Here Down is Old Code. Not Sure if It Needs to Be Tested or Deleted.
   describe "Application Header" do
     let(:user){create(:user)}
 

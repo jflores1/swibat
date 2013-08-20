@@ -1,6 +1,5 @@
 Swibat::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  require 'pusher'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -53,9 +52,5 @@ Swibat::Application.configure do
       :exe_path => "/usr/local/bin/wkhtmltopdf"
       }
   end
-
-  Pusher.app_id = '36952'
-  Pusher.key    = 'b90f3c930c20605caf52'
-  Pusher.secret = 'd6435a48026f16567999'
 
 end
