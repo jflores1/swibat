@@ -3,7 +3,7 @@
 	<h1 class="page-title"><%= @user.full_name %>
 		<span class="pull-right">
 		<div class="btn-group">
-		  <a class="btn btn-warning" href="#"><i class="icon-plus icon-white"></i> Observation</a>
+		  <a class="btn btn-warning" ><i class="icon-plus icon-white"></i> Observation</a>
 		  <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 		  <ul class="dropdown-menu">
 		    <% if @institution.evaluation_templates.published.any? %>
@@ -18,7 +18,7 @@
         <% end %>
 		  </ul>
 		</div>
-			<%= link_to '<i class="icon-trash"></i> <i class="icon-user"></i>'.html_safe, remove_from_institution_user_path(@user), method: :delete, confirm: 'Are you sure?',class: 'btn btn-danger' %>
+			<%= link_to '<i class="icon-trash"></i> <i class="icon-user"></i>'.html_safe, remove_from_institution_user_path(@user), method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger', title: 'Remove faculty member' %>
 		</span></h1>
 	<div class="summary-graph">
 		This is where the bar graph will go. x-axis is score and y-axis is the domain. No chartjunk. To make computation simple, can filter b/w templates and cumulative vs most recent observations.
@@ -29,8 +29,8 @@
 			<h4>
 				<%= link_to normal_date_format(observation.created_at), institution_evaluation_path(@user.institution, observation) %>
 				<span class="pull-right">
-					<a href="faculty_observation.html" class="btn btn-warning"><i class="icon-pencil"></i></a>
-					<%= link_to '<i class="icon-trash"></i>'.html_safe, institution_evaluation_path(@user.institution, observation), method: :delete, confirm: 'Are you sure?',class: 'btn btn-danger' %>
+					<a href="faculty_observation.html" class="btn btn-warning" title="Edit observation"><i class="icon-pencil"></i></a>
+					<%= link_to '<i class="icon-trash"></i>'.html_safe, institution_evaluation_path(@user.institution, observation), method: :delete, confirm: 'Are you sure?',class: 'btn btn-danger', title: 'Delete observation' %>
 					
 				</span>
 			</h4>

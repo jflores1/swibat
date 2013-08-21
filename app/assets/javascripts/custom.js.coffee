@@ -7,6 +7,7 @@ $(document).ready ->
     (e).preventDefault()
     $("#errorModal").fadeOut()
 
+  $('.btn').tooltip();
   $('#user-add-course').tooltip({'title':'Add a new course'})
   #tooltips
   $('.box-profile-pic').tooltip()
@@ -48,6 +49,7 @@ $(document).ready ->
   $('.delete-domain').tooltip({
     'title':'Delete Domain'
   })
+  $('.delete-subdomain').tooltip();
   $('.course-journal').tooltip()
   $('.upload-observation').tooltip()
   $('.upload-video').tooltip()

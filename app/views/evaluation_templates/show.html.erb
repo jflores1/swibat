@@ -14,12 +14,14 @@
 					<%= f.text_field :name, class:"input-xxlarge" %>
 				</div>
 			</div>
-			<div class="control-group ">		
-				<label class="checkbox">
-		      <%= f.check_box :published, class: "pull-left" %> Published
-		    </label>
+			<div class="control-group ">
+				<div class="controls">	
+					<label class="checkbox">
+			      <%= f.check_box :published %> Published
+			    </label>
+		    </div>
 			</div>				
-			<%= f.submit "Save Template", class:"btn btn-monkey" %>
+			<%= f.submit "Save Template", class:"btn btn-warning" %>
 		<% end %>
 
 		<div class="eval-criteria">
@@ -29,7 +31,7 @@
 					<%= render :partial => "evaluation_domains/evaluation_domain", locals: {domain: domain} %>
 				<% end %>
 			</div>
-			<p><%= link_to "Add Domain", new_institution_evaluation_template_evaluation_domain_path(@institution, @template), class:"btn btn-monkey", remote: true %></p>
+			<p><%= link_to "Add Domain", new_institution_evaluation_template_evaluation_domain_path(@institution, @template), class:"btn", remote: true %></p>
 			<div id="domain-form" style="display: none;"></div>
 		</div>
 	</div>
