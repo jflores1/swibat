@@ -1,8 +1,6 @@
 Swibat::Application.routes.draw do
   
-
-  resources :faculties
-
+  
   get "faculty/index"
 
   get "faculty/show"
@@ -141,6 +139,13 @@ Swibat::Application.routes.draw do
 
   resources :institutions do 
     get :autocomplete_institution_name, :on => :collection
+    
+    resources :faculty do
+      collection do        
+        get :import
+        post :create_multiple
+      end
+    end    
 
     resources :evaluation_templates do
       resources :evaluation_domains do
@@ -159,13 +164,8 @@ Swibat::Application.routes.draw do
       resources :comments, :only => [:create, :destroy]
     end
     
-    member do
-      get :faculty
-      get :eval_template
-      get :new_faculty_member
-      post :create_faculty_member
-      get :import_faculty
-      post :create_faculty_members
+    member do      
+      get :eval_template      
     end
   end
 

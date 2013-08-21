@@ -1,7 +1,7 @@
 <% content_for :left_column do %>	
 	<h1 class="page-title">Add new faculty member</h1>
 
-	<%= form_for @user, url: create_faculty_member_institution_url(@institution), html: {class: 'form-horizontal'} do |f| %>
+	<%= form_for @user, url: url_for(controller: 'faculty', action: 'create', institution_id: @institution.id), html: {class: 'form-horizontal'} do |f| %>
 
 		<% if @user.errors.any? %>
 	    <div id="error_explanation">

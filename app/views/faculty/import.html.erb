@@ -1,7 +1,7 @@
 <% content_for :left_column do %>	
 	<h1 class="page-title">Import faculty members</h1>
 
-	<%= form_tag create_faculty_members_institution_url(@institution), class: 'form-horizontal', multipart: true do %>
+	<%= form_tag create_multiple_institution_faculty_index_path(@institution), class: 'form-horizontal', multipart: true do %>
 		<div class="control-group">
 			<%= label_tag :file, nil, class: 'control-label' %>
 	    <div class="controls">

@@ -1,0 +1,19 @@
+<h1 class="page-title">Faculty 
+	<span class="pull-right">
+		<%= link_to '<i class="icon-plus"></i> <i class="icon-user"></i></a>'.html_safe, new_institution_faculty_path(@institution), class: 'btn btn-warning' %>
+		<%= link_to '<i class="icon-upload"></i> <i class="icon-group"></i></a>'.html_safe, import_institution_faculty_index_path(@institution), class: 'btn btn-warning' %>
+	</span>
+</h1>
+
+<% faculty.each do |faculty| %>
+	<div class="summary-table">
+		<h4>
+			<%= link_to "#{faculty.first_name} #{faculty.last_name}", institution_faculty_path(@institution, faculty) %>
+			<span class="pull-right"><a href="danielson_framework.html" class="btn btn-warning"><i class="icon-pencil"></i></a></span>
+		</h4>
+		
+		<p>Last Observed: <%= faculty.last_observation ? normal_date_format(faculty.last_observation.created_at) : "Never" %></p>
+		
+
+	</div>	
+<% end %>
