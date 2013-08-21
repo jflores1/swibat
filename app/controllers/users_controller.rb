@@ -134,4 +134,8 @@ class UsersController < ApplicationController
     @courses = @user.courses
   end
 
+  def intro
+    @user = User.find(params[:id])
+  end
+
 end

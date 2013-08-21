@@ -59,6 +59,7 @@ Swibat::Application.routes.draw do
       get :eval
       get :evaluations
       get :courses
+      get :intro
       delete :remove_from_institution
     end
   end
