@@ -75,14 +75,14 @@ a:hover{
 	margin-left: 0px !important;
 }
 
-.icon-container{
+.iconcontainer{
 	display:block;
 	margin: 0 auto;
 	width: 75%;
 	margin-top: 10em;
 }
 
-.icon-container p{
+.iconcontainer p{
 	text-align: center;
 }
 
@@ -90,18 +90,19 @@ a:hover{
 	margin-top: 10em;
 }
 
-.icon-focus{
+.iconfocus{
 	display: block;
 	float: left;
 	width: 50%;
 }
 
-.icon-focus h3{
+.iconfocus h3{
 	text-align: center;
 }
 
 .circle{
 	border: 3px solid #ffffff;
+	background: #00c8f5;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00c8f5), to(#00d0ff));
 	border-radius: 50%;
 	padding: 0.7em;
@@ -111,7 +112,7 @@ a:hover{
 	background: #00d0ff;
 }
 
-.icon-link{
+.iconlink{
 	display: block;
 	margin-bottom: 5em;
 	text-decoration: none;
@@ -124,18 +125,18 @@ a:hover{
 	text-align: center;
 }
 
-.icon-link:hover{
+.iconlink:hover{
 	text-decoration:none;
 }
 
-.icon-link i{
+.iconlink i{
 	font-size: 5em;
 	color: #ffffff;
 	width: 50%;
 	margin: 0 auto;
 }
 
-span.icon-text{
+span.icontext{
 	display: inline-block;
 	float: left;
 	clear: left;

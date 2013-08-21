@@ -1,12 +1,12 @@
 <div class="course-overview" xmlns="http://www.w3.org/1999/html">
   <% content_for :left_column do %>
-			<div class="icon-container">
-				<div class="icon-focus">
-					<%= link_to '<i class="icon-file circle"></i>'.html_safe, choose_institution_evaluation_templates_path(@institution), class: 'icon-link' %>										
+			<div class="iconcontainer">
+				<div class="iconfocus">
+					<%= link_to '<i class="icon-file circle"></i>'.html_safe, choose_institution_evaluation_templates_path(@institution), class: 'iconlink' %>										
 					<h3>Choose a Template</h3>
 				</div>
-				<div class="icon-focus">
-					<%= link_to '<i class="icon-briefcase circle"></i>'.html_safe, institution_evaluation_templates_path(@institution), class: 'icon-link' %>					
+				<div class="iconfocus">
+					<%= link_to '<i class="icon-briefcase circle"></i>'.html_safe, institution_evaluation_templates_path(@institution), class: 'iconlink' %>					
 					<h3>See Your Templates</h3>
 				</div>
 				<p><%= link_to 'Or, create a new template from scratch', new_institution_evaluation_template_path(@institution) %></p>
