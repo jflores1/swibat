@@ -3,6 +3,7 @@
 	<h1 class="page-title"><%= @user.full_name %></h1>
 	<p>First Name: <%= @user.first_name %></p>
 	<p>Last Name: <%= @user.last_name %></p>
+	<p>Email: <%= @user.email %></p>
 	<p>Institution: <%= link_to @user.institution.name, institution_faculty_index_path(@user.institution) %></p>
 
 <% end %>

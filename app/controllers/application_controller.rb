@@ -10,11 +10,15 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.last_sign_in_at == nil
-      intro_user_path(resource)
-    else
-      faculty_institution_path(resource.institution)
-    end
+    if resource.role == 'school_admin'
+      if resource.last_sign_in_at == nil
+        intro_user_path(resource)
+      else
+        faculty_institution_path(resource.institution)
+      end
+    elsif resource.role == 'teacher'
+      institution_faculty_path(resource.institution, resource)
+    end      
   end
 
   def yt_client
