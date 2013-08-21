@@ -181,9 +181,9 @@ class User < ActiveRecord::Base
   def self.new_faculty_member(institution, attributes)
     u = User.new
     u.institution = institution
-    u.first_name = attributes[:first_name]
-    u.last_name = attributes[:last_name]
-    u.email = attributes[:email]
+    u.first_name = attributes[:first_name].strip
+    u.last_name = attributes[:last_name].strip
+    u.email = attributes[:email].strip
     u.role = 'teacher'
     random_password = (0...8).map{(65+rand(26)).chr}.join
     u.password = random_password

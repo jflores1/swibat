@@ -1,6 +1,5 @@
 <% content_for :left_column do %>	
-	<h1 class="page-title">Import faculty members</h1>
-
+	<h1 class="page-title">Import faculty members</h1>	
 	<%= form_tag create_multiple_institution_faculty_index_path(@institution), class: 'form-horizontal', multipart: true do %>
 		<div class="control-group">
 			<%= label_tag :file, nil, class: 'control-label' %>
@@ -13,10 +12,14 @@
 	    	<%= submit_tag "Import", class: 'btn' %>
 	    </div>
 	  </div>
-	<% end %>
+	<% end %>	
 <% end %>
 
 <% content_for :right_column do %>
-	<%= render partial: 'sidebar' %>
+	<div class="primer-container">
+		<h4>A Quick Primer</h4>
+		<p>You can download an example template of the faculty members .csv file <%= link_to 'here', '/assets/faculty.csv' %>.</p>
+	</div>
+	
 <% end %>
 
