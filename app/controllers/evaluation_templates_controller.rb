@@ -24,7 +24,7 @@ class EvaluationTemplatesController < ApplicationController
   def update
   	@template = @institution.evaluation_templates.find(params[:id])
   	@template.update_attributes(params[:evaluation_template])
-  	redirect_to [@institution, @template], notice: "Template saved successfully"
+  	redirect_to institution_evaluation_templates_path(@institution), notice: "Template saved successfully"
   end
 
   def destroy
