@@ -17,7 +17,8 @@
 		}
 
     .bar {
-      vector-effect: non-scaling-stroke;
+      fill: #008080;
+      cursor: pointer;
     }
 
     .bar:hover{
@@ -46,16 +47,16 @@
 <% content_for :left_column do %>
 	<h1><%= @evaluation.eval_type.capitalize %> for <%= link_to @user.full_name, user_path(@user) %></h1>
 	<p>Published on <%= normal_date_format(@evaluation.created_at) %></p>
-	
-	<% if @evaluation.eval_type == "observation" %>
-		<% if @evaluation.video %>						
-				<div class="summary-graph video">
-					<iframe width="100%" height="400px" src="http://www.youtube.com/embed/<%= @evaluation.video.yt_video_id %>" frameborder="0" allowfullscreen></iframe>
-				</div>
-		<% end %>	
-	<% end %>
-
+  
 	<div id="graph"></div>
+
+  <% if @evaluation.eval_type == "observation" %>
+    <% if @evaluation.video %>            
+        <div class="summary-graph video">
+          <iframe width="100%" height="400px" src="http://www.youtube.com/embed/<%= @evaluation.video.yt_video_id %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+    <% end %> 
+  <% end %>
 
 	<h3>Total Score: <%= number_with_precision(@evaluation.calculate_score, :precision => 2) %></h3>
 
@@ -101,100 +102,123 @@
 	  </section>
 	</div>
  	<script>
-    var color = d3.scale.ordinal()
-    .range(["#008080",
-		"#00cccc"
-		]);
-
-
-    var w = 650,
-        h = 300;
-    var margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = w - margin.left - margin.right,
-        height = h - margin.top - margin.bottom;
-
-    var formatPercent = d3.format("d");      
-    var formatDecimal = d3.format(".2f");
-
-    var x = d3.scale.ordinal()
-        .rangeRoundBands([0, width], .1);
-
-    var y = d3.scale.linear()
-        .range([height, 0]);
-
-    var x0 = d3.scale.ordinal()
-             .rangeRoundBands([0, width], .1);
+    // global variables
+    var properties = {
+      w: 650,
+      h: 300,
+      margin: {top: 20, right: 50, bottom: 100, left: 50},
+      formatPercent: d3.format("d"),
+      formatDecimal: d3.format(".2f")
+    }
     
-    var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("bottom");
+    var allData = <%= raw @json_data %>;
+    
+    function displayDomainBarChart(properties, data, allData, type){
+      var width = properties.w - properties.margin.left - properties.margin.right,
+          height = properties.h - properties.margin.top - properties.margin.bottom;
+      data.forEach(function(d) {
+        d.score = +d.score;
+      });
 
-    var yAxis = d3.svg.axis()
-        .scale(y)
-        .orient("left")
-        .tickFormat(formatPercent);
+      // define the x scale
+      var x = d3.scale.ordinal()
+        .rangeRoundBands([0, width], .1)
+        .domain(data.map(function(d) { return d.name; }));    
 
-    var svg = d3.select("#graph").append("svg")
-        .attr("viewBox", "0 0 " + w + " " + h )
-        .attr("height", 400)
-        .attr("preserveAspectRatio", "xMinYMin meet")          
+      // define the y scale
+      var y = d3.scale.linear()
+          .domain([0, 4])
+          .range([height, 0]);
+
+      // define the x axis
+      var xAxis = d3.svg.axis()
+          .scale(x)
+          .orient("bottom");
+
+      // define the y axis
+      var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient("left")
+          .tickFormat(properties.formatPercent);
+
+      // remove previous graphs, if there are any
+      $('#graph').empty();
+
+      // create the graph
+      var svg = d3.select("#graph").append("svg")
+          .attr("width", width + properties.margin.left + properties.margin.right)
+          .attr("height", height + properties.margin.top + properties.margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+          .attr("transform", "translate(" + properties.margin.left + "," + properties.margin.top + ")");
 
-		var data = <%= raw @json_data %>;
+      // create the tooltip div
+      var tooltip = d3.select("body").append("div")   
+        .attr("class", "tooltip")               
+        .style("opacity", 0);
 
-		data.forEach(function(d) {
-		  d.score = +d.score;
-		});
+      // append the x axis to the graph
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + (height + 10) + ")")
+          .call(xAxis)
+            .selectAll("text")
+            .attr("transform", function(d) {
+                return "rotate(-10)" 
+            });         
 
-		x.domain(data.map(function(d) { return d.domain; }));
+      // append the y axis to the graph
+      svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("transform", "rotate(-90)")          
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Score");
 
-		x0.domain(data.map(function(d) {return d.name}));
+      // add the data
+      svg.selectAll(".bar")
+          .data(data)
+        .enter().append("rect")
+          .attr("class", "bar")
+          .attr("x", function(d) { return x(d.name); })
+          .attr("width", x.rangeBand())
+          .attr("y", function(d) { return y(d.score); })
+          .attr("height", function(d) { return height - y(d.score); })
+          .on("click", onDomainClick)
+          .on("mouseover", showTooltip)
+          .on("mouseout", function(d) {       
+            tooltip.transition()        
+                .duration(500)      
+                .style("opacity", 0);   
+          });;
 
-		y.domain([0, 4]);
-
-		var div = d3.select("body").append("div")   
-		          .attr("class", "tooltip")               
-		          .style("opacity", 0);
-        
-
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis)
-      .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Score");
-
-    svg.selectAll(".bar")
-        .data(data)
-      .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) { return x0(d.name); })            
-        .attr("width", x0.rangeBand())
-        .attr("y", function(d) { return y(d.score); })
-        .attr("height", function(d) { return height - y(d.score); })
-        .style("fill", function(d) { return color(d.name); })
-      .on("mouseover", function(d) {      
-        div.transition()        
+      function showTooltip(d){
+        tooltip.transition()        
             .duration(200)      
             .style("opacity", .9);      
-        div .html(d.name + "<br />  Score: " + formatDecimal(d.score))  
+        tooltip .html('Domain: ' + d.name + "<br/> Score: "  + d.score)  
             .style("left", (d3.event.pageX) + "px")     
             .style("top", (d3.event.pageY - 28) + "px");    
-        })                  
-    .on("mouseout", function(d) {       
-        div.transition()        
-            .duration(500)      
-            .style("opacity", 0);   
-    });
+                       
+      }
+
+      function onDomainClick(d){
+        if (type == 'domain'){
+          displayDomainBarChart(properties, d.criteria, allData, 'subdomain');
+        } else {
+          displayDomainBarChart(properties, allData, allData, 'domain');
+        }
+      }
+    }
+
+    displayDomainBarChart(properties, allData, allData, 'domain');    
+
+    function type(d) {
+      d.score = +d.score;
+      return d;
+    }
   </script>
 <% end %>
 
