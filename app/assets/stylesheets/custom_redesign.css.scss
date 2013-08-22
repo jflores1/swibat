@@ -217,9 +217,15 @@ i.blue-icon{
 }
 
 .sidebar-nav{
-	background: #f7f7f7;
-	min-height: 100%;
+	background: #f7f7f7;	
 	padding-top: 2em;
+	margin-bottom: -99999px;
+	padding-bottom: 99999px;
+
+}
+
+.row-fluid{
+	overflow: hidden;
 }
 
 .sidebar-nav ul{

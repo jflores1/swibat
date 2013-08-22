@@ -1,51 +1,7 @@
 <%= provide(:title, "#{@evaluation.eval_type.capitalize} for #{@user.full_name}") %>
 
-<% content_for :head do %>
-  <style>
-   	#graph path {
-			stroke: steelblue;
-			stroke-width: 2;
-			fill: none;
-		}
-		.axis { shape-rendering: crispEdges; }
-		.x.axis line { stroke: lightgrey; }
-		.x.axis .minor { stroke-opacity: .5; }
-		.x.axis path { display: none; }
-		.y.axis line, .y.axis path {
-			fill: none;
-			stroke: #000;
-		}
-
-    .bar {
-      fill: #008080;
-      cursor: pointer;
-    }
-
-    .bar:hover{
-      opacity: 0.7;
-    }
-
-    .x.axis path {
-      display: none;
-    }
-
-    div.tooltip {   
-      position: absolute;           
-      text-align: center;           
-      padding: 5px;             
-      font: 12px sans-serif;                
-      border: 3px solid #555;      
-      background: #fff;
-      border-radius: 8px;           
-      pointer-events: none;         
-    }
-
-  </style>
-<% end %>
-
-
 <% content_for :left_column do %>
-	<h1><%= @evaluation.eval_type.capitalize %> for <%= link_to @user.full_name, user_path(@user) %></h1>
+	<h1><%= @evaluation.eval_type.capitalize %> for <%= link_to @user.full_name, institution_faculty_path(@institution, @user) %></h1>
 	<p>Published on <%= normal_date_format(@evaluation.created_at) %></p>
   
 	<div id="graph"></div>

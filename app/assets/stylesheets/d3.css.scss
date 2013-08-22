@@ -1,0 +1,37 @@
+#graph path {
+	stroke: steelblue;
+	stroke-width: 2;
+	fill: none;
+}
+.axis { shape-rendering: crispEdges; }
+.x.axis line { stroke: lightgrey; }
+.x.axis .minor { stroke-opacity: .5; }
+.x.axis path { display: none; }
+.y.axis line, .y.axis path {
+	fill: none;
+	stroke: #000;
+}
+
+.bar {
+  fill: #008080;
+  cursor: pointer;
+}
+
+.bar:hover{
+  opacity: 0.7;
+}
+
+.x.axis path {
+  display: none;
+}
+
+div.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  padding: 5px;             
+  font: 12px sans-serif;                
+  border: 3px solid #555;      
+  background: #fff;
+  border-radius: 8px;           
+  pointer-events: none;         
+}

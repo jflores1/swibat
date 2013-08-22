@@ -1,8 +1,7 @@
 <% if current_user %>
-<div class="sidebar-nav no-left-margin">
   <ul>
   	<% if current_user.role == 'school_admin' %>
-	    <li><%= link_to "<i class='icon-group'></i> Faculty".html_safe, faculty_institution_path(current_user.institution) %></li>
+	    <li><%= link_to "<i class='icon-group'></i> Faculty".html_safe, institution_faculty_index_path(current_user.institution) %></li>
 	    <li><%= link_to "<i class='icon-file'></i> Templates".html_safe, institution_evaluation_templates_path(current_user.institution) %></li>
 	  <% end %>
     <% if current_user.role == 'teacher' %>
@@ -11,5 +10,4 @@
     <li><%= link_to "<i class='icon-user'></i> Profile".html_safe, user_path(current_user) %></li>
     <li><%= link_to "<i class='icon-off'></i> Sign Out".html_safe, destroy_user_session_path, method: 'delete' %></li>
   </ul>
-</div>
 <% end %>
