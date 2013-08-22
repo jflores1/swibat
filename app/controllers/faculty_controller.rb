@@ -1,6 +1,5 @@
 class FacultyController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :load_institution
+  before_filter :load_institution, :authenticate_user!
 
   respond_to :html, :js, :json
 

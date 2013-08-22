@@ -82,17 +82,19 @@ class Ability
         video.try(:user).try(:institution) == user.institution
       end     
 
-      can [:read, :faculty], Institution, id: user.institution_id
+      # can [:read, :faculty], Institution, id: user.institution_id
 
       can :vote, :all
       can :flag, Flag
       can :evaluations, User, user_id: user.id
+      can :read, TeacherEvaluation, teacher_id: user.id
 
     end
 
     if user.role == "school_admin"
       can :videos, User, institution_id: user.institution_id 
       can :manage, Institution, id: user.institution_id      
+      can :manage, Comment
       can :manage, TeacherEvaluation
       can [:eval, :evaluations], User, institution_id: user.institution_id
       can :manage, Video do |video|
