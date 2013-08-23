@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307165926) do
+ActiveRecord::Schema.define(:version => 20130823140044) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -140,15 +140,17 @@ ActiveRecord::Schema.define(:version => 20130307165926) do
   create_table "evaluation_criteria", :force => true do |t|
     t.string   "contents"
     t.integer  "evaluation_domain_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.boolean  "deleted",              :default => false
   end
 
   create_table "evaluation_domains", :force => true do |t|
     t.string   "name"
     t.integer  "evaluation_template_id"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.boolean  "deleted",                :default => false
   end
 
   create_table "evaluation_ratings", :force => true do |t|
@@ -162,9 +164,10 @@ ActiveRecord::Schema.define(:version => 20130307165926) do
   create_table "evaluation_templates", :force => true do |t|
     t.integer  "institution_id"
     t.boolean  "published"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "name"
+    t.boolean  "deleted",        :default => false
   end
 
   create_table "flags", :force => true do |t|

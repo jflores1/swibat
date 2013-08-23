@@ -16,7 +16,8 @@ class EvaluationCriteriaController < ApplicationController
 
 	def destroy
 		@criterion = EvaluationCriterion.find(params[:id])
-		@criterion.destroy
+		@criterion.deleted = true
+		@criterion.save
 	end
 
 	private

@@ -112,8 +112,8 @@ class UsersController < ApplicationController
     @institution = @user.institution
     @evaluation.evaluation_template = @institution.evaluation_templates.find(params[:template_id])
 
-    @evaluation.evaluation_template.evaluation_domains.each do |domain|
-      domain.evaluation_criteria.each do |criterion|
+    @evaluation.evaluation_template.evaluation_domains.where(deleted: false).each do |domain|
+      domain.evaluation_criteria.where(deleted: false).each do |criterion|
         @evaluation.evaluation_ratings.build(criterion: criterion)
       end
     end

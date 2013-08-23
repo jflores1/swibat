@@ -7,13 +7,14 @@
 #  evaluation_template_id :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  deleted                :boolean          default(FALSE)
 #
 
 class EvaluationDomain < ActiveRecord::Base
   attr_accessible :evaluation_template_id, :name
 
   belongs_to :evaluation_template
-  has_many :evaluation_criteria, dependent: :destroy
+  has_many :evaluation_criteria
 
   validates :name, presence: :true
 

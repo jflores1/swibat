@@ -15,7 +15,12 @@ class EvaluationDomainsController < ApplicationController
 
 	def destroy
 		@domain = EvaluationDomain.find(params[:id])
-		@domain.destroy
+		@domain.deleted = true;
+		@domain.save
+		@domain.evaluation_criteria.each do |criterion|
+			criterion.deleted = true;
+			criterion.save
+		end
 	end
 
 	private

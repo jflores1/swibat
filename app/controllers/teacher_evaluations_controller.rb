@@ -15,9 +15,11 @@ class TeacherEvaluationsController < ApplicationController
     @evaluation.evaluation_template.evaluation_domains.each do |domain|
       domain_hash = {name: domain.name, score: domain.calculate_score(@evaluation), criteria: []}      
       domain.evaluation_criteria.each do |criterion|
-        domain_hash[:criteria] << {name: criterion.contents , score: EvaluationRating.find_by_criterion_id_and_evaluation_id(criterion.id, @evaluation.id).score, domain: domain.name}
+        if EvaluationRating.find_by_criterion_id_and_evaluation_id(criterion.id, @evaluation.id)
+          domain_hash[:criteria] << {name: criterion.contents , score: EvaluationRating.find_by_criterion_id_and_evaluation_id(criterion.id, @evaluation.id).score, domain: domain.name}
+        end
       end
-      @data << domain_hash
+      @data << domain_hash if domain_hash[:criteria].any?
     end
     @json_data = @data.to_json
     

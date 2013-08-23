@@ -7,7 +7,7 @@
 		  <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 		  <ul class="dropdown-menu">
 		    <% if @institution.evaluation_templates.published.any? %>
-          <% @institution.evaluation_templates.published.each do |template| %>
+          <% @institution.evaluation_templates.published.where(deleted: false).each do |template| %>
           <li>
             <%= link_to template.name, eval_user_path(@user, eval_type: "observation", template_id: template.id) %>
          </li>

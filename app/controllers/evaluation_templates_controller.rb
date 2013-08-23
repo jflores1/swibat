@@ -2,7 +2,7 @@ class EvaluationTemplatesController < ApplicationController
 	before_filter :load_institution
   
   def index
-  	@templates = @institution.evaluation_templates
+  	@templates = @institution.evaluation_templates.where(deleted: false)
   end
 
   def show
@@ -29,7 +29,8 @@ class EvaluationTemplatesController < ApplicationController
 
   def destroy
     @template = @institution.evaluation_templates.find(params[:id])
-    @template.destroy
+    @template.deleted = true
+    @template.save
     redirect_to institution_evaluation_templates_path, notice: "Template deleted successfully"
   end
 

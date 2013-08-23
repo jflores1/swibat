@@ -27,7 +27,7 @@
 		<div class="eval-criteria">
 			<span>Last updated <%= time_ago_in_words(@template.updated_at) %> ago</span>
 			<div id="evaluation-domains">
-				<% @template.evaluation_domains.each do |domain| %>
+				<% @template.evaluation_domains.where(deleted: false).each do |domain| %>
 					<%= render :partial => "evaluation_domains/evaluation_domain", locals: {domain: domain} %>
 				<% end %>
 			</div>

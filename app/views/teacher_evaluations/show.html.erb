@@ -29,18 +29,17 @@
 			</tr>
 		</thead>
 		<tbody>			
-			<% @evaluation.evaluation_template.evaluation_domains.each do |domain| %>
+			<% @data.each do |domain| %>
 				<tr class="domain-row">
-					<td class="domain" colspan="5"><%= domain.name %> (Score: <%= number_with_precision(domain.calculate_score(@evaluation), :precision => 2)%>)</td>
+					<td class="domain" colspan="5"><%= domain[:name] %> (Score: <%= number_with_precision(domain[:score], :precision => 2)%>)</td>
 				</tr>
 
-				<% domain.evaluation_criteria.each do |criterion| %>
+				<% domain[:criteria].each do |criterion| %>
 					<tr class="subdomain-row">
-						<td class="subdomain"><%= criterion.contents %></td>
-						<% rating = EvaluationRating.find_by_criterion_id_and_evaluation_id(criterion.id, @evaluation.id) %>
+						<td class="subdomain"><%= criterion[:name] %></td>
 						<% (1..4).each do |i| %>
 							<td class="eval">
-								<%= '<i class="icon icon-ok"></i>'.html_safe if rating && rating.score == i %>
+								<%= '<i class="icon icon-ok"></i>'.html_safe if criterion[:score] == i %>
 							</td>
 						<% end %>
 					</tr>

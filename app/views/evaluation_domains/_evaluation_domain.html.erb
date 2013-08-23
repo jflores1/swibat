@@ -6,7 +6,7 @@
 	</span>
 	<ul>
 		<ul id="criteria-list-<%= domain.id %>">
-			<% domain.evaluation_criteria.each do |criterion| %>
+			<% domain.evaluation_criteria.where(deleted: false).each do |criterion| %>
 				<%= render partial: "evaluation_criteria/evaluation_criterion", locals: {criterion: criterion, domain: domain} %>			
 			<% end %>		
 		</ul>
