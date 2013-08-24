@@ -106,6 +106,10 @@ class User < ActiveRecord::Base
     user.role = role.downcase
   end
 
+  def self.find_by_full_name(full_name)
+    self.where("LOWER(first_name || ' ' || last_name) LIKE ?", "%#{full_name.downcase}%")
+  end
+
   # Commenting it out due to prevent sending e-mails to real email addresses which
   # were imported for presentation purposes
   # after_create :signup_confirmation

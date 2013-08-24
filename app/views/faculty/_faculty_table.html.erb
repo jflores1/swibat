@@ -1,9 +1,27 @@
+<%= content_for :head do %>
+	<script type="text/javascript">
+		$(function() {
+ 
+	    $( "#faculty-autocomplete" ).autocomplete({
+	      source: "<%= autocomplete_user_full_name_users_path %>",
+	      minLength: 2,
+	      select: function( event, ui ) {
+	      	if (ui.item){
+	      		window.location = "<%= institution_faculty_index_path(@institution) %>/" + ui.item.id;
+	      	}	        
+	      }
+	    });
+  	});
+	</script>
+<% end %>
+
 <h1 class="page-title">Faculty 
 	<span class="pull-right">
 		<%= link_to '<i class="icon-plus"></i> <i class="icon-user"></i></a>'.html_safe, new_institution_faculty_path(@institution), class: 'btn btn-warning', title: 'Add a faculty member' %>
 		<%= link_to '<i class="icon-upload"></i> <i class="icon-group"></i></a>'.html_safe, import_institution_faculty_index_path(@institution), class: 'btn btn-warning', title: 'Import a list of faculty members' %>
 	</span>
 </h1>
+<%= text_field_tag 'user', '', id: 'faculty-autocomplete', class: 'input-xlarge', placeholder: 'Search Faculty' %>
 
 <% faculty.each do |faculty| %>
 	<div class="summary-table">
