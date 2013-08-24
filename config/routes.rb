@@ -59,11 +59,7 @@ Swibat::Application.routes.draw do
       get :courses
       get :intro
       delete :remove_from_institution      
-    end
-
-    collection do
-      get :autocomplete_user_full_name
-    end
+    end    
   end
 
   resources :posts do
@@ -147,7 +143,8 @@ Swibat::Application.routes.draw do
     resources :faculty do
       collection do        
         get :import
-        post :create_multiple
+        post :create_multiple        
+        get :autocomplete_user_full_name    
       end
     end    
 

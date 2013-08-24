@@ -39,4 +39,10 @@ class FacultyController < ApplicationController
   def load_institution
     @institution = Institution.find(params[:institution_id])
   end
+
+  def autocomplete_user_full_name
+    @result = @institution.users.find_by_full_name(params[:term]).collect{|u| {id: u.id, label: u.full_name, value: u.full_name}}
+    respond_with @result 
+  end
+
 end

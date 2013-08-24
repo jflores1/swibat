@@ -3,7 +3,7 @@
 		$(function() {
  
 	    $( "#faculty-autocomplete" ).autocomplete({
-	      source: "<%= autocomplete_user_full_name_users_path %>",
+	      source: "<%= autocomplete_user_full_name_institution_faculty_index_path %>",
 	      minLength: 2,
 	      select: function( event, ui ) {
 	      	if (ui.item){
