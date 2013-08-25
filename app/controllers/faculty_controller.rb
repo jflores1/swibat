@@ -10,6 +10,31 @@ class FacultyController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    @templates = @user.teacher_evaluations.all.collect {|ev| ev.evaluation_template}
+    @templates.uniq!
+
+    @data = [];
+
+    @templates.each do |template|
+      template_hash = {}
+      @evaluations = @user.teacher_evaluations.where(evaluation_template_id: template.id)
+      template_hash[:template_name] = template.name
+      template_hash[:template_id] = template.id
+      template_hash[:domains] = []
+      template.evaluation_domains.each do |domain|
+        domain_hash = {name: domain.name}
+        score = 0
+        @evaluations.each do |ev|
+          score += domain.calculate_score(ev)
+        end
+        score /= @evaluations.count.to_f
+        domain_hash[:score] = score        
+        template_hash[:domains] << domain_hash if domain_hash[:score] > 0
+      end
+      @data << template_hash
+    end
+    @chart_data = @data.to_json
   end
 
   def new

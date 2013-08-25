@@ -19,8 +19,17 @@
 		  </ul>
 		</div>
 			<%= link_to '<i class="icon-trash"></i> <i class="icon-user"></i>'.html_safe, remove_from_institution_user_path(@user), method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger', title: 'Remove faculty member' %>
-		</span></h1>
-	<div class="summary-graph">
+		</span>
+	</h1>
+	<div class="pull-right">
+		Template: 	
+		<select id="chart-template-select" class="input-xlarge">
+			<%= @templates.each do |template| %>
+				<option value="<%= template.id %>"><%= template.name %></option>
+			<% end %>
+		</select>
+	</div>
+	<div id="graph" data-chart="<%= @chart_data %>">
 		This is where the bar graph will go. x-axis is score and y-axis is the domain. No chartjunk. To make computation simple, can filter b/w templates and cumulative vs most recent observations.
 	</div>
 	<h3>Observations</h3>
@@ -37,6 +46,7 @@
 			<p>Observation Score: <%= number_with_precision(observation.calculate_score, :precision => 2) %></p>
 		</div>		
 	<% end %>
+
 <% end %>
 
 <% content_for :right_column do %>
